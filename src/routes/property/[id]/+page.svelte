@@ -4,6 +4,7 @@
 	let { data } = $props()
 	let property = $derived(data.property)
 	let categories_with_this_property = $derived(data.categories_with_this_property)
+	let categories_without_this_property = $derived(data.categories_without_this_property)
 	let rendered_description = $derived(data.rendered_description)
 </script>
 
@@ -23,11 +24,22 @@
 	</p>
 {/if}
 
-Each of the following categories {property.prefix}
-{property.name}:
+<h3>Examples</h3>
 
 <ul>
 	{#each categories_with_this_property as category}
+		<li>
+			<a href="/category/{category.id}">
+				{category.name}
+			</a>
+		</li>
+	{/each}
+</ul>
+
+<h3>Counterexamples</h3>
+
+<ul>
+	{#each categories_without_this_property as category}
 		<li>
 			<a href="/category/{category.id}">
 				{category.name}

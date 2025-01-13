@@ -15,6 +15,17 @@ export const load: PageServerLoad = (event) => {
 		category.properties.includes(property.name as keyof typeof properties_dictionary),
 	)
 
+	const categories_without_this_property = categories_list.filter((category) =>
+		category.non_properties.includes(
+			property.name as keyof typeof properties_dictionary,
+		),
+	)
+
 	const rendered_description = render_formulas(property.description)
-	return { property, rendered_description, categories_with_this_property }
+	return {
+		property,
+		rendered_description,
+		categories_with_this_property,
+		categories_without_this_property,
+	}
 }
