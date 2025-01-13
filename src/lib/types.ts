@@ -26,6 +26,7 @@ export type Property = {
 	name: string
 	description: string
 	prefix: (typeof prefixes)[number]
+	dual?: Property['id']
 }
 
 export type Implication = {

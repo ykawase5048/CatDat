@@ -20,4 +20,13 @@ describe('properties of categories', () => {
 			}
 		}
 	})
+
+	it('should list dual properties mutually', () => {
+		for (const property of properties_list) {
+			if (!('dual' in property)) continue
+			const dual_property = properties_list.find((p) => p.id === property.dual)
+			expect(dual_property && 'dual' in dual_property).toBe(true)
+			expect(dual_property?.dual).toBe(property.id)
+		}
+	})
 })
