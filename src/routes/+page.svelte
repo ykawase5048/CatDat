@@ -22,6 +22,9 @@ The following properties are available:
 <ul>
 	{#each category_property_list as property}
 		<li>
+			{#if property.prefix.startsWith('has')}
+				{property.prefix}
+			{/if}
 			<a href="/property/{property.id}">
 				{property.name}
 			</a>
