@@ -11,7 +11,7 @@ export const categories_dictionary = {
 		properties: [
 			'cartesian closed',
 			'cocomplete',
-			'cocomplete',
+			'complete',
 			'locally small',
 			'Grothendieck topos',
 			'elementary topos',
