@@ -29,7 +29,7 @@
 	<p>{category.description}</p>
 {/if}
 
-This category has the following properties:
+<h3>Satisfied Properties</h3>
 
 <ul>
 	{#each category.properties as property}
@@ -42,7 +42,7 @@ This category has the following properties:
 	{/each}
 </ul>
 
-However, this category does not have the following properties:
+<h3>Missing Properties</h3>
 
 <ul>
 	{#each category.non_properties as property}
