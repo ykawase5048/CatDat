@@ -40,15 +40,17 @@ export const category_properties_dictionary = {
 		description:
 			'A category is abelian if it is additive, every morphism has a kernel and a cokernel, and every monomorphism and epimorphism is normal. As opposed to many other concepts of categories, being abelian turns out to be a mere property. For example, monoidal not just a property.',
 	},
-	'finite limits': {
+	'finitely complete': {
 		id: 8,
-		prefix: 'has',
-		description: 'Every finite diagram in the category has a limit.',
+		prefix: 'is',
+		description:
+			'A category is finitely complete when every finite diagram has a limit.',
 	},
-	'finite colimits': {
+	'finitely cocomplete': {
 		id: 9,
-		prefix: 'has',
-		description: 'Every finite diagram in the category has a colimit.',
+		prefix: 'is',
+		description:
+			'A category is finitely cocomplete when every finite diagram has a colimit.',
 	},
 	'pointed': {
 		id: 10,
