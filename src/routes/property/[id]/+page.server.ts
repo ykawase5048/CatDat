@@ -1,12 +1,15 @@
 import { error } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
-import { categories_list, category_property_list } from '$lib/lists'
-import type { category_properties_dictionary } from '$lib/dictionaries/category-properties'
+import {
+	category_property_list,
+	type category_properties_dictionary,
+} from '$lib/dictionaries/category-properties'
+import { categories_list } from '$lib/dictionaries/categories'
 
 export const load: PageServerLoad = (event) => {
 	const id = event.params.id
 	const property = category_property_list.find(
-		(properrty) => properrty.id.toString() === id,
+		(property) => property.id.toString() === id,
 	)
 	if (!property) return error(404, 'Property not found')
 

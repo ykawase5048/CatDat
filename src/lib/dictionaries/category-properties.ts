@@ -80,3 +80,10 @@ export const category_properties_dictionary = {
 			'A category is well-powered if the collection of subobjects of each object is a set.',
 	},
 } as const satisfies Record<string, Omit<CategoryProperty, 'name'>>
+
+export const category_property_list: CategoryProperty[] = Object.entries(
+	category_properties_dictionary,
+).map(([name, property]) => ({
+	name,
+	...property,
+}))

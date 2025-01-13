@@ -17,6 +17,8 @@ export const categories_dictionary = {
 			'elementary topos',
 			'locally finitely presentable',
 			'well-powered',
+			'finite limits',
+			'finite colimits',
 		],
 		non_properties: ['small', 'abelian', 'preadditive structure', 'zero object'],
 	},
@@ -143,3 +145,10 @@ export const categories_dictionary = {
 		],
 	},
 } as const satisfies Record<string, Omit<Category, 'name'>>
+
+export const categories_list: Category[] = Object.entries(categories_dictionary).map(
+	([name, category]) => ({
+		name,
+		...category,
+	}),
+)
