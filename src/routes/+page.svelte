@@ -23,9 +23,7 @@ The following properties are available:
 <ul>
 	{#each properties_list as property}
 		<li>
-			{#if property.prefix.startsWith('has')}
-				{property.prefix}
-			{/if}
+			{property.prefix}
 			<a href="/property/{property.id}">
 				{property.name}
 			</a>
@@ -38,13 +36,15 @@ The following implications are available:
 <ul>
 	{#each implications as implication}
 		{@const assumption = Array.isArray(implication.assumption)
-			? implication.assumption.join(', ')
+			? implication.assumption.join(' &and; ')
 			: implication.assumption}
 		{@const conclusion = Array.isArray(implication.conclusion)
-			? implication.conclusion.join(', ')
+			? implication.conclusion.join(' &and; ')
 			: implication.conclusion}
 		<li>
-			When a category is {assumption}, then it is also {conclusion}.
+			{@html assumption}
+			&rArr;
+			{@html conclusion}
 		</li>
 	{/each}
 </ul>
