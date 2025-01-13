@@ -28,11 +28,11 @@ export const category_properties_dictionary = {
 		prefix: 'is',
 		description: 'All finite products and exponentials exist.',
 	},
-	'preadditive structure': {
+	'preadditive': {
 		id: 6,
-		prefix: 'has a',
+		prefix: 'is',
 		description:
-			"Each hom-set carries the structure of an abelian group and composition is bilinear. Notice that 'preadditive' is an extra structure. This property just says that some preadditive structure exists.",
+			"Each hom-set carries the structure of an abelian group and composition is bilinear. Notice that 'preadditive' is an extra structure. The property here just says that some preadditive structure exists.",
 	},
 	'abelian': {
 		id: 7,

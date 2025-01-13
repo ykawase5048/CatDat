@@ -16,7 +16,7 @@ export const implications: CategoryPropertyImplication[] = [
 	{
 		assumption: 'abelian',
 		conclusion: [
-			'preadditive structure',
+			'preadditive',
 			'finitely cocomplete',
 			'finitely complete',
 			'pointed',
