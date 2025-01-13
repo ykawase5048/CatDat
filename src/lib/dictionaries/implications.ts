@@ -11,7 +11,7 @@ export const implications: CategoryPropertyImplication[] = [
 	},
 	{
 		assumption: 'locally finitely presentable',
-		conclusion: 'well-powered',
+		conclusion: ['well-powered', 'well-copowered', 'complete', 'cocomplete'],
 	},
 	{
 		assumption: 'abelian',
@@ -24,7 +24,12 @@ export const implications: CategoryPropertyImplication[] = [
 	},
 	{
 		assumption: 'elementary topos',
-		conclusion: ['cartesian closed', 'finitely complete', 'well-powered'],
+		conclusion: [
+			'cartesian closed',
+			'finitely cocomplete',
+			'finitely complete',
+			'well-powered',
+		],
 	},
 	{
 		assumption: 'complete',
@@ -33,5 +38,9 @@ export const implications: CategoryPropertyImplication[] = [
 	{
 		assumption: 'cocomplete',
 		conclusion: 'finitely cocomplete',
+	},
+	{
+		assumption: 'preadditive',
+		conclusion: 'locally small',
 	},
 ]
