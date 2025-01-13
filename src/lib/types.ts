@@ -16,9 +16,11 @@ export type CategoryWithProperties = Omit<Category, 'properties' | 'non_properti
 	non_properties: CategoryProperty[]
 }
 
+export const prefixes = ['is', 'has', 'has a', 'is a', 'is an'] as const
+
 export type CategoryProperty = {
 	id: number
 	name: string
 	description: string
-	prefix: 'is' | 'has' | 'has a' | 'is a' | 'is an'
+	prefix: (typeof prefixes)[number]
 }
