@@ -1,6 +1,10 @@
 <script lang="ts">
-	const { data } = $props()
-	const { property, categories_with_this_property, rendered_description } = data
+	import { properties_list } from '$lib/dictionaries/properties.js'
+
+	let { data } = $props()
+	let property = $derived(data.property)
+	let categories_with_this_property = $derived(data.categories_with_this_property)
+	let rendered_description = $derived(data.rendered_description)
 </script>
 
 <a href="/">Home</a>
@@ -8,6 +12,16 @@
 <h2>{property.name}</h2>
 
 <p><strong>Definition:</strong> {@html rendered_description}</p>
+
+{#if property.dual}
+	{@const dual_property = properties_list.find((p) => p.id === property.dual)!}
+	<p>
+		Dual property: <a href="/property/{dual_property.id}">{dual_property.name}</a>
+		{#if dual_property.id === property.id}
+			(self-dual)
+		{/if}
+	</p>
+{/if}
 
 Each of the following categories {property.prefix}
 {property.name}:
