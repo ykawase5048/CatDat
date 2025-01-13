@@ -11,7 +11,7 @@ export const category_properties_dictionary = {
 		id: 2,
 		prefix: 'is',
 		description:
-			'For every pair of objects A,B, the collection of morphisms A -> B is a set, i.e. small.',
+			'For every pair of objects $A,B$, the collection of morphisms $A \\to B$ is a set, i.e. small.',
 	},
 	'complete': {
 		id: 3,

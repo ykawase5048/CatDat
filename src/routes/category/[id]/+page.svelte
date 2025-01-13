@@ -1,11 +1,13 @@
 <script lang="ts">
 	const { data } = $props()
-	const { category } = data
+	const { category, formula } = data
 </script>
 
 <a href="/">Home</a>
 
 <h2>{category.name}</h2>
+
+<p><strong>notation:</strong> {@html formula}</p>
 
 <p>
 	<strong>objects:</strong>

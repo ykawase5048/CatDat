@@ -1,3 +1,5 @@
+export const prerender = true
+
 import { error } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
 import {
@@ -5,6 +7,7 @@ import {
 	type category_properties_dictionary,
 } from '$lib/dictionaries/category-properties'
 import { categories_list } from '$lib/dictionaries/categories'
+import { render_formulas } from '$lib/render'
 
 export const load: PageServerLoad = (event) => {
 	const id = event.params.id
@@ -18,5 +21,7 @@ export const load: PageServerLoad = (event) => {
 			property.name as keyof typeof category_properties_dictionary,
 		),
 	)
-	return { property, categories_with_this_property }
+
+	const rendered_description = render_formulas(property.description)
+	return { property, rendered_description, categories_with_this_property }
 }

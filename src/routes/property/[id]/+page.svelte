@@ -1,13 +1,13 @@
 <script lang="ts">
 	const { data } = $props()
-	const { property, categories_with_this_property } = data
+	const { property, categories_with_this_property, rendered_description } = data
 </script>
 
 <a href="/">Home</a>
 
 <h2>{property.name}</h2>
 
-<p><strong>Definition:</strong> {property.description}</p>
+<p><strong>Definition:</strong> {@html rendered_description}</p>
 
 Each of the following categories {property.prefix}
 {property.name}:
