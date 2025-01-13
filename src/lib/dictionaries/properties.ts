@@ -1,6 +1,6 @@
 import type { CategoryProperty } from '$lib/types'
 
-export const category_properties_dictionary = {
+export const properties_dictionary = {
 	'small': {
 		id: 1,
 		prefix: 'is',
@@ -68,7 +68,7 @@ export const category_properties_dictionary = {
 		id: 12,
 		prefix: 'is an',
 		description:
-			'An elementary topos is a cartesian closed category with finite limits and subobject classifiers.',
+			'An elementary topos is a cartesian closed category with finite limits and a subobject classifier.',
 	},
 	'Grothendieck topos': {
 		id: 13,
@@ -90,8 +90,8 @@ export const category_properties_dictionary = {
 	},
 } as const satisfies Record<string, Omit<CategoryProperty, 'name'>>
 
-export const category_property_list: CategoryProperty[] = Object.entries(
-	category_properties_dictionary,
+export const properties_list: CategoryProperty[] = Object.entries(
+	properties_dictionary,
 ).map(([name, property]) => ({
 	name,
 	...property,

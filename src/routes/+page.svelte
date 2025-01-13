@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { categories_list } from '$lib/dictionaries/categories'
-	import { category_property_list } from '$lib/dictionaries/category-properties'
+	import { properties_list } from '$lib/dictionaries/properties'
 	import { implications } from '$lib/dictionaries/implications'
 </script>
 
@@ -21,7 +21,7 @@ The following categories are available:
 The following properties are available:
 
 <ul>
-	{#each category_property_list as property}
+	{#each properties_list as property}
 		<li>
 			{#if property.prefix.startsWith('has')}
 				{property.prefix}

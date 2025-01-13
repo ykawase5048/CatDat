@@ -1,4 +1,4 @@
-import type { category_properties_dictionary } from './dictionaries/category-properties'
+import type { properties_dictionary } from './dictionaries/properties'
 
 export type Category = {
 	id: number
@@ -7,8 +7,8 @@ export type Category = {
 	objects: string
 	morphisms: string
 	description?: string
-	properties: (keyof typeof category_properties_dictionary)[]
-	non_properties: (keyof typeof category_properties_dictionary)[]
+	properties: (keyof typeof properties_dictionary)[]
+	non_properties: (keyof typeof properties_dictionary)[]
 }
 
 export type CategoryWithProperties = Omit<Category, 'properties' | 'non_properties'> & {
@@ -27,9 +27,9 @@ export type CategoryProperty = {
 
 export type CategoryPropertyImplication = {
 	assumption:
-		| keyof typeof category_properties_dictionary
-		| (keyof typeof category_properties_dictionary)[]
+		| keyof typeof properties_dictionary
+		| (keyof typeof properties_dictionary)[]
 	conclusion:
-		| keyof typeof category_properties_dictionary
-		| (keyof typeof category_properties_dictionary)[]
+		| keyof typeof properties_dictionary
+		| (keyof typeof properties_dictionary)[]
 }

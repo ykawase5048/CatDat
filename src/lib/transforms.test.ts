@@ -1,4 +1,4 @@
-import { category_property_list } from './dictionaries/category-properties'
+import { properties_list } from './dictionaries/properties'
 import { add_properties } from './transforms'
 import type { Category, CategoryWithProperties } from './types'
 
@@ -20,12 +20,12 @@ describe('add_properties', () => {
 			objects: 'foo',
 			morphisms: 'bar',
 			notation: 'SC',
-			properties: [category_property_list[0]],
-			non_properties: [category_property_list[2]],
+			properties: [properties_list[0]],
+			non_properties: [properties_list[2]],
 		}
 
-		expect(category_property_list[0].name).toBe('small')
-		expect(category_property_list[2].name).toBe('complete')
+		expect(properties_list[0].name).toBe('small')
+		expect(properties_list[2].name).toBe('complete')
 
 		expect(add_properties(sample_category)).toEqual(expected)
 	})

@@ -1,7 +1,7 @@
 import { categories_list } from './categories'
-import { category_property_list } from './category-properties'
+import { properties_list } from './properties'
 
-const property_names = category_property_list.map((p) => p.name)
+const property_names = properties_list.map((p) => p.name)
 
 describe('categories list', () => {
 	it('should have unique IDs', () => {
