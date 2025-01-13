@@ -43,7 +43,47 @@ export const implications: Implication[] = [
 		conclusion: 'locally small',
 	},
 	{
+		assumption: ['preadditive', 'initial object'],
+		conclusion: 'pointed',
+	},
+	{
+		assumption: ['preadditive', 'terminal object'],
+		conclusion: 'pointed',
+	},
+	{
 		assumption: 'Grothendieck topos',
 		conclusion: ['elementary topos', 'locally small', 'complete', 'cocomplete'],
+	},
+	{
+		assumption: 'products',
+		conclusion: 'finite products',
+	},
+	{
+		assumption: 'finitely complete',
+		conclusion: 'finite products',
+	},
+	{
+		assumption: 'finite products',
+		conclusion: 'terminal object',
+	},
+	{
+		assumption: 'coproducts',
+		conclusion: 'finite coproducts',
+	},
+	{
+		assumption: 'finitely complete',
+		conclusion: 'finite coproducts',
+	},
+	{
+		assumption: 'finite coproducts',
+		conclusion: 'initial object',
+	},
+	{
+		assumption: 'pointed',
+		conclusion: ['terminal object', 'initial object'],
+	},
+	{
+		assumption: 'cartesian closed',
+		conclusion: 'finite products',
 	},
 ]
