@@ -1,5 +1,5 @@
 import { properties_dictionary } from './dictionaries/properties'
-import type { Category, CategoryWithProperties } from './types'
+import type { Category, CategoryWithProperties, Property } from './types'
 
 export function add_properties(category: Category): CategoryWithProperties {
 	const actual_properties = category.properties.map((name) => ({
@@ -16,4 +16,8 @@ export function add_properties(category: Category): CategoryWithProperties {
 		properties: actual_properties,
 		non_properties: actual_non_properties,
 	}
+}
+
+export function get_property_url(property: Property) {
+	return `/property/${property.name.replaceAll(' ', '_')}`
 }

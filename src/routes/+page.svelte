@@ -2,6 +2,7 @@
 	import { categories_list } from '$lib/dictionaries/categories'
 	import { properties_list } from '$lib/dictionaries/properties'
 	import { implications } from '$lib/dictionaries/implications'
+	import { get_property_url } from '$lib/transforms'
 </script>
 
 <p>
@@ -24,7 +25,7 @@ The following properties are available:
 	{#each properties_list as property}
 		<li>
 			{property.prefix}
-			<a href="/property/{property.id}">
+			<a href={get_property_url(property)}>
 				{property.name}
 			</a>
 		</li>

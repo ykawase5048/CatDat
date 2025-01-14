@@ -1,8 +1,8 @@
 import type { Category } from '$lib/types'
 
 export const categories_dictionary = {
-	'Category of sets': {
-		id: 1,
+	'Set': {
+		name: 'The category of sets',
 		notation: '\\mathbf{Set}',
 		objects: 'sets',
 		morphisms: 'functions / maps',
@@ -24,8 +24,8 @@ export const categories_dictionary = {
 		],
 		non_properties: ['small', 'abelian', 'preadditive', 'pointed', 'self-dual'],
 	},
-	'Category of abelian groups': {
-		id: 2,
+	'Ab': {
+		name: 'The category of abelian groups',
 		notation: '\\mathbf{Ab}',
 		objects: 'abelian groups',
 		morphisms: 'group homomorphisms',
@@ -52,8 +52,8 @@ export const categories_dictionary = {
 			'self-dual',
 		],
 	},
-	'Category of topological spaces': {
-		id: 3,
+	'Top': {
+		name: 'The category of topological spaces',
 		notation: '\\mathbf{Top}',
 		objects: 'topological spaces',
 		morphisms: 'continuous functions',
@@ -80,8 +80,8 @@ export const categories_dictionary = {
 			'self-dual',
 		],
 	},
-	'Category of groups': {
-		id: 4,
+	'Grp': {
+		name: 'The category of groups',
 		notation: '\\mathbf{Grp}',
 		objects: 'groups',
 		morphisms: 'group homomorphisms',
@@ -107,12 +107,13 @@ export const categories_dictionary = {
 			'self-dual',
 		],
 	},
-	'Category of rings': {
-		id: 5,
+	'Ring': {
+		name: 'The category of rings',
 		notation: '\\mathbf{Ring}',
 		objects: 'rings',
 		morphisms: 'ring homomorphisms',
 		nlab_link: 'https://ncatlab.org/nlab/show/Ring',
+		description: 'Here, rings always have a unit, and homomorphisms preserve them.',
 		properties: [
 			'locally small',
 			'complete',
@@ -134,8 +135,8 @@ export const categories_dictionary = {
 			'self-dual',
 		],
 	},
-	'Category of finite sets': {
-		id: 6,
+	'FinSet': {
+		name: 'The category of finite sets',
 		notation: '\\mathbf{FinSet}',
 		objects: 'finite sets',
 		morphisms: 'functions / maps',
@@ -161,8 +162,8 @@ export const categories_dictionary = {
 			'self-dual',
 		],
 	},
-	'Category of finite abelian groups': {
-		id: 7,
+	'FinAb': {
+		name: 'The category of finite abelian groups',
 		notation: '\\mathbf{FinAb}',
 		objects: 'finite abelian groups',
 		morphisms: 'group homomorphisms',
@@ -188,8 +189,8 @@ export const categories_dictionary = {
 			'locally finitely presentable',
 		],
 	},
-	'Category of pointed sets': {
-		id: 8,
+	'Set*': {
+		name: 'The category of pointed sets',
 		notation: '\\mathbf{Set}_*',
 		objects: 'pointed sets',
 		morphisms: 'pointed functions',
@@ -217,8 +218,8 @@ export const categories_dictionary = {
 			'self-dual',
 		],
 	},
-	'Category of monoids': {
-		id: 9,
+	'Mon': {
+		name: 'The category of monoids',
 		notation: '\\mathbf{Mon}',
 		objects: 'monoids',
 		morphisms: 'monoid homomorphisms',
@@ -244,10 +245,10 @@ export const categories_dictionary = {
 			'self-dual',
 		],
 	},
-	'Category of partial orders': {
-		id: 10,
+	'Pos': {
+		name: 'The category of posets',
 		notation: '\\mathbf{Pos}',
-		objects: 'partial orders',
+		objects: 'partial orders / posets',
 		morphisms: 'order-preserving functions',
 		nlab_link: 'https://ncatlab.org/nlab/show/Pos',
 		properties: [
@@ -271,8 +272,8 @@ export const categories_dictionary = {
 			'self-dual',
 		],
 	},
-	'Trivial category': {
-		id: 11,
+	'1': {
+		name: 'The trivial category',
 		notation: '\\mathbf{1}',
 		objects: 'a single object',
 		morphisms: 'only the identity morphism',
@@ -299,11 +300,11 @@ export const categories_dictionary = {
 		],
 		non_properties: [],
 	},
-} as const satisfies Record<string, Omit<Category, 'name'>>
+} as const satisfies Record<string, Omit<Category, 'id'>>
 
 export const categories_list: Category[] = Object.entries(categories_dictionary).map(
-	([name, category]) => ({
-		name,
+	([id, category]) => ({
+		id,
 		...category,
 	}),
 )

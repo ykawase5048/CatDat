@@ -7,8 +7,8 @@ import { categories_list } from '$lib/dictionaries/categories'
 import { render_formulas } from '$lib/render'
 
 export const load: PageServerLoad = (event) => {
-	const id = event.params.id
-	const property = properties_list.find((property) => property.id.toString() === id)
+	const actual_name = event.params.name.replace(/_/g, ' ')
+	const property = properties_list.find((property) => property.name === actual_name)
 	if (!property) return error(404, 'Property not found')
 
 	const categories_with_this_property = categories_list.filter((category) =>

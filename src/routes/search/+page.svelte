@@ -2,8 +2,8 @@
 	import { properties_list } from '$lib/dictionaries/properties'
 	import { get_suitable_categories } from './search'
 
-	let expected_properties = $state([])
-	let expected_non_properties = $state([])
+	let expected_properties = $state<string[]>([])
+	let expected_non_properties = $state<string[]>([])
 
 	let suitable_categories = $derived(
 		get_suitable_categories(expected_properties, expected_non_properties),
@@ -12,6 +12,8 @@
 	let no_selection = $derived(
 		expected_properties.length === 0 && expected_non_properties.length === 0,
 	)
+
+	$inspect(expected_properties, expected_non_properties)
 </script>
 
 <a href="/">Home</a>
@@ -32,7 +34,7 @@
 			<label>
 				<input
 					type="checkbox"
-					value={property.id}
+					value={property.name}
 					bind:group={expected_properties}
 				/>
 				{property.name}
@@ -47,7 +49,7 @@
 			<label>
 				<input
 					type="checkbox"
-					value={property.id}
+					value={property.name}
 					bind:group={expected_non_properties}
 				/>
 				{property.name}

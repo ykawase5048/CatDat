@@ -3,7 +3,7 @@ import type { properties_dictionary } from './dictionaries/properties'
 type PropertyName = keyof typeof properties_dictionary
 
 export type Category = {
-	id: number
+	id: string
 	name: string
 	notation: string
 	objects: string
@@ -22,11 +22,10 @@ export type CategoryWithProperties = Omit<Category, 'properties' | 'non_properti
 export const prefixes = ['is', 'is a', 'is an', 'has', 'has a', 'has an'] as const
 
 export type Property = {
-	id: number
 	name: string
 	description: string
 	prefix: (typeof prefixes)[number]
-	dual?: Property['id']
+	dual?: Property['name']
 }
 
 export type Implication = {

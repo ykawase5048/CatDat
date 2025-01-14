@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { get_property_url } from '$lib/transforms.js'
+
 	const { data } = $props()
 	const { category, formula } = data
 </script>
@@ -35,7 +37,7 @@
 	{#each category.properties as property}
 		<li>
 			{property.prefix}
-			<a href="/property/{property.id}">
+			<a href={get_property_url(property)}>
 				{property.name}
 			</a>
 		</li>
@@ -48,7 +50,7 @@
 	{#each category.non_properties as property}
 		<li>
 			{property.prefix}
-			<a href="/property/{property.id}">
+			<a href={get_property_url(property)}>
 				{property.name}
 			</a>
 		</li>
