@@ -150,6 +150,12 @@ export const properties_dictionary = {
 			'A category is self-dual if it is equivalent to its opposite (or dual) category.',
 		dual: 'self-dual',
 	},
+	'groupoid': {
+		prefix: 'is a',
+		description:
+			'A groupoid is a category in which every morphism is an isomorphism.',
+		dual: 'groupoid',
+	},
 } as const satisfies Record<string, Omit<Property, 'name'>>
 
 export const properties_list: Property[] = Object.entries(properties_dictionary).map(

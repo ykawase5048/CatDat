@@ -22,7 +22,14 @@ export const categories_dictionary = {
 			'finitely cocomplete',
 			'well-copowered',
 		],
-		non_properties: ['small', 'abelian', 'preadditive', 'pointed', 'self-dual'],
+		non_properties: [
+			'small',
+			'abelian',
+			'preadditive',
+			'pointed',
+			'self-dual',
+			'groupoid',
+		],
 	},
 	'Ab': {
 		name: 'The category of abelian groups',
@@ -50,6 +57,7 @@ export const categories_dictionary = {
 			'Grothendieck topos',
 			'elementary topos',
 			'self-dual',
+			'groupoid',
 		],
 	},
 	'Top': {
@@ -78,6 +86,7 @@ export const categories_dictionary = {
 			'Grothendieck topos',
 			'elementary topos',
 			'self-dual',
+			'groupoid',
 		],
 	},
 	'Grp': {
@@ -105,6 +114,7 @@ export const categories_dictionary = {
 			'Grothendieck topos',
 			'elementary topos',
 			'self-dual',
+			'groupoid',
 		],
 	},
 	'Ring': {
@@ -133,6 +143,7 @@ export const categories_dictionary = {
 			'Grothendieck topos',
 			'elementary topos',
 			'self-dual',
+			'groupoid',
 		],
 	},
 	'FinSet': {
@@ -160,6 +171,7 @@ export const categories_dictionary = {
 			'Grothendieck topos',
 			'pointed',
 			'self-dual',
+			'groupoid',
 		],
 	},
 	'FinAb': {
@@ -187,6 +199,7 @@ export const categories_dictionary = {
 			'Grothendieck topos',
 			'elementary topos',
 			'locally finitely presentable',
+			'groupoid',
 		],
 	},
 	'Set*': {
@@ -216,6 +229,7 @@ export const categories_dictionary = {
 			'Grothendieck topos',
 			'elementary topos',
 			'self-dual',
+			'groupoid',
 		],
 	},
 	'Mon': {
@@ -243,6 +257,7 @@ export const categories_dictionary = {
 			'Grothendieck topos',
 			'elementary topos',
 			'self-dual',
+			'groupoid',
 		],
 	},
 	'Pos': {
@@ -270,6 +285,7 @@ export const categories_dictionary = {
 			'Grothendieck topos',
 			'elementary topos',
 			'self-dual',
+			'groupoid',
 		],
 	},
 	'1': {
@@ -297,6 +313,7 @@ export const categories_dictionary = {
 			'abelian',
 			'well-copowered',
 			'self-dual',
+			'groupoid',
 		],
 		non_properties: [],
 	},

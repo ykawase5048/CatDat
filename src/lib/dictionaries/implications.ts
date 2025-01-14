@@ -116,4 +116,8 @@ export const implications: Implication[] = [
 		assumptions: ['self-dual', 'complete'],
 		conclusions: ['cocomplete'], // same with all other dual properties ...
 	},
+	{
+		assumptions: ['groupoid'],
+		conclusions: ['self-dual'],
+	},
 ]
