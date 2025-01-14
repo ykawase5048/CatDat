@@ -317,6 +317,22 @@ export const categories_dictionary = {
 		],
 		non_properties: [],
 	},
+	'I': {
+		name: 'The interval category',
+		notation: 'I',
+		objects: '0,1',
+		morphisms: 'a single morphism from 0 to 1',
+		description:
+			'This is the category with two objects and a single non-identity morphism between them. It has the property that functors out of this category are the same as morphisms.',
+		nlab_link: 'https://ncatlab.org/nlab/show/interval+category',
+		properties: [
+			'Grothendieck topos', // from which many other properties follow ...
+			'cartesian closed',
+			'small',
+			'self-dual',
+		],
+		non_properties: ['pointed', 'preadditive', 'groupoid'],
+	},
 } as const satisfies Record<string, Omit<Category, 'id'>>
 
 export const categories_list: Category[] = Object.entries(categories_dictionary).map(
