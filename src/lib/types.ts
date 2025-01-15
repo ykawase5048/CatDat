@@ -1,6 +1,6 @@
 import type { properties_dictionary } from './dictionaries/properties'
 
-type PropertyName = keyof typeof properties_dictionary
+export type PropertyName = keyof typeof properties_dictionary
 
 export type Category = {
 	id: string

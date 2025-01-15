@@ -1,5 +1,8 @@
-import type { NormalizedImplication } from '$lib/types'
+import type { NormalizedImplication, PropertyName } from '$lib/types'
+
+import { isSubset } from '$lib/utils'
 import { implications } from './implications'
+import { properties_list } from './properties'
 
 /**
  * Converts implications of the form [p1,...,ps] ---> [q1,...,qt] to
@@ -30,3 +33,25 @@ function get_normalized_implications(): NormalizedImplication[] {
 }
 
 export const normalized_implications = get_normalized_implications()
+
+export function get_deductions(assumptions: Set<PropertyName>): Set<PropertyName> {
+	let done = false
+	const deductions: Set<PropertyName> = assumptions
+	while (!done) {
+		done = true
+		for (const property of properties_list) {
+			const conclusion = property.name as PropertyName
+			if (deductions.has(conclusion)) continue
+			for (const implication of normalized_implications) {
+				const fits =
+					implication.conclusion === conclusion &&
+					isSubset(implication.assumptions, deductions)
+				if (fits) {
+					done = false
+					deductions.add(conclusion)
+				}
+			}
+		}
+	}
+	return deductions
+}

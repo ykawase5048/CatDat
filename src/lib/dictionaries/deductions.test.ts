@@ -1,4 +1,4 @@
-import { normalized_implications } from './deductions'
+import { get_deductions, normalized_implications } from './deductions'
 
 describe('normalized implications', () => {
 	it("should deduce 'finitely complete' from the set {complete}", () => {
@@ -30,5 +30,36 @@ describe('normalized implications', () => {
 				implication.assumptions.size === 1,
 		)
 		expect(found).toBeDefined()
+	})
+})
+
+describe('deductions', () => {
+	it('should include the assumptions', () => {
+		const deductions = get_deductions(new Set(['abelian']))
+		expect(deductions).toContain('abelian')
+	})
+
+	it('should include direct implications (e.g. abelian)', () => {
+		const deductions = get_deductions(new Set(['abelian']))
+		expect(deductions).toContain('finitely complete')
+	})
+
+	it('should include indirect implications (e.g. abelian)', () => {
+		const deductions = get_deductions(new Set(['abelian']))
+		expect(deductions).toContain('finite products')
+		expect(deductions).toContain('terminal object')
+		expect(deductions).toContain('initial object')
+	})
+
+	it('should include deductions of all parts of the assumptions', () => {
+		const deductions = get_deductions(
+			new Set(['finitely complete', 'finitely cocomplete']),
+		)
+		expect(deductions).toContain('finite products')
+		expect(deductions).toContain('finite coproducts')
+		expect(deductions).toContain('terminal object')
+		expect(deductions).toContain('initial object')
+		expect(deductions).toContain('coequalizers')
+		expect(deductions).toContain('equalizers')
 	})
 })
