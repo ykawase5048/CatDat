@@ -17,12 +17,12 @@
 
 <p>
 	<strong>objects:</strong>
-	{category.objects}
+	{@html category.objects}
 </p>
 
 <p>
 	<strong>morphisms:</strong>
-	{category.morphisms}
+	{@html category.morphisms}
 </p>
 
 {#if category.nlab_link}
@@ -32,7 +32,7 @@
 {/if}
 
 {#if category.description}
-	<p>{category.description}</p>
+	<p>{@html category.description}</p>
 {/if}
 
 <h3>Satisfied Properties</h3>
