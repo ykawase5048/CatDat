@@ -1,7 +1,8 @@
 import type { Category } from '$lib/types'
 
-export const categories_dictionary = {
-	'Set': {
+export const categories = [
+	{
+		id: 'Set',
 		name: 'The category of sets',
 		notation: '\\mathbf{Set}',
 		objects: 'sets',
@@ -19,7 +20,8 @@ export const categories_dictionary = {
 			'groupoid',
 		],
 	},
-	'Ab': {
+	{
+		id: 'Ab',
 		name: 'The category of abelian groups',
 		notation: '\\mathbf{Ab}',
 		objects: 'abelian groups',
@@ -36,7 +38,8 @@ export const categories_dictionary = {
 			'groupoid',
 		],
 	},
-	'Top': {
+	{
+		id: 'Top',
 		name: 'The category of topological spaces',
 		notation: '\\mathbf{Top}',
 		objects: 'topological spaces',
@@ -63,7 +66,8 @@ export const categories_dictionary = {
 			'groupoid',
 		],
 	},
-	'Grp': {
+	{
+		id: 'Grp',
 		name: 'The category of groups',
 		notation: '\\mathbf{Grp}',
 		objects: 'groups',
@@ -81,7 +85,8 @@ export const categories_dictionary = {
 			'groupoid',
 		],
 	},
-	'Ring': {
+	{
+		id: 'Ring',
 		name: 'The category of rings',
 		notation: '\\mathbf{Ring}',
 		objects: 'rings',
@@ -101,7 +106,8 @@ export const categories_dictionary = {
 			'groupoid',
 		],
 	},
-	'FinSet': {
+	{
+		id: 'FinSet',
 		name: 'The category of finite sets',
 		notation: '\\mathbf{FinSet}',
 		objects: 'finite sets',
@@ -121,7 +127,8 @@ export const categories_dictionary = {
 			'groupoid',
 		],
 	},
-	'FinAb': {
+	{
+		id: 'FinAb',
 		name: 'The category of finite abelian groups',
 		notation: '\\mathbf{FinAb}',
 		objects: 'finite abelian groups',
@@ -139,7 +146,8 @@ export const categories_dictionary = {
 			'groupoid',
 		],
 	},
-	'Set*': {
+	{
+		id: 'Set*',
 		name: 'The category of pointed sets',
 		notation: '\\mathbf{Set}_*',
 		objects: 'pointed sets',
@@ -159,7 +167,8 @@ export const categories_dictionary = {
 			'groupoid',
 		],
 	},
-	'Mon': {
+	{
+		id: 'Mon',
 		name: 'The category of monoids',
 		notation: '\\mathbf{Mon}',
 		objects: 'monoids',
@@ -177,7 +186,8 @@ export const categories_dictionary = {
 			'groupoid',
 		],
 	},
-	'Pos': {
+	{
+		id: 'Pos',
 		name: 'The category of posets',
 		notation: '\\mathbf{Pos}',
 		objects: 'partial orders / posets',
@@ -195,7 +205,8 @@ export const categories_dictionary = {
 			'groupoid',
 		],
 	},
-	'1': {
+	{
+		id: '1',
 		name: 'The trivial category',
 		notation: '\\mathbf{1}',
 		objects: 'a single object',
@@ -213,7 +224,8 @@ export const categories_dictionary = {
 		],
 		non_properties: [],
 	},
-	'I': {
+	{
+		id: 'I',
 		name: 'The interval category',
 		notation: 'I',
 		objects: '0,1',
@@ -229,11 +241,11 @@ export const categories_dictionary = {
 		],
 		non_properties: ['pointed', 'preadditive', 'groupoid'],
 	},
-} as const satisfies Record<string, Omit<Category, 'id'>>
+] as const satisfies Category[]
 
-export const categories_list: Category[] = Object.entries(categories_dictionary).map(
-	([id, category]) => ({
-		id,
-		...category,
-	}),
-)
+export type CategoryID = (typeof categories)[number]['id']
+
+export const categories_dictionary = categories.reduce(
+	(acc, category) => ({ ...acc, [category.id]: category }),
+	{},
+) as Record<CategoryID, Category>

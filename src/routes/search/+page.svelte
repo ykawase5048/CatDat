@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { properties_list } from '$lib/dictionaries/properties'
+	import { properties } from '$lib/dictionaries/properties'
 	import { get_suitable_categories } from './search'
 
 	let expected_properties = $state<string[]>([])
@@ -34,7 +34,7 @@
 	<div>
 		<p>The category <strong>should have</strong> these properties:</p>
 
-		{#each properties_list as property}
+		{#each properties as property}
 			<label>
 				<input
 					type="checkbox"
@@ -49,7 +49,7 @@
 	<div>
 		<p>The category <strong>should not have</strong> these properties:</p>
 
-		{#each properties_list as property}
+		{#each properties as property}
 			<label>
 				<input
 					type="checkbox"

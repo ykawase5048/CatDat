@@ -1,9 +1,9 @@
-import { categories_list } from './dictionaries/categories'
+import { categories_dictionary } from './dictionaries/categories'
 import { add_properties } from './transforms'
 
 describe('add_properties', () => {
 	it('adds the actual properties and deductions of these', () => {
-		const FinAb = categories_list.find((cat) => cat.id === 'FinAb')!
+		const FinAb = categories_dictionary.FinAb
 		const FinAbTransformed = add_properties(FinAb)
 
 		expect(

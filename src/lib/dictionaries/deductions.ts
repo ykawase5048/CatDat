@@ -1,8 +1,8 @@
-import type { NormalizedImplication, PropertyName } from '$lib/types'
+import type { NormalizedImplication } from '$lib/types'
 
 import { isSubset } from '$lib/utils'
 import { implications } from './implications'
-import { properties_list } from './properties'
+import type { PropertyName } from './properties'
 
 /**
  * Converts implications of the form [p1,...,ps] ---> [q1,...,qt] to

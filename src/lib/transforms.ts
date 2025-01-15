@@ -10,7 +10,6 @@ export function add_properties(category: Category): CategoryWithProperties {
 	const deduced_properties = Array.from(get_deductions(new Set(category.properties)))
 
 	const actual_properties = deduced_properties.map((name) => ({
-		name,
 		...properties_dictionary[name],
 		deduced: !category.properties.includes(name),
 	}))
@@ -18,7 +17,6 @@ export function add_properties(category: Category): CategoryWithProperties {
 	// TODO: handle deduced non-properties
 
 	const actual_non_properties = category.non_properties.map((name) => ({
-		name,
 		...properties_dictionary[name],
 		deduced: false,
 	}))

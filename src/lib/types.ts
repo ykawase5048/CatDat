@@ -1,6 +1,4 @@
-import type { properties_dictionary } from './dictionaries/properties'
-
-export type PropertyName = keyof typeof properties_dictionary
+import type { PropertyName } from './dictionaries/properties'
 
 export type Category = {
 	id: string
@@ -22,10 +20,10 @@ export type CategoryWithProperties = Omit<Category, 'properties' | 'non_properti
 export const prefixes = ['is', 'is a', 'is an', 'has', 'has a', 'has an'] as const
 
 export type Property = {
-	name: string
+	name: string // cannot use PropertyName because of circularity
 	description: string
 	prefix: (typeof prefixes)[number]
-	dual?: Property['name']
+	dual?: string
 }
 
 export type Implication = {

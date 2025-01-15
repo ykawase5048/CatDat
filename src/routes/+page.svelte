@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { categories_list } from '$lib/dictionaries/categories'
-	import { properties_list } from '$lib/dictionaries/properties'
+	import { categories } from '$lib/dictionaries/categories'
+	import { properties } from '$lib/dictionaries/properties'
 	import { implications } from '$lib/dictionaries/implications'
 	import { get_property_url } from '$lib/transforms'
 </script>
@@ -16,7 +16,7 @@
 The following categories are available:
 
 <ul>
-	{#each categories_list as category (category.id)}
+	{#each categories as category (category.id)}
 		<li>
 			<a href="/category/{category.id}">{category.name}</a>
 		</li>
@@ -26,7 +26,7 @@ The following categories are available:
 The following properties are available:
 
 <ul>
-	{#each properties_list as property}
+	{#each properties as property}
 		<li>
 			{property.prefix}
 			<a href={get_property_url(property)}>
