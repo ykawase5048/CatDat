@@ -31,6 +31,12 @@ describe('normalized implications', () => {
 		)
 		expect(found).toBeDefined()
 	})
+
+	it('should not have empty assumptions', () => {
+		for (const implication of normalized_implications) {
+			expect(implication.assumptions.size).toBeGreaterThan(0)
+		}
+	})
 })
 
 describe('deductions', () => {
@@ -66,5 +72,14 @@ describe('deductions', () => {
 	it('should include direct implications of more than one assumption', () => {
 		const deductions = get_deductions(new Set(['elementary topos', 'locally small']))
 		expect(deductions).toContain('well-powered')
+	})
+
+	it('should not deduce wrong stuff', () => {
+		const assumptions = new Set([
+			'Grothendieck topos',
+			'locally finitely presentable',
+		] as const)
+		const deductions = get_deductions(assumptions)
+		expect(deductions).not.toContain('small')
 	})
 })
