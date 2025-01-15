@@ -12,12 +12,12 @@ export const categories = [
 		nlab_link: 'https://ncatlab.org/nlab/show/Set',
 		properties: ['Grothendieck topos', 'locally finitely presentable'],
 		non_properties: [
-			'small',
 			'abelian',
 			'preadditive',
 			'pointed',
 			'self-dual',
 			'groupoid',
+			'essentially small',
 		],
 	},
 	{
@@ -30,7 +30,7 @@ export const categories = [
 		nlab_link: 'https://ncatlab.org/nlab/show/Ab',
 		properties: ['abelian', 'complete', 'cocomplete', 'locally finitely presentable'],
 		non_properties: [
-			'small',
+			'essentially small',
 			'cartesian closed',
 			'Grothendieck topos',
 			'elementary topos',
@@ -54,7 +54,7 @@ export const categories = [
 			'well-copowered',
 		],
 		non_properties: [
-			'small',
+			'essentially small',
 			'cartesian closed',
 			'abelian',
 			'locally finitely presentable',
@@ -75,7 +75,7 @@ export const categories = [
 		nlab_link: 'https://ncatlab.org/nlab/show/Grp',
 		properties: ['locally finitely presentable', 'pointed'],
 		non_properties: [
-			'small',
+			'essentially small',
 			'cartesian closed',
 			'abelian',
 			'preadditive',
@@ -95,7 +95,7 @@ export const categories = [
 		description: 'Here, rings always have a unit, and homomorphisms preserve them.',
 		properties: ['locally finitely presentable'],
 		non_properties: [
-			'small',
+			'essentially small',
 			'cartesian closed',
 			'abelian',
 			'preadditive',
@@ -113,7 +113,7 @@ export const categories = [
 		objects: 'finite sets',
 		morphisms: 'functions / maps',
 		nlab_link: 'https://ncatlab.org/nlab/show/FinSet',
-		properties: ['locally small', 'elementary topos'],
+		properties: ['essentially small', 'locally small', 'elementary topos'],
 		non_properties: [
 			'small',
 			'complete',
@@ -134,7 +134,13 @@ export const categories = [
 		objects: 'finite abelian groups',
 		morphisms: 'group homomorphisms',
 		nlab_link: 'https://ncatlab.org/nlab/show/finite+abelian+group',
-		properties: ['abelian', 'well-powered', 'well-copowered', 'self-dual'],
+		properties: [
+			'essentially small',
+			'abelian',
+			'well-powered',
+			'well-copowered',
+			'self-dual',
+		],
 		non_properties: [
 			'small',
 			'cartesian closed',
@@ -157,7 +163,7 @@ export const categories = [
 		nlab_link: 'https://ncatlab.org/nlab/show/pointed+set',
 		properties: ['locally finitely presentable', 'pointed'],
 		non_properties: [
-			'small',
+			'essentially small',
 			'cartesian closed',
 			'abelian',
 			'preadditive',
@@ -176,7 +182,7 @@ export const categories = [
 		nlab_link: 'https://ncatlab.org/nlab/show/category+of+monoids',
 		properties: ['locally finitely presentable', 'pointed'],
 		non_properties: [
-			'small',
+			'essentially small',
 			'cartesian closed',
 			'abelian',
 			'preadditive',
@@ -196,7 +202,7 @@ export const categories = [
 		properties: ['locally finitely presentable', 'cartesian closed'],
 		non_properties: [
 			'pointed',
-			'small',
+			'essentially small',
 			'abelian',
 			'preadditive',
 			'Grothendieck topos',

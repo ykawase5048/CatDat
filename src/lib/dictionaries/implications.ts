@@ -6,10 +6,6 @@ export const implications: Implication[] = [
 		conclusions: ['locally small'],
 	},
 	{
-		assumptions: ['small'],
-		conclusions: ['well-powered'],
-	},
-	{
 		assumptions: ['locally finitely presentable'],
 		conclusions: [
 			'well-powered',
@@ -125,5 +121,13 @@ export const implications: Implication[] = [
 	{
 		assumptions: ['groupoid'],
 		conclusions: ['self-dual'],
+	},
+	{
+		assumptions: ['small'],
+		conclusions: ['essentially small'],
+	},
+	{
+		assumptions: ['essentially small'],
+		conclusions: ['well-powered', 'well-copowered'],
 	},
 ]

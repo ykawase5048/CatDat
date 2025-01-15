@@ -183,6 +183,13 @@ export const properties = [
 			'A groupoid is a category in which every morphism is an isomorphism.',
 		dual: 'groupoid',
 	},
+	{
+		name: 'essentially small',
+		prefix: 'is',
+		description:
+			'A category is essentially small when it is equivalent to a small category. In particular, there is a set of objects such that every object is isomorphic to an object in this set.',
+		dual: 'essentially small',
+	},
 ] as const satisfies Property[]
 
 export type PropertyName = (typeof properties)[number]['name']
