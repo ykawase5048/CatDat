@@ -9,8 +9,6 @@
 	<title>{category.name}</title>
 </svelte:head>
 
-<a href="/">Home</a>
-
 <h2>{category.name}</h2>
 
 <p><strong>notation:</strong> {@html formula}</p>

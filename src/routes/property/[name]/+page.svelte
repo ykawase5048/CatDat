@@ -13,8 +13,6 @@
 	<title>Property: {property.name}</title>
 </svelte:head>
 
-<a href="/">Home</a>
-
 <h2>{property.name}</h2>
 
 <p><strong>Definition:</strong> {@html rendered_description}</p>

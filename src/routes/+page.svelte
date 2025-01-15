@@ -9,10 +9,6 @@
 	<title>Examples of categories and their properties</title>
 </svelte:head>
 
-<p>
-	<a href="/search">Search</a> for categories with given properties.
-</p>
-
 The following categories are available:
 
 <ul>

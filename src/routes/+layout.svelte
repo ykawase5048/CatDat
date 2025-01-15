@@ -1,7 +1,10 @@
 <script lang="ts">
+	import Heading from '$lib/components/Heading.svelte'
+	import Nav from '$lib/components/Nav.svelte'
 	import './app.css'
 </script>
 
-<h1>Examples of categories and their properties</h1>
+<Heading />
+<Nav />
 
 <slot></slot>
