@@ -71,7 +71,7 @@ export const properties = [
 		name: 'locally finitely presentable',
 		prefix: 'is',
 		description:
-			'A category is locally finitely presentable if it is cocomplete and every object is a filtered colimit of finitely presentable objects.',
+			'A category is locally finitely presentable if it is locally small, cocomplete and every object is a filtered colimit of finitely presentable objects.',
 	},
 	{
 		name: 'elementary topos',
