@@ -212,6 +212,27 @@ export const categories = [
 		],
 	},
 	{
+		id: '0',
+		name: 'The empty category',
+		notation: '0',
+		objects: 'no objects',
+		morphisms: 'no morphisms',
+		description:
+			'This is the category with no objects and no morphisms. It is the initial object in the category of small categories.',
+		nlab_link: 'https://ncatlab.org/nlab/show/empty+category',
+		properties: [
+			'groupoid',
+			'small',
+			'equalizers',
+			'self-dual',
+			'coequalizers',
+			'filtered colimits',
+			'filtered limits',
+			'preadditive',
+		],
+		non_properties: ['initial object', 'terminal object'],
+	},
+	{
 		id: '1',
 		name: 'The trivial category',
 		notation: '\\mathbf{1}',
