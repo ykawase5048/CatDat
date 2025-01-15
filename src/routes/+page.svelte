@@ -1,5 +1,5 @@
 <svelte:head>
-	<title>Examples of categories and their properties</title>
+	<title>Examples of Categories and their Properties</title>
 </svelte:head>
 
 <h2>Welcome!</h2>

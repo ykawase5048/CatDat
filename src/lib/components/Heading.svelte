@@ -1,3 +1,3 @@
 <header>
-	<h1>Examples of categories and their properties</h1>
+	<h1>Examples of Categories and their Properties</h1>
 </header>
