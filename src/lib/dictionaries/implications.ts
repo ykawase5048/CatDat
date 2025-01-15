@@ -11,7 +11,13 @@ export const implications: Implication[] = [
 	},
 	{
 		assumptions: ['locally finitely presentable'],
-		conclusions: ['well-powered', 'well-copowered', 'complete', 'cocomplete'],
+		conclusions: [
+			'well-powered',
+			'well-copowered',
+			'complete',
+			'cocomplete',
+			'locally small',
+		],
 	},
 	{
 		assumptions: ['abelian'],
