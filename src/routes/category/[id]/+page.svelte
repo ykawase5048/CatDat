@@ -37,8 +37,23 @@
 
 <h3>Satisfied Properties</h3>
 
+Properties from the database:
+
 <ul>
-	{#each category.properties as property}
+	{#each category.properties.filter((prop) => !prop.deduced) as property}
+		<li>
+			{property.prefix}
+			<a href={get_property_url(property)}>
+				{property.name}
+			</a>
+		</li>
+	{/each}
+</ul>
+
+Deduced properties:
+
+<ul>
+	{#each category.properties.filter((prop) => prop.deduced) as property}
 		<li>
 			{property.prefix}
 			<a href={get_property_url(property)}>
