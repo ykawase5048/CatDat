@@ -1,38 +1,41 @@
-import { get_deductions } from './dictionaries/deductions'
+import { get_deduced_non_properties, get_deductions } from './dictionaries/deductions'
 import { properties, properties_dictionary } from './dictionaries/properties'
 import type { Category, CategoryDetailed, Prefix, Property } from './types'
 
 /**
  * Adds the actual properties (not just their names) and
- * all their deductions to a given category.
+ * all their deductions to a given category. Same with non-properties.
  */
 export function add_properties(category: Category): CategoryDetailed {
-	const deduced_properties = Array.from(get_deductions(new Set(category.properties)))
+	const deduced_properties = get_deductions(new Set(category.properties))
 
-	const actual_properties = deduced_properties.map((name) => ({
+	const deduced_non_properties = get_deduced_non_properties(
+		deduced_properties,
+		new Set(category.non_properties),
+	)
+
+	const property_objects = Array.from(deduced_properties).map((name) => ({
 		...properties_dictionary[name],
 		deduced: !category.properties.includes(name),
 	}))
 
-	// TODO: handle deduced non-properties
-
-	const actual_non_properties = category.non_properties.map((name) => ({
+	const non_property_objects = Array.from(deduced_non_properties).map((name) => ({
 		...properties_dictionary[name],
-		deduced: false,
+		deduced: !category.non_properties.includes(name),
 	}))
 
 	const { properties: _, non_properties: __, ...rest } = category
 
 	const unknown_properties = properties.filter(
 		(property) =>
-			!deduced_properties.includes(property.name) &&
-			!category.non_properties.includes(property.name), // TODO: handle deduced non-properties here
+			!deduced_properties.has(property.name) &&
+			!deduced_non_properties.has(property.name),
 	)
 
 	return {
 		...rest,
-		properties: actual_properties,
-		non_properties: actual_non_properties,
+		properties: property_objects,
+		non_properties: non_property_objects,
 		unknown_properties,
 	}
 }

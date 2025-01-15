@@ -16,6 +16,33 @@ describe('add_properties', () => {
 			),
 		).toBe(true)
 	})
+
+	it('adds the non-properties and their deductions', () => {
+		const Set = categories_dictionary.Set
+		const SetDetailed = add_properties(Set)
+
+		expect(
+			SetDetailed.non_properties.some((p) => p.name === 'small' && p.deduced),
+		).toBe(true)
+	})
+
+	it('removes any missing properties for the category of Sets', () => {
+		const SetCat = categories_dictionary.Set
+		const SetDetailed = add_properties(SetCat)
+		expect(SetDetailed.unknown_properties).toHaveLength(0)
+	})
+
+	it('removes any missing properties for the category of abelian groups', () => {
+		const Ab = categories_dictionary.Ab
+		const AbDetailed = add_properties(Ab)
+		expect(AbDetailed.unknown_properties).toHaveLength(0)
+	})
+
+	it('removes any missing properties for the category of abelian groups', () => {
+		const Top = categories_dictionary.Top
+		const TopDetailed = add_properties(Top)
+		expect(TopDetailed.unknown_properties).toHaveLength(0)
+	})
 })
 
 describe('negate_prefix', () => {
