@@ -62,4 +62,9 @@ describe('deductions', () => {
 		expect(deductions).toContain('coequalizers')
 		expect(deductions).toContain('equalizers')
 	})
+
+	it('should include direct implications of more than one assumption', () => {
+		const deductions = get_deductions(new Set(['elementary topos', 'locally small']))
+		expect(deductions).toContain('well-powered')
+	})
 })
