@@ -1,4 +1,8 @@
-import { get_deductions, normalized_implications } from './deductions'
+import {
+	get_deduced_non_properties,
+	get_deductions,
+	normalized_implications,
+} from './deductions'
 
 describe('normalized implications', () => {
 	it("should deduce 'finitely complete' from the set {complete}", () => {
@@ -81,5 +85,37 @@ describe('deductions', () => {
 		] as const)
 		const deductions = get_deductions(assumptions)
 		expect(deductions).not.toContain('small')
+	})
+})
+
+describe('get_deduced_non_properties', () => {
+	it("should deduce 'not small' from 'not small'", () => {
+		const assumptions = new Set([])
+		const non_properties = new Set(['small'] as const)
+		const deduced_non_properties = get_deduced_non_properties(
+			assumptions,
+			non_properties,
+		)
+		expect(deduced_non_properties).toContain('small')
+	})
+	it("should deduce 'not small' from 'not essentially small'", () => {
+		const assumptions = new Set([])
+		const non_properties = new Set(['essentially small'] as const)
+		const deduced_non_properties = get_deduced_non_properties(
+			assumptions,
+			non_properties,
+		)
+		expect(deduced_non_properties).toContain('small')
+	})
+
+	it("should deduce 'not essentially small' from 'complete' + 'not thin'", () => {
+		const assumptions = new Set(['complete'] as const)
+		const non_properties = new Set(['thin'] as const)
+		const deduced_non_properties = get_deduced_non_properties(
+			assumptions,
+			non_properties,
+		)
+		expect(deduced_non_properties).toContain('essentially small')
+		expect(deduced_non_properties).toContain('small')
 	})
 })
