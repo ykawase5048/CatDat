@@ -38,7 +38,7 @@ describe('add_properties', () => {
 		expect(AbDetailed.unknown_properties).toHaveLength(0)
 	})
 
-	it('removes any missing properties for the category of abelian groups', () => {
+	it('removes any missing properties for the category of topological spaces', () => {
 		const Top = categories_dictionary.Top
 		const TopDetailed = add_properties(Top)
 		expect(TopDetailed.unknown_properties).toHaveLength(0)
