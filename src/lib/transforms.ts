@@ -1,15 +1,24 @@
-import { get_deduced_non_properties, get_deductions } from './dictionaries/deductions'
-import { properties, properties_dictionary } from './dictionaries/properties'
+import { DeductionSystem } from './DeductionSystem'
+import { implications } from './dictionaries/implications'
+import {
+	properties,
+	properties_dictionary,
+	type PropertyName,
+} from './dictionaries/properties'
 import type { Category, CategoryDetailed, Prefix, Property } from './types'
+
+const category_deduction_system = new DeductionSystem<PropertyName>(implications)
 
 /**
  * Adds the actual properties (not just their names) and
  * all their deductions to a given category. Same with non-properties.
  */
 export function add_properties(category: Category): CategoryDetailed {
-	const deduced_properties = get_deductions(new Set(category.properties))
+	const deduced_properties = category_deduction_system.get_deductions(
+		new Set(category.properties),
+	)
 
-	const deduced_non_properties = get_deduced_non_properties(
+	const deduced_non_properties = category_deduction_system.get_deduced_negations(
 		deduced_properties,
 		new Set(category.non_properties),
 	)
