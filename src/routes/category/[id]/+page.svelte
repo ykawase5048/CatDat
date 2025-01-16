@@ -11,23 +11,22 @@
 
 <h2>{category.name}</h2>
 
-<p><strong>notation:</strong> {@html formula}</p>
-
-<p>
-	<strong>objects:</strong>
-	{@html category.objects}
-</p>
-
-<p>
-	<strong>morphisms:</strong>
-	{@html category.morphisms}
-</p>
-
-{#if category.nlab_link}
-	<p>
-		<a href={category.nlab_link}>nLab Link</a>
-	</p>
-{/if}
+<ul class="keypoints">
+	<li>
+		notation: {@html formula}
+	</li>
+	<li>
+		objects: {@html category.objects}
+	</li>
+	<li>
+		morphisms: {@html category.morphisms}
+	</li>
+	{#if category.nlab_link}
+		<li>
+			<a href={category.nlab_link}>nLab Link</a>
+		</li>
+	{/if}
+</ul>
 
 {#if category.description}
 	<p>{@html category.description}</p>
@@ -116,3 +115,9 @@
 {:else}
 	<p class="hint">&mdash;</p>
 {/if}
+
+<style>
+	.keypoints {
+		list-style-type: '- ';
+	}
+</style>
