@@ -1,9 +1,9 @@
 import { error } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
 import { properties_dictionary, type PropertyName } from '$lib/dictionaries/properties'
-import { categories } from '$lib/dictionaries/categories'
+import { categories_detailed } from '$lib/dictionaries/categories'
 import { render_formulas } from '$lib/render'
-import type { Category, Property } from '$lib/types'
+import type { Property } from '$lib/types'
 
 export const load: PageServerLoad = (event) => {
 	const name = event.params.name.replaceAll('_', ' ')
@@ -12,13 +12,12 @@ export const load: PageServerLoad = (event) => {
 
 	if (!property) return error(404, 'Property not found')
 
-	const categories_with_this_property = (categories as Category[]).filter((category) =>
-		category.properties.includes(property.name as PropertyName),
+	const categories_with_this_property = categories_detailed.filter((category) =>
+		category.properties.some((p) => p.name === property.name),
 	)
 
-	// TODO: handle deductions here
-	const categories_without_this_property = (categories as Category[]).filter(
-		(category) => category.non_properties.includes(property.name as PropertyName),
+	const categories_without_this_property = categories_detailed.filter((category) =>
+		category.non_properties.some((p) => p.name === property.name),
 	)
 
 	const rendered_description = render_formulas(property.description)

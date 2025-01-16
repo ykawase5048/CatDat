@@ -1,15 +1,13 @@
-import { categories } from '../src/lib/dictionaries/categories'
-import { add_details } from '../src/lib/details'
+import { categories_dictionary_detailed } from '../src/lib/dictionaries/categories'
 
 console.info('find unknown properties\n')
 
 const with_unknowns: string[] = []
 
-for (const category of categories) {
-	// @ts-ignore
-	const detailed_category = add_details(category)
-	console.info(category.id, ':', detailed_category.unknown_properties.length)
-	if (detailed_category.unknown_properties.length > 0) {
+for (const id in categories_dictionary_detailed) {
+	const category = categories_dictionary_detailed[id]
+	console.info(id, ':', category.unknown_properties.length)
+	if (category.unknown_properties.length > 0) {
 		with_unknowns.push(category.id)
 	}
 }

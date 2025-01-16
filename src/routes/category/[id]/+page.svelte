@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { get_property_url, negate_prefix } from '$lib/transforms.js'
+	import { get_property_url, negate_prefix } from '$lib/utils'
 
 	const { data } = $props()
 	const { category, formula } = data

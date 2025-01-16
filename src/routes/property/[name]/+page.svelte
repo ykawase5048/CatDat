@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { properties } from '$lib/dictionaries/properties.js'
-	import { get_property_url } from '$lib/transforms.js'
+	import { properties } from '$lib/dictionaries/properties'
+	import { get_property_url } from '$lib/utils'
 
 	let { data } = $props()
 	let property = $derived(data.property)

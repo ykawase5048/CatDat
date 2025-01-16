@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { properties } from '$lib/dictionaries/properties'
-	import { get_property_url } from '$lib/transforms'
+	import { get_property_url } from '$lib/utils'
 </script>
 
 <svelte:head>
