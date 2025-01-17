@@ -137,6 +137,14 @@ export const implications: Implication[] = [
 		conclusions: ['binary products'], // same with all other dual properties ...
 	},
 	{
+		assumptions: ['self-dual', 'finitely complete'],
+		conclusions: ['finitely cocomplete'], // same with all other dual properties ...
+	},
+	{
+		assumptions: ['self-dual', 'finitely cocomplete'],
+		conclusions: ['finitely complete'], // same with all other dual properties ...
+	},
+	{
 		assumptions: ['groupoid'],
 		conclusions: ['self-dual'],
 	},

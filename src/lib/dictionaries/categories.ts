@@ -294,8 +294,14 @@ export const categories = [
 		morphisms: 'a unique morphism n &rarr; m if n &leq; m',
 		description:
 			'This can also be seen as the path category of the infinite linear graph &bullet; &rarr; &bullet; &rarr; ...',
-		properties: ['small', 'finitely cocomplete', 'cartesian closed', 'thin'],
-		non_properties: ['cocomplete', 'terminal object'],
+		properties: [
+			'small',
+			'finitely cocomplete',
+			'binary products',
+			'thin',
+			'filtered limits',
+		],
+		non_properties: ['cocomplete', 'terminal object', 'cartesian closed'],
 	},
 ] as const satisfies Category[]
 
