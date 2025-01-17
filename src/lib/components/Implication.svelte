@@ -6,14 +6,37 @@
 	}
 
 	let { implication }: Props = $props()
+
+	$effect(() => {
+		window.MathJax?.typeset()
+	})
 </script>
 
-{@html implication.assumptions.join(' &and; ')}
+{#each implication.assumptions as assumption, i}
+	{assumption}
+	{#if i < implication.assumptions.length - 1}
+		<span class="operator">$+$</span>&nbsp;
+	{/if}
+{/each}
 
-{#if implication.equivalent}
-	&hArr;
-{:else}
-	&rArr;
-{/if}
+<span class="operator">
+	{#if implication.equivalent}
+		$\iff$
+	{:else}
+		$\implies$
+	{/if}
+</span>
 
-{@html implication.conclusions.join(' &and; ')}
+{#each implication.conclusions as conclusion, i}
+	{conclusion}
+	{#if i < implication.conclusions.length - 1}
+		<span class="operator">$+$</span>&nbsp;
+	{/if}
+{/each}
+
+<style>
+	.operator {
+		font-weight: bold;
+		color: var(--secondary-heading-color);
+	}
+</style>

@@ -4,6 +4,7 @@
 	--secondary-text-color: #777;
 	--heading-color: teal;
 	--secondary-heading-color: #234975;
+	--accent-color: orangered;
 }
 
 * {
@@ -54,6 +55,7 @@ h3 {
 		--heading-color: rgb(204, 206, 67);
 		--secondary-text-color: #aaa;
 		--secondary-heading-color: skyblue;
+		--accent-color: orangered;
 	}
 }
 
