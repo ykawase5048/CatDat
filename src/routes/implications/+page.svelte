@@ -1,6 +1,10 @@
 <script>
 	import Implication from '$lib/components/Implication.svelte'
 	import { implications } from '$lib/dictionaries/implications'
+
+	$effect(() => {
+		window.MathJax?.typeset()
+	})
 </script>
 
 <svelte:head>

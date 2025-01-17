@@ -6,10 +6,6 @@
 	}
 
 	let { implication }: Props = $props()
-
-	$effect(() => {
-		window.MathJax?.typeset()
-	})
 </script>
 
 {#each implication.assumptions as assumption, i}
