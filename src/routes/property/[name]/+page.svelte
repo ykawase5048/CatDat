@@ -1,5 +1,7 @@
 <script lang="ts">
-	import { properties } from '$lib/dictionaries/properties'
+	import Implication from '$lib/components/Implication.svelte'
+	import { implications } from '$lib/dictionaries/implications'
+	import { properties, type PropertyName } from '$lib/dictionaries/properties'
 	import { get_property_url } from '$lib/utils'
 
 	let { data } = $props()
@@ -10,6 +12,14 @@
 	$effect(() => {
 		window.MathJax?.typeset()
 	})
+
+	let relevant_implications = $derived(
+		implications.filter(
+			(implication) =>
+				implication.conclusions.includes(property.name as PropertyName) ||
+				implication.assumptions.includes(property.name as PropertyName),
+		),
+	)
 </script>
 
 <svelte:head>
@@ -63,3 +73,15 @@
 		</li>
 	{/each}
 </ul>
+
+{#if relevant_implications.length}
+	<h3>Relevant implications</h3>
+
+	<ul>
+		{#each relevant_implications as implication}
+			<li>
+				<Implication {implication} />
+			</li>
+		{/each}
+	</ul>
+{/if}
