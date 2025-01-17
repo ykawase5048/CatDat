@@ -43,6 +43,15 @@ export const properties = [
 		description:
 			"A category is <i>preadditive</i> when it is locally small and each hom-set carries the structure of an abelian group such that the composition is bilinear. Notice that 'preadditive' is an extra structure. The property here just says that some preadditive structure exists.",
 		dual: 'preadditive',
+		related: ['additive'],
+	},
+	{
+		name: 'additive',
+		prefix: 'is',
+		description:
+			'A category is <i>additive</i> if it is preadditive and has finite products (equivalently, finite coproducts).',
+		dual: 'additive',
+		related: ['preadditive', 'finite products'],
 	},
 	{
 		name: 'abelian',
@@ -50,7 +59,7 @@ export const properties = [
 		description:
 			'A category is <i>abelian</i> if it is additive, every morphism has a kernel and a cokernel, and every monomorphism and epimorphism is normal. As opposed to many other concepts of categories, being abelian turns out to be a mere property. For example, monoidal not just a property.',
 		dual: 'abelian',
-		related: ['preadditive'],
+		related: ['additive'],
 	},
 	{
 		name: 'finitely complete',

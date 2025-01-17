@@ -16,15 +16,6 @@ export const implications: Implication[] = [
 		],
 	},
 	{
-		assumptions: ['abelian'],
-		conclusions: [
-			'preadditive',
-			'finitely cocomplete',
-			'finitely complete',
-			'pointed',
-		],
-	},
-	{
 		assumptions: ['elementary topos'],
 		conclusions: ['cartesian closed', 'finitely cocomplete', 'finitely complete'],
 	},
@@ -53,6 +44,23 @@ export const implications: Implication[] = [
 	{
 		assumptions: ['preadditive', 'terminal object'],
 		conclusions: ['pointed'],
+	},
+	{
+		assumptions: ['preadditive', 'finite products'],
+		conclusions: ['finite coproducts'],
+	},
+	{
+		assumptions: ['preadditive', 'finite coproducts'],
+		conclusions: ['finite products'],
+	},
+	{
+		assumptions: ['abelian'],
+		conclusions: ['additive', 'finitely cocomplete', 'finitely complete'],
+	},
+	{
+		equivalent: true,
+		assumptions: ['additive'],
+		conclusions: ['preadditive', 'finite products'],
 	},
 	{
 		assumptions: ['Grothendieck topos'],
