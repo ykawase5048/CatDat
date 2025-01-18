@@ -11,7 +11,7 @@ export const categories = [
 		description:
 			'The category of sets plays a fundamental role in category theory. Due to the Yoneda embedding, many results about general categories can be reduced to the category of sets. It is also usually the first example of a category that one encounters.',
 		nlab_link: 'https://ncatlab.org/nlab/show/Set',
-		properties: ['Grothendieck topos', 'locally finitely presentable'],
+		properties: ['Grothendieck topos', 'algebraic'],
 		non_properties: ['preadditive', 'pointed', 'self-dual', 'thin'],
 	},
 	{
@@ -22,7 +22,7 @@ export const categories = [
 		morphisms: 'group homomorphisms',
 		description: 'This is the prototype of an abelian category.',
 		nlab_link: 'https://ncatlab.org/nlab/show/Ab',
-		properties: ['abelian', 'complete', 'cocomplete', 'locally finitely presentable'],
+		properties: ['abelian', 'algebraic'],
 		non_properties: ['cartesian closed', 'self-dual', 'thin'],
 	},
 	{
@@ -56,7 +56,7 @@ export const categories = [
 		objects: 'groups',
 		morphisms: 'group homomorphisms',
 		nlab_link: 'https://ncatlab.org/nlab/show/Grp',
-		properties: ['locally finitely presentable', 'pointed'],
+		properties: ['pointed', 'algebraic'],
 		non_properties: ['cartesian closed', 'preadditive', 'self-dual', 'thin'],
 	},
 	{
@@ -67,7 +67,7 @@ export const categories = [
 		morphisms: 'ring homomorphisms',
 		nlab_link: 'https://ncatlab.org/nlab/show/Ring',
 		description: 'Here, rings always have a unit, and homomorphisms preserve them.',
-		properties: ['locally finitely presentable'],
+		properties: ['algebraic'],
 		non_properties: ['cartesian closed', 'pointed', 'self-dual', 'thin'],
 	},
 	{
@@ -105,7 +105,7 @@ export const categories = [
 		description:
 			'This is the category of sets with a distinguished element, often called the base point. A map is called pointed when it preserves the base point.',
 		nlab_link: 'https://ncatlab.org/nlab/show/pointed+set',
-		properties: ['locally finitely presentable', 'pointed'],
+		properties: ['pointed', 'algebraic'],
 		non_properties: ['cartesian closed', 'preadditive', 'self-dual', 'thin'],
 	},
 	{
@@ -115,7 +115,7 @@ export const categories = [
 		objects: 'monoids',
 		morphisms: 'monoid homomorphisms',
 		nlab_link: 'https://ncatlab.org/nlab/show/category+of+monoids',
-		properties: ['locally finitely presentable', 'pointed'],
+		properties: ['pointed', 'algebraic'],
 		non_properties: ['cartesian closed', 'preadditive', 'self-dual', 'thin'],
 	},
 	{
@@ -132,6 +132,7 @@ export const categories = [
 			'elementary topos',
 			'self-dual',
 			'thin',
+			'algebraic',
 		],
 	},
 	{
@@ -144,13 +145,13 @@ export const categories = [
 			'This is the category with no objects and no morphisms. It is the initial object in the category of small categories.',
 		nlab_link: 'https://ncatlab.org/nlab/show/empty+category',
 		properties: [
-			'small',
 			'filtered colimits',
 			'filtered limits',
 			'preadditive',
 			'discrete',
 			'binary coproducts',
 			'binary products',
+			'finite',
 		],
 		non_properties: ['initial object', 'terminal object'],
 	},
@@ -163,13 +164,7 @@ export const categories = [
 		description:
 			'This is the simplest category, consisting of a single object and only the identity morphism. It is the terminal object in the category of small categories.',
 		nlab_link: 'https://ncatlab.org/nlab/show/terminal+category',
-		properties: [
-			'locally finitely presentable',
-			'Grothendieck topos',
-			'small',
-			'abelian',
-			'discrete',
-		],
+		properties: ['algebraic', 'Grothendieck topos', 'abelian', 'discrete', 'finite'],
 		non_properties: [],
 	},
 	{
@@ -181,13 +176,7 @@ export const categories = [
 		description:
 			'This is the category with two objects and a single non-identity morphism between them. It has the property that functors out of this category are the same as morphisms.',
 		nlab_link: 'https://ncatlab.org/nlab/show/interval+category',
-		properties: [
-			'Grothendieck topos',
-			'locally finitely presentable',
-			'small',
-			'self-dual',
-			'thin',
-		],
+		properties: ['algebraic', 'Grothendieck topos', 'self-dual', 'thin', 'finite'],
 		non_properties: ['pointed', 'groupoid'],
 	},
 	{
@@ -200,7 +189,7 @@ export const categories = [
 		description:
 			'Here, $M$ can be any monoid. But the most important special case is that of a group.',
 		nlab_link: 'https://ncatlab.org/nlab/show/MSet',
-		properties: ['Grothendieck topos', 'locally finitely presentable'],
+		properties: ['Grothendieck topos', 'algebraic'],
 		non_properties: ['pointed', 'self-dual', 'thin'],
 	},
 	{
@@ -212,7 +201,7 @@ export const categories = [
 		description:
 			'This is the category of left modules over a ring $R$. It is the prototype of an abelian category. The category of right modules is the same with the opposite ring $R^{\\mathrm{op}}$, hence not listed here. The non-properties refer to the case that the ring is non-trivial.',
 		nlab_link: 'https://ncatlab.org/nlab/show/module',
-		properties: ['abelian', 'locally finitely presentable'],
+		properties: ['abelian', 'algebraic'],
 		non_properties: ['self-dual', 'thin', 'cartesian closed'],
 	},
 	{
@@ -233,6 +222,7 @@ export const categories = [
 			'cartesian closed',
 			'coequalizers',
 			'filtered colimits',
+			'pushouts',
 		],
 		non_properties: [
 			'essentially small',
@@ -304,7 +294,7 @@ export const categories = [
 			'thin',
 			'filtered limits',
 		],
-		non_properties: ['cocomplete', 'terminal object', 'cartesian closed'],
+		non_properties: ['cocomplete', 'terminal object', 'cartesian closed', 'finite'],
 	},
 ] as const satisfies Category[]
 

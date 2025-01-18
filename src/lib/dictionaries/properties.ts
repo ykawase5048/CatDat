@@ -244,6 +244,40 @@ export const properties = [
 			'A category is <i>discrete</i> when every morphism is an identity morphism. Thus, a discrete category is merely a collection of objects.',
 		dual: 'discrete',
 	},
+	{
+		name: 'algebraic',
+		prefix: 'is',
+		description:
+			'A category is <i>algebraic</i> if it is equivalent to the category of models of a finitary algebraic theory.',
+	},
+	{
+		name: 'finite',
+		prefix: 'is',
+		description:
+			'A category is <i>finite</i> if it has finitely many objects and morphisms.',
+		dual: 'finite',
+	},
+	{
+		name: 'connected',
+		prefix: 'is',
+		description:
+			'A category is <i>connected</i> if it is non-empty and every two objects can be joined via a zig-zag path of morphisms. Equivalently, $\\mathcal{C}$ is connected if $\\mathcal{C} \\simeq \\coprod_{i \\in I} \\mathcal{C}_i$ implies $\\mathcal{C}_i \\simeq 0$ for some $i$.',
+		dual: 'connected',
+	},
+	{
+		name: 'pullbacks',
+		prefix: 'has',
+		description:
+			'A category has <i>pullbacks</i> if every cospan of morphisms $A \\rightarrow C \\leftarrow B has a pullback $A \\times_C B$. This is also known as a fiber product.',
+		dual: 'pushouts',
+	},
+	{
+		name: 'pushouts',
+		prefix: 'has',
+		description:
+			'A category has <i>pushouts</i> if every span of morphisms $A \\leftarrow C \\rightarrow B$ has a pushout $A \\sqcup_C B$. This is also known as a fiber coproduct.',
+		dual: 'pullbacks',
+	},
 ] as const satisfies Property[]
 
 export type PropertyName = (typeof properties)[number]['name']

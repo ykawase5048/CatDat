@@ -172,4 +172,40 @@ export const implications: Implication[] = [
 		assumptions: ['discrete'],
 		conclusions: ['thin', 'groupoid'],
 	},
+	{
+		assumptions: ['algebraic'],
+		conclusions: ['locally finitely presentable'],
+	},
+	{
+		assumptions: ['finite'],
+		conclusions: ['small'],
+	},
+	{
+		assumptions: ['binary products', 'equalizers'],
+		conclusions: ['pullbacks'],
+	},
+	{
+		assumptions: ['binary coproducts', 'coequalizers'],
+		conclusions: ['pushouts'],
+	},
+	{
+		assumptions: ['binary products', 'pullbacks'],
+		conclusions: ['equalizers'],
+	},
+	{
+		assumptions: ['binary coproducts', 'pushouts'],
+		conclusions: ['coequalizers'],
+	},
+	{
+		assumptions: ['pointed'],
+		conclusions: ['connected'],
+	},
+	{
+		assumptions: ['binary products'],
+		conclusions: ['connected'],
+	},
+	{
+		assumptions: ['binary coproducts'],
+		conclusions: ['connected'],
+	},
 ]
