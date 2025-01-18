@@ -1,5 +1,5 @@
-import { properties_dictionary, type PropertyName } from './dictionaries/properties'
 import type { Implication } from './types'
+import { get_dual_property } from './utils'
 
 export function get_dual_implication(implication: Implication): Implication | null {
 	const dual_implication: Implication = {
@@ -7,14 +7,14 @@ export function get_dual_implication(implication: Implication): Implication | nu
 		conclusions: [],
 	}
 	for (const assumption of implication.assumptions) {
-		const property = properties_dictionary[assumption]
-		if (!property.dual) return null
-		dual_implication.assumptions.push(property.dual as PropertyName)
+		const dual_assumption = get_dual_property(assumption)
+		if (!dual_assumption) return null
+		dual_implication.assumptions.push(dual_assumption)
 	}
 	for (const conclusion of implication.conclusions) {
-		const property = properties_dictionary[conclusion]
-		if (!property.dual) return null
-		dual_implication.conclusions.push(property.dual as PropertyName)
+		const dual_conclusion = get_dual_property(conclusion)
+		if (!dual_conclusion) return null
+		dual_implication.conclusions.push(dual_conclusion)
 	}
 
 	if (implication.equivalent) {
