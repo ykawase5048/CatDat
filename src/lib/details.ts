@@ -1,19 +1,15 @@
 import { DeductionSystem } from '$lib/DeductionSystem'
 import type { Category, CategoryDetailed } from '$lib/types'
-import { implications } from './dictionaries/implications'
+import { implications_with_duals } from './dictionaries/implications'
 import {
 	properties,
 	properties_dictionary,
 	type PropertyName,
 } from './dictionaries/properties'
-import { get_new_dual_implication } from './dualization'
 
-const dual_implications = implications.map(get_new_dual_implication)
-
-const category_deduction_system = new DeductionSystem<PropertyName>([
-	...implications,
-	...dual_implications.filter((impl) => impl != null),
-])
+const category_deduction_system = new DeductionSystem<PropertyName>(
+	implications_with_duals,
+)
 
 /**
  * Adds the actual properties (not just their names) and

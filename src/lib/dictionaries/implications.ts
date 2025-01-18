@@ -1,5 +1,7 @@
 import type { Implication } from '$lib/types'
 
+import { get_new_dual_implication } from '$lib/dualization'
+
 export const implications: Implication[] = [
 	{
 		assumptions: ['small'],
@@ -144,4 +146,11 @@ export const implications: Implication[] = [
 		assumptions: ['binary products'],
 		conclusions: ['connected'],
 	},
+]
+
+export const implications_with_duals: Implication[] = [
+	...implications,
+	...implications
+		.map(get_new_dual_implication)
+		.filter((implication) => implication != null),
 ]

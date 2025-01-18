@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Implication from '$lib/components/Implication.svelte'
-	import { implications } from '$lib/dictionaries/implications'
+	import { implications_with_duals } from '$lib/dictionaries/implications'
 	import { properties, type PropertyName } from '$lib/dictionaries/properties'
 	import { get_property_url } from '$lib/utils'
 
@@ -14,7 +14,7 @@
 	})
 
 	let relevant_implications = $derived(
-		implications.filter(
+		implications_with_duals.filter(
 			(implication) =>
 				implication.conclusions.includes(property.name as PropertyName) ||
 				implication.assumptions.includes(property.name as PropertyName),
