@@ -16,6 +16,14 @@ describe('implications', () => {
 		}
 		expect(implications).not.toContainEqual(implication)
 	})
+
+	it('should not contain basic self-dual implications', () => {
+		const implication = {
+			assumptions: ['self-dual', 'binary products'],
+			conclusions: ['binary coproducts'],
+		}
+		expect(implications).not.toContainEqual(implication)
+	})
 })
 
 describe('implications_with_duals', () => {
@@ -41,5 +49,29 @@ describe('implications_with_duals', () => {
 			conclusions: ['cocomplete'],
 		}
 		expect(implications_with_duals).toContainEqual(dual_implication)
+	})
+
+	it('should contain basic self-dual implications (1)', () => {
+		const implication = {
+			assumptions: ['self-dual', 'binary products'],
+			conclusions: ['binary coproducts'],
+		}
+		expect(implications_with_duals).toContainEqual(implication)
+	})
+
+	it('should contain basic self-dual implications (2)', () => {
+		const implication = {
+			assumptions: ['self-dual', 'equalizers'],
+			conclusions: ['coequalizers'],
+		}
+		expect(implications_with_duals).toContainEqual(implication)
+	})
+
+	it('should not contain trivial self-dual implications', () => {
+		const implication = {
+			assumptions: ['self-dual', 'thin'],
+			conclusions: ['thin'],
+		}
+		expect(implications_with_duals).not.toContainEqual(implication)
 	})
 })

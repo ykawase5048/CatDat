@@ -1,6 +1,7 @@
 import type { Implication } from '$lib/types'
 
-import { get_new_dual_implication } from '$lib/dualization'
+import { get_new_dual_implication, get_self_dual_implication } from '$lib/dualization'
+import { properties, type PropertyName } from './properties'
 
 export const implications: Implication[] = [
 	{
@@ -87,18 +88,6 @@ export const implications: Implication[] = [
 		conclusions: ['complete'],
 	},
 	{
-		assumptions: ['self-dual', 'cocomplete'],
-		conclusions: ['complete'], // same with all other dual properties ...
-	},
-	{
-		assumptions: ['self-dual', 'binary coproducts'],
-		conclusions: ['binary products'], // same with all other dual properties ...
-	},
-	{
-		assumptions: ['self-dual', 'finitely complete'],
-		conclusions: ['finitely cocomplete'], // same with all other dual properties ...
-	},
-	{
 		assumptions: ['groupoid'],
 		conclusions: ['self-dual'],
 	},
@@ -148,7 +137,13 @@ export const implications: Implication[] = [
 	},
 	{
 		assumptions: ['trivial'],
-		conclusions: ['essentially small', 'algebraic', 'Grothendieck topos', 'abelian'],
+		conclusions: [
+			'essentially small',
+			'algebraic',
+			'Grothendieck topos',
+			'abelian',
+			'self-dual',
+		],
 	},
 	{
 		equivalent: true,
@@ -159,7 +154,8 @@ export const implications: Implication[] = [
 
 export const implications_with_duals: Implication[] = [
 	...implications,
-	...implications
-		.map(get_new_dual_implication)
-		.filter((implication) => implication != null),
-]
+	...implications.map(get_new_dual_implication),
+	...properties.map((property) =>
+		get_self_dual_implication(property.name as PropertyName),
+	),
+].filter((implication) => implication != null)

@@ -33,5 +33,6 @@
 	Also, implications are automatically dualized when the dual properties are available.
 	For example, the fact that finitely complete categories with filtered limits are
 	complete automatically implies that finitely cocomplete categories with filtered
-	colimits are cocomplete.
+	colimits are cocomplete. Also, when a category is self-dual and, say, complete, it is
+	automatically cocomplete.
 </p>
