@@ -1,33 +1,42 @@
 <script lang="ts">
-	import { properties } from '$lib/dictionaries/properties'
+	import {
+		properties,
+		properties_dictionary,
+		type PropertyName,
+	} from '$lib/dictionaries/properties'
 	import { get_suitable_categories } from './search'
 
-	let expected_properties = $state<string[]>([''])
-	let expected_non_properties = $state<string[]>([''])
+	let selected_properties = $state<string[]>([''])
+	let selected_non_properties = $state<string[]>([''])
+
+	const valid_properties = $derived(
+		selected_properties.filter((p) => p != '' && p in properties_dictionary),
+	) as PropertyName[]
+
+	const valid_non_properties = $derived(
+		selected_non_properties.filter((p) => p != '' && p in properties_dictionary),
+	) as PropertyName[]
 
 	let suitable_categories = $derived(
-		get_suitable_categories(
-			expected_properties.filter(Boolean),
-			expected_non_properties.filter(Boolean),
-		),
+		get_suitable_categories(valid_properties, valid_non_properties),
 	)
 
 	function add_property() {
-		expected_properties.push('')
+		selected_properties.push('')
 	}
 
 	function remove_property() {
-		if (expected_properties.length === 0) return
-		expected_properties.pop()
+		if (selected_properties.length === 0) return
+		selected_properties.pop()
 	}
 
 	function add_non_property() {
-		expected_non_properties.push('')
+		selected_non_properties.push('')
 	}
 
 	function remove_non_property() {
-		if (expected_non_properties.length === 0) return
-		expected_non_properties.pop()
+		if (selected_non_properties.length === 0) return
+		selected_non_properties.pop()
 	}
 </script>
 
@@ -49,14 +58,14 @@
 
 <section class="selection" aria-label="selection of properties">
 	<div class="inputs">
-		{#each { length: expected_properties.length } as _, i}
+		{#each { length: selected_properties.length } as _, i}
 			<input
 				type="text"
 				list="property-list"
-				bind:value={expected_properties[i]}
+				bind:value={selected_properties[i]}
 				aria-label="property {i + 1}"
-				aria-invalid={expected_properties[i].length > 0 &&
-					properties.every((p) => p.name != expected_properties[i])}
+				aria-invalid={selected_properties[i].length > 0 &&
+					properties.every((p) => p.name != selected_properties[i])}
 			/>
 		{/each}
 	</div>
@@ -76,14 +85,14 @@
 
 <section class="selection" aria-label="selection of non-properties">
 	<div class="inputs">
-		{#each { length: expected_non_properties.length } as _, i}
+		{#each { length: selected_non_properties.length } as _, i}
 			<input
 				type="text"
 				list="property-list"
-				bind:value={expected_non_properties[i]}
+				bind:value={selected_non_properties[i]}
 				aria-label="non-property {i + 1}"
-				aria-invalid={expected_non_properties[i].length > 0 &&
-					properties.every((p) => p.name != expected_non_properties[i])}
+				aria-invalid={selected_non_properties[i].length > 0 &&
+					properties.every((p) => p.name != selected_non_properties[i])}
 			/>
 		{/each}
 	</div>
@@ -114,7 +123,7 @@
 {/if}
 
 <style>
-	button {
+	.controls button {
 		font-weight: bold;
 		color: white;
 	}
