@@ -1,4 +1,4 @@
-import { categories_dictionary, categories } from './categories'
+import { categories_dictionary, categories, categories_detailed } from './categories'
 
 describe('categories dictionary', () => {
 	it('should have consistent IDs', () => {
@@ -34,12 +34,18 @@ describe('categories list', () => {
 	for (const category of categories) {
 		it(`should not have contradictory properties for: ${category.name}`, () => {
 			const { properties, non_properties } = category
-			for (const property of properties) {
-				expect(non_properties).not.toContain(property)
-			}
-			for (const non_property of non_properties) {
-				expect(properties).not.toContain(non_property)
-			}
+			expect(new Set(properties).intersection(new Set(non_properties)).size).toBe(0)
+		})
+	}
+})
+
+describe('categories detailed', () => {
+	for (const category of categories_detailed) {
+		it(`should not have contradictory properties for: ${category.name}`, () => {
+			const { properties, non_properties } = category
+			const property_names = new Set(properties.map((x) => x.name))
+			const non_property_names = new Set(non_properties.map((x) => x.name))
+			expect(property_names.intersection(non_property_names).size).toBe(0)
 		})
 	}
 })
