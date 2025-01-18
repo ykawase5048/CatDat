@@ -6,8 +6,14 @@ import {
 	properties_dictionary,
 	type PropertyName,
 } from './dictionaries/properties'
+import { get_new_dual_implication } from './dualization'
 
-const category_deduction_system = new DeductionSystem<PropertyName>(implications)
+const dual_implications = implications.map(get_new_dual_implication)
+
+const category_deduction_system = new DeductionSystem<PropertyName>([
+	...implications,
+	...dual_implications.filter((impl) => impl != null),
+])
 
 /**
  * Adds the actual properties (not just their names) and

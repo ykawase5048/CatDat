@@ -29,25 +29,12 @@ export const implications: Implication[] = [
 		conclusions: ['finitely complete', 'filtered limits'],
 	},
 	{
-		equivalent: true,
-		assumptions: ['cocomplete'],
-		conclusions: ['finitely cocomplete', 'filtered colimits'],
-	},
-	{
 		assumptions: ['preadditive'],
 		conclusions: ['locally small'],
 	},
 	{
 		assumptions: ['preadditive', 'initial object'],
 		conclusions: ['pointed'],
-	},
-	{
-		assumptions: ['preadditive', 'terminal object'],
-		conclusions: ['pointed'],
-	},
-	{
-		assumptions: ['preadditive', 'finite products'],
-		conclusions: ['finite coproducts'],
 	},
 	{
 		assumptions: ['preadditive', 'finite coproducts'],
@@ -71,26 +58,13 @@ export const implications: Implication[] = [
 		conclusions: ['finite products'],
 	},
 	{
-		assumptions: ['coproducts'],
-		conclusions: ['finite coproducts'],
-	},
-	{
 		assumptions: ['finite products', 'filtered limits'],
 		conclusions: ['products'],
-	},
-	{
-		assumptions: ['finite coproducts', 'filtered colimits'],
-		conclusions: ['coproducts'],
 	},
 	{
 		equivalent: true,
 		assumptions: ['finite products'],
 		conclusions: ['terminal object', 'binary products'],
-	},
-	{
-		equivalent: true,
-		assumptions: ['finite coproducts'],
-		conclusions: ['initial object', 'binary coproducts'],
 	},
 	{
 		assumptions: ['pointed'],
@@ -107,30 +81,12 @@ export const implications: Implication[] = [
 	},
 	{
 		equivalent: true,
-		assumptions: ['finite coproducts', 'coequalizers'],
-		conclusions: ['finitely cocomplete'],
-	},
-	{
-		equivalent: true,
 		assumptions: ['products', 'equalizers'],
 		conclusions: ['complete'],
 	},
 	{
-		equivalent: true,
-		assumptions: ['coproducts', 'coequalizers'],
-		conclusions: ['cocomplete'],
-	},
-	{
 		assumptions: ['self-dual', 'cocomplete'],
 		conclusions: ['complete'], // same with all other dual properties ...
-	},
-	{
-		assumptions: ['self-dual', 'complete'],
-		conclusions: ['cocomplete'], // same with all other dual properties ...
-	},
-	{
-		assumptions: ['self-dual', 'binary products'],
-		conclusions: ['binary coproducts'], // same with all other dual properties ...
 	},
 	{
 		assumptions: ['self-dual', 'binary coproducts'],
@@ -139,10 +95,6 @@ export const implications: Implication[] = [
 	{
 		assumptions: ['self-dual', 'finitely complete'],
 		conclusions: ['finitely cocomplete'], // same with all other dual properties ...
-	},
-	{
-		assumptions: ['self-dual', 'finitely cocomplete'],
-		conclusions: ['finitely complete'], // same with all other dual properties ...
 	},
 	{
 		assumptions: ['groupoid'],
@@ -158,10 +110,6 @@ export const implications: Implication[] = [
 	},
 	{
 		assumptions: ['essentially small', 'complete'],
-		conclusions: ['thin'],
-	},
-	{
-		assumptions: ['essentially small', 'cocomplete'],
 		conclusions: ['thin'],
 	},
 	{
@@ -185,16 +133,8 @@ export const implications: Implication[] = [
 		conclusions: ['pullbacks'],
 	},
 	{
-		assumptions: ['binary coproducts', 'coequalizers'],
-		conclusions: ['pushouts'],
-	},
-	{
 		assumptions: ['binary products', 'pullbacks'],
 		conclusions: ['equalizers'],
-	},
-	{
-		assumptions: ['binary coproducts', 'pushouts'],
-		conclusions: ['coequalizers'],
 	},
 	{
 		assumptions: ['pointed'],
@@ -202,10 +142,6 @@ export const implications: Implication[] = [
 	},
 	{
 		assumptions: ['binary products'],
-		conclusions: ['connected'],
-	},
-	{
-		assumptions: ['binary coproducts'],
 		conclusions: ['connected'],
 	},
 ]
