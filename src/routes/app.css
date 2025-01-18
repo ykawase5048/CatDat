@@ -1,10 +1,12 @@
 :root {
 	--bg-color: white;
+	--secondary-bg-color: #eee;
 	--text-color: #222;
 	--secondary-text-color: #777;
 	--heading-color: teal;
 	--secondary-heading-color: #234975;
-	--accent-color: orangered;
+	--positive-color: rgb(25, 152, 25);
+	--negative-color: rgb(193, 58, 30);
 }
 
 * {
@@ -51,15 +53,46 @@ h3 {
 @media (prefers-color-scheme: dark) {
 	:root {
 		--bg-color: #222;
+		--secondary-bg-color: #333;
 		--text-color: #fff;
 		--heading-color: rgb(204, 206, 67);
 		--secondary-text-color: #aaa;
 		--secondary-heading-color: skyblue;
-		--accent-color: orangered;
+		--positive-color: rgb(7, 122, 7);
+		--negative-color: rgb(188, 39, 39);
 	}
 }
 
 .hint {
 	color: var(--secondary-text-color);
 	font-size: 1rem;
+}
+
+button,
+input {
+	font: inherit;
+	background: none;
+	border: none;
+	color: inherit;
+	padding: 0.4rem 0.8rem;
+	border-radius: 0.25rem;
+}
+
+button:focus-visible {
+	outline: 1px solid var(--text-color);
+	outline-offset: 2px;
+}
+
+input[type='text'] {
+	outline: none;
+	border: 1px solid var(--secondary-text-color);
+}
+
+input[type='text']:focus-visible {
+	border-color: var(--text-color);
+	background-color: var(--secondary-bg-color);
+}
+
+button {
+	cursor: pointer;
 }
