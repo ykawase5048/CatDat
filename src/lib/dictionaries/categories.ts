@@ -23,7 +23,7 @@ export const categories = [
 		description: 'This is the prototype of an abelian category.',
 		nlab_link: 'https://ncatlab.org/nlab/show/Ab',
 		properties: ['abelian', 'algebraic'],
-		non_properties: ['cartesian closed', 'self-dual', 'thin'],
+		non_properties: ['self-dual', 'thin'],
 	},
 	{
 		id: 'Top',
@@ -94,7 +94,7 @@ export const categories = [
 			'well-copowered',
 			'self-dual',
 		],
-		non_properties: ['small', 'cartesian closed', 'complete', 'groupoid', 'thin'],
+		non_properties: ['small', 'complete', 'groupoid', 'thin'],
 	},
 	{
 		id: 'Set*',
@@ -202,7 +202,7 @@ export const categories = [
 			'This is the category of left modules over a ring $R$. It is the prototype of an abelian category. The category of right modules is the same with the opposite ring $R^{\\mathrm{op}}$, hence not listed here. The non-properties refer to the case that the ring is non-trivial.',
 		nlab_link: 'https://ncatlab.org/nlab/show/module',
 		properties: ['abelian', 'algebraic'],
-		non_properties: ['self-dual', 'thin', 'cartesian closed'],
+		non_properties: ['self-dual', 'thin'],
 	},
 	{
 		id: 'Met',

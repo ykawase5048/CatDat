@@ -150,6 +150,11 @@ export const implications: Implication[] = [
 		assumptions: ['trivial'],
 		conclusions: ['essentially small', 'algebraic', 'Grothendieck topos', 'abelian'],
 	},
+	{
+		equivalent: true,
+		assumptions: ['additive', 'cartesian closed'],
+		conclusions: ['trivial'],
+	},
 ]
 
 export const implications_with_duals: Implication[] = [
