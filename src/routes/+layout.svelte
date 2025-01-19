@@ -5,6 +5,21 @@
 </script>
 
 <svelte:head>
+	<title>CatDat</title>
+	<meta
+		name="description"
+		content="A searchable database of categories and their properties"
+	/>
+
+	<meta property="og:title" content="CatDat" />
+	<meta
+		property="og:description"
+		content="A searchable database of categories and their properties"
+	/>
+	<meta property="og:url" content="https://catdat.netlify.app/" />
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="CatDat" />
+
 	<script>
 		window.MathJax = {
 			tex: {
