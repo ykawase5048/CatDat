@@ -1,7 +1,8 @@
+import type { CategoryID } from './dictionaries/categoryIDs'
 import type { PropertyName } from './dictionaries/properties'
 
 export type Category = {
-	id: string
+	id: CategoryID
 	name: string
 	notation: string
 	objects: string
@@ -10,7 +11,7 @@ export type Category = {
 	nlab_link?: string
 	properties: PropertyName[]
 	non_properties: PropertyName[]
-	related?: string[]
+	related?: CategoryID[]
 }
 
 export type CategoryDetailed = Omit<Category, 'properties' | 'non_properties'> & {

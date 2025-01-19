@@ -1,4 +1,5 @@
 import { categories_dictionary, categories, categories_detailed } from './categories'
+import { CATEGORY_IDs } from './categoryIDs'
 
 describe('categories dictionary', () => {
 	it('should have consistent IDs', () => {
@@ -14,6 +15,10 @@ describe('categories list', () => {
 		expect(ids).toEqual([...new Set(ids)])
 	})
 
+	it('should have exactly the IDs as in the list of IDs', () => {
+		expect(categories.map((category) => category.id)).toEqual(CATEGORY_IDs)
+	})
+
 	it('should have unique names', () => {
 		const names = categories.map((category) => category.name)
 		expect(names).toEqual([...new Set(names)])
@@ -23,6 +28,7 @@ describe('categories list', () => {
 		const notations = categories.map((category) => category.notation)
 		expect(notations).toEqual([...new Set(notations)])
 	})
+
 	for (const category of categories) {
 		it(`should not have duplicate properties for: ${category.name}`, () => {
 			const { properties, non_properties } = category
@@ -36,18 +42,6 @@ describe('categories list', () => {
 			const { properties, non_properties } = category
 			expect(new Set(properties).intersection(new Set(non_properties)).size).toBe(0)
 		})
-	}
-
-	for (const category of categories) {
-		if ('related' in category) {
-			it(`should only list related categories that are present for each category ${category.id}`, () => {
-				expect(
-					category.related.every((rel) =>
-						categories.some((cat) => cat.id === rel),
-					),
-				).toBe(true)
-			})
-		}
 	}
 })
 

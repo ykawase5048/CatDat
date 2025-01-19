@@ -1,7 +1,8 @@
 import { add_details } from '$lib/details'
 import type { Category, CategoryDetailed } from '$lib/types'
+import type { CategoryID } from './categoryIDs'
 
-export const categories = [
+export const categories: Category[] = [
 	{
 		id: 'Set',
 		name: 'The category of sets',
@@ -457,9 +458,7 @@ export const categories = [
 		],
 		related: ['LRS'],
 	},
-] as const satisfies Category[]
-
-export type CategoryID = (typeof categories)[number]['id']
+]
 
 export const categories_dictionary = categories.reduce(
 	(acc, category) => ({ ...acc, [category.id]: category }),
