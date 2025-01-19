@@ -1,4 +1,4 @@
-import { categories_dictionary } from './categories/categories'
+import { categories_dictionary } from './categories/categories.details'
 import { add_details } from './details'
 
 describe('add_details', () => {

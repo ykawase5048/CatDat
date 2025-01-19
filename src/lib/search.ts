@@ -1,5 +1,5 @@
-import { categories_detailed } from '$lib/categories/categories'
 import type { PropertyName } from '$lib/dictionaries/properties'
+import { categories_detailed } from './categories/categories.details'
 
 export function get_suitable_categories(
 	properties: PropertyName[],

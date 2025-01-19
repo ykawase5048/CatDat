@@ -1,8 +1,8 @@
 import { error } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
 import { properties_dictionary, type PropertyName } from '$lib/dictionaries/properties'
-import { categories_detailed } from '$lib/categories/categories'
 import type { Property } from '$lib/types'
+import { categories_detailed } from '$lib/categories/categories.details'
 
 export const load: PageServerLoad = (event) => {
 	const name = event.params.name.replaceAll('_', ' ')
