@@ -4,7 +4,7 @@ _A searchable database of categories and their properties_
 
 https://catdat.netlify.app
 
-_CatDat_ provides a search for categories that satisfy a given list of properties and don't satisfy another list of properties. It uses a database of categories, properties, and implications of properties. Deductions of these implications are generated automatically.
+_CatDat_ provides a search for [categories](https://en.wikipedia.org/wiki/Category_theory) that satisfy a given list of properties and don't satisfy another list of properties. It uses a database of categories, properties, and implications of properties. Deductions of these implications are generated automatically.
 
 This is a **community effort**. When a category has an unknown property, or a valid combination of properties and non-properties is not yet witnessed by a category, please [contribute](#how-to-contribute) to this repository to fill in the gaps.
 
