@@ -14,7 +14,7 @@
 		"test": "vitest",
 		"test:run": "vitest --run",
 		"prepare": "husky",
-		"unknowns": "tsx scripts/unknowns.ts"
+		"unknowns": "tsx src/scripts/unknowns.ts"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.0.0",
