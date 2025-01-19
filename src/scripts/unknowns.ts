@@ -1,4 +1,4 @@
-import { categories_detailed } from '../lib/dictionaries/categories'
+import { categories_detailed } from '../lib/categories/categories'
 
 console.info('find unknown properties ...\n')
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { categories } from '$lib/dictionaries/categories'
+	import { categories } from '$lib/categories/categories'
 </script>
 
 <svelte:head>

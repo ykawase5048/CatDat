@@ -1,5 +1,9 @@
-import { categories_dictionary, categories, categories_detailed } from './categories'
-import { CATEGORY_IDs } from './categoryIDs'
+import {
+	categories_dictionary,
+	categories,
+	categories_detailed,
+} from '../categories/categories'
+import { CATEGORY_IDs } from '../categories/categoryIDs'
 
 describe('categories dictionary', () => {
 	it('should have consistent IDs', () => {

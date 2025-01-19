@@ -1,8 +1,8 @@
 import { error } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
 
-import { categories_dictionary_detailed } from '$lib/dictionaries/categories'
-import { is_valid_category } from '$lib/dictionaries/categoryIDs'
+import { categories_dictionary_detailed } from '$lib/categories/categories'
+import { is_valid_category } from '$lib/categories/categoryIDs'
 
 export const load: PageServerLoad = (event) => {
 	const id = event.params.id
