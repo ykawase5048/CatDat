@@ -1,4 +1,4 @@
-import { properties_dictionary, type PropertyName } from './dictionaries/properties'
+import { properties_dictionary, type PropertyName } from './properties/properties'
 import type { Prefix, Property } from './types'
 
 export function get_property_url(property: Property) {

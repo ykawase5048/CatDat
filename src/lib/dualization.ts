@@ -1,4 +1,4 @@
-import type { PropertyName } from './dictionaries/properties'
+import type { PropertyName } from './properties/properties'
 import type { Implication } from './types'
 import { get_dual_property } from './utils'
 

@@ -1,5 +1,5 @@
 import type { CategoryID } from './categories/categoryIDs'
-import type { PropertyName } from './dictionaries/properties'
+import type { PropertyName } from './properties/properties'
 
 export type Category = {
 	id: CategoryID

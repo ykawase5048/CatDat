@@ -5,7 +5,7 @@ import {
 	properties,
 	properties_dictionary,
 	type PropertyName,
-} from './dictionaries/properties'
+} from './properties/properties'
 
 const category_deduction_system = new DeductionSystem<PropertyName>(
 	implications_with_duals,

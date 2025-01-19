@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { properties } from '$lib/dictionaries/properties'
+	import { properties } from '$lib/properties/properties'
 
 	type Props = {
 		aria_label: string

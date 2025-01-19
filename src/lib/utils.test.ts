@@ -1,4 +1,4 @@
-import { properties_dictionary } from './dictionaries/properties'
+import { properties_dictionary } from './properties/properties'
 import { get_property_url, group_items, negate_prefix } from './utils'
 
 describe('negate_prefix', () => {

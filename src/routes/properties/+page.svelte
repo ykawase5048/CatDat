@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { properties } from '$lib/dictionaries/properties'
+	import { properties } from '$lib/properties/properties'
 	import { get_property_url } from '$lib/utils'
 </script>
 

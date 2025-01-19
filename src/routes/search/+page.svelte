@@ -3,7 +3,7 @@
 		properties,
 		properties_dictionary,
 		type PropertyName,
-	} from '$lib/dictionaries/properties'
+	} from '$lib/properties/properties'
 	import { get_suitable_categories } from '$lib/search'
 
 	import Selection from './Selection.svelte'

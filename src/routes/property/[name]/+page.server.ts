@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
-import { properties_dictionary, type PropertyName } from '$lib/dictionaries/properties'
+import { properties_dictionary, type PropertyName } from '$lib/properties/properties'
 import type { Property } from '$lib/types'
 import { categories_detailed } from '$lib/categories/categories.details'
 

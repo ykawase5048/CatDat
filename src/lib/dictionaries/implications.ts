@@ -1,7 +1,7 @@
 import type { Implication } from '$lib/types'
 
 import { get_new_dual_implication, get_self_dual_implication } from '$lib/dualization'
-import { properties, type PropertyName } from './properties'
+import { properties, type PropertyName } from '../properties/properties'
 
 export const implications: Implication[] = [
 	{

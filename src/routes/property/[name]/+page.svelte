@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Implication from '$lib/components/Implication.svelte'
 	import { implications_with_duals } from '$lib/dictionaries/implications'
-	import { properties, type PropertyName } from '$lib/dictionaries/properties'
+	import { properties, type PropertyName } from '$lib/properties/properties.js'
 	import { get_property_url } from '$lib/utils'
 
 	let { data } = $props()
