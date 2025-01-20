@@ -101,4 +101,18 @@ export class DeductionSystem<T> {
 		const deduced_negations = this.get_deduced_negations(assumptions, negations)
 		return deductions.intersection(deduced_negations).size > 0
 	}
+
+	get_basic_consistent_combinations(): { assumption: T; negation: T }[] {
+		const combinations: { assumption: T; negation: T }[] = []
+		for (const p of this.properties) {
+			const deductions = this.get_deductions(new Set([p]))
+			for (const q of this.properties) {
+				if (deductions.has(q)) {
+					continue
+				}
+				combinations.push({ assumption: p, negation: q })
+			}
+		}
+		return combinations
+	}
 }

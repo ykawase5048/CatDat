@@ -128,4 +128,32 @@ describe('Deduction systems', () => {
 			)
 		})
 	})
+
+	describe('get_basic_consistent_combinations', () => {
+		const deductionSystem = new DeductionSystem<string>([
+			{ assumptions: ['a'], conclusions: ['c'] },
+			{ assumptions: ['c', 'd'], conclusions: ['e'] },
+		])
+
+		it('should work as expected', () => {
+			const combinations = deductionSystem.get_basic_consistent_combinations()
+			expect(combinations).toHaveLength(11)
+
+			const expected = [
+				{ assumption: 'a', negation: 'd' },
+				{ assumption: 'a', negation: 'e' },
+				{ assumption: 'c', negation: 'a' },
+				{ assumption: 'c', negation: 'd' },
+				{ assumption: 'c', negation: 'e' },
+				{ assumption: 'd', negation: 'a' },
+				{ assumption: 'd', negation: 'c' },
+				{ assumption: 'd', negation: 'e' },
+				{ assumption: 'e', negation: 'a' },
+				{ assumption: 'e', negation: 'c' },
+				{ assumption: 'e', negation: 'd' },
+			]
+
+			expect(combinations).toEqual(expected)
+		})
+	})
 })
