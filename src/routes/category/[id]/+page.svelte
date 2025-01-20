@@ -57,7 +57,7 @@
 	{#each category.properties.filter((prop) => !prop.deduced) as property}
 		<li>
 			{property.prefix}
-			<a href={get_property_url(property)}>
+			<a href={get_property_url(property.id)}>
 				{property.id}
 			</a>
 		</li>
@@ -70,7 +70,7 @@
 	{#each category.properties.filter((prop) => prop.deduced) as property}
 		<li>
 			{property.prefix}
-			<a href={get_property_url(property)}>
+			<a href={get_property_url(property.id)}>
 				{property.id}
 			</a>
 		</li>
@@ -86,7 +86,7 @@
 		{#each category.non_properties.filter((prop) => !prop.deduced) as property}
 			<li>
 				{negate_prefix(property.prefix)}
-				<a href={get_property_url(property)}>
+				<a href={get_property_url(property.id)}>
 					{property.id}
 				</a>
 			</li>
@@ -99,7 +99,7 @@
 		{#each category.non_properties.filter((prop) => prop.deduced) as property}
 			<li>
 				{negate_prefix(property.prefix)}
-				<a href={get_property_url(property)}>
+				<a href={get_property_url(property.id)}>
 					{property.id}
 				</a>
 			</li>
@@ -123,7 +123,7 @@
 		{#each category.unknown_properties as property}
 			<li>
 				{property.prefix}
-				<a href={get_property_url(property)}>
+				<a href={get_property_url(property.id)}>
 					{property.id}
 				</a>?
 			</li>

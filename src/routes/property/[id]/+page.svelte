@@ -31,9 +31,8 @@
 <p><strong>Definition:</strong> {@html property.description}</p>
 
 {#if property.dual}
-	{@const dual_property = properties.find((p) => p.id === property.dual)!}
 	<p>
-		Dual property: <a href={get_property_url(dual_property)}>{property.dual}</a>
+		Dual property: <a href={get_property_url(property.dual)}>{property.dual}</a>
 		{#if property.dual === property.id}
 			(self-dual)
 		{/if}
@@ -43,11 +42,7 @@
 {#if property.related}
 	<p>
 		Related properties: {#each property.related as related_property, i}
-			<a
-				href={get_property_url(
-					properties.find((p) => p.id === related_property)!,
-				)}
-			>
+			<a href={get_property_url(related_property)}>
 				{related_property}
 			</a>{#if i < property.related.length - 1}
 				,&nbsp;

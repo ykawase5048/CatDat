@@ -15,7 +15,7 @@
 	{#each properties as property}
 		<li>
 			{property.prefix}
-			<a href={get_property_url(property)}>
+			<a href={get_property_url(property.id)}>
 				{property.id}
 			</a>
 		</li>

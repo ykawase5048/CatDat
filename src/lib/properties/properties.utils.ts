@@ -10,8 +10,8 @@ export function decode_property_ID(str: string): string {
 	return str.replaceAll('_', ' ')
 }
 
-export function get_property_url(property: Property) {
-	const encoded_ID = encode_property_ID(property.id)
+export function get_property_url(id: PropertyID) {
+	const encoded_ID = encode_property_ID(id)
 	return `/property/${encoded_ID}`
 }
 

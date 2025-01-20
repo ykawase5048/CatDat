@@ -28,15 +28,11 @@ describe('decode_property_ID', () => {
 
 describe('get_property_url', () => {
 	it("should return '/property/locally_small'", () => {
-		expect(get_property_url(properties_dictionary['locally small'])).toBe(
-			'/property/locally_small',
-		)
+		expect(get_property_url('locally small')).toBe('/property/locally_small')
 	})
 
 	it("should return '/property/abelian'", () => {
-		expect(get_property_url(properties_dictionary['abelian'])).toBe(
-			'/property/abelian',
-		)
+		expect(get_property_url('abelian')).toBe('/property/abelian')
 	})
 })
 
