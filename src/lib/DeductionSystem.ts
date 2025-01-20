@@ -95,4 +95,10 @@ export class DeductionSystem<T> {
 
 		return deduced_negations
 	}
+
+	has_contradiction(assumptions: Set<T>, negations: Set<T>): boolean {
+		const deductions = this.get_deductions(assumptions)
+		const deduced_negations = this.get_deduced_negations(assumptions, negations)
+		return deductions.intersection(deduced_negations).size > 0
+	}
 }
