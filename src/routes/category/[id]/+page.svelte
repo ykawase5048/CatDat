@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { negate_prefix } from '$lib/properties/prefix'
 	import { get_property_url } from '$lib/properties/properties.utils'
+	import type { Property } from '$lib/types'
 
 	let { data } = $props()
 	let category = $derived(data.category)
@@ -49,89 +50,53 @@
 	</p>
 {/if}
 
+{#snippet property_list(
+	description: string,
+	properties: (Property & { deduced?: boolean })[],
+	deduced?: boolean,
+	negate?: boolean,
+)}
+	<p class="hint">{description}</p>
+
+	{#if properties.length}
+		{#each properties.filter((prop) => prop.deduced === deduced) as property}
+			<li>
+				{negate ? negate_prefix(property.prefix) : property.prefix}
+				<a href={get_property_url(property.id)}>
+					{property.id}
+				</a>
+			</li>
+		{/each}
+	{:else}
+		<p class="hint">&mdash;</p>
+	{/if}
+{/snippet}
+
 <h3>Properties</h3>
 
-<p class="hint">Properties from the database</p>
+{@render property_list('Properties from the database', category.properties, false)}
 
-<ul>
-	{#each category.properties.filter((prop) => !prop.deduced) as property}
-		<li>
-			{property.prefix}
-			<a href={get_property_url(property.id)}>
-				{property.id}
-			</a>
-		</li>
-	{/each}
-</ul>
-
-<p class="hint">Deduced properties</p>
-
-<ul>
-	{#each category.properties.filter((prop) => prop.deduced) as property}
-		<li>
-			{property.prefix}
-			<a href={get_property_url(property.id)}>
-				{property.id}
-			</a>
-		</li>
-	{/each}
-</ul>
+{@render property_list('Deduced properties', category.properties, true)}
 
 <h3>Non-Properties</h3>
 
-{#if category.non_properties.length}
-	<p class="hint">Non-Properties from the database</p>
+{@render property_list(
+	'Non-Properties from the database',
+	category.non_properties,
+	false,
+	true,
+)}
 
-	<ul>
-		{#each category.non_properties.filter((prop) => !prop.deduced) as property}
-			<li>
-				{negate_prefix(property.prefix)}
-				<a href={get_property_url(property.id)}>
-					{property.id}
-				</a>
-			</li>
-		{/each}
-	</ul>
+{@render property_list('Deduced Non-Properties*', category.non_properties, true, true)}
 
-	<p class="hint">Deduced Non-Properties*</p>
-
-	<ul>
-		{#each category.non_properties.filter((prop) => prop.deduced) as property}
-			<li>
-				{negate_prefix(property.prefix)}
-				<a href={get_property_url(property.id)}>
-					{property.id}
-				</a>
-			</li>
-		{/each}
-	</ul>
-
-	<p class="hint">*This also uses the deduced properties.</p>
-{:else}
-	<p class="hint">&mdash;</p>
-{/if}
+<p class="hint">*This also uses the deduced properties.</p>
 
 <h3>Unknown properties</h3>
 
-{#if category.unknown_properties.length}
-	<p class="hint">
-		For these properties the database currently doesn't have an answer if they are
-		satisfied or not. Please help to complete the data!
-	</p>
-
-	<ul>
-		{#each category.unknown_properties as property}
-			<li>
-				{property.prefix}
-				<a href={get_property_url(property.id)}>
-					{property.id}
-				</a>?
-			</li>
-		{/each}
-	</ul>
-{:else}
-	<p class="hint">&mdash;</p>
-{/if}
+{@render property_list(
+	"For these properties the database currently doesn't have an answer if they are satisfied or not. Please help to complete the data!",
+	category.unknown_properties,
+)}
 
 <style>
 	.keypoints {
