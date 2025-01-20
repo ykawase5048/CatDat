@@ -210,7 +210,7 @@ export const properties: Property[] = [
 	},
 	{
 		id: 'strict initial object',
-		prefix: 'has an',
+		prefix: 'has a',
 		description:
 			'A <i>strict initial object</i> is an initial object $0$ such that every morphism $A \\to 0$ is an isomorphism. This property refers to the existence of a strict initial object.',
 		related: ['initial object'],
@@ -218,7 +218,7 @@ export const properties: Property[] = [
 	},
 	{
 		id: 'strict terminal object',
-		prefix: 'has an',
+		prefix: 'has a',
 		description:
 			'A <i>strict terminal object</i> is a terminal object $1$ such that every morphism $1 \\to A$ is an isomorphism. This property refers to the existence of a strict terminal object.',
 		related: ['terminal object'],
