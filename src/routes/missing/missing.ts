@@ -1,6 +1,13 @@
 import { categories_detailed } from '$lib/categories/categories.dict'
 import { category_deduction_system } from '$lib/categories/details'
+import { properties } from '$lib/properties/properties'
 import type { PropertyID } from '$lib/properties/propertyIDs'
+
+export const properties_without_counterexample = properties.filter((p) =>
+	categories_detailed.every((category) =>
+		category.properties.some((q) => q.id === p.id),
+	),
+)
 
 type Combination = {
 	assumption: PropertyID
