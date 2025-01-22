@@ -10,7 +10,7 @@ export const categories: Category[] = [
 		description:
 			'The category of sets plays a fundamental role in category theory. Due to the Yoneda embedding, many results about general categories can be reduced to the category of sets. It is also usually the first example of a category that one encounters.',
 		nlab_link: 'https://ncatlab.org/nlab/show/Set',
-		properties: ['Grothendieck topos', 'algebraic', 'strict initial object'],
+		properties: ['Grothendieck topos', 'algebraic'],
 		non_properties: ['preadditive', 'pointed', 'strict terminal object', 'thin'],
 		related: ['FinSet'],
 	},
@@ -40,7 +40,7 @@ export const categories: Category[] = [
 			'cocomplete',
 			'well-powered',
 			'well-copowered',
-			'strict initial object',
+			'infinitary distributive',
 		],
 		non_properties: [
 			'cartesian closed',
@@ -322,7 +322,7 @@ export const categories: Category[] = [
 			'well-copowered',
 			'complete',
 			'cocomplete',
-			'strict initial object',
+			'infinitary distributive',
 		],
 		non_properties: [
 			'essentially small',
@@ -344,14 +344,7 @@ export const categories: Category[] = [
 		nlab_link: 'https://ncatlab.org/nlab/show/Diff',
 		description:
 			'Here, a smooth manifold is assumed to be finite-dimensional, Hausdorff, and second-countable.',
-		properties: [
-			'locally small',
-			'well-powered',
-			'well-copowered',
-			'finite products',
-			'finite coproducts',
-			'strict initial object',
-		],
+		properties: ['locally small', 'well-powered', 'well-copowered', 'distributive'],
 		non_properties: [
 			'essentially small',
 			'products',
@@ -380,7 +373,7 @@ export const categories: Category[] = [
 			'well-copowered',
 			'complete',
 			'cocomplete',
-			'strict initial object',
+			'infinitary distributive',
 		],
 		non_properties: [
 			'pointed',
@@ -488,7 +481,7 @@ export const categories: Category[] = [
 			'cocomplete',
 			'well-powered',
 			'well-copowered',
-			'strict initial object',
+			'infinitary distributive',
 		],
 		non_properties: ['pointed', 'thin', 'cartesian closed', 'strict terminal object'],
 		related: ['Sch'],
@@ -502,9 +495,8 @@ export const categories: Category[] = [
 		properties: [
 			'locally small',
 			'finitely complete',
-			'coproducts',
 			'well-powered',
-			'strict initial object',
+			'infinitary distributive',
 		],
 		non_properties: [
 			'pointed',

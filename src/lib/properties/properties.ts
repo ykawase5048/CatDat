@@ -315,4 +315,18 @@ export const properties: Property[] = [
 			'A category is <i>balanced</i> if every morphism which is a monomorphism and an epimorphism must be an isomorphism.',
 		dual: 'balanced',
 	},
+	{
+		id: 'infinitary distributive',
+		prefix: 'is',
+		description:
+			'A category is <i>infinitary distributive</i> if it has finite products, all small coproducts, and for every object $A$ the functor $- \\times A$ preserves all small coproducts.',
+		related: ['distributive'],
+	},
+	{
+		id: 'distributive',
+		prefix: 'is',
+		description:
+			'A category is <i>distributive</i> if it has finite products, finite coproducts, and for every object $A$ the functor $- \\times A$ preserves finite coproducts.',
+		related: ['infinitary distributive'],
+	},
 ]

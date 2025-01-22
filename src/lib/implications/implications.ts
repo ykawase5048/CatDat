@@ -181,4 +181,20 @@ export const implications: Implication[] = [
 		assumptions: ['thin', 'balanced'],
 		conclusions: ['groupoid'],
 	},
+	{
+		assumptions: ['infinitary distributive'],
+		conclusions: ['finite products', 'coproducts', 'distributive'],
+	},
+	{
+		assumptions: ['distributive'],
+		conclusions: ['finite products', 'finite coproducts', 'strict initial object'],
+	},
+	{
+		assumptions: ['cartesian closed', 'finite coproducts'],
+		conclusions: ['distributive'],
+	},
+	{
+		assumptions: ['cartesian closed', 'coproducts'],
+		conclusions: ['infinitary distributive'],
+	},
 ]
