@@ -1,0 +1,13 @@
+<footer class="hint">
+	<a href="https://github.com/ScriptRaccoon/catdat" target="_blank">GitHub</a>
+	<a href="/settings">Settings</a>
+</footer>
+
+<style>
+	footer {
+		margin-bottom: 1.5rem;
+		display: flex;
+		justify-content: center;
+		gap: 0.75rem;
+	}
+</style>

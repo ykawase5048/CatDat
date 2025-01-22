@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Footer from '$lib/components/Footer.svelte'
 	import Heading from '$lib/components/Heading.svelte'
 	import Nav from '$lib/components/Nav.svelte'
 	import './app.css'
@@ -39,17 +40,27 @@
 	</script>
 </svelte:head>
 
-<Heading />
-<Nav />
+<div class="container">
+	<Heading />
+	<Nav />
 
-<main>
-	<slot></slot>
-</main>
+	<main>
+		<slot></slot>
+	</main>
+
+	<Footer />
+</div>
 
 <style>
 	main {
 		max-width: 800px;
 		margin: 0 auto;
-		margin-bottom: 3rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.container {
+		min-height: 100vh;
+		display: grid;
+		grid-template-rows: auto auto 1fr auto;
 	}
 </style>
