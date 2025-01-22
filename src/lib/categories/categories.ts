@@ -288,10 +288,10 @@ export const categories: Category[] = [
 			'equalizers',
 			'finite products',
 			'initial object',
-			'cartesian closed',
 			'coequalizers',
 			'filtered colimits',
 			'pushouts',
+			'strict initial object',
 		],
 		non_properties: [
 			'essentially small',
@@ -301,6 +301,7 @@ export const categories: Category[] = [
 			'pointed',
 			'thin',
 			'balanced',
+			'cartesian closed',
 		],
 	},
 	{
