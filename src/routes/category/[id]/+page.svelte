@@ -58,14 +58,16 @@
 	<p class="hint">{description}</p>
 
 	{#if properties.length}
-		{#each properties as property}
-			<li>
-				{negate ? negate_prefix(property.prefix) : property.prefix}
-				<a href={get_property_url(property.id)}>
-					{property.id}
-				</a>
-			</li>
-		{/each}
+		<ul>
+			{#each properties as property}
+				<li>
+					{negate ? negate_prefix(property.prefix) : property.prefix}
+					<a href={get_property_url(property.id)}>
+						{property.id}
+					</a>
+				</li>
+			{/each}
+		</ul>
 	{:else}
 		<p class="hint">&mdash;</p>
 	{/if}
@@ -111,5 +113,9 @@
 <style>
 	.keypoints {
 		list-style-type: '- ';
+	}
+
+	ul {
+		padding-left: 1.5rem;
 	}
 </style>
