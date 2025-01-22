@@ -9,6 +9,19 @@
 	--negative-color: rgb(193, 58, 30);
 }
 
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg-color: #222;
+		--secondary-bg-color: #333;
+		--text-color: #fff;
+		--heading-color: rgb(204, 206, 67);
+		--secondary-text-color: #aaa;
+		--secondary-heading-color: skyblue;
+		--positive-color: rgb(7, 122, 7);
+		--negative-color: rgb(188, 39, 39);
+	}
+}
+
 * {
 	box-sizing: border-box;
 }
@@ -56,19 +69,6 @@ h2 {
 
 h3 {
 	font-size: 1.45rem;
-}
-
-@media (prefers-color-scheme: dark) {
-	:root {
-		--bg-color: #222;
-		--secondary-bg-color: #333;
-		--text-color: #fff;
-		--heading-color: rgb(204, 206, 67);
-		--secondary-text-color: #aaa;
-		--secondary-heading-color: skyblue;
-		--positive-color: rgb(7, 122, 7);
-		--negative-color: rgb(188, 39, 39);
-	}
 }
 
 .hint {
