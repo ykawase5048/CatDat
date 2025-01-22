@@ -303,6 +303,37 @@ export const categories: Category[] = [
 			'balanced',
 			'cartesian closed',
 		],
+		related: ['Met_oo'],
+	},
+	{
+		id: 'Met_oo',
+		name: 'A complete category of metric spaces',
+		notation: '\\mathbf{Met}_{\\infty}',
+		objects:
+			'metric spaces, where the metric is allowed to assume the value $\\infty$',
+		morphisms:
+			'non-expansive maps $f$, meaning $d(f(x),f(y)) \\leq d(x,y)$ for all $x,y$',
+		nlab_link: 'https://ncatlab.org/nlab/show/Met',
+		description:
+			'The fact that we allow $\\infty$ means that universal constructions work much better.',
+		properties: [
+			'locally small',
+			'well-powered',
+			'well-copowered',
+			'complete',
+			'cocomplete',
+			'strict initial object',
+		],
+		non_properties: [
+			'essentially small',
+			'strict terminal object',
+			'pointed',
+			'thin',
+			'balanced',
+			'algebraic',
+			'cartesian closed',
+		],
+		related: ['Met'],
 	},
 	{
 		id: 'Man',
