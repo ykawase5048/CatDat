@@ -1,14 +1,15 @@
 <script lang="ts">
 	import { properties } from '$lib/properties/properties'
+	import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
+	import Fa from 'svelte-fa'
 
 	type Props = {
 		aria_label: string
 		values: string[]
 		name: string
-		variant: 'positive' | 'negative'
 	}
 
-	let { aria_label, name, values = $bindable(), variant }: Props = $props()
+	let { aria_label, name, values = $bindable() }: Props = $props()
 
 	function add() {
 		values.push('')
@@ -34,25 +35,16 @@
 		{/each}
 	</div>
 	<div class="controls">
-		<button class="button {variant}" onclick={add}>+</button>
-		<button class="button {variant}" onclick={remove}>-</button>
+		<button class="button" onclick={add}>
+			<Fa icon={faPlus} />
+		</button>
+		<button class="button" onclick={remove}>
+			<Fa icon={faMinus} />
+		</button>
 	</div>
 </section>
 
 <style>
-	button {
-		font-weight: bold;
-		color: white;
-	}
-
-	button.positive {
-		background-color: var(--positive-color);
-	}
-
-	button.negative {
-		background-color: var(--negative-color);
-	}
-
 	.selection {
 		display: grid;
 		gap: 0.5rem;
@@ -83,10 +75,6 @@
 		.controls {
 			display: inline-flex;
 			gap: 0.5rem;
-		}
-
-		button {
-			width: 3rem;
 		}
 	}
 </style>

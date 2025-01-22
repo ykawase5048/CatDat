@@ -40,7 +40,6 @@
 	aria_label="selection of properties"
 	bind:values={selected_properties}
 	name="property"
-	variant="positive"
 />
 
 <p>... and <i>not</i> with these properties:</p>
@@ -49,7 +48,6 @@
 	aria_label="selection of non-properties"
 	bind:values={selected_non_properties}
 	name="non-property"
-	variant="negative"
 />
 
 <datalist id="property-list">
