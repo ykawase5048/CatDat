@@ -11,11 +11,11 @@
 {#each implication.assumptions as assumption, i}
 	{assumption}
 	{#if i < implication.assumptions.length - 1}
-		<span class="operator">$+$</span>&nbsp;
+		<span>$+$</span>&nbsp;
 	{/if}
 {/each}
 
-<span class="operator">
+<span>
 	{#if implication.equivalent}
 		$\iff$
 	{:else}
@@ -26,13 +26,6 @@
 {#each implication.conclusions as conclusion, i}
 	{conclusion}
 	{#if i < implication.conclusions.length - 1}
-		<span class="operator">$+$</span>&nbsp;
+		<span>$+$</span>&nbsp;
 	{/if}
 {/each}
-
-<style>
-	.operator {
-		font-weight: bold;
-		color: var(--secondary-heading-color);
-	}
-</style>

@@ -1,24 +1,26 @@
 :root {
-	--bg-color: white;
+	--bg-color: #fff;
 	--secondary-bg-color: #eee;
-	--text-color: #222;
-	--secondary-text-color: #777;
-	--heading-color: teal;
-	--secondary-heading-color: #234975;
-	--positive-color: rgb(25, 152, 25);
-	--negative-color: rgb(193, 58, 30);
+	--text-color: #111;
+	--secondary-text-color: #666;
+	--outline-color: #666;
+	--accent-color: #3388ad;
+	--heading-color: #3f76b6;
+	--positive-color: #199819;
+	--negative-color: #c13a1e;
 }
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--bg-color: #222;
-		--secondary-bg-color: #333;
+		--bg-color: #121216;
+		--secondary-bg-color: #262626;
 		--text-color: #fff;
-		--heading-color: rgb(204, 206, 67);
-		--secondary-text-color: #aaa;
-		--secondary-heading-color: skyblue;
-		--positive-color: rgb(7, 122, 7);
-		--negative-color: rgb(188, 39, 39);
+		--secondary-text-color: #999;
+		--outline-color: #aaa;
+		--accent-color: #f0dd4a;
+		--heading-color: #87ceeb;
+		--positive-color: #077a07;
+		--negative-color: #bc2727;
 	}
 }
 
@@ -41,7 +43,11 @@ a {
 	color: inherit;
 	text-underline-offset: 2px;
 	text-decoration-thickness: 1px;
-	text-decoration-color: var(--secondary-text-color);
+	text-decoration-color: var(--outline-color);
+}
+
+a:active {
+	color: var(--accent-color);
 }
 
 a:focus-visible,
@@ -54,8 +60,8 @@ h1,
 h2,
 h3 {
 	line-height: 1.2;
-	color: var(--heading-color);
 	font-weight: 500;
+	color: var(--heading-color);
 }
 
 h1 {
@@ -64,7 +70,6 @@ h1 {
 
 h2 {
 	font-size: 1.875rem;
-	color: var(--secondary-heading-color);
 }
 
 h3 {
@@ -93,7 +98,7 @@ button:focus-visible {
 
 input[type='text'] {
 	outline: none;
-	border: 1px solid var(--secondary-text-color);
+	border: 1px solid var(--outline-color);
 }
 
 input[type='text']:focus-visible {

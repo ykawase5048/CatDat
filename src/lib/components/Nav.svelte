@@ -2,13 +2,10 @@
 	import { page } from '$app/state'
 	import {
 		faArrowsSplitUpAndLeft,
-		faBrain,
-		faCaretLeft,
 		faDatabase,
 		faHome,
 		faList,
 		faSearch,
-		faSun,
 		type IconDefinition,
 	} from '@fortawesome/free-solid-svg-icons'
 	import Fa from 'svelte-fa'
@@ -73,7 +70,7 @@
 	}
 
 	li.current a {
-		color: var(--heading-color);
-		text-decoration-color: var(--heading-color);
+		color: var(--accent-color);
+		text-decoration-color: var(--accent-color);
 	}
 </style>
