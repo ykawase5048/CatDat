@@ -5,6 +5,10 @@
 	$effect(() => {
 		window.MathJax?.typeset()
 	})
+
+	const sorted_implications = implications.toSorted((a, b) =>
+		a.assumptions[0].localeCompare(b.assumptions[0]),
+	)
 </script>
 
 <svelte:head>
@@ -16,7 +20,7 @@
 <p>The following implications and equivalences are available.</p>
 
 <ul>
-	{#each implications as implication}
+	{#each sorted_implications as implication}
 		<li>
 			<Implication {implication} />
 		</li>

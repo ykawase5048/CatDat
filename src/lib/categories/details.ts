@@ -23,23 +23,29 @@ export function add_details(category: Category): CategoryDetailed {
 		new Set(category.non_properties),
 	)
 
-	const property_objects = Array.from(deduced_properties).map((name) => ({
-		...properties_dictionary[name],
-		deduced: !category.properties.includes(name),
-	}))
+	const property_objects = Array.from(deduced_properties)
+		.map((name) => ({
+			...properties_dictionary[name],
+			deduced: !category.properties.includes(name),
+		}))
+		.toSorted((p, q) => p.id.localeCompare(q.id))
 
-	const non_property_objects = Array.from(deduced_non_properties).map((name) => ({
-		...properties_dictionary[name],
-		deduced: !category.non_properties.includes(name),
-	}))
+	const non_property_objects = Array.from(deduced_non_properties)
+		.map((name) => ({
+			...properties_dictionary[name],
+			deduced: !category.non_properties.includes(name),
+		}))
+		.toSorted((p, q) => p.id.localeCompare(q.id))
 
 	const { properties: _, non_properties: __, ...rest } = category
 
-	const unknown_properties = properties.filter(
-		(property) =>
-			!deduced_properties.has(property.id) &&
-			!deduced_non_properties.has(property.id),
-	)
+	const unknown_properties = properties
+		.filter(
+			(property) =>
+				!deduced_properties.has(property.id) &&
+				!deduced_non_properties.has(property.id),
+		)
+		.toSorted((p, q) => p.id.localeCompare(q.id))
 
 	return {
 		...rest,
