@@ -9,6 +9,7 @@ export const CATEGORY_IDs = [
 	'FinSet',
 	'FinAb',
 	'Set*',
+	'sSet',
 	'Mon',
 	'Pos',
 	'0',

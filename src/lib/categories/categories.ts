@@ -167,6 +167,17 @@ export const categories: Category[] = [
 		non_properties: ['cartesian closed', 'preadditive', 'self-dual', 'thin'],
 	},
 	{
+		id: 'sSet',
+		name: 'The category of simplicial sets',
+		notation: '\\mathbf{sSet}',
+		objects:
+			'simplicial sets, i.e. functors $\\Delta^{\\mathrm{op}} \\to \\mathbf{Set}$',
+		morphisms: 'natural transformations',
+		nlab_link: 'https://ncatlab.org/nlab/show/SimpSet',
+		properties: ['Grothendieck topos', 'locally finitely presentable'],
+		non_properties: ['thin', 'strict terminal object'],
+	},
+	{
 		id: 'Mon',
 		name: 'The category of monoids',
 		notation: '\\mathbf{Mon}',
