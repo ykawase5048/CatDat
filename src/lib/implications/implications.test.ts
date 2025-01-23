@@ -24,4 +24,12 @@ describe('implications', () => {
 		}
 		expect(implications).not.toContainEqual(implication)
 	})
+
+	it('should have always at least one assumption and one conclusion', () => {
+		// we don't check this with a type because of the way we generate a dual implication
+		for (const implication of implications) {
+			expect(implication.assumptions.length).toBeGreaterThan(0)
+			expect(implication.conclusions.length).toBeGreaterThan(0)
+		}
+	})
 })
