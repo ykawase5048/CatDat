@@ -11,3 +11,6 @@ export const categories_detailed = categories.map(add_details)
 export const categories_dictionary_detailed = group_items<CategoryID, CategoryDetailed>(
 	categories_detailed,
 )
+export const categories_with_unknown_properties = categories_detailed.filter(
+	(category) => category.unknown_properties.length > 0,
+)
