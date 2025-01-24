@@ -362,7 +362,7 @@ export const properties: Property[] = [
 		id: 'pullbacks',
 		prefix: 'has',
 		description:
-			'A category has <i>pullbacks</i> if every cospan of morphisms $A \\rightarrow C \\leftarrow B has a pullback $A \\times_C B$. This is also known as a fiber product.',
+			'A category has <i>pullbacks</i> if every cospan of morphisms $A \\rightarrow C \\leftarrow B$ has a pullback $A \\times_C B$. This is also known as a fiber product.',
 		dual: 'pushouts',
 		nlab_link: 'https://ncatlab.org/nlab/show/pullback',
 	},
