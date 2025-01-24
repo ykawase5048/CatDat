@@ -156,4 +156,48 @@ describe('Deduction systems', () => {
 			expect(combinations).toEqual(expected)
 		})
 	})
+
+	describe('check_redunancy', () => {
+		const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
+
+		beforeEach(() => {
+			consoleSpy.mockClear()
+		})
+
+		const deductionSystem = new DeductionSystem<string>([
+			{ assumptions: ['a'], conclusions: ['b'] },
+			{ assumptions: ['b'], conclusions: ['c'] },
+			{ assumptions: ['d'], conclusions: ['e'] },
+		])
+
+		it('should return false for the empty set', () => {
+			const result = deductionSystem.check_redundancy(new Set([]))
+			expect(result).toBe(false)
+			expect(consoleSpy).not.toHaveBeenCalled()
+		})
+
+		it("should return false for 'a'", () => {
+			const result = deductionSystem.check_redundancy(new Set(['a']))
+			expect(result).toBe(false)
+			expect(consoleSpy).not.toHaveBeenCalled()
+		})
+
+		it("should return true for 'a' and 'b'", () => {
+			const result = deductionSystem.check_redundancy(new Set(['a', 'b']))
+			expect(result).toBe(true)
+			expect(consoleSpy).toHaveBeenCalledWith('b is redundant')
+		})
+
+		it("should return true for 'a' and 'c'", () => {
+			const result = deductionSystem.check_redundancy(new Set(['a', 'c']))
+			expect(result).toBe(true)
+			expect(consoleSpy).toHaveBeenCalledWith('c is redundant')
+		})
+
+		it("should return false for 'a' and 'd'", () => {
+			const result = deductionSystem.check_redundancy(new Set(['a', 'e']))
+			expect(result).toBe(false)
+			expect(consoleSpy).not.toHaveBeenCalled()
+		})
+	})
 })

@@ -52,7 +52,7 @@ Create a pull request and follow the guidelines below.
 
 - When a new property is added, add all the implications that invole this new property alongside the existing properties. For example, by adding the property "countable products", please add the implication "countable products => finite products". If possible, refactor the existing implications with it.
 
-- Only add those properties and non-properties to a category which cannot be deduced from the other ones. For example, when a category is complete, add the property 'complete', but don't add the property 'terminal object'. This is deduced automatically.
+- Only add those properties and non-properties to a category which cannot be deduced from the other ones. This is enforced with a unit test. For example, when a category is complete, add the property 'complete', but don't add the property 'terminal object'. This is later deduced automatically.
 
 - When a new property is added, for every existing category try to find a proof if that category has this new property or not (in case it cannot be deduced from existing ones).
 

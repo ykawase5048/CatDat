@@ -10,7 +10,7 @@ export const categories: Category[] = [
 		description:
 			'The category of sets plays a fundamental role in category theory. Due to the Yoneda embedding, many results about general categories can be reduced to the category of sets. It is also usually the first example of a category that one encounters.',
 		nlab_link: 'https://ncatlab.org/nlab/show/Set',
-		properties: ['Grothendieck topos', 'algebraic', 'cogenerator'],
+		properties: ['Grothendieck topos', 'algebraic'],
 		non_properties: ['zero morphisms', 'strict terminal object', 'thin'],
 		related: ['FinSet'],
 	},
@@ -22,7 +22,7 @@ export const categories: Category[] = [
 		morphisms: 'group homomorphisms',
 		description: 'This is the prototype of an abelian category.',
 		nlab_link: 'https://ncatlab.org/nlab/show/Ab',
-		properties: ['abelian', 'algebraic', 'cogenerator'],
+		properties: ['abelian', 'algebraic'],
 		non_properties: ['self-dual', 'thin', 'subobject classifier'],
 		related: ['Grp', 'R-Mod'],
 	},
@@ -155,13 +155,7 @@ export const categories: Category[] = [
 		objects: 'finite abelian groups',
 		morphisms: 'group homomorphisms',
 		nlab_link: 'https://ncatlab.org/nlab/show/finite+abelian+group',
-		properties: [
-			'essentially small',
-			'abelian',
-			'well-powered',
-			'well-copowered',
-			'self-dual',
-		],
+		properties: ['essentially small', 'abelian', 'self-dual'],
 		non_properties: [
 			'small',
 			'complete',
@@ -240,14 +234,7 @@ export const categories: Category[] = [
 		description:
 			'This is the category with no objects and no morphisms. It is the initial object in the category of small categories.',
 		nlab_link: 'https://ncatlab.org/nlab/show/empty+category',
-		properties: [
-			'connected limits',
-			'preadditive',
-			'discrete',
-			'binary products',
-			'finite',
-			'balanced',
-		],
+		properties: ['preadditive', 'discrete', 'binary products', 'finite'],
 		non_properties: ['inhabited'],
 	},
 	{
@@ -284,7 +271,7 @@ export const categories: Category[] = [
 		description:
 			'This is the category with two objects and a single non-identity morphism between them. It has the property that functors out of this category are the same as morphisms.',
 		nlab_link: 'https://ncatlab.org/nlab/show/interval+category',
-		properties: ['algebraic', 'self-dual', 'thin', 'finite', 'cartesian closed'],
+		properties: ['algebraic', 'self-dual', 'finite', 'cartesian closed'],
 		non_properties: ['pointed', 'groupoid', 'subobject classifier'],
 	},
 	{
@@ -309,7 +296,7 @@ export const categories: Category[] = [
 		description:
 			'This is the category of left modules over a ring $R$. It is the prototype of an abelian category. The category of right modules is the same with the opposite ring $R^{\\mathrm{op}}$, hence not listed here. The non-properties refer to the case that the ring is non-trivial, since for the trivial ring we get a trivial category which has all properties anyway.',
 		nlab_link: 'https://ncatlab.org/nlab/show/module',
-		properties: ['abelian', 'algebraic', 'cogenerator'],
+		properties: ['abelian', 'algebraic'],
 		non_properties: ['self-dual', 'thin', 'subobject classifier'],
 		related: ['Ab'],
 	},
@@ -327,7 +314,6 @@ export const categories: Category[] = [
 			'well-copowered',
 			'equalizers',
 			'finite products',
-			'initial object',
 			'coequalizers',
 			'filtered colimits',
 			'strict initial object',
@@ -538,8 +524,6 @@ export const categories: Category[] = [
 		nlab_link: 'https://ncatlab.org/nlab/show/Field',
 		properties: [
 			'locally small',
-			'equalizers',
-			'pullbacks',
 			'filtered colimits',
 			'connected limits',
 			'inhabited',
@@ -597,7 +581,6 @@ export const categories: Category[] = [
 			'cocomplete',
 			'balanced',
 			'infinitary distributive',
-			'strict initial object',
 			'filtered colimits that commute with finite limits',
 		],
 		non_properties: [
@@ -644,7 +627,6 @@ export const categories: Category[] = [
 		related: ['BG'],
 	},
 	{
-		// 253
 		id: 'walking_pair',
 		name: 'The walking parallel pair of morphisms',
 		notation: '\\{0 \\rightrightarrows 1 \\}',
@@ -654,14 +636,7 @@ export const categories: Category[] = [
 			"This is the 'walking parallel pair' of morphisms. The name comes from the fact that it consists of two parallel morphisms, and a functor out of this category is the same as a parallel pair of morphisms in the target category.",
 		related: ['I'],
 		nlab_link: 'https://ncatlab.org/nlab/show/walking+structure',
-		properties: [
-			'finite',
-			'inhabited',
-			'self-dual',
-			'connected',
-			'generator',
-			'filtered limits',
-		],
+		properties: ['finite', 'self-dual', 'connected', 'generator', 'filtered limits'],
 		non_properties: [
 			'thin',
 			'groupoid',

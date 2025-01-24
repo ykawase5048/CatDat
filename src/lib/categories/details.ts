@@ -1,8 +1,9 @@
+import type { PropertyID } from '$lib/properties/propertyIDs'
+import type { Category, CategoryDetailed } from '$lib/types'
+
 import { DeductionSystem } from '$lib/DeductionSystem'
 import { implications_with_duals } from '$lib/implications/implications.duals'
 import { properties_dictionary } from '$lib/properties/property.dict'
-import type { PropertyID } from '$lib/properties/propertyIDs'
-import type { Category, CategoryDetailed } from '$lib/types'
 import { properties } from '../properties/properties'
 
 export const category_deduction_system = new DeductionSystem<PropertyID>(

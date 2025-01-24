@@ -1,5 +1,6 @@
+import { categories } from './categories'
 import { categories_dictionary } from './categories.dict'
-import { add_details } from './details'
+import { add_details, category_deduction_system } from './details'
 
 describe('add_details', () => {
 	it('adds the actual properties and deductions of these', () => {
@@ -43,4 +44,15 @@ describe('add_details', () => {
 		const TopDetailed = add_details(Top)
 		expect(TopDetailed.unknown_properties).toHaveLength(0)
 	})
+})
+
+describe('category_deduction_system', () => {
+	for (const category of categories) {
+		it(`should have no redundancy for the properties of: ${category.name}`, () => {
+			const has_redundancy = category_deduction_system.check_redundancy(
+				new Set(category.properties),
+			)
+			expect(has_redundancy).toBe(false)
+		})
+	}
 })
