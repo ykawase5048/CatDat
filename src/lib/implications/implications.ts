@@ -86,7 +86,7 @@ export const implications: Implication[] = [
 	},
 	{
 		assumptions: ['pointed'],
-		conclusions: ['terminal object', 'initial object'],
+		conclusions: ['terminal object'],
 	},
 	{
 		assumptions: ['cartesian closed'],
@@ -101,10 +101,6 @@ export const implications: Implication[] = [
 		equivalent: true,
 		assumptions: ['products', 'equalizers'],
 		conclusions: ['complete'],
-	},
-	{
-		assumptions: ['groupoid'],
-		conclusions: ['self-dual', 'balanced'],
 	},
 	{
 		assumptions: ['essentially small'],
@@ -207,6 +203,22 @@ export const implications: Implication[] = [
 	{
 		assumptions: ['thin', 'balanced'],
 		conclusions: ['groupoid'],
+	},
+	{
+		assumptions: ['groupoid'],
+		conclusions: ['self-dual', 'balanced', 'pullbacks', 'filtered limits'],
+	},
+	{
+		assumptions: ['groupoid', 'equalizers'],
+		conclusions: ['thin'],
+	},
+	{
+		assumptions: ['groupoid', 'binary products', 'inhabited'],
+		conclusions: ['trivial'],
+	},
+	{
+		assumptions: ['groupoid', 'initial object'],
+		conclusions: ['trivial'],
 	},
 	{
 		assumptions: ['infinitary distributive'],
