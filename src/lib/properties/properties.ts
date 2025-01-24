@@ -301,7 +301,7 @@ export const properties: Property[] = [
 		id: 'connected',
 		prefix: 'is',
 		description:
-			'A category is <i>connected</i> if it is non-empty and every two objects can be joined via a zig-zag path of morphisms. Equivalently, $\\mathcal{C}$ is connected if $\\mathcal{C} \\simeq \\coprod_{i \\in I} \\mathcal{C}_i$ implies $\\mathcal{C}_i \\simeq 0$ for some $i$.',
+			'A category is <i>connected</i> if it is inhabited and every two objects can be joined via a zig-zag path of morphisms. Equivalently, $\\mathcal{C}$ is connected if $\\mathcal{C} \\simeq \\coprod_{i \\in I} \\mathcal{C}_i$ implies $\\mathcal{C}_i \\simeq 0$ for some $i$.',
 		dual: 'connected',
 	},
 	{
@@ -322,8 +322,15 @@ export const properties: Property[] = [
 		id: 'trivial',
 		prefix: 'is',
 		description:
-			'A category is <i>trivial</i> if it is equivalent to the trivial category (with just one object and just one morphism). Equivalently, there is an initial object $0$ such that for every object $A$ the unique morphism $0 \\to A$ is an isomorphism. Notice that we do not demand that the category is isomorphic to the trivial category. As a consequence, every non-empty indiscrete category is trivial in our sense.',
+			'A category is <i>trivial</i> if it is equivalent to the trivial category (with just one object and just one morphism). Equivalently, there is an initial object $0$ such that for every object $A$ the unique morphism $0 \\to A$ is an isomorphism. Notice that we do not demand that the category is isomorphic to the trivial category. As a consequence, every inhabited indiscrete category is trivial in our sense.',
 		dual: 'trivial',
+	},
+	{
+		id: 'inhabited',
+		prefix: 'is',
+		description:
+			'A category is <i>inhabited</i> (or <i>non-empty</i>) if it has at least one object.',
+		dual: 'inhabited',
 	},
 	{
 		id: 'subobject classifier',
@@ -352,5 +359,19 @@ export const properties: Property[] = [
 		description:
 			'A category is <i>distributive</i> if it has finite products, finite coproducts, and for every object $A$ the functor $- \\times A$ preserves finite coproducts.',
 		related: ['infinitary distributive'],
+	},
+	{
+		id: 'generator',
+		prefix: 'has a',
+		description:
+			'An object $G$ of a category is called a <i>generator</i> if for every pair of parallel morphisms $f,g : A \\to B$, $f = g$ holds if for every morphism $h : G \\to A$ we have $f \\circ h = g \\circ h$. Equivalently, the functor $\\mathrm{Hom}(G,-) : \\mathcal{C} \\to \\mathbf{Set}^+$ is faithful. This property refers to the existence of a generator.',
+		dual: 'cogenerator',
+	},
+	{
+		id: 'cogenerator',
+		prefix: 'has a',
+		description:
+			'An object $Q$ of a category is called a <i>cogenerator</i> if for every pair of parallel morphisms $f,g : A \\to B$, $f = g$ holds if for every morphism $h : B \\to Q$ we have $h \\circ f = h \\circ g$. Equivalently, the functor $\\mathrm{Hom}(-,Q) : \\mathcal{C}^{\\mathrm{op}} \\to \\mathbf{Set}^+$ is faithful. This property refers to the existence of a cogenerator.',
+		dual: 'generator',
 	},
 ]

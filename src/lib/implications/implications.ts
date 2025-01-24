@@ -13,6 +13,7 @@ export const implications: Implication[] = [
 			'well-copowered',
 			'complete',
 			'cocomplete',
+			'generator',
 		],
 	},
 	{
@@ -55,7 +56,7 @@ export const implications: Implication[] = [
 	},
 	{
 		assumptions: ['abelian'],
-		conclusions: ['additive', 'finitely cocomplete', 'finitely complete'],
+		conclusions: ['additive', 'finitely cocomplete', 'finitely complete', 'balanced'],
 	},
 	{
 		equivalent: true,
@@ -64,7 +65,7 @@ export const implications: Implication[] = [
 	},
 	{
 		assumptions: ['Grothendieck topos'],
-		conclusions: ['elementary topos', 'locally presentable'],
+		conclusions: ['elementary topos', 'locally presentable', 'cogenerator'],
 	},
 	{
 		assumptions: ['products'],
@@ -78,6 +79,10 @@ export const implications: Implication[] = [
 		equivalent: true,
 		assumptions: ['finite products'],
 		conclusions: ['terminal object', 'binary products'],
+	},
+	{
+		assumptions: ['terminal object'],
+		conclusions: ['inhabited'],
 	},
 	{
 		assumptions: ['pointed'],
@@ -138,8 +143,12 @@ export const implications: Implication[] = [
 		conclusions: ['connected'],
 	},
 	{
-		assumptions: ['binary products'],
+		assumptions: ['binary products', 'inhabited'],
 		conclusions: ['connected'],
+	},
+	{
+		assumptions: ['connected'],
+		conclusions: ['inhabited'],
 	},
 	{
 		assumptions: ['trivial'],
@@ -182,10 +191,6 @@ export const implications: Implication[] = [
 		conclusions: ['balanced'],
 	},
 	{
-		assumptions: ['abelian'],
-		conclusions: ['balanced'],
-	},
-	{
 		assumptions: ['thin', 'balanced'],
 		conclusions: ['groupoid'],
 	},
@@ -212,5 +217,13 @@ export const implications: Implication[] = [
 	{
 		assumptions: ['connected limits'],
 		conclusions: ['filtered limits', 'pullbacks', 'equalizers'],
+	},
+	{
+		assumptions: ['generator'],
+		conclusions: ['inhabited'],
+	},
+	{
+		assumptions: ['thin', 'inhabited'],
+		conclusions: ['generator'],
 	},
 ]

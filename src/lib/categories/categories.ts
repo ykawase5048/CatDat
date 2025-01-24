@@ -10,7 +10,7 @@ export const categories: Category[] = [
 		description:
 			'The category of sets plays a fundamental role in category theory. Due to the Yoneda embedding, many results about general categories can be reduced to the category of sets. It is also usually the first example of a category that one encounters.',
 		nlab_link: 'https://ncatlab.org/nlab/show/Set',
-		properties: ['Grothendieck topos', 'algebraic'],
+		properties: ['Grothendieck topos', 'algebraic', 'cogenerator'],
 		non_properties: ['preadditive', 'pointed', 'strict terminal object', 'thin'],
 		related: ['FinSet'],
 	},
@@ -22,7 +22,7 @@ export const categories: Category[] = [
 		morphisms: 'group homomorphisms',
 		description: 'This is the prototype of an abelian category.',
 		nlab_link: 'https://ncatlab.org/nlab/show/Ab',
-		properties: ['abelian', 'algebraic'],
+		properties: ['abelian', 'algebraic', 'cogenerator'],
 		non_properties: ['self-dual', 'thin', 'subobject classifier'],
 		related: ['Grp', 'R-Mod'],
 	},
@@ -41,6 +41,7 @@ export const categories: Category[] = [
 			'well-powered',
 			'well-copowered',
 			'infinitary distributive',
+			'generator',
 		],
 		non_properties: [
 			'cartesian closed',
@@ -51,6 +52,7 @@ export const categories: Category[] = [
 			'thin',
 			'subobject classifier',
 			'balanced',
+			'cogenerator',
 		],
 	},
 	{
@@ -61,7 +63,13 @@ export const categories: Category[] = [
 		morphisms: 'group homomorphisms',
 		nlab_link: 'https://ncatlab.org/nlab/show/Grp',
 		properties: ['pointed', 'algebraic', 'balanced'],
-		non_properties: ['preadditive', 'self-dual', 'thin', 'subobject classifier'],
+		non_properties: [
+			'preadditive',
+			'self-dual',
+			'thin',
+			'subobject classifier',
+			'cogenerator',
+		],
 		related: ['Ab', 'Mon'],
 	},
 	{
@@ -80,6 +88,7 @@ export const categories: Category[] = [
 			'thin',
 			'subobject classifier',
 			'balanced',
+			'cogenerator',
 		],
 		related: ['CRing', 'Rng'],
 	},
@@ -99,6 +108,7 @@ export const categories: Category[] = [
 			'strict initial object',
 			'subobject classifier',
 			'balanced',
+			'cogenerator',
 		],
 		related: ['Ring', 'Rng'],
 	},
@@ -117,6 +127,7 @@ export const categories: Category[] = [
 			'self-dual',
 			'subobject classifier',
 			'balanced',
+			'cogenerator',
 		],
 		related: ['Ring', 'CRing'],
 	},
@@ -127,7 +138,13 @@ export const categories: Category[] = [
 		objects: 'finite sets',
 		morphisms: 'functions / maps',
 		nlab_link: 'https://ncatlab.org/nlab/show/FinSet',
-		properties: ['essentially small', 'locally small', 'elementary topos'],
+		properties: [
+			'essentially small',
+			'locally small',
+			'elementary topos',
+			'generator',
+			'cogenerator',
+		],
 		non_properties: [
 			'small',
 			'preadditive',
@@ -151,7 +168,14 @@ export const categories: Category[] = [
 			'well-copowered',
 			'self-dual',
 		],
-		non_properties: ['small', 'complete', 'groupoid', 'thin', 'subobject classifier'],
+		non_properties: [
+			'small',
+			'complete',
+			'groupoid',
+			'thin',
+			'subobject classifier',
+			'generator',
+		],
 		related: ['Ab'],
 	},
 	{
@@ -163,7 +187,7 @@ export const categories: Category[] = [
 		description:
 			'This is the category of sets with a distinguished element, often called the base point. A map is called pointed when it preserves the base point.',
 		nlab_link: 'https://ncatlab.org/nlab/show/pointed+set',
-		properties: ['pointed', 'algebraic', 'subobject classifier'],
+		properties: ['pointed', 'algebraic', 'subobject classifier', 'cogenerator'],
 		non_properties: ['cartesian closed', 'preadditive', 'self-dual', 'thin'],
 	},
 	{
@@ -192,6 +216,7 @@ export const categories: Category[] = [
 			'thin',
 			'subobject classifier',
 			'balanced',
+			'cogenerator',
 		],
 		related: ['Grp'],
 	},
@@ -202,7 +227,7 @@ export const categories: Category[] = [
 		objects: 'partial orders / posets',
 		morphisms: 'order-preserving functions',
 		nlab_link: 'https://ncatlab.org/nlab/show/Pos',
-		properties: ['locally finitely presentable', 'cartesian closed'],
+		properties: ['locally finitely presentable', 'cartesian closed', 'cogenerator'],
 		non_properties: [
 			'pointed',
 			'preadditive',
@@ -230,7 +255,7 @@ export const categories: Category[] = [
 			'finite',
 			'balanced',
 		],
-		non_properties: ['terminal object'],
+		non_properties: ['inhabited'],
 	},
 	{
 		id: '1',
@@ -278,7 +303,7 @@ export const categories: Category[] = [
 		description:
 			'This is the category of left modules over a ring $R$. It is the prototype of an abelian category. The category of right modules is the same with the opposite ring $R^{\\mathrm{op}}$, hence not listed here. The non-properties refer to the case that the ring is non-trivial, since for the trivial ring we get a trivial category which has all properties anyway.',
 		nlab_link: 'https://ncatlab.org/nlab/show/module',
-		properties: ['abelian', 'algebraic'],
+		properties: ['abelian', 'algebraic', 'cogenerator'],
 		non_properties: ['self-dual', 'thin', 'subobject classifier'],
 		related: ['Ab'],
 	},
@@ -301,6 +326,7 @@ export const categories: Category[] = [
 			'filtered colimits',
 			'pushouts',
 			'strict initial object',
+			'generator',
 		],
 		non_properties: [
 			'essentially small',
@@ -332,6 +358,7 @@ export const categories: Category[] = [
 			'complete',
 			'cocomplete',
 			'infinitary distributive',
+			'generator',
 		],
 		non_properties: [
 			'essentially small',
@@ -353,7 +380,13 @@ export const categories: Category[] = [
 		nlab_link: 'https://ncatlab.org/nlab/show/Diff',
 		description:
 			'Here, a smooth manifold is assumed to be finite-dimensional, Hausdorff, and second-countable.',
-		properties: ['locally small', 'well-powered', 'well-copowered', 'distributive'],
+		properties: [
+			'locally small',
+			'well-powered',
+			'well-copowered',
+			'distributive',
+			'generator',
+		],
 		non_properties: [
 			'essentially small',
 			'products',
@@ -383,6 +416,8 @@ export const categories: Category[] = [
 			'complete',
 			'cocomplete',
 			'infinitary distributive',
+			'generator',
+			'cogenerator',
 		],
 		non_properties: [
 			'pointed',
@@ -427,6 +462,7 @@ export const categories: Category[] = [
 			'subobject classifier',
 			'algebraic',
 			'balanced',
+			'cogenerator',
 		],
 	},
 	{
@@ -501,6 +537,7 @@ export const categories: Category[] = [
 			'pullbacks',
 			'filtered colimits',
 			'connected limits',
+			'inhabited',
 		],
 		non_properties: [
 			'initial object',
@@ -513,6 +550,8 @@ export const categories: Category[] = [
 			'coequalizers',
 			'pushouts',
 			'balanced',
+			'generator',
+			'cogenerator',
 		],
 	},
 	{
@@ -527,6 +566,8 @@ export const categories: Category[] = [
 			'well-powered',
 			'well-copowered',
 			'equalizers',
+			'generator',
+			'cogenerator',
 		],
 		non_properties: [
 			'essentially small',

@@ -43,10 +43,13 @@ export const PROPERTY_IDs = [
 	'pullbacks',
 	'pushouts',
 	'trivial',
+	'inhabited',
 	'subobject classifier',
 	'balanced',
 	'infinitary distributive',
 	'distributive',
+	'generator',
+	'cogenerator',
 ] as const
 
 export type PropertyID = (typeof PROPERTY_IDs)[number]
