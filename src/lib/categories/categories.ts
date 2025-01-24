@@ -643,4 +643,34 @@ export const categories: Category[] = [
 		],
 		related: ['BG'],
 	},
+	{
+		// 253
+		id: 'walking_pair',
+		name: 'The walking parallel pair of morphisms',
+		notation: '\\{0 \\rightrightarrows 1 \\}',
+		objects: 'two objects $0$ and $1$',
+		morphisms: 'identities and two parallel morphisms from $0$ to $1$',
+		description:
+			"This is the 'walking parallel pair' of morphisms. The name comes from the fact that it consists of two parallel morphisms, and a functor out of this category is the same as a parallel pair of morphisms in the target category.",
+		related: ['I'],
+		nlab_link: 'https://ncatlab.org/nlab/show/walking+structure',
+		properties: [
+			'finite',
+			'inhabited',
+			'self-dual',
+			'connected',
+			'generator',
+			'filtered limits',
+		],
+		non_properties: [
+			'thin',
+			'groupoid',
+			'initial object',
+			'balanced',
+			'zero morphisms',
+			'binary products',
+			'equalizers',
+			'pullbacks',
+		],
+	},
 ]
