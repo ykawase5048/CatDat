@@ -534,7 +534,7 @@ export const categories: Category[] = [
 			'cartesian closed',
 			'strict terminal object',
 		],
-		related: ['LRS'],
+		related: ['LRS', 'Z'],
 	},
 	{
 		id: 'Fld',
@@ -591,5 +591,29 @@ export const categories: Category[] = [
 			'filtered colimits',
 		],
 		related: ['Ab'],
+	},
+	{
+		id: 'Z',
+		name: 'The category of Z-functors',
+		notation: '[\\mathbf{CRing}, \\mathbf{Set}]',
+		objects: 'Z-functors, i.e. functors from commutative rings to sets',
+		morphisms: 'natural transformations',
+		description:
+			'This category is used in functorial algebraic geometry. It also provides a typical example of a functor category that is not locally small, but nevertheless relevant. Most of its properties are directly derived from the category of sets, so other functor categories $[\\mathbf{C}, \\mathbf{Set}]$ for large categories $\\mathbf{C}$ will be similar.',
+		properties: [
+			'complete',
+			'cocomplete',
+			'balanced',
+			'infinitary distributive',
+			'strict initial object',
+		],
+		non_properties: [
+			'locally small',
+			'essentially small',
+			'groupoid',
+			'thin',
+			'strict terminal object',
+		],
+		related: ['Sch', 'Set'],
 	},
 ]
