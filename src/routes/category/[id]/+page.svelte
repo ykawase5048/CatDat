@@ -20,7 +20,7 @@
 
 <h2>{category.name}</h2>
 
-<ul class="keypoints">
+<ul class="dashed-list">
 	<li>
 		notation: ${category.notation}$
 	</li>
@@ -139,10 +139,6 @@
 )}
 
 <style>
-	.keypoints {
-		list-style-type: '- ';
-	}
-
 	ul {
 		padding-left: 1.5rem;
 	}

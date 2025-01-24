@@ -35,25 +35,37 @@
 	{/if}
 </p>
 
-{#if property.dual}
-	<p>
-		Dual property: <a href={get_property_url(property.dual)}>{property.dual}</a>
-		{#if property.dual === property.id}
-			(self-dual)
+{#if property.dual || property.related || property.nlab_link}
+	<ul class="dashed-list">
+		{#if property.dual}
+			<li>
+				Dual property: <a href={get_property_url(property.dual)}
+					>{property.dual}</a
+				>
+				{#if property.dual === property.id}
+					(self-dual)
+				{/if}
+			</li>
 		{/if}
-	</p>
-{/if}
 
-{#if property.related}
-	<p>
-		Related properties: {#each property.related as related_property, i}
-			<a href={get_property_url(related_property)}>
-				{related_property}
-			</a>{#if i < property.related.length - 1}
-				,&nbsp;
-			{/if}
-		{/each}
-	</p>
+		{#if property.related}
+			<li>
+				Related properties: {#each property.related as related_property, i}
+					<a href={get_property_url(related_property)}>
+						{related_property}
+					</a>{#if i < property.related.length - 1}
+						,&nbsp;
+					{/if}
+				{/each}
+			</li>
+		{/if}
+
+		{#if property.nlab_link}
+			<li>
+				<a href={property.nlab_link} target="_blank">nLab Link</a>
+			</li>
+		{/if}
+	</ul>
 {/if}
 
 <h3>Examples</h3>
@@ -91,3 +103,9 @@
 		{/each}
 	</ul>
 {/if}
+
+<style>
+	ul {
+		padding-left: 1.5rem;
+	}
+</style>

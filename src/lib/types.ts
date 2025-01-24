@@ -28,6 +28,7 @@ export type Property = {
 	dual?: PropertyID
 	related?: PropertyID[]
 	invariant_under_equivalences?: false
+	nlab_link?: string
 }
 
 export type Implication = {
