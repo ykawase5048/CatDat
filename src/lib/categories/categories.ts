@@ -620,4 +620,26 @@ export const categories: Category[] = [
 		properties: ['small', 'groupoid', 'connected', 'generator'],
 		non_properties: ['trivial', 'finite', 'thin', 'zero morphisms'],
 	},
+	{
+		id: 'BN',
+		name: 'delooping of the additive monoid of natural numbers',
+		notation: 'B\\mathbb{N}',
+		objects: 'a single object',
+		morphisms: 'the natural numbers, with addition serving as composition',
+		description:
+			'Every monoid $M$ induces a one-object category $BM$ with morphisms given by the elements of $M$, and composition given by the monoid operation. Some of the properties of this category depend on the specific monoid. In this example, we take the commutative monoid $M = (\\mathbb{N},+,0)$.',
+		properties: ['small', 'connected', 'self-dual', 'generator', 'pullbacks'],
+		non_properties: [
+			'groupoid',
+			'finite',
+			'initial object',
+			'thin',
+			'balanced',
+			'zero morphisms',
+			'binary products',
+			'equalizers',
+			'filtered colimits',
+		],
+		related: ['BG'],
+	},
 ]
