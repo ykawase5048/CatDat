@@ -32,7 +32,7 @@
 	</li>
 	{#if category.nlab_link}
 		<li>
-			<a href={category.nlab_link}>nLab Link</a>
+			<a href={category.nlab_link} target="_blank">nLab Link</a>
 		</li>
 	{/if}
 </ul>
