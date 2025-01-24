@@ -51,6 +51,7 @@ export const PROPERTY_IDs = [
 	'distributive',
 	'generator',
 	'cogenerator',
+	'filtered colimits that commute with finite limits',
 ] as const
 
 export type PropertyID = (typeof PROPERTY_IDs)[number]

@@ -18,7 +18,10 @@ export const implications: Implication[] = [
 	},
 	{
 		assumptions: ['locally finitely presentable'],
-		conclusions: ['locally presentable'],
+		conclusions: [
+			'locally presentable',
+			'filtered colimits that commute with finite limits',
+		],
 	},
 	{
 		assumptions: ['locally presentable', 'self-dual'],
@@ -43,6 +46,10 @@ export const implications: Implication[] = [
 		conclusions: ['finitely complete', 'filtered limits'],
 	},
 	{
+		assumptions: ['filtered colimits that commute with finite limits'],
+		conclusions: ['filtered colimits', 'finitely complete'],
+	},
+	{
 		assumptions: ['preadditive'],
 		conclusions: ['locally small', 'zero morphisms'],
 	},
@@ -61,7 +68,12 @@ export const implications: Implication[] = [
 	},
 	{
 		assumptions: ['Grothendieck topos'],
-		conclusions: ['elementary topos', 'locally presentable', 'cogenerator'],
+		conclusions: [
+			'elementary topos',
+			'locally presentable',
+			'cogenerator',
+			'filtered colimits that commute with finite limits',
+		],
 	},
 	{
 		assumptions: ['products'],

@@ -386,4 +386,11 @@ export const properties: Property[] = [
 			'An object $Q$ of a category is called a <i>cogenerator</i> if for every pair of parallel morphisms $f,g : A \\to B$, $f = g$ holds if for every morphism $h : B \\to Q$ we have $h \\circ f = h \\circ g$. Equivalently, the functor $\\mathrm{Hom}(-,Q) : \\mathcal{C}^{\\mathrm{op}} \\to \\mathbf{Set}^+$ is faithful. This property refers to the existence of a cogenerator.',
 		dual: 'generator',
 	},
+	{
+		id: 'filtered colimits that commute with finite limits',
+		prefix: 'has',
+		description:
+			'In a category $\\mathcal{C}$, which we assume to have filtered colimits and finite limits, we say that <i>filtered colimits commute with finite limits</i> if for every finite category $\\mathcal{I}$ the functor $\\lim : [\\mathcal{I}, \\mathcal{C}] \\to \\mathcal{C}$ preserves filtered colimits. Equivalently, for every diagram $X : \\mathcal{I} \\times \\mathcal{J} \\to \\mathcal{C}$, where $\\mathcal{I}$ is finite and $\\mathcal{J}$ is filtered, the canonical morphism $\\mathrm{colim}_{j} \\lim_{i} X(i,j) \\to \\lim_{i} \\mathrm{colim}_j X(i,j)$ is an isomorphism.',
+		related: ['filtered colimits', 'finitely complete'],
+	},
 ]

@@ -52,6 +52,7 @@ export const categories: Category[] = [
 			'subobject classifier',
 			'balanced',
 			'cogenerator',
+			'filtered colimits that commute with finite limits',
 		],
 	},
 	{
@@ -598,6 +599,7 @@ export const categories: Category[] = [
 			'balanced',
 			'infinitary distributive',
 			'strict initial object',
+			'filtered colimits that commute with finite limits',
 		],
 		non_properties: [
 			'locally small',
