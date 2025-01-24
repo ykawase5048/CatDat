@@ -4,6 +4,7 @@ export const PROPERTY_IDs = [
 	'complete',
 	'cocomplete',
 	'cartesian closed',
+	'zero morphisms',
 	'preadditive',
 	'additive',
 	'abelian',

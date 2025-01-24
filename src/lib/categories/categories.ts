@@ -11,7 +11,7 @@ export const categories: Category[] = [
 			'The category of sets plays a fundamental role in category theory. Due to the Yoneda embedding, many results about general categories can be reduced to the category of sets. It is also usually the first example of a category that one encounters.',
 		nlab_link: 'https://ncatlab.org/nlab/show/Set',
 		properties: ['Grothendieck topos', 'algebraic', 'cogenerator'],
-		non_properties: ['preadditive', 'pointed', 'strict terminal object', 'thin'],
+		non_properties: ['zero morphisms', 'strict terminal object', 'thin'],
 		related: ['FinSet'],
 	},
 	{
@@ -46,8 +46,7 @@ export const categories: Category[] = [
 		non_properties: [
 			'cartesian closed',
 			'locally presentable',
-			'pointed',
-			'preadditive',
+			'zero morphisms',
 			'strict terminal object',
 			'thin',
 			'subobject classifier',
@@ -145,13 +144,7 @@ export const categories: Category[] = [
 			'generator',
 			'cogenerator',
 		],
-		non_properties: [
-			'small',
-			'preadditive',
-			'pointed',
-			'strict terminal object',
-			'thin',
-		],
+		non_properties: ['small', 'zero morphisms', 'strict terminal object', 'thin'],
 		related: ['Set'],
 	},
 	{
@@ -229,8 +222,7 @@ export const categories: Category[] = [
 		nlab_link: 'https://ncatlab.org/nlab/show/Pos',
 		properties: ['locally finitely presentable', 'cartesian closed', 'cogenerator'],
 		non_properties: [
-			'pointed',
-			'preadditive',
+			'zero morphisms',
 			'subobject classifier',
 			'strict terminal object',
 			'thin',
@@ -626,6 +618,6 @@ export const categories: Category[] = [
 		description:
 			'Every group $G$ yields a groupoid $BG$ with a single object, morphisms given by the elements of $G$, and composition given by the group operation. When $G$ is trivial, then $BG$ is the trivial category. However, in the non-properties below, we refer to the case that $G$ is non-trivial. The non-property "finite" refers to the case that $G$ is "generic" and hence infinite.',
 		properties: ['small', 'groupoid', 'connected', 'generator'],
-		non_properties: ['trivial', 'finite', 'thin', 'preadditive'],
+		non_properties: ['trivial', 'finite', 'thin', 'zero morphisms'],
 	},
 ]

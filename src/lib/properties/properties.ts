@@ -38,6 +38,14 @@ export const properties: Property[] = [
 		related: ['finite products'],
 	},
 	{
+		id: 'zero morphisms',
+		prefix: 'has',
+		description:
+			'A category has <i>zero morphisms</i> if for every pair of objects $A,B$ there is a distinugished morphism $0_{A,B} : A \\to B$, called the zero morphism, such that we have $f \\circ 0_{A,B} = 0_{A,C}$ and $0_{B,C} \\circ g = 0_{A,C}$ for all morphisms $f : B \\to C$ and $g : A \\to B$. The zero morphisms are unique if they exist, hence this is actually a property of the category.',
+		dual: 'zero morphisms',
+		related: ['preadditive', 'pointed'],
+	},
+	{
 		id: 'preadditive',
 		prefix: 'is',
 		description:

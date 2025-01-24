@@ -44,11 +44,7 @@ export const implications: Implication[] = [
 	},
 	{
 		assumptions: ['preadditive'],
-		conclusions: ['locally small'],
-	},
-	{
-		assumptions: ['preadditive', 'initial object'],
-		conclusions: ['pointed'],
+		conclusions: ['locally small', 'zero morphisms'],
 	},
 	{
 		assumptions: ['preadditive', 'finite coproducts'],
@@ -83,10 +79,6 @@ export const implications: Implication[] = [
 	{
 		assumptions: ['terminal object'],
 		conclusions: ['inhabited'],
-	},
-	{
-		assumptions: ['pointed'],
-		conclusions: ['terminal object'],
 	},
 	{
 		assumptions: ['cartesian closed'],
@@ -172,6 +164,11 @@ export const implications: Implication[] = [
 	},
 	{
 		equivalent: true,
+		assumptions: ['pointed'],
+		conclusions: ['zero morphisms', 'initial object'],
+	},
+	{
+		equivalent: true,
 		assumptions: ['pointed', 'cartesian closed'],
 		conclusions: ['trivial'],
 	},
@@ -251,5 +248,9 @@ export const implications: Implication[] = [
 	{
 		assumptions: ['thin', 'inhabited'],
 		conclusions: ['generator'],
+	},
+	{
+		assumptions: ['zero morphisms', 'inhabited'],
+		conclusions: ['connected'],
 	},
 ]
