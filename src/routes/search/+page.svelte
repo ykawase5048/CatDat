@@ -1,4 +1,5 @@
 <script lang="ts">
+	import CategoryList from '$lib/components/CategoryList.svelte'
 	import { properties } from '$lib/properties/properties'
 	import { is_valid_property, type PropertyID } from '$lib/properties/propertyIDs'
 	import { get_suitable_categories } from '$lib/search'
@@ -57,17 +58,4 @@
 
 <h2>Results</h2>
 
-{#if suitable_categories.length === 0}
-	<p>
-		No categories found. This might be due to a <a href="/missing">missing category</a
-		>.
-	</p>
-{:else}
-	<ul>
-		{#each suitable_categories as category}
-			<li>
-				<a href="/category/{category.id}">{category.name}</a>
-			</li>
-		{/each}
-	</ul>
-{/if}
+<CategoryList items={suitable_categories} />

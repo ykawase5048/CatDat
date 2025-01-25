@@ -1,5 +1,6 @@
 <script>
 	import { categories_with_unknown_properties } from '$lib/categories/categories.dict'
+	import CategoryList from '$lib/components/CategoryList.svelte'
 	import { negate_prefix } from '$lib/properties/prefix'
 	import { properties_dictionary } from '$lib/properties/property.dict'
 	import { missing_basic_combinations } from './missing'
@@ -14,17 +15,7 @@
 There are {categories_with_unknown_properties.length} categories that have some unknown properties.
 Please help us fill in the gaps by contributing to the GitHub repository.
 
-{#if categories_with_unknown_properties.length > 0}
-	<ul>
-		{#each categories_with_unknown_properties as category}
-			<li>
-				<a href="/category/{category.id}">{category.name}</a>
-			</li>
-		{/each}
-	</ul>
-{:else}
-	<p>&mdash;</p>
-{/if}
+<CategoryList items={categories_with_unknown_properties} />
 
 <h2>Missing property combinations</h2>
 

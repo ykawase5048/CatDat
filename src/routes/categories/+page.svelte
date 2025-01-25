@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { categories } from '$lib/categories/categories'
+	import CategoryList from '$lib/components/CategoryList.svelte'
 </script>
 
 <svelte:head>
@@ -8,12 +9,7 @@
 
 <h2>List of categories</h2>
 
-<p>The following {categories.length} categories are available.</p>
-
-<ul>
-	{#each categories as category (category.id)}
-		<li>
-			<a href="/category/{category.id}">{category.name}</a>
-		</li>
-	{/each}
-</ul>
+<CategoryList
+	items={categories}
+	description="The following {categories.length} categories are available."
+/>

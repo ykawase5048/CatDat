@@ -1,4 +1,5 @@
 <script lang="ts">
+	import CategoryList from '$lib/components/CategoryList.svelte'
 	import Implication from '$lib/components/Implication.svelte'
 	import { implications_with_duals } from '$lib/implications/implications.duals'
 	import { get_property_url } from '$lib/properties/properties.utils'
@@ -79,43 +80,16 @@
 
 <h3>Examples</h3>
 
-<ul>
-	{#each categories_with_this_property as category}
-		<li>
-			<a href="/category/{category.id}">
-				{category.name}
-			</a>
-		</li>
-	{/each}
-</ul>
+<CategoryList items={categories_with_this_property} />
 
 <h3>Counterexamples</h3>
 
-<ul>
-	{#each categories_without_this_property as category}
-		<li>
-			<a href="/category/{category.id}">
-				{category.name}
-			</a>
-		</li>
-	{/each}
-</ul>
+<CategoryList items={categories_without_this_property} />
 
-{#if unknown_categories.length}
-	<h3>Unknown</h3>
+<h3>Unknown</h3>
 
-	<p class="hint">
-		For these categories the database has no info if they satisfy this property or
-		not.
-	</p>
-
-	<ul>
-		{#each unknown_categories as category}
-			<li>
-				<a href="/category/{category.id}">
-					{category.name}
-				</a>
-			</li>
-		{/each}
-	</ul>
-{/if}
+<CategoryList
+	items={unknown_categories}
+	description="For these categories the database has no info if they satisfy this property or
+		not."
+/>
