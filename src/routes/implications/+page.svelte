@@ -13,16 +13,18 @@
 
 <h2>List of Implications</h2>
 
-<p>The following {implications.length} implications and equivalences are available*.</p>
+<ImplicationList
+	items={sorted_implications}
+	description="The following {implications.length} implications and equivalences are available*."
+/>
 
-<ImplicationList items={sorted_implications} />
-
-<p>
+<p class="hint">
 	*Deductions from these implications are automatically incorporated into each category
 	whenever applicable. For instance, if a category is identified as complete, the
 	property of having a terminal object is automatically inferred and added.
 </p>
-<p>
+
+<p class="hint">
 	Moreover, implications are automatically dualized when the corresponding dual
 	properties exist. For example, the statement that finitely complete categories with
 	filtered limits are complete automatically implies that finitely cocomplete categories

@@ -4,10 +4,17 @@
 
 	type Props = {
 		items: ImplicationType[]
+		description?: string
 	}
 
-	let { items }: Props = $props()
+	let { items, description }: Props = $props()
 </script>
+
+{#if description}
+	<p class="hint">
+		{description}
+	</p>
+{/if}
 
 {#if items.length}
 	<ul>
