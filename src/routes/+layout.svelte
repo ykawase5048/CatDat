@@ -23,24 +23,6 @@
 	<meta property="og:url" content="https://catdat.netlify.app/" />
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content="CatDat" />
-
-	<script>
-		window.MathJax = {
-			tex: {
-				inlineMath: [['$', '$']],
-			},
-			svg: {
-				fontCache: 'global',
-			},
-		}
-	</script>
-	<script
-		type="text/javascript"
-		id="MathJax-script"
-		async
-		src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
-	>
-	</script>
 </svelte:head>
 
 <div class="container">

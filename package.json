@@ -21,6 +21,7 @@
 		"@sveltejs/adapter-netlify": "^4.4.0",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^4.0.0",
+		"@types/mathjax": "^0.0.40",
 		"husky": "^9.1.7",
 		"prettier": "^3.3.2",
 		"prettier-plugin-svelte": "^3.2.6",
@@ -35,6 +36,7 @@
 	},
 	"dependencies": {
 		"@fortawesome/free-solid-svg-icons": "^6.7.2",
+		"mathjax": "^3.2.2",
 		"svelte-fa": "^4.0.3"
 	}
 }

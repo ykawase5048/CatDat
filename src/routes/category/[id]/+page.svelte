@@ -18,7 +18,7 @@
 
 <ul class="dashed-list">
 	<li>
-		notation: ${category.notation}$
+		notation: {@html category.notation}
 	</li>
 	<li>
 		objects: {@html category.objects}

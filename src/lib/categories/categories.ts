@@ -4,7 +4,7 @@ export const categories: Category[] = [
 	{
 		id: 'Set',
 		name: 'The category of sets',
-		notation: '\\mathbf{Set}',
+		notation: '$\\mathbf{Set}$',
 		objects: 'sets',
 		morphisms: 'functions / maps',
 		description:
@@ -17,7 +17,7 @@ export const categories: Category[] = [
 	{
 		id: 'Ab',
 		name: 'The category of abelian groups',
-		notation: '\\mathbf{Ab}',
+		notation: '$\\mathbf{Ab}$',
 		objects: 'abelian groups',
 		morphisms: 'group homomorphisms',
 		description: 'This is the prototype of an abelian category.',
@@ -29,7 +29,7 @@ export const categories: Category[] = [
 	{
 		id: 'Top',
 		name: 'The category of topological spaces',
-		notation: '\\mathbf{Top}',
+		notation: '$\\mathbf{Top}$',
 		objects: 'topological spaces',
 		morphisms: 'continuous functions',
 		description: 'This is the most basic category of geometric objects.',
@@ -58,7 +58,7 @@ export const categories: Category[] = [
 	{
 		id: 'Grp',
 		name: 'The category of groups',
-		notation: '\\mathbf{Grp}',
+		notation: '$\\mathbf{Grp}$',
 		objects: 'groups',
 		morphisms: 'group homomorphisms',
 		nlab_link: 'https://ncatlab.org/nlab/show/Grp',
@@ -75,7 +75,7 @@ export const categories: Category[] = [
 	{
 		id: 'Ring',
 		name: 'The category of rings',
-		notation: '\\mathbf{Ring}',
+		notation: '$\\mathbf{Ring}$',
 		objects: 'rings',
 		morphisms: 'ring homomorphisms',
 		nlab_link: 'https://ncatlab.org/nlab/show/Ring',
@@ -95,7 +95,7 @@ export const categories: Category[] = [
 	{
 		id: 'CRing',
 		name: 'The category of commutative rings',
-		notation: '\\mathbf{CRing}',
+		notation: '$\\mathbf{CRing}$',
 		objects: 'commutative rings',
 		morphisms: 'ring homomorphisms',
 		nlab_link: 'https://ncatlab.org/nlab/show/CRing',
@@ -115,7 +115,7 @@ export const categories: Category[] = [
 	{
 		id: 'Rng',
 		name: 'The category of rngs',
-		notation: '\\mathbf{Rng}',
+		notation: '$\\mathbf{Rng}$',
 		objects: 'rngs, that is, non-unital rings',
 		morphisms: 'maps that preserve addition and multiplication',
 		nlab_link: 'https://ncatlab.org/nlab/show/Rng',
@@ -134,7 +134,7 @@ export const categories: Category[] = [
 	{
 		id: 'FinSet',
 		name: 'The category of finite sets',
-		notation: '\\mathbf{FinSet}',
+		notation: '$\\mathbf{FinSet}$',
 		objects: 'finite sets',
 		morphisms: 'functions / maps',
 		nlab_link: 'https://ncatlab.org/nlab/show/FinSet',
@@ -151,7 +151,7 @@ export const categories: Category[] = [
 	{
 		id: 'FinAb',
 		name: 'The category of finite abelian groups',
-		notation: '\\mathbf{FinAb}',
+		notation: '$\\mathbf{FinAb}$',
 		objects: 'finite abelian groups',
 		morphisms: 'group homomorphisms',
 		nlab_link: 'https://ncatlab.org/nlab/show/finite+abelian+group',
@@ -169,7 +169,7 @@ export const categories: Category[] = [
 	{
 		id: 'Set*',
 		name: 'The category of pointed sets',
-		notation: '\\mathbf{Set}_*',
+		notation: '$\\mathbf{Set}_*$',
 		objects: 'pointed sets',
 		morphisms: 'pointed functions',
 		description:
@@ -181,7 +181,7 @@ export const categories: Category[] = [
 	{
 		id: 'sSet',
 		name: 'The category of simplicial sets',
-		notation: '\\mathbf{sSet}',
+		notation: '$\\mathbf{sSet}$',
 		objects:
 			'simplicial sets, i.e. functors $\\Delta^{\\mathrm{op}} \\to \\mathbf{Set}$',
 		morphisms: 'natural transformations',
@@ -192,7 +192,7 @@ export const categories: Category[] = [
 	{
 		id: 'Mon',
 		name: 'The category of monoids',
-		notation: '\\mathbf{Mon}',
+		notation: '$\\mathbf{Mon}$',
 		objects: 'monoids',
 		morphisms: 'monoid homomorphisms',
 		nlab_link: 'https://ncatlab.org/nlab/show/category+of+monoids',
@@ -211,7 +211,7 @@ export const categories: Category[] = [
 	{
 		id: 'Pos',
 		name: 'The category of posets',
-		notation: '\\mathbf{Pos}',
+		notation: '$\\mathbf{Pos}$',
 		objects: 'partial orders / posets',
 		morphisms: 'order-preserving functions',
 		nlab_link: 'https://ncatlab.org/nlab/show/Pos',
@@ -228,7 +228,7 @@ export const categories: Category[] = [
 	{
 		id: '0',
 		name: 'The empty category',
-		notation: '0',
+		notation: '$0$',
 		objects: 'no objects',
 		morphisms: 'no morphisms',
 		description:
@@ -240,7 +240,7 @@ export const categories: Category[] = [
 	{
 		id: '1',
 		name: 'The trivial category',
-		notation: '\\mathbf{1}',
+		notation: '$\\mathbf{1}$',
 		objects: 'a single object',
 		morphisms: 'only the identity morphism',
 		description:
@@ -253,7 +253,7 @@ export const categories: Category[] = [
 	{
 		id: '2',
 		name: 'The discrete category on two objects',
-		notation: '\\mathbf{2}',
+		notation: '$\\mathbf{2}$',
 		objects: 'two objects',
 		morphisms: 'only the identity morphisms',
 		description:
@@ -265,7 +265,7 @@ export const categories: Category[] = [
 	{
 		id: 'I',
 		name: 'The interval category',
-		notation: 'I',
+		notation: '$I$',
 		objects: '0,1',
 		morphisms: 'a single morphism from 0 to 1',
 		description:
@@ -276,8 +276,8 @@ export const categories: Category[] = [
 	},
 	{
 		id: 'M-Set',
-		name: 'The category of $M$-sets',
-		notation: 'M{-}\\mathbf{Set}',
+		name: 'The category of M-sets',
+		notation: '$M{-}\\mathbf{Set}$',
 		objects: 'sets with a left action of a monoid $M$',
 		morphisms:
 			'maps that are compatible with the $M$-action, meaning $f(m \\cdot x)=m \\cdot f(x)$',
@@ -289,8 +289,8 @@ export const categories: Category[] = [
 	},
 	{
 		id: 'R-Mod',
-		name: 'The category of left $R$-modules',
-		notation: 'R{-}\\mathbf{Mod}',
+		name: 'The category of left R-modules',
+		notation: '$R{-}\\mathbf{Mod}$',
 		objects: 'left $R$-modules',
 		morphisms: '$R$-linear maps',
 		description:
@@ -303,7 +303,7 @@ export const categories: Category[] = [
 	{
 		id: 'Met',
 		name: 'The category of metric spaces',
-		notation: '\\mathbf{Met}',
+		notation: '$\\mathbf{Met}$',
 		objects: 'metric spaces',
 		morphisms:
 			'non-expansive maps $f$, meaning $d(f(x),f(y)) \\leq d(x,y)$ for all $x,y$',
@@ -335,7 +335,7 @@ export const categories: Category[] = [
 	{
 		id: 'Met_oo',
 		name: 'A complete category of metric spaces',
-		notation: '\\mathbf{Met}_{\\infty}',
+		notation: '$\\mathbf{Met}_{\\infty}$',
 		objects:
 			'metric spaces, where the metric is allowed to assume the value $\\infty$',
 		morphisms:
@@ -367,7 +367,7 @@ export const categories: Category[] = [
 	{
 		id: 'Man',
 		name: 'The category of smooth manifolds',
-		notation: '\\mathbf{Man}',
+		notation: '$\\mathbf{Man}$',
 		objects: 'smooth manifolds',
 		morphisms: 'smooth maps',
 		nlab_link: 'https://ncatlab.org/nlab/show/Diff',
@@ -396,7 +396,7 @@ export const categories: Category[] = [
 	{
 		id: 'Meas',
 		name: 'The category of measurable spaces',
-		notation: '\\mathbf{Meas}',
+		notation: '$\\mathbf{Meas}$',
 		objects: 'measurable spaces',
 		morphisms: 'measurable maps',
 		nlab_link: 'https://ncatlab.org/nlab/show/Meas',
@@ -423,7 +423,7 @@ export const categories: Category[] = [
 	{
 		id: 'N',
 		name: 'The partial order of natural numbers',
-		notation: '(\\mathbb{N},\\leq)',
+		notation: '$(\\mathbb{N},\\leq)$',
 		objects: 'natural numbers $0, 1, 2, \\dotsc$',
 		morphisms: 'a unique morphism $n \\to m$ if $n \\leq m$',
 		description:
@@ -441,7 +441,7 @@ export const categories: Category[] = [
 	{
 		id: 'Cat',
 		name: 'The category of small categories',
-		notation: '\\mathbf{Cat}',
+		notation: '$\\mathbf{Cat}$',
 		objects: 'small categories',
 		morphisms: 'functors',
 		description:
@@ -461,7 +461,7 @@ export const categories: Category[] = [
 	{
 		id: 'On',
 		name: 'The partial order of ordinal numbers',
-		notation: '(\\mathbf{On},\\leq)',
+		notation: '$(\\mathbf{On},\\leq)$',
 		objects: 'ordinal numbers',
 		morphisms: 'a unique morphism $\\alpha \\to \\beta$ if $\\alpha \\leq \\beta$',
 		description: 'This is a large variant of the partial order of natural numbers.',
@@ -479,7 +479,7 @@ export const categories: Category[] = [
 	{
 		id: 'LRS',
 		name: 'The category of locally ringed spaces',
-		notation: '\\mathbf{LRS}',
+		notation: '$\\mathbf{LRS}$',
 		objects: 'locally ringed spaces',
 		morphisms: 'morphism of locally ringed spaces',
 		properties: [
@@ -496,7 +496,7 @@ export const categories: Category[] = [
 	{
 		id: 'Sch',
 		name: 'The category of schemes',
-		notation: '\\mathbf{Sch}',
+		notation: '$\\mathbf{Sch}$',
 		objects: 'schemes',
 		morphisms: 'morphism of schemes',
 		properties: [
@@ -519,7 +519,7 @@ export const categories: Category[] = [
 	{
 		id: 'Fld',
 		name: 'The category of fields',
-		notation: '\\mathbf{Fld}',
+		notation: '$\\mathbf{Fld}$',
 		objects: 'fields',
 		morphisms: 'field homomorphisms (i.e., ring homomorphisms)',
 		description: 'This is a typical example of a bad category of good objects.',
@@ -548,7 +548,7 @@ export const categories: Category[] = [
 	{
 		id: 'FreeAb',
 		name: 'The category of free abelian groups',
-		notation: '\\mathbf{FreeAb}',
+		notation: '$\\mathbf{FreeAb}$',
 		objects: 'free abelian groups',
 		morphisms: 'group homomorphisms',
 		properties: [
@@ -573,7 +573,7 @@ export const categories: Category[] = [
 	{
 		id: 'Z',
 		name: 'The category of Z-functors',
-		notation: '[\\mathbf{CRing}, \\mathbf{Set}]',
+		notation: '$[\\mathbf{CRing}, \\mathbf{Set}]$',
 		objects: 'Z-functors, i.e. functors from commutative rings to sets',
 		morphisms: 'natural transformations',
 		description:
@@ -597,7 +597,7 @@ export const categories: Category[] = [
 	{
 		id: 'BG',
 		name: 'delooping of a group',
-		notation: 'BG',
+		notation: '$BG$',
 		objects: 'a single object',
 		morphisms: 'the elements of a group $G$',
 		nlab_link: 'https://ncatlab.org/nlab/show/delooping',
@@ -609,7 +609,7 @@ export const categories: Category[] = [
 	{
 		id: 'BN',
 		name: 'delooping of the additive monoid of natural numbers',
-		notation: 'B\\mathbb{N}',
+		notation: '$B\\mathbb{N}$',
 		objects: 'a single object',
 		morphisms: 'the natural numbers, with addition serving as composition',
 		description:
@@ -631,7 +631,7 @@ export const categories: Category[] = [
 	{
 		id: 'walking_pair',
 		name: 'The walking parallel pair of morphisms',
-		notation: '\\{0 \\rightrightarrows 1 \\}',
+		notation: '$\\{0 \\rightrightarrows 1 \\}$',
 		objects: 'two objects $0$ and $1$',
 		morphisms: 'identities and two parallel morphisms from $0$ to $1$',
 		description:
