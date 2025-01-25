@@ -38,7 +38,7 @@ export const PROPERTY_IDs = [
 	'essentially small',
 	'thin',
 	'discrete',
-	'algebraic',
+	'finitary algebraic',
 	'finite',
 	'connected',
 	'pullbacks',

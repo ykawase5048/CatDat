@@ -8,7 +8,7 @@ import {
 describe('get_dual_implication', () => {
 	it('should return null when an assumption cannot be dualized', () => {
 		const implication: Implication = {
-			assumptions: ['algebraic'],
+			assumptions: ['finitary algebraic'],
 			conclusions: ['cocomplete'],
 		}
 		expect(get_dual_implication(implication)).toBeNull()
@@ -16,7 +16,7 @@ describe('get_dual_implication', () => {
 
 	it('should return null when a conclusion cannot be dualized', () => {
 		const implication: Implication = {
-			assumptions: ['algebraic'],
+			assumptions: ['finitary algebraic'],
 			conclusions: ['locally finitely presentable'],
 		}
 		expect(get_dual_implication(implication)).toBeNull()

@@ -155,7 +155,7 @@ export const implications: Implication[] = [
 		conclusions: ['trivial'],
 	},
 	{
-		assumptions: ['algebraic'],
+		assumptions: ['finitary algebraic'],
 		conclusions: ['locally finitely presentable'],
 	},
 	{
@@ -190,7 +190,7 @@ export const implications: Implication[] = [
 		assumptions: ['trivial'],
 		conclusions: [
 			'essentially small',
-			'algebraic',
+			'finitary algebraic',
 			'Grothendieck topos',
 			'abelian',
 			'self-dual',

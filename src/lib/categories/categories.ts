@@ -10,7 +10,7 @@ export const categories: Category[] = [
 		description:
 			'The category of sets plays a fundamental role in category theory. Due to the Yoneda embedding, many results about general categories can be reduced to the category of sets. It is also usually the first example of a category that one encounters.',
 		nlab_link: 'https://ncatlab.org/nlab/show/Set',
-		properties: ['Grothendieck topos', 'algebraic'],
+		properties: ['Grothendieck topos', 'finitary algebraic'],
 		non_properties: ['zero morphisms', 'strict terminal object', 'thin'],
 		related: ['FinSet'],
 	},
@@ -22,7 +22,7 @@ export const categories: Category[] = [
 		morphisms: 'group homomorphisms',
 		description: 'This is the prototype of an abelian category.',
 		nlab_link: 'https://ncatlab.org/nlab/show/Ab',
-		properties: ['abelian', 'algebraic'],
+		properties: ['abelian', 'finitary algebraic'],
 		non_properties: ['self-dual', 'thin', 'subobject classifier'],
 		related: ['Grp', 'R-Mod'],
 	},
@@ -62,7 +62,7 @@ export const categories: Category[] = [
 		objects: 'groups',
 		morphisms: 'group homomorphisms',
 		nlab_link: 'https://ncatlab.org/nlab/show/Grp',
-		properties: ['pointed', 'algebraic', 'balanced'],
+		properties: ['pointed', 'finitary algebraic', 'balanced'],
 		non_properties: [
 			'preadditive',
 			'self-dual',
@@ -80,7 +80,7 @@ export const categories: Category[] = [
 		morphisms: 'ring homomorphisms',
 		nlab_link: 'https://ncatlab.org/nlab/show/Ring',
 		description: 'Here, rings always have a unit, and homomorphisms preserve them.',
-		properties: ['algebraic', 'strict terminal object'],
+		properties: ['finitary algebraic', 'strict terminal object'],
 		non_properties: [
 			'cartesian closed',
 			'pointed',
@@ -99,7 +99,7 @@ export const categories: Category[] = [
 		objects: 'commutative rings',
 		morphisms: 'ring homomorphisms',
 		nlab_link: 'https://ncatlab.org/nlab/show/CRing',
-		properties: ['algebraic', 'strict terminal object'],
+		properties: ['finitary algebraic', 'strict terminal object'],
 		non_properties: [
 			'cartesian closed',
 			'pointed',
@@ -119,7 +119,7 @@ export const categories: Category[] = [
 		objects: 'rngs, that is, non-unital rings',
 		morphisms: 'maps that preserve addition and multiplication',
 		nlab_link: 'https://ncatlab.org/nlab/show/Rng',
-		properties: ['algebraic', 'pointed'],
+		properties: ['finitary algebraic', 'pointed'],
 		non_properties: [
 			'thin',
 			'groupoid',
@@ -175,7 +175,12 @@ export const categories: Category[] = [
 		description:
 			'This is the category of sets with a distinguished element, often called the base point. A map is called pointed when it preserves the base point.',
 		nlab_link: 'https://ncatlab.org/nlab/show/pointed+set',
-		properties: ['pointed', 'algebraic', 'subobject classifier', 'cogenerator'],
+		properties: [
+			'pointed',
+			'finitary algebraic',
+			'subobject classifier',
+			'cogenerator',
+		],
 		non_properties: ['cartesian closed', 'preadditive', 'self-dual', 'thin'],
 	},
 	{
@@ -196,7 +201,7 @@ export const categories: Category[] = [
 		objects: 'monoids',
 		morphisms: 'monoid homomorphisms',
 		nlab_link: 'https://ncatlab.org/nlab/show/category+of+monoids',
-		properties: ['pointed', 'algebraic'],
+		properties: ['pointed', 'finitary algebraic'],
 		non_properties: [
 			'cartesian closed',
 			'preadditive',
@@ -221,7 +226,7 @@ export const categories: Category[] = [
 			'subobject classifier',
 			'strict terminal object',
 			'thin',
-			'algebraic',
+			'finitary algebraic',
 			'balanced',
 		],
 	},
@@ -271,7 +276,7 @@ export const categories: Category[] = [
 		description:
 			'This is the category with two objects and a single non-identity morphism between them. It has the property that functors out of this category are the same as morphisms.',
 		nlab_link: 'https://ncatlab.org/nlab/show/interval+category',
-		properties: ['algebraic', 'self-dual', 'finite', 'cartesian closed'],
+		properties: ['finitary algebraic', 'self-dual', 'finite', 'cartesian closed'],
 		non_properties: ['pointed', 'groupoid', 'subobject classifier'],
 	},
 	{
@@ -284,7 +289,7 @@ export const categories: Category[] = [
 		description:
 			'Here, $M$ can be any monoid. But the most important special case is that of a group.',
 		nlab_link: 'https://ncatlab.org/nlab/show/MSet',
-		properties: ['Grothendieck topos', 'algebraic'],
+		properties: ['Grothendieck topos', 'finitary algebraic'],
 		non_properties: ['pointed', 'thin', 'strict terminal object'],
 	},
 	{
@@ -296,7 +301,7 @@ export const categories: Category[] = [
 		description:
 			'This is the category of left modules over a ring $R$. It is the prototype of an abelian category. The category of right modules is the same with the opposite ring $R^{\\mathrm{op}}$, hence not listed here. The non-properties refer to the case that the ring is non-trivial, since for the trivial ring we get a trivial category which has all properties anyway.',
 		nlab_link: 'https://ncatlab.org/nlab/show/module',
-		properties: ['abelian', 'algebraic'],
+		properties: ['abelian', 'finitary algebraic'],
 		non_properties: ['self-dual', 'thin', 'subobject classifier'],
 		related: ['Ab'],
 	},
@@ -359,7 +364,7 @@ export const categories: Category[] = [
 			'pointed',
 			'thin',
 			'balanced',
-			'algebraic',
+			'finitary algebraic',
 			'cartesian closed',
 		],
 		related: ['Met'],
@@ -453,7 +458,7 @@ export const categories: Category[] = [
 			'thin',
 			'strict terminal object',
 			'subobject classifier',
-			'algebraic',
+			'finitary algebraic',
 			'balanced',
 			'cogenerator',
 		],

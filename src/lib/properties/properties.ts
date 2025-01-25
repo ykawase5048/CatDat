@@ -335,10 +335,10 @@ export const properties: Property[] = [
 		nlab_link: 'https://ncatlab.org/nlab/show/discrete+category',
 	},
 	{
-		id: 'algebraic',
+		id: 'finitary algebraic',
 		prefix: 'is',
 		description:
-			'A category is <i>algebraic</i> if it is equivalent to the category of models of a finitary algebraic theory. (Notice that there are other definitions in the literature.)',
+			'A category is <i>finitary algebraic</i> if it is equivalent to the category of models of a finitary algebraic theory. This is also known as a variety of finitary algebras.',
 		nlab_link: 'https://ncatlab.org/nlab/show/algebraic+category',
 	},
 	{
