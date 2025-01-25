@@ -1,7 +1,9 @@
 <script lang="ts">
+	import type { Property } from '$lib/types'
+
+	import { categories_dictionary } from '$lib/categories/categories.dict'
 	import { negate_prefix } from '$lib/properties/prefix'
 	import { get_property_url } from '$lib/properties/properties.utils'
-	import type { Property } from '$lib/types'
 	import { get_category_detail_level } from '../../settings/+page.svelte'
 
 	let { data } = $props()
@@ -41,7 +43,7 @@
 	<p>
 		Related categories: {#each category.related as related_category, i}
 			<a href={`/category/${related_category}`}>
-				{related_category}
+				{categories_dictionary[related_category].name}
 			</a>{#if i < category.related.length - 1}
 				,&nbsp;
 			{/if}
