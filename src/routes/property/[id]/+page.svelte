@@ -65,6 +65,18 @@
 	</ul>
 {/if}
 
+{#if relevant_implications.length}
+	<h3>Relevant implications</h3>
+
+	<ul>
+		{#each relevant_implications as implication}
+			<li>
+				<Implication {implication} />
+			</li>
+		{/each}
+	</ul>
+{/if}
+
 <h3>Examples</h3>
 
 <ul>
@@ -103,18 +115,6 @@
 				<a href="/category/{category.id}">
 					{category.name}
 				</a>
-			</li>
-		{/each}
-	</ul>
-{/if}
-
-{#if relevant_implications.length}
-	<h3>Relevant implications</h3>
-
-	<ul>
-		{#each relevant_implications as implication}
-			<li>
-				<Implication {implication} />
 			</li>
 		{/each}
 	</ul>
