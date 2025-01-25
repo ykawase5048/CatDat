@@ -1,6 +1,5 @@
 <script lang="ts">
 	import CategoryList from '$lib/components/CategoryList.svelte'
-	import Implication from '$lib/components/Implication.svelte'
 	import ImplicationList from '$lib/components/ImplicationList.svelte'
 	import { implications_with_duals } from '$lib/implications/implications.duals'
 	import { get_property_url } from '$lib/properties/properties.utils'

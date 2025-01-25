@@ -1,6 +1,7 @@
 <script lang="ts">
+	import PropertyList from '$lib/components/PropertyList.svelte'
 	import { properties } from '$lib/properties/properties'
-	import { get_property_url } from '$lib/properties/properties.utils'
+
 	const sorted_properties = properties.toSorted((a, b) => a.id.localeCompare(b.id))
 </script>
 
@@ -10,15 +11,7 @@
 
 <h2>List of Properties</h2>
 
-<p>The following {properties.length} properties of categories are available.</p>
-
-<ul>
-	{#each sorted_properties as property}
-		<li>
-			{property.prefix}
-			<a href={get_property_url(property.id)}>
-				{property.id}
-			</a>
-		</li>
-	{/each}
-</ul>
+<PropertyList
+	items={sorted_properties}
+	description="The following {properties.length} properties are available."
+/>
