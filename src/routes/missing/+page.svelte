@@ -1,8 +1,5 @@
 <script>
-	import {
-		categories_detailed,
-		categories_with_unknown_properties,
-	} from '$lib/categories/categories.dict'
+	import { categories_with_unknown_properties } from '$lib/categories/categories.dict'
 	import { negate_prefix } from '$lib/properties/prefix'
 	import { properties_dictionary } from '$lib/properties/property.dict'
 	import { missing_basic_combinations } from './missing'
@@ -21,7 +18,7 @@ Please help us fill in the gaps by contributing to the GitHub repository.
 	<ul>
 		{#each categories_with_unknown_properties as category}
 			<li>
-				<a href="/category/{category.id}">{category.id}</a>
+				<a href="/category/{category.id}">{category.name}</a>
 			</li>
 		{/each}
 	</ul>
