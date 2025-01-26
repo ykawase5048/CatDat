@@ -37,6 +37,7 @@ export const CATEGORY_IDs = [
 	'Setne',
 	'B',
 	'FI',
+	'FS',
 ] as const
 
 export type CategoryID = (typeof CATEGORY_IDs)[number]
