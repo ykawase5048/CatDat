@@ -346,4 +346,9 @@ export const implications: Implication[] = [
 		assumptions: ['connected limits'],
 		conclusions: ['wide pullbacks', 'equalizers'],
 	},
+	{
+		// https://math.stackexchange.com/questions/4086192
+		assumptions: ['additive', 'pullbacks', 'subobject classifier'],
+		conclusions: ['trivial'],
+	},
 ]
