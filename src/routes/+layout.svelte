@@ -4,12 +4,6 @@
 	import Heading from '$lib/components/Heading.svelte'
 	import Nav from '$lib/components/Nav.svelte'
 	import './app.css'
-
-	afterNavigate(() => {
-		// unfortunately this always throws an error, but it renders the formulas
-		// @ts-ignore
-		MathJax.Hub.Queue(['Typeset', MathJax.Hub])
-	})
 </script>
 
 <svelte:head>
@@ -27,24 +21,6 @@
 	<meta property="og:url" content="https://catdat.netlify.app/" />
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content="CatDat" />
-
-	<script>
-		window.MathJax = {
-			tex: {
-				inlineMath: [['$', '$']],
-			},
-			svg: {
-				fontCache: 'global',
-			},
-		}
-	</script>
-	<script
-		type="text/javascript"
-		id="MathJax-script"
-		async
-		src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
-	>
-	</script>
 </svelte:head>
 
 <div class="container">
