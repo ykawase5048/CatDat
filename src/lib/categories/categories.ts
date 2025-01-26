@@ -798,4 +798,17 @@ export const categories: Category[] = [
 		],
 		tags: ['basic', 'set theory', 'representation theory', 'badly-behaved'],
 	},
+	{
+		id: 'B',
+		name: 'The category of finite sets and bijections',
+		notation: '$\\mathbb{B}$',
+		objects: 'finite sets',
+		morphisms: 'bijective maps',
+		nlab_link: 'https://ncatlab.org/nlab/show/permutation+groupoid',
+		description:
+			'This category is also known as the permutation groupoid. It appears in the definition of a combinatorial species.',
+		properties: ['locally small', 'essentially small', 'groupoid', 'inhabited'],
+		non_properties: ['small', 'thin', 'connected', 'generator'],
+		tags: ['basic', 'set theory', 'combinatorics', 'badly-behaved'],
+	},
 ]
