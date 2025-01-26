@@ -242,7 +242,7 @@ export const properties: Property[] = [
 		id: 'filtered limits',
 		prefix: 'has',
 		description:
-			'A category has <i>filtered limits</i> if it has limits of diagrams indexed by filtered categories.',
+			'A category has <i>filtered limits</i> if it has limits of diagrams indexed by cofiltered categories.',
 		dual: 'filtered colimits',
 		related: ['complete'],
 		nlab_link: 'https://ncatlab.org/nlab/show/filtered+limit',
