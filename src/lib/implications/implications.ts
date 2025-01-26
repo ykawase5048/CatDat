@@ -323,4 +323,8 @@ export const implications: Implication[] = [
 		assumptions: ['thin'],
 		conclusions: ['left cancellative'],
 	},
+	{
+		assumptions: ['left cancellative', 'coequalizers'],
+		conclusions: ['thin'],
+	},
 ]

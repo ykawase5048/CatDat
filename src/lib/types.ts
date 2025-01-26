@@ -17,6 +17,7 @@ type CategoryTag =
 	| 'measure theory'
 	| 'geometry'
 	| 'set theory'
+	| 'representation theory'
 	| 'category theory'
 
 export type Category = {
