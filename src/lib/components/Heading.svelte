@@ -33,6 +33,6 @@
 	.t-with-arrow {
 		background-color: var(--bg-color);
 		position: absolute;
-		translate: -1.23rem 0.53rem;
+		translate: -1.23rem 0.5rem;
 	}
 </style>
