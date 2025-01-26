@@ -552,6 +552,7 @@ export const categories: Category[] = [
 			'filtered colimits',
 			'connected limits',
 			'inhabited',
+			'left cancellative',
 		],
 		non_properties: [
 			'initial object',
@@ -566,6 +567,7 @@ export const categories: Category[] = [
 			'balanced',
 			'generator',
 			'cogenerator',
+			'right cancellative',
 		],
 	},
 	{
@@ -638,7 +640,14 @@ export const categories: Category[] = [
 		morphisms: 'the natural numbers, with addition serving as composition',
 		description:
 			'Every monoid $M$ induces a one-object category $BM$ with morphisms given by the elements of $M$, and composition given by the monoid operation. Some of the properties of this category depend on the specific monoid. In this example, we take the commutative monoid $M = (\\mathbb{N},+,0)$.',
-		properties: ['small', 'connected', 'self-dual', 'generator', 'pullbacks'],
+		properties: [
+			'small',
+			'connected',
+			'self-dual',
+			'generator',
+			'pullbacks',
+			'left cancellative',
+		],
 		non_properties: [
 			'groupoid',
 			'finite',
@@ -662,7 +671,14 @@ export const categories: Category[] = [
 			"This is the 'walking parallel pair' of morphisms. The name comes from the fact that it consists of two parallel morphisms, and a functor out of this category is the same as a parallel pair of morphisms in the target category.",
 		related: ['I'],
 		nlab_link: 'https://ncatlab.org/nlab/show/walking+structure',
-		properties: ['finite', 'self-dual', 'connected', 'generator', 'filtered limits'],
+		properties: [
+			'finite',
+			'self-dual',
+			'connected',
+			'generator',
+			'filtered limits',
+			'left cancellative',
+		],
 		non_properties: [
 			'thin',
 			'groupoid',

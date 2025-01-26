@@ -246,7 +246,11 @@ export const implications: Implication[] = [
 		conclusions: ['strict initial object'],
 	},
 	{
-		assumptions: ['thin', 'initial object'],
+		assumptions: ['left cancellative', 'initial object'],
+		conclusions: ['strict initial object'],
+	},
+	{
+		assumptions: ['right cancellative', 'initial object'],
 		conclusions: ['strict initial object'],
 	},
 	{
@@ -254,12 +258,18 @@ export const implications: Implication[] = [
 		conclusions: ['balanced'],
 	},
 	{
-		assumptions: ['thin', 'balanced'],
+		assumptions: ['left cancellative', 'right cancellative', 'balanced'],
 		conclusions: ['groupoid'],
 	},
 	{
 		assumptions: ['groupoid'],
-		conclusions: ['self-dual', 'balanced', 'pullbacks', 'filtered limits'],
+		conclusions: [
+			'self-dual',
+			'balanced',
+			'pullbacks',
+			'filtered limits',
+			'left cancellative',
+		],
 	},
 	{
 		assumptions: ['groupoid', 'equalizers'],
@@ -308,5 +318,9 @@ export const implications: Implication[] = [
 	{
 		assumptions: ['zero morphisms', 'inhabited'],
 		conclusions: ['connected'],
+	},
+	{
+		assumptions: ['thin'],
+		conclusions: ['left cancellative'],
 	},
 ]

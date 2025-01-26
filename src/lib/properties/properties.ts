@@ -475,4 +475,20 @@ export const properties: Property[] = [
 		related: ['coproducts', 'disjoint finite coproducts'],
 		nlab_link: 'https://ncatlab.org/nlab/show/disjoint+coproduct',
 	},
+	{
+		id: 'left cancellative',
+		prefix: 'is',
+		description:
+			'A category is <i>left cancellative</i> if for every morphism $f : A \\to B$ and every parallel pair of morphisms $g,h : B \\to C$ with $f \\circ g = f \\circ h$ we have $g = h$. Equivalently, every morphism is a monomorphism.',
+		dual: 'right cancellative',
+		nlab_link: 'https://ncatlab.org/nlab/show/cancellative+category',
+	},
+	{
+		id: 'right cancellative',
+		prefix: 'is',
+		description:
+			'A category is <i>right cancellative</i> if for every morphism $f : A \\to B$ and every parallel pair of morphisms $g,h : C \\to A$ with $g \\circ f = h \\circ f$ we have $g = h$. Equivalently, every morphism is an epimorphism.',
+		dual: 'left cancellative',
+		nlab_link: 'https://ncatlab.org/nlab/show/cancellative+category',
+	},
 ]

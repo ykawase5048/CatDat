@@ -55,6 +55,8 @@ export const PROPERTY_IDs = [
 	'Grothendieck abelian',
 	'disjoint finite coproducts',
 	'disjoint coproducts',
+	'left cancellative',
+	'right cancellative',
 ] as const
 
 export type PropertyID = (typeof PROPERTY_IDs)[number]
