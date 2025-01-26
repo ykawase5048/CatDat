@@ -1,6 +1,7 @@
 import type { PropertyID } from '$lib/properties/propertyIDs'
 import type { Implication } from '$lib/types'
 import { get_dual_property } from '$lib/properties/properties.utils'
+import { properties_dictionary } from '$lib/properties/property.dict'
 
 export function get_dual_implication(implication: Implication): Implication | null {
 	const dual_implication: Implication = {
@@ -38,9 +39,11 @@ export function get_new_dual_implication(implication: Implication): Implication 
 }
 
 export function get_self_dual_implication(property: PropertyID): null | Implication {
+	const property_data = properties_dictionary[property]
+	if (property_data.invariant_under_equivalences === false) return null
+
 	const dual_property = get_dual_property(property)
 	if (!dual_property) return null
-
 	if (dual_property === property) return null
 
 	return {
