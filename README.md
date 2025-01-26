@@ -48,7 +48,7 @@ Create a pull request and follow the guidelines below.
 
 - When adding new data (categories, properties, implications), stick to the format indicated by the existing data. This is also enforced by the types and tests.
 
-- Only "atomic" implications are allowed. Do not add implications that can be deduced from others (like "complete => finite products", using the two implications "complete => finitely complete => finite products"). They are deduced automatically. The same holds for dual implications.
+- Only "atomic" implications are allowed. Do not add implications that can be deduced from others (like "complete => finite products", using the two implications "complete => finitely complete => finite products"). They are deduced automatically. Also, implications are dualized automatically when applicable.
 
 - When a new property is added, add all the implications that invole this new property alongside the existing properties. For example, by adding the property "countable products", please add the implication "countable products => finite products". If possible, refactor the existing implications with it.
 
@@ -58,14 +58,12 @@ Create a pull request and follow the guidelines below.
 
 - When a new property is added, you have to make sure that at least one category does not satisfy it (otherwise, it would not be interesting). This is enforced with a unit test, actually. If none of the existing categories fits, you need to add a new category that does not have the new property.
 
-- Try to reduce the categories with unknown properties. Use the script `pnpm unknowns` of the UI to detect these.
+- Try to reduce the unknown properties of the categories in the database. Use the script `pnpm unknowns` or the UI to detect these.
 
 - When a new implication is added, check if it simplifies existing implications, and also if it makes some properties and non-properties in the list of categories redundant.
 
-- Try to add categories that satisfy combinations of properties and non-properties which are not in the database yet. For example (in case it's not there yet), you might add a category which is abelian, but neither cocomplete nor essentially small.
+- Try to add new categories that satisfy combinations of properties and non-properties which are not in the database yet. For example (in case it's not there yet), you might add a category which is abelian, but neither cocomplete nor essentially small.
 
-- Do not add non-properties to the list of properties. For example, "large" (as the opposite of "small") is not allowed. When a category should be registered as large, simply add "small" to its list of non-properties. As a rule of thumb, every registered property should be satisfied by the trivial category `1`.
+- Do not add negated properties to the database of properties. For example, "large" (as the negation of "small") is not allowed. When a category should be registered as large, simply add "small" to its list of non-properties. As a rule of thumb, every registered property should be satisfied by the trivial category `1`.
 
 - In your pull request, provide proofs for the non-obvious new claims, in particular with regards to the properties of very special categories.
-
-- For every new feature, add a test.
