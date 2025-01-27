@@ -2,13 +2,18 @@ import type { CategoryID } from './categoryIDs'
 import type { Category, CategoryDetailed } from '$lib/types'
 import { group_items } from '$lib/utils'
 import { categories } from './categories'
-import { DeductionSystem } from '$lib/DeductionSystem'
 import { PROPERTY_IDs, type PropertyID } from '$lib/properties/propertyIDs'
-import { implications_with_duals } from '$lib/implications/implications.utils'
+import { DeductionSystemWithDuals } from '$lib/DeductionSystemWithDuals'
+import { get_dual_property } from '$lib/properties/properties.utils'
+import { implications } from '$lib/implications/implications'
 
-export const category_deduction_system = new DeductionSystem<PropertyID>(
-	implications_with_duals,
+export const category_deduction_system = new DeductionSystemWithDuals<PropertyID>(
+	new Set(PROPERTY_IDs),
+	implications,
+	get_dual_property,
 )
+
+category_deduction_system.init_with_duals()
 
 export function get_details(category: Category): CategoryDetailed {
 	const property_set = new Set(category.properties)

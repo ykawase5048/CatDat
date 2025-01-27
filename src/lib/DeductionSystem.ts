@@ -1,4 +1,4 @@
-type Rule<T> = {
+export type Rule<T> = {
 	equivalent?: boolean
 	assumptions: T[]
 	conclusions: T[]
@@ -9,29 +9,34 @@ type NormalizedRule<T> = {
 	conclusion: T
 }
 
-export class DeductionSystem<T> {
-	private rules: Rule<T>[]
+export class DeductionSystem<T extends string> {
+	protected rules: Rule<T>[]
 	private normalized_rules: NormalizedRule<T>[] = []
-	private properties: Set<T> = new Set([])
+	protected properties: Set<T>
+	protected initialized = false
 
-	constructor(rules: Rule<T>[]) {
+	constructor(properties: Set<T>, rules: Rule<T>[]) {
+		this.properties = properties
 		this.rules = rules
-		this.compute_properties()
-		this.compute_normalized_rules()
+		this.check_rules()
 	}
 
-	private compute_properties() {
+	public init() {
+		if (this.initialized) return
+		this.compute_normalized_rules()
+		this.initialized = true
+	}
+
+	private check_rules() {
 		for (const rule of this.rules) {
-			for (const assumption of rule.assumptions) {
-				this.properties.add(assumption)
-			}
-			for (const conclusion of rule.conclusions) {
-				this.properties.add(conclusion)
-			}
+			const is_ok =
+				rule.assumptions.every((assumption) => this.properties.has(assumption)) &&
+				rule.conclusions.every((conclusion) => this.properties.has(conclusion))
+			if (!is_ok) throw new Error(`Invalid rule: ${JSON.stringify(rule)}`)
 		}
 	}
 
-	private compute_normalized_rules() {
+	protected compute_normalized_rules() {
 		this.normalized_rules = []
 
 		for (const rule of this.rules) {
