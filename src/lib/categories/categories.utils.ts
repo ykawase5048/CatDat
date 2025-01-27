@@ -3,25 +3,15 @@ import type { Category, CategoryDetailed } from '$lib/types'
 import { group_items } from '$lib/utils'
 import { categories } from './categories'
 import { PROPERTY_IDs, type PropertyID } from '$lib/properties/propertyIDs'
-import { DeductionSystemWithDuals } from '$lib/DeductionSystemWithDuals'
-import { get_dual_property } from '$lib/properties/properties.utils'
-import { implications } from '$lib/implications/implications'
-
-export const category_deduction_system = new DeductionSystemWithDuals<PropertyID>(
-	new Set(PROPERTY_IDs),
-	implications,
-	get_dual_property,
-)
-
-category_deduction_system.init_with_duals()
+import { property_deduction_system } from '$lib/properties/properties.utils'
 
 export function get_details(category: Category): CategoryDetailed {
 	const property_set = new Set(category.properties)
 	const non_property_set = new Set(category.non_properties)
 
-	const all_properties = category_deduction_system.get_deductions(property_set)
+	const all_properties = property_deduction_system.get_deductions(property_set)
 
-	const all_non_properties = category_deduction_system.get_deduced_negations(
+	const all_non_properties = property_deduction_system.get_deduced_negations(
 		all_properties,
 		non_property_set,
 	)

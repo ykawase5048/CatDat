@@ -1,9 +1,7 @@
 import { properties } from '$lib/properties/properties'
-import { categories } from './categories'
 import {
 	categories_detailed,
 	categories_dictionary,
-	category_deduction_system,
 	get_all_non_properties,
 	get_all_properties,
 	get_details,
@@ -83,26 +81,6 @@ describe('get_details', () => {
 		const TopDetailed = get_details(Top)
 		expect(TopDetailed.unknown_properties).toHaveLength(0)
 	})
-})
-
-describe('category_deduction_system', () => {
-	for (const category of categories) {
-		it(`should have no redundancy for the properties of: ${category.name}`, () => {
-			const has_redundancy = category_deduction_system.check_redundancy(
-				new Set(category.properties),
-			)
-			expect(has_redundancy).toBe(false)
-		})
-
-		it(`should have no redundancy for the non-properties of: ${category.name}`, () => {
-			const has_redundancy =
-				category_deduction_system.check_redundancy_of_negations(
-					new Set(category.properties),
-					new Set(category.non_properties),
-				)
-			expect(has_redundancy).toBe(false)
-		})
-	}
 })
 
 describe('get_suitable_categories', () => {

@@ -1,8 +1,10 @@
 <script lang="ts">
 	import CategoryList from '$lib/components/CategoryList.svelte'
 	import ImplicationList from '$lib/components/ImplicationList.svelte'
-	import { implications_with_duals } from '$lib/implications/implications.utils'
-	import { get_property_url } from '$lib/properties/properties.utils'
+	import {
+		get_property_url,
+		implications_with_duals,
+	} from '$lib/properties/properties.utils'
 
 	let { data } = $props()
 	let property = $derived(data.property)

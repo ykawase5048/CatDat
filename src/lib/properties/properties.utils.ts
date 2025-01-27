@@ -1,7 +1,9 @@
+import { DeductionSystemWithDuals } from '$lib/DeductionSystemWithDuals'
+import { implications } from '$lib/implications/implications'
 import type { Property } from '$lib/types'
 import { group_items } from '$lib/utils'
 import { properties } from './properties'
-import type { PropertyID } from './propertyIDs'
+import { PROPERTY_IDs, type PropertyID } from './propertyIDs'
 
 export const properties_dictionary = group_items<PropertyID, Property>(properties)
 
@@ -43,3 +45,13 @@ export type Prefix = keyof typeof PREFIX_CONFIG
 export function negate_prefix(prefix: Prefix) {
 	return PREFIX_CONFIG[prefix]
 }
+
+export const property_deduction_system = new DeductionSystemWithDuals<PropertyID>(
+	new Set(PROPERTY_IDs),
+	implications,
+	get_dual_property,
+)
+
+property_deduction_system.init_with_duals()
+
+export const implications_with_duals = property_deduction_system.all_rules

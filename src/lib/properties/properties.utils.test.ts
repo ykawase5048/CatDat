@@ -1,3 +1,4 @@
+import { categories } from '$lib/categories/categories'
 import {
 	encode_property_ID,
 	decode_property_ID,
@@ -6,6 +7,8 @@ import {
 	get_dual_properties,
 	negate_prefix,
 	properties_dictionary,
+	property_deduction_system,
+	implications_with_duals,
 } from './properties.utils'
 
 describe('properties dictionary', () => {
@@ -76,5 +79,75 @@ describe('get_dual_properties', () => {
 describe('negate_prefix', () => {
 	it("negates 'has a' to 'does not have a'", () => {
 		expect(negate_prefix('has a')).toBe('does not have a')
+	})
+})
+
+describe('property_deduction_system', () => {
+	for (const category of categories) {
+		it(`should have no redundancy for the properties of: ${category.name}`, () => {
+			const has_redundancy = property_deduction_system.check_redundancy(
+				new Set(category.properties),
+			)
+			expect(has_redundancy).toBe(false)
+		})
+
+		it(`should have no redundancy for the non-properties of: ${category.name}`, () => {
+			const has_redundancy =
+				property_deduction_system.check_redundancy_of_negations(
+					new Set(category.properties),
+					new Set(category.non_properties),
+				)
+			expect(has_redundancy).toBe(false)
+		})
+	}
+})
+
+describe('implications_with_duals', () => {
+	it('should contain the existing implications', () => {
+		const implication = {
+			assumptions: ['small'],
+			conclusions: ['locally small', 'essentially small'],
+		}
+		expect(implications_with_duals).toContainEqual(implication)
+	})
+
+	it('should contain dual implications', () => {
+		const implication = {
+			equivalent: true,
+			assumptions: ['products', 'equalizers'],
+			conclusions: ['complete'],
+		}
+		expect(implications_with_duals).toContainEqual(implication)
+
+		const dual_implication = {
+			equivalent: true,
+			assumptions: ['coproducts', 'coequalizers'],
+			conclusions: ['cocomplete'],
+		}
+		expect(implications_with_duals).toContainEqual(dual_implication)
+	})
+
+	it('should contain basic self-dual implications (1)', () => {
+		const implication = {
+			assumptions: ['self-dual', 'binary products'],
+			conclusions: ['binary coproducts'],
+		}
+		expect(implications_with_duals).toContainEqual(implication)
+	})
+
+	it('should contain basic self-dual implications (2)', () => {
+		const implication = {
+			assumptions: ['self-dual', 'equalizers'],
+			conclusions: ['coequalizers'],
+		}
+		expect(implications_with_duals).toContainEqual(implication)
+	})
+
+	it('should not contain trivial self-dual implications', () => {
+		const implication = {
+			assumptions: ['self-dual', 'thin'],
+			conclusions: ['thin'],
+		}
+		expect(implications_with_duals).not.toContainEqual(implication)
 	})
 })
