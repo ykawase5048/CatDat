@@ -1,12 +1,17 @@
 import { error } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
 
-import { categories_detailed } from '$lib/categories/categories.dict'
-import { properties_dictionary } from '$lib/properties/property.dict'
+import { categories_detailed } from '$lib/categories/categories.utils'
 import { is_valid_property } from '$lib/properties/propertyIDs'
-import { decode_property_ID } from '$lib/properties/properties.utils'
+import {
+	decode_property_ID,
+	properties_dictionary,
+} from '$lib/properties/properties.utils'
 import { render_formulas_in_object } from '$lib/rendering'
-import { get_all_non_properties, get_all_properties } from '$lib/categories/details'
+import {
+	get_all_non_properties,
+	get_all_properties,
+} from '$lib/categories/categories.utils'
 
 export const load: PageServerLoad = (event) => {
 	const id = decode_property_ID(event.params.id)

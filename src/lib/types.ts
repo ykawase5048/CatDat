@@ -1,5 +1,5 @@
 import type { CategoryID } from './categories/categoryIDs'
-import type { Prefix } from './properties/prefix'
+import type { Prefix } from './properties/properties.utils'
 import type { PropertyID } from './properties/propertyIDs'
 import type { NonEmptyArray } from './utils'
 

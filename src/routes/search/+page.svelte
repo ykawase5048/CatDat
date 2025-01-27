@@ -1,9 +1,9 @@
 <script lang="ts">
+	import { get_suitable_categories } from '$lib/categories/categories.utils'
 	import CategoryList from '$lib/components/CategoryList.svelte'
 	import { properties } from '$lib/properties/properties'
 	import { get_dual_properties } from '$lib/properties/properties.utils'
 	import { is_valid_property, type PropertyID } from '$lib/properties/propertyIDs'
-	import { get_suitable_categories } from '$lib/search'
 	import type { CategoryDetailed } from '$lib/types'
 
 	import Selection from './Selection.svelte'

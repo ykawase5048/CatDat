@@ -1,7 +1,12 @@
 import type { PropertyID } from '$lib/properties/propertyIDs'
 import type { Implication } from '$lib/types'
-import { get_dual_properties, get_dual_property } from '$lib/properties/properties.utils'
-import { properties_dictionary } from '$lib/properties/property.dict'
+import {
+	get_dual_properties,
+	get_dual_property,
+	properties_dictionary,
+} from '$lib/properties/properties.utils'
+import { implications } from './implications'
+import { properties } from '$lib/properties/properties'
 
 export function get_dual_implication(implication: Implication): Implication | null {
 	const dual_assumptions = get_dual_properties(implication.assumptions)
@@ -42,3 +47,9 @@ export function get_self_dual_implication(property: PropertyID): null | Implicat
 		conclusions: [dual_property],
 	}
 }
+
+export const implications_with_duals: Implication[] = [
+	...implications,
+	...implications.map(get_new_dual_implication),
+	...properties.map((property) => get_self_dual_implication(property.id)),
+].filter((implication) => implication != null)

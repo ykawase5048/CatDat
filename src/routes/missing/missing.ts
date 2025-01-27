@@ -1,9 +1,9 @@
-import { categories_detailed } from '$lib/categories/categories.dict'
+import { categories_detailed } from '$lib/categories/categories.utils'
 import {
 	category_deduction_system,
 	get_all_non_properties,
 	get_all_properties,
-} from '$lib/categories/details'
+} from '$lib/categories/categories.utils'
 import type { PropertyID } from '$lib/properties/propertyIDs'
 
 type Combination = {

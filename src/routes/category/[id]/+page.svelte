@@ -1,10 +1,13 @@
 <script lang="ts">
-	import { categories_dictionary } from '$lib/categories/categories.dict'
+	import { categories_dictionary } from '$lib/categories/categories.utils'
 	import { get_category_detail_level } from '../../settings/+page.svelte'
 	import type { CategoryDetailed } from '$lib/types'
 	import PropertyList from '$lib/components/PropertyList.svelte'
 	import Tags from '$lib/components/Tags.svelte'
-	import { get_all_non_properties, get_all_properties } from '$lib/categories/details'
+	import {
+		get_all_non_properties,
+		get_all_properties,
+	} from '$lib/categories/categories.utils'
 
 	let { data } = $props()
 	let category: CategoryDetailed = $derived(data.category)

@@ -1,4 +1,4 @@
-import { categories_detailed } from '$lib/categories/categories.dict'
+import { categories_detailed } from '$lib/categories/categories.utils'
 
 console.info('find unknown properties ...\n')
 

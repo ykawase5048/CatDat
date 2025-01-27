@@ -1,8 +1,10 @@
 <script>
-	import { categories_with_unknown_properties } from '$lib/categories/categories.dict'
+	import { categories_with_unknown_properties } from '$lib/categories/categories.utils'
 	import CategoryList from '$lib/components/CategoryList.svelte'
-	import { negate_prefix } from '$lib/properties/prefix'
-	import { properties_dictionary } from '$lib/properties/property.dict'
+	import {
+		negate_prefix,
+		properties_dictionary,
+	} from '$lib/properties/properties.utils'
 	import { missing_basic_combinations } from './missing'
 </script>
 

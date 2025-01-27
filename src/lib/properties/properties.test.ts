@@ -1,4 +1,4 @@
-import { PREFIX_CONFIG } from './prefix'
+import { PREFIX_CONFIG } from './properties.utils'
 import { properties } from './properties'
 
 describe('properties of categories', () => {

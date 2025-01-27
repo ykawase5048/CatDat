@@ -4,7 +4,17 @@ import {
 	get_dual_property,
 	get_property_url,
 	get_dual_properties,
+	negate_prefix,
+	properties_dictionary,
 } from './properties.utils'
+
+describe('properties dictionary', () => {
+	it('should have consistent names', () => {
+		for (const [name, property] of Object.entries(properties_dictionary)) {
+			expect(name).toBe(property.id)
+		}
+	})
+})
 
 describe('encode_property_ID', () => {
 	it("should return 'locally_small' for 'locally small'", () => {
@@ -60,5 +70,11 @@ describe('get_dual_properties', () => {
 			'small',
 			'complete',
 		])
+	})
+})
+
+describe('negate_prefix', () => {
+	it("negates 'has a' to 'does not have a'", () => {
+		expect(negate_prefix('has a')).toBe('does not have a')
 	})
 })

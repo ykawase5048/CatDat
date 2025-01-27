@@ -1,8 +1,10 @@
 <script lang="ts">
-	import { get_property_url } from '$lib/properties/properties.utils'
-	import { negate_prefix } from '$lib/properties/prefix'
+	import {
+		get_property_url,
+		negate_prefix,
+		properties_dictionary,
+	} from '$lib/properties/properties.utils'
 	import type { PropertyID } from '$lib/properties/propertyIDs'
-	import { properties_dictionary } from '$lib/properties/property.dict'
 
 	type Props = {
 		items: PropertyID[]
