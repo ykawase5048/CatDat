@@ -1,3 +1,4 @@
+import { get_all_properties } from './categories/details'
 import { get_suitable_categories } from './search'
 
 describe('get_suitable_categories', () => {
@@ -23,9 +24,7 @@ describe('get_suitable_categories', () => {
 	it('should return all complete categories', () => {
 		const results = get_suitable_categories(['complete'], [])
 		for (const result of results) {
-			expect(result.properties.concat(result.deduced_properties)).toContain(
-				'complete',
-			)
+			expect(get_all_properties(result)).toContain('complete')
 		}
 	})
 

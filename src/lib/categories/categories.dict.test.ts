@@ -1,5 +1,6 @@
 import { properties } from '$lib/properties/properties'
 import { categories_detailed, categories_dictionary } from './categories.dict'
+import { get_all_non_properties, get_all_properties } from './details'
 
 describe('categories dictionary', () => {
 	it('should have consistent IDs', () => {
@@ -12,12 +13,8 @@ describe('categories dictionary', () => {
 describe('categories detailed', () => {
 	for (const category of categories_detailed) {
 		it(`should not have contradictory properties for: ${category.name}`, () => {
-			const property_set = new Set(
-				category.properties.concat(category.deduced_properties),
-			)
-			const non_property_set = new Set(
-				category.non_properties.concat(category.deduced_non_properties),
-			)
+			const property_set = new Set(get_all_properties(category))
+			const non_property_set = new Set(get_all_non_properties(category))
 			expect(property_set.intersection(non_property_set)).toHaveLength(0)
 		})
 	}
@@ -25,9 +22,7 @@ describe('categories detailed', () => {
 	for (const property of properties) {
 		it(`should have at least one counterexample for: ${property.id}`, () => {
 			const counterexample = categories_detailed.find((category) =>
-				category.non_properties
-					.concat(category.deduced_non_properties)
-					.includes(property.id),
+				get_all_non_properties(category).includes(property.id),
 			)
 			expect(counterexample).toBeDefined()
 		})

@@ -37,3 +37,11 @@ export function add_details(category: Category): CategoryDetailed {
 		unknown_properties,
 	}
 }
+
+export function get_all_properties(category: CategoryDetailed): PropertyID[] {
+	return category.properties.concat(category.deduced_properties)
+}
+
+export function get_all_non_properties(category: CategoryDetailed): PropertyID[] {
+	return category.non_properties.concat(category.deduced_non_properties)
+}

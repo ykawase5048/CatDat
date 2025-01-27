@@ -4,6 +4,7 @@
 	import type { CategoryDetailed } from '$lib/types'
 	import PropertyList from '$lib/components/PropertyList.svelte'
 	import Tags from '$lib/components/Tags.svelte'
+	import { get_all_non_properties, get_all_properties } from '$lib/categories/details'
 
 	let { data } = $props()
 	let category: CategoryDetailed = $derived(data.category)
@@ -62,9 +63,7 @@
 
 	<PropertyList items={category.deduced_properties} description="Deduced properties" />
 {:else if category_detail_level === 'merged'}
-	<PropertyList
-		items={category.properties.concat(category.deduced_properties).toSorted()}
-	/>
+	<PropertyList items={get_all_properties(category).toSorted()} />
 {:else if category_detail_level === 'basic'}
 	<PropertyList
 		items={category.properties}
@@ -87,10 +86,7 @@
 	/>
 	<p class="hint">*This also uses the deduced properties.</p>
 {:else if category_detail_level === 'merged'}
-	<PropertyList
-		items={category.non_properties.concat(category.deduced_non_properties).toSorted()}
-		negated={true}
-	/>
+	<PropertyList items={get_all_non_properties(category).toSorted()} negated={true} />
 {:else if category_detail_level === 'basic'}
 	<PropertyList
 		items={category.non_properties}
