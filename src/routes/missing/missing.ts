@@ -1,8 +1,4 @@
 import { categories_detailed } from '$lib/categories/categories.utils'
-import {
-	get_all_non_properties,
-	get_all_properties,
-} from '$lib/categories/categories.utils'
 import { property_deduction_system } from '$lib/properties/properties.utils'
 import type { PropertyID } from '$lib/properties/propertyIDs'
 
@@ -17,8 +13,8 @@ const consistent_basic_combinations: Combination[] =
 function combination_is_present(combination: Combination): boolean {
 	return categories_detailed.some((category) => {
 		return (
-			get_all_properties(category).includes(combination.assumption) &&
-			get_all_non_properties(category).includes(combination.negation)
+			category.all_properties.includes(combination.assumption) &&
+			category.all_non_properties.includes(combination.negation)
 		)
 	})
 }

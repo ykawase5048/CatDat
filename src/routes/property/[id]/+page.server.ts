@@ -8,10 +8,6 @@ import {
 	properties_dictionary,
 } from '$lib/properties/properties.utils'
 import { render_formulas_in_object } from '$lib/rendering'
-import {
-	get_all_non_properties,
-	get_all_properties,
-} from '$lib/categories/categories.utils'
 
 export const load: PageServerLoad = (event) => {
 	const id = decode_property_ID(event.params.id)
@@ -22,11 +18,11 @@ export const load: PageServerLoad = (event) => {
 	const property = properties_dictionary[id]
 
 	const categories_with_this_property = categories_detailed.filter((category) =>
-		get_all_properties(category).includes(property.id),
+		category.all_properties.includes(property.id),
 	)
 
 	const categories_without_this_property = categories_detailed.filter((category) =>
-		get_all_non_properties(category).includes(property.id),
+		category.all_non_properties.includes(property.id),
 	)
 
 	const unknown_categories = categories_detailed.filter((category) =>

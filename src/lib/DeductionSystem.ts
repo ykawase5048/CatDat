@@ -12,7 +12,7 @@ type NormalizedRule<T> = {
 export class DeductionSystem<T extends string> {
 	protected rules: Rule<T>[]
 	private normalized_rules: NormalizedRule<T>[] = []
-	protected properties: Set<T>
+	public readonly properties: Set<T>
 	protected initialized = false
 
 	constructor(properties: Set<T>, rules: Rule<T>[]) {

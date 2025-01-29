@@ -1,13 +1,11 @@
 <script lang="ts">
-	import { categories_dictionary } from '$lib/categories/categories.utils'
+	import {
+		categories_dictionary,
+		type CategoryDetailed,
+	} from '$lib/categories/categories.utils'
 	import { get_category_detail_level } from '../../settings/+page.svelte'
-	import type { CategoryDetailed } from '$lib/types'
 	import PropertyList from '$lib/components/PropertyList.svelte'
 	import Tags from '$lib/components/Tags.svelte'
-	import {
-		get_all_non_properties,
-		get_all_properties,
-	} from '$lib/categories/categories.utils'
 
 	let { data } = $props()
 	let category: CategoryDetailed = $derived(data.category)
@@ -66,7 +64,7 @@
 
 	<PropertyList items={category.deduced_properties} description="Deduced properties" />
 {:else if category_detail_level === 'merged'}
-	<PropertyList items={get_all_properties(category).toSorted()} />
+	<PropertyList items={category.all_properties} />
 {:else if category_detail_level === 'basic'}
 	<PropertyList
 		items={category.properties}
@@ -89,7 +87,7 @@
 	/>
 	<p class="hint">*This also uses the deduced properties.</p>
 {:else if category_detail_level === 'merged'}
-	<PropertyList items={get_all_non_properties(category).toSorted()} negated={true} />
+	<PropertyList items={category.all_non_properties} negated={true} />
 {:else if category_detail_level === 'basic'}
 	<PropertyList
 		items={category.non_properties}

@@ -1,10 +1,12 @@
 <script lang="ts">
-	import { get_suitable_categories } from '$lib/categories/categories.utils'
+	import {
+		category_system,
+		type CategoryDetailed,
+	} from '$lib/categories/categories.utils'
 	import CategoryList from '$lib/components/CategoryList.svelte'
 	import { properties } from '$lib/properties/properties'
 	import { get_dual_properties } from '$lib/properties/properties.utils'
 	import { is_valid_property, type PropertyID } from '$lib/properties/propertyIDs'
-	import type { CategoryDetailed } from '$lib/types'
 
 	import Selection from './Selection.svelte'
 
@@ -20,7 +22,7 @@
 	)
 
 	let suitable_categories: CategoryDetailed[] = $derived(
-		get_suitable_categories(valid_properties, valid_non_properties),
+		category_system.search(valid_properties, valid_non_properties),
 	)
 
 	let dualized_properties: PropertyID[] | null = $derived(
@@ -32,7 +34,7 @@
 
 	let dual_suitable_categories: CategoryDetailed[] = $derived(
 		dualized_properties && dualized_non_properties
-			? get_suitable_categories(dualized_properties, dualized_non_properties)
+			? category_system.search(dualized_properties, dualized_non_properties)
 			: [],
 	)
 </script>

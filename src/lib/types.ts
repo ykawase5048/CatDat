@@ -35,12 +35,6 @@ export type Category = {
 	tags: NonEmptyArray<CategoryTag>
 }
 
-export type CategoryDetailed = Category & {
-	deduced_properties: PropertyID[]
-	deduced_non_properties: PropertyID[]
-	unknown_properties: PropertyID[]
-}
-
 export type Property = {
 	id: PropertyID
 	description: string
