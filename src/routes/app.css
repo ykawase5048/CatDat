@@ -41,6 +41,13 @@ body {
 	line-height: 1.5;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+	body,
+	html {
+		scroll-behavior: smooth;
+	}
+}
+
 p {
 	margin-block: 1rem;
 }
