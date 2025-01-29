@@ -6,8 +6,7 @@ import type { Implication } from '$lib/types'
  * - conclusions: a list of registered properties
  * - equivalent (optional boolean value for equivalences)
  */
-
-export const implications: Implication[] = [
+export const implications: readonly Readonly<Implication>[] = [
 	{
 		assumptions: ['small'],
 		conclusions: ['locally small', 'essentially small'],

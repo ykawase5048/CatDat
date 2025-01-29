@@ -5,7 +5,9 @@ import { group_items } from '$lib/utils'
 import { properties } from './properties'
 import { PROPERTY_IDs, type PropertyID } from './propertyIDs'
 
-export const properties_dictionary = group_items<PropertyID, Property>(properties)
+export const properties_dictionary = group_items<PropertyID, Property>(
+	properties as Property[],
+)
 
 export function encode_property_ID(id: PropertyID): string {
 	return id.replaceAll(' ', '_')

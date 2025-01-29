@@ -10,8 +10,7 @@ import type { Property } from '$lib/types'
  * - invariant_under_equivalences (optional boolean, set to false if applicable)
  * - nlab_link (optional)
  */
-
-export const properties: Property[] = [
+export const properties: readonly Readonly<Property>[] = [
 	{
 		id: 'small',
 		prefix: 'is',

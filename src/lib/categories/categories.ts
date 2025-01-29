@@ -14,8 +14,7 @@ import type { Category } from '$lib/types'
  * - related (optional list of related categories, referred to by their IDs)
  * - tags (required, must have only allowed tags)
  */
-
-export const categories: Category[] = [
+export const categories: readonly Readonly<Category>[] = [
 	{
 		id: 'Set',
 		name: 'The category of sets',
