@@ -1,10 +1,8 @@
 <script>
 	import ImplicationList from '$lib/components/ImplicationList.svelte'
-	import { implications } from '$lib/implications/implications'
 
-	const sorted_implications = implications.toSorted((a, b) =>
-		a.assumptions[0].localeCompare(b.assumptions[0]),
-	)
+	const { data } = $props()
+	const { sorted_implications } = data
 </script>
 
 <svelte:head>
@@ -15,7 +13,7 @@
 
 <ImplicationList
 	items={sorted_implications}
-	description="The following {implications.length} implications and equivalences are available*."
+	description="The following {sorted_implications.length} implications and equivalences are available*."
 />
 
 <p class="hint">
