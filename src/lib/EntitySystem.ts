@@ -80,4 +80,15 @@ export class EntitySystem<
 			)
 		})
 	}
+
+	get missing_basic_combinations(): { assumption: T; negation: T }[] {
+		return this.deduction_system.basic_consistent_combinations.filter(
+			(combination) =>
+				!this.entities.some(
+					(entity) =>
+						entity.all_properties.includes(combination.assumption) &&
+						entity.all_non_properties.includes(combination.negation),
+				),
+		)
+	}
 }

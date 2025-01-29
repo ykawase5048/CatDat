@@ -5,7 +5,10 @@
 		negate_prefix,
 		properties_dictionary,
 	} from '$lib/properties/properties.utils'
-	import { missing_basic_combinations } from './missing'
+
+	let { data } = $props()
+
+	const { missing_basic_combinations } = data
 </script>
 
 <svelte:head>

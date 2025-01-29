@@ -99,3 +99,56 @@ describe('search', () => {
 		expect(entity_system.search([], [], ['d'])).toHaveLength(1)
 	})
 })
+
+describe('missing_basic_combinations', () => {
+	type S = {
+		id: string
+		properties: string[]
+		non_properties: string[]
+	}
+
+	const deduction_system = new DeductionSystem<string>(new Set(['a', 'b', 'c', 'd']), [
+		{ assumptions: ['a'], conclusions: ['b'] },
+		{ assumptions: ['b'], conclusions: ['c', 'd'] },
+	])
+
+	deduction_system.init()
+
+	const entity_system = new EntitySystem<S, string>(deduction_system)
+
+	entity_system.add({
+		id: '1',
+		properties: ['a'],
+		non_properties: [],
+	})
+
+	entity_system.add({
+		id: '2',
+		properties: ['b'],
+		non_properties: ['a'],
+	})
+
+	entity_system.add({
+		id: '3',
+		properties: ['c'],
+		non_properties: ['b'],
+	})
+
+	it('should return exactly three combinations', () => {
+		expect(entity_system.missing_basic_combinations).toHaveLength(3)
+		expect(entity_system.missing_basic_combinations).toContainEqual({
+			assumption: 'c',
+			negation: 'd',
+		})
+
+		expect(entity_system.missing_basic_combinations).toContainEqual({
+			assumption: 'd',
+			negation: 'c',
+		})
+
+		expect(entity_system.missing_basic_combinations).toContainEqual({
+			assumption: 'd',
+			negation: 'b',
+		})
+	})
+})
