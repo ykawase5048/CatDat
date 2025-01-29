@@ -94,4 +94,8 @@ describe('search', () => {
 	it('should return one object with properties c, but not a, b', () => {
 		expect(entity_system.search(['c'], ['a', 'b'])).toHaveLength(1)
 	})
+
+	it('should return one object where property d is unknown', () => {
+		expect(entity_system.search([], [], ['d'])).toHaveLength(1)
+	})
 })

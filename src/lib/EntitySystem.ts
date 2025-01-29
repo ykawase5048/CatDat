@@ -52,8 +52,17 @@ export class EntitySystem<
 		return entity
 	}
 
-	public search(properties: T[], non_properties: T[]): EntityWithAllProperties<S, T>[] {
-		if (properties.length === 0 && non_properties.length === 0) return []
+	public search(
+		properties: T[],
+		non_properties: T[],
+		unknown_properties: T[] = [],
+	): EntityWithAllProperties<S, T>[] {
+		if (
+			properties.length === 0 &&
+			non_properties.length === 0 &&
+			unknown_properties.length === 0
+		)
+			return []
 
 		return this.entities.filter((entity) => {
 			const has_all_properties = properties.every((property) =>
@@ -62,7 +71,13 @@ export class EntitySystem<
 			const has_all_non_properties = non_properties.every((property) =>
 				entity.all_non_properties.includes(property),
 			)
-			return has_all_properties && has_all_non_properties
+			const has_all_unknown_properties = unknown_properties.every((property) =>
+				entity.unknown_properties.includes(property),
+			)
+
+			return (
+				has_all_properties && has_all_non_properties && has_all_unknown_properties
+			)
 		})
 	}
 }
