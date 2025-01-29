@@ -48,7 +48,7 @@ export function negate_prefix(prefix: Prefix) {
 
 export const property_deduction_system = new DeductionSystemWithDuals<PropertyID>(
 	new Set(PROPERTY_IDs),
-	implications,
+	[...implications],
 	get_dual_property,
 )
 
