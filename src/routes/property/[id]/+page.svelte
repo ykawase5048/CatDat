@@ -1,24 +1,15 @@
 <script lang="ts">
 	import CategoryList from '$lib/components/CategoryList.svelte'
 	import ImplicationList from '$lib/components/ImplicationList.svelte'
-	import {
-		get_property_url,
-		implications_with_duals,
-	} from '$lib/properties/properties.utils'
+	import { get_property_url } from '$lib/properties/properties.utils'
 
 	let { data } = $props()
+
 	let property = $derived(data.property)
 	let categories_with_this_property = $derived(data.categories_with_this_property)
 	let categories_without_this_property = $derived(data.categories_without_this_property)
 	let unknown_categories = $derived(data.unknown_categories)
-
-	let relevant_implications = $derived(
-		implications_with_duals.filter(
-			(implication) =>
-				implication.conclusions.includes(property.id) ||
-				implication.assumptions.includes(property.id),
-		),
-	)
+	let relevant_implications = $derived(data.relevant_implications)
 </script>
 
 <svelte:head>
