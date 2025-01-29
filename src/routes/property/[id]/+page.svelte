@@ -61,7 +61,7 @@
 
 <h3>Relevant implications</h3>
 
-<ImplicationList items={relevant_implications} />
+<ImplicationList items={relevant_implications} highlighted={property.id} />
 
 <h3>Examples</h3>
 
