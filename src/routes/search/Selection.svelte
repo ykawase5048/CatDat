@@ -43,10 +43,10 @@
 	</div>
 
 	<div class="controls">
-		<button class="button" onclick={add}>
+		<button class="button" onclick={add} aria-label="add property">
 			<Fa icon={faPlus} />
 		</button>
-		<button class="button" onclick={remove}>
+		<button class="button" onclick={remove} aria-label="remove property">
 			<Fa icon={faMinus} />
 		</button>
 	</div>
