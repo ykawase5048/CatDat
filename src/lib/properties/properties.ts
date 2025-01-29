@@ -475,7 +475,7 @@ export const properties: Property[] = [
 		id: 'disjoint finite coproducts',
 		prefix: 'has',
 		description:
-			'A category has <i>disjoint finite coproducts</i> if it has finite coproducts, the coproduct inclusions $A \\to A+B$ are monomorphisms, and for every pair of objects $A,B$ the meet of the subobjects $A \\to A + B$ and $B \\to A + B$ is given by $! : 0 \\to A + B$, where $0$ denotes the initial object. Notice that we do not require the existence of pullbacks as Carboni-Lack-Walters do in their <i>Introduction to extensive and distributive categories</i>.',
+			'A category has <i>disjoint finite coproducts</i> if it has finite coproducts, for every pair of objects $A,B$ the coproduct inclusions $A \\rightarrow A+B \\leftarrow B$ are monomorphisms, and the pullback $A \\times_{A + B} B$ exists and is given by the initial object $0$.',
 		related: ['finite coproducts', 'disjoint coproducts'],
 		nlab_link: 'https://ncatlab.org/nlab/show/disjoint+coproduct',
 	},
@@ -483,7 +483,7 @@ export const properties: Property[] = [
 		id: 'disjoint coproducts',
 		prefix: 'has',
 		description:
-			'A category has <i>disjoint coproducts</i> if it has coproducts, the coproduct inclusions $A_i \\to \\coprod_{i \\in I} A_i$ are monomorphisms, and the meet of the subobjects $A_i \\to \\coprod_{i \\in I} A_i$ and $A_j \\to \\coprod_{i \\in I} A_i$ for $i \\neq j$ is given by $! : 0 \\to \\coprod_{i \\in I} A_i$, where $0$ denotes the initial object. Notice that we do not require the existence of pullbacks as Carboni-Lack-Walters do in their <i>Introduction to extensive and distributive categories</i>.',
+			'A category has <i>disjoint coproducts</i> if it has coproducts, the coproduct inclusions $A_i \\to \\coprod_{i \\in I} A_i$ are monomorphisms, and the pullback of the inclusions $A_i \\to \\coprod_{i \\in I} A_i$ and $A_j \\to \\coprod_{i \\in I} A_i$ for $i \\neq j$ exists and is given by the initial object $0$.',
 		related: ['coproducts', 'disjoint finite coproducts'],
 		nlab_link: 'https://ncatlab.org/nlab/show/disjoint+coproduct',
 	},
