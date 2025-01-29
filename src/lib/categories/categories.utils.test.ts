@@ -1,13 +1,5 @@
 import { properties } from '$lib/properties/properties'
-import { categories_detailed, categories_dictionary } from './categories.utils'
-
-describe('categories dictionary', () => {
-	it('should have consistent IDs', () => {
-		for (const [id, category] of Object.entries(categories_dictionary)) {
-			expect(id).toBe(category.id)
-		}
-	})
-})
+import { categories_detailed } from './categories.utils'
 
 describe('categories detailed', () => {
 	for (const category of categories_detailed) {

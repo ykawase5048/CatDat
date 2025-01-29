@@ -35,6 +35,8 @@ export type Category = {
 	tags: NonEmptyArray<CategoryTag>
 }
 
+export type RelatedCategory = { id: CategoryID; name: string }
+
 export type Property = {
 	id: PropertyID
 	description: string

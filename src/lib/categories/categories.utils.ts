@@ -6,8 +6,6 @@ import { type PropertyID } from '$lib/properties/propertyIDs'
 import { property_deduction_system } from '$lib/properties/properties.utils'
 import { EntitySystem, type EntityWithAllProperties } from '$lib/EntitySystem'
 
-export const categories_dictionary = group_items<CategoryID, Category>(categories)
-
 export type CategoryDetailed = EntityWithAllProperties<Category, PropertyID>
 
 export const category_system = new EntitySystem<Category, PropertyID>(

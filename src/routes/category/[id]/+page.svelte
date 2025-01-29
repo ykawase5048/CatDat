@@ -1,14 +1,17 @@
 <script lang="ts">
-	import {
-		categories_dictionary,
-		type CategoryDetailed,
-	} from '$lib/categories/categories.utils'
+	import { type CategoryDetailed } from '$lib/categories/categories.utils'
 	import { get_category_detail_level } from '../../settings/+page.svelte'
 	import PropertyList from '$lib/components/PropertyList.svelte'
 	import Tags from '$lib/components/Tags.svelte'
+	import type { RelatedCategory } from '$lib/types'
 
 	let { data } = $props()
+
 	let category: CategoryDetailed = $derived(data.category)
+
+	let related_categories: RelatedCategory[] | undefined = $derived(
+		data.related_categories,
+	)
 
 	const category_detail_level = get_category_detail_level()
 </script>
@@ -42,12 +45,12 @@
 	<p>{@html category.description}</p>
 {/if}
 
-{#if category.related}
+{#if related_categories}
 	<p>
-		Related categories: {#each category.related as related_category, i}
-			<a href={`/category/${related_category}`}>
-				{categories_dictionary[related_category].name}
-			</a>{#if i < category.related.length - 1}
+		Related categories: {#each related_categories as { id, name }, i}
+			<a href={`/category/${id}`}>
+				{name}
+			</a>{#if i < related_categories.length - 1}
 				,&nbsp;
 			{/if}
 		{/each}
