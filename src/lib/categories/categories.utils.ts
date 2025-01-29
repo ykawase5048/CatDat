@@ -23,6 +23,3 @@ export const categories_detailed: CategoryDetailed[] = category_system.entities
 export const categories_dictionary_detailed = group_items<CategoryID, CategoryDetailed>(
 	categories_detailed,
 )
-export const categories_with_unknown_properties = categories_detailed.filter(
-	(category) => category.unknown_properties.length > 0,
-)

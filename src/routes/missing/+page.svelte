@@ -1,14 +1,13 @@
 <script>
-	import { categories_with_unknown_properties } from '$lib/categories/categories.utils'
 	import CategoryList from '$lib/components/CategoryList.svelte'
 	import {
 		negate_prefix,
 		properties_dictionary,
 	} from '$lib/properties/properties.utils'
 
-	let { data } = $props()
+	const { data } = $props()
 
-	const { missing_basic_combinations } = data
+	const { missing_basic_combinations, categories_with_unknown_properties } = data
 </script>
 
 <svelte:head>

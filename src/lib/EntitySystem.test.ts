@@ -120,4 +120,13 @@ describe('EntitySystem', () => {
 			})
 		})
 	})
+
+	describe('entities_with_unknown_properties', () => {
+		it('should find one entity', () => {
+			const entities = entity_system.entities_with_unknown_properties
+			expect(entities).toHaveLength(1)
+			expect(entities[0].id).toBe('3')
+			expect(entities[0].unknown_properties.length).toBeGreaterThan(0)
+		})
+	})
 })

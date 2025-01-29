@@ -91,4 +91,8 @@ export class EntitySystem<
 				),
 		)
 	}
+
+	get entities_with_unknown_properties() {
+		return this.entities.filter((entity) => entity.unknown_properties.length > 0)
+	}
 }
