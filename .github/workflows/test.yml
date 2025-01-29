@@ -28,10 +28,14 @@ jobs:
             - name: Install dependencies
               run: pnpm install
 
+            - name: Sync SvelteKit
+              run: pnpm svelte-kit sync
+
             - name: Build the project
               run: pnpm build
 
             - name: Run tests
               run: pnpm test
+
             - name: Run svelte checker
               run: pnpm check
