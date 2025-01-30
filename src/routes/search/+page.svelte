@@ -1,42 +1,42 @@
 <script lang="ts">
-	import {
-		category_system,
-		type CategoryDetailed,
-	} from '$lib/categories/categories.utils'
+	import { goto } from '$app/navigation'
+
 	import CategoryList from '$lib/components/CategoryList.svelte'
 	import { properties } from '$lib/properties/properties'
-	import { get_dual_properties } from '$lib/properties/properties.utils'
-	import { is_valid_property, type PropertyID } from '$lib/properties/propertyIDs'
+	import { encode_property_ID } from '$lib/properties/properties.utils'
+	import { is_valid_property } from '$lib/properties/propertyIDs'
+	import { separator } from './search.config'
 
 	import Selection from './Selection.svelte'
 
-	let selected_properties = $state<string[]>([''])
-	let selected_non_properties = $state<string[]>([''])
+	let { data } = $props()
 
-	const valid_properties: PropertyID[] = $derived(
-		selected_properties.filter(is_valid_property),
-	)
+	let selected_properties = $state<string[]>(data.properties ?? [''])
+	let selected_non_properties = $state<string[]>(data.non_properties ?? [''])
 
-	const valid_non_properties: PropertyID[] = $derived(
-		selected_non_properties.filter(is_valid_property),
-	)
+	function request_search_results() {
+		const properties_query = selected_properties
+			.filter(is_valid_property)
+			.map(encode_property_ID)
+			.join(separator)
 
-	let suitable_categories: CategoryDetailed[] = $derived(
-		category_system.search(valid_properties, valid_non_properties),
-	)
+		const non_properties_query = selected_non_properties
+			.filter(is_valid_property)
+			.map(encode_property_ID)
+			.join(separator)
 
-	let dualized_properties: PropertyID[] | null = $derived(
-		get_dual_properties(valid_properties),
-	)
-	let dualized_non_properties: PropertyID[] | null = $derived(
-		get_dual_properties(valid_non_properties),
-	)
+		const url = new URL('/search', window.location.origin)
 
-	let dual_suitable_categories: CategoryDetailed[] = $derived(
-		dualized_properties && dualized_non_properties
-			? category_system.search(dualized_properties, dualized_non_properties)
-			: [],
-	)
+		if (properties_query) {
+			url.searchParams.set('properties', properties_query)
+		}
+
+		if (non_properties_query) {
+			url.searchParams.set('non_properties', non_properties_query)
+		}
+
+		goto(url, { invalidateAll: true })
+	}
 </script>
 
 <svelte:head>
@@ -51,39 +51,51 @@
 	look for categories that are finitely complete and pointed but not complete.
 </p>
 
-<p>Looking for categories with these properties:</p>
+<div class="form">
+	<p>Looking for categories with these properties:</p>
 
-<Selection
-	aria_label="selection of properties"
-	bind:values={selected_properties}
-	name="property"
-/>
+	<Selection
+		aria_label="selection of properties"
+		bind:values={selected_properties}
+		name="property"
+	/>
 
-<p>... and <i>not</i> with these properties:</p>
+	<p>... and <i>not</i> with these properties:</p>
 
-<Selection
-	aria_label="selection of non-properties"
-	bind:values={selected_non_properties}
-	name="non-property"
-/>
+	<Selection
+		aria_label="selection of non-properties"
+		bind:values={selected_non_properties}
+		name="non-property"
+	/>
 
-<datalist id="property-list">
-	{#each properties as property}
-		<option value={property.id}>{property.id}</option>
-	{/each}
-</datalist>
+	<datalist id="property-list">
+		{#each properties as property}
+			<option value={property.id}>{property.id}</option>
+		{/each}
+	</datalist>
 
-<h2>Results</h2>
+	<button class="button" onclick={request_search_results}>Search</button>
+</div>
 
-<CategoryList items={suitable_categories} />
+{#if data.found_categories}
+	<h2>Results</h2>
+	<CategoryList items={data.found_categories} />
+{/if}
 
-{#if dual_suitable_categories.length}
+{#if data.dual_found_categories?.length}
 	<h2>Results for dual search</h2>
 
 	<p class="hint">
-		These categories satisfy the dual properties ({dualized_properties?.join(', ')})
-		resp. non-properties ({dualized_non_properties?.join(', ')}).
+		These categories satisfy the dual properties ({data.dualized_properties?.join(
+			', ',
+		)}) resp. non-properties ({data.dualized_non_properties?.join(', ')}).
 	</p>
 
-	<CategoryList items={dual_suitable_categories} />
+	<CategoryList items={data.dual_found_categories} />
 {/if}
+
+<style>
+	.form {
+		margin-bottom: 2rem;
+	}
+</style>
