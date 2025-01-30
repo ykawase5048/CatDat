@@ -799,6 +799,7 @@ export const categories: readonly Readonly<Category>[] = [
 			'cogenerator',
 			'left cancellative',
 			'well-copowered', // https://math.stackexchange.com/questions/5029605
+			'equalizers', // https://math.stackexchange.com/questions/5029668
 		],
 		non_properties: [
 			'locally small',
