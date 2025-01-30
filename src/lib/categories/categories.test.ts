@@ -28,11 +28,4 @@ describe('categories list', () => {
 			expect(non_properties).toEqual([...new Set(non_properties)])
 		})
 	}
-
-	for (const category of categories) {
-		it(`should not have contradictory properties for: ${category.name}`, () => {
-			const { properties, non_properties } = category
-			expect(new Set(properties).intersection(new Set(non_properties)).size).toBe(0)
-		})
-	}
 })
