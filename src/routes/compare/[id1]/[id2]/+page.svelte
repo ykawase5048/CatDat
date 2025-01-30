@@ -71,27 +71,36 @@
 <style>
 	table {
 		border-spacing: 0;
+		margin-inline: auto;
 	}
 
-	th {
+	th:first-child {
 		text-align: left;
 	}
 
+	th:not(:first-child) {
+		text-align: center;
+	}
+
+	td,
+	th {
+		padding-inline: 0.5rem;
+	}
+
 	td {
-		padding: 0.125rem 0.4rem;
+		padding-block: 0.125rem;
 	}
 
 	th {
-		padding: 0.4rem;
+		padding-block: 0.5rem;
 	}
 
 	td:first-child a {
 		text-decoration: none;
 	}
 
-	td:nth-child(2),
-	td:nth-child(3) {
-		width: 15%;
+	td:not(:first-child) {
+		text-align: center;
 	}
 
 	td.true {
