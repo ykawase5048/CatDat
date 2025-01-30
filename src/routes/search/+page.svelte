@@ -11,8 +11,12 @@
 
 	let { data } = $props()
 
-	let selected_properties = $state<string[]>(data.properties ?? [''])
-	let selected_non_properties = $state<string[]>(data.non_properties ?? [''])
+	let selected_properties = $state<string[]>(
+		data.properties.length ? data.properties : [''],
+	)
+	let selected_non_properties = $state<string[]>(
+		data.non_properties.length ? data.non_properties : [''],
+	)
 
 	function request_search_results() {
 		const properties_query = selected_properties
