@@ -2,6 +2,7 @@ import type { CategoryID } from '$lib/categories/categoryIDs'
 import type { Prefix } from '$lib/properties/properties.utils'
 import type { PropertyID } from '$lib/properties/propertyIDs'
 import type { NonEmptyArray } from '$lib/commons/utils'
+import type { EntityWithAllProperties } from '$lib/logic/EntitySystem'
 
 type CategoryTag =
 	| 'basic'
@@ -34,6 +35,13 @@ export type Category = {
 	related?: CategoryID[]
 	tags: NonEmptyArray<CategoryTag>
 }
+
+export type CategoryImproved = Omit<Category, 'properties' | 'non_properties'> & {
+	properties: Set<PropertyID>
+	non_properties: Set<PropertyID>
+}
+
+export type CategoryDetailed = EntityWithAllProperties<CategoryImproved, PropertyID>
 
 export type RelatedCategory = { id: CategoryID; name: string }
 

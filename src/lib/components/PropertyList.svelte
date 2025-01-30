@@ -7,7 +7,7 @@
 	import type { PropertyID } from '$lib/properties/propertyIDs'
 
 	type Props = {
-		items: PropertyID[]
+		items: PropertyID[] | Set<PropertyID>
 		description?: string
 		with_prefix?: boolean
 		negated?: boolean
@@ -15,8 +15,10 @@
 
 	let { items, description, with_prefix = true, negated = false }: Props = $props()
 
+	let item_list = items instanceof Set ? Array.from(items) : items
+
 	let sorted_properties = $derived(
-		items.toSorted((a, b) => a.toLowerCase().localeCompare(b.toLowerCase())),
+		item_list.toSorted((a, b) => a.toLowerCase().localeCompare(b.toLowerCase())),
 	)
 </script>
 
@@ -26,7 +28,7 @@
 	</p>
 {/if}
 
-{#if items.length}
+{#if item_list.length}
 	<ul>
 		{#each sorted_properties as property}
 			<li>

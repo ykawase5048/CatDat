@@ -13,7 +13,7 @@ describe('categories detailed', () => {
 	for (const property of properties) {
 		it(`should have at least one counterexample for: ${property.id}`, () => {
 			const counterexample = categories_detailed.find((category) =>
-				category.all_non_properties.includes(property.id),
+				category.all_non_properties.has(property.id),
 			)
 			expect(counterexample).toBeDefined()
 		})

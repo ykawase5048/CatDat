@@ -1,9 +1,8 @@
 <script lang="ts">
-	import { type CategoryDetailed } from '$lib/categories/categories.utils'
+	import type { CategoryDetailed, RelatedCategory } from '$lib/commons/types'
 	import PropertyList from '$lib/components/PropertyList.svelte'
 	import Tags from '$lib/components/Tags.svelte'
 	import { category_detail_level } from '$lib/settings/detail_level.svelte'
-	import type { RelatedCategory } from '$lib/commons/types'
 
 	let { data } = $props()
 
@@ -102,7 +101,7 @@
 <PropertyList
 	items={category.unknown_properties}
 	negated={false}
-	description={category.unknown_properties.length
+	description={category.unknown_properties.size
 		? "For these properties the database currently doesn't have an answer if they are satisfied or not. Please help to complete the data!"
 		: undefined}
 />

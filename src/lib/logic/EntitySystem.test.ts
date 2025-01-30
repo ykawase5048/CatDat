@@ -4,8 +4,8 @@ import { EntitySystem } from './EntitySystem'
 describe('EntitySystem', () => {
 	type S = {
 		id: string
-		properties: string[]
-		non_properties: string[]
+		properties: Set<string>
+		non_properties: Set<string>
 	}
 
 	const deduction_system = new DeductionSystem<string>(new Set(['a', 'b', 'c', 'd']), [
@@ -19,20 +19,20 @@ describe('EntitySystem', () => {
 
 	const entity_1 = entity_system.add({
 		id: '1',
-		properties: ['a'],
-		non_properties: [],
+		properties: new Set(['a']),
+		non_properties: new Set([]),
 	})
 
 	entity_system.add({
 		id: '2',
-		properties: ['b'],
-		non_properties: ['a'],
+		properties: new Set(['b']),
+		non_properties: new Set(['a']),
 	})
 
 	const entity_3 = entity_system.add({
 		id: '3',
-		properties: ['c'],
-		non_properties: ['b'],
+		properties: new Set(['c']),
+		non_properties: new Set(['b']),
 	})
 
 	describe('add', () => {
@@ -44,31 +44,30 @@ describe('EntitySystem', () => {
 			expect(entity_1).toBeDefined()
 			if (entity_1) {
 				expect(entity_1).toEqual({
-					all_non_properties: [],
-					all_properties: ['a', 'b', 'c', 'd'],
-					deduced_non_properties: [],
-					deduced_properties: ['b', 'c', 'd'],
 					id: '1',
-					non_properties: [],
-					properties: ['a'],
-					unknown_properties: [],
+					all_non_properties: new Set([]),
+					all_properties: new Set(['a', 'b', 'c', 'd']),
+					deduced_non_properties: new Set([]),
+					deduced_properties: new Set(['b', 'c', 'd']),
+					non_properties: new Set([]),
+					properties: new Set(['a']),
+					unknown_properties: new Set([]),
 				})
 			}
 		})
 
 		it('should add all the deduced properties and non-properties (3)', () => {
-			const entity_3 = entity_system.entities.find((e) => e.id === '3')
 			expect(entity_3).toBeDefined()
 			if (entity_3) {
 				expect(entity_3).toEqual({
-					all_non_properties: ['a', 'b'],
-					all_properties: ['c'],
-					deduced_non_properties: ['a'],
-					deduced_properties: [],
 					id: '3',
-					non_properties: ['b'],
-					properties: ['c'],
-					unknown_properties: ['d'],
+					all_non_properties: new Set(['a', 'b']),
+					all_properties: new Set(['c']),
+					deduced_non_properties: new Set(['a']),
+					deduced_properties: new Set([]),
+					non_properties: new Set(['b']),
+					properties: new Set(['c']),
+					unknown_properties: new Set(['d']),
 				})
 			}
 		})
@@ -125,14 +124,14 @@ describe('EntitySystem', () => {
 			const entities = entity_system.entities_with_unknown_properties
 			expect(entities).toHaveLength(1)
 			expect(entities[0].id).toBe('3')
-			expect(entities[0].unknown_properties.length).toBeGreaterThan(0)
+			expect(entities[0].unknown_properties.size).toBeGreaterThan(0)
 		})
 	})
 
 	describe('get_comparison', () => {
 		it('return a table with true/false/null for the corresponding properties', () => {
-			expect(entity_1.all_properties).toEqual(['a', 'b', 'c', 'd'])
-			expect(entity_3.all_properties).toEqual(['c'])
+			expect(entity_1.all_properties).toEqual(new Set(['a', 'b', 'c', 'd']))
+			expect(entity_3.all_properties).toEqual(new Set(['c']))
 			const comparison_result = [
 				['a', true, false],
 				['b', true, false],
@@ -146,14 +145,14 @@ describe('EntitySystem', () => {
 
 		it('returns null for entities that are not part of the system', () => {
 			const entity_4 = {
-				all_non_properties: [],
-				all_properties: [],
-				deduced_non_properties: [],
-				deduced_properties: [],
 				id: '4',
-				non_properties: [],
-				properties: [],
-				unknown_properties: [],
+				all_non_properties: new Set([]),
+				all_properties: new Set([]),
+				deduced_non_properties: new Set([]),
+				deduced_properties: new Set([]),
+				non_properties: new Set([]),
+				properties: new Set([]),
+				unknown_properties: new Set([]),
 			}
 			expect(entity_system.get_comparison(entity_1, entity_4)).toEqual(null)
 		})

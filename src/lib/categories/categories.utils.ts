@@ -1,16 +1,28 @@
 import type { CategoryID } from './categoryIDs'
-import type { Category } from '$lib/commons/types'
-import { group_items } from '$lib/commons/utils'
+import type { Category, CategoryDetailed, CategoryImproved } from '$lib/commons/types'
+import type { PropertyID } from '$lib/properties/propertyIDs'
+
 import { categories } from './categories'
-import { type PropertyID } from '$lib/properties/propertyIDs'
+import { group_items } from '$lib/commons/utils'
 import { property_deduction_system } from '$lib/properties/properties.utils'
-import { EntitySystem, type EntityWithAllProperties } from '$lib/logic/EntitySystem'
+import { EntitySystem } from '$lib/logic/EntitySystem'
 
-export type CategoryDetailed = EntityWithAllProperties<Category, PropertyID>
+/**
+ * Converts properties and non-properties to sets.
+ * This is necessary for the EntitySystem to work.
+ */
+function make_sets(category: Category): CategoryImproved {
+	const { properties, non_properties, ...rest } = category
+	return {
+		...rest,
+		properties: new Set<PropertyID>(properties),
+		non_properties: new Set<PropertyID>(non_properties),
+	}
+}
 
-export const category_system = new EntitySystem<Category, PropertyID>(
+export const category_system = new EntitySystem<CategoryImproved, PropertyID>(
 	property_deduction_system,
-	categories as Category[],
+	categories.map(make_sets),
 )
 
 export const categories_detailed: CategoryDetailed[] = category_system.entities

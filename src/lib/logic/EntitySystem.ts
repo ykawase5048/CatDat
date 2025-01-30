@@ -1,18 +1,18 @@
 import { DeductionSystem } from './DeductionSystem'
 
 export type EntityWithAllProperties<
-	S extends { properties: T[]; non_properties: T[] },
+	S extends { properties: Set<T>; non_properties: Set<T> },
 	T extends string,
 > = S & {
-	deduced_properties: T[]
-	deduced_non_properties: T[]
-	unknown_properties: T[]
-	all_properties: T[]
-	all_non_properties: T[]
+	deduced_properties: Set<T>
+	deduced_non_properties: Set<T>
+	unknown_properties: Set<T>
+	all_properties: Set<T>
+	all_non_properties: Set<T>
 }
 
 export class EntitySystem<
-	S extends { properties: T[]; non_properties: T[] },
+	S extends { properties: Set<T>; non_properties: Set<T> },
 	T extends string,
 > {
 	public readonly entities: EntityWithAllProperties<S, T>[] = []
@@ -44,11 +44,11 @@ export class EntitySystem<
 
 		const entity = {
 			...data,
-			deduced_properties: Array.from(deduced_properties).toSorted(),
-			deduced_non_properties: Array.from(deduced_non_properties).toSorted(),
-			unknown_properties: Array.from(unknown_properties).toSorted(),
-			all_properties: Array.from(all_properties).toSorted(),
-			all_non_properties: Array.from(all_non_properties).toSorted(),
+			deduced_properties,
+			deduced_non_properties,
+			unknown_properties,
+			all_properties,
+			all_non_properties,
 		}
 
 		this.entities.push(entity)
@@ -65,18 +65,20 @@ export class EntitySystem<
 			properties.length === 0 &&
 			non_properties.length === 0 &&
 			unknown_properties.length === 0
-		)
+		) {
 			return []
+		}
 
 		return this.entities.filter((entity) => {
-			const has_all_properties = properties.every((property) =>
-				entity.all_properties.includes(property),
+			const has_all_properties = new Set(properties).isSubsetOf(
+				entity.all_properties,
 			)
-			const has_all_non_properties = non_properties.every((property) =>
-				entity.all_non_properties.includes(property),
+			const has_all_non_properties = new Set(non_properties).isSubsetOf(
+				entity.all_non_properties,
 			)
-			const has_all_unknown_properties = unknown_properties.every((property) =>
-				entity.unknown_properties.includes(property),
+
+			const has_all_unknown_properties = new Set(unknown_properties).isSubsetOf(
+				entity.unknown_properties,
 			)
 
 			return (
@@ -90,22 +92,22 @@ export class EntitySystem<
 			(combination) =>
 				!this.entities.some(
 					(entity) =>
-						entity.all_properties.includes(combination.assumption) &&
-						entity.all_non_properties.includes(combination.negation),
+						entity.all_properties.has(combination.assumption) &&
+						entity.all_non_properties.has(combination.negation),
 				),
 		)
 	}
 
 	get entities_with_unknown_properties() {
-		return this.entities.filter((entity) => entity.unknown_properties.length > 0)
+		return this.entities.filter((entity) => entity.unknown_properties.size > 0)
 	}
 
 	private get_comparison_value(
 		entity: EntityWithAllProperties<S, T>,
 		property: T,
 	): boolean | null {
-		if (entity.unknown_properties.includes(property)) return null
-		return entity.all_properties.includes(property)
+		if (entity.unknown_properties.has(property)) return null
+		return entity.all_properties.has(property)
 	}
 
 	get_comparison(
