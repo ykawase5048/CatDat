@@ -112,7 +112,7 @@ export class EntitySystem<
 			this.entities.includes(entity_1) && this.entities.includes(entity_2)
 		if (!is_valid) return null
 
-		return Array.from(this.deduction_system.properties).map((property) => [
+		return this.deduction_system.sorted_properties.map((property) => [
 			property,
 			this.get_comparison_value(entity_1, property),
 			this.get_comparison_value(entity_2, property),

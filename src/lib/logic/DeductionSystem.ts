@@ -27,6 +27,12 @@ export class DeductionSystem<T extends string> {
 		this.initialized = true
 	}
 
+	public get sorted_properties() {
+		return Array.from(this.properties).toSorted((a, b) =>
+			a.toLowerCase().localeCompare(b.toLowerCase()),
+		)
+	}
+
 	private check_rules() {
 		for (const rule of this.rules) {
 			const is_ok =
