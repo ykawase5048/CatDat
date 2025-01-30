@@ -41,11 +41,17 @@
 	</thead>
 	<tbody>
 		{#each comparison_result as [property, value_1, value_2]}
-			<tr>
+			<tr
+				class:highlight={value_1 !== null &&
+					value_2 !== null &&
+					value_1 !== value_2}
+			>
 				<td>{property}</td>
+
 				<td class={JSON.stringify(value_1)}>
 					<Fa icon={icon_config[JSON.stringify(value_1)]} />
 				</td>
+
 				<td class={JSON.stringify(value_2)}>
 					<Fa icon={icon_config[JSON.stringify(value_2)]} />
 				</td>
@@ -61,7 +67,14 @@
 
 	th {
 		text-align: left;
-		padding-block: 0.5rem;
+	}
+
+	td {
+		padding: 0.125rem 0.4rem;
+	}
+
+	th {
+		padding: 0.4rem;
 	}
 
 	td:nth-child(2),
@@ -79,5 +92,9 @@
 
 	td.null {
 		color: var(--secondary-text-color);
+	}
+
+	tr.highlight {
+		background-color: var(--secondary-bg-color);
 	}
 </style>
