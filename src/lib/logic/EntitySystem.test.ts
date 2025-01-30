@@ -17,19 +17,19 @@ describe('EntitySystem', () => {
 
 	const entity_system = new EntitySystem<S, string>(deduction_system)
 
-	entity_system.add({
+	const entity_1 = entity_system.add({
 		id: '1',
 		properties: ['a'],
 		non_properties: [],
 	})
 
-	entity_system.add({
+	const entity_2 = entity_system.add({
 		id: '2',
 		properties: ['b'],
 		non_properties: ['a'],
 	})
 
-	entity_system.add({
+	const entity_3 = entity_system.add({
 		id: '3',
 		properties: ['c'],
 		non_properties: ['b'],
@@ -41,7 +41,6 @@ describe('EntitySystem', () => {
 		})
 
 		it('should add all the deduced properties and non-properties (1)', () => {
-			const entity_1 = entity_system.entities.find((e) => e.id === '1')
 			expect(entity_1).toBeDefined()
 			if (entity_1) {
 				expect(entity_1).toEqual({
@@ -127,6 +126,36 @@ describe('EntitySystem', () => {
 			expect(entities).toHaveLength(1)
 			expect(entities[0].id).toBe('3')
 			expect(entities[0].unknown_properties.length).toBeGreaterThan(0)
+		})
+	})
+
+	describe('get_comparison', () => {
+		it('return a table with true/false/null for the corresponding properties', () => {
+			expect(entity_1.all_properties).toEqual(['a', 'b', 'c', 'd'])
+			expect(entity_3.all_properties).toEqual(['c'])
+			const comparison_result = [
+				['a', true, false],
+				['b', true, false],
+				['c', true, true],
+				['d', true, null],
+			]
+			expect(entity_system.get_comparison(entity_1, entity_3)).toEqual(
+				comparison_result,
+			)
+		})
+
+		it('returns null for entities that are not part of the system', () => {
+			const entity_4 = {
+				all_non_properties: [],
+				all_properties: [],
+				deduced_non_properties: [],
+				deduced_properties: [],
+				id: '4',
+				non_properties: [],
+				properties: [],
+				unknown_properties: [],
+			}
+			expect(entity_system.get_comparison(entity_1, entity_4)).toEqual(null)
 		})
 	})
 })

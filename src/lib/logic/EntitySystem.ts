@@ -95,4 +95,27 @@ export class EntitySystem<
 	get entities_with_unknown_properties() {
 		return this.entities.filter((entity) => entity.unknown_properties.length > 0)
 	}
+
+	private get_comparison_value(
+		entity: EntityWithAllProperties<S, T>,
+		property: T,
+	): boolean | null {
+		if (entity.unknown_properties.includes(property)) return null
+		return entity.all_properties.includes(property)
+	}
+
+	get_comparison(
+		entity_1: EntityWithAllProperties<S, T>,
+		entity_2: EntityWithAllProperties<S, T>,
+	): null | [T, boolean | null, boolean | null][] {
+		const is_valid =
+			this.entities.includes(entity_1) && this.entities.includes(entity_2)
+		if (!is_valid) return null
+
+		return Array.from(this.deduction_system.properties).map((property) => [
+			property,
+			this.get_comparison_value(entity_1, property),
+			this.get_comparison_value(entity_2, property),
+		])
+	}
 }
