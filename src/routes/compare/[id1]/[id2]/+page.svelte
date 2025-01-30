@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { get_property_url } from '$lib/properties/properties.utils.js'
 	import {
 		faCheck,
 		faQuestion,
@@ -46,7 +47,9 @@
 					value_2 !== null &&
 					value_1 !== value_2}
 			>
-				<td>{property}</td>
+				<td>
+					<a href={get_property_url(property)}>{property}</a>
+				</td>
 
 				<td class={JSON.stringify(value_1)}>
 					<Fa icon={icon_config[JSON.stringify(value_1)]} />
@@ -75,6 +78,10 @@
 
 	th {
 		padding: 0.4rem;
+	}
+
+	td:first-child a {
+		text-decoration: none;
 	}
 
 	td:nth-child(2),
