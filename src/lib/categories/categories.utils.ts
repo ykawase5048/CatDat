@@ -10,11 +10,8 @@ export type CategoryDetailed = EntityWithAllProperties<Category, PropertyID>
 
 export const category_system = new EntitySystem<Category, PropertyID>(
 	property_deduction_system,
+	categories as Category[],
 )
-
-for (const category of categories) {
-	category_system.add(category)
-}
 
 export const categories_detailed: CategoryDetailed[] = category_system.entities
 

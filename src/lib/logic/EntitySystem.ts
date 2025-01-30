@@ -18,8 +18,12 @@ export class EntitySystem<
 	public readonly entities: EntityWithAllProperties<S, T>[] = []
 	private deduction_system: DeductionSystem<T>
 
-	constructor(deduction_system: DeductionSystem<T>) {
+	constructor(deduction_system: DeductionSystem<T>, entities: S[] = []) {
 		this.deduction_system = deduction_system
+
+		for (const entity of entities) {
+			this.add(entity)
+		}
 	}
 
 	public add(data: S): EntityWithAllProperties<S, T> {

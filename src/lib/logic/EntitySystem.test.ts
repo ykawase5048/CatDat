@@ -23,7 +23,7 @@ describe('EntitySystem', () => {
 		non_properties: [],
 	})
 
-	const entity_2 = entity_system.add({
+	entity_system.add({
 		id: '2',
 		properties: ['b'],
 		non_properties: ['a'],
