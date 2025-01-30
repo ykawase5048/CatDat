@@ -138,7 +138,7 @@ describe('EntitySystem', () => {
 				['c', true, true],
 				['d', true, null],
 			]
-			expect(entity_system.get_comparison(entity_1, entity_3)).toEqual(
+			expect(entity_system.get_comparison([entity_1, entity_3])).toEqual(
 				comparison_result,
 			)
 		})
@@ -154,7 +154,7 @@ describe('EntitySystem', () => {
 				properties: new Set([]),
 				unknown_properties: new Set([]),
 			}
-			expect(entity_system.get_comparison(entity_1, entity_4)).toEqual(null)
+			expect(entity_system.get_comparison([entity_1, entity_4])).toEqual(null)
 		})
 	})
 })

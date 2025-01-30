@@ -111,17 +111,14 @@ export class EntitySystem<
 	}
 
 	get_comparison(
-		entity_1: EntityWithAllProperties<S, T>,
-		entity_2: EntityWithAllProperties<S, T>,
-	): null | [T, boolean | null, boolean | null][] {
-		const is_valid =
-			this.entities.includes(entity_1) && this.entities.includes(entity_2)
+		entities: EntityWithAllProperties<S, T>[],
+	): null | [T, ...(boolean | null)[]][] {
+		const is_valid = entities.every((entity) => this.entities.includes(entity))
 		if (!is_valid) return null
 
 		return this.deduction_system.sorted_properties.map((property) => [
 			property,
-			this.get_comparison_value(entity_1, property),
-			this.get_comparison_value(entity_2, property),
+			...entities.map((entity) => this.get_comparison_value(entity, property)),
 		])
 	}
 }

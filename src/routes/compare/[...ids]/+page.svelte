@@ -9,7 +9,7 @@
 	import Fa from 'svelte-fa'
 
 	let { data } = $props()
-	let { category_1, category_2, comparison_result } = data
+	let { compared_categories, comparison_result } = data
 
 	const icon_config: Record<string, IconDefinition> = {
 		true: faCheck,
@@ -17,11 +17,11 @@
 		null: faQuestion,
 	}
 
-	let heading_element = $state<HTMLElement | null>(null)
+	let paragraph_element = $state<HTMLElement | null>(null)
 	let show_header_outline = $state(false)
 
 	$effect(() => {
-		if (!heading_element) return
+		if (!paragraph_element) return
 
 		const observer = new IntersectionObserver(
 			([entry]) => {
@@ -30,7 +30,7 @@
 			{ threshold: [0] },
 		)
 
-		observer.observe(heading_element)
+		observer.observe(paragraph_element)
 	})
 </script>
 
@@ -40,49 +40,41 @@
 
 <h2>Comparison of categories</h2>
 
-<p class="hint">
-	Compare the {category_1.name} with the {category_2.name}.
+<p class="hint" bind:this={paragraph_element}>
+	Comparison of {compared_categories.length} categories:
+	{compared_categories.map((c) => c.name).join(', ')}.
 </p>
-
-{#snippet ValueCell(value: null | boolean)}
-	<td
-		class={JSON.stringify(value)}
-		aria-label={value === null ? 'Unknown' : value ? 'Yes' : 'No'}
-	>
-		<Fa icon={icon_config[JSON.stringify(value)]} />
-	</td>
-{/snippet}
 
 <table>
 	<thead class:outlined={show_header_outline}>
 		<tr>
 			<th>Property</th>
-			<th>
-				<a href="/category/{category_1.id}">
-					{category_1.id}
-				</a>
-			</th>
-			<th>
-				<a href="/category/{category_2.id}">
-					{category_2.id}
-				</a>
-			</th>
+			{#each compared_categories as category}
+				<th>
+					<a href="/category/{category.id}">
+						{category.id}
+					</a>
+				</th>
+			{/each}
 		</tr>
 	</thead>
 	<tbody>
-		{#each comparison_result as [property, value_1, value_2]}
-			<tr
-				class:highlight={value_1 !== null &&
-					value_2 !== null &&
-					value_1 !== value_2}
-			>
+		{#each comparison_result as [property, ...values]}
+			{@const is_different = new Set(values).size > 1}
+			<tr class:highlight={is_different}>
 				<td>
 					<a href={get_property_url(property)}>{property}</a>
 				</td>
 
-				{@render ValueCell(value_1)}
-
-				{@render ValueCell(value_2)}
+				{#each compared_categories as _, i}
+					{@const value = values[i]}
+					<td
+						class={JSON.stringify(value)}
+						aria-label={value === null ? 'Unknown' : value ? 'Yes' : 'No'}
+					>
+						<Fa icon={icon_config[JSON.stringify(value)]} />
+					</td>
+				{/each}
 			</tr>
 		{/each}
 	</tbody>

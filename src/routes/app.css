@@ -138,6 +138,11 @@ button {
 	cursor: pointer;
 }
 
+button:disabled {
+	opacity: 0.75;
+	cursor: not-allowed;
+}
+
 button:focus-visible {
 	outline: 1px solid var(--text-color);
 	outline-offset: 2px;

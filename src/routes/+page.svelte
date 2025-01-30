@@ -12,8 +12,8 @@
 	Explore a growing collection of categories, each with detailed descriptions,
 	properties, and non-properties. Our powerful deduction system is based on a list of
 	implications, allowing you to search for categories with specific properties or
-	non-properties. Additionally, you can compare two categories to see how their
-	properties align or differ.
+	non-properties. Additionally, you can compare categories to see how their properties
+	align or differ.
 </p>
 
 <p>
