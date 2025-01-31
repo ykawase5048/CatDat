@@ -1,8 +1,7 @@
 <script>
 	import { goto } from '$app/navigation'
 	import { categories } from '$lib/categories/categories'
-	import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
-	import Fa from 'svelte-fa'
+	import Controls from '$lib/components/Controls.svelte'
 
 	const category_names = categories.map((category) => category.name)
 
@@ -60,26 +59,16 @@
 	{/each}
 </datalist>
 
-<div class="controls">
-	<button
-		class="button"
-		disabled={selected_category_names.length === max_categories}
-		aria-label="Add another category"
-		onclick={add_name}
-	>
-		<Fa icon={faPlus} />
-	</button>
-	<button
-		class="button"
-		aria-label="Remove last category"
-		onclick={remove_name}
-		disabled={selected_category_names.length <= 1}
-	>
-		<Fa icon={faMinus} />
-	</button>
-</div>
+<Controls
+	add={add_name}
+	remove={remove_name}
+	add_disabled={selected_category_names.length === max_categories}
+	remove_disabled={selected_category_names.length <= 1}
+/>
 
-<button class="button" onclick={compare_categories}>Compare</button>
+<p>
+	<button class="button" onclick={compare_categories}>Compare</button>
+</p>
 
 <style>
 	label {
@@ -93,9 +82,5 @@
 
 	.input-group {
 		margin-block: 1.5rem;
-	}
-
-	.controls {
-		margin-bottom: 2rem;
 	}
 </style>

@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { properties } from '$lib/properties/properties'
-	import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
 	import { tick } from 'svelte'
-	import Fa from 'svelte-fa'
+	import Controls from './Controls.svelte'
 
 	type Props = {
 		aria_label: string
@@ -41,14 +40,7 @@
 		{/each}
 	</div>
 
-	<div class="controls">
-		<button class="button" onclick={add} aria-label="add property">
-			<Fa icon={faPlus} />
-		</button>
-		<button class="button" onclick={remove} aria-label="remove property">
-			<Fa icon={faMinus} />
-		</button>
-	</div>
+	<Controls {add} {remove} remove_disabled={values.length === 0} />
 </section>
 
 <style>
@@ -63,20 +55,9 @@
 		gap: 0.5rem;
 	}
 
-	.controls {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 2rem;
-	}
-
 	@media (min-width: 600px) {
 		.inputs {
 			grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-		}
-
-		.controls {
-			display: inline-flex;
-			gap: 0.5rem;
 		}
 	}
 </style>
