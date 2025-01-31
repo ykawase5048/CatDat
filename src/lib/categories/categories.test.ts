@@ -51,11 +51,8 @@ describe('categories list', () => {
 
 		for (const category of categories) {
 			const keys = Object.keys(category) as CategoryKey[]
-			const sorted_keys = keys
-				.slice()
-				.sort((a, b) => category_keys.indexOf(a) - category_keys.indexOf(b))
+			const sorted_keys = category_keys.filter((key) => keys.includes(key))
 			expect(keys).toEqual(sorted_keys)
-			expect(keys.length <= category_keys.length).toBe(true)
 		}
 	})
 })
