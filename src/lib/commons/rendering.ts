@@ -1,6 +1,6 @@
 import katex from 'katex'
 
-function render_formula(formula: string) {
+function render_formula(formula: string): string {
 	return katex.renderToString(formula, {
 		throwOnError: false,
 	})
@@ -14,7 +14,7 @@ export function render_formulas(txt: string): string {
 	})
 }
 
-export function render_formulas_in_object<T extends Record<string, any>>(
+export function render_formulas_in_object<T extends Record<string, unknown>>(
 	obj: T,
 	keys: string[],
 ): T {
