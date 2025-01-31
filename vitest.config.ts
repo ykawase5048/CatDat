@@ -14,10 +14,10 @@ export default defineConfig({
 			include: ['src/lib/**/*.ts'],
 			reporter: ['text', 'text-summary', 'json-summary'],
 			thresholds: {
-				lines: 95,
+				statements: 98,
+				branches: 98,
 				functions: 95,
-				branches: 95,
-				statements: 95,
+				lines: 98,
 			},
 		},
 	},
