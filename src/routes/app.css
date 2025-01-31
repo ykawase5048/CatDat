@@ -45,6 +45,11 @@ body {
 	line-height: 1.5;
 }
 
+html,
+body {
+	scrollbar-gutter: stable both-edges;
+}
+
 @media (prefers-reduced-motion: no-preference) {
 	body,
 	html {
