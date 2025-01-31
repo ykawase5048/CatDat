@@ -50,7 +50,7 @@ describe('categories list', () => {
 		] satisfies CategoryKey[]
 
 		for (const category of categories) {
-			const keys = Object.keys(category) as CategoryKey[]
+			const keys = Object.keys(category)
 			const sorted_keys = category_keys.filter((key) => keys.includes(key))
 			expect(keys).toEqual(sorted_keys)
 		}

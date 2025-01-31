@@ -50,12 +50,12 @@ export type RelatedCategory = { id: CategoryID; name: string }
 
 export type Property = {
 	id: PropertyID
-	description: string
 	prefix: Prefix
+	nlab_link?: string
+	description: string
 	dual?: PropertyID
 	related?: PropertyID[]
 	invariant_under_equivalences?: false
-	nlab_link?: string
 }
 
 export type Implication = Rule<PropertyID>
