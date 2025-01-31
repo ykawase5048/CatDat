@@ -16,6 +16,17 @@ describe('constructor', () => {
 	})
 })
 
+describe('init', () => {
+	it('only runs once', () => {
+		const deductionSystem = new DeductionSystem<string>(new Set(['a']), [])
+		// @ts-expect-error this accesses a private method
+		const spy = vi.spyOn(deductionSystem, 'compute_normalized_rules')
+		deductionSystem.init()
+		deductionSystem.init()
+		expect(spy).toHaveBeenCalledTimes(1)
+	})
+})
+
 describe('get_deductions', () => {
 	const deductionSystem = new DeductionSystem<string>(
 		new Set(['a', 'b', 'c', 'd', 'e', 'f']),

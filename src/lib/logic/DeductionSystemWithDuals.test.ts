@@ -1,5 +1,20 @@
 import { DeductionSystemWithDuals } from './DeductionSystemWithDuals'
 
+describe('init', () => {
+	it('only runs once', () => {
+		const deductionSystem = new DeductionSystemWithDuals<string>(
+			new Set(['a']),
+			[],
+			() => null,
+		)
+		// @ts-expect-error this accesses a private method
+		const spy = vi.spyOn(deductionSystem, 'compute_normalized_rules')
+		deductionSystem.init_with_duals()
+		deductionSystem.init_with_duals()
+		expect(spy).toHaveBeenCalledTimes(1)
+	})
+})
+
 describe('all rules', () => {
 	const dual_config: Record<string, string> = {
 		'c': 'c^op',
