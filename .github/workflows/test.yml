@@ -31,8 +31,8 @@ jobs:
             - name: Sync SvelteKit
               run: pnpm svelte-kit sync
 
-            - name: Run tests
-              run: pnpm test
-
             - name: Run svelte checker
               run: pnpm check
+
+            - name: Run tests and coverage
+              run: pnpm coverage
