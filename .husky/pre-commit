@@ -1,1 +1,1 @@
-pnpm test:run && pnpm check
+pnpm coverage && pnpm check
