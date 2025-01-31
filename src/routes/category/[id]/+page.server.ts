@@ -28,6 +28,8 @@ export const load: PageServerLoad = (event) => {
 			'description',
 			'objects',
 			'morphisms',
+			'monomorphisms',
+			'epimorphisms',
 		]),
 		related_categories,
 	}

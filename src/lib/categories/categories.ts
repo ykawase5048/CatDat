@@ -23,6 +23,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		morphisms: 'maps',
 		description:
 			'The category of sets plays a fundamental role in category theory. Due to the Yoneda embedding, many results about general categories can be reduced to the category of sets. It is also usually the first example of a category that one encounters.',
+		monomorphisms: 'injective maps',
+		epimorphisms: 'surjective maps',
 		nlab_link: 'https://ncatlab.org/nlab/show/Set',
 		properties: ['Grothendieck topos', 'finitary algebraic'],
 		non_properties: ['strict terminal object'],
@@ -35,6 +37,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		notation: '$\\mathbf{Ab}$',
 		objects: 'abelian groups',
 		morphisms: 'group homomorphisms',
+		monomorphisms: 'injective homomorphisms',
+		epimorphisms: 'surjective homomorphisms',
 		description: 'This is the prototype of an abelian category.',
 		nlab_link: 'https://ncatlab.org/nlab/show/Ab',
 		properties: ['abelian', 'finitary algebraic'],
@@ -48,6 +52,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		notation: '$\\mathbf{Top}$',
 		objects: 'topological spaces',
 		morphisms: 'continuous functions',
+		monomorphisms: 'injective continuous maps',
+		epimorphisms: 'surjective continuous maps',
 		description: 'This is the most basic category of geometric objects.',
 		nlab_link: 'https://ncatlab.org/nlab/show/Top',
 		properties: [
@@ -76,6 +82,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		notation: '$\\mathbf{Grp}$',
 		objects: 'groups',
 		morphisms: 'group homomorphisms',
+		monomorphisms: 'injective homomorphisms',
+		epimorphisms: 'surjective homomorphisms',
 		nlab_link: 'https://ncatlab.org/nlab/show/Grp',
 		properties: ['pointed', 'finitary algebraic', 'balanced', 'disjoint coproducts'],
 		non_properties: ['preadditive', 'subobject classifier', 'cogenerator'],
@@ -88,6 +96,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		notation: '$\\mathbf{Vect}_K$',
 		objects: 'vector spaces over a field $K$',
 		morphisms: 'linear maps',
+		monomorphisms: 'injective linear maps',
+		epimorphisms: 'surjective linear maps',
 		description:
 			'This is a special case of the category of modules over a ring, where the ring is a field. It is the prototype of a split abelian category.',
 		related: ['R-Mod'],
@@ -102,6 +112,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		notation: '$\\mathbf{Ring}$',
 		objects: 'rings',
 		morphisms: 'ring homomorphisms',
+		monomorphisms: 'injective ring homomorphisms',
+		epimorphisms: 'are not necessarily surjective',
 		nlab_link: 'https://ncatlab.org/nlab/show/Ring',
 		description: 'Here, rings always have a unit, and homomorphisms preserve them.',
 		properties: ['finitary algebraic', 'strict terminal object'],
@@ -120,6 +132,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		notation: '$\\mathbf{CRing}$',
 		objects: 'commutative rings',
 		morphisms: 'ring homomorphisms',
+		monomorphisms: 'injective ring homomorphisms',
+		epimorphisms: 'are not necessarily surjective',
 		nlab_link: 'https://ncatlab.org/nlab/show/CRing',
 		properties: ['finitary algebraic', 'strict terminal object'],
 		non_properties: [
@@ -137,6 +151,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		notation: '$\\mathbf{Rng}$',
 		objects: 'rngs, that is, non-unital rings',
 		morphisms: 'maps that preserve addition and multiplication',
+		monomorphisms: 'injective ring homomorphisms',
+		epimorphisms: 'are not necessarily surjective',
 		nlab_link: 'https://ncatlab.org/nlab/show/Rng',
 		properties: ['finitary algebraic', 'pointed', 'disjoint coproducts'],
 		non_properties: ['preadditive', 'balanced', 'cogenerator'],
@@ -148,7 +164,9 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		name: 'category of finite sets',
 		notation: '$\\mathbf{FinSet}$',
 		objects: 'finite sets',
-		morphisms: 'functions / maps',
+		morphisms: 'maps',
+		monomorphisms: 'injective maps',
+		epimorphisms: 'surjective maps',
 		nlab_link: 'https://ncatlab.org/nlab/show/FinSet',
 		properties: [
 			'essentially small',
@@ -167,6 +185,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		notation: '$\\mathbf{FinAb}$',
 		objects: 'finite abelian groups',
 		morphisms: 'group homomorphisms',
+		monomorphisms: 'injective homomorphisms',
+		epimorphisms: 'surjective homomorphisms',
 		nlab_link: 'https://ncatlab.org/nlab/show/finite+abelian+group',
 		properties: ['essentially small', 'abelian', 'self-dual'],
 		non_properties: ['small', 'generator', 'split abelian'],
@@ -179,6 +199,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		notation: '$\\mathbf{Ab}_{\\mathrm{fg}}$',
 		objects: 'finitely generated abelian groups',
 		morphisms: 'group homomorphisms',
+		monomorphisms: 'injective homomorphisms',
+		epimorphisms: 'surjective homomorphisms',
 		nlab_link: 'https://ncatlab.org/nlab/show/finitely+generated+module',
 		properties: ['essentially small', 'abelian', 'generator'],
 		non_properties: ['small', 'cogenerator', 'split abelian'],
@@ -190,7 +212,9 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		name: 'category of pointed sets',
 		notation: '$\\mathbf{Set}_*$',
 		objects: 'pointed sets',
-		morphisms: 'pointed functions',
+		morphisms: 'pointed maps',
+		monomorphisms: 'injective maps',
+		epimorphisms: 'surjective maps',
 		description:
 			'This is the category of sets with a distinguished element, often called the base point. A map is called pointed when it preserves the base point.',
 		nlab_link: 'https://ncatlab.org/nlab/show/pointed+set',
@@ -211,6 +235,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		objects:
 			'simplicial sets, i.e. functors $\\Delta^{\\mathrm{op}} \\to \\mathbf{Set}$',
 		morphisms: 'natural transformations',
+		monomorphisms: 'pointwise injective transformations',
+		epimorphisms: 'pointwise surjective transformations',
 		nlab_link: 'https://ncatlab.org/nlab/show/SimpSet',
 		properties: ['Grothendieck topos', 'locally finitely presentable'],
 		non_properties: ['strict terminal object'],
@@ -222,6 +248,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		notation: '$\\mathbf{Mon}$',
 		objects: 'monoids',
 		morphisms: 'monoid homomorphisms',
+		monomorphisms: 'injective homomorphisms',
+		epimorphisms: 'are not necessarily surjective',
 		nlab_link: 'https://ncatlab.org/nlab/show/category+of+monoids',
 		properties: ['pointed', 'finitary algebraic', 'disjoint coproducts'],
 		non_properties: ['preadditive', 'balanced', 'cogenerator'],
@@ -232,8 +260,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		id: 'Pos',
 		name: 'category of posets',
 		notation: '$\\mathbf{Pos}$',
-		objects: 'partial orders / posets',
+		objects: 'posets (i.e., partial orders)',
 		morphisms: 'order-preserving functions',
+		monomorphisms: 'injective order-preserving functions',
+		epimorphisms: 'surjective order-preserving functions',
 		nlab_link: 'https://ncatlab.org/nlab/show/Pos',
 		properties: [
 			'locally finitely presentable',
@@ -250,6 +280,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		notation: '$0$',
 		objects: 'no objects',
 		morphisms: 'no morphisms',
+		monomorphisms: "there aren't any",
+		epimorphisms: "there aren't any",
 		description:
 			'This is the category with no objects and no morphisms. It is the initial object in the category of small categories.',
 		nlab_link: 'https://ncatlab.org/nlab/show/empty+category',
@@ -263,6 +295,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		notation: '$\\mathbf{1}$',
 		objects: 'a single object',
 		morphisms: 'only the identity morphism',
+		monomorphisms: 'every morphism',
+		epimorphisms: 'every morphism',
 		description:
 			'This is the simplest category, consisting of a single object and only the identity morphism. It is the terminal object in the category of small categories.',
 		nlab_link: 'https://ncatlab.org/nlab/show/terminal+category',
@@ -276,7 +310,9 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		name: 'discrete category on two objects',
 		notation: '$\\mathbf{2}$',
 		objects: 'two objects',
-		morphisms: 'only the identity morphisms',
+		morphisms: 'only the two identity morphisms',
+		monomorphisms: 'every morphism',
+		epimorphisms: 'every morphism',
 		description:
 			'For a more concrete representation, this is the subcategory of $\\mathbf{CRing}$ of the two fields $\\mathbb{F}_2$ and $\\mathbb{F}_3$.',
 		properties: ['discrete', 'finite', 'inhabited'],
@@ -289,7 +325,9 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		name: 'interval category',
 		notation: '$I$',
 		objects: '0,1',
-		morphisms: 'a single morphism from 0 to 1',
+		morphisms: 'the two identities and a single morphism from 0 to 1',
+		monomorphisms: 'every morphism',
+		epimorphisms: 'every morphism',
 		description:
 			'This is the category with two objects and a single non-identity morphism between them. It has the property that functors out of this category are the same as morphisms.',
 		nlab_link: 'https://ncatlab.org/nlab/show/interval+category',
@@ -303,7 +341,9 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		notation: '$M{-}\\mathbf{Set}$',
 		objects: 'sets with a left action of a monoid $M$',
 		morphisms:
-			'maps that are compatible with the $M$-action, meaning $f(m \\cdot x)=m \\cdot f(x)$',
+			'maps that are compatible with the $M$-action, meaning $f(m \\cdot x)=m \\cdot f(x)$, also called $M$-maps',
+		monomorphisms: 'injective $M$-maps',
+		epimorphisms: 'surjective $M$-maps',
 		description:
 			'Here, $M$ can be any monoid. But the most important special case is that of a group.',
 		nlab_link: 'https://ncatlab.org/nlab/show/MSet',
@@ -319,6 +359,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		morphisms: '$R$-linear maps',
 		description:
 			"This is the category of left modules over a ring $R$. It is the prototype of an abelian category. The category of right modules is the same with the opposite ring $R^{\\mathrm{op}}$, hence not listed here. The non-properties refer to the case that the ring is non-trivial, since for the trivial ring we get a trivial category which has all properties anyway. The category $R{-}\\mathbf{Mod}$ is split abelian iff $R$ is a semisimple ring, so usually it isn't the case, which is why we have negated this property here.",
+		monomorphisms: 'injective $R$-linear maps',
+		epimorphisms: 'surjective $R$-linear maps',
 		nlab_link: 'https://ncatlab.org/nlab/show/module',
 		properties: ['abelian', 'finitary algebraic'],
 		non_properties: ['split abelian'],
@@ -332,6 +374,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		objects: 'metric spaces',
 		morphisms:
 			'non-expansive maps $f$, meaning $d(f(x),f(y)) \\leq d(x,y)$ for all $x,y$',
+		monomorphisms: 'injective non-expansive maps',
+		epimorphisms: 'are not necessarily surjective. TODO: make this more precise',
 		nlab_link: 'https://ncatlab.org/nlab/show/Met',
 		properties: [
 			'locally small',
@@ -364,6 +408,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'metric spaces, where the metric is allowed to assume the value $\\infty$',
 		morphisms:
 			'non-expansive maps $f$, meaning $d(f(x),f(y)) \\leq d(x,y)$ for all $x,y$',
+		monomorphisms: 'injective non-expansive maps',
+		epimorphisms: 'are not necessarily surjective. TODO: make this more precise',
 		nlab_link: 'https://ncatlab.org/nlab/show/Met',
 		description:
 			'The fact that we allow $\\infty$ means that universal constructions work much better.',
@@ -393,6 +439,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		notation: '$\\mathbf{Man}$',
 		objects: 'smooth manifolds',
 		morphisms: 'smooth maps',
+		monomorphisms: 'injective smooth maps',
+		epimorphisms: 'are not necessarily surjective. TODO: make this more precise',
 		nlab_link: 'https://ncatlab.org/nlab/show/Diff',
 		description:
 			'Here, a smooth manifold is assumed to be finite-dimensional, Hausdorff, and second-countable.',
@@ -422,6 +470,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		notation: '$\\mathbf{Meas}$',
 		objects: 'measurable spaces',
 		morphisms: 'measurable maps',
+		monomorphisms: 'injective measurable maps',
+		epimorphisms: 'surjective measurable maps',
 		nlab_link: 'https://ncatlab.org/nlab/show/Meas',
 		description:
 			'Limits and colimits can be constructed in the same way as for topological spaces.',
@@ -445,6 +495,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		notation: '$(\\mathbb{N},\\leq)$',
 		objects: 'natural numbers $0, 1, 2, \\dotsc$',
 		morphisms: 'a unique morphism $n \\to m$ if $n \\leq m$',
+		monomorphisms: 'every morphism',
+		epimorphisms: 'every morphism',
 		description:
 			'This can also be seen as the path category of the infinite linear graph $\\bullet \\to \\bullet \\to \\bullet \\to \\cdots$.',
 		properties: [
@@ -464,6 +516,9 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		notation: '$\\mathbf{Cat}$',
 		objects: 'small categories',
 		morphisms: 'functors',
+		monomorphisms: 'faithful functors that are injective on objects',
+		epimorphisms:
+			"are surjective on objects, but not necessarily on morphisms. Isbell's zigzag theorem gives a precise characterization.",
 		description:
 			'This is the category of small categories and functors between them. It is the prototype of a 2-category, but here we only treat it as a 1-category.',
 		nlab_link: 'https://ncatlab.org/nlab/show/Cat',
@@ -486,6 +541,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		notation: '$(\\mathbf{On},\\leq)$',
 		objects: 'ordinal numbers',
 		morphisms: 'a unique morphism $\\alpha \\to \\beta$ if $\\alpha \\leq \\beta$',
+		monomorphisms: 'every morphism',
+		epimorphisms: 'every morphism',
 		description: 'This is a large variant of the partial order of natural numbers.',
 		properties: [
 			'thin',
@@ -524,6 +581,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		notation: '$\\mathbf{Sch}$',
 		objects: 'schemes',
 		morphisms: 'morphism of schemes',
+		monomorphisms: 'cf. EGA IV, 17.2.6', // https://mathoverflow.net/questions/56591
+		// epimorphisms seem to be hard: https://mathoverflow.net/questions/56564
 		properties: [
 			'locally small',
 			'finitely complete',
@@ -547,6 +606,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		notation: '$\\mathbf{Fld}$',
 		objects: 'fields',
 		morphisms: 'field homomorphisms (i.e., ring homomorphisms)',
+		monomorphisms: 'every morphism',
+		epimorphisms: 'purely inseparable homomorphisms',
 		description: 'This is a typical example of a bad category of good objects.',
 		nlab_link: 'https://ncatlab.org/nlab/show/Field',
 		properties: [
@@ -573,6 +634,9 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		notation: '$\\mathbf{FreeAb}$',
 		objects: 'free abelian groups',
 		morphisms: 'group homomorphisms',
+		monomorphisms: 'injective homomorphisms',
+		epimorphisms:
+			'homomorphisms $f : A \\to B$ with the property that $f(A)$ is not contained in a proper direct summand of $B$.',
 		properties: [
 			'additive',
 			'well-powered',
@@ -597,6 +661,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		notation: '$[\\mathbf{CRing}, \\mathbf{Set}]$',
 		objects: 'Z-functors, i.e. functors from commutative rings to sets',
 		morphisms: 'natural transformations',
+		monomorphisms: 'objectwise injective natural transformations',
+		epimorphisms: 'objectwise surjective natural transformations',
 		description:
 			'This category is used in functorial algebraic geometry. It also provides a typical example of a functor category that is not locally small, but nevertheless relevant. Most of its properties are directly derived from the category of sets, so other functor categories $[\\mathbf{C}, \\mathbf{Set}]$ for large categories $\\mathbf{C}$ will be similar.',
 		properties: [
@@ -617,6 +683,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		notation: '$BG$',
 		objects: 'a single object',
 		morphisms: 'the elements of a group $G$',
+		monomorphisms: 'every morphism',
+		epimorphisms: 'every morphism',
 		nlab_link: 'https://ncatlab.org/nlab/show/delooping',
 		description:
 			'Every group $G$ yields a groupoid $BG$ with a single object, morphisms given by the elements of $G$, and composition given by the group operation. When $G$ is trivial, then $BG$ is the trivial category. However, in the non-properties below, we refer to the case that $G$ is non-trivial. The non-property "finite" refers to the case that $G$ is "generic" and hence infinite.',
@@ -629,6 +697,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		name: 'delooping of the additive monoid of natural numbers',
 		notation: '$B\\mathbb{N}$',
 		objects: 'a single object',
+		monomorphisms: 'every morphism',
+		epimorphisms: 'every morphism',
 		morphisms: 'the natural numbers, with addition serving as composition',
 		description:
 			'Every monoid $M$ induces a one-object category $BM$ with morphisms given by the elements of $M$, and composition given by the monoid operation. Some of the properties of this category depend on the specific monoid. In this example, we take the commutative monoid $M = (\\mathbb{N},+,0)$.',
@@ -649,7 +719,9 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		name: 'walking parallel pair of morphisms',
 		notation: '$\\{0 \\rightrightarrows 1 \\}$',
 		objects: 'two objects $0$ and $1$',
-		morphisms: 'identities and two parallel morphisms from $0$ to $1$',
+		morphisms: 'the two identities and two parallel morphisms from $0$ to $1$',
+		monomorphisms: 'every morphism',
+		epimorphisms: 'every morphism',
 		description:
 			"This is the 'walking parallel pair' of morphisms. The name comes from the fact that it consists of two parallel morphisms, and a functor out of this category is the same as a parallel pair of morphisms in the target category.",
 		related: ['I'],
@@ -678,6 +750,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		objects: 'two objects $0$ and $1$',
 		morphisms:
 			'identities, and two morphisms $0 \\to 1$ and $1 \\to 0$ that are mutually inverse',
+		monomorphisms: 'every morphism',
+		epimorphisms: 'every morphism',
 		description:
 			"This is the 'walking isomorphism' category. The name comes from the fact that it consists of two objects and an isomorphism between them, and a functor out of this category is the same as an isomorphism in the target category. The walking isomorphism is actually equivalent to the trivial category.",
 		nlab_link: 'https://ncatlab.org/nlab/show/walking+isomorphism',
@@ -692,6 +766,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		notation: '$\\mathbf{Set}_{\\neq \\emptyset}$',
 		objects: 'non-empty sets',
 		morphisms: 'maps',
+		monomorphisms: 'injective maps',
+		epimorphisms: 'surjective maps',
 		description:
 			'This entry demonstrates that removing an object (the empty set) can drastically change the properties of a category. In particular, this category is neither complete nor cocomplete.',
 		related: ['Set'],
@@ -722,6 +798,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		notation: '$\\mathbb{B}$',
 		objects: 'finite sets',
 		morphisms: 'bijective maps',
+		monomorphisms: 'every morphism',
+		epimorphisms: 'every morphism',
 		nlab_link: 'https://ncatlab.org/nlab/show/permutation+groupoid',
 		description:
 			'This category is also known as the permutation groupoid. It appears in the definition of a combinatorial species.',
@@ -736,6 +814,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		notation: '$\\mathrm{FI}$',
 		objects: 'finite sets',
 		morphisms: 'injective maps',
+		monomorphisms: 'every morphism',
+		epimorphisms: 'bijective maps',
 		description:
 			'This category is badly-behaved in itself, but plays an important role in representation theory.',
 		related: ['B', 'FS'],
@@ -763,6 +843,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		notation: '$\\mathrm{FS}$',
 		objects: 'finite sets',
 		morphisms: 'surjective maps',
+		monomorphisms: 'bijective maps',
+		epimorphisms: 'every morphism',
 		description:
 			'This category is badly-behaved in itself, but it appears in representation theory. It has two connected components, consisting of the empty set and the non-empty finite sets.',
 		related: ['B', 'FI'],
@@ -790,6 +872,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		notation: '$B(\\mathbf{On},+)$',
 		objects: 'a single object',
 		morphisms: 'ordinal numbers, with addition as composition',
+		monomorphisms: 'every ordinal number',
+		epimorphisms: 'finite ordinal numbers', // https://math.stackexchange.com/questions/5029605
 		description:
 			'Every monoid $M$ induces a one-object category $BM$. This also works when $M$ is large, in which case $BM$ is not locally small. In this example, we apply this construction to the large monoid of ordinal numbers with respect to addition.',
 		related: ['BN'],
@@ -798,7 +882,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'generator',
 			'cogenerator',
 			'left cancellative',
-			'well-copowered', // https://math.stackexchange.com/questions/5029605
+			'well-copowered',
 			'equalizers', // https://math.stackexchange.com/questions/5029668
 		],
 		non_properties: [
@@ -820,6 +904,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		notation: '$\\mathbf{FinOrd}$',
 		objects: 'finite totally ordered sets',
 		morphisms: 'order-preserving maps',
+		monomorphisms: 'injective order-preserving maps',
+		epimorphisms: 'surjective order-preserving maps',
 		description:
 			'This is also known as the augmented simplex category. The finite orders of the form $\\{0,1,\\dotsc,n-1\\}$ for $n \\in \\mathbb{N}$ provide a skeleton (for $n = 0$ this includes the empty set), and the category is often presented in this way.',
 		nlab_link: 'https://ncatlab.org/nlab/show/augmented+simplex+category',

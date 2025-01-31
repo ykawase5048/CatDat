@@ -30,6 +30,8 @@ export type PreCategory = {
 	objects: string
 	morphisms: string
 	description?: string
+	monomorphisms?: string
+	epimorphisms?: string
 	nlab_link?: string
 	properties: PropertyID[]
 	non_properties: PropertyID[]

@@ -31,6 +31,16 @@
 	<li>
 		morphisms: {@html category.morphisms}
 	</li>
+	{#if category.monomorphisms}
+		<li>
+			monomorphisms: {@html category.monomorphisms}
+		</li>
+	{/if}
+	{#if category.epimorphisms}
+		<li>
+			epimorphisms: {@html category.epimorphisms}
+		</li>
+	{/if}
 	{#if category.nlab_link}
 		<li>
 			<a href={category.nlab_link} target="_blank">nLab Link</a>
