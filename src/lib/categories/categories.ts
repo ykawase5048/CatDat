@@ -561,7 +561,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		name: 'category of locally ringed spaces',
 		notation: '$\\mathbf{LRS}$',
 		objects: 'locally ringed spaces',
-		morphisms: 'morphism of locally ringed spaces',
+		morphisms:
+			'morphisms of locally ringed spaces, thus consisting of a continuous map and a homomorphism of sheaves that induces local ring homomorphisms in the stalks',
 		properties: [
 			'locally small',
 			'complete',
@@ -580,7 +581,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		name: 'category of schemes',
 		notation: '$\\mathbf{Sch}$',
 		objects: 'schemes',
-		morphisms: 'morphism of schemes',
+		morphisms: 'morphism of locally ringed spaces',
 		monomorphisms: 'cf. EGA IV, 17.2.6', // https://mathoverflow.net/questions/56591
 		// epimorphisms seem to be hard: https://mathoverflow.net/questions/56564
 		properties: [
