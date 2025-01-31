@@ -22,8 +22,7 @@
 <h2>Missing data</h2>
 
 This page lists some missing data in the database. Please help us fill in the gaps by
-contributing to the
-<a href="https://github.com/ScriptRaccoon/catdat" target="_blank">GitHub repository</a>.
+<a href="/contribute">contributing</a> to this project.
 
 <h3>Categories with unknown properties</h3>
 

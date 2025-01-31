@@ -1,5 +1,5 @@
 <footer class="hint">
-	<a href="https://github.com/ScriptRaccoon/catdat" target="_blank">GitHub</a>
+	<a href="/contribute">Contribute</a>
 	<a href="/settings">Settings</a>
 	<a href="/missing">Missing data</a>
 </footer>

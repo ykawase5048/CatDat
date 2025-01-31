@@ -15,10 +15,7 @@
 </p>
 
 <p>
-	This community-driven project welcomes contributions to fill in <a href="/missing"
-		>missing information</a
-	>
-	or observe new combinations of properties. Head over to our
-	<a href="https://github.com/ScriptRaccoon/catdat" target="_blank">GitHub repository</a
-	> and help us make this resource even better.
+	This community-driven project welcomes <a href="/contribute">contributions</a> to fill
+	in <a href="/missing">missing information</a>
+	or observe new combinations of properties.
 </p>
