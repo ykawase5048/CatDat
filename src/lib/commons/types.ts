@@ -27,16 +27,16 @@ export type PreCategory = {
 	id: CategoryID
 	name: string
 	notation: string
+	nlab_link?: string
 	objects: string
 	morphisms: string
 	description?: string
-	monomorphisms?: string
-	epimorphisms?: string
-	nlab_link?: string
-	properties: PropertyID[]
-	non_properties: PropertyID[]
 	related?: CategoryID[]
 	tags: NonEmptyArray<CategoryTag>
+	properties: PropertyID[]
+	non_properties: PropertyID[]
+	monomorphisms?: string
+	epimorphisms?: string
 }
 
 export type Category = Omit<PreCategory, 'properties' | 'non_properties'> & {
