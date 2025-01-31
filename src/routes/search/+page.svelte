@@ -6,7 +6,7 @@
 	import { encode_property_ID } from '$lib/properties/properties.utils'
 	import { is_valid_property } from '$lib/properties/propertyIDs'
 	import PropertySelection from '$lib/components/PropertySelection.svelte'
-	import { separator } from './search.config'
+	import { separator } from '$lib/categories/search.js'
 
 	let { data } = $props()
 

@@ -1,8 +1,13 @@
 import { decode_property_ID, get_dual_properties } from '$lib/properties/properties.utils'
 import { is_valid_property } from '$lib/properties/propertyIDs'
 import { error } from '@sveltejs/kit'
-import { separator } from './search.config'
+
 import { category_system } from '$lib/categories/categories.utils'
+
+/**
+ * This is used to separate property IDs in the query string.
+ */
+export const separator = '--'
 
 export function get_search_results(url: URL) {
 	const properties_query = url.searchParams.get('properties')
