@@ -1,0 +1,46 @@
+name: deploy
+
+on:
+    workflow_run:
+        branches:
+            - main
+        workflows: ['test']
+        types:
+            - completed
+
+jobs:
+    deploy:
+        if: ${{ github.event.workflow_run.conclusion == 'success' }}
+        runs-on: ubuntu-latest
+        steps:
+            - name: Repository Checkout
+              uses: actions/checkout@v4
+
+            - name: Setup NodeJS
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 22.13.0
+
+            - name: Install pnpm
+              uses: pnpm/action-setup@v4
+              with:
+                  version: 10
+
+            - name: Install Netlify CLI
+              run: pnpm install netlify-cli@18.0.3 -g
+
+            - name: Install Dependencies
+              run: pnpm i
+
+            - name: build project
+              run: pnpm build
+
+            - name: Deploy to Netlify
+              id: netlify_deploy
+              run: |
+                  netlify deploy \
+                    --dir build \
+                    --site ${{ secrets.NETLIFY_SITE_ID }} \
+                    --auth ${{ secrets.NETLIFY_AUTH_TOKEN }} \
+                    --message "Deploy from GitHub Action" \
+                    --prod
