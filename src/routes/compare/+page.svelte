@@ -1,12 +1,42 @@
-<script>
+<script lang="ts">
+	import { browser } from '$app/environment'
 	import { goto } from '$app/navigation'
 	import { categories } from '$lib/categories/categories'
-	import Controls from '$lib/components/Controls.svelte'
 	import { max_categories } from './compare.config'
+	import Controls from '$lib/components/Controls.svelte'
 
 	const category_names = categories.map((category) => category.name)
+	const storage_key = 'selected_category_names'
 
-	const selected_category_names = $state(['', ''])
+	function get_saved_category_names(): string[] {
+		const default_names = ['', '']
+
+		if (!browser) return default_names
+
+		const names_string = window.sessionStorage.getItem(storage_key)
+		if (!names_string) return default_names
+
+		try {
+			const parsed_names: unknown = JSON.parse(names_string)
+			const is_valid =
+				Array.isArray(parsed_names) &&
+				parsed_names.every((name) => typeof name === 'string')
+
+			return is_valid ? parsed_names : default_names
+		} catch {
+			return default_names
+		}
+	}
+
+	const selected_category_names: string[] = $state(get_saved_category_names())
+
+	$effect(() => {
+		if (!browser) return
+		window.sessionStorage.setItem(
+			storage_key,
+			JSON.stringify(selected_category_names),
+		)
+	})
 
 	function compare_categories() {
 		const chosen_categories = selected_category_names
