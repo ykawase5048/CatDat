@@ -809,15 +809,35 @@ export const categories: readonly Readonly<PreCategory>[] = [
 	},
 	{
 		id: 'BG',
-		name: 'delooping of a group', // TODO: need to distinguish between finite and infinite groups. also write that G is non-trivial here.
+		name: 'delooping of an infinite group',
 		notation: '$BG$',
 		nlab_link: 'https://ncatlab.org/nlab/show/delooping',
 		objects: 'a single object',
-		morphisms: 'the elements of a group $G$',
+		morphisms: 'the elements of an infinite group $G$',
 		description:
-			'Every group $G$ yields a groupoid $BG$ with a single object, morphisms given by the elements of $G$, and composition given by the group operation. When $G$ is trivial, then $BG$ is the trivial category. However, in the non-properties below, we refer to the case that $G$ is non-trivial.',
+			'Every group $G$ yields a groupoid $BG$ with a single object, morphisms given by the elements of $G$, and composition given by the group operation. In this example, we consider the case of an infinite group $G$.',
+		related: ['BGf', 'BN'],
 		tags: ['basic', 'algebra', 'category theory', 'badly-behaved'],
 		properties: ['small', 'groupoid', 'connected', 'generator'],
+		non_properties: ['zero morphisms', 'essentially finite'],
+		special_morphisms: {
+			isomorphisms: 'every morphism',
+			monomorphisms: 'every morphism',
+			epimorphisms: 'every morphism',
+		},
+	},
+	{
+		id: 'BGf',
+		name: 'delooping of a non-trivial finite group',
+		notation: '$BG$',
+		nlab_link: 'https://ncatlab.org/nlab/show/delooping',
+		objects: 'a single object',
+		morphisms: 'the elements of a non-trivial finite group $G$',
+		description:
+			'Every group $G$ yields a groupoid $BG$ with a single object, morphisms given by the elements of $G$, and composition given by the group operation. In this example, we consider the case of a non-trivial finite group $G$ (such as $G = C_2$).',
+		related: ['BG'],
+		tags: ['basic', 'algebra', 'category theory', 'badly-behaved'],
+		properties: ['finite', 'groupoid', 'connected', 'generator'],
 		non_properties: ['zero morphisms'],
 		special_morphisms: {
 			isomorphisms: 'every morphism',

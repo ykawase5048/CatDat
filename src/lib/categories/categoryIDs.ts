@@ -33,6 +33,7 @@ export const CATEGORY_IDs = [
 	'FreeAb',
 	'Z',
 	'BG',
+	'BGf',
 	'BN',
 	'walking_pair',
 	'walking_isomorphism',

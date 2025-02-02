@@ -17,11 +17,6 @@ describe('categories list', () => {
 		expect(names).toEqual([...new Set(names)])
 	})
 
-	it('should have unique notations', () => {
-		const notations = categories.map((category) => category.notation)
-		expect(notations).toEqual([...new Set(notations)])
-	})
-
 	for (const category of categories) {
 		it(`should not have duplicate properties for: ${category.name}`, () => {
 			const { properties, non_properties } = category
