@@ -456,7 +456,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 	},
 	{
 		id: 'Met',
-		name: 'category of metric spaces',
+		name: 'category of metric spaces with non-expansive maps',
 		notation: '$\\mathbf{Met}$',
 		nlab_link: 'https://ncatlab.org/nlab/show/Met',
 		objects: 'metric spaces',
@@ -492,7 +492,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 	},
 	{
 		id: 'Met_oo',
-		name: 'complete category of metric spaces',
+		name: 'category of metric spaces with ∞ allowed',
 		notation: '$\\mathbf{Met}_{\\infty}$',
 		nlab_link: 'https://ncatlab.org/nlab/show/Met',
 		objects:
