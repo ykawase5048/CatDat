@@ -19,9 +19,9 @@ This project is a **community effort**. See our [contribution guidelines](CONTRI
 
 ## Development
 
-This project is built with [SvelteKit](https://svelte.dev/docs/kit/introduction) and TypeScript.
+This project is built with [SvelteKit](https://svelte.dev/docs/kit/introduction) and [TypeScript](https://www.typescriptlang.org).
 
-You need to have [NodeJS](https://nodejs.or/) and [pnpm](https://pnpm.io/) installed.
+You need to have [NodeJS](https://nodejs.or/) and [pnpm](https://pnpm.io/) installed. The required Node version is the one in [.nvmrc](.nvmrc).
 
 To install the dependencies, run
 
@@ -35,11 +35,15 @@ To continuously run the tests, run
 
 `pnpm test`
 
+To get a coverage report, run
+
+`pnpm coverage`
+
 Every commit runs the tests once and the svelte check, which includes a type check.
 
 ## Deployment
 
-There is a GitHub workflow `deploy.yml` that triggers the deployment on Netlify from the main branch when the tests have passed.
+There is a GitHub workflow `deploy.yml` that triggers the deployment on [Netlify](https://netlify.com) from the main branch when the tests have passed.
 
 ## Similar projects
 
