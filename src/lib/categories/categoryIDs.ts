@@ -44,6 +44,7 @@ export const CATEGORY_IDs = [
 	'On+',
 	'FinOrd',
 	'Rel',
+	'Sp',
 ] as const
 
 export type CategoryID = (typeof CATEGORY_IDs)[number]

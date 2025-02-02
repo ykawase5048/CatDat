@@ -1146,4 +1146,24 @@ export const categories: readonly Readonly<PreCategory>[] = [
 				'A relation $R : A \\to B$ is an epimorphism iff the map $R^* : P(B) \\to P(A)$ defined by $S \\mapsto \\{a \\in A : \\exists \\, b \\in S: (a,b) \\in R \\}$ is injective.',
 		},
 	},
+	{
+		id: 'Sp',
+		name: 'category of combinatorial species',
+		notation: '$\\mathbf{Sp}$',
+		nlab_link: 'https://ncatlab.org/nlab/show/species',
+		objects:
+			'combinatorial species, defined as functors $\\mathbb{B} \\to \\mathbf{FinSet}$, where $\\mathbb{B}$ is the category of finite sets and bijections',
+		morphisms: 'natural transformations',
+		description:
+			'Most categorical properties are immediately inferred from $\\mathbf{FinSet}$. Notice that this category is not locally small; it is just equivalent to a locally small category.',
+		related: ['B', 'FinSet'],
+		tags: ['intermediate', 'combinatorics'],
+		properties: ['elementary topos', 'essentially small'],
+		non_properties: ['locally small', 'essentially finite', 'strict terminal object'],
+		special_morphisms: {
+			isomorphisms: 'natural isomorphisms',
+			monomorphisms: 'pointwise injective natural transformations',
+			epimorphisms: 'pointwise surjective natural transformations',
+		},
+	},
 ]
