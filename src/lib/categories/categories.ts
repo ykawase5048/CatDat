@@ -483,6 +483,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'balanced',
 			'cartesian closed',
 			'essentially small',
+			'exact filtered colimits', // 2.7 in https://arxiv.org/abs/2006.01399
 		],
 		special_morphisms: {
 			isomorphisms: 'bijective isometries',
@@ -505,20 +506,16 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		tags: ['basic', 'geometry', 'well-behaved'],
 		properties: [
 			'locally small',
-			'well-powered',
-			'well-copowered',
-			'complete',
-			'cocomplete',
+			'locally presentable', // locally aleph_1-presentable, 4.5 in https://arxiv.org/abs/1504.02660
 			'infinitary distributive',
-			'generator',
 			'cogenerator',
 			'disjoint coproducts',
 		],
 		non_properties: [
 			'strict terminal object',
 			'balanced',
-			'finitary algebraic',
 			'cartesian closed',
+			'exact filtered colimits', // 2.7 in https://arxiv.org/abs/2006.01399
 		],
 		special_morphisms: {
 			isomorphisms: 'bijective isometries',
