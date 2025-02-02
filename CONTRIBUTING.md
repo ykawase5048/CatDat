@@ -22,9 +22,9 @@ For any non-trivial results, please provide a proof or a reference.
 
 Create a [**pull request**](https://github.com/ScriptRaccoon/CatDat/pulls). For this, you need a GitHub account.
 
-- To add a new category, edit the file [categories.ts](src/lib/categories/categories.ts).
-- To add a new property, edit the file [properties.ts](src/lib/properties/properties.ts).
-- To add a new implication, edit the file [implications.ts](src/lib/implications/implications.ts).
+- To add a new category, edit the file [categories.ts](src/lib/categories/categories.ts). Check out the [example commit](https://github.com/ScriptRaccoon/CatDat/commit/236eeb033b0f78bafc5a58c1e84989b2c7767399).
+- To add a new property, edit the file [properties.ts](src/lib/properties/properties.ts). Check out the [example commit](https://github.com/ScriptRaccoon/CatDat/commit/43ba7f544fd3b1c8d76e9700fccaccc5ed21b0b3).
+- To add a new implication, edit the file [implications.ts](src/lib/implications/implications.ts). Check out the [example commit](https://github.com/ScriptRaccoon/CatDat/commit/44f023dd0b6946a11256bf6b0aeb6d7c20c0da90).
 
 See [this documentation](/docs/database.md) why we don't use a database.
 
@@ -34,11 +34,11 @@ For new data, follow these guidelines:
 
 - Only "atomic" implications are allowed. Do not add implications that can be deduced from others (like "complete => finite products", using the two implications "complete => finitely complete => finite products"). They are deduced automatically. Also, implications are dualized automatically when applicable, which means you don't need to add them.
 
-- When a new property is added, add all the implications that involve this new property alongside the existing properties. For example, by adding the property "countable products", please add the implication "countable products => finite products". If possible, refactor the existing implications with it.
+- When a new property is added, add all the implications that involve this new property alongside the existing properties. For example, by adding the property "countable products", please add the implication "countable products => finite products". If possible, refactor the existing implications with it. When done properly, for most categories it will then be inferred if the property holds or not.
 
 - Only add those properties and non-properties to a category which cannot be deduced from the other ones. This is enforced with a unit test. For example, when a category is complete, add the property 'complete', but don't add the property 'terminal object'. The deduction system inside of _CatDat_ does this automatically.
 
-- When a new property is added, for every existing category try to find a proof if that category has this new property or not (in case it cannot be deduced from existing ones).
+- When a new property is added, for every existing category try to find a proof if that category has this new property or not, but only in case it cannot be deduced from existing ones.
 
 - When a new property is added, you have to make sure that at least one category does not satisfy it (otherwise, it would not be interesting). This is enforced with a unit test, actually. If none of the existing categories fits, you need to add a new category that does not have the new property.
 
