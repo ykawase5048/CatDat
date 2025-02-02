@@ -17,21 +17,38 @@ describe('render_formulas', () => {
 })
 
 describe('render_formulas_in_object', () => {
-	it('should render the specified fields', () => {
-		const object = {
+	it('should render formulas in direct fields', () => {
+		const obj = {
 			id: '123',
 			notation: '$\\sqcup$',
 			description: 'The coproduct $X \\sqcup Y$ of two objects always exists.',
+			related: ['a', 'b'],
 		}
 
-		const rendered_object = render_formulas_in_object(object, [
-			'notation',
-			'description',
-		])
+		const rendered_object = render_formulas_in_object(obj)
 		expect(rendered_object.id).toBe('123')
 		expect(rendered_object.notation).toMatch(/<span class="katex">.*<\/span>/)
 		expect(rendered_object.description).toMatch(
 			/The coproduct <span class="katex">.*<\/span> of two objects always exists\./,
 		)
+		expect(rendered_object.related).toEqual(['a', 'b'])
+	})
+
+	it('should render formulas in nested fields', () => {
+		const obj = {
+			id: 'Grph',
+			notation: `$\\mathbf{Grph}$`,
+			special_morphisms: {
+				isomorphisms: 'pairs $(f,g)$ with $f$ and $g$ isomorphisms',
+			},
+			properties: new Set(['x', 'y', 'z']),
+		}
+		const rendered_object = render_formulas_in_object(obj)
+		expect(rendered_object.id).toBe('Grph')
+		expect(rendered_object.notation).toMatch(/<span class="katex">.*<\/span>/)
+		expect(rendered_object.special_morphisms.isomorphisms).toMatch(
+			/pairs <span class="katex">.*<\/span> with <span class="katex">.*<\/span> and <span class="katex">.*<\/span> isomorphisms/,
+		)
+		expect(rendered_object.properties).toEqual(new Set(['x', 'y', 'z']))
 	})
 })

@@ -110,9 +110,12 @@
 
 <ul>
 	<li>
-		Monomorphisms: {category.special_morphisms.monomorphisms ?? '?'}
+		Isomorphisms: {@html category.special_morphisms.isomorphisms ?? '?'}
 	</li>
 	<li>
-		Epimorphisms: {category.special_morphisms.epimorphisms ?? '?'}
+		Monomorphisms: {@html category.special_morphisms.monomorphisms ?? '?'}
+	</li>
+	<li>
+		Epimorphisms: {@html category.special_morphisms.epimorphisms ?? '?'}
 	</li>
 </ul>

@@ -10,3 +10,7 @@ export function group_items<S extends string, T extends { id: S }>(
 }
 
 export type NonEmptyArray<T> = [T, ...T[]]
+
+export function is_object(obj: unknown): obj is Record<string, unknown> {
+	return obj != null && obj.constructor.name === 'Object'
+}

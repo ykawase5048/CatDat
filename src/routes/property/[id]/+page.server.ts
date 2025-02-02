@@ -26,7 +26,7 @@ export const load: PageServerLoad = (event) => {
 	const relevant_implications = property_deduction_system.get_relevant_rules(id)
 
 	return {
-		property: render_formulas_in_object(property, ['description']),
+		property: render_formulas_in_object(property),
 		categories_with_this_property,
 		categories_without_this_property,
 		unknown_categories,

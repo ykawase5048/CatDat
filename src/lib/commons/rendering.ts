@@ -1,4 +1,5 @@
 import katex from 'katex'
+import { is_object } from './utils'
 
 function render_formula(formula: string): string {
 	return katex.renderToString(formula, {
@@ -14,16 +15,18 @@ export function render_formulas(txt: string): string {
 	})
 }
 
-export function render_formulas_in_object<T extends Record<string, unknown>>(
-	obj: T,
-	renderable_keys: string[],
-): T {
-	return Object.fromEntries(
-		Object.entries(obj).map(([key, value]) => [
-			key,
-			renderable_keys.includes(key) && typeof value === 'string'
-				? render_formulas(value)
-				: value,
-		]),
-	) as T
+export function render_formulas_in_object<T extends Record<string, unknown>>(obj: T): T {
+	const result: Record<string, unknown> = {}
+	for (const key in obj) {
+		const value = obj[key]
+		if (typeof value === 'string') {
+			const has_math = math_regex.test(value)
+			result[key] = has_math ? render_formulas(value) : value
+		} else if (is_object(value)) {
+			result[key] = render_formulas_in_object(value)
+		} else {
+			result[key] = value
+		}
+	}
+	return result as T
 }

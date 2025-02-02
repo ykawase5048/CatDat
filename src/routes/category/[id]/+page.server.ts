@@ -22,15 +22,7 @@ export const load: PageServerLoad = (event) => {
 		: undefined
 
 	return {
-		category: render_formulas_in_object(category, [
-			'name',
-			'notation',
-			'description',
-			'objects',
-			'morphisms',
-			'monomorphisms',
-			'epimorphisms',
-		]),
+		category: render_formulas_in_object(category),
 		related_categories,
 	}
 }
