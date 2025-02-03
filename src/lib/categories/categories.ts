@@ -1174,6 +1174,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'pointed',
 			'generator',
 			'disjoint coproducts',
+			'well-powered',
 		],
 		non_properties: ['preadditive', 'Cauchy complete'],
 		special_morphisms: {
