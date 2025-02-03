@@ -1,4 +1,3 @@
-import type { Implication } from '$lib/commons/types'
 import { implications } from './implications'
 
 describe('implications', () => {
@@ -6,6 +5,7 @@ describe('implications', () => {
 		const implication = {
 			assumptions: ['cartesian closed'],
 			conclusions: ['finite products'],
+			reason: 'by definition',
 		}
 		expect(implications).toContainEqual(implication)
 	})
@@ -38,8 +38,8 @@ describe('implications', () => {
 		for (const implication of implications) {
 			const keys = Object.keys(implication)
 			const expected_keys = implication.equivalent
-				? ['equivalent', 'assumptions', 'conclusions']
-				: ['assumptions', 'conclusions']
+				? ['equivalent', 'assumptions', 'conclusions', 'reason']
+				: ['assumptions', 'conclusions', 'reason']
 			expect(keys).toEqual(expected_keys)
 		}
 	})

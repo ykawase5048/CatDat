@@ -2,7 +2,7 @@ export type Rule<T> = {
 	equivalent?: true
 	assumptions: T[]
 	conclusions: T[]
-	reason?: string
+	reason: string
 }
 
 type NormalizedRule<T> = {
