@@ -45,6 +45,7 @@ export class DeductionSystemWithDuals<T extends string> extends DeductionSystem<
 			const dualized_rule: Rule<T> = {
 				assumptions: dual_assumptions,
 				conclusions: dual_conclusions,
+				reason: rule.reason,
 			}
 
 			if (rule.equivalent) {
@@ -66,6 +67,7 @@ export class DeductionSystemWithDuals<T extends string> extends DeductionSystem<
 			this.rules.push({
 				assumptions: ['self-dual' as T, property],
 				conclusions: [dual_property],
+				reason: 'trivial by self-duality',
 			})
 		}
 	}

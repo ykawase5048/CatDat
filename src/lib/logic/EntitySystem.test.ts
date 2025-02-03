@@ -9,8 +9,8 @@ describe('EntitySystem', () => {
 	}
 
 	const deduction_system = new DeductionSystem<string>(new Set(['a', 'b', 'c', 'd']), [
-		{ assumptions: ['a'], conclusions: ['b'] },
-		{ assumptions: ['b'], conclusions: ['c', 'd'] },
+		{ assumptions: ['a'], conclusions: ['b'], reason: 'trivial' },
+		{ assumptions: ['b'], conclusions: ['c', 'd'], reason: 'trivial' },
 	])
 
 	deduction_system.init()

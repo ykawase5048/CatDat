@@ -10,7 +10,7 @@ describe('constructor', () => {
 	it('should throw an error when an unknown property appears in a rule', () => {
 		expect(() => {
 			new DeductionSystem<string>(new Set(['a']), [
-				{ assumptions: ['a'], conclusions: ['b'] },
+				{ assumptions: ['a'], conclusions: ['b'], reason: 'trivial' },
 			])
 		}).toThrow()
 	})
@@ -31,8 +31,13 @@ describe('get_deductions', () => {
 	const deductionSystem = new DeductionSystem<string>(
 		new Set(['a', 'b', 'c', 'd', 'e', 'f']),
 		[
-			{ assumptions: ['a'], conclusions: ['c'] },
-			{ assumptions: ['c', 'd'], conclusions: ['e', 'f'], equivalent: true },
+			{ assumptions: ['a'], conclusions: ['c'], reason: 'trivial' },
+			{
+				assumptions: ['c', 'd'],
+				conclusions: ['e', 'f'],
+				equivalent: true,
+				reason: 'trivial',
+			},
 		],
 	)
 
@@ -74,9 +79,9 @@ describe('get_deduced_negations', () => {
 	const deductionSystem = new DeductionSystem<string>(
 		new Set(['a', 'b', 'c', 'd', 'e', 'f']),
 		[
-			{ assumptions: ['a', 'b'], conclusions: ['c'] },
-			{ assumptions: ['c', 'd'], conclusions: ['e'] },
-			{ assumptions: ['e'], conclusions: ['f'] },
+			{ assumptions: ['a', 'b'], conclusions: ['c'], reason: 'trivial' },
+			{ assumptions: ['c', 'd'], conclusions: ['e'], reason: 'trivial' },
+			{ assumptions: ['e'], conclusions: ['f'], reason: 'trivial' },
 		],
 	)
 
@@ -117,8 +122,13 @@ describe('has_contradiction', () => {
 	const deductionSystem = new DeductionSystem<string>(
 		new Set(['a', 'b', 'c', 'd', 'e', 'f']),
 		[
-			{ assumptions: ['a'], conclusions: ['c'] },
-			{ assumptions: ['c', 'd'], conclusions: ['e', 'f'], equivalent: true },
+			{ assumptions: ['a'], conclusions: ['c'], reason: 'trivial' },
+			{
+				assumptions: ['c', 'd'],
+				conclusions: ['e', 'f'],
+				equivalent: true,
+				reason: 'trivial',
+			},
 		],
 	)
 
@@ -167,8 +177,8 @@ describe('has_contradiction', () => {
 
 describe('get_basic_consistent_combinations', () => {
 	const deductionSystem = new DeductionSystem<string>(new Set(['a', 'c', 'd', 'e']), [
-		{ assumptions: ['a'], conclusions: ['c'] },
-		{ assumptions: ['c', 'd'], conclusions: ['e'] },
+		{ assumptions: ['a'], conclusions: ['c'], reason: 'trivial' },
+		{ assumptions: ['c', 'd'], conclusions: ['e'], reason: 'trivial' },
 	])
 
 	deductionSystem.init()
@@ -199,9 +209,9 @@ describe('check_redundancy', () => {
 	const deductionSystem = new DeductionSystem<string>(
 		new Set(['a', 'b', 'c', 'd', 'e', 'f']),
 		[
-			{ assumptions: ['a'], conclusions: ['b'] },
-			{ assumptions: ['b'], conclusions: ['c'] },
-			{ assumptions: ['d'], conclusions: ['e'] },
+			{ assumptions: ['a'], conclusions: ['b'], reason: 'trivial' },
+			{ assumptions: ['b'], conclusions: ['c'], reason: 'trivial' },
+			{ assumptions: ['d'], conclusions: ['e'], reason: 'trivial' },
 		],
 	)
 
@@ -242,9 +252,9 @@ describe('check_redundancy_of_negations', () => {
 	const deductionSystem = new DeductionSystem<string>(
 		new Set(['a', 'b', 'c', 'd', 'e']),
 		[
-			{ assumptions: ['a'], conclusions: ['b'] },
-			{ assumptions: ['b'], conclusions: ['c'] },
-			{ assumptions: ['d'], conclusions: ['e'] },
+			{ assumptions: ['a'], conclusions: ['b'], reason: 'trivial' },
+			{ assumptions: ['b'], conclusions: ['c'], reason: 'trivial' },
+			{ assumptions: ['d'], conclusions: ['e'], reason: 'trivial' },
 		],
 	)
 
@@ -272,22 +282,34 @@ describe('relevant rules', () => {
 	const deductionSystem = new DeductionSystem<string>(
 		new Set(['a', 'b', 'c', 'd', 'e', 'f']),
 		[
-			{ assumptions: ['a'], conclusions: ['b', 'f'] },
-			{ assumptions: ['b'], conclusions: ['c'] },
-			{ assumptions: ['d', 'f'], conclusions: ['e'] },
+			{ assumptions: ['a'], conclusions: ['b', 'f'], reason: 'trivial' },
+			{ assumptions: ['b'], conclusions: ['c'], reason: 'trivial' },
+			{ assumptions: ['d', 'f'], conclusions: ['e'], reason: 'trivial' },
 		],
 	)
 
 	it('should return one rule', () => {
 		const rules = deductionSystem.get_relevant_rules('d')
 		expect(rules).toHaveLength(1)
-		expect(rules).toContainEqual({ assumptions: ['d', 'f'], conclusions: ['e'] })
+		expect(rules).toContainEqual({
+			assumptions: ['d', 'f'],
+			conclusions: ['e'],
+			reason: 'trivial',
+		})
 	})
 
 	it('should return two rules', () => {
 		const rules = deductionSystem.get_relevant_rules('b')
 		expect(rules).toHaveLength(2)
-		expect(rules).toContainEqual({ assumptions: ['a'], conclusions: ['b', 'f'] })
-		expect(rules).toContainEqual({ assumptions: ['b'], conclusions: ['c'] })
+		expect(rules).toContainEqual({
+			assumptions: ['a'],
+			conclusions: ['b', 'f'],
+			reason: 'trivial',
+		})
+		expect(rules).toContainEqual({
+			assumptions: ['b'],
+			conclusions: ['c'],
+			reason: 'trivial',
+		})
 	})
 })

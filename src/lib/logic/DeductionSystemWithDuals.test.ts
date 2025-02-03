@@ -29,9 +29,14 @@ describe('all rules', () => {
 		// prettier-ignore
 		new Set(['a','b','c','d','e','f','x','y','self-dual','c^op','d^op','e^op']),
 		[
-			{ assumptions: ['a'], conclusions: ['c'] },
-			{ assumptions: ['c', 'd'], conclusions: ['e'] },
-			{ equivalent: true, assumptions: ['x'], conclusions: ['y'] },
+			{ assumptions: ['a'], conclusions: ['c'], reason: 'trivial' },
+			{ assumptions: ['c', 'd'], conclusions: ['e'], reason: 'trivial' },
+			{
+				equivalent: true,
+				assumptions: ['x'],
+				conclusions: ['y'],
+				reason: 'trivial',
+			},
 		],
 		(property) => dual_config[property] ?? null,
 	)
@@ -42,22 +47,26 @@ describe('all rules', () => {
 		expect(deductionSystem.rules).toContainEqual({
 			assumptions: ['a'],
 			conclusions: ['c'],
+			reason: 'trivial',
 		})
 
 		expect(deductionSystem.rules).toContainEqual({
 			assumptions: ['c', 'd'],
 			conclusions: ['e'],
+			reason: 'trivial',
 		})
 
 		expect(deductionSystem.rules).toContainEqual({
 			equivalent: true,
 			assumptions: ['x'],
 			conclusions: ['y'],
+			reason: 'trivial',
 		})
 
 		expect(deductionSystem.rules).toContainEqual({
 			assumptions: ['c^op', 'd^op'],
 			conclusions: ['e^op'],
+			reason: 'trivial',
 		})
 	})
 
@@ -65,6 +74,7 @@ describe('all rules', () => {
 		expect(deductionSystem.rules).not.toContainEqual({
 			assumptions: ['a^op'],
 			conclusions: ['c^op'],
+			reason: 'trivial',
 		})
 	})
 
@@ -72,11 +82,13 @@ describe('all rules', () => {
 		expect(deductionSystem.rules).toContainEqual({
 			assumptions: ['self-dual', 'c'],
 			conclusions: ['c^op'],
+			reason: 'trivial by self-duality',
 		})
 
 		expect(deductionSystem.rules).not.toContainEqual({
 			assumptions: ['self-dual', 'x'],
 			conclusions: ['x'],
+			reason: 'trivial',
 		})
 	})
 })

@@ -131,6 +131,7 @@ describe('implications_with_duals', () => {
 		const implication = {
 			assumptions: ['self-dual', 'binary products'],
 			conclusions: ['binary coproducts'],
+			reason: 'trivial by self-duality',
 		}
 		expect(implications_with_duals).toContainEqual(implication)
 	})
@@ -139,6 +140,7 @@ describe('implications_with_duals', () => {
 		const implication = {
 			assumptions: ['self-dual', 'equalizers'],
 			conclusions: ['coequalizers'],
+			reason: 'trivial by self-duality',
 		}
 		expect(implications_with_duals).toContainEqual(implication)
 	})
@@ -147,6 +149,7 @@ describe('implications_with_duals', () => {
 		const implication = {
 			assumptions: ['self-dual', 'thin'],
 			conclusions: ['thin'],
+			reason: 'trivial by self-duality',
 		}
 		expect(implications_with_duals).not.toContainEqual(implication)
 	})
