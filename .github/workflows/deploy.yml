@@ -47,7 +47,7 @@ jobs:
                     --dir build \
                     --site ${{ secrets.NETLIFY_SITE_ID }} \
                     --auth ${{ secrets.NETLIFY_AUTH_TOKEN }} \
-                    --message "Deploy from GitHub Action" \
+                    --message "${{ github.event.workflow_run.head_commit.message }}" \
                     --prod
 
             # For this to work, in the Netlify UI you also have to set
