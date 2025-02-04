@@ -44,9 +44,19 @@ describe('implications', () => {
 		}
 	})
 
-	it(`should have a reason for each implication`, () => {
+	it('should have a reason for each implication', () => {
 		for (const implication of implications) {
 			expect(implication.reason.length).toBeGreaterThan(1)
+		}
+	})
+
+	it('for equivalences, the assumptions should be shorter than the conclusions', () => {
+		for (const implication of implications) {
+			if (implication.equivalent) {
+				expect(implication.assumptions.length).toBeLessThanOrEqual(
+					implication.conclusions.length,
+				)
+			}
 		}
 	})
 })
