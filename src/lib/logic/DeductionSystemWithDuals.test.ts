@@ -66,7 +66,7 @@ describe('all rules', () => {
 		expect(deductionSystem.rules).toContainEqual({
 			assumptions: ['c^op', 'd^op'],
 			conclusions: ['e^op'],
-			reason: 'trivial',
+			reason: '[dualized] trivial',
 		})
 	})
 
