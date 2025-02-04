@@ -56,72 +56,92 @@
 
 <!-- The key fixes a weird rerendering bug when category page is changed -->
 {#key category.id}
-	<h3>Properties</h3>
+	<div class="two-columns">
+		<section>
+			<h3>Properties</h3>
 
-	{#if category_detail_level.value === 'all'}
-		<PropertyList
-			items={category.properties}
-			description="Properties from the database"
-		/>
+			{#if category_detail_level.value === 'all'}
+				<PropertyList
+					items={category.properties}
+					description="Properties from the database"
+				/>
+
+				<PropertyList
+					items={category.deduced_properties}
+					description="Deduced properties"
+				/>
+			{:else if category_detail_level.value === 'merged'}
+				<PropertyList items={category.all_properties} />
+			{:else if category_detail_level.value === 'basic'}
+				<PropertyList
+					items={category.properties}
+					description="Properties from the database. Further properties can be deduced."
+				/>
+			{/if}
+		</section>
+
+		<section>
+			<h3>Non-Properties</h3>
+
+			{#if category_detail_level.value === 'all'}
+				<PropertyList
+					items={category.non_properties}
+					description="Non-Properties from the database"
+					negated={true}
+				/>
+				<PropertyList
+					items={category.deduced_non_properties}
+					description="Deduced Non-Properties*"
+					negated={true}
+				/>
+				<p class="hint">*This also uses the deduced properties.</p>
+			{:else if category_detail_level.value === 'merged'}
+				<PropertyList items={category.all_non_properties} negated={true} />
+			{:else if category_detail_level.value === 'basic'}
+				<PropertyList
+					items={category.non_properties}
+					description="Non-Properties from the database. Further non-properties can be deduced."
+					negated={true}
+				/>
+			{/if}
+		</section>
+	</div>
+
+	<section>
+		<h3>Unknown properties</h3>
 
 		<PropertyList
-			items={category.deduced_properties}
-			description="Deduced properties"
+			items={category.unknown_properties}
+			negated={false}
+			description={category.unknown_properties.size
+				? "For these properties the database currently doesn't have an answer if they are satisfied or not. Please help to complete the data!"
+				: undefined}
 		/>
-	{:else if category_detail_level.value === 'merged'}
-		<PropertyList items={category.all_properties} />
-	{:else if category_detail_level.value === 'basic'}
-		<PropertyList
-			items={category.properties}
-			description="Properties from the database. Further properties can be deduced."
-		/>
-	{/if}
-
-	<h3>Non-Properties</h3>
-
-	{#if category_detail_level.value === 'all'}
-		<PropertyList
-			items={category.non_properties}
-			description="Non-Properties from the database"
-			negated={true}
-		/>
-		<PropertyList
-			items={category.deduced_non_properties}
-			description="Deduced Non-Properties*"
-			negated={true}
-		/>
-		<p class="hint">*This also uses the deduced properties.</p>
-	{:else if category_detail_level.value === 'merged'}
-		<PropertyList items={category.all_non_properties} negated={true} />
-	{:else if category_detail_level.value === 'basic'}
-		<PropertyList
-			items={category.non_properties}
-			description="Non-Properties from the database. Further non-properties can be deduced."
-			negated={true}
-		/>
-	{/if}
-
-	<h3>Unknown properties</h3>
-
-	<PropertyList
-		items={category.unknown_properties}
-		negated={false}
-		description={category.unknown_properties.size
-			? "For these properties the database currently doesn't have an answer if they are satisfied or not. Please help to complete the data!"
-			: undefined}
-	/>
+	</section>
 {/key}
 
-<h3>Special morphisms</h3>
+<section>
+	<h3>Special morphisms</h3>
 
-<ul>
-	<li>
-		Isomorphisms: {@html category.special_morphisms.isomorphisms ?? '?'}
-	</li>
-	<li>
-		Monomorphisms: {@html category.special_morphisms.monomorphisms ?? '?'}
-	</li>
-	<li>
-		Epimorphisms: {@html category.special_morphisms.epimorphisms ?? '?'}
-	</li>
-</ul>
+	<ul>
+		<li>
+			Isomorphisms: {@html category.special_morphisms.isomorphisms ?? '?'}
+		</li>
+		<li>
+			Monomorphisms: {@html category.special_morphisms.monomorphisms ?? '?'}
+		</li>
+		<li>
+			Epimorphisms: {@html category.special_morphisms.epimorphisms ?? '?'}
+		</li>
+	</ul>
+</section>
+
+<style>
+	@media (min-width: 720px) {
+		.two-columns {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 0.5rem;
+		}
+	}
+</style>
