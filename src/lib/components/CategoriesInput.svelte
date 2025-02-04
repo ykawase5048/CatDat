@@ -100,6 +100,7 @@
 		padding: 0.2rem 0.875rem;
 		outline: 1px solid var(--secondary-outline-color);
 		transition: outline-color 150ms;
+		background-color: var(--secondary-bg-color);
 	}
 
 	.chip:hover,
