@@ -27,7 +27,9 @@ export const load: PageServerLoad = (event) => {
 		.map(shorten_category)
 	const unknown_categories = category_system.search([], [], [id]).map(shorten_category)
 
-	const relevant_implications = property_deduction_system.get_relevant_rules(id)
+	const relevant_implications = property_deduction_system
+		.get_relevant_rules(id)
+		.map(render_formulas_in_object)
 
 	return {
 		property: render_formulas_in_object(property),
