@@ -14,8 +14,8 @@
 	let dual_found_categories = $derived(data.dual_found_categories)
 	let contradiction = $derived(data.contradiction)
 
-	let selected_properties = $state<PropertyID[]>([])
-	let selected_non_properties = $state<PropertyID[]>([])
+	let selected_properties = $state<PropertyID[]>(data.properties ?? [])
+	let selected_non_properties = $state<PropertyID[]>(data.non_properties ?? [])
 
 	function request_search_results() {
 		const properties_query = selected_properties
