@@ -14,10 +14,17 @@
 </script>
 
 <div class="controls">
-	<button class="button" onclick={add} aria-label="add" disabled={add_disabled}>
+	<button
+		type="button"
+		class="button"
+		onclick={add}
+		aria-label="add"
+		disabled={add_disabled}
+	>
 		<Fa icon={faPlus} />
 	</button>
 	<button
+		type="button"
 		class="button"
 		onclick={remove}
 		aria-label="remove"

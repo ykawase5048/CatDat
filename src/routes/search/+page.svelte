@@ -22,7 +22,8 @@
 		data.non_properties.length ? data.non_properties : [''],
 	)
 
-	function request_search_results() {
+	function request_search_results(e: SubmitEvent) {
+		e.preventDefault()
 		const properties_query = selected_properties
 			.filter(is_valid_property)
 			.map(encode_property_ID)
@@ -45,6 +46,9 @@
 
 		goto(url, { invalidateAll: true })
 	}
+
+	const sample_search_url =
+		'/search?properties=finitely_complete--pointed&non_properties=complete'
 </script>
 
 <svelte:head>
@@ -56,10 +60,11 @@
 <p class="hint">
 	On this page, you can search for categories that satisfy a specific set of properties
 	while simultaneously not satisfying another set of properties. For example, you can
-	look for categories that are finitely complete and pointed but not complete.
+	<a href={sample_search_url} target="_blank">look</a> for categories that are finitely complete
+	and pointed but not complete.
 </p>
 
-<div class="form">
+<form onsubmit={request_search_results}>
 	<p>Looking for categories with these properties:</p>
 
 	<PropertySelection
@@ -82,34 +87,39 @@
 		{/each}
 	</datalist>
 
-	<button class="button" onclick={request_search_results}>Search</button>
-</div>
+	<button type="submit" class="button">Search</button>
+</form>
 
 {#if found_categories}
-	<h2>Results</h2>
-	<CategoryList items={found_categories} />
-	{#if contradiction}
-		<Warning>
-			The properties and non-properties contradict each other according to the
-			<a href="/implications">implications</a>. There cannot be any search results.
-		</Warning>
-	{/if}
+	<section>
+		<h2>Results</h2>
+		<CategoryList items={found_categories} />
+		{#if contradiction}
+			<Warning>
+				The properties and non-properties contradict each other according to the
+				<a href="/implications">implications</a>. There cannot be any search
+				results.
+			</Warning>
+		{/if}
+	</section>
 {/if}
 
 {#if dual_found_categories?.length}
-	<h2>Results for dual search</h2>
+	<section>
+		<h2>Results for dual search</h2>
 
-	<p class="hint">
-		These categories satisfy the dual properties ({data.dualized_properties?.join(
-			', ',
-		)}) resp. non-properties ({data.dualized_non_properties?.join(', ')}).
-	</p>
+		<p class="hint">
+			These categories satisfy the dual properties ({data.dualized_properties?.join(
+				', ',
+			)}) resp. non-properties ({data.dualized_non_properties?.join(', ')}).
+		</p>
 
-	<CategoryList items={dual_found_categories} />
+		<CategoryList items={dual_found_categories} />
+	</section>
 {/if}
 
 <style>
-	.form {
+	form {
 		margin-bottom: 2rem;
 	}
 </style>
