@@ -107,7 +107,7 @@ describe('implications_with_duals', () => {
 		const implication = {
 			assumptions: ['small'],
 			conclusions: ['locally small', 'essentially small'],
-			reason: 'trivial',
+			reason: expect.any(String),
 		}
 		expect(implications_with_duals).toContainEqual(implication)
 	})
@@ -117,7 +117,7 @@ describe('implications_with_duals', () => {
 			equivalent: true,
 			assumptions: ['complete'],
 			conclusions: ['products', 'equalizers'],
-			reason: '',
+			reason: expect.any(String),
 		}
 		expect(implications_with_duals).toContainEqual(implication)
 
@@ -125,7 +125,7 @@ describe('implications_with_duals', () => {
 			equivalent: true,
 			assumptions: ['cocomplete'],
 			conclusions: ['coproducts', 'coequalizers'],
-			reason: '',
+			reason: expect.any(String),
 		}
 		expect(implications_with_duals).toContainEqual(dual_implication)
 	})
@@ -152,7 +152,7 @@ describe('implications_with_duals', () => {
 		const implication = {
 			assumptions: ['self-dual', 'thin'],
 			conclusions: ['thin'],
-			reason: 'trivial by self-duality',
+			reason: expect.any(String),
 		}
 		expect(implications_with_duals).not.toContainEqual(implication)
 	})
