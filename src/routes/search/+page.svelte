@@ -2,12 +2,11 @@
 	import { goto } from '$app/navigation'
 
 	import CategoryList from '$lib/components/CategoryList.svelte'
-	import { properties } from '$lib/properties/properties'
 	import { encode_property_ID } from '$lib/properties/properties.utils'
-	import { is_valid_property } from '$lib/properties/propertyIDs'
-	import PropertySelection from '$lib/components/PropertySelection.svelte'
+	import { is_valid_property, type PropertyID } from '$lib/properties/propertyIDs'
 	import { separator } from '$lib/categories/search.js'
 	import Warning from '$lib/components/Warning.svelte'
+	import PropertiesInput from '$lib/components/PropertiesInput.svelte'
 
 	let { data } = $props()
 
@@ -15,15 +14,10 @@
 	let dual_found_categories = $derived(data.dual_found_categories)
 	let contradiction = $derived(data.contradiction)
 
-	let selected_properties = $state<string[]>(
-		data.properties.length ? data.properties : [''],
-	)
-	let selected_non_properties = $state<string[]>(
-		data.non_properties.length ? data.non_properties : [''],
-	)
+	let selected_properties = $state<PropertyID[]>([])
+	let selected_non_properties = $state<PropertyID[]>([])
 
-	function request_search_results(e: SubmitEvent) {
-		e.preventDefault()
+	function request_search_results() {
 		const properties_query = selected_properties
 			.filter(is_valid_property)
 			.map(encode_property_ID)
@@ -64,31 +58,21 @@
 	and pointed but not complete.
 </p>
 
-<form onsubmit={request_search_results}>
-	<p>Looking for categories with these properties:</p>
-
-	<PropertySelection
-		aria_label="selection of properties"
-		bind:values={selected_properties}
-		name="property"
+<div class="form">
+	<PropertiesInput
+		title="Looking for categories with these properties:"
+		bind:selected_properties
+		aria_label="Properties"
 	/>
 
-	<p>... and <i>not</i> with these properties:</p>
-
-	<PropertySelection
-		aria_label="selection of non-properties"
-		bind:values={selected_non_properties}
-		name="non-property"
+	<PropertiesInput
+		title="... and <i>not</i> with these properties:"
+		bind:selected_properties={selected_non_properties}
+		aria_label="Non-properties"
 	/>
 
-	<datalist id="property-list">
-		{#each properties as property}
-			<option value={property.id}>{property.id}</option>
-		{/each}
-	</datalist>
-
-	<button type="submit" class="button">Search</button>
-</form>
+	<button type="button" class="button" onclick={request_search_results}>Search</button>
+</div>
 
 {#if found_categories}
 	<section>
@@ -119,7 +103,7 @@
 {/if}
 
 <style>
-	form {
+	.form {
 		margin-bottom: 2rem;
 	}
 </style>
