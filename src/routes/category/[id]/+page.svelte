@@ -21,38 +21,40 @@
 
 <Tags tags={category.tags} />
 
-<ul class="dashed-list">
-	<li>
-		notation: {@html category.notation}
-	</li>
-	<li>
-		objects: {@html category.objects}
-	</li>
-	<li>
-		morphisms: {@html category.morphisms}
-	</li>
-	{#if category.nlab_link}
+<section aria-label="main info">
+	<ul class="dashed-list">
 		<li>
-			<a href={category.nlab_link} target="_blank">nLab Link</a>
+			notation: {@html category.notation}
 		</li>
+		<li>
+			objects: {@html category.objects}
+		</li>
+		<li>
+			morphisms: {@html category.morphisms}
+		</li>
+		{#if category.nlab_link}
+			<li>
+				<a href={category.nlab_link} target="_blank">nLab Link</a>
+			</li>
+		{/if}
+	</ul>
+
+	{#if category.description}
+		<p>{@html category.description}</p>
 	{/if}
-</ul>
 
-{#if category.description}
-	<p>{@html category.description}</p>
-{/if}
-
-{#if related_categories}
-	<p>
-		Related categories: {#each related_categories as { id, name }, i}
-			<a href={`/category/${id}`}>
-				{name}
-			</a>{#if i < related_categories.length - 1}
-				,&nbsp;
-			{/if}
-		{/each}
-	</p>
-{/if}
+	{#if related_categories}
+		<p>
+			Related categories: {#each related_categories as { id, name }, i}
+				<a href={`/category/${id}`}>
+					{name}
+				</a>{#if i < related_categories.length - 1}
+					,&nbsp;
+				{/if}
+			{/each}
+		</p>
+	{/if}
+</section>
 
 <!-- The key fixes a weird rerendering bug when category page is changed -->
 {#key category.id}
