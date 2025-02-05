@@ -55,4 +55,4 @@ The _catabase_ at <https://catabase.fly.dev> has been a similar project, which s
 
 The _nLab_ <https://ncatlab.org> is a wiki for (higher) category theory. _CatDat_ refers to nLab-pages for details of its entries.
 
-The _Clowder project_ at <https://clowderproject.com> is a quite new online reference for category theory. In contrast to _CatDat_ (which is based on _data_), it follows a textbook-approach.
+The _Clowder project_ at <https://clowderproject.com> is a quite new online reference for category theory. In contrast to _CatDat_ (which is based on _data_), it follows a textbook-based approach.
