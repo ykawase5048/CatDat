@@ -74,17 +74,23 @@
 	<button type="button" class="button" onclick={request_search_results}>Search</button>
 </div>
 
+{#if contradiction}
+	<Warning>
+		The properties and non-properties contradict each other according to the
+		<a href="/implications">implications</a>. There cannot be any search results.
+	</Warning>
+{/if}
+
 {#if found_categories}
 	<section>
 		<h2>Results</h2>
+
+		<p class="hint">
+			These categories satisfy the properties ({data.properties?.join(', ') || '-'})
+			resp. non-properties ({data.non_properties?.join(', ') || '-'}).
+		</p>
+
 		<CategoryList items={found_categories} />
-		{#if contradiction}
-			<Warning>
-				The properties and non-properties contradict each other according to the
-				<a href="/implications">implications</a>. There cannot be any search
-				results.
-			</Warning>
-		{/if}
 	</section>
 {/if}
 
@@ -95,7 +101,8 @@
 		<p class="hint">
 			These categories satisfy the dual properties ({data.dualized_properties?.join(
 				', ',
-			)}) resp. non-properties ({data.dualized_non_properties?.join(', ')}).
+			) || '-'}) resp. non-properties ({data.dualized_non_properties?.join(', ') ||
+				'-'}).
 		</p>
 
 		<CategoryList items={dual_found_categories} />
