@@ -69,6 +69,8 @@ export const PROPERTY_IDs = [
 	'wide pushouts',
 	'split abelian',
 	'Cauchy complete',
+	'mono-regular',
+	'epi-regular',
 ] as const
 
 export type PropertyID = (typeof PROPERTY_IDs)[number]

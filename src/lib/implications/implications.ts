@@ -350,8 +350,8 @@ export const implications: readonly Readonly<Implication>[] = [
 	},
 	{
 		assumptions: ['elementary topos'],
-		conclusions: ['finitely cocomplete', 'disjoint finite coproducts'],
-		reason: '<a href="https://ncatlab.org/nlab/show/Sheaves+in+Geometry+and+Logic" target="_blank">Mac Lane & Moerdijk</a>, Cor. IV.5.4 and Cor. IV.10.5',
+		conclusions: ['finitely cocomplete', 'disjoint finite coproducts', 'epi-regular'],
+		reason: '<a href="https://ncatlab.org/nlab/show/Sheaves+in+Geometry+and+Logic" target="_blank">Mac Lane & Moerdijk</a>, Cor. IV.5.4, Cor. IV.10.5, Thm. 4.7.8.',
 	},
 	{
 		assumptions: ['subobject classifier', 'locally essentially small'],
@@ -391,8 +391,8 @@ export const implications: readonly Readonly<Implication>[] = [
 	},
 	{
 		assumptions: ['subobject classifier'],
-		conclusions: ['finitely complete', 'balanced'],
-		reason: 'The first part holds by convention, and balanced follows since every monomorphism is regular.',
+		conclusions: ['finitely complete', 'mono-regular'],
+		reason: 'The first part holds by convention, and the second part: any monomorphism $U \\to X$ is the equalizer of $$\\chi_U,\\chi_X : X \\to \\Omega$.',
 	},
 	// additive categories
 	{
@@ -417,14 +417,16 @@ export const implications: readonly Readonly<Implication>[] = [
 		reason: 'If $f : T \\to A + B$ is a morphism that factors through $A$ and $B$, then $p_B f = 0$ and $p_A f = 0$, so $f = 0$.',
 	},
 	{
+		equivalent: true,
 		assumptions: ['abelian'],
-		conclusions: ['additive', 'equalizers', 'coequalizers'],
+		conclusions: [
+			'additive',
+			'equalizers',
+			'coequalizers',
+			'mono-regular',
+			'epi-regular',
+		],
 		reason: 'by definition',
-	},
-	{
-		assumptions: ['abelian'],
-		conclusions: ['balanced'],
-		reason: 'See the discussion after the definition of an abelian category in <a href="https://ncatlab.org/nlab/show/Categories+for+the+Working+Mathematician" target="_blank">Mac Lane</a>, VIII.3',
 	},
 	{
 		equivalent: true,
@@ -462,7 +464,7 @@ export const implications: readonly Readonly<Implication>[] = [
 		assumptions: ['groupoid'],
 		conclusions: [
 			'self-dual',
-			'balanced',
+			'mono-regular',
 			'pullbacks',
 			'filtered limits',
 			'left cancellative',
@@ -500,5 +502,10 @@ export const implications: readonly Readonly<Implication>[] = [
 		assumptions: ['generator'],
 		conclusions: ['inhabited'],
 		reason: 'trivial',
+	},
+	{
+		assumptions: ['mono-regular'],
+		conclusions: ['balanced'],
+		reason: 'Any regular monomorphism that is an epimorphism must be an isomorphism.',
 	},
 ]

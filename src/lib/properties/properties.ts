@@ -95,7 +95,7 @@ export const properties: readonly Readonly<Property>[] = [
 		prefix: 'is',
 		nlab_link: 'https://ncatlab.org/nlab/show/abelian+category',
 		description:
-			'A category is <i>abelian</i> if it is additive, every morphism has a kernel and a cokernel, and every monomorphism and epimorphism is normal. As opposed to many other concepts of categories, being abelian turns out to be a mere property. For example, monoidal not just a property.',
+			'A category is <i>abelian</i> if it is additive, every morphism has a kernel and a cokernel, and every monomorphism and epimorphism is normal. Equivalently, it is additive, has equalizers and coequalizers, and it is mono-regular and epi-regular. As opposed to many other concepts of categories, being abelian turns out to be a mere property. For example, monoidal not just a property.',
 		dual: 'abelian',
 		related: ['additive'],
 	},
@@ -602,5 +602,21 @@ export const properties: readonly Readonly<Property>[] = [
 			'A category is <i>Cauchy complete</i> if every idempotent splits. That is, every idempotent endomorphism $e : X \\to X$ (that is, $e^2 = e$) may be written as $e = i \\circ p$ for some morphisms $p : X \\to Y$ and $i : Y \\to X$ with $p \\circ i = \\mathrm{id}_Y$. Equivalently, the pair $e,\\mathrm{id}_X : X \\rightrightarrows X$ has an equalizer (or coequalizer).',
 		dual: 'Cauchy complete',
 		related: ['finitely complete'],
+	},
+	{
+		id: 'mono-regular',
+		prefix: 'is',
+		nlab_link: 'https://ncatlab.org/nlab/show/regular+monomorphism',
+		description:
+			'A category is <i>mono-regular</i> when every monomorphism is regular, i.e. the equalizer of a pair of morphisms. Notice that this is not standard terminology, apparently the literature has no name for this yet. A <i>preadditive</i> category is mono-regular iff every monomorphism is a kernel, and this type of category is commonly known as a <i>normal category</i>. We avoid this terminology here since it only applies to a certain type of categories, but mono-regular applies to all categories.', // https://math.stackexchange.com/questions/5031588
+		dual: 'epi-regular',
+	},
+	{
+		id: 'epi-regular',
+		prefix: 'is',
+		nlab_link: 'https://ncatlab.org/nlab/show/regular+epimorphism',
+		description:
+			'A category is <i>epi-regular</i> when every epimorphism is regular, i.e. the coequalizer of a pair of morphisms. Notice that this is not standard terminology, apparently the literature has no name for this yet. A <i>preadditive</i> category is epi-regular iff every epimorphism is a cokernel, and this type of category is commonly known as a <i>conormal category</i>. We avoid this terminology here since it only applies to a certain type of categories, but epi-regular applies to all categories.', // https://math.stackexchange.com/questions/5031588
+		dual: 'mono-regular',
 	},
 ]
