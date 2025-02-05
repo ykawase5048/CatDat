@@ -1,5 +1,9 @@
 # CatDat
 
+![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen)
+![Tests](https://github.com/github/docs/actions/workflows/test.yml/badge.svg)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 _A comprehensive and searchable database of categories and their properties_
 
 <https://catdat.netlify.app>\*
