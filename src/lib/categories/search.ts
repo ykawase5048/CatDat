@@ -13,6 +13,9 @@ import { category_system, shorten_category } from '$lib/categories/categories.ut
  */
 export const separator = '--'
 
+export const storage_key_properties = 'search_properties'
+export const storage_key_non_properties = 'search_non_properties'
+
 export function get_search_results(url: URL) {
 	const properties_query = url.searchParams.get('properties')
 	const non_properties_query = url.searchParams.get('non_properties')

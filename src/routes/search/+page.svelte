@@ -4,15 +4,66 @@
 	import CategoryList from '$lib/components/CategoryList.svelte'
 	import { encode_property_ID } from '$lib/properties/properties.utils'
 	import { is_valid_property, type PropertyID } from '$lib/properties/propertyIDs'
-	import { separator } from '$lib/categories/search.js'
+	import {
+		separator,
+		storage_key_non_properties,
+		storage_key_properties,
+	} from '$lib/categories/search'
 	import Warning from '$lib/components/Warning.svelte'
 	import PropertiesInput from '$lib/components/PropertiesInput.svelte'
-	import { concatenate_info } from '$lib/commons/utils.js'
+	import { concatenate_info } from '$lib/commons/utils'
+	import { browser } from '$app/environment'
+
+	function get_saved_search(): [PropertyID[], PropertyID[]] {
+		if (!browser) return [[], []]
+
+		const properties_string = window.sessionStorage.getItem(storage_key_properties)
+		const non_properties_string = window.sessionStorage.getItem(
+			storage_key_non_properties,
+		)
+
+		if (!properties_string || !non_properties_string) return [[], []]
+
+		try {
+			const parsed_properties: unknown = JSON.parse(properties_string)
+			const parsed_non_properties: unknown = JSON.parse(non_properties_string)
+
+			const is_valid =
+				Array.isArray(parsed_properties) &&
+				parsed_properties.every(is_valid_property) &&
+				Array.isArray(parsed_non_properties) &&
+				parsed_non_properties.every(is_valid_property)
+
+			return is_valid ? [parsed_properties, parsed_non_properties] : [[], []]
+		} catch {
+			return [[], []]
+		}
+	}
+
+	$effect(() => {
+		if (!browser) return
+		window.sessionStorage.setItem(
+			storage_key_properties,
+			JSON.stringify(selected_properties),
+		)
+		window.sessionStorage.setItem(
+			storage_key_non_properties,
+			JSON.stringify(selected_non_properties),
+		)
+	})
+
+	const [saved_properties, saved_non_properties] = get_saved_search()
 
 	let { data } = $props()
 
-	let selected_properties = $state<PropertyID[]>(data.properties ?? [])
-	let selected_non_properties = $state<PropertyID[]>(data.non_properties ?? [])
+	let selected_properties = $state<PropertyID[]>(
+		data.is_search && data.properties ? data.properties : saved_properties,
+	)
+	let selected_non_properties = $state<PropertyID[]>(
+		data.is_search && data.non_properties
+			? data.non_properties
+			: saved_non_properties,
+	)
 
 	function request_search_results() {
 		const properties_query = selected_properties
