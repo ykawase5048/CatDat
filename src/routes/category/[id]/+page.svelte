@@ -2,7 +2,8 @@
 	import type { CategoryDetailed, CategoryShort } from '$lib/commons/types'
 	import { category_detail_level } from '$lib/settings/detail_level.svelte'
 	import PropertyList from '$lib/components/PropertyList.svelte'
-	import Tags from '$lib/components/Tags.svelte'
+	import ChipGroup from '$lib/components/ChipGroup.svelte'
+	import Chip from '$lib/components/Chip.svelte'
 
 	let { data } = $props()
 
@@ -19,9 +20,13 @@
 
 <h2>{category.name}</h2>
 
-<Tags tags={category.tags} />
+<ChipGroup>
+	{#each category.tags as tag}
+		<Chip size="small">{tag}</Chip>
+	{/each}
+</ChipGroup>
 
-<section aria-label="main info">
+<section aria-label="main info" class="main">
 	<ul>
 		<li>
 			notation: {@html category.notation}
@@ -139,6 +144,10 @@
 </section>
 
 <style>
+	.main {
+		margin-top: 1.5rem;
+	}
+
 	@media (min-width: 720px) {
 		.two-columns {
 			display: grid;

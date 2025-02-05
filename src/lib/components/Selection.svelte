@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { faPlus } from '@fortawesome/free-solid-svg-icons'
 	import Fa from 'svelte-fa'
+	import ChipGroup from './ChipGroup.svelte'
+	import Chip from './Chip.svelte'
 
 	type Props = {
 		title?: string
@@ -55,13 +57,13 @@
 		</button>
 	</form>
 
-	<div class="chips">
+	<ChipGroup>
 		{#each selected_items as selected_item}
-			<button class="chip" onclick={() => remove_item(selected_item)}>
+			<Chip handle_remove={() => remove_item(selected_item)}>
 				{selected_item}
-			</button>
+			</Chip>
 		{/each}
-	</div>
+	</ChipGroup>
 </section>
 
 <datalist id="list-{item_label}">
@@ -78,6 +80,7 @@
 	form {
 		display: flex;
 		gap: 1rem;
+		margin-bottom: 1rem;
 	}
 
 	input {
@@ -88,26 +91,5 @@
 		form {
 			max-width: 30rem;
 		}
-	}
-
-	.chips {
-		margin-top: 1rem;
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.75rem;
-	}
-
-	.chip {
-		font-size: 1rem;
-		border-radius: 100vw;
-		padding: 0.2rem 0.875rem;
-		outline: 1px solid var(--secondary-outline-color);
-		transition: outline-color 150ms;
-		background-color: var(--secondary-bg-color);
-	}
-
-	.chip:hover,
-	.chip:focus-visible {
-		outline-color: var(--outline-color);
 	}
 </style>
