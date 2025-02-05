@@ -663,7 +663,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		name: 'partial order of natural numbers',
 		notation: '$(\\mathbb{N},\\leq)$',
 		objects: 'natural numbers $0, 1, 2, \\dotsc$',
-		morphisms: 'a unique morphism $n \\to m$ if $n \\leq m$',
+		morphisms: 'a unique morphism $(n,m) : n \\to m$ if $n \\leq m$',
 		description:
 			'This can also be seen as the path category of the infinite linear graph $\\bullet \\to \\bullet \\to \\bullet \\to \\cdots$.',
 		related: ['On'],
@@ -717,7 +717,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		notation: '$(\\mathbf{On},\\leq)$',
 		objects: 'ordinal numbers',
 		morphisms:
-			'a unique morphism $\\alpha \\to \\beta$, say $(\\alpha,\\beta)$, if $\\alpha \\leq \\beta$',
+			'a unique morphism $(\\alpha,\\beta): \\alpha \\to \\beta$ if $\\alpha \\leq \\beta$',
 		description: 'This is a large variant of the partial order of natural numbers.',
 		related: ['N'],
 		tags: ['intermediate', 'artificial', 'set theory'],
