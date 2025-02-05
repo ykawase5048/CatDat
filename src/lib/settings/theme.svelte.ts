@@ -11,8 +11,8 @@ export function get_saved_theme(): Theme {
 
 	const saved_theme = document.body.getAttribute('data-theme')
 
-	if (saved_theme === 'light' || saved_theme === 'dark' || saved_theme === 'pink') {
-		return saved_theme
+	if (saved_theme && (THEMES as readonly string[]).includes(saved_theme)) {
+		return saved_theme as Theme
 	}
 
 	return 'dark'
