@@ -1,6 +1,6 @@
 import type { NonEmptyArray } from '$lib/commons/utils'
 import type { CategoryID } from './categories.data'
-import type { CategoryTag } from './tags.data'
+import type { Tag } from './tags.data'
 
 export const category_tags = {
 	'0': ['basic', 'badly-behaved'],
@@ -52,4 +52,4 @@ export const category_tags = {
 	'Rel': ['basic', 'set theory', 'well-behaved'],
 	'Sp': ['intermediate', 'combinatorics'],
 	'real_interval': ['basic', 'analysis', 'well-behaved'],
-} as const satisfies Record<CategoryID, NonEmptyArray<CategoryTag>>
+} as const satisfies Record<CategoryID, NonEmptyArray<Tag>>

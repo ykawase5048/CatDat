@@ -1,4 +1,4 @@
-export const category_tags = [
+export const tags = [
 	'basic',
 	'intermediate',
 	'advanced',
@@ -18,4 +18,4 @@ export const category_tags = [
 	'category theory',
 ] as const
 
-export type CategoryTag = (typeof category_tags)[number]
+export type Tag = (typeof tags)[number]
