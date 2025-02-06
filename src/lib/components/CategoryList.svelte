@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { CategoryShort } from '$lib/commons/types'
+	import type { Category } from '$lib/data/categories.data'
 
 	type Props = {
-		items: CategoryShort[]
+		items: Pick<Category, 'id' | 'name'>[]
 		description?: string
 	}
 

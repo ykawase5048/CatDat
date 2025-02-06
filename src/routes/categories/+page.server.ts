@@ -1,7 +1,8 @@
-import { categories } from '$lib/categories/categories'
-import { shorten_category } from '$lib/categories/categories.utils'
-import type { PageServerLoad } from '../missing/$types'
+import type { PageServerLoad } from './$types'
+import { select } from '$lib/commons/utils'
+import { categories, type Category } from '$lib/data/categories.data'
 
 export const load: PageServerLoad = () => {
-	return { categories: categories.map(shorten_category) }
+	const simplified_categories = select(categories as Category[], ['id', 'name'])
+	return { categories: simplified_categories }
 }
