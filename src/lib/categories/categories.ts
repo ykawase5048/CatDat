@@ -1,6 +1,7 @@
 import type { PreCategory } from '$lib/commons/types'
 
 /**
+ * @deprecated
  * Each category has the following data:
  * - id (must be defined in categoryIDs.ts)
  * - name

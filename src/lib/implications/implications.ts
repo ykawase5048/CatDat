@@ -1,6 +1,7 @@
 import type { Implication } from '$lib/commons/types'
 
 /**
+ * @deprecated
  * Each implication must have the following properties:
  * - equivalent (optional, set to "true" for equivalences)
  * - assumptions: a list of registered properties

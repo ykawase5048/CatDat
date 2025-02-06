@@ -36,6 +36,9 @@ export const categories_dictionary_detailed = group_items<CategoryID, CategoryDe
 	categories_detailed,
 )
 
+/**
+ * @deprecated
+ */
 export function shorten_category(
 	category: PreCategory | Category | CategoryDetailed,
 ): CategoryShort {

@@ -53,6 +53,9 @@ export type Category = Omit<PreCategory, 'properties' | 'non_properties'> & {
 export type CategoryDetailed = EntityDetailed<Category, PropertyID>
 
 // contains only what is relevant for lists of categories
+/**
+ * @deprecated
+ */
 export type CategoryShort = Pick<Category, 'id' | 'name'>
 
 export type Property = {

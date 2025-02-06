@@ -1,3 +1,6 @@
+/**
+ * @deprecated
+ */
 export const CATEGORY_IDs = [
 	'Set',
 	'Ab',

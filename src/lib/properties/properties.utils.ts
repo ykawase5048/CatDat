@@ -5,6 +5,9 @@ import { group_items } from '$lib/commons/utils'
 import { properties } from './properties'
 import { PROPERTY_IDs, type PropertyID } from './propertyIDs'
 
+/**
+ * @deprecated
+ */
 export const properties_dictionary = group_items<PropertyID, Property>(
 	properties as Property[],
 )
@@ -38,16 +41,25 @@ export function get_property_url(id: PropertyID) {
 	return `/property/${encode_property_ID(id)}`
 }
 
+/**
+ * @deprecated
+ */
 export function get_dual_property(id: PropertyID): null | PropertyID {
 	return properties_dictionary[id].dual ?? null
 }
 
+/**
+ * @deprecated
+ */
 export function get_dual_properties(ids: PropertyID[]): null | PropertyID[] {
 	const duals = ids.map(get_dual_property)
 	if (duals.includes(null)) return null
 	return duals as PropertyID[]
 }
 
+/**
+ * @deprecated
+ */
 export const PREFIX_CONFIG = {
 	'is': 'is not',
 	'is a': 'is not a',
@@ -57,6 +69,9 @@ export const PREFIX_CONFIG = {
 	'has an': 'does not have an',
 } as const
 
+/**
+ * @deprecated
+ */
 export type Prefix = keyof typeof PREFIX_CONFIG
 
 export function negate_prefix(prefix: Prefix) {

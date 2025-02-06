@@ -1,6 +1,7 @@
 import type { Property } from '$lib/commons/types'
 
 /**
+ * @deprecated
  * Each property must have the following properties:
  * - id (must be defined in propertyIDs.ts)
  * - prefix (is, has, etc.)

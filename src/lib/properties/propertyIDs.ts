@@ -1,3 +1,6 @@
+/**
+ * @deprecated
+ */
 export const PROPERTY_IDs = [
 	'small',
 	'locally small',
