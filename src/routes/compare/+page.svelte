@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { browser } from '$app/environment'
 	import { goto } from '$app/navigation'
-	import Selection from '$lib/components/Selection.svelte'
+	import Selection from '$components/Selection.svelte'
 	import { max_categories, storage_key } from './compare.config'
 
 	let { data } = $props()

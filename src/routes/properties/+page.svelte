@@ -1,5 +1,5 @@
 <script lang="ts">
-	import PropertyList from '$lib/components/PropertyList.svelte'
+	import PropertyList from '$components/PropertyList.svelte'
 
 	let { data } = $props()
 </script>

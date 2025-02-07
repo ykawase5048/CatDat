@@ -1,6 +1,6 @@
 <script lang="ts">
-	import CategoryList from '$lib/components/CategoryList.svelte'
-	import ImplicationList from '$lib/components/ImplicationList.svelte'
+	import CategoryList from '$components/CategoryList.svelte'
+	import ImplicationList from '$components/ImplicationList.svelte'
 	import type { PropertyID } from '$lib/data/properties.data'
 	import { get_property_url } from '$lib/commons/property.url'
 

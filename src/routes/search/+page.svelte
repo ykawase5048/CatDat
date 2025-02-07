@@ -1,17 +1,17 @@
 <script lang="ts">
 	import { goto } from '$app/navigation'
 
-	import CategoryList from '$lib/components/CategoryList.svelte'
+	import CategoryList from '$components/CategoryList.svelte'
 
 	import {
 		separator,
 		storage_key_non_properties,
 		storage_key_properties,
 	} from '$lib/utils/search'
-	import Warning from '$lib/components/Warning.svelte'
+	import Warning from '$components/Warning.svelte'
 	import { concatenate_info } from '$lib/commons/utils'
 	import { browser } from '$app/environment'
-	import Selection from '$lib/components/Selection.svelte'
+	import Selection from '$components/Selection.svelte'
 	import { is_valid_property, propertyIDs } from '$lib/utils/data.helpers'
 	import type { PropertyID } from '$lib/data/properties.data'
 	import { encode_property_ID } from '$lib/commons/property.url'

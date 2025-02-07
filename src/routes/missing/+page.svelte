@@ -1,5 +1,5 @@
 <script>
-	import CategoryList from '$lib/components/CategoryList.svelte'
+	import CategoryList from '$components/CategoryList.svelte'
 	import { negate_prefix } from '$lib/utils/data.helpers'
 
 	const { data } = $props()

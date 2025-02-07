@@ -1,5 +1,5 @@
 <script lang="ts">
-	import CategoryList from '$lib/components/CategoryList.svelte'
+	import CategoryList from '$components/CategoryList.svelte'
 
 	let { data } = $props()
 </script>

@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { category_detail_level } from '$lib/settings/detail_level.svelte'
-	import PropertyList from '$lib/components/PropertyList.svelte'
-	import ChipGroup from '$lib/components/ChipGroup.svelte'
-	import Chip from '$lib/components/Chip.svelte'
+	import PropertyList from '$components/PropertyList.svelte'
+	import ChipGroup from '$components/ChipGroup.svelte'
+	import Chip from '$components/Chip.svelte'
 
 	let { data } = $props()
 

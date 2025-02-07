@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Chip from '$lib/components/Chip.svelte'
-	import ChipGroup from '$lib/components/ChipGroup.svelte'
+	import Chip from '$components/Chip.svelte'
+	import ChipGroup from '$components/ChipGroup.svelte'
 	import {
 		category_detail_level,
 		CATEGORY_DETAIL_LEVELS,

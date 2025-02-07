@@ -1,5 +1,5 @@
 <script>
-	import ImplicationList from '$lib/components/ImplicationList.svelte'
+	import ImplicationList from '$components/ImplicationList.svelte'
 
 	let { data } = $props()
 </script>
