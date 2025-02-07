@@ -104,7 +104,11 @@ export const CATEGORY_PROPERTIES: CategoryPropertyMatch[] = [
 	{ category: 'Met', property: 'generator', reason: '' },
 	{ category: 'Met', property: 'cogenerator', reason: '' },
 	{ category: 'Met_oo', property: 'locally small', reason: '' },
-	{ category: 'Met_oo', property: 'locally ℵ₁-presentable', reason: '' },
+	{
+		category: 'Met_oo',
+		property: 'locally ℵ₁-presentable',
+		reason: '4.5 in https://arxiv.org/abs/1504.02660',
+	},
 	{ category: 'Met_oo', property: 'infinitary distributive', reason: '' },
 	{ category: 'Met_oo', property: 'cogenerator', reason: '' },
 	{ category: 'Met_oo', property: 'disjoint coproducts', reason: '' },
@@ -118,9 +122,17 @@ export const CATEGORY_PROPERTIES: CategoryPropertyMatch[] = [
 	{ category: 'Met_c', property: 'countable products', reason: '' },
 	{ category: 'Ban', property: 'locally small', reason: '' },
 	{ category: 'Ban', property: 'pointed', reason: '' },
-	{ category: 'Ban', property: 'locally ℵ₁-presentable', reason: '' },
+	{
+		category: 'Ban',
+		property: 'locally ℵ₁-presentable',
+		reason: 'Example 1.48 in Adamek-Rosicky',
+	},
 	{ category: 'Ban', property: 'disjoint coproducts', reason: '' },
-	{ category: 'Ban', property: 'cogenerator', reason: '' },
+	{
+		category: 'Ban',
+		property: 'cogenerator',
+		reason: 'Hahn-Banach shows that $\\mathbb{C}$ is one',
+	},
 	{ category: 'Man', property: 'locally small', reason: '' },
 	{ category: 'Man', property: 'well-powered', reason: '' },
 	{ category: 'Man', property: 'well-copowered', reason: '' },
@@ -265,5 +277,9 @@ export const CATEGORY_PROPERTIES: CategoryPropertyMatch[] = [
 	{ category: 'real_interval', property: 'small', reason: '' },
 	{ category: 'real_interval', property: 'self-dual', reason: '' },
 	{ category: 'real_interval', property: 'distributive', reason: '' },
-	{ category: 'real_interval', property: 'locally ℵ₁-presentable', reason: '' },
+	{
+		category: 'real_interval',
+		property: 'locally ℵ₁-presentable',
+		reason: 'https://math.stackexchange.com/questions/4481902/locally-presentable-vs-compactly-presentable-categories#comment9399784_4482185',
+	},
 ]
