@@ -21,12 +21,12 @@ export function concatenate_info(items: string[] | undefined | null) {
 	return items?.join(', ') || '-'
 }
 
-// prettier-ignore
 export function select<T extends Record<string, any>, K extends keyof T>(
 	array: T[],
 	properties: K[],
 ): Pick<T, K>[] {
-	return array.map((item) =>
-			Object.fromEntries(properties.map((prop) => [prop, item[prop]])) as Pick<T,K>,
-	)
+	return array.map((item) => {
+		const arr = properties.map((prop) => [prop, item[prop]])
+		return Object.fromEntries(arr) as Pick<T, K>
+	})
 }
