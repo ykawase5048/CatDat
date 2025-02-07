@@ -4,11 +4,11 @@ import { EntitySystemWithDuals } from './EntitySystemWithDuals'
 describe('Entity system with duals', () => {
 	type S = {
 		id: string
-		properties: Set<string>
-		non_properties: Set<string>
 	}
 
-	const dual_map: Record<string, string | null> = {
+	type T = string
+
+	const dual_map: Record<T, T | null> = {
 		'a': 'a*',
 		'b': 'b*',
 		'a*': 'a',
@@ -16,7 +16,7 @@ describe('Entity system with duals', () => {
 		'c': null,
 	}
 
-	const deduction_system = new DeductionSystemWithDuals<string>(
+	const deduction_system = new DeductionSystemWithDuals<T>(
 		new Set(['a', 'b', 'a*', 'b*', 'c']),
 		[{ assumptions: ['a'], conclusions: ['c'], reason: 'trivial' }],
 		(p: string) => dual_map[p],
@@ -24,13 +24,15 @@ describe('Entity system with duals', () => {
 
 	deduction_system.init()
 
-	const entity_system = new EntitySystemWithDuals<S, string>(deduction_system)
+	const entity_system = new EntitySystemWithDuals<S, T>(deduction_system)
 
-	entity_system.add({
-		id: '1',
-		properties: new Set(['a']),
-		non_properties: new Set(['b']),
-	})
+	entity_system.add(
+		{
+			id: '1',
+		},
+		new Set(['a']),
+		new Set(['b']),
+	)
 
 	describe('missing combinations', () => {
 		const missing_basic_combinations = entity_system.missing_basic_combinations

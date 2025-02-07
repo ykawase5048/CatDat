@@ -1,13 +1,11 @@
 <script lang="ts">
-	import {
-		get_property_url,
-		negate_prefix,
-		properties_dictionary,
-	} from '$lib/properties/properties.utils'
-	import type { PropertyID } from '$lib/properties/propertyIDs'
+	import { negate_prefix } from '$lib/utils/data.helpers'
+	import type { Property } from '$lib/data/properties.data'
+	import { get_property_url } from '$lib/commons/property.url'
+	// TODO: remove this serverside import
 
 	type Props = {
-		items: PropertyID[] | Set<PropertyID>
+		items: Pick<Property, 'id' | 'prefix'>[]
 		description?: string
 		with_prefix?: boolean
 		negated?: boolean
@@ -15,10 +13,9 @@
 
 	let { items, description, with_prefix = true, negated = false }: Props = $props()
 
-	let item_list = items instanceof Set ? Array.from(items) : items
-
+	// TODO: sort on server side
 	let sorted_properties = $derived(
-		item_list.toSorted((a, b) => a.toLowerCase().localeCompare(b.toLowerCase())),
+		items.toSorted((a, b) => a.id.toLowerCase().localeCompare(b.id.toLowerCase())),
 	)
 </script>
 
@@ -28,16 +25,15 @@
 	</p>
 {/if}
 
-{#if item_list.length}
+{#if items.length}
 	<ul>
 		{#each sorted_properties as property}
 			<li>
 				{#if with_prefix}
-					{@const property_data = properties_dictionary[property]}
-					{negated ? negate_prefix(property_data.prefix) : property_data.prefix}
+					{negated ? negate_prefix(property.prefix) : property.prefix}
 				{/if}
-				<a href={get_property_url(property)}>
-					{property}
+				<a href={get_property_url(property.id)}>
+					{property.id}
 				</a>
 			</li>
 		{/each}

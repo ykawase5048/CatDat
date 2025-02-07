@@ -1,6 +1,6 @@
 import type { PropertyID } from './properties.data'
 
-export const property_relations = {
+export const property_relations: Readonly<Partial<Record<PropertyID, PropertyID[]>>> = {
 	'small': ['essentially small'],
 	'locally small': ['locally essentially small'],
 	'locally essentially small': ['locally small'],
@@ -52,4 +52,4 @@ export const property_relations = {
 	'wide pushouts': ['pushouts'],
 	'split abelian': ['abelian'],
 	'Cauchy complete': ['finitely complete'],
-} as const satisfies Partial<Record<PropertyID, PropertyID[]>>
+}

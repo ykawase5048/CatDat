@@ -1,9 +1,8 @@
 import type { DeductionSystem } from './DeductionSystem'
 
-export type EntityDetailed<
-	S extends { properties: Set<T>; non_properties: Set<T> },
-	T extends string,
-> = S & {
+export type EntityDetailed<S, T extends string> = S & {
+	properties: Set<T>
+	non_properties: Set<T>
 	deduced_properties: Set<T>
 	deduced_non_properties: Set<T>
 	unknown_properties: Set<T>
@@ -11,35 +10,34 @@ export type EntityDetailed<
 	all_non_properties: Set<T>
 }
 
-export class EntitySystem<
-	S extends { properties: Set<T>; non_properties: Set<T> },
-	T extends string,
-> {
+export class EntitySystem<S, T extends string> {
 	public readonly entities: EntityDetailed<S, T>[] = []
 	protected deduction_system: DeductionSystem<T>
 
-	constructor(deduction_system: DeductionSystem<T>, entities: S[] = []) {
+	constructor(deduction_system: DeductionSystem<T>) {
 		this.deduction_system = deduction_system
-
-		for (const entity of entities) {
-			this.add(entity)
-		}
 	}
 
-	public add(data: S): EntityDetailed<S, T> {
-		const all_properties = this.deduction_system.get_deductions(data.properties)
+	public add(
+		entity: S,
+		properties: Set<T>,
+		non_properties: Set<T>,
+	): EntityDetailed<S, T> {
+		const all_properties = this.deduction_system.get_deductions(properties)
 		const all_non_properties = this.deduction_system.get_deduced_negations(
 			all_properties,
-			data.non_properties,
+			non_properties,
 		)
-		const deduced_properties = all_properties.difference(data.properties)
-		const deduced_non_properties = all_non_properties.difference(data.non_properties)
+		const deduced_properties = all_properties.difference(properties)
+		const deduced_non_properties = all_non_properties.difference(non_properties)
 		const unknown_properties = this.deduction_system.properties
 			.difference(all_properties)
 			.difference(all_non_properties)
 
-		const entity = {
-			...data,
+		const entity_detailed = {
+			...entity,
+			properties,
+			non_properties,
 			deduced_properties,
 			deduced_non_properties,
 			unknown_properties,
@@ -47,9 +45,9 @@ export class EntitySystem<
 			all_non_properties,
 		}
 
-		this.entities.push(entity)
+		this.entities.push(entity_detailed)
 
-		return entity
+		return entity_detailed
 	}
 
 	public search(

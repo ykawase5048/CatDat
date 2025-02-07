@@ -2,22 +2,19 @@
 	import { goto } from '$app/navigation'
 
 	import CategoryList from '$lib/components/CategoryList.svelte'
-	import { encode_property_ID } from '$lib/properties/properties.utils'
-	import {
-		is_valid_property,
-		PROPERTY_IDs,
-		type PropertyID,
-	} from '$lib/properties/propertyIDs'
 
 	import {
 		separator,
 		storage_key_non_properties,
 		storage_key_properties,
-	} from '$lib/categories/search'
+	} from '$lib/utils/search'
 	import Warning from '$lib/components/Warning.svelte'
 	import { concatenate_info } from '$lib/commons/utils'
 	import { browser } from '$app/environment'
 	import Selection from '$lib/components/Selection.svelte'
+	import { is_valid_property, propertyIDs } from '$lib/utils/data.helpers'
+	import type { PropertyID } from '$lib/data/properties.data'
+	import { encode_property_ID } from '$lib/commons/property.url'
 
 	function get_saved_search(): [PropertyID[], PropertyID[]] {
 		if (!browser) return [[], []]
@@ -115,7 +112,7 @@
 	<Selection
 		title="Looking for categories with these properties:"
 		bind:selected_items={selected_properties}
-		allowed_items={PROPERTY_IDs}
+		allowed_items={propertyIDs}
 		section_label="Properties"
 		item_label="Property"
 	/>
@@ -123,7 +120,7 @@
 	<Selection
 		title="... and <i>not</i> with these properties:"
 		bind:selected_items={selected_non_properties}
-		allowed_items={PROPERTY_IDs}
+		allowed_items={propertyIDs}
 		section_label="Non-properties"
 		item_label="Non-property"
 	/>

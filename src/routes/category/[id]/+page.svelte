@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { CategoryDetailed, CategoryShort } from '$lib/commons/types'
 	import { category_detail_level } from '$lib/settings/detail_level.svelte'
 	import PropertyList from '$lib/components/PropertyList.svelte'
 	import ChipGroup from '$lib/components/ChipGroup.svelte'
@@ -7,11 +6,23 @@
 
 	let { data } = $props()
 
-	let category: CategoryDetailed = $derived(data.category)
+	let category = $derived(data.category)
+	let tags = $derived(data.tags)
+	let related_categories = $derived(data.related_categories)
 
-	let related_categories: CategoryShort[] | undefined = $derived(
-		data.related_categories,
-	)
+	// TODO: also render the reasons for the properties and non-properties
+	let properties = $derived(data.properties)
+	let non_properties = $derived(data.non_properties)
+	let deduced_properties = $derived(data.deduced_properties)
+	let deduced_non_properties = $derived(data.deduced_non_properties)
+	let all_properties = $derived(data.all_properties)
+	let all_non_properties = $derived(data.all_non_properties)
+	let unknown_properties = $derived(data.unknown_properties)
+
+	// TOOD: also render the reasons for the classifications of the morphisms
+	let isomorphisms = $derived(data.isomorphisms)
+	let monomorphisms = $derived(data.monomorphisms)
+	let epimorphisms = $derived(data.epimorphisms)
 </script>
 
 <svelte:head>
@@ -21,7 +32,7 @@
 <h2>{category.name}</h2>
 
 <ChipGroup>
-	{#each category.tags as tag}
+	{#each tags as tag}
 		<Chip size="small">{tag}</Chip>
 	{/each}
 </ChipGroup>
@@ -48,7 +59,7 @@
 		<p>{@html category.description}</p>
 	{/if}
 
-	{#if related_categories}
+	{#if related_categories.length}
 		<p>
 			Related categories: {#each related_categories as { id, name }, i}
 				<a href={`/category/${id}`}>
@@ -69,19 +80,19 @@
 
 			{#if category_detail_level.value === 'all'}
 				<PropertyList
-					items={category.properties}
+					items={properties}
 					description="Properties from the database"
 				/>
 
 				<PropertyList
-					items={category.deduced_properties}
+					items={deduced_properties}
 					description="Deduced properties"
 				/>
 			{:else if category_detail_level.value === 'merged'}
-				<PropertyList items={category.all_properties} />
+				<PropertyList items={all_properties} />
 			{:else if category_detail_level.value === 'basic'}
 				<PropertyList
-					items={category.properties}
+					items={properties}
 					description="Properties from the database. Further properties can be deduced."
 				/>
 			{/if}
@@ -92,21 +103,21 @@
 
 			{#if category_detail_level.value === 'all'}
 				<PropertyList
-					items={category.non_properties}
+					items={non_properties}
 					description="Non-Properties from the database"
 					negated={true}
 				/>
 				<PropertyList
-					items={category.deduced_non_properties}
+					items={deduced_non_properties}
 					description="Deduced Non-Properties*"
 					negated={true}
 				/>
 				<p class="hint">*This also uses the deduced properties.</p>
 			{:else if category_detail_level.value === 'merged'}
-				<PropertyList items={category.all_non_properties} negated={true} />
+				<PropertyList items={all_non_properties} negated={true} />
 			{:else if category_detail_level.value === 'basic'}
 				<PropertyList
-					items={category.non_properties}
+					items={non_properties}
 					description="Non-Properties from the database. Further non-properties can be deduced."
 					negated={true}
 				/>
@@ -118,9 +129,9 @@
 		<h3>Unknown properties</h3>
 
 		<PropertyList
-			items={category.unknown_properties}
+			items={unknown_properties}
 			negated={false}
-			description={category.unknown_properties.size
+			description={unknown_properties.length
 				? "For these properties the database currently doesn't have an answer if they are satisfied or not. Please help to complete the data!"
 				: undefined}
 		/>
@@ -129,16 +140,15 @@
 
 <section>
 	<h3>Special morphisms</h3>
-
 	<ul>
 		<li>
-			Isomorphisms: {@html category.special_morphisms.isomorphisms ?? '?'}
+			Isomorphisms: {@html isomorphisms?.description ?? '?'}
 		</li>
 		<li>
-			Monomorphisms: {@html category.special_morphisms.monomorphisms ?? '?'}
+			Monomorphisms: {@html monomorphisms?.description ?? '?'}
 		</li>
 		<li>
-			Epimorphisms: {@html category.special_morphisms.epimorphisms ?? '?'}
+			Epimorphisms: {@html epimorphisms?.description ?? '?'}
 		</li>
 	</ul>
 </section>

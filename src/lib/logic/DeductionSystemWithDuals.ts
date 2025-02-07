@@ -1,3 +1,4 @@
+import type { NonEmptyArray } from '$lib/commons/utils'
 import { DeductionSystem, type Rule } from './DeductionSystem'
 
 export class DeductionSystemWithDuals<T extends string> extends DeductionSystem<T> {
@@ -32,8 +33,12 @@ export class DeductionSystemWithDuals<T extends string> extends DeductionSystem<
 		const dual_rules: Rule<T>[] = []
 
 		for (const rule of this.rules) {
-			const dual_assumptions = this.get_dual_properties(rule.assumptions)
-			const dual_conclusions = this.get_dual_properties(rule.conclusions)
+			const dual_assumptions = this.get_dual_properties(
+				rule.assumptions,
+			) as NonEmptyArray<T> | null
+			const dual_conclusions = this.get_dual_properties(
+				rule.conclusions,
+			) as NonEmptyArray<T> | null
 
 			if (!dual_assumptions || !dual_conclusions) continue
 
@@ -42,15 +47,18 @@ export class DeductionSystemWithDuals<T extends string> extends DeductionSystem<
 				JSON.stringify(dual_conclusions) === JSON.stringify(rule.conclusions)
 			if (not_new) continue
 
-			const dualized_rule: Rule<T> = {
-				assumptions: dual_assumptions,
-				conclusions: dual_conclusions,
-				reason: `[dualized] ${rule.reason}`,
-			}
-
-			if (rule.equivalent) {
-				dualized_rule.equivalent = true
-			}
+			const dualized_rule: Rule<T> = rule.equivalent
+				? {
+						equivalent: true,
+						assumptions: dual_assumptions,
+						conclusions: dual_conclusions,
+						reason: `[dualized] ${rule.reason}`,
+					}
+				: {
+						assumptions: dual_assumptions,
+						conclusions: dual_conclusions,
+						reason: `[dualized] ${rule.reason}`,
+					}
 
 			dual_rules.push(dualized_rule)
 		}

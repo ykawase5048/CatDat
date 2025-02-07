@@ -6,10 +6,10 @@
 	} from '@fortawesome/free-solid-svg-icons'
 	import Fa from 'svelte-fa'
 
-	import type { Implication } from '$lib/commons/types'
-	import type { PropertyID } from '$lib/properties/propertyIDs'
-	import { get_property_url } from '$lib/properties/properties.utils'
+	import type { PropertyID } from '$lib/data/properties.data'
+	import type { Implication } from '$lib/data/implications.data'
 	import Tooltip from './Tooltip.svelte'
+	import { get_property_url } from '$lib/commons/property.url'
 
 	type Props = { implication: Implication; highlighted?: PropertyID }
 

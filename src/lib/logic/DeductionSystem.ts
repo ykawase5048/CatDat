@@ -1,13 +1,15 @@
+import type { NonEmptyArray } from '$lib/commons/utils'
+
 export type Rule<T> = {
-	equivalent?: true
-	assumptions: T[]
-	conclusions: T[]
-	reason: string
+	readonly equivalent?: true
+	readonly assumptions: NonEmptyArray<T>
+	readonly conclusions: NonEmptyArray<T>
+	readonly reason: string
 }
 
 type NormalizedRule<T> = {
-	assumptions: Set<T>
-	conclusion: T
+	readonly assumptions: Set<T>
+	readonly conclusion: T
 }
 
 export class DeductionSystem<T extends string> {

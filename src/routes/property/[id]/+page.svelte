@@ -1,11 +1,14 @@
 <script lang="ts">
 	import CategoryList from '$lib/components/CategoryList.svelte'
 	import ImplicationList from '$lib/components/ImplicationList.svelte'
-	import { get_property_url } from '$lib/properties/properties.utils'
+	import type { PropertyID } from '$lib/data/properties.data'
+	import { get_property_url } from '$lib/commons/property.url'
 
 	let { data } = $props()
 
 	let property = $derived(data.property)
+	let dual_property = $derived(data.dual_property)
+	let related_properties = $derived(data.related_properties)
 	let categories_with_this_property = $derived(data.categories_with_this_property)
 	let categories_without_this_property = $derived(data.categories_without_this_property)
 	let unknown_categories = $derived(data.unknown_categories)
@@ -21,30 +24,30 @@
 <p>
 	<strong>Definition:</strong>
 	{@html property.description}
-	{#if property.invariant_under_equivalences === false}
+	{#if property.invariant === false}
 		Warning: This property is not invariant under equivalences.
 	{/if}
 </p>
 
-{#if property.dual || property.related || property.nlab_link}
+{#if dual_property || related_properties.length || property.nlab_link}
 	<ul>
-		{#if property.dual}
+		{#if dual_property}
 			<li>
-				Dual property: <a href={get_property_url(property.dual)}
-					>{property.dual}</a
+				Dual property: <a href={get_property_url(dual_property)}
+					>{dual_property}</a
 				>
-				{#if property.dual === property.id}
+				{#if dual_property === property.id}
 					(self-dual)
 				{/if}
 			</li>
 		{/if}
 
-		{#if property.related}
+		{#if related_properties.length}
 			<li>
-				Related properties: {#each property.related as related_property, i}
+				Related properties: {#each related_properties as related_property, i}
 					<a href={get_property_url(related_property)}>
 						{related_property}
-					</a>{#if i < property.related.length - 1}
+					</a>{#if i < related_properties.length - 1}
 						,&nbsp;
 					{/if}
 				{/each}
@@ -61,7 +64,7 @@
 
 <h3>Relevant implications</h3>
 
-<ImplicationList items={relevant_implications} highlighted={property.id} />
+<ImplicationList items={relevant_implications} highlighted={property.id as PropertyID} />
 
 <h3>Examples</h3>
 

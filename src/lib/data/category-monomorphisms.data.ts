@@ -1,6 +1,8 @@
 import type { CategoryID } from './categories.data'
 
-export const category_monomorphisms = {
+export const category_monomorphisms: Readonly<
+	Partial<Record<CategoryID, { description: string; reason: string }>>
+> = {
 	'0': {
 		description: "there aren't any",
 		reason: '',
@@ -194,4 +196,4 @@ export const category_monomorphisms = {
 		description: 'every morphism',
 		reason: '',
 	},
-} as const satisfies Partial<Record<CategoryID, { description: string; reason: string }>>
+}

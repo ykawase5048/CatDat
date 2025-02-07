@@ -3,12 +3,12 @@ import type { PropertyID } from './properties.data'
 
 export type Implication = {
 	equivalent?: true
-	assumptions: NonEmptyArray<PropertyID>
-	conclusions: NonEmptyArray<PropertyID>
-	reason: string
+	readonly assumptions: NonEmptyArray<PropertyID>
+	readonly conclusions: NonEmptyArray<PropertyID>
+	readonly reason: string
 }
 
-export const implications = [
+export const implications: Readonly<Implication[]> = [
 	// size constraints
 	{
 		assumptions: ['small'],
@@ -519,4 +519,4 @@ export const implications = [
 		conclusions: ['balanced'],
 		reason: 'Any regular monomorphism that is an epimorphism must be an isomorphism.',
 	},
-] as const satisfies Implication[]
+]

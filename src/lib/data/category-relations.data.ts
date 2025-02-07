@@ -1,7 +1,9 @@
 import type { CategoryID } from './categories.data'
 import type { NonEmptyArray } from '$lib/commons/utils'
 
-export const category_relations = {
+export const category_relations: Readonly<
+	Partial<Record<CategoryID, NonEmptyArray<CategoryID>>>
+> = {
 	'1': ['2'],
 	'2': ['1'],
 	'Set': ['FinSet'],
@@ -40,4 +42,4 @@ export const category_relations = {
 	'Rel': ['Set'],
 	'Sp': ['B', 'FinSet'],
 	'real_interval': ['N'],
-} as const satisfies Partial<Record<CategoryID, NonEmptyArray<CategoryID>>>
+}

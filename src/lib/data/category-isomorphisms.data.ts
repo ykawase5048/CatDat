@@ -1,6 +1,8 @@
 import type { CategoryID } from './categories.data'
 
-export const category_isomorphisms = {
+export const category_isomorphisms: Readonly<
+	Partial<Record<CategoryID, { description: string; reason: string }>>
+> = {
 	'0': {
 		description: "there aren't any",
 		reason: '',
@@ -200,4 +202,4 @@ export const category_isomorphisms = {
 		description: 'only the identity morphisms',
 		reason: '',
 	},
-} as const satisfies Record<CategoryID, { description: string; reason: string }>
+}

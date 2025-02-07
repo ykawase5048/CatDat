@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { get_property_url } from '$lib/properties/properties.utils'
+	import { get_property_url } from '$lib/commons/property.url'
 	import {
 		faCheck,
 		faQuestion,

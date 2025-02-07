@@ -1,9 +1,6 @@
 <script>
 	import CategoryList from '$lib/components/CategoryList.svelte'
-	import {
-		negate_prefix,
-		properties_dictionary,
-	} from '$lib/properties/properties.utils'
+	import { negate_prefix } from '$lib/utils/data.helpers'
 
 	const { data } = $props()
 
@@ -50,14 +47,16 @@ implication is missing in the database.
 
 {#if missing_basic_combinations.length}
 	<ul>
+		<!-- TODO: fix the type error here, return correct data -->
 		{#each missing_basic_combinations as combination}
-			{@const prefix1 = properties_dictionary[combination.assumption].prefix}
-			{@const prefix2 = properties_dictionary[combination.negation].prefix}
+			<!-- {@const prefix1 = combination.assumption.prefix}
+			{@const prefix2 = combination.negation.prefix}
 			<li>
 				{prefix1}
-				{combination.assumption}, but {negate_prefix(prefix2)}
+				{combination.assumption},
+				but {negate_prefix(prefix2)}
 				{combination.negation}
-			</li>
+			</li> -->
 		{/each}
 	</ul>
 {/if}

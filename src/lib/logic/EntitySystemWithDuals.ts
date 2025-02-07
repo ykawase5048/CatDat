@@ -1,12 +1,9 @@
 import type { DeductionSystemWithDuals } from './DeductionSystemWithDuals'
 import { EntitySystem } from './EntitySystem'
 
-export class EntitySystemWithDuals<
-	S extends { properties: Set<T>; non_properties: Set<T> },
-	T extends string,
-> extends EntitySystem<S, T> {
-	constructor(deduction_system: DeductionSystemWithDuals<T>, entities: S[] = []) {
-		super(deduction_system, entities)
+export class EntitySystemWithDuals<S, T extends string> extends EntitySystem<S, T> {
+	constructor(deduction_system: DeductionSystemWithDuals<T>) {
+		super(deduction_system)
 	}
 
 	public get missing_basic_combinations(): { assumption: T; negation: T }[] {

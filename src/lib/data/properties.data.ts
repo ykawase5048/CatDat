@@ -1,12 +1,14 @@
 import type { Prefix } from './prefix.data'
 
 export type Property = {
-	id: string
-	prefix: Prefix
-	nlab_link?: string
-	description: string
-	invariant?: false // invariant under equivalences of categories
+	readonly id: string
+	readonly prefix: Prefix
+	readonly nlab_link?: string
+	readonly description: string
+	readonly invariant?: false // invariant under equivalences of categories
 }
+
+export type PropertyID = (typeof properties)[number]['id']
 
 export const properties = [
 	{
@@ -504,15 +506,13 @@ export const properties = [
 		prefix: 'is',
 		nlab_link: 'https://ncatlab.org/nlab/show/regular+monomorphism',
 		description:
-			'A category is <i>mono-regular</i> when every monomorphism is regular, i.e. the equalizer of a pair of morphisms. Notice that this is not standard terminology, apparently the literature has no name for this yet. A <i>preadditive</i> category is mono-regular iff every monomorphism is a kernel, and this type of category is commonly known as a <i>normal category</i>. We avoid this terminology here since it only applies to a certain type of categories, but mono-regular applies to all categories.',
+			'A category is <i>mono-regular</i> when every monomorphism is regular, i.e. the equalizer of a pair of morphisms. Notice that this is not standard terminology, apparently the literature has no name for this yet. A <i>preadditive</i> category is mono-regular iff every monomorphism is a kernel, and this type of category is commonly known as a <i>normal category</i>. We avoid this terminology here since it only applies to a certain type of categories, but mono-regular applies to all categories.', // https://math.stackexchange.com/questions/5031588
 	},
 	{
 		id: 'epi-regular',
 		prefix: 'is',
 		nlab_link: 'https://ncatlab.org/nlab/show/regular+epimorphism',
 		description:
-			'A category is <i>epi-regular</i> when every epimorphism is regular, i.e. the coequalizer of a pair of morphisms. Notice that this is not standard terminology, apparently the literature has no name for this yet. A <i>preadditive</i> category is epi-regular iff every epimorphism is a cokernel, and this type of category is commonly known as a <i>conormal category</i>. We avoid this terminology here since it only applies to a certain type of categories, but epi-regular applies to all categories.',
+			'A category is <i>epi-regular</i> when every epimorphism is regular, i.e. the coequalizer of a pair of morphisms. Notice that this is not standard terminology, apparently the literature has no name for this yet. A <i>preadditive</i> category is epi-regular iff every epimorphism is a cokernel, and this type of category is commonly known as a <i>conormal category</i>. We avoid this terminology here since it only applies to a certain type of categories, but epi-regular applies to all categories.', // https://math.stackexchange.com/questions/5031588
 	},
 ] as const satisfies Property[]
-
-export type PropertyID = (typeof properties)[number]['id']

@@ -1,11 +1,11 @@
 export type Category = {
-	id: string
-	name: string
-	notation: string
-	objects: string
-	morphisms: string
-	nlab_link?: string
-	description?: string
+	readonly id: string
+	readonly name: string
+	readonly notation: string
+	readonly objects: string
+	readonly morphisms: string
+	readonly nlab_link?: string
+	readonly description?: string
 }
 
 export type CategoryID = (typeof categories)[number]['id']

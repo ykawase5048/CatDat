@@ -1,12 +1,10 @@
-import {
-	decode_property_ID,
-	get_dual_properties,
-	property_deduction_system,
-} from '$lib/properties/properties.utils'
-import { is_valid_property } from '$lib/properties/propertyIDs'
 import { error } from '@sveltejs/kit'
 
-import { category_system, shorten_category } from '$lib/categories/categories.utils'
+import { get_dual_properties, is_valid_property } from '$lib/utils/data.helpers'
+import { decode_property_ID } from '$lib/commons/property.url'
+import { category_system, property_deduction_system } from '$lib/utils/deductions'
+import { select } from '$lib/commons/utils'
+import type { Category } from '$lib/data/categories.data'
 
 /**
  * This is used to separate property IDs in the query string.
@@ -49,19 +47,21 @@ export function get_search_results(url: URL) {
 		}
 	}
 
-	const found_categories = category_system
-		.search(properties, non_properties)
-		.map(shorten_category)
+	const found_categories: Pick<Category, 'id' | 'name'>[] = select(
+		category_system.search(properties, non_properties),
+		['id', 'name'],
+	)
 
 	const dualized_properties = get_dual_properties(properties)
 	const dualized_non_properties = get_dual_properties(non_properties)
 
 	const is_dual_search = dualized_properties != null && dualized_non_properties != null
 
-	const found_dualized_categories = is_dual_search
-		? category_system
-				.search(dualized_properties, dualized_non_properties)
-				.map(shorten_category)
+	const found_dualized_categories: Pick<Category, 'id' | 'name'>[] = is_dual_search
+		? select(category_system.search(dualized_properties, dualized_non_properties), [
+				'id',
+				'name',
+			])
 		: []
 
 	return {

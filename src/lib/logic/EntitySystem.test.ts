@@ -2,38 +2,21 @@ import { DeductionSystem } from './DeductionSystem'
 import { EntitySystem } from './EntitySystem'
 
 describe('EntitySystem', () => {
-	type S = {
-		id: string
-		properties: Set<string>
-		non_properties: Set<string>
-	}
+	type S = { id: string }
+	type T = string
 
-	const deduction_system = new DeductionSystem<string>(new Set(['a', 'b', 'c', 'd']), [
+	const deduction_system = new DeductionSystem<T>(new Set(['a', 'b', 'c', 'd']), [
 		{ assumptions: ['a'], conclusions: ['b'], reason: 'trivial' },
 		{ assumptions: ['b'], conclusions: ['c', 'd'], reason: 'trivial' },
 	])
 
 	deduction_system.init()
 
-	const entity_system = new EntitySystem<S, string>(deduction_system)
+	const entity_system = new EntitySystem<S, T>(deduction_system)
 
-	const entity_1 = entity_system.add({
-		id: '1',
-		properties: new Set(['a']),
-		non_properties: new Set([]),
-	})
-
-	entity_system.add({
-		id: '2',
-		properties: new Set(['b']),
-		non_properties: new Set(['a']),
-	})
-
-	const entity_3 = entity_system.add({
-		id: '3',
-		properties: new Set(['c']),
-		non_properties: new Set(['b']),
-	})
+	const entity_1 = entity_system.add({ id: '1' }, new Set(['a']), new Set([]))
+	const entity_2 = entity_system.add({ id: '2' }, new Set(['b']), new Set(['a']))
+	const entity_3 = entity_system.add({ id: '3' }, new Set(['c']), new Set(['b']))
 
 	describe('add', () => {
 		it('should add objects to the list of entities', () => {

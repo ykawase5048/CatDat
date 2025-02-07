@@ -1,7 +1,13 @@
 import type { CategoryID } from './categories.data'
 import type { PropertyID } from './properties.data'
 
-export const category_properties = [
+export type CategoryPropertyMatch = {
+	readonly category: CategoryID
+	readonly property: PropertyID
+	readonly reason: string
+}
+
+export const category_properties: Readonly<CategoryPropertyMatch[]> = [
 	{ category: 'Set', property: 'locally small', reason: '' },
 	{ category: 'Set', property: 'Grothendieck topos', reason: '' },
 	{ category: 'Set', property: 'finitary algebraic', reason: '' },
@@ -260,4 +266,4 @@ export const category_properties = [
 	{ category: 'real_interval', property: 'self-dual', reason: '' },
 	{ category: 'real_interval', property: 'distributive', reason: '' },
 	{ category: 'real_interval', property: 'locally ℵ₁-presentable', reason: '' },
-] as const satisfies { category: CategoryID; property: PropertyID; reason: string }[]
+]

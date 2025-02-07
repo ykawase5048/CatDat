@@ -1,10 +1,10 @@
 <script lang="ts">
-	import type { PropertyID } from '$lib/properties/propertyIDs'
-	import type { Implication as ImplicationType } from '$lib/commons/types'
-	import Implication from './Implication.svelte'
+	import type { Implication } from '$lib/data/implications.data'
+	import type { PropertyID } from '$lib/data/properties.data'
+	import ImplicationItem from './ImplicationItem.svelte'
 
 	type Props = {
-		items: ImplicationType[]
+		items: Implication[]
 		description?: string
 		highlighted?: PropertyID
 	}
@@ -22,7 +22,7 @@
 	<ul>
 		{#each items as implication}
 			<li>
-				<Implication {implication} {highlighted} />
+				<ImplicationItem {implication} {highlighted} />
 			</li>
 		{/each}
 	</ul>

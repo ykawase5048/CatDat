@@ -1,7 +1,6 @@
-import type { CategoryID } from './categories.data'
-import type { PropertyID } from './properties.data'
+import type { CategoryPropertyMatch } from './category-properties.data'
 
-export const category_non_properties = [
+export const category_non_properties: Readonly<CategoryPropertyMatch[]> = [
 	{ category: 'Set', property: 'strict terminal object', reason: '' },
 	{ category: 'Ab', property: 'split abelian', reason: '' },
 	{ category: 'Top', property: 'cartesian closed', reason: '' },
@@ -160,4 +159,4 @@ export const category_non_properties = [
 	{ category: 'Sp', property: 'countable coproducts', reason: '' },
 	{ category: 'real_interval', property: 'essentially finite', reason: '' },
 	{ category: 'real_interval', property: 'locally finitely presentable', reason: '' },
-] as const satisfies { category: CategoryID; property: PropertyID; reason: string }[]
+]
