@@ -7,17 +7,12 @@ import { properties, type Property, type PropertyID } from '$lib/data/properties
 import { property_duals } from '$lib/data/property-duals.data'
 
 export const propertyIDs = properties.map((property) => property.id)
+
 const categoryIDs = categories.map((category) => category.id)
 
-export const properties_dictionary = group_items(properties) as Record<
-	PropertyID,
-	Property
->
+export const properties_dictionary: Record<PropertyID, Property> = group_items(properties)
 
-export const categories_dictionary = group_items(categories) as Record<
-	CategoryID,
-	Category
->
+export const categories_dictionary: Record<CategoryID, Category> = group_items(categories)
 
 export function negate_prefix(prefix: Prefix) {
 	return PREFIXES[prefix]
