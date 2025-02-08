@@ -1,6 +1,6 @@
 import { render_formulas_in_object } from '$lib/commons/rendering'
-import { IMPLICATIONS, type Implication } from '$lib/data/implications.data'
-import { implications_with_duals } from '$lib/utils/deductions'
+import { IMPLICATIONS, type Implication } from '$lib/database/implications.data'
+import { implications_with_duals } from '$lib/data-utils/deductions'
 import type { PageServerLoad } from './$types'
 
 export const load: PageServerLoad = (event) => {

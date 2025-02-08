@@ -1,8 +1,8 @@
 import type { PageServerLoad } from './$types'
 import { select, sum } from '$lib/commons/utils'
-import { category_system } from '$lib/utils/deductions'
-import { CATEGORIES, type Category } from '$lib/data/categories.data'
-import { get_epis, get_isos, get_monos, get_property } from '$lib/utils/data.helpers'
+import { category_system } from '$lib/data-utils/deductions'
+import { CATEGORIES, type Category } from '$lib/database/categories.data'
+import { get_epis, get_isos, get_monos, get_property } from '$lib/data-utils/data.helpers'
 
 const has_todo = (entry: string) => !entry || entry.includes('TODO')
 

@@ -1,10 +1,10 @@
 import { error } from '@sveltejs/kit'
 
-import { get_dual_properties, is_valid_property } from '$lib/utils/data.helpers'
+import { get_dual_properties, is_valid_property } from '$lib/data-utils/data.helpers'
 import { decode_property_ID } from '$lib/commons/property.url'
-import { category_system, property_deduction_system } from '$lib/utils/deductions'
+import { category_system, property_deduction_system } from '$lib/data-utils/deductions'
 import { select } from '$lib/commons/utils'
-import type { Category } from '$lib/data/categories.data'
+import type { Category } from '$lib/database/categories.data'
 
 /**
  * This is used to separate property IDs in the query string.

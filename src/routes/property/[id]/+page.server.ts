@@ -2,11 +2,15 @@ import { error } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
 
 import { render_formulas_in_object } from '$lib/commons/rendering'
-import { PROPERTY_RELATIONS } from '$lib/data/property-relations.data'
-import { PROPERTY_DUALS } from '$lib/data/property-duals.data'
+import { PROPERTY_RELATIONS } from '$lib/database/property-relations.data'
+import { PROPERTY_DUALS } from '$lib/database/property-duals.data'
 import { decode_property_ID } from '$lib/commons/property.url'
-import { get_category, get_property, is_valid_property } from '$lib/utils/data.helpers'
-import { category_system, property_deduction_system } from '$lib/utils/deductions'
+import {
+	get_category,
+	get_property,
+	is_valid_property,
+} from '$lib/data-utils/data.helpers'
+import { category_system, property_deduction_system } from '$lib/data-utils/deductions'
 
 export const load: PageServerLoad = (event) => {
 	const id = decode_property_ID(event.params.id)

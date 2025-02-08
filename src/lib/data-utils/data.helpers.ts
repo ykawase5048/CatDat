@@ -1,13 +1,13 @@
 import { group_items } from '$lib/commons/utils'
-import { CATEGORIES, type Category, type CategoryID } from '$lib/data/categories.data'
-import { CATEGORY_EPIMORPHISMS } from '$lib/data/category-epimorphisms.data'
-import { CATEGORY_ISOMORPHISMS } from '$lib/data/category-isomorphisms.data'
-import { CATEGORY_MONOMORPHISMS } from '$lib/data/category-monomorphisms.data'
-import { CATEGORY_NON_PROPERTIES } from '$lib/data/category-non-properties.data'
-import { CATEGORY_PROPERTIES } from '$lib/data/category-properties.data'
-import { PREFIXES, type Prefix } from '$lib/data/prefix.data'
-import { PROPERTIES, type Property, type PropertyID } from '$lib/data/properties.data'
-import { PROPERTY_DUALS } from '$lib/data/property-duals.data'
+import { CATEGORIES, type Category, type CategoryID } from '$lib/database/categories.data'
+import { CATEGORY_EPIMORPHISMS } from '$lib/database/category-epimorphisms.data'
+import { CATEGORY_ISOMORPHISMS } from '$lib/database/category-isomorphisms.data'
+import { CATEGORY_MONOMORPHISMS } from '$lib/database/category-monomorphisms.data'
+import { CATEGORY_NON_PROPERTIES } from '$lib/database/category-non-properties.data'
+import { CATEGORY_PROPERTIES } from '$lib/database/category-properties.data'
+import { PREFIXES, type Prefix } from '$lib/database/prefix.data'
+import { PROPERTIES, type Property, type PropertyID } from '$lib/database/properties.data'
+import { PROPERTY_DUALS } from '$lib/database/property-duals.data'
 
 export const propertyIDs = PROPERTIES.map((property) => property.id)
 

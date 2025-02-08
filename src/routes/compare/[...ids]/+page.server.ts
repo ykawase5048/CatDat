@@ -3,11 +3,11 @@ import { error } from '@sveltejs/kit'
 
 import { max_categories } from '../compare.config'
 import { render_formulas } from '$lib/commons/rendering'
-import { get_category, is_valid_category } from '$lib/utils/data.helpers'
+import { get_category, is_valid_category } from '$lib/data-utils/data.helpers'
 import {
 	categories_with_deduced_properties_dictionary,
 	category_system,
-} from '$lib/utils/deductions'
+} from '$lib/data-utils/deductions'
 
 export const load: PageServerLoad = (event) => {
 	const ids = event.params.ids.split('/')

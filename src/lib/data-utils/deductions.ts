@@ -1,13 +1,13 @@
-import { IMPLICATIONS } from '$lib/data/implications.data'
-import type { PropertyID } from '$lib/data/properties.data'
+import { IMPLICATIONS } from '$lib/database/implications.data'
+import type { PropertyID } from '$lib/database/properties.data'
 import { DeductionSystemWithDuals } from '$lib/logic/DeductionSystemWithDuals'
-import { get_dual_property, propertyIDs } from '$lib/utils/data.helpers'
+import { get_dual_property, propertyIDs } from '$lib/data-utils/data.helpers'
 
-import { CATEGORIES, type Category } from '$lib/data/categories.data'
+import { CATEGORIES, type Category } from '$lib/database/categories.data'
 import {
 	get_non_properties_of_category,
 	get_properties_of_category,
-} from '$lib/utils/data.helpers'
+} from '$lib/data-utils/data.helpers'
 import { group_items } from '$lib/commons/utils'
 import { EntitySystemWithDuals } from '$lib/logic/EntitySystemWithDuals'
 import type { EntityDetailed } from '$lib/logic/EntitySystem'

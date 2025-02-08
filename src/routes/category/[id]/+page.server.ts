@@ -2,7 +2,7 @@ import { error } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
 
 import { render_formulas_in_object } from '$lib/commons/rendering'
-import { CATEGORY_RELATIONS } from '$lib/data/category-relations.data'
+import { CATEGORY_RELATIONS } from '$lib/database/category-relations.data'
 import {
 	get_category,
 	get_epis,
@@ -10,10 +10,10 @@ import {
 	get_monos,
 	get_property,
 	is_valid_category,
-} from '$lib/utils/data.helpers'
+} from '$lib/data-utils/data.helpers'
 import { select } from '$lib/commons/utils'
-import { CATEGORY_TAGS } from '$lib/data/category-tags.data'
-import { categories_with_deduced_properties_dictionary } from '$lib/utils/deductions'
+import { CATEGORY_TAGS } from '$lib/database/category-tags.data'
+import { categories_with_deduced_properties_dictionary } from '$lib/data-utils/deductions'
 
 export const load: PageServerLoad = (event) => {
 	const id = event.params.id

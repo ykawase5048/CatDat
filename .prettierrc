@@ -15,7 +15,7 @@
 			}
 		},
 		{
-			"files": "src/lib/data/*.data.ts",
+			"files": "src/lib/database/*.data.ts",
 			"options": {
 				"printWidth": 2000
 			}

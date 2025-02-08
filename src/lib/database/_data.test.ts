@@ -1,13 +1,13 @@
 // This file is testing all the files in the present data folder.
 
-import { CATEGORIES } from '$lib/data/categories.data'
-import { CATEGORY_NON_PROPERTIES } from '$lib/data/category-non-properties.data'
-import { CATEGORY_PROPERTIES } from '$lib/data/category-properties.data'
-import { IMPLICATIONS } from '$lib/data/implications.data'
-import { PREFIXES } from '$lib/data/prefix.data'
-import { PROPERTIES } from '$lib/data/properties.data'
-import { PROPERTY_DUALS } from '$lib/data/property-duals.data'
-import { TAGS } from '$lib/data/tags.data'
+import { CATEGORIES } from '$lib/database/categories.data'
+import { CATEGORY_NON_PROPERTIES } from '$lib/database/category-non-properties.data'
+import { CATEGORY_PROPERTIES } from '$lib/database/category-properties.data'
+import { IMPLICATIONS } from '$lib/database/implications.data'
+import { PREFIXES } from '$lib/database/prefix.data'
+import { PROPERTIES } from '$lib/database/properties.data'
+import { PROPERTY_DUALS } from '$lib/database/property-duals.data'
+import { TAGS } from '$lib/database/tags.data'
 
 describe('tags', () => {
 	it('are unique', () => {

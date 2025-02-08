@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { negate_prefix } from '$lib/utils/data.helpers'
-	import type { Property } from '$lib/data/properties.data'
+	import { negate_prefix } from '$lib/data-utils/data.helpers'
+	import type { Property } from '$lib/database/properties.data'
 	import { get_property_url } from '$lib/commons/property.url'
 	// TODO: remove this serverside import
 

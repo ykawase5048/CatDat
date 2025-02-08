@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Category } from '$lib/data/categories.data'
+	import type { Category } from '$lib/database/categories.data'
 
 	type Props = {
 		items: Pick<Category, 'id' | 'name'>[]

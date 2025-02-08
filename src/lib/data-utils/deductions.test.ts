@@ -1,5 +1,5 @@
-import { CATEGORIES } from '$lib/data/categories.data'
-import { PROPERTIES } from '$lib/data/properties.data'
+import { CATEGORIES } from '$lib/database/categories.data'
+import { PROPERTIES } from '$lib/database/properties.data'
 import {
 	get_non_properties_of_category,
 	get_properties_of_category,

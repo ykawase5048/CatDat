@@ -14,7 +14,7 @@ export default defineConfig({
 		coverage: {
 			provider: 'v8',
 			include: ['src/lib/**/*.ts'],
-			exclude: ['src/lib/data/**/*.ts'],
+			exclude: ['src/lib/database/**/*.ts'],
 			reporter: ['text', 'text-summary', 'json-summary'],
 			thresholds: {
 				statements: 98,

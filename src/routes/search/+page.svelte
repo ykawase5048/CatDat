@@ -7,13 +7,13 @@
 		separator,
 		storage_key_non_properties,
 		storage_key_properties,
-	} from '$lib/utils/search'
+	} from '$lib/data-utils/search.js'
 	import Warning from '$components/Warning.svelte'
 	import { concatenate_info } from '$lib/commons/utils'
 	import { browser } from '$app/environment'
 	import Selection from '$components/Selection.svelte'
-	import { is_valid_property, propertyIDs } from '$lib/utils/data.helpers'
-	import type { PropertyID } from '$lib/data/properties.data'
+	import { is_valid_property, propertyIDs } from '$lib/data-utils/data.helpers.js'
+	import type { PropertyID } from '$lib/database/properties.data'
 	import { encode_property_ID } from '$lib/commons/property.url'
 
 	function get_saved_search(): [PropertyID[], PropertyID[]] {
