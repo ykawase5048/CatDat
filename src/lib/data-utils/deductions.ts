@@ -18,8 +18,6 @@ export const property_deduction_system = new DeductionSystemWithDuals<PropertyID
 	get_dual_property,
 )
 
-property_deduction_system.init_with_duals()
-
 export const implications_with_duals = property_deduction_system.rules
 
 export const category_system = new EntitySystemWithDuals<Category, PropertyID>(

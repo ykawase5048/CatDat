@@ -8,16 +8,21 @@ describe('constructor', () => {
 			])
 		}).toThrow()
 	})
-})
 
-describe('init', () => {
-	it('only runs once', () => {
-		const deductionSystem = new DeductionSystem<string>(new Set(['a']), [])
-		// @ts-expect-error this accesses a private method
-		const spy = vi.spyOn(deductionSystem, 'compute_normalized_rules')
-		deductionSystem.init()
-		deductionSystem.init()
-		expect(spy).toHaveBeenCalledTimes(1)
+	it('should initialize by default by computing the normalized rules', () => {
+		const deductionSystem = new DeductionSystem<string>(new Set(['a', 'b']), [
+			{ assumptions: ['a'], conclusions: ['b'], reason: 'trivial' },
+		])
+		expect(deductionSystem.normalized_rules).not.toEqual([])
+	})
+
+	it('should not initialize when said so', () => {
+		const deductionSystem = new DeductionSystem<string>(
+			new Set(['a', 'b']),
+			[{ assumptions: ['a'], conclusions: ['b'], reason: 'trivial' }],
+			false,
+		)
+		expect(deductionSystem.normalized_rules).toEqual([])
 	})
 })
 
@@ -34,8 +39,6 @@ describe('get_deductions', () => {
 			},
 		],
 	)
-
-	deductionSystem.init()
 
 	it("should deduce 'a,c' from 'a'", () => {
 		expect(deductionSystem.get_deductions(new Set(['a']))).toEqual(
@@ -78,8 +81,6 @@ describe('get_deduced_negations', () => {
 			{ assumptions: ['e'], conclusions: ['f'], reason: 'trivial' },
 		],
 	)
-
-	deductionSystem.init()
 
 	it("should deduce 'not a' from 'not a'", () => {
 		expect(
@@ -125,8 +126,6 @@ describe('has_contradiction', () => {
 			},
 		],
 	)
-
-	deductionSystem.init()
 
 	it("should return true for 'a' and 'not a'", () => {
 		expect(deductionSystem.has_contradiction(new Set(['a']), new Set(['a']))).toBe(
@@ -175,8 +174,6 @@ describe('get_basic_consistent_combinations', () => {
 		{ assumptions: ['c', 'd'], conclusions: ['e'], reason: 'trivial' },
 	])
 
-	deductionSystem.init()
-
 	it('should work as expected', () => {
 		const combinations = deductionSystem.get_basic_consistent_combinations()
 		expect(combinations).toHaveLength(11)
@@ -208,8 +205,6 @@ describe('get_redundancy', () => {
 			{ assumptions: ['d'], conclusions: ['e'], reason: 'trivial' },
 		],
 	)
-
-	deductionSystem.init()
 
 	it('should return null for the empty set', () => {
 		const result = deductionSystem.get_redundancy(new Set([]))
@@ -246,8 +241,6 @@ describe('get_redundancy_of_negations', () => {
 			{ assumptions: ['d'], conclusions: ['e'], reason: 'trivial' },
 		],
 	)
-
-	deductionSystem.init()
 
 	it("should return null for 'a' and 'not e'", () => {
 		const result = deductionSystem.get_redundancy_of_negations(

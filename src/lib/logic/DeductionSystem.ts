@@ -14,14 +14,14 @@ type NormalizedRule<T> = {
 
 export class DeductionSystem<T extends string> {
 	public readonly rules: Rule<T>[]
-	private normalized_rules: NormalizedRule<T>[] = []
+	public readonly normalized_rules: NormalizedRule<T>[] = []
 	public readonly properties: Set<T>
-	protected initialized = false
 
-	constructor(properties: Set<T>, rules: Rule<T>[]) {
+	constructor(properties: Set<T>, rules: Rule<T>[], initialize = true) {
 		this.properties = properties
 		this.rules = rules
 		this.validate_rules()
+		if (initialize) this.init()
 	}
 
 	private validate_rules(): void {
@@ -34,14 +34,10 @@ export class DeductionSystem<T extends string> {
 	}
 
 	public init(): void {
-		if (this.initialized) return
 		this.compute_normalized_rules()
-		this.initialized = true
 	}
 
 	protected compute_normalized_rules(): void {
-		this.normalized_rules = []
-
 		for (const rule of this.rules) {
 			const { conclusions, assumptions, equivalent } = rule
 

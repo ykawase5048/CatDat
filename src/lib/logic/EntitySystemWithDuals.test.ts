@@ -22,8 +22,6 @@ describe('Entity system with duals', () => {
 		(p: string) => dual_map[p],
 	)
 
-	deduction_system.init()
-
 	const entity_system = new EntitySystemWithDuals<S, T>(deduction_system)
 
 	entity_system.add(

@@ -10,12 +10,10 @@ describe('EntitySystem', () => {
 		{ assumptions: ['b'], conclusions: ['c', 'd'], reason: 'trivial' },
 	])
 
-	deduction_system.init()
-
 	const entity_system = new EntitySystem<S, T>(deduction_system)
 
 	const entity_1 = entity_system.add({ id: '1' }, new Set(['a']), new Set([]))
-	const entity_2 = entity_system.add({ id: '2' }, new Set(['b']), new Set(['a']))
+	entity_system.add({ id: '2' }, new Set(['b']), new Set(['a']))
 	const entity_3 = entity_system.add({ id: '3' }, new Set(['c']), new Set(['b']))
 
 	describe('add', () => {

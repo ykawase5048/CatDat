@@ -9,16 +9,15 @@ export class DeductionSystemWithDuals<T extends string> extends DeductionSystem<
 		rules: Rule<T>[],
 		dual_property_accessor: (property: T) => T | null,
 	) {
-		super(properties, rules)
+		super(properties, rules, false)
 		this.get_dual_property = dual_property_accessor
+		this.init_with_duals()
 	}
 
 	public init_with_duals(): void {
-		if (this.initialized) return
 		this.add_dualized_rules()
 		this.add_self_dual_rules()
 		this.compute_normalized_rules()
-		this.initialized = true
 	}
 
 	private get_dual_properties(properties: T[]): null | NonEmptyArray<T> {
