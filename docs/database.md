@@ -18,14 +18,14 @@ Currently, _CatDat_ does not work with a classical database. Instead, the data c
 - This repository is the single source of truth for the whole application.
 - Autocompletion for various fields in your IDE For example, when you add a property to a category and start typing `com`, you get already suggestions for properties like `complete` and `cocomplete`.
 
-<img width="600" alt="autocompletion feature" src="https://github.com/user-attachments/assets/038029d1-fe39-420a-a3b3-727d1d8e6336" />
+<img width="600" alt="autocomplete" src="https://github.com/user-attachments/assets/f1186ea4-0d09-4f30-b8d9-c5bdbaebb919" />
  
 - Currently, the application doesn't require complex database queries.
 - AHA-principle: Right now, the data doesn't need to be in the database. As soon as it becomes necessary, we can do that.
-- Unit tests can validate the data easily.
+- Unit tests can validate the data easily. For example, there is a unit test that verifies that from the given properties and non-properties no contradiction can be deduced.
  
-<img width="600" alt="failing unit test since properties are contradictory" src="https://github.com/user-attachments/assets/4feac54b-dda6-4640-8c76-af5d97cb2dfc" />
-
+<img width="600" alt="failing unit test" src="https://github.com/user-attachments/assets/5f4a6bb4-1d60-4226-8edb-032cd0a25aff" />
+ 
 - TypeScript is doing most of the work for us when it comes to data integrity. The rest is done via unit tests.
 - More flexible data structures (not just rows in a table) are easy to integrate. For example, the [property duals](../src/lib/database/property-duals.data.ts) use a fully-typed dictionary.
 
