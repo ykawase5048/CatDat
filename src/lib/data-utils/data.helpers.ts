@@ -53,11 +53,11 @@ export function negate_prefix(prefix: Prefix) {
 }
 
 export function get_properties_of_category(id: CategoryID): PropertyID[] {
-	return CATEGORY_PROPERTIES[id]?.map((entry) => entry[0]) ?? []
+	return CATEGORY_PROPERTIES[id].map((entry) => entry[0])
 }
 
 export function get_non_properties_of_category(id: CategoryID): PropertyID[] {
-	return CATEGORY_NON_PROPERTIES[id]?.map((entry) => entry[0]) ?? []
+	return CATEGORY_NON_PROPERTIES[id].map((entry) => entry[0])
 }
 
 export function get_dual_property(id: PropertyID): null | PropertyID {
