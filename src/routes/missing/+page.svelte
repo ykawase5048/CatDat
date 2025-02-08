@@ -5,7 +5,7 @@
 	const { data } = $props()
 
 	const {
-		missing_basic_combinations,
+		missing_basic_combinations_with_prefixes,
 		categories_with_unknown_properties,
 		categories_with_unknown_special_morphisms,
 		total_number_unknown_properties,
@@ -42,21 +42,18 @@ Please also report in case some combination is inconsistent. This means that an
 implication is missing in the database.
 
 <p>
-	Number of missing basic combinations: {missing_basic_combinations.length}
+	Number of missing basic combinations: {missing_basic_combinations_with_prefixes.length}
 </p>
 
-{#if missing_basic_combinations.length}
+{#if missing_basic_combinations_with_prefixes.length}
 	<ul>
-		<!-- TODO: fix the type error here, return correct data -->
-		{#each missing_basic_combinations as combination}
-			<!-- {@const prefix1 = combination.assumption.prefix}
-			{@const prefix2 = combination.negation.prefix}
+		{#each missing_basic_combinations_with_prefixes as combination}
 			<li>
-				{prefix1}
-				{combination.assumption},
-				but {negate_prefix(prefix2)}
+				{combination.assumption_prefix}
+				{combination.assumption}, <!---->
+				but {negate_prefix(combination.negation_prefix)}
 				{combination.negation}
-			</li> -->
+			</li>
 		{/each}
 	</ul>
 {/if}
