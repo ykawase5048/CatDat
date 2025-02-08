@@ -4,10 +4,10 @@
 	import CategoryList from '$components/CategoryList.svelte'
 
 	import {
-		separator,
+		separator_in_url,
 		storage_key_non_properties,
 		storage_key_properties,
-	} from '$lib/data-utils/search.js'
+	} from '$lib/commons/search'
 	import Warning from '$components/Warning.svelte'
 	import { concatenate_info } from '$lib/commons/utils'
 	import { browser } from '$app/environment'
@@ -71,12 +71,12 @@
 		const properties_query = selected_properties
 			.filter(is_valid_property)
 			.map(encode_property_ID)
-			.join(separator)
+			.join(separator_in_url)
 
 		const non_properties_query = selected_non_properties
 			.filter(is_valid_property)
 			.map(encode_property_ID)
-			.join(separator)
+			.join(separator_in_url)
 
 		const url = new URL('/search', window.location.origin)
 

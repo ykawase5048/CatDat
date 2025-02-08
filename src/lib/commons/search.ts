@@ -6,10 +6,7 @@ import { category_system, property_deduction_system } from '$lib/data-utils/dedu
 import { select } from '$lib/commons/utils'
 import type { Category } from '$lib/database/categories.data'
 
-/**
- * This is used to separate property IDs in the query string.
- */
-export const separator = '--'
+export const separator_in_url = '--'
 
 export const storage_key_properties = 'search_properties'
 export const storage_key_non_properties = 'search_non_properties'
@@ -23,11 +20,11 @@ export function get_search_results(url: URL) {
 	}
 
 	const properties = properties_query
-		? properties_query.split(separator).map(decode_property_ID)
+		? properties_query.split(separator_in_url).map(decode_property_ID)
 		: []
 
 	const non_properties = non_properties_query
-		? non_properties_query.split(separator).map(decode_property_ID)
+		? non_properties_query.split(separator_in_url).map(decode_property_ID)
 		: []
 
 	const is_valid =
