@@ -24,18 +24,22 @@ Create a [**pull request**](https://github.com/ScriptRaccoon/CatDat/pulls). You 
 
 ### Adding a New Category
 
-- Edit the file [categories.ts](src/lib/categories/categories.ts).
-- Refer to this [example commit](https://github.com/ScriptRaccoon/CatDat/commit/236eeb033b0f78bafc5a58c1e84989b2c7767399) for guidance.
+- Add the basic info of the category to the file [categories.data.ts](src/lib/database/categories.data.ts).
+- Add a list of related categories to [category-relations.data.ts](src/lib/database/category-relations.data.ts). Can be an empty list.
+- Add a list of tags to [category-tags.data.ts](src/lib/database/category-tags.data.ts).
+- To add properties of the category, edit the file [category-properties.data.ts](src/lib/database/category-properties.data.ts).
+- To add non-properties of the category, edit the file [category-non-properties.data.ts](src/lib/database/category-non-properties.data.ts).
+- Add the descriptions (including proofs) of special morphisms in to [category-monomorphisms.data.ts](src/lib/database/category-monomorphisms.data.ts), [category-epimorphisms.data.ts](src/lib/database/category-epimorphisms.data.ts), and [category-isomorphisms.data.ts](src/lib/database/category-isomorphisms.data.ts). Can be empty strings in case it's not known.
 
 ### Adding a New Property
 
-- Edit the file [properties.ts](src/lib/properties/properties.ts).
-- Refer to this [example commit](https://github.com/ScriptRaccoon/CatDat/commit/43ba7f544fd3b1c8d76e9700fccaccc5ed21b0b3) for guidance.
+- Add the basic info of the property to [properties.data.ts](src/lib/database/properties.data.ts).
+- Add a list of related properties to [property-relations.data.ts](src/lib/database/property-relations.data.ts). Can be an empty list.
+- If applicable, add its dual property to [property-duals.data.ts](src/lib/database/property-duals.data.ts).
 
 ### Adding a New Implication
 
-- Edit the file [implications.ts](src/lib/implications/implications.ts).
-- Refer to this [example commit](https://github.com/ScriptRaccoon/CatDat/commit/44f023dd0b6946a11256bf6b0aeb6d7c20c0da90) for guidance.
+- Edit the file [implications.data.ts](src/lib/database/implications.data.ts).
 
 For more information on why we don't use a traditional database, see [this documentation](/docs/database.md).
 
@@ -47,23 +51,23 @@ When contributing new data (categories, properties, implications), please follow
 
 - **Atomic Implications**: Only add "atomic" implications. Do not add implications that can be deduced from others. For example, do not add "complete => finite products" if it can be deduced from "complete => finitely complete" and "finitely complete => finite products". These are deduced automatically. Implications are also dualized automatically when applicable.
 
-- **New Properties**: When adding a new property, include all implications involving this property and existing properties. For example, when adding "countable products", also add "countable products => finite products". Refactor existing implications if necessary. Ensure that for most categories, it will be inferred if the property holds or not.
+- **Relevant implications**: When adding a new property, include all implications involving this property and existing properties. For example, when adding "countable products", also add "countable products => finite products". Refactor existing implications if necessary. Ensure that for most categories, it will be inferred if the property holds or not.
 
-- **Non-Deducible Properties**: Only add properties and non-properties to a category that cannot be deduced from other properties. This is enforced with a unit test. For example, if a category is complete, add the property 'complete', but do not add 'terminal object'. The deduction system handles this automatically.
+- **Non-Deducible Properties**: Only add properties and non-properties to a category that cannot be deduced from other properties. This is enforced with a unit test. For example, if a category is complete, add the property 'complete', but do not add 'terminal object'. The deduction system infers this property automatically.
 
-- **Proofs for New Properties**: For every new property, try to find a proof for whether each existing category has this property or not, unless it can be deduced from existing properties.
+- **Proofs for New Properties**: For every new property, for each existing category try to find a proof for whether it has this property or not, unless it can be deduced from existing properties.
 
 - **Counterexamples**: Ensure that at least one category does not satisfy any new property added. This is enforced with a unit test. If no existing category fits, add a new category that does not have the new property.
 
-- **Reduce Unknowns**: Aim to reduce the number of unknown properties of categories in the database. Use the page with missing data to identify these.
+- **Reduce Unknowns**: Aim to reduce the number of unknown properties of categories in the database. Use the [page with missing data](https://catdat.netlify.app/missing) to identify these.
 
 - **Simplify Implications**: When adding a new implication, check if it simplifies existing implications and if it makes some properties and non-properties in the list of categories redundant.
 
-- **New Categories**: Add new categories that satisfy combinations of properties and non-properties not yet in the database. For example, you may add a category that is abelian but neither cocomplete nor essentially small if it is not already present.
+- **New Categories**: Add new categories that satisfy combinations of properties and non-properties not yet in the database. For example, you may add a category that is abelian but neither cocomplete nor essentially small (if it is not already present).
 
 - **Positive Properties**: Do not add negated properties to the database. For example, do not add "large" as the negation of "small". Instead, add "small" to the list of non-properties for a category. As a rule of thumb, every registered property should be satisfied by the trivial category.
 
-- **Proofs for Claims**: Provide proofs for non-obvious new claims, especially regarding the properties of very special categories, in your pull request.
+- **Proofs for Claims**: Provide proofs for all new claims (properties and implications). (We are currently working on filling in the existing ones and also display them in the UI.)
 
 ## Option 3: Submit our Google Form 📩
 
