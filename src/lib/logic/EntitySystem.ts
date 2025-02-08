@@ -51,33 +51,27 @@ export class EntitySystem<S, T extends string> {
 	}
 
 	public search(
-		properties: T[],
-		non_properties: T[],
-		unknown_properties: T[] = [],
+		properties: T[] | Set<T>,
+		non_properties: T[] | Set<T>,
+		unknown_properties: T[] | Set<T> = new Set<T>(),
 	): EntityDetailed<S, T>[] {
+		const properties_set = new Set(properties)
+		const non_properties_set = new Set(non_properties)
+		const unknown_properties_set = new Set(unknown_properties)
+
 		if (
-			properties.length === 0 &&
-			non_properties.length === 0 &&
-			unknown_properties.length === 0
+			properties_set.size === 0 &&
+			non_properties_set.size === 0 &&
+			unknown_properties_set.size === 0
 		) {
 			return []
 		}
 
 		return this.entities.filter((entity) => {
-			const has_all_properties = new Set(properties).isSubsetOf(
-				entity.all_properties,
-			)
-
-			const has_all_non_properties = new Set(non_properties).isSubsetOf(
-				entity.all_non_properties,
-			)
-
-			const has_all_unknown_properties = new Set(unknown_properties).isSubsetOf(
-				entity.unknown_properties,
-			)
-
 			return (
-				has_all_properties && has_all_non_properties && has_all_unknown_properties
+				properties_set.isSubsetOf(entity.all_properties) &&
+				non_properties_set.isSubsetOf(entity.all_non_properties) &&
+				unknown_properties_set.isSubsetOf(entity.unknown_properties)
 			)
 		})
 	}
