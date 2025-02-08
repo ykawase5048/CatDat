@@ -140,6 +140,7 @@ describe('dual properties', () => {
 	it('should dualize mutually', () => {
 		for (const key in PROPERTY_DUALS) {
 			const dual = (PROPERTY_DUALS as any)[key]
+			if (!dual) continue
 			expect((PROPERTY_DUALS as any)[dual]).toBe(key)
 		}
 	})

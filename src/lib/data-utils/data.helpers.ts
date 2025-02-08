@@ -60,7 +60,7 @@ export function get_non_properties_of_category(id: CategoryID): PropertyID[] {
 }
 
 export function get_dual_property(id: PropertyID): null | PropertyID {
-	return PROPERTY_DUALS[id] ?? null
+	return PROPERTY_DUALS[id]
 }
 
 export function get_dual_properties(ids: PropertyID[]): null | PropertyID[] {

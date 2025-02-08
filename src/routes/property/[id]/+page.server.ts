@@ -19,7 +19,7 @@ export const load: PageServerLoad = (event) => {
 	if (!is_valid) return error(404, 'Property not found')
 
 	const property = get_property(id)
-	const dual_property = PROPERTY_DUALS[id] ?? null
+	const dual_property = PROPERTY_DUALS[id]
 	const related_properties = PROPERTY_RELATIONS[id] ?? []
 
 	const categories_with_this_property = category_system
