@@ -20,13 +20,19 @@
 <ul>
 	<li>
 		Either create a
-		<a href="https://github.com/ScriptRaccoon/CatDat/pulls" target="_blank"
-			>pull request</a
+		<a
+			class="accent"
+			href="https://github.com/ScriptRaccoon/CatDat/pulls"
+			target="_blank">pull request</a
 		>,
 	</li>
 	<li>
 		or create an
-		<a href="https://github.com/ScriptRaccoon/CatDat/issues" target="_blank">issue</a>
+		<a
+			class="accent"
+			href="https://github.com/ScriptRaccoon/CatDat/issues"
+			target="_blank">issue</a
+		>
 		on GitHub.
 	</li>
 </ul>
@@ -34,6 +40,7 @@
 <p>
 	Make sure to follow the
 	<a
+		class="accent"
 		href="https://github.com/ScriptRaccoon/CatDat/blob/main/CONTRIBUTING.md"
 		target="_blank">contribution guidelines</a
 	>.
@@ -41,6 +48,7 @@
 
 <p>
 	A third option is offered via a <a
+		class="accent"
 		href="https://forms.gle/8LBmro5FfSa43pD2A"
 		target="_blank">Google form</a
 	>. This option does not require any knowledge of GitHub or coding.

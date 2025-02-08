@@ -6,7 +6,8 @@
 
 <p>
 	<i>CatDat</i> provides a growing collection of
-	<a href="https://en.wikipedia.org/wiki/Category_theory" target="_blank">categories</a
+	<a class="accent" href="https://en.wikipedia.org/wiki/Category_theory" target="_blank"
+		>categories</a
 	>, each with detailed descriptions, properties, and non-properties. A list of
 	implications leverages a powerful deduction system, allowing you to search for
 	categories with specific properties or non-properties. Additionally, you can compare
@@ -14,8 +15,10 @@
 </p>
 
 <p>
-	This community-driven project welcomes <a href="/contribute">contributions</a> to fill
-	in <a href="/missing">missing information</a>
+	This community-driven project welcomes <a class="accent" href="/contribute"
+		>contributions</a
+	>
+	to fill in <a class="accent" href="/missing">missing information</a>
 	or observe new combinations of properties.
 </p>
 

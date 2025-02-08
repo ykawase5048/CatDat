@@ -83,6 +83,7 @@ a {
 	text-decoration-color: var(--outline-color);
 }
 
+a.accent,
 a:active {
 	color: var(--accent-color);
 }
