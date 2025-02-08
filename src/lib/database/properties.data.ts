@@ -450,6 +450,12 @@ const PROPERTIES_INDEX = [
 		description: 'A category is <i>skeletal</i> when isomorphic objects are already equal. Every category is equivalent to a skeletal category (using the axiom of choice).',
 		invariant: false,
 	},
+	{
+		id: 'Malcev',
+		prefix: 'is',
+		nlab_link: 'https://ncatlab.org/nlab/show/Malcev+category',
+		description: "A category is <i>Mal'cev</i> when it has finite limits and every internal reflexive relation is an internal equivalence relation: That is, if $R \\subseteq X^2$ is a subobject with $\\Delta_X \\subseteq R$, then $R$ is symmetric and transitive. The dual of an elementary topos is Malcev.",
+	},
 ] as const
 
 export const PROPERTIES: readonly Property[] = PROPERTIES_INDEX

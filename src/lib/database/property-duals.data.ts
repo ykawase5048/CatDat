@@ -74,4 +74,5 @@ export const PROPERTY_DUALS: Record<PropertyID, PropertyID | null> = {
 	'mono-regular': 'epi-regular',
 	'epi-regular': 'mono-regular',
 	'skeletal': 'skeletal',
+	'Malcev': null,
 }

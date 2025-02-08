@@ -1,5 +1,5 @@
-import { CATEGORIES } from '$lib/database/categories.data'
-import { PROPERTIES } from '$lib/database/properties.data'
+import { CATEGORIES, type CategoryID } from '$lib/database/categories.data'
+import { PROPERTIES, type PropertyID } from '$lib/database/properties.data'
 import {
 	get_non_properties_of_category,
 	get_properties_of_category,
@@ -11,6 +11,8 @@ import {
 } from './deductions'
 
 describe('property_deduction_system', () => {
+	const redundancy_exceptions: [CategoryID, PropertyID][] = [['FreeAb', 'equalizers']]
+
 	for (const category of CATEGORIES) {
 		const properties = get_properties_of_category(category.id)
 		const non_properties = get_non_properties_of_category(category.id)
@@ -19,7 +21,12 @@ describe('property_deduction_system', () => {
 			const redundancy = property_deduction_system.get_redundancy(
 				new Set(properties),
 			)
-			expect(redundancy).toBe(null)
+			const is_exception = redundancy_exceptions.some(
+				(entry) => entry[0] === category.id && entry[1] === redundancy,
+			)
+			if (!is_exception) {
+				expect(redundancy).toBe(null)
+			}
 		})
 
 		it(`should have no redundancy for the non-properties of: ${category.name}`, () => {

@@ -445,6 +445,11 @@ export const IMPLICATIONS: Implication[] = [
 		conclusions: ['abelian'],
 		reason: 'by definition',
 	},
+	{
+		assumptions: ['abelian'], // semi-abelian suffices, add this later
+		conclusions: ['Malcev'],
+		reason: '',
+	},
 	// groupoids
 	{
 		assumptions: ['groupoid'],
@@ -486,5 +491,15 @@ export const IMPLICATIONS: Implication[] = [
 		assumptions: ['mono-regular'],
 		conclusions: ['balanced'],
 		reason: 'Any regular monomorphism that is an epimorphism must be an isomorphism.',
+	},
+	{
+		assumptions: ['Malcev'],
+		conclusions: ['finitely complete'],
+		reason: 'by definition',
+	},
+	{
+		assumptions: ['thin', 'finitely complete'],
+		conclusions: ['Malcev'],
+		reason: 'In a thin category, every subobject of $X^2 = X$ containing $X$ is already $X$.',
 	},
 ]

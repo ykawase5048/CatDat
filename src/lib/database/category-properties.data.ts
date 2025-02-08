@@ -47,6 +47,7 @@ export const CATEGORY_PROPERTIES: Record<CategoryID, [PropertyID, string][]> = {
 		['mono-regular', ''],
 		['disjoint coproducts', ''],
 		['epi-regular', ''],
+		['Malcev', 'easy; Borceux & Bourn (2004), Ex. 2.2.4'],
 	],
 	'Vect': [
 		['locally small', ''],
@@ -57,17 +58,20 @@ export const CATEGORY_PROPERTIES: Record<CategoryID, [PropertyID, string][]> = {
 		['locally small', ''],
 		['finitary algebraic', ''],
 		['strict terminal object', ''],
+		['Malcev', 'follows in the same way as for (additive) groups'],
 	],
 	'CRing': [
 		['locally small', ''],
 		['finitary algebraic', ''],
 		['strict terminal object', ''],
+		['Malcev', 'follows in the same way as for (additive) groups'],
 	],
 	'Rng': [
 		['locally small', ''],
 		['finitary algebraic', ''],
 		['pointed', ''],
 		['disjoint coproducts', ''],
+		['Malcev', 'follows in the same way as for (additive) groups'],
 	],
 	'FinSet': [
 		['essentially small', ''],
@@ -241,10 +245,11 @@ export const CATEGORY_PROPERTIES: Record<CategoryID, [PropertyID, string][]> = {
 		['additive', ''],
 		['well-powered', ''],
 		['well-copowered', ''],
-		['equalizers', ''],
+		['equalizers', 'Subgroups of free abelian groups are free abelian.'],
 		['generator', ''],
 		['cogenerator', ''],
 		['disjoint coproducts', ''],
+		['Malcev', 'follows in the same way as for abelian groups'],
 	],
 	'Z': [
 		['complete', ''],

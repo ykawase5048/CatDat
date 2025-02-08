@@ -74,4 +74,5 @@ export const PROPERTY_RELATIONS: Record<PropertyID, PropertyID[]> = {
 	'mono-regular': [],
 	'epi-regular': [],
 	'skeletal': [],
+	'Malcev': ['finitely complete'],
 }

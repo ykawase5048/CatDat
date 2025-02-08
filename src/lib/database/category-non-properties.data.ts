@@ -10,6 +10,7 @@ export const CATEGORY_NON_PROPERTIES: Record<CategoryID, [PropertyID, string][]>
 	'Set': [
 		['strict terminal object', ''],
 		['skeletal', 'trivial'],
+		['Malcev', 'There are lots of non-symmetric reflexive relations.'],
 	],
 	'Ab': [
 		['split abelian', ''],
@@ -23,6 +24,7 @@ export const CATEGORY_NON_PROPERTIES: Record<CategoryID, [PropertyID, string][]>
 		['cogenerator', ''],
 		['exact filtered colimits', ''],
 		['skeletal', 'trivial'],
+		['Malcev', ''],
 	],
 	'Grp': [
 		['subobject classifier', ''],
@@ -59,6 +61,7 @@ export const CATEGORY_NON_PROPERTIES: Record<CategoryID, [PropertyID, string][]>
 		['sequential limits', ''],
 		['sequential colimits', ''],
 		['skeletal', 'trivial'],
+		['Malcev', 'There are lots of non-symmetric reflexive relations.'],
 	],
 	'FinAb': [
 		['small', ''],
@@ -76,29 +79,33 @@ export const CATEGORY_NON_PROPERTIES: Record<CategoryID, [PropertyID, string][]>
 		['skeletal', 'trivial'],
 	],
 	'Set*': [
-		['preadditive', ''],
 		['skeletal', 'trivial'],
+		['Malcev', ''],
 	],
 	'sSet': [
 		['strict terminal object', ''],
 		['skeletal', 'trivial'],
+		['Malcev', ''],
 	],
 	'Mon': [
 		['preadditive', ''],
 		['balanced', ''],
 		['cogenerator', ''],
 		['skeletal', 'trivial'],
+		['Malcev', 'Consider the submonoid $\\{(a,b) : a \\leq b \}$ of $\\mathbb{N}^2$.'],
 	],
 	'Pos': [
 		['strict terminal object', ''],
 		['finitary algebraic', ''],
 		['balanced', ''],
 		['skeletal', 'trivial'],
+		['Malcev', ''],
 	],
 	'I': [['subobject classifier', '']],
 	'M-Set': [
 		['strict terminal object', ''],
 		['skeletal', 'trivial'],
+		['Malcev', ''],
 	],
 	'R-Mod': [
 		['split abelian', ''],
@@ -113,6 +120,7 @@ export const CATEGORY_NON_PROPERTIES: Record<CategoryID, [PropertyID, string][]>
 		['essentially small', ''],
 		['exact filtered colimits', '2.7 in https://arxiv.org/abs/2006.01399'],
 		['skeletal', 'trivial'],
+		['Malcev', ''],
 	],
 	'Met_oo': [
 		['strict terminal object', ''],
@@ -120,6 +128,7 @@ export const CATEGORY_NON_PROPERTIES: Record<CategoryID, [PropertyID, string][]>
 		['cartesian closed', ''],
 		['exact filtered colimits', '2.7 in https://arxiv.org/abs/2006.01399'],
 		['skeletal', 'trivial'],
+		['Malcev', ''],
 	],
 	'Met_c': [
 		['products', ''],
@@ -127,6 +136,7 @@ export const CATEGORY_NON_PROPERTIES: Record<CategoryID, [PropertyID, string][]>
 		['balanced', ''],
 		['cartesian closed', ''],
 		['skeletal', 'trivial'],
+		['Malcev', ''],
 	],
 	'Ban': [
 		['preadditive', ''],
@@ -150,6 +160,7 @@ export const CATEGORY_NON_PROPERTIES: Record<CategoryID, [PropertyID, string][]>
 		['strict terminal object', ''],
 		['balanced', ''],
 		['skeletal', 'trivial'],
+		['Malcev', ''],
 	],
 	'N': [
 		['countable coproducts', ''],
@@ -161,6 +172,7 @@ export const CATEGORY_NON_PROPERTIES: Record<CategoryID, [PropertyID, string][]>
 		['balanced', ''],
 		['cogenerator', ''],
 		['skeletal', 'trivial'],
+		['Malcev', ''],
 	],
 	'On': [
 		['terminal object', ''],
@@ -170,6 +182,7 @@ export const CATEGORY_NON_PROPERTIES: Record<CategoryID, [PropertyID, string][]>
 		['cartesian closed', ''],
 		['strict terminal object', ''],
 		['skeletal', 'trivial'],
+		['Malcev', 'This is because the category of schemes already is not Malcev.'],
 	],
 	'Sch': [
 		['coequalizers', ''],
@@ -177,6 +190,7 @@ export const CATEGORY_NON_PROPERTIES: Record<CategoryID, [PropertyID, string][]>
 		['cartesian closed', ''],
 		['strict terminal object', ''],
 		['skeletal', 'trivial'],
+		['Malcev', 'Consider the subscheme $V(x-y) \\cup V(y) \\subseteq \\mathbb{A}^2$. It contains the diagonal but it is not symmetric.'],
 	],
 	'Fld': [
 		['connected', ''],
@@ -197,6 +211,7 @@ export const CATEGORY_NON_PROPERTIES: Record<CategoryID, [PropertyID, string][]>
 		['locally essentially small', ''],
 		['strict terminal object', ''],
 		['skeletal', 'trivial'],
+		['Malcev', ''],
 	],
 	'BG': [
 		['zero morphisms', ''],
@@ -268,6 +283,7 @@ export const CATEGORY_NON_PROPERTIES: Record<CategoryID, [PropertyID, string][]>
 		['sequential colimits', ''],
 		['countable products', ''],
 		['skeletal', 'trivial'],
+		['Malcev', ''],
 	],
 	'Rel': [
 		['preadditive', ''],
@@ -280,6 +296,7 @@ export const CATEGORY_NON_PROPERTIES: Record<CategoryID, [PropertyID, string][]>
 		['countable products', ''],
 		['countable coproducts', ''],
 		['skeletal', 'trivial'],
+		['Malcev', ''],
 	],
 	'real_interval': [
 		['essentially finite', ''],
