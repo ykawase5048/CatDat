@@ -53,22 +53,21 @@
 				<a href={category.nlab_link} target="_blank">nLab Link</a>
 			</li>
 		{/if}
+		{#if related_categories.length}
+			<li>
+				Related categories: {#each related_categories as { id, notation }, i}
+					<a href={`/category/${id}`}>
+						{@html notation}
+					</a>{#if i < related_categories.length - 1}
+						,&nbsp;
+					{/if}
+				{/each}
+			</li>
+		{/if}
 	</ul>
 
 	{#if category.description}
 		<p>{@html category.description}</p>
-	{/if}
-
-	{#if related_categories.length}
-		<p>
-			Related categories: {#each related_categories as { id, name }, i}
-				<a href={`/category/${id}`}>
-					{name}
-				</a>{#if i < related_categories.length - 1}
-					,&nbsp;
-				{/if}
-			{/each}
-		</p>
 	{/if}
 </section>
 

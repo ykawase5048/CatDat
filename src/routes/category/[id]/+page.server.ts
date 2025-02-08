@@ -1,7 +1,7 @@
 import { error } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
 
-import { render_formulas_in_object } from '$lib/commons/rendering'
+import { render_formulas, render_formulas_in_object } from '$lib/commons/rendering'
 import { CATEGORY_RELATIONS } from '$lib/database/category-relations.data'
 import {
 	get_category,
@@ -24,11 +24,11 @@ export const load: PageServerLoad = (event) => {
 	const category = get_category(id)
 	const tags = CATEGORY_TAGS[id]
 
-	const related_category_ids = CATEGORY_RELATIONS[id] ?? []
+	const related_category_ids = CATEGORY_RELATIONS[id]
 
-	const related_categories = select('id', 'name').from(
-		related_category_ids.map(get_category),
-	)
+	const related_categories = select('id', 'notation')
+		.from(related_category_ids.map(get_category))
+		.map(render_formulas_in_object)
 
 	const deductions = categories_with_deduced_properties_dictionary[id]
 
