@@ -3,12 +3,16 @@ import type { PageServerLoad } from './$types'
 
 import { render_formulas_in_object } from '$lib/commons/rendering'
 import { CATEGORY_RELATIONS } from '$lib/data/category-relations.data'
-import { get_category, get_property, is_valid_category } from '$lib/utils/data.helpers'
+import {
+	get_category,
+	get_epis,
+	get_isos,
+	get_monos,
+	get_property,
+	is_valid_category,
+} from '$lib/utils/data.helpers'
 import { select } from '$lib/commons/utils'
 import { CATEGORY_TAGS } from '$lib/data/category-tags.data'
-import { CATEGORY_MONOMORPHISMS } from '$lib/data/category-monomorphisms.data'
-import { CATEGORY_EPIMORPHISMS } from '$lib/data/category-epimorphisms.data'
-import { CATEGORY_ISOMORPHISMS } from '$lib/data/category-isomorphisms.data'
 import { categories_with_deduced_properties_dictionary } from '$lib/utils/deductions'
 
 export const load: PageServerLoad = (event) => {
@@ -29,9 +33,9 @@ export const load: PageServerLoad = (event) => {
 
 	const deductions = categories_with_deduced_properties_dictionary[id]
 
-	const isomorphisms = render_formulas_in_object(CATEGORY_ISOMORPHISMS[id])
-	const monomorphisms = render_formulas_in_object(CATEGORY_MONOMORPHISMS[id])
-	const epimorphisms = render_formulas_in_object(CATEGORY_EPIMORPHISMS[id])
+	const isomorphisms = render_formulas_in_object(get_monos(id))
+	const monomorphisms = render_formulas_in_object(get_epis(id))
+	const epimorphisms = render_formulas_in_object(get_isos(id))
 
 	return {
 		category: render_formulas_in_object(category),

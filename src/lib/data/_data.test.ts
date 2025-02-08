@@ -55,7 +55,7 @@ describe('list of satisfied properties per category', () => {
 	it('should have at most one entry per category-property pair', () => {
 		const seen = new Set<string>()
 
-		for (const { category, property } of CATEGORY_PROPERTIES) {
+		for (const [category, property] of CATEGORY_PROPERTIES) {
 			const pair = `${category}-${property}`
 			expect(seen.has(pair)).toBe(false)
 			seen.add(pair)
@@ -63,7 +63,7 @@ describe('list of satisfied properties per category', () => {
 	})
 
 	it('should have categories grouped together', () => {
-		const categories = CATEGORY_PROPERTIES.map((item) => item.category)
+		const categories = CATEGORY_PROPERTIES.map((item) => item[0])
 		const seen = new Set<string>()
 		let current = categories[0]
 
@@ -82,7 +82,7 @@ describe('list of non-satisfied properties per category', () => {
 	it('should have at most one entry per category-property pair', () => {
 		const seen = new Set<string>()
 
-		for (const { category, property } of CATEGORY_NON_PROPERTIES) {
+		for (const [category, property] of CATEGORY_NON_PROPERTIES) {
 			const pair = `${category}-${property}`
 			expect(seen.has(pair)).toBe(false)
 			seen.add(pair)
@@ -90,7 +90,7 @@ describe('list of non-satisfied properties per category', () => {
 	})
 
 	it('should have categories grouped together', () => {
-		const categories = CATEGORY_NON_PROPERTIES.map((item) => item.category)
+		const categories = CATEGORY_NON_PROPERTIES.map((item) => item[0])
 		const seen = new Set<string>()
 		let current = categories[0]
 

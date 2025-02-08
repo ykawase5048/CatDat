@@ -2,6 +2,9 @@ import {
 	get_category,
 	get_dual_properties,
 	get_dual_property,
+	get_epis,
+	get_isos,
+	get_monos,
 	get_property,
 	negate_prefix,
 } from './data.helpers'
@@ -52,5 +55,17 @@ describe('get_dual_properties', () => {
 			'small',
 			'complete',
 		])
+	})
+})
+
+describe('get_monos, get_epis, get_isos', () => {
+	it('should return the correct info about monos, epis, isos', () => {
+		const id = 'FinAb'
+		const monos = get_monos(id)
+		const epis = get_epis(id)
+		const isos = get_isos(id)
+		expect(monos.description).toContain('injective')
+		expect(epis.description).toContain('surjective')
+		expect(isos.description).toContain('bijective')
 	})
 })

@@ -1,5 +1,8 @@
 import { group_items } from '$lib/commons/utils'
 import { CATEGORIES, type Category, type CategoryID } from '$lib/data/categories.data'
+import { CATEGORY_EPIMORPHISMS } from '$lib/data/category-epimorphisms.data'
+import { CATEGORY_ISOMORPHISMS } from '$lib/data/category-isomorphisms.data'
+import { CATEGORY_MONOMORPHISMS } from '$lib/data/category-monomorphisms.data'
 import { CATEGORY_NON_PROPERTIES } from '$lib/data/category-non-properties.data'
 import { CATEGORY_PROPERTIES } from '$lib/data/category-properties.data'
 import { PREFIXES, type Prefix } from '$lib/data/prefix.data'
@@ -19,6 +22,21 @@ export function get_property(id: PropertyID): Property {
 	return properties_dictionary[id]
 }
 
+export function get_monos(id: CategoryID) {
+	const entry = CATEGORY_MONOMORPHISMS[id]
+	return { description: entry[0], reason: entry[1] }
+}
+
+export function get_epis(id: CategoryID) {
+	const entry = CATEGORY_EPIMORPHISMS[id]
+	return { description: entry[0], reason: entry[1] }
+}
+
+export function get_isos(id: CategoryID) {
+	const entry = CATEGORY_ISOMORPHISMS[id]
+	return { description: entry[0], reason: entry[1] }
+}
+
 export function negate_prefix(prefix: Prefix) {
 	return PREFIXES[prefix]
 }
@@ -32,14 +50,12 @@ export function is_valid_property(id: string): id is PropertyID {
 }
 
 export function get_properties_of_category(id: CategoryID): PropertyID[] {
-	return CATEGORY_PROPERTIES.filter((entry) => entry.category === id).map(
-		(entry) => entry.property,
-	)
+	return CATEGORY_PROPERTIES.filter((entry) => entry[0] === id).map((entry) => entry[1])
 }
 
 export function get_non_properties_of_category(id: CategoryID): PropertyID[] {
-	return CATEGORY_NON_PROPERTIES.filter((entry) => entry.category === id).map(
-		(entry) => entry.property,
+	return CATEGORY_NON_PROPERTIES.filter((entry) => entry[0] === id).map(
+		(entry) => entry[1],
 	)
 }
 

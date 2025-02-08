@@ -2,10 +2,7 @@ import type { PageServerLoad } from './$types'
 import { select, sum } from '$lib/commons/utils'
 import { category_system } from '$lib/utils/deductions'
 import { CATEGORIES, type Category } from '$lib/data/categories.data'
-import { CATEGORY_MONOMORPHISMS } from '$lib/data/category-monomorphisms.data'
-import { CATEGORY_EPIMORPHISMS } from '$lib/data/category-epimorphisms.data'
-import { CATEGORY_ISOMORPHISMS } from '$lib/data/category-isomorphisms.data'
-import { get_property } from '$lib/utils/data.helpers'
+import { get_epis, get_isos, get_monos, get_property } from '$lib/utils/data.helpers'
 
 const has_todo = (entry: string) => !entry || entry.includes('TODO')
 
@@ -28,13 +25,13 @@ export const load: PageServerLoad = () => {
 	const categories_with_unknown_special_morphisms: Pick<Category, 'id' | 'name'>[] =
 		select(
 			CATEGORIES.filter((category) => {
-				const monomorphisms = CATEGORY_MONOMORPHISMS[category.id].description
-				const epimorphisms = CATEGORY_EPIMORPHISMS[category.id].description
-				const isomorphisms = CATEGORY_ISOMORPHISMS[category.id].description
+				const monomorphisms = get_monos(category.id)
+				const epimorphisms = get_epis(category.id)
+				const isomorphisms = get_isos(category.id)
 				return (
-					has_todo(monomorphisms) ||
-					has_todo(epimorphisms) ||
-					has_todo(isomorphisms)
+					has_todo(monomorphisms.description) ||
+					has_todo(epimorphisms.description) ||
+					has_todo(isomorphisms.description)
 				)
 			}),
 			['id', 'name'],
