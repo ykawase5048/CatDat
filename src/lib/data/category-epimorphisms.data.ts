@@ -1,7 +1,7 @@
 import type { CategoryID } from './categories.data'
 import type { DescriptionWithReason } from './category-isomorphisms.data'
 
-export const CATEGORY_EPIMORPHISMS: Partial<Record<CategoryID, DescriptionWithReason>> = {
+export const CATEGORY_EPIMORPHISMS: Record<CategoryID, DescriptionWithReason> = {
 	'0': {
 		description: "there aren't any",
 		reason: '',
@@ -191,6 +191,14 @@ export const CATEGORY_EPIMORPHISMS: Partial<Record<CategoryID, DescriptionWithRe
 	},
 	'real_interval': {
 		description: 'every morphism',
+		reason: '',
+	},
+	'LRS': {
+		description: '',
+		reason: '',
+	},
+	'Sch': {
+		description: '',
 		reason: '',
 	},
 }

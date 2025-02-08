@@ -142,13 +142,13 @@
 	<h3>Special morphisms</h3>
 	<ul>
 		<li>
-			Isomorphisms: {@html isomorphisms?.description ?? '?'}
+			Isomorphisms: {@html isomorphisms?.description || '?'}
 		</li>
 		<li>
-			Monomorphisms: {@html monomorphisms?.description ?? '?'}
+			Monomorphisms: {@html monomorphisms?.description || '?'}
 		</li>
 		<li>
-			Epimorphisms: {@html epimorphisms?.description ?? '?'}
+			Epimorphisms: {@html epimorphisms?.description || '?'}
 		</li>
 	</ul>
 </section>

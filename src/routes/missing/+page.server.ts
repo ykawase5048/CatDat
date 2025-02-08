@@ -6,7 +6,7 @@ import { CATEGORY_MONOMORPHISMS } from '$lib/data/category-monomorphisms.data'
 import { CATEGORY_EPIMORPHISMS } from '$lib/data/category-epimorphisms.data'
 import { CATEGORY_ISOMORPHISMS } from '$lib/data/category-isomorphisms.data'
 
-const has_todo = (entry: string | undefined) => !entry || entry.includes('TODO')
+const has_todo = (entry: string) => !entry || entry.includes('TODO')
 
 export const load: PageServerLoad = () => {
 	const missing_basic_combinations = category_system.missing_basic_combinations
@@ -19,9 +19,9 @@ export const load: PageServerLoad = () => {
 	const categories_with_unknown_special_morphisms: Pick<Category, 'id' | 'name'>[] =
 		select(
 			CATEGORIES.filter((category) => {
-				const monomorphisms = CATEGORY_MONOMORPHISMS[category.id]?.description
-				const epimorphisms = CATEGORY_EPIMORPHISMS[category.id]?.description
-				const isomorphisms = CATEGORY_ISOMORPHISMS[category.id]?.description
+				const monomorphisms = CATEGORY_MONOMORPHISMS[category.id].description
+				const epimorphisms = CATEGORY_EPIMORPHISMS[category.id].description
+				const isomorphisms = CATEGORY_ISOMORPHISMS[category.id].description
 				return (
 					has_todo(monomorphisms) ||
 					has_todo(epimorphisms) ||

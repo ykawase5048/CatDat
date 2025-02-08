@@ -2,7 +2,7 @@ import type { CategoryID } from './categories.data'
 
 export type DescriptionWithReason = { description: string; reason: string }
 
-export const CATEGORY_ISOMORPHISMS: Partial<Record<CategoryID, DescriptionWithReason>> = {
+export const CATEGORY_ISOMORPHISMS: Record<CategoryID, DescriptionWithReason> = {
 	'0': {
 		description: "there aren't any",
 		reason: '',
