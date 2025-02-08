@@ -76,20 +76,21 @@ describe('EntitySystem', () => {
 		})
 	})
 
-	describe('missing_basic_combinations', () => {
+	describe('get_basic_combinations', () => {
 		it('should return exactly three combinations', () => {
-			expect(entity_system.missing_basic_combinations).toHaveLength(3)
-			expect(entity_system.missing_basic_combinations).toContainEqual({
+			const combinations = entity_system.get_missing_basic_combinations()
+			expect(combinations).toHaveLength(3)
+			expect(combinations).toContainEqual({
 				assumption: 'c',
 				negation: 'd',
 			})
 
-			expect(entity_system.missing_basic_combinations).toContainEqual({
+			expect(combinations).toContainEqual({
 				assumption: 'd',
 				negation: 'c',
 			})
 
-			expect(entity_system.missing_basic_combinations).toContainEqual({
+			expect(combinations).toContainEqual({
 				assumption: 'd',
 				negation: 'b',
 			})
@@ -98,7 +99,7 @@ describe('EntitySystem', () => {
 
 	describe('entities_with_unknown_properties', () => {
 		it('should find one entity', () => {
-			const entities = entity_system.entities_with_unknown_properties
+			const entities = entity_system.get_entities_with_unknown_properties()
 			expect(entities).toHaveLength(1)
 			expect(entities[0].id).toBe('3')
 			expect(entities[0].unknown_properties.size).toBeGreaterThan(0)

@@ -82,9 +82,9 @@ export class EntitySystem<S, T extends string> {
 		})
 	}
 
-	public get missing_basic_combinations(): { assumption: T; negation: T }[] {
+	public get_missing_basic_combinations(): { assumption: T; negation: T }[] {
 		const missing_combinations: { assumption: T; negation: T }[] = []
-		const combinations = this.deduction_system.basic_consistent_combinations
+		const combinations = this.deduction_system.get_basic_consistent_combinations()
 
 		for (const { assumption, negation } of combinations) {
 			const entities = this.search([assumption], [negation])
@@ -97,7 +97,7 @@ export class EntitySystem<S, T extends string> {
 		return missing_combinations
 	}
 
-	public get entities_with_unknown_properties(): EntityDetailed<S, T>[] {
+	public get_entities_with_unknown_properties(): EntityDetailed<S, T>[] {
 		return this.entities.filter((entity) => entity.unknown_properties.size > 0)
 	}
 
@@ -115,9 +115,11 @@ export class EntitySystem<S, T extends string> {
 		const is_valid = entities.every((entity) => this.entities.includes(entity))
 		if (!is_valid) return null
 
-		return this.deduction_system.sorted_properties.map((property) => [
-			property,
-			...entities.map((entity) => this.get_comparison_value(entity, property)),
-		])
+		return this.deduction_system
+			.get_sorted_properties()
+			.map((property) => [
+				property,
+				...entities.map((entity) => this.get_comparison_value(entity, property)),
+			])
 	}
 }

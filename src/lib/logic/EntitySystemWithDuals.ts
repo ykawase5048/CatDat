@@ -6,9 +6,9 @@ export class EntitySystemWithDuals<S, T extends string> extends EntitySystem<S, 
 		super(deduction_system)
 	}
 
-	public get missing_basic_combinations(): { assumption: T; negation: T }[] {
+	public get_missing_basic_combinations(): { assumption: T; negation: T }[] {
 		const missing_combinations: { assumption: T; negation: T }[] = []
-		const combinations = this.deduction_system.basic_consistent_combinations
+		const combinations = this.deduction_system.get_basic_consistent_combinations()
 
 		for (const { assumption, negation } of combinations) {
 			const entities = this.search([assumption], [negation])

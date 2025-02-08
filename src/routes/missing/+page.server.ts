@@ -7,7 +7,8 @@ import { get_epis, get_isos, get_monos, get_property } from '$lib/utils/data.hel
 const has_todo = (entry: string) => !entry || entry.includes('TODO')
 
 export const load: PageServerLoad = () => {
-	const missing_basic_combinations = category_system.missing_basic_combinations
+	const missing_basic_combinations = category_system.get_missing_basic_combinations()
+
 	const missing_basic_combinations_with_prefixes = missing_basic_combinations.map(
 		({ assumption, negation }) => ({
 			assumption,
@@ -17,8 +18,11 @@ export const load: PageServerLoad = () => {
 		}),
 	)
 
+	const entities_with_unknown_properties =
+		category_system.get_entities_with_unknown_properties()
+
 	const categories_with_unknown_properties: Pick<Category, 'id' | 'name'>[] = select(
-		category_system.entities_with_unknown_properties,
+		entities_with_unknown_properties,
 		['id', 'name'],
 	)
 
@@ -38,7 +42,7 @@ export const load: PageServerLoad = () => {
 		)
 
 	const total_number_unknown_properties = sum(
-		category_system.entities_with_unknown_properties.map(
+		entities_with_unknown_properties.map(
 			(category) => category.unknown_properties.size,
 		),
 	)

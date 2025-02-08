@@ -35,7 +35,7 @@ describe('Entity system with duals', () => {
 	)
 
 	describe('missing combinations', () => {
-		const missing_basic_combinations = entity_system.missing_basic_combinations
+		const missing_basic_combinations = entity_system.get_missing_basic_combinations()
 		it('should list a, not b*', () => {
 			expect(missing_basic_combinations).toContainEqual({
 				assumption: 'a',

@@ -178,7 +178,7 @@ describe('get_basic_consistent_combinations', () => {
 	deductionSystem.init()
 
 	it('should work as expected', () => {
-		const combinations = deductionSystem.basic_consistent_combinations
+		const combinations = deductionSystem.get_basic_consistent_combinations()
 		expect(combinations).toHaveLength(11)
 
 		const expected = [

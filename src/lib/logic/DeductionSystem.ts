@@ -149,7 +149,7 @@ export class DeductionSystem<T extends string> {
 		return deductions.intersection(deduced_negations).size > 0
 	}
 
-	public get basic_consistent_combinations(): { assumption: T; negation: T }[] {
+	public get_basic_consistent_combinations(): { assumption: T; negation: T }[] {
 		const combinations: { assumption: T; negation: T }[] = []
 		for (const assumption of this.properties) {
 			const deductions = this.get_deductions(new Set([assumption]))
@@ -162,7 +162,7 @@ export class DeductionSystem<T extends string> {
 		return combinations
 	}
 
-	public get sorted_properties(): T[] {
+	public get_sorted_properties(): T[] {
 		return Array.from(this.properties).toSorted((a, b) =>
 			a.toLowerCase().localeCompare(b.toLowerCase()),
 		)
