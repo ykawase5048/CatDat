@@ -1,4 +1,8 @@
-import { render_formulas, render_formulas_in_object } from './rendering'
+import {
+	render_formulas,
+	render_formulas_in_array,
+	render_formulas_in_object,
+} from './rendering'
 
 describe('render_formulas', () => {
 	it('renders formulas in a text', () => {
@@ -50,5 +54,16 @@ describe('render_formulas_in_object', () => {
 			/pairs <span class="katex">.*<\/span> with <span class="katex">.*<\/span> and <span class="katex">.*<\/span> isomorphisms/,
 		)
 		expect(rendered_object.properties).toEqual(new Set(['x', 'y', 'z']))
+	})
+})
+
+describe('render_formulas_in_array', () => {
+	it('should render formulas in each entry', () => {
+		const arr = ['$a$', '$b$', '$c$']
+		const rendered_arr = render_formulas_in_array(arr)
+		expect(rendered_arr).toHaveLength(3)
+		expect(rendered_arr[0]).toMatch(/<span class="katex">.*<\/span>/)
+		expect(rendered_arr[1]).toMatch(/<span class="katex">.*<\/span>/)
+		expect(rendered_arr[2]).toMatch(/<span class="katex">.*<\/span>/)
 	})
 })

@@ -30,3 +30,8 @@ export function render_formulas_in_object<T extends Record<string, unknown>>(obj
 	}
 	return result as T
 }
+
+// currently not used
+export function render_formulas_in_array(arr: string[]): string[] {
+	return arr.map(render_formulas)
+}
