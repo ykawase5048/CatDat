@@ -59,4 +59,5 @@ export const PROPERTY_DUALS: Partial<Record<PropertyID, PropertyID>> = {
 	'Cauchy complete': 'Cauchy complete',
 	'mono-regular': 'epi-regular',
 	'epi-regular': 'mono-regular',
+	'skeletal': 'skeletal',
 }

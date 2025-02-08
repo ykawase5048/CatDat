@@ -69,14 +69,7 @@ export const IMPLICATIONS: Implication[] = [
 	},
 	{
 		assumptions: ['trivial'],
-		conclusions: [
-			'finitary algebraic',
-			'Grothendieck topos',
-			'split abelian',
-			'self-dual',
-			'essentially discrete',
-			'essentially finite',
-		],
+		conclusions: ['finitary algebraic', 'Grothendieck topos', 'split abelian', 'self-dual', 'essentially discrete', 'essentially finite'],
 		reason: 'trivial',
 	},
 	{
@@ -94,15 +87,15 @@ export const IMPLICATIONS: Implication[] = [
 		conclusions: ['thin'],
 		reason: 'If $f,g$ are two parallel morphisms, then their coequalizer is a regular epimorphism, but also a monomorphism by assumption, so it must be an isomorphism. But this means that $f = g$.',
 	},
+	{
+		assumptions: ['discrete'],
+		conclusions: ['skeletal'],
+		reason: 'trivial',
+	},
 	// limits and colimits
 	{
 		assumptions: ['complete'],
-		conclusions: [
-			'finitely complete',
-			'filtered limits',
-			'wide pullbacks',
-			'connected limits',
-		],
+		conclusions: ['finitely complete', 'filtered limits', 'wide pullbacks', 'connected limits'],
 		reason: 'trivial',
 	},
 	{
@@ -312,14 +305,7 @@ export const IMPLICATIONS: Implication[] = [
 	// locally presentable categories
 	{
 		assumptions: ['locally presentable'],
-		conclusions: [
-			'locally essentially small',
-			'well-powered',
-			'well-copowered',
-			'complete',
-			'cocomplete',
-			'generator',
-		],
+		conclusions: ['locally essentially small', 'well-powered', 'well-copowered', 'complete', 'cocomplete', 'generator'],
 		reason: 'For the non-trivial conclusions see <a href="https://ncatlab.org/nlab/show/Locally+Presentable+and+Accessible+Categories" target="_blank">Adamek-Rosicky</a>, Thm. 1.20, Cor. 1.28, Rem. 1.56, Thm. 1.58.',
 	},
 	{
@@ -387,12 +373,7 @@ export const IMPLICATIONS: Implication[] = [
 	{
 		equivalent: true,
 		assumptions: ['Grothendieck topos'],
-		conclusions: [
-			'elementary topos',
-			'coproducts',
-			'generator',
-			'locally essentially small',
-		],
+		conclusions: ['elementary topos', 'coproducts', 'generator', 'locally essentially small'],
 		reason: '<a href="https://ncatlab.org/nlab/show/Sheaves+in+Geometry+and+Logic" target="_blank">Mac Lane & Moerdijk</a>, Appendix, Prop. 4.4',
 	},
 	{
@@ -430,13 +411,7 @@ export const IMPLICATIONS: Implication[] = [
 	{
 		equivalent: true,
 		assumptions: ['abelian'],
-		conclusions: [
-			'additive',
-			'equalizers',
-			'coequalizers',
-			'mono-regular',
-			'epi-regular',
-		],
+		conclusions: ['additive', 'equalizers', 'coequalizers', 'mono-regular', 'epi-regular'],
 		reason: 'by definition',
 	},
 	{
@@ -473,14 +448,7 @@ export const IMPLICATIONS: Implication[] = [
 	// groupoids
 	{
 		assumptions: ['groupoid'],
-		conclusions: [
-			'self-dual',
-			'mono-regular',
-			'pullbacks',
-			'filtered limits',
-			'left cancellative',
-			'well-powered',
-		],
+		conclusions: ['self-dual', 'mono-regular', 'pullbacks', 'filtered limits', 'left cancellative', 'well-powered'],
 		reason: 'easy',
 	},
 	{
