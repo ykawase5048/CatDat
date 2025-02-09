@@ -81,6 +81,10 @@ The deployment is handled by a GitHub workflow (`deploy.yml`) that triggers the 
 - `https://catdat.netlify.app/api/categories` provides basic information about the categories in the database.
 - `https://catdat.netlify.app/api/categories?all` includes all deduced properties and non-properties.
 
+### `/api/category/[id]`
+
+Returns all the information about a category with a given ID. For example, `https://catdat.netlify.app/api/category/FinAb` returns all the information about the category of finite abelian groups.
+
 Additional endpoints may be introduced in the future.
 
 ## 🔗 Similar projects
