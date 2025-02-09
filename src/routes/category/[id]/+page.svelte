@@ -3,6 +3,7 @@
 	import PropertyList from '$components/PropertyList.svelte'
 	import ChipGroup from '$components/ChipGroup.svelte'
 	import Chip from '$components/Chip.svelte'
+	import MorphismInfo from '$components/MorphismInfo.svelte'
 
 	let { data } = $props()
 
@@ -19,7 +20,6 @@
 	let all_non_properties = $derived(data.all_non_properties)
 	let unknown_properties = $derived(data.unknown_properties)
 
-	// TOOD: also render the reasons for the classifications of the morphisms
 	let isomorphisms = $derived(data.isomorphisms)
 	let monomorphisms = $derived(data.monomorphisms)
 	let epimorphisms = $derived(data.epimorphisms)
@@ -141,13 +141,13 @@
 	<h3>Special morphisms</h3>
 	<ul>
 		<li>
-			Isomorphisms: {@html isomorphisms?.description || '?'}
+			<MorphismInfo name="Isomorphisms" {...isomorphisms} />
 		</li>
 		<li>
-			Monomorphisms: {@html monomorphisms?.description || '?'}
+			<MorphismInfo name="Monomorphisms" {...monomorphisms} />
 		</li>
 		<li>
-			Epimorphisms: {@html epimorphisms?.description || '?'}
+			<MorphismInfo name="Epimorphisms" {...epimorphisms} />
 		</li>
 	</ul>
 </section>
