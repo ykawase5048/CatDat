@@ -54,4 +54,5 @@ export const CATEGORY_MONOMORPHISMS: Record<CategoryID, DescriptionWithReason> =
 	'Sp': ['pointwise injective natural transformations', ''],
 	'real_interval': ['every morphism', ''],
 	'Zdiv': ['every morphism', 'It is a thin category.'],
+	'Noo': ['every morphism', 'It is a thin category.'],
 }

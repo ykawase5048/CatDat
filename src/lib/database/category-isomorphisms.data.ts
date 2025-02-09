@@ -54,4 +54,5 @@ export const CATEGORY_ISOMORPHISMS: Record<CategoryID, DescriptionWithReason> = 
 	'Sp': ['natural isomorphisms', 'This is the for every functor category.'],
 	'real_interval': ['only the identity morphisms', 'This is true for every poset (regarded as a category).'],
 	'Zdiv': ['the identities $(a,a) : a \\to a$ and the isomorphisms $(a,-a) : a \\to -a$ for $a \\in \\mathbb{Z}$', 'trivial'],
+	'Noo': ['only the identity morphisms', 'This is true for every poset (regarded as a category).'],
 }

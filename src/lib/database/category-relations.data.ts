@@ -28,7 +28,7 @@ export const CATEGORY_RELATIONS: Record<CategoryID, CategoryID[]> = {
 	'Ban': [],
 	'Man': [],
 	'Meas': [],
-	'N': ['On', 'real_interval', 'Zdiv'],
+	'N': ['On', 'Zdiv', 'Noo'],
 	'Cat': [],
 	'On': ['N'],
 	'LRS': ['Sch'],
@@ -49,6 +49,7 @@ export const CATEGORY_RELATIONS: Record<CategoryID, CategoryID[]> = {
 	'FinOrd': ['Pos', 'FinSet'],
 	'Rel': ['Set'],
 	'Sp': ['B', 'FinSet'],
-	'real_interval': ['N'],
+	'real_interval': ['Noo'],
 	'Zdiv': ['N'],
+	'Noo': ['N'],
 }

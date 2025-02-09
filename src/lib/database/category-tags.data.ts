@@ -30,7 +30,7 @@ export const CATEGORY_TAGS: Record<CategoryID, NonEmptyArray<Tag>> = {
 	'Ban': ['intermediate', 'analysis', 'well-behaved'],
 	'Man': ['geometry', 'topology', 'badly-behaved'],
 	'Meas': ['basic', 'measure theory', 'well-behaved'],
-	'N': ['basic'],
+	'N': ['basic', 'number theory', 'badly-behaved'],
 	'Cat': ['intermediate', 'category theory', 'well-behaved'],
 	'On': ['intermediate', 'artificial', 'set theory'],
 	'LRS': ['intermediate', 'algebraic geometry', 'well-behaved'],
@@ -52,5 +52,6 @@ export const CATEGORY_TAGS: Record<CategoryID, NonEmptyArray<Tag>> = {
 	'Rel': ['basic', 'set theory', 'well-behaved'],
 	'Sp': ['intermediate', 'combinatorics'],
 	'real_interval': ['basic', 'analysis', 'well-behaved'],
-	'Zdiv': ['basic', 'well-behaved', 'number theory'],
+	'Zdiv': ['basic', 'number theory', 'well-behaved'],
+	'Noo': ['basic', 'number theory', 'well-behaved'],
 }

@@ -308,4 +308,8 @@ export const CATEGORY_NON_PROPERTIES: Record<CategoryID, [PropertyID, string][]>
 		['self-dual', 'The only integer with infinitely many divisors (up to isomorphism) is $0$. But many integers have infinitely many multiple (up to isomorphism).'],
 		['infinitary distributive', 'We have $2 \\times \\coprod_n 3^n = \\gcd(2,\\mathrm{lcm}_n(3^n)) = \\gcd(2,0) = 2$, but $\\coprod_n (2 \\times 3^n) = \\mathrm{lcm}_n \\gcd(2,3^n) = \\mathrm{lcm}_n 1  = 1$.'],
 	],
+	'Noo': [
+		['essentially finite', 'trivial'],
+		['self-dual', 'every upper set is infinite, but every lower set is finite'],
+	],
 }

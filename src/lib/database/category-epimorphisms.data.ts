@@ -55,4 +55,5 @@ export const CATEGORY_EPIMORPHISMS: Record<CategoryID, DescriptionWithReason> = 
 	'Sp': ['pointwise surjective natural transformations', ''],
 	'real_interval': ['every morphism', ''],
 	'Zdiv': ['every morphism', 'It is a thin category.'],
+	'Noo': ['every morphism', 'It is a thin category.'],
 }

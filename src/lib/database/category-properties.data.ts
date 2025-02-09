@@ -380,4 +380,11 @@ export const CATEGORY_PROPERTIES: Record<CategoryID, [PropertyID, string][]> = {
 		['distributive', 'Using prime factorizations, one can prove that $\\mathrm{lcm}(a, \\gcd \\{b_i \\}) = \\gcd \\{ \\mathrm{lcm}(a, b_i) \\}$ for finitely many $b_i$.'],
 		['locally ℵ₁-presentable', 'Every $$\\aleph_1$-directed diagramm is eventually constant.'],
 	],
+	'Noo': [
+		['small', 'trivial'],
+		['coproducts', 'Take the supremum.'],
+		['skeletal', 'The relation $\\leq$ is antisymmetric'],
+		['infinitary distributive', 'One can show that $\\sup_i \\min(a,b_i) = \min(a, \\sup_i b_i)$.'],
+		['locally finitely presentable', 'Every natural number is finitely presentable, and $\\infty$ is the colimit of all $n < \\infty$.'],
+	],
 }

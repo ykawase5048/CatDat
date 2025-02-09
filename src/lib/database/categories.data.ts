@@ -435,6 +435,13 @@ const CATEGORIES_INDEX = [
 		morphisms: 'a unique morphism $(a,b) : a \\to b$ if $a$ divides $b$',
 		description: 'This is a preorder, not a partial order, because $a$ and $-a$ divide each other, but are not equal for $a \\neq 0$. Notice that this category is equivalent (but not isomorphic) to $(\\mathbb{N},\\mid)$.',
 	},
+	{
+		id: 'Noo',
+		name: 'partial order of extended natural numbers',
+		notation: '$(\\mathbb{N}_\\infty, \\leq)$',
+		objects: 'natural numbers and $\\infty$',
+		morphisms: 'a unique morphism $(n, m) : n \\to m$ if $n \\leq m$, where of course $n \\leq \\infty$ for all $n$',
+	},
 ] as const
 
 export const CATEGORIES: readonly Category[] = CATEGORIES_INDEX
