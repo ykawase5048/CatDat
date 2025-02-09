@@ -81,10 +81,10 @@ export const CATEGORY_PROPERTIES: Record<CategoryID, [PropertyID, string][]> = {
 		['cogenerator', ''],
 	],
 	'FinAb': [
-		['locally small', ''],
-		['essentially small', ''],
-		['abelian', ''],
-		['self-dual', ''],
+		['locally small', 'trivial'],
+		['essentially small', 'The underlying set of a finite structure can be chosen to be a subset of $\\mathbb{N}$.'],
+		['abelian', 'follows from the fact for abelian groups'],
+		['self-dual', 'Pontrjagin duality'],
 	],
 	'Abfg': [
 		['locally small', ''],

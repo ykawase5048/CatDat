@@ -64,11 +64,11 @@ export const CATEGORY_NON_PROPERTIES: Record<CategoryID, [PropertyID, string][]>
 		['Malcev', 'There are lots of non-symmetric reflexive relations.'],
 	],
 	'FinAb': [
-		['small', ''],
+		['small', 'Even the collection of trivial groups is not small.'],
 		['generator', ''],
-		['split abelian', ''],
+		['split abelian', 'The sequence $0 \\to \\mathbb{Z}/2 \\to \\mathbb{Z}/4 \\to \\mathbb{Z}/2 \\to 0$ does not split.'],
 		['sequential limits', ''],
-		['skeletal', 'trivial'],
+		['skeletal', 'There are many trivial and hence isomorphic groups, which are not equal.'],
 	],
 	'Abfg': [
 		['small', ''],
