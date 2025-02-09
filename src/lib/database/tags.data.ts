@@ -18,4 +18,5 @@ export const TAGS = [
 	'representation theory',
 	'combinatorics',
 	'category theory',
+	'number theory',
 ] as const

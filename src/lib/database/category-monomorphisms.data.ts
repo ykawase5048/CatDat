@@ -53,4 +53,5 @@ export const CATEGORY_MONOMORPHISMS: Record<CategoryID, DescriptionWithReason> =
 	'Rel': ['A relation $R : A \\to B$ is a monomorphism iff the map $R_* : P(A) \\to P(B)$ defined by $T \\mapsto \\{b \\in B : \\exists \\, a \\in T: (a,b) \\in R \\}$ is injective.', ''],
 	'Sp': ['pointwise injective natural transformations', ''],
 	'real_interval': ['every morphism', ''],
+	'Zdiv': ['every morphism', 'It is a thin category.'],
 }

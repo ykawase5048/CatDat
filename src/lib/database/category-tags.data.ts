@@ -52,4 +52,5 @@ export const CATEGORY_TAGS: Record<CategoryID, NonEmptyArray<Tag>> = {
 	'Rel': ['basic', 'set theory', 'well-behaved'],
 	'Sp': ['intermediate', 'combinatorics'],
 	'real_interval': ['basic', 'analysis', 'well-behaved'],
+	'Zdiv': ['basic', 'well-behaved', 'number theory'],
 }

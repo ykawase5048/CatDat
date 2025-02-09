@@ -54,4 +54,5 @@ export const CATEGORY_EPIMORPHISMS: Record<CategoryID, DescriptionWithReason> = 
 	'Rel': ['A relation $R : A \\to B$ is an epimorphism iff the map $R^* : P(B) \\to P(A)$ defined by $S \\mapsto \\{a \\in A : \\exists \\, b \\in S: (a,b) \\in R \\}$ is injective.', ''],
 	'Sp': ['pointwise surjective natural transformations', ''],
 	'real_interval': ['every morphism', ''],
+	'Zdiv': ['every morphism', 'It is a thin category.'],
 }

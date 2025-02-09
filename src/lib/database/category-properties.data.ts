@@ -374,4 +374,10 @@ export const CATEGORY_PROPERTIES: Record<CategoryID, [PropertyID, string][]> = {
 		['locally ℵ₁-presentable', 'https://math.stackexchange.com/questions/4481902/locally-presentable-vs-compactly-presentable-categories#comment9399784_4482185'],
 		['skeletal', 'The relation $\\leq$ is antisymmetric.'],
 	],
+	'Zdiv': [
+		['small', 'trivial'],
+		['products', 'Take the $\\gcd$ of a subset.'],
+		['distributive', 'Using prime factorizations, one can prove that $\\mathrm{lcm}(a, \\gcd \\{b_i \\}) = \\gcd \\{ \\mathrm{lcm}(a, b_i) \\}$ for finitely many $b_i$.'],
+		['locally ℵ₁-presentable', 'Every $$\\aleph_1$-directed diagramm is eventually constant.'],
+	],
 }

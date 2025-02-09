@@ -427,6 +427,14 @@ const CATEGORIES_INDEX = [
 		nlab_link: 'https://ncatlab.org/nlab/show/interval',
 		description: 'Every partial order can be regarded as a thin category. This is a specific example. This category is locally $\\aleph_1$-presentable (in fact, <i>every</i> object is $\\aleph_1$-presentable), but not locally finitely presentable (in fact, only $0$ is finitely presentable).',
 	},
+	{
+		id: 'Zdiv',
+		name: 'preorder of integers w.r.t. divisiblity',
+		notation: '$(\\mathbb{Z},\\mid)$',
+		objects: 'integers',
+		morphisms: 'a unique morphism $(a,b) : a \\to b$ if $a$ divides $b$',
+		description: 'This is a preorder, not a partial order, because $a$ and $-a$ divide each other, but are not equal for $a \\neq 0$. Notice that this category is equivalent (but not isomorphic) to $(\\mathbb{N},\\mid)$.',
+	},
 ] as const
 
 export const CATEGORIES: readonly Category[] = CATEGORIES_INDEX

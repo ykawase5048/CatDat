@@ -11,7 +11,10 @@ import {
 } from './deductions'
 
 describe('property_deduction_system', () => {
-	const redundancy_exceptions: [CategoryID, PropertyID][] = [['FreeAb', 'equalizers']]
+	const redundancy_exceptions: [CategoryID, PropertyID][] = [
+		['FreeAb', 'equalizers'],
+		['Zdiv', 'products'],
+	]
 
 	for (const category of CATEGORIES) {
 		const properties = get_properties_of_category(category.id)
