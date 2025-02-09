@@ -1,12 +1,17 @@
 export type Tag = (typeof TAGS)[number]
 
 export const TAGS = [
+	// difficulty level
 	'basic',
 	'intermediate',
 	'advanced',
-	'well-behaved',
-	'badly-behaved',
+	// does not appear in the wild
 	'artificial',
+	// many properties are satisfied
+	'well-behaved',
+	// few properties are satisfied
+	'badly-behaved',
+	// branches of mathematics
 	'algebra',
 	'algebraic geometry',
 	'topology',
