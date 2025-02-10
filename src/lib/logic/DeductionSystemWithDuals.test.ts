@@ -75,3 +75,21 @@ describe('all rules', () => {
 		})
 	})
 })
+
+describe('get_detailed_deductions', () => {
+	const deductionSystem = new DeductionSystemWithDuals<string>(
+		new Set(['a', 'b']),
+		[{ assumptions: ['a'], conclusions: ['b'], reason: '' }],
+		() => null,
+	)
+
+	it('should take the prefix "is" as default', () => {
+		const assumptions = [{ id: 'a', prefix: 'has', reason: 'clear' }]
+		const detailed_deductions = deductionSystem.get_detailed_deductions(assumptions)
+		expect(detailed_deductions).toContainEqual({
+			id: 'b',
+			prefix: 'is',
+			reason: expect.any(String),
+		})
+	})
+})

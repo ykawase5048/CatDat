@@ -159,10 +159,9 @@ describe('get_detailed_deduced_negations', () => {
 			{ assumptions: ['c'], conclusions: ['d'], reason: '' },
 		],
 		true,
-		() => 'is',
 	)
 
-	it('should explain why the non-properties follow', () => {
+	it('should explain why the non-properties follow, and take default prefix "is"', () => {
 		const assumptions = [{ id: 'e', prefix: 'has', reason: 'clear' }]
 		const negations = [{ id: 'd', prefix: 'has', reason: 'clear' }]
 		const detailed_deduced_negations = deductionSystem.get_detailed_deduced_negations(
