@@ -1,7 +1,7 @@
 import { IMPLICATIONS } from '$lib/database/implications.data'
 import type { PropertyID } from '$lib/database/properties.data'
 import { DeductionSystemWithDuals } from '$lib/logic/DeductionSystemWithDuals'
-import { get_dual_property, propertyIDs } from '$lib/data-utils/data.helpers'
+import { get_dual_property, get_prefix, propertyIDs } from '$lib/data-utils/data.helpers'
 
 import { CATEGORIES, type Category } from '$lib/database/categories.data'
 import {
@@ -16,6 +16,7 @@ export const property_deduction_system = new DeductionSystemWithDuals<PropertyID
 	new Set(propertyIDs),
 	Array.from(IMPLICATIONS),
 	get_dual_property,
+	get_prefix,
 )
 
 export const implications_with_duals = property_deduction_system.rules
