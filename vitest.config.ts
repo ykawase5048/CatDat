@@ -15,11 +15,11 @@ export default defineConfig({
 			provider: 'v8',
 			include: ['src/lib/**/*.ts'],
 			exclude: ['src/lib/database/**/*.ts'],
-			reporter: ['text', 'text-summary', 'json-summary'],
+			reporter: ['text', 'text-summary'],
 			thresholds: {
 				statements: 98,
 				branches: 98,
-				functions: 97, // TODO: bring back to 98
+				functions: 98,
 				lines: 98,
 			},
 		},
