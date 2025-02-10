@@ -25,15 +25,13 @@ export function get_detailed_category(id: CategoryID) {
 	)
 
 	const properties = CATEGORY_PROPERTIES[id].map((entry) => ({
-		id: entry[0],
-		prefix: get_prefix(entry[0]),
-		reason: entry[1],
+		...entry,
+		prefix: get_prefix(entry.id),
 	}))
 
 	const non_properties = CATEGORY_NON_PROPERTIES[id].map((entry) => ({
-		id: entry[0],
-		prefix: get_prefix(entry[0]),
-		reason: entry[1],
+		...entry,
+		prefix: get_prefix(entry.id),
 	}))
 
 	const {
