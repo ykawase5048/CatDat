@@ -34,7 +34,7 @@ export function is_valid_category(id: string): id is CategoryID {
 }
 
 export function is_valid_property(id: string): id is PropertyID {
-	return (propertyIDs as string[]).includes(id)
+	return id in properties_dictionary
 }
 
 export function get_monos(id: CategoryID) {
