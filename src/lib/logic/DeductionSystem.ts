@@ -160,6 +160,69 @@ export class DeductionSystem<T extends string> {
 		return deduced_negations
 	}
 
+	// NEW METHOD #2, TODO: use it for the categories
+	public get_detailed_deduced_negations(
+		assumptions: DetailedProperty<T>[],
+		negations: DetailedProperty<T>[],
+	) {
+		let done = false
+
+		const deduced_negations = Array.from(negations)
+		const deduced_negation_ids = new Set(negations.map((entry) => entry.id))
+
+		while (!done) {
+			done = true
+			for (const property of this.properties) {
+				const not_new = deduced_negation_ids.has(property)
+				if (not_new) continue
+
+				const prefix = this.get_prefix(property)
+
+				const new_assumptions: DetailedProperty<T>[] = [
+					...assumptions,
+					{
+						id: property,
+						prefix,
+						reason: '-',
+					},
+				]
+
+				const new_deductions = this.get_detailed_deductions(new_assumptions)
+
+				let message = `Assume for a contradiction that it ${prefix} ${property}. `
+
+				let has_contradiction = false
+
+				for (const deduction of new_deductions) {
+					const is_irrelevant = new_assumptions.some(
+						(assumption) => assumption.id === deduction.id,
+					)
+					if (is_irrelevant) continue
+
+					message += `${deduction.reason} `
+
+					if (deduced_negation_ids.has(deduction.id)) {
+						has_contradiction = true
+						done = false
+						message += `This is a contradiction since we already know that "${deduction.id}" is not satisfied.`
+						break
+					}
+				}
+
+				if (has_contradiction) {
+					deduced_negation_ids.add(property)
+					deduced_negations.push({
+						id: property,
+						prefix: this.get_prefix(property),
+						reason: message,
+					})
+				}
+			}
+		}
+
+		return deduced_negations
+	}
+
 	public get_redundancy(assumptions: Set<T>): T | null {
 		const deductions = this.get_deductions(assumptions)
 

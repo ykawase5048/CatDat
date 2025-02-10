@@ -151,6 +151,45 @@ describe('get_deduced_negations', () => {
 	})
 })
 
+describe('get_detailed_deduced_negations', () => {
+	const deductionSystem = new DeductionSystem<string>(
+		new Set(['a', 'b', 'c', 'd', 'e']),
+		[
+			{ assumptions: ['b'], conclusions: ['c'], reason: '' },
+			{ assumptions: ['c'], conclusions: ['d'], reason: '' },
+		],
+		true,
+		() => 'is',
+	)
+
+	it('should explain why the non-properties follow', () => {
+		const assumptions = [{ id: 'e', prefix: 'has', reason: 'clear' }]
+		const negations = [{ id: 'd', prefix: 'has', reason: 'clear' }]
+		const detailed_deduced_negations = deductionSystem.get_detailed_deduced_negations(
+			assumptions,
+			negations,
+		)
+
+		expect(detailed_deduced_negations).toEqual([
+			{
+				id: 'd',
+				prefix: 'has',
+				reason: 'clear',
+			},
+			{
+				id: 'b',
+				prefix: 'is',
+				reason: 'Assume for a contradiction that it is b. Since it is b, we deduce that it is c. Since it is c, we deduce that it is d. This is a contradiction since we already know that "d" is not satisfied.',
+			},
+			{
+				id: 'c',
+				prefix: 'is',
+				reason: 'Assume for a contradiction that it is c. Since it is c, we deduce that it is d. This is a contradiction since we already know that "d" is not satisfied.',
+			},
+		])
+	})
+})
+
 describe('has_contradiction', () => {
 	const deductionSystem = new DeductionSystem<string>(
 		new Set(['a', 'b', 'c', 'd', 'e', 'f']),
