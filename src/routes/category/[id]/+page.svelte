@@ -73,7 +73,9 @@
 					description="Deduced properties"
 				/>
 			{:else if category_detail_level.value === 'merged'}
-				<PropertyReasonList items={category.all_properties} />
+				<PropertyReasonList
+					items={[...category.properties, ...category.deduced_properties]}
+				/>
 			{:else if category_detail_level.value === 'basic'}
 				<PropertyReasonList
 					items={category.properties}
@@ -98,7 +100,13 @@
 				/>
 				<p class="hint">*This also uses the deduced properties.</p>
 			{:else if category_detail_level.value === 'merged'}
-				<PropertyReasonList items={category.all_non_properties} negated={true} />
+				<PropertyReasonList
+					items={[
+						...category.non_properties,
+						...category.deduced_non_properties,
+					]}
+					negated={true}
+				/>
 			{:else if category_detail_level.value === 'basic'}
 				<PropertyReasonList
 					items={category.non_properties}

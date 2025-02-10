@@ -10,7 +10,6 @@ import { categories_with_deduced_properties_dictionary } from './deductions'
 
 // TODO: refactor
 
-// TODO: remove all_properties, don't need that separatedly
 export function get_detailed_category(id: CategoryID) {
 	const category = get_category(id)
 
@@ -25,8 +24,6 @@ export function get_detailed_category(id: CategoryID) {
 		non_properties,
 		deduced_properties,
 		deduced_non_properties,
-		all_properties,
-		all_non_properties,
 		unknown_properties,
 	} = categories_with_deduced_properties_dictionary[id]
 
@@ -45,8 +42,6 @@ export function get_detailed_category(id: CategoryID) {
 		non_properties,
 		deduced_properties,
 		deduced_non_properties,
-		all_properties,
-		all_non_properties,
 		unknown_properties,
 	}
 }
