@@ -141,13 +141,14 @@ export class DeductionSystem<T extends string> {
 		while (!done) {
 			done = true
 			for (const property of this.properties) {
+				const not_new = deduced_negations.has(property)
+				if (not_new) continue
 				const new_assumptions = assumptions.union(new Set([property]))
 				const deductions = this.get_deductions(new_assumptions)
 				const has_contradiction =
 					deductions.intersection(deduced_negations).size > 0
-				const is_new = !deduced_negations.has(property)
 
-				if (has_contradiction && is_new) {
+				if (has_contradiction) {
 					done = false
 					deduced_negations.add(property)
 				}
