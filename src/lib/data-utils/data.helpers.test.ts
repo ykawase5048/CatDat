@@ -2,9 +2,6 @@ import {
 	get_category,
 	get_dual_properties,
 	get_dual_property,
-	get_epis,
-	get_isos,
-	get_monos,
 	get_non_properties_of_category,
 	get_prefix,
 	get_properties_of_category,
@@ -54,18 +51,6 @@ describe('is_valid_property', () => {
 	})
 	it('should return false for minimalistic', () => {
 		expect(is_valid_property('minimalistic')).toBe(false)
-	})
-})
-
-describe('get_monos, get_epis, get_isos', () => {
-	it('should return the correct info about monos, epis, isos', () => {
-		const id = 'FinAb'
-		const monos = get_monos(id)
-		const epis = get_epis(id)
-		const isos = get_isos(id)
-		expect(monos.description).toContain('injective')
-		expect(epis.description).toContain('surjective')
-		expect(isos.description).toContain('bijective')
 	})
 })
 

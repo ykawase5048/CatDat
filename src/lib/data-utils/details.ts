@@ -1,11 +1,14 @@
-import { select } from '$lib/commons/utils'
 import type { CategoryID } from '$lib/database/categories.data'
+import type { PropertyID } from '$lib/database/properties.data'
+import { CATEGORY_EPIMORPHISMS } from '$lib/database/category-epimorphisms.data'
+import { CATEGORY_ISOMORPHISMS } from '$lib/database/category-isomorphisms.data'
+import { CATEGORY_MONOMORPHISMS } from '$lib/database/category-monomorphisms.data'
 import { CATEGORY_NON_PROPERTIES } from '$lib/database/category-non-properties.data'
 import { CATEGORY_PROPERTIES } from '$lib/database/category-properties.data'
 import { CATEGORY_RELATIONS } from '$lib/database/category-relations.data'
 import { CATEGORY_TAGS } from '$lib/database/category-tags.data'
-import type { PropertyID } from '$lib/database/properties.data'
-import { get_category, get_epis, get_isos, get_monos, get_prefix } from './data.helpers'
+import { get_category, get_prefix } from './data.helpers'
+import { select } from '$lib/commons/utils'
 import { categories_with_deduced_properties_dictionary } from './deductions'
 
 const with_empty_reason = (id: PropertyID) => ({
@@ -42,9 +45,9 @@ export function get_detailed_category(id: CategoryID) {
 		unknown_properties,
 	} = categories_with_deduced_properties_dictionary[id]
 
-	const isomorphisms = get_isos(id)
-	const monomorphisms = get_monos(id)
-	const epimorphisms = get_epis(id)
+	const isomorphisms = CATEGORY_ISOMORPHISMS[id]
+	const monomorphisms = CATEGORY_MONOMORPHISMS[id]
+	const epimorphisms = CATEGORY_EPIMORPHISMS[id]
 
 	return {
 		...category,

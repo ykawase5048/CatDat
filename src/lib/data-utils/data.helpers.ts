@@ -37,21 +37,6 @@ export function is_valid_property(id: string): id is PropertyID {
 	return id in properties_dictionary
 }
 
-export function get_monos(id: CategoryID) {
-	const entry = CATEGORY_MONOMORPHISMS[id]
-	return { description: entry[0], reason: entry[1] }
-}
-
-export function get_epis(id: CategoryID) {
-	const entry = CATEGORY_EPIMORPHISMS[id]
-	return { description: entry[0], reason: entry[1] }
-}
-
-export function get_isos(id: CategoryID) {
-	const entry = CATEGORY_ISOMORPHISMS[id]
-	return { description: entry[0], reason: entry[1] }
-}
-
 export function negate_prefix(prefix: Prefix) {
 	return PREFIXES[prefix]
 }
