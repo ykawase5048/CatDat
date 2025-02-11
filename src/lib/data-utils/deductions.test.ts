@@ -1,13 +1,6 @@
 import { CATEGORIES, type CategoryID } from '$lib/database/categories.data'
-import { CATEGORY_NON_PROPERTIES } from '$lib/database/category-non-properties.data'
-import { CATEGORY_PROPERTIES } from '$lib/database/category-properties.data'
 import { type PropertyID } from '$lib/database/properties.data'
-import {
-	get_non_properties,
-	get_prefix,
-	get_properties,
-	propertyIDs,
-} from './data.helpers'
+import { get_non_properties, get_properties, propertyIDs } from './data.helpers'
 import {
 	categories_with_deduced_properties,
 	implications_with_duals,
