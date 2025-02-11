@@ -6,8 +6,6 @@ import { CATEGORY_TAGS } from '$lib/database/category-tags.data'
 import { get_category, get_related_categories } from './data.helpers'
 import { categories_with_deduced_properties_dictionary } from './deductions'
 
-// TODO: refactor
-
 export function get_detailed_category(id: CategoryID) {
 	const category = get_category(id)
 	const tags = CATEGORY_TAGS[id]

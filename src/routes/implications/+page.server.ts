@@ -6,7 +6,6 @@ import type { PageServerLoad } from './$types'
 export const load: PageServerLoad = (event) => {
 	const show_all_implications = event.url.searchParams.has('show_all')
 
-	// TODO: remove the typecast later
 	const implications_to_show: Implication[] = show_all_implications
 		? implications_with_duals
 		: Array.from(IMPLICATIONS)
