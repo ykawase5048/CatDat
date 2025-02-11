@@ -30,9 +30,9 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 	constructor(
 		property_ids: Set<T>,
 		rules: Rule<T>[],
+		get_prefix: (id: T) => PrefixType,
+		negate_prefix: (prefix: PrefixType) => string,
 		initialize = true,
-		get_prefix: (id: T) => PrefixType = () => 'is' as PrefixType,
-		negate_prefix: (prefix: PrefixType) => string = () => 'is not',
 	) {
 		this.property_ids = property_ids
 		this.rules = rules

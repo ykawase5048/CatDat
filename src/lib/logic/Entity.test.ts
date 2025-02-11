@@ -7,6 +7,8 @@ const deduction_system = new DeductionSystem<string, string>(
 		{ id: '', assumptions: ['a'], conclusions: ['b'], reason: '' },
 		{ id: '', assumptions: ['b'], conclusions: ['c', 'd'], reason: '' },
 	],
+	() => 'is',
+	() => 'is not',
 )
 
 describe('constructor', () => {

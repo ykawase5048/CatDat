@@ -14,6 +14,8 @@ describe('Entity system with duals', () => {
 		new Set(['a', 'b', 'a*', 'b*', 'c']),
 		[{ id: '', assumptions: ['a'], conclusions: ['c'], reason: 'trivial' }],
 		(p: string) => dual_map[p],
+		() => 'is',
+		() => 'is not',
 	)
 
 	const entity_system = new EntitySystemWithDuals<string, string, string>(

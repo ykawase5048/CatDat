@@ -26,6 +26,8 @@ describe('all rules', () => {
 			},
 		],
 		(property) => dual_config[property] ?? null,
+		() => 'is',
+		() => 'is not',
 	)
 
 	it('should have all given and all dualized rules', () => {
@@ -81,28 +83,6 @@ describe('all rules', () => {
 			assumptions: ['self-dual', 'x'],
 			conclusions: ['x'],
 			reason: 'trivial',
-		})
-	})
-})
-
-describe('get_detailed_deductions', () => {
-	const deductionSystem = new DeductionSystemWithDuals<string, string>(
-		new Set(['a', 'b']),
-		[{ id: '', assumptions: ['a'], conclusions: ['b'], reason: '' }],
-		() => null,
-	)
-
-	it('should take the prefix "is" as default', () => {
-		const assumptions: DetailedProperty<string, string>[] = [
-			{ id: 'a', prefix: 'has', reason: 'clear' },
-		]
-		const detailed_deductions: DetailedProperty<string, string>[] =
-			deductionSystem.get_detailed_deductions(assumptions)
-
-		expect(detailed_deductions).toContainEqual({
-			id: 'b',
-			prefix: 'is',
-			reason: expect.any(String),
 		})
 	})
 })

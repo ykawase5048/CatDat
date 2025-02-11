@@ -9,6 +9,8 @@ describe('EntitySystem', () => {
 			{ id: '', assumptions: ['a'], conclusions: ['b'], reason: 'trivial' },
 			{ id: '', assumptions: ['b'], conclusions: ['c', 'd'], reason: 'trivial' },
 		],
+		() => 'is',
+		() => 'is not',
 	)
 
 	const entity_system = new EntitySystem<string, string, string>(deduction_system)

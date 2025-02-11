@@ -3,16 +3,22 @@ import { DeductionSystem, type DetailedProperty } from './DeductionSystem'
 describe('constructor', () => {
 	it('should throw an error when an unknown property appears in a rule', () => {
 		expect(() => {
-			new DeductionSystem<string, string>(new Set(['a']), [
-				{ id: '', assumptions: ['a'], conclusions: ['b'], reason: 'trivial' },
-			])
+			new DeductionSystem<string, string>(
+				new Set(['a']),
+				[{ id: '', assumptions: ['a'], conclusions: ['b'], reason: 'trivial' }],
+				() => 'is',
+				() => 'is not',
+			)
 		}).toThrow()
 	})
 
 	it('should initialize by default by computing the normalized rules', () => {
-		const deductionSystem = new DeductionSystem<string, string>(new Set(['a', 'b']), [
-			{ id: '', assumptions: ['a'], conclusions: ['b'], reason: 'trivial' },
-		])
+		const deductionSystem = new DeductionSystem<string, string>(
+			new Set(['a', 'b']),
+			[{ id: '', assumptions: ['a'], conclusions: ['b'], reason: 'trivial' }],
+			() => 'is',
+			() => 'is not',
+		)
 		expect(deductionSystem.normalized_rules).not.toEqual([])
 	})
 
@@ -20,6 +26,8 @@ describe('constructor', () => {
 		const deductionSystem = new DeductionSystem<string, string>(
 			new Set(['a', 'b']),
 			[{ id: '', assumptions: ['a'], conclusions: ['b'], reason: 'trivial' }],
+			() => 'is',
+			() => 'is not',
 			false,
 		)
 		expect(deductionSystem.normalized_rules).toEqual([])
@@ -34,8 +42,9 @@ describe('get_detailed_deductions', () => {
 			{ id: '', assumptions: ['d', 'c'], conclusions: ['e'], reason: '' },
 			{ id: '', assumptions: ['c'], conclusions: ['a'], reason: '' },
 		],
-		true,
 		() => 'has',
+		() => 'does not have',
+		true,
 	)
 
 	it('should explain why the properties follow', () => {
@@ -73,10 +82,12 @@ describe('get_detailed_deduced_negations', () => {
 			{ id: '', assumptions: ['b'], conclusions: ['c'], reason: '' },
 			{ id: '', assumptions: ['c'], conclusions: ['d'], reason: '' },
 		],
+		() => 'is',
+		() => 'is not',
 		true,
 	)
 
-	it('should explain why the non-properties follow, and take default prefix "is"', () => {
+	it('should explain why the non-properties follow"', () => {
 		const assumptions: DetailedProperty<string, string>[] = [
 			{ id: 'e', prefix: 'has', reason: 'clear' },
 		]
@@ -122,6 +133,8 @@ describe('has_contradiction', () => {
 				reason: 'trivial',
 			},
 		],
+		() => 'is',
+		() => 'is not',
 	)
 
 	it("should return true for 'a' and 'not a'", () => {
@@ -160,6 +173,8 @@ describe('get_basic_consistent_combinations', () => {
 			{ id: '', assumptions: ['a'], conclusions: ['c'], reason: 'trivial' },
 			{ id: '', assumptions: ['c', 'd'], conclusions: ['e'], reason: 'trivial' },
 		],
+		() => 'is',
+		() => 'is not',
 	)
 
 	it('should work as expected', () => {
@@ -192,6 +207,8 @@ describe('get_redundancy', () => {
 			{ id: '', assumptions: ['b'], conclusions: ['c'], reason: 'trivial' },
 			{ id: '', assumptions: ['d'], conclusions: ['e'], reason: 'trivial' },
 		],
+		() => 'is',
+		() => 'is not',
 	)
 
 	it('should return null for the empty set', () => {
@@ -239,6 +256,8 @@ describe('get_redundancy_of_negations', () => {
 			{ id: '', assumptions: ['b'], conclusions: ['c'], reason: 'trivial' },
 			{ id: '', assumptions: ['d'], conclusions: ['e'], reason: 'trivial' },
 		],
+		() => 'is',
+		() => 'is not',
 	)
 
 	it("should return null for 'a' and 'not e'", () => {
@@ -278,6 +297,8 @@ describe('relevant rules', () => {
 				reason: 'trivial',
 			},
 		],
+		() => 'is',
+		() => 'is not',
 	)
 
 	it('should return one rule', () => {
