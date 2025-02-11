@@ -273,9 +273,11 @@ export class DeductionSystem<T extends string> {
 	public get_basic_consistent_combinations(): { assumption: T; negation: T }[] {
 		const combinations: { assumption: T; negation: T }[] = []
 		for (const assumption of this.property_ids) {
-			const deductions = this.get_deductions(new Set([assumption]))
+			const deductions = this.get_detailed_deductions([
+				{ id: assumption, prefix: 'is', reason: '-' },
+			])
 			for (const negation of this.property_ids) {
-				if (!deductions.has(negation)) {
+				if (deductions.every((deduction) => deduction.id !== negation)) {
 					combinations.push({ assumption, negation })
 				}
 			}
