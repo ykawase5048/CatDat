@@ -73,29 +73,6 @@ export class DeductionSystem<T extends string> {
 		}
 	}
 
-	/**
-	 * @deprecated
-	 */
-	public get_deductions(assumptions: Set<T>): Set<T> {
-		let done = false
-		const deductions = new Set(assumptions)
-
-		while (!done) {
-			done = true
-			for (const rule of this.normalized_rules) {
-				const rule_applies = rule.assumptions.isSubsetOf(deductions)
-				const is_new = !deductions.has(rule.conclusion)
-
-				if (rule_applies && is_new) {
-					done = false
-					deductions.add(rule.conclusion)
-				}
-			}
-		}
-
-		return deductions
-	}
-
 	private reason_rule(rule: NormalizedRule<T>) {
 		const assumption_string = Array.from(rule.assumptions)
 			.map((id) => `${this.get_prefix(id)} ${id}`)
@@ -106,7 +83,6 @@ export class DeductionSystem<T extends string> {
 		return `Since it ${assumption_string}, we deduce that it ${conclusion_string}.`
 	}
 
-	// NEW METHOD, TODO: use it for the categories
 	public get_detailed_deductions(
 		assumptions: DetailedProperty<T>[],
 	): DetailedProperty<T>[] {
