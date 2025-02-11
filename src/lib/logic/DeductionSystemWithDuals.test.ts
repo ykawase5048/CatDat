@@ -11,7 +11,7 @@ describe('all rules', () => {
 		'self-dual': 'self-dual',
 	}
 
-	const deductionSystem = new DeductionSystemWithDuals<string>(
+	const deductionSystem = new DeductionSystemWithDuals<string, string>(
 		// prettier-ignore
 		new Set(['a','b','c','d','e','f','x','y','self-dual','c^op','d^op','e^op']),
 		[
@@ -78,17 +78,17 @@ describe('all rules', () => {
 })
 
 describe('get_detailed_deductions', () => {
-	const deductionSystem = new DeductionSystemWithDuals<string>(
+	const deductionSystem = new DeductionSystemWithDuals<string, string>(
 		new Set(['a', 'b']),
 		[{ assumptions: ['a'], conclusions: ['b'], reason: '' }],
 		() => null,
 	)
 
 	it('should take the prefix "is" as default', () => {
-		const assumptions: DetailedProperty<string>[] = [
+		const assumptions: DetailedProperty<string, string>[] = [
 			{ id: 'a', prefix: 'has', reason: 'clear' },
 		]
-		const detailed_deductions: DetailedProperty<string>[] =
+		const detailed_deductions: DetailedProperty<string, string>[] =
 			deductionSystem.get_detailed_deductions(assumptions)
 
 		expect(detailed_deductions).toContainEqual({

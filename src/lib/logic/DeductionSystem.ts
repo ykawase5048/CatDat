@@ -1,10 +1,8 @@
 import type { NonEmptyArray } from '$lib/commons/utils'
-import { negate_prefix } from '$lib/data-utils/data.helpers'
-import type { Prefix } from '$lib/database/prefix.data'
 
-export type DetailedProperty<T extends string> = {
+export type DetailedProperty<PrefixType extends string, T extends string> = {
 	id: T
-	prefix: Prefix
+	prefix: PrefixType
 	reason: string
 }
 
@@ -20,22 +18,25 @@ type NormalizedRule<T> = {
 	readonly conclusion: T
 }
 
-export class DeductionSystem<T extends string> {
+export class DeductionSystem<PrefixType extends string, T extends string> {
 	public readonly rules: Rule<T>[]
 	public readonly normalized_rules: NormalizedRule<T>[] = []
 	public readonly property_ids: Set<T>
-	public readonly get_prefix: (id: T) => Prefix
+	public readonly get_prefix: (id: T) => PrefixType
+	public readonly negate_prefix: (prefix: PrefixType) => string
 
 	constructor(
 		property_ids: Set<T>,
 		rules: Rule<T>[],
 		initialize = true,
-		get_prefix: (id: T) => Prefix = () => 'is',
+		get_prefix: (id: T) => PrefixType = () => 'is' as PrefixType,
+		negate_prefix: (prefix: PrefixType) => string = () => 'is not',
 	) {
 		this.property_ids = property_ids
 		this.rules = rules
 		this.validate_rules()
 		this.get_prefix = get_prefix
+		this.negate_prefix = negate_prefix
 		if (initialize) this.init()
 	}
 
@@ -85,8 +86,8 @@ export class DeductionSystem<T extends string> {
 	}
 
 	public get_detailed_deductions(
-		assumptions: DetailedProperty<T>[],
-	): DetailedProperty<T>[] {
+		assumptions: DetailedProperty<PrefixType, T>[],
+	): DetailedProperty<PrefixType, T>[] {
 		let done = false
 
 		const deductions = Array.from(assumptions)
@@ -118,8 +119,8 @@ export class DeductionSystem<T extends string> {
 	}
 
 	public get_detailed_deduced_negations(
-		assumptions: DetailedProperty<T>[],
-		negations: DetailedProperty<T>[],
+		assumptions: DetailedProperty<PrefixType, T>[],
+		negations: DetailedProperty<PrefixType, T>[],
 	) {
 		let done = false
 
@@ -160,7 +161,7 @@ export class DeductionSystem<T extends string> {
 					if (deduced_negation_ids.has(deduction.id)) {
 						has_contradiction = true
 						done = false
-						const negated_prefix = negate_prefix(deduction.prefix)
+						const negated_prefix = this.negate_prefix(deduction.prefix)
 						reason += `This is a contradiction since we already know that it ${negated_prefix} ${deduction.id}.`
 						break
 					}
@@ -180,7 +181,7 @@ export class DeductionSystem<T extends string> {
 		return deduced_negations
 	}
 
-	public get_redundancy(assumptions: DetailedProperty<T>[]): T | null {
+	public get_redundancy(assumptions: DetailedProperty<PrefixType, T>[]): T | null {
 		const deductions = this.get_detailed_deductions(assumptions)
 
 		for (const assumption of assumptions) {
@@ -198,8 +199,8 @@ export class DeductionSystem<T extends string> {
 	}
 
 	public get_redundancy_of_negations(
-		assumptions: DetailedProperty<T>[],
-		negations: DetailedProperty<T>[],
+		assumptions: DetailedProperty<PrefixType, T>[],
+		negations: DetailedProperty<PrefixType, T>[],
 	): T | null {
 		const deduced_assumptions = this.get_detailed_deductions(assumptions)
 		const deduced_negations = this.get_detailed_deduced_negations(
@@ -224,17 +225,21 @@ export class DeductionSystem<T extends string> {
 	}
 
 	public has_contradiction(assumptions: T[], negations: T[]): boolean {
-		const assumptions_detailed: DetailedProperty<T>[] = assumptions.map((id) => ({
-			id,
-			prefix: 'is',
-			reason: 'by assumption',
-		}))
+		const assumptions_detailed: DetailedProperty<PrefixType, T>[] = assumptions.map(
+			(id) => ({
+				id,
+				prefix: 'is' as PrefixType,
+				reason: 'by assumption',
+			}),
+		)
 
-		const negations_detailed: DetailedProperty<T>[] = negations.map((id) => ({
-			id,
-			prefix: 'is',
-			reason: 'by assumption',
-		}))
+		const negations_detailed: DetailedProperty<PrefixType, T>[] = negations.map(
+			(id) => ({
+				id,
+				prefix: 'is' as PrefixType,
+				reason: 'by assumption',
+			}),
+		)
 
 		const deductions = this.get_detailed_deductions(assumptions_detailed)
 		const deduced_negations = this.get_detailed_deduced_negations(
@@ -252,7 +257,7 @@ export class DeductionSystem<T extends string> {
 		const combinations: { assumption: T; negation: T }[] = []
 		for (const assumption of this.property_ids) {
 			const deductions = this.get_detailed_deductions([
-				{ id: assumption, prefix: 'is', reason: '-' },
+				{ id: assumption, prefix: 'is' as PrefixType, reason: '-' },
 			])
 			for (const negation of this.property_ids) {
 				if (deductions.every((deduction) => deduction.id !== negation)) {

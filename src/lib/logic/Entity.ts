@@ -1,17 +1,17 @@
 import type { DeductionSystem, DetailedProperty } from './DeductionSystem'
 
-export class Entity<S extends string, T extends string> {
+export class Entity<PrefixType extends string, S extends string, T extends string> {
 	public readonly id: S
-	public properties: DetailedProperty<T>[]
-	public non_properties: DetailedProperty<T>[]
-	public deduced_properties: DetailedProperty<T>[] = []
-	public deduced_non_properties: DetailedProperty<T>[] = []
-	public unknown_properties: DetailedProperty<T>[] = []
+	public properties: DetailedProperty<PrefixType, T>[]
+	public non_properties: DetailedProperty<PrefixType, T>[]
+	public deduced_properties: DetailedProperty<PrefixType, T>[] = []
+	public deduced_non_properties: DetailedProperty<PrefixType, T>[] = []
+	public unknown_properties: DetailedProperty<PrefixType, T>[] = []
 
 	constructor(
 		id: S,
-		properties: DetailedProperty<T>[],
-		non_properties: DetailedProperty<T>[],
+		properties: DetailedProperty<PrefixType, T>[],
+		non_properties: DetailedProperty<PrefixType, T>[],
 	) {
 		this.id = id
 		this.properties = properties
@@ -26,7 +26,7 @@ export class Entity<S extends string, T extends string> {
 		return [...this.non_properties, ...this.deduced_non_properties]
 	}
 
-	public deduce_properties(deduction_system: DeductionSystem<T>) {
+	public deduce_properties(deduction_system: DeductionSystem<PrefixType, T>) {
 		const all_properties = deduction_system.get_detailed_deductions(this.properties)
 
 		const all_non_properties = deduction_system.get_detailed_deduced_negations(

@@ -2,10 +2,11 @@ import type { DeductionSystemWithDuals } from './DeductionSystemWithDuals'
 import { EntitySystem } from './EntitySystem'
 
 export class EntitySystemWithDuals<
+	PrefixType extends string,
 	S extends string,
 	T extends string,
-> extends EntitySystem<S, T> {
-	constructor(deduction_system: DeductionSystemWithDuals<T>) {
+> extends EntitySystem<PrefixType, S, T> {
+	constructor(deduction_system: DeductionSystemWithDuals<PrefixType, T>) {
 		super(deduction_system)
 	}
 
@@ -18,10 +19,10 @@ export class EntitySystemWithDuals<
 			const entities = this.search([assumption], [negation], [])
 
 			const dual_assumption = (
-				this.deduction_system as DeductionSystemWithDuals<T>
+				this.deduction_system as DeductionSystemWithDuals<PrefixType, T>
 			).get_dual_property(assumption)
 			const dual_negation = (
-				this.deduction_system as DeductionSystemWithDuals<T>
+				this.deduction_system as DeductionSystemWithDuals<PrefixType, T>
 			).get_dual_property(negation)
 
 			const dual_entities =

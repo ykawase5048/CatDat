@@ -10,13 +10,15 @@ describe('Entity system with duals', () => {
 		'c': null,
 	}
 
-	const deduction_system = new DeductionSystemWithDuals<string>(
+	const deduction_system = new DeductionSystemWithDuals<string, string>(
 		new Set(['a', 'b', 'a*', 'b*', 'c']),
 		[{ assumptions: ['a'], conclusions: ['c'], reason: 'trivial' }],
 		(p: string) => dual_map[p],
 	)
 
-	const entity_system = new EntitySystemWithDuals<string, string>(deduction_system)
+	const entity_system = new EntitySystemWithDuals<string, string, string>(
+		deduction_system,
+	)
 
 	entity_system.add(
 		'1',

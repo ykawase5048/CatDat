@@ -3,15 +3,15 @@ import { Entity } from './Entity'
 import { EntitySystem } from './EntitySystem'
 
 describe('EntitySystem', () => {
-	type S = string
-	type T = string
+	const deduction_system = new DeductionSystem<string, string>(
+		new Set(['a', 'b', 'c', 'd']),
+		[
+			{ assumptions: ['a'], conclusions: ['b'], reason: 'trivial' },
+			{ assumptions: ['b'], conclusions: ['c', 'd'], reason: 'trivial' },
+		],
+	)
 
-	const deduction_system = new DeductionSystem<T>(new Set(['a', 'b', 'c', 'd']), [
-		{ assumptions: ['a'], conclusions: ['b'], reason: 'trivial' },
-		{ assumptions: ['b'], conclusions: ['c', 'd'], reason: 'trivial' },
-	])
-
-	const entity_system = new EntitySystem<S, T>(deduction_system)
+	const entity_system = new EntitySystem<string, string, string>(deduction_system)
 
 	const entity_1 = entity_system.add(
 		'1',

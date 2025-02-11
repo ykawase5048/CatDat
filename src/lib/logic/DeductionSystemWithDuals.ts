@@ -1,17 +1,20 @@
 import { equal_up_to_order, type NonEmptyArray } from '$lib/commons/utils'
-import type { Prefix } from '$lib/database/prefix.data'
 import { DeductionSystem, type Rule } from './DeductionSystem'
 
-export class DeductionSystemWithDuals<T extends string> extends DeductionSystem<T> {
+export class DeductionSystemWithDuals<
+	PrefixType extends string,
+	T extends string,
+> extends DeductionSystem<PrefixType, T> {
 	public readonly get_dual_property: (id: T) => T | null
 
 	constructor(
 		property_ids: Set<T>,
 		rules: Rule<T>[],
 		dual_property_accessor: (id: T) => T | null,
-		get_prefix: (id: T) => Prefix = () => 'is',
+		get_prefix: (id: T) => PrefixType = () => 'is' as PrefixType,
+		negate_prefix: (prefix: PrefixType) => string = () => 'is not',
 	) {
-		super(property_ids, rules, false, get_prefix)
+		super(property_ids, rules, false, get_prefix, negate_prefix)
 		this.get_dual_property = dual_property_accessor
 		this.init_with_duals()
 	}

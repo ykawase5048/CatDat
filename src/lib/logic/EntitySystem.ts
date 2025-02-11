@@ -1,19 +1,19 @@
 import type { DeductionSystem, DetailedProperty } from './DeductionSystem'
 import { Entity } from './Entity'
 
-export class EntitySystem<S extends string, T extends string> {
-	public readonly entities: Entity<S, T>[] = []
-	protected deduction_system: DeductionSystem<T>
+export class EntitySystem<PrefixType extends string, S extends string, T extends string> {
+	public readonly entities: Entity<PrefixType, S, T>[] = []
+	protected deduction_system: DeductionSystem<PrefixType, T>
 
-	constructor(deduction_system: DeductionSystem<T>) {
+	constructor(deduction_system: DeductionSystem<PrefixType, T>) {
 		this.deduction_system = deduction_system
 	}
 
 	public add(
 		id: S,
-		properties: DetailedProperty<T>[],
-		non_properties: DetailedProperty<T>[],
-	): Entity<S, T> {
+		properties: DetailedProperty<PrefixType, T>[],
+		non_properties: DetailedProperty<PrefixType, T>[],
+	): Entity<PrefixType, S, T> {
 		const new_entity = new Entity(id, properties, non_properties)
 		new_entity.deduce_properties(this.deduction_system)
 		this.entities.push(new_entity)
@@ -24,7 +24,7 @@ export class EntitySystem<S extends string, T extends string> {
 		properties: T[],
 		non_properties: T[],
 		unknown_properties: T[],
-	): Entity<S, T>[] {
+	): Entity<PrefixType, S, T>[] {
 		const is_empty_search =
 			properties.length === 0 &&
 			non_properties.length === 0 &&
@@ -47,12 +47,12 @@ export class EntitySystem<S extends string, T extends string> {
 		)
 	}
 
-	public get_entities_with_unknown_properties(): Entity<S, T>[] {
+	public get_entities_with_unknown_properties(): Entity<PrefixType, S, T>[] {
 		return this.entities.filter((entity) => entity.unknown_properties.length > 0)
 	}
 
 	public get_comparison_table(
-		entities: Entity<S, T>[],
+		entities: Entity<PrefixType, S, T>[],
 	): null | [T, ...(boolean | null)[]][] {
 		const is_valid = entities.every((entity) => this.entities.includes(entity))
 		if (!is_valid) return null

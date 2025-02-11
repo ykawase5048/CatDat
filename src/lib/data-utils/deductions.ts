@@ -6,27 +6,30 @@ import {
 	get_non_properties,
 	get_prefix,
 	get_properties,
+	negate_prefix,
 	propertyIDs,
 } from '$lib/data-utils/data.helpers'
 import { CATEGORIES, type CategoryID } from '$lib/database/categories.data'
 import { group_items } from '$lib/commons/utils'
 import { EntitySystemWithDuals } from '$lib/logic/EntitySystemWithDuals'
 import type { Entity } from '$lib/logic/Entity'
+import type { Prefix } from '$lib/database/prefix.data'
 
-export const property_deduction_system = new DeductionSystemWithDuals<PropertyID>(
+export const property_deduction_system = new DeductionSystemWithDuals<Prefix, PropertyID>(
 	new Set(propertyIDs),
 	Array.from(IMPLICATIONS),
 	get_dual_property,
 	get_prefix,
+	negate_prefix,
 )
 
 export const implications_with_duals = property_deduction_system.rules
 
-export const category_system = new EntitySystemWithDuals<CategoryID, PropertyID>(
+export const category_system = new EntitySystemWithDuals<Prefix, CategoryID, PropertyID>(
 	property_deduction_system,
 )
 
-export type CategoryWithDeducedProperties = Entity<CategoryID, PropertyID>
+export type CategoryWithDeducedProperties = Entity<Prefix, CategoryID, PropertyID>
 
 for (const category of CATEGORIES) {
 	category_system.add(

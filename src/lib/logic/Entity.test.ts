@@ -1,14 +1,17 @@
 import { DeductionSystem } from './DeductionSystem'
 import { Entity } from './Entity'
 
-const deduction_system = new DeductionSystem<string>(new Set(['a', 'b', 'c', 'd', 'e']), [
-	{ assumptions: ['a'], conclusions: ['b'], reason: '' },
-	{ assumptions: ['b'], conclusions: ['c', 'd'], reason: '' },
-])
+const deduction_system = new DeductionSystem<string, string>(
+	new Set(['a', 'b', 'c', 'd', 'e']),
+	[
+		{ assumptions: ['a'], conclusions: ['b'], reason: '' },
+		{ assumptions: ['b'], conclusions: ['c', 'd'], reason: '' },
+	],
+)
 
 describe('constructor', () => {
 	it('adds the id, properties and non-properties', () => {
-		const entity = new Entity<string, string>(
+		const entity = new Entity<string, string, string>(
 			'xyz',
 			[{ id: 'a', prefix: 'is', reason: 'clear' }],
 			[{ id: 'b', prefix: 'is', reason: 'easy' }],
@@ -21,7 +24,7 @@ describe('constructor', () => {
 
 describe('deduce_properties', () => {
 	it('should deduce all properties', () => {
-		const entity = new Entity<string, string>(
+		const entity = new Entity<string, string, string>(
 			'1',
 			[{ id: 'a', prefix: 'is', reason: 'clear' }],
 			[],
@@ -46,7 +49,7 @@ describe('deduce_properties', () => {
 	})
 
 	it('should deduce all non-properties', () => {
-		const entity = new Entity<string, string>(
+		const entity = new Entity<string, string, string>(
 			'2',
 			[],
 			[{ id: 'd', prefix: 'is', reason: 'clear' }],
@@ -66,7 +69,7 @@ describe('deduce_properties', () => {
 	})
 
 	it('should deduce all unknown properties', () => {
-		const entity = new Entity<string, string>(
+		const entity = new Entity<string, string, string>(
 			'3',
 			[{ id: 'd', prefix: 'is', reason: 'clear' }],
 			[],
@@ -84,7 +87,7 @@ describe('deduce_properties', () => {
 })
 
 describe('satisfies', () => {
-	const entity = new Entity<string, string>(
+	const entity = new Entity<string, string, string>(
 		'xyz',
 		[{ id: 'b', prefix: 'is', reason: 'easy' }],
 		[{ id: 'a', prefix: 'is', reason: 'easy' }],
@@ -112,7 +115,7 @@ describe('satisfies', () => {
 })
 
 describe('get_comparison_value', () => {
-	const entity = new Entity<string, string>(
+	const entity = new Entity<string, string, string>(
 		'xyz',
 		[{ id: 'b', prefix: 'is', reason: 'easy' }],
 		[{ id: 'a', prefix: 'is', reason: 'easy' }],

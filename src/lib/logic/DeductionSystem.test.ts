@@ -3,21 +3,21 @@ import { DeductionSystem, type DetailedProperty } from './DeductionSystem'
 describe('constructor', () => {
 	it('should throw an error when an unknown property appears in a rule', () => {
 		expect(() => {
-			new DeductionSystem<string>(new Set(['a']), [
+			new DeductionSystem<string, string>(new Set(['a']), [
 				{ assumptions: ['a'], conclusions: ['b'], reason: 'trivial' },
 			])
 		}).toThrow()
 	})
 
 	it('should initialize by default by computing the normalized rules', () => {
-		const deductionSystem = new DeductionSystem<string>(new Set(['a', 'b']), [
+		const deductionSystem = new DeductionSystem<string, string>(new Set(['a', 'b']), [
 			{ assumptions: ['a'], conclusions: ['b'], reason: 'trivial' },
 		])
 		expect(deductionSystem.normalized_rules).not.toEqual([])
 	})
 
 	it('should not initialize when said so', () => {
-		const deductionSystem = new DeductionSystem<string>(
+		const deductionSystem = new DeductionSystem<string, string>(
 			new Set(['a', 'b']),
 			[{ assumptions: ['a'], conclusions: ['b'], reason: 'trivial' }],
 			false,
@@ -27,7 +27,7 @@ describe('constructor', () => {
 })
 
 describe('get_detailed_deductions', () => {
-	const deductionSystem = new DeductionSystem<string>(
+	const deductionSystem = new DeductionSystem<string, string>(
 		new Set(['a', 'b', 'c', 'd', 'e']),
 		[
 			{ assumptions: ['a', 'b'], conclusions: ['c'], reason: '' },
@@ -39,7 +39,7 @@ describe('get_detailed_deductions', () => {
 	)
 
 	it('should explain why the properties follow', () => {
-		const assumptions: DetailedProperty<string>[] = [
+		const assumptions: DetailedProperty<string, string>[] = [
 			{ id: 'a', prefix: 'has', reason: 'clear' },
 			{ id: 'b', prefix: 'has', reason: 'easy' },
 		]
@@ -67,7 +67,7 @@ describe('get_detailed_deductions', () => {
 })
 
 describe('get_detailed_deduced_negations', () => {
-	const deductionSystem = new DeductionSystem<string>(
+	const deductionSystem = new DeductionSystem<string, string>(
 		new Set(['a', 'b', 'c', 'd', 'e']),
 		[
 			{ assumptions: ['b'], conclusions: ['c'], reason: '' },
@@ -77,10 +77,10 @@ describe('get_detailed_deduced_negations', () => {
 	)
 
 	it('should explain why the non-properties follow, and take default prefix "is"', () => {
-		const assumptions: DetailedProperty<string>[] = [
+		const assumptions: DetailedProperty<string, string>[] = [
 			{ id: 'e', prefix: 'has', reason: 'clear' },
 		]
-		const negations: DetailedProperty<string>[] = [
+		const negations: DetailedProperty<string, string>[] = [
 			{ id: 'd', prefix: 'has', reason: 'clear' },
 		]
 
@@ -110,7 +110,7 @@ describe('get_detailed_deduced_negations', () => {
 })
 
 describe('has_contradiction', () => {
-	const deductionSystem = new DeductionSystem<string>(
+	const deductionSystem = new DeductionSystem<string, string>(
 		new Set(['a', 'b', 'c', 'd', 'e', 'f']),
 		[
 			{ assumptions: ['a'], conclusions: ['c'], reason: 'trivial' },
@@ -153,10 +153,13 @@ describe('has_contradiction', () => {
 })
 
 describe('get_basic_consistent_combinations', () => {
-	const deductionSystem = new DeductionSystem<string>(new Set(['a', 'c', 'd', 'e']), [
-		{ assumptions: ['a'], conclusions: ['c'], reason: 'trivial' },
-		{ assumptions: ['c', 'd'], conclusions: ['e'], reason: 'trivial' },
-	])
+	const deductionSystem = new DeductionSystem<string, string>(
+		new Set(['a', 'c', 'd', 'e']),
+		[
+			{ assumptions: ['a'], conclusions: ['c'], reason: 'trivial' },
+			{ assumptions: ['c', 'd'], conclusions: ['e'], reason: 'trivial' },
+		],
+	)
 
 	it('should work as expected', () => {
 		const combinations = deductionSystem.get_basic_consistent_combinations()
@@ -181,7 +184,7 @@ describe('get_basic_consistent_combinations', () => {
 })
 
 describe('get_redundancy', () => {
-	const deductionSystem = new DeductionSystem<string>(
+	const deductionSystem = new DeductionSystem<string, string>(
 		new Set(['a', 'b', 'c', 'd', 'e', 'f']),
 		[
 			{ assumptions: ['a'], conclusions: ['b'], reason: 'trivial' },
@@ -228,7 +231,7 @@ describe('get_redundancy', () => {
 })
 
 describe('get_redundancy_of_negations', () => {
-	const deductionSystem = new DeductionSystem<string>(
+	const deductionSystem = new DeductionSystem<string, string>(
 		new Set(['a', 'b', 'c', 'd', 'e']),
 		[
 			{ assumptions: ['a'], conclusions: ['b'], reason: 'trivial' },
@@ -257,7 +260,7 @@ describe('get_redundancy_of_negations', () => {
 	})
 })
 describe('relevant rules', () => {
-	const deductionSystem = new DeductionSystem<string>(
+	const deductionSystem = new DeductionSystem<string, string>(
 		new Set(['a', 'b', 'c', 'd', 'e', 'f']),
 		[
 			{ assumptions: ['a'], conclusions: ['b', 'f'], reason: 'trivial' },
