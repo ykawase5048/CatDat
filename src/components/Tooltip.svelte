@@ -88,4 +88,11 @@
 		transform-origin: top left;
 		rotate: 45deg;
 	}
+
+	.tooltip::before {
+		content: '';
+		position: absolute;
+		inset: -1rem;
+		pointer-events: none;
+	}
 </style>
