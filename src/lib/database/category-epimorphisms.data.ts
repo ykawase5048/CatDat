@@ -24,7 +24,7 @@ export const CATEGORY_EPIMORPHISMS: Record<CategoryID, DescriptionWithReason> = 
 	'sSet': { description: 'pointwise surjective transformations', reason: 'This holds in every functor category $[\\mathcal{C},\\mathbf{Set}]$.' },
 	'Mon': { description: '', reason: '' },
 	'Pos': { description: 'surjective order-preserving functions', reason: 'Use the same proof as for sets, where $2 = \\{0,1\\}$ is endowed with the trivial order in which $0$, $1$ have no relation.' },
-	'I': { description: 'every morphism', reason: 'It is a thin category.' },
+	'walking_morphism': { description: 'every morphism', reason: 'It is a thin category.' },
 	'M-Set': { description: 'surjective $M$-maps', reason: 'This holds in every functor category $[\\mathcal{C},\\mathbf{Set}]$, here applied to the case that $\\mathcal{C}$ has just one object.' },
 	'R-Mod': { description: 'surjective $R$-linear maps', reason: 'The forgetful functor to abelian groups is faithful and preserves colimits, hence reflects and preserves epimorphisms. Alternatively, just use the same proof as for abelian groups.' },
 	'Met': { description: '', reason: '' },

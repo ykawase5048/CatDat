@@ -20,7 +20,7 @@ export const CATEGORY_ISOMORPHISMS: Record<CategoryID, DescriptionWithReason> = 
 	'sSet': { description: 'natural isomorphisms', reason: 'This is true for all functor categories.' },
 	'Mon': { description: 'bijective homomorphisms', reason: 'This characterization holds in every algebraic category.' },
 	'Pos': { description: 'bijective order-preserving and order-reflecting functions', reason: 'easy' },
-	'I': { description: 'the two identities', reason: 'trivial' },
+	'walking_morphism': { description: 'the two identities', reason: 'trivial' },
 	'M-Set': { description: 'bijective $M$-maps', reason: 'This characterization holds in every algebraic category.' },
 	'R-Mod': { description: 'bijective $R$-linear maps', reason: 'This characterization holds in every algebraic category.' },
 	'Met': { description: 'bijective isometries', reason: 'easy' },

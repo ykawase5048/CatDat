@@ -99,7 +99,7 @@ export const CATEGORY_NON_PROPERTIES: Record<CategoryID, PropertyWithReason[]> =
 		{ id: 'skeletal', reason: 'trivial' },
 		{ id: 'Malcev', reason: '' },
 	],
-	'I': [{ id: 'subobject classifier', reason: '' }],
+	'walking_morphism': [{ id: 'subobject classifier', reason: '' }],
 	'M-Set': [
 		{ id: 'strict terminal object', reason: '' },
 		{ id: 'skeletal', reason: 'trivial' },

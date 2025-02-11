@@ -20,7 +20,7 @@ export const CATEGORY_MONOMORPHISMS: Record<CategoryID, DescriptionWithReason> =
 	'sSet': { description: 'pointwise injective transformations', reason: '' },
 	'Mon': { description: 'injective homomorphisms', reason: '' },
 	'Pos': { description: 'injective order-preserving functions', reason: '' },
-	'I': { description: 'every morphism', reason: '' },
+	'walking_morphism': { description: 'every morphism', reason: '' },
 	'M-Set': { description: 'injective $M$-maps', reason: '' },
 	'R-Mod': { description: 'injective $R$-linear maps', reason: '' },
 	'Met': { description: 'injective non-expansive maps', reason: '' },

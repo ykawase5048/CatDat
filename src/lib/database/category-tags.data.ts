@@ -21,7 +21,7 @@ export const CATEGORY_TAGS: Record<CategoryID, NonEmptyArray<Tag>> = {
 	'sSet': ['basic', 'topology', 'well-behaved'],
 	'Mon': ['basic', 'algebra', 'well-behaved'],
 	'Pos': ['basic', 'order theory', 'well-behaved'],
-	'I': ['basic', 'well-behaved'],
+	'walking_morphism': ['basic', 'well-behaved'],
 	'M-Set': ['basic', 'algebra', 'geometry', 'well-behaved'],
 	'R-Mod': ['basic', 'algebra', 'well-behaved'],
 	'Met': ['basic', 'geometry', 'badly-behaved'],

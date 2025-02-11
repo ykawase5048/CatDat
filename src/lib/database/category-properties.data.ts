@@ -122,7 +122,7 @@ export const CATEGORY_PROPERTIES: Record<CategoryID, PropertyWithReason[]> = {
 		{ id: 'cogenerator', reason: '' },
 		{ id: 'disjoint coproducts', reason: '' },
 	],
-	'I': [
+	'walking_morphism': [
 		{ id: 'finitary algebraic', reason: '' },
 		{ id: 'self-dual', reason: '' },
 		{ id: 'finite', reason: '' },
