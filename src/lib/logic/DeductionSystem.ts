@@ -230,38 +230,44 @@ export class DeductionSystem<T extends string> {
 		return deduced_negations
 	}
 
-	public get_redundancy(assumptions: Set<T>): T | null {
-		const deductions = this.get_deductions(assumptions)
+	public get_redundancy(assumptions: DetailedProperty<T>[]): T | null {
+		const deductions = this.get_detailed_deductions(assumptions)
 
 		for (const assumption of assumptions) {
-			const reduced_assumptions = new Set(assumptions)
-			reduced_assumptions.delete(assumption)
-			const reduced_deductions = this.get_deductions(reduced_assumptions)
+			const reduced_assumptions = assumptions.filter(
+				(_assumption) => _assumption.id !== assumption.id,
+			)
+			const reduced_deductions = this.get_detailed_deductions(reduced_assumptions)
 
-			if (reduced_deductions.size === deductions.size) {
-				return assumption
+			if (reduced_deductions.length === deductions.length) {
+				return assumption.id
 			}
 		}
 
 		return null
 	}
 
-	public get_redundancy_of_negations(assumptions: Set<T>, negations: Set<T>): T | null {
-		const deduced_assumptions = this.get_deductions(assumptions)
-		const deduced_negations = this.get_deduced_negations(
+	public get_redundancy_of_negations(
+		assumptions: DetailedProperty<T>[],
+		negations: DetailedProperty<T>[],
+	): T | null {
+		const deduced_assumptions = this.get_detailed_deductions(assumptions)
+		const deduced_negations = this.get_detailed_deduced_negations(
 			deduced_assumptions,
 			negations,
 		)
 
 		for (const negation of negations) {
-			const reduced_negations = new Set(negations)
-			reduced_negations.delete(negation)
-			const reduced_deduced_negations = this.get_deduced_negations(
+			const reduced_negations = negations.filter(
+				(_negation) => _negation.id !== negation.id,
+			)
+
+			const reduced_deduced_negations = this.get_detailed_deduced_negations(
 				deduced_assumptions,
 				reduced_negations,
 			)
-			if (reduced_deduced_negations.size === deduced_negations.size) {
-				return negation
+			if (reduced_deduced_negations.length === deduced_negations.length) {
+				return negation.id
 			}
 		}
 		return null

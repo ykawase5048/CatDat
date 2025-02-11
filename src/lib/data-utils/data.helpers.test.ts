@@ -2,9 +2,7 @@ import {
 	get_category,
 	get_dual_properties,
 	get_dual_property,
-	get_non_properties_of_category,
 	get_prefix,
-	get_properties_of_category,
 	get_property,
 	get_related_categories,
 	is_valid_category,
@@ -75,26 +73,6 @@ describe('get_related_categories', () => {
 			name: 'category of finitely generated abelian groups',
 			notation: expect.any(String),
 		})
-	})
-})
-
-describe('get_properties_of_category', () => {
-	it("should contain 'locally small' for 'Grp'", () => {
-		expect(get_properties_of_category('Grp')).toContain('locally small')
-	})
-
-	it("should not contain 'pointed' for 'Set'", () => {
-		expect(get_properties_of_category('Set')).not.toContain('pointed')
-	})
-})
-
-describe('get_non_properties_of_category', () => {
-	it("should contain 'pointed' for 'Ring'", () => {
-		expect(get_non_properties_of_category('Rng')).toContain('balanced')
-	})
-
-	it("should contain 'inhabited' for '0'", () => {
-		expect(get_non_properties_of_category('0')).toContain('inhabited')
 	})
 })
 

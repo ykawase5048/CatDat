@@ -1,10 +1,8 @@
 import { CATEGORIES, type CategoryID } from '$lib/database/categories.data'
+import { CATEGORY_NON_PROPERTIES } from '$lib/database/category-non-properties.data'
+import { CATEGORY_PROPERTIES } from '$lib/database/category-properties.data'
 import { type PropertyID } from '$lib/database/properties.data'
-import {
-	get_non_properties_of_category,
-	get_properties_of_category,
-	propertyIDs,
-} from './data.helpers'
+import { get_prefix, propertyIDs } from './data.helpers'
 import {
 	categories_with_deduced_properties,
 	implications_with_duals,
@@ -20,13 +18,18 @@ describe('property_deduction_system', () => {
 	]
 
 	for (const category of CATEGORIES) {
-		const properties = get_properties_of_category(category.id)
-		const non_properties = get_non_properties_of_category(category.id)
+		const properties = CATEGORY_PROPERTIES[category.id].map((property) => ({
+			...property,
+			prefix: get_prefix(property.id),
+		}))
+
+		const non_properties = CATEGORY_NON_PROPERTIES[category.id].map((property) => ({
+			...property,
+			prefix: get_prefix(property.id),
+		}))
 
 		it(`should have no redundancy for the properties of: ${category.name}`, () => {
-			const redundancy = property_deduction_system.get_redundancy(
-				new Set(properties),
-			)
+			const redundancy = property_deduction_system.get_redundancy(properties)
 			const is_exception = redundancy_exceptions.some(
 				(entry) => entry[0] === category.id && entry[1] === redundancy,
 			)
@@ -37,8 +40,8 @@ describe('property_deduction_system', () => {
 
 		it(`should have no redundancy for the non-properties of: ${category.name}`, () => {
 			const redundancy = property_deduction_system.get_redundancy_of_negations(
-				new Set(properties),
-				new Set(non_properties),
+				properties,
+				non_properties,
 			)
 			expect(redundancy).toBe(null)
 		})

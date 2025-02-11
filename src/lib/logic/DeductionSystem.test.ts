@@ -290,27 +290,38 @@ describe('get_redundancy', () => {
 	)
 
 	it('should return null for the empty set', () => {
-		const result = deductionSystem.get_redundancy(new Set([]))
+		const result = deductionSystem.get_redundancy([])
 		expect(result).toBe(null)
 	})
 
 	it("should return null for 'a'", () => {
-		const result = deductionSystem.get_redundancy(new Set(['a']))
+		const result = deductionSystem.get_redundancy([
+			{ id: 'a', prefix: 'is', reason: '-' },
+		])
 		expect(result).toBe(null)
 	})
 
 	it("should return 'b' for 'a' and 'b'", () => {
-		const result = deductionSystem.get_redundancy(new Set(['a', 'b']))
+		const result = deductionSystem.get_redundancy([
+			{ id: 'a', prefix: 'is', reason: '-' },
+			{ id: 'b', prefix: 'is', reason: '-' },
+		])
 		expect(result).toBe('b')
 	})
 
 	it("should return 'c' for 'a' and 'c'", () => {
-		const result = deductionSystem.get_redundancy(new Set(['a', 'c']))
+		const result = deductionSystem.get_redundancy([
+			{ id: 'a', prefix: 'is', reason: '-' },
+			{ id: 'c', prefix: 'is', reason: '-' },
+		])
 		expect(result).toBe('c')
 	})
 
 	it("should return null for 'a' and 'd'", () => {
-		const result = deductionSystem.get_redundancy(new Set(['a', 'd']))
+		const result = deductionSystem.get_redundancy([
+			{ id: 'a', prefix: 'is', reason: '-' },
+			{ id: 'd', prefix: 'is', reason: '-' },
+		])
 		expect(result).toBe(null)
 	})
 })
@@ -327,16 +338,19 @@ describe('get_redundancy_of_negations', () => {
 
 	it("should return null for 'a' and 'not e'", () => {
 		const result = deductionSystem.get_redundancy_of_negations(
-			new Set(['a']),
-			new Set(['e']),
+			[{ id: 'a', prefix: 'is', reason: '-' }],
+			[{ id: 'e', prefix: 'is', reason: '-' }],
 		)
 		expect(result).toBe(null)
 	})
 
 	it("should return 'd' for 'a' and 'not e' and 'not d'", () => {
 		const result = deductionSystem.get_redundancy_of_negations(
-			new Set(['a']),
-			new Set(['d', 'e']),
+			[{ id: 'a', prefix: 'is', reason: '-' }],
+			[
+				{ id: 'd', prefix: 'is', reason: '-' },
+				{ id: 'e', prefix: 'is', reason: '-' },
+			],
 		)
 		expect(result).toBe('d')
 	})

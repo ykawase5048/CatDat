@@ -43,20 +43,6 @@ export function get_related_categories(id: CategoryID) {
 	return select('id', 'name', 'notation').from(CATEGORY_RELATIONS[id].map(get_category))
 }
 
-/**
- * @deprecated
- */
-export function get_properties_of_category(id: CategoryID): PropertyID[] {
-	return CATEGORY_PROPERTIES[id].map((entry) => entry.id)
-}
-
-/**
- * @deprecated
- */
-export function get_non_properties_of_category(id: CategoryID): PropertyID[] {
-	return CATEGORY_NON_PROPERTIES[id].map((entry) => entry.id)
-}
-
 export function get_dual_property(id: PropertyID): null | PropertyID {
 	return PROPERTY_DUALS[id]
 }
