@@ -1,5 +1,5 @@
 <script lang="ts">
-	import PropertyList from '$components/PropertyList.svelte'
+	import PropertyReasonList from '$components/PropertyReasonList.svelte'
 
 	let { data } = $props()
 </script>
@@ -10,7 +10,7 @@
 
 <h2>List of Properties</h2>
 
-<PropertyList
+<PropertyReasonList
 	items={data.properties}
 	description="The following {data.properties.length} properties are available."
 />
