@@ -6,18 +6,18 @@
  * But it adapt the remaining data to these lists.
  */
 
-import path from 'path'
-import fs from 'fs'
-import { propertyIDs, categoryIDs } from './data.helpers'
 import { CATEGORY_EPIMORPHISMS } from '$lib/database/category-epimorphisms.data'
-import { CATEGORY_MONOMORPHISMS } from '$lib/database/category-monomorphisms.data'
 import { CATEGORY_ISOMORPHISMS } from '$lib/database/category-isomorphisms.data'
-import { CATEGORY_PROPERTIES } from '$lib/database/category-properties.data'
+import { CATEGORY_MONOMORPHISMS } from '$lib/database/category-monomorphisms.data'
 import { CATEGORY_NON_PROPERTIES } from '$lib/database/category-non-properties.data'
-import { CATEGORY_TAGS } from '$lib/database/category-tags.data'
+import { CATEGORY_PROPERTIES } from '$lib/database/category-properties.data'
 import { CATEGORY_RELATIONS } from '$lib/database/category-relations.data'
-import { PROPERTY_RELATIONS } from '$lib/database/property-relations.data'
+import { CATEGORY_TAGS } from '$lib/database/category-tags.data'
 import { PROPERTY_DUALS } from '$lib/database/property-duals.data'
+import { PROPERTY_RELATIONS } from '$lib/database/property-relations.data'
+import fs from 'fs'
+import path from 'path'
+import { categoryIDs, propertyIDs } from './data.helpers'
 
 function sort_dictionary(
 	keys: string[],

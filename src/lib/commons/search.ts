@@ -1,11 +1,11 @@
 import { error } from '@sveltejs/kit'
 
+import { decode_property_ID } from '$lib/commons/property.url'
 import {
 	get_category,
 	get_dual_properties,
 	is_valid_property,
 } from '$lib/data-utils/data.helpers'
-import { decode_property_ID } from '$lib/commons/property.url'
 import { category_system, property_deduction_system } from '$lib/data-utils/deductions'
 import type { Category } from '$lib/database/categories.data'
 

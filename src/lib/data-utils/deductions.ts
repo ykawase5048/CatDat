@@ -1,6 +1,4 @@
-import { IMPLICATIONS } from '$lib/database/implications.data'
-import type { PropertyID } from '$lib/database/properties.data'
-import { DeductionSystemWithDuals } from '$lib/logic/DeductionSystemWithDuals'
+import { group_items } from '$lib/commons/utils'
 import {
 	get_dual_property,
 	get_non_properties,
@@ -10,10 +8,12 @@ import {
 	propertyIDs,
 } from '$lib/data-utils/data.helpers'
 import { CATEGORIES, type CategoryID } from '$lib/database/categories.data'
-import { group_items } from '$lib/commons/utils'
-import { EntitySystemWithDuals } from '$lib/logic/EntitySystemWithDuals'
-import type { Entity } from '$lib/logic/Entity'
+import { IMPLICATIONS } from '$lib/database/implications.data'
 import type { Prefix } from '$lib/database/prefix.data'
+import type { PropertyID } from '$lib/database/properties.data'
+import { DeductionSystemWithDuals } from '$lib/logic/DeductionSystemWithDuals'
+import type { Entity } from '$lib/logic/Entity'
+import { EntitySystemWithDuals } from '$lib/logic/EntitySystemWithDuals'
 
 export const property_deduction_system = new DeductionSystemWithDuals<Prefix, PropertyID>(
 	new Set(propertyIDs),
