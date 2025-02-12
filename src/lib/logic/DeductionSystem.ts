@@ -91,34 +91,41 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 		return `Since it ${assumption_string}, we deduce that it ${conclusion_string}.`
 	}
 
+	// caution: the following function is not pure.
+	// for performance reasons, we change the ids in place
+	private get_new_deductions(ids: Set<T>) {
+		const new_deductions: DetailedProperty<PrefixType, T>[] = []
+
+		for (const rule of this.normalized_rules) {
+			const not_new = ids.has(rule.conclusion)
+			if (not_new) continue
+
+			const rule_applies = rule.assumptions.isSubsetOf(ids)
+			if (!rule_applies) continue
+
+			const new_deduction = {
+				id: rule.conclusion,
+				prefix: this.get_prefix(rule.conclusion),
+				reason: this.reason_rule(rule),
+			}
+
+			new_deductions.push(new_deduction)
+			ids.add(rule.conclusion)
+		}
+
+		return new_deductions
+	}
+
 	public get_detailed_deductions(
 		assumptions: DetailedProperty<PrefixType, T>[],
 	): DetailedProperty<PrefixType, T>[] {
-		let done = false
+		const deductions = [...assumptions]
+		const deduced_ids = new Set(deductions.map((entry) => entry.id))
 
-		const deductions = Array.from(assumptions)
-		const deduced_ids = new Set(assumptions.map((entry) => entry.id))
-
-		while (!done) {
-			done = true
-
-			for (const rule of this.normalized_rules) {
-				const not_new = deduced_ids.has(rule.conclusion)
-				if (not_new) continue
-
-				const rule_applies = rule.assumptions.isSubsetOf(deduced_ids)
-				if (!rule_applies) continue
-
-				done = false
-
-				deductions.push({
-					id: rule.conclusion,
-					prefix: this.get_prefix(rule.conclusion),
-					reason: this.reason_rule(rule),
-				})
-
-				deduced_ids.add(rule.conclusion)
-			}
+		while (true) {
+			const new_deductions = this.get_new_deductions(deduced_ids)
+			if (new_deductions.length === 0) break
+			deductions.push(...new_deductions)
 		}
 
 		return deductions
