@@ -72,6 +72,6 @@
 		min-height: 100dvh;
 		display: grid;
 		grid-template-rows: auto auto 1fr auto;
-		padding-inline: 0.5rem;
+		padding-inline: 0.75rem;
 	}
 </style>

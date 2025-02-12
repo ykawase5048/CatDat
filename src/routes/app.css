@@ -57,19 +57,12 @@ body[data-theme='pink'] {
 }
 
 body {
-	margin: 0;
-	padding-inline: 0.75rem;
 	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
 		'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 	font-size: 1.125rem;
 	background-color: var(--bg-color);
 	color: var(--text-color);
 	line-height: 1.5;
-}
-
-html,
-body {
-	scrollbar-gutter: stable both-edges;
 }
 
 p {
