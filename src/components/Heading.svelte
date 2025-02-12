@@ -17,7 +17,7 @@
 <style>
 	header {
 		text-align: center;
-		padding-block: 1.5rem;
+		padding-block: 2rem;
 	}
 
 	h1 {
