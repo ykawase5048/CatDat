@@ -103,8 +103,8 @@
 <h2>Search for categories</h2>
 
 <p class="hint">
-	On this page, you can search for categories that satisfy a specific set of properties
-	while simultaneously not satisfying another set of properties. For example, you can
+	Search for categories that satisfy a specific set of properties while simultaneously
+	not satisfying another set of properties. For example, you can
 	<a href={sample_search_url} target="_blank">look</a> for categories that are finitely complete
 	and pointed but not complete.
 </p>

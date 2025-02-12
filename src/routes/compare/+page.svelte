@@ -57,6 +57,10 @@
 
 <h2>Choose categories for comparison</h2>
 
+<p class="hint">
+	Select up to {max_categories} categories to compare their properties with each other.
+</p>
+
 <Selection
 	allowed_items={category_names}
 	section_label="selected categories"
