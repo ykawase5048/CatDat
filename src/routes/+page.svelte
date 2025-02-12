@@ -8,10 +8,11 @@
 	<i>CatDat</i> provides a growing collection of
 	<a class="accent" href="https://en.wikipedia.org/wiki/Category_theory" target="_blank"
 		>categories</a
-	>, each with detailed descriptions, properties, and non-properties. A list of
-	implications leverages a powerful deduction system, allowing you to search for
-	categories with specific properties or non-properties. Additionally, you can compare
-	categories to see how their properties align or differ.
+	>, each with detailed descriptions, properties, and non-properties. It leverages a
+	powerful deduction system based on a list of implications, which allows for automatic
+	deduction of properties and non-properties from more basic ones. Additionally, you can
+	search for categories with specific properties or non-properties, and also compare
+	several categories to see how their properties align or differ.
 </p>
 
 <p>
