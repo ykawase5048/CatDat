@@ -9,6 +9,14 @@
 		margin-bottom: 1.5rem;
 		display: flex;
 		justify-content: center;
-		gap: 0.75rem;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+
+	@media (max-width: 420px) {
+		footer {
+			gap: 0.25rem 0.5rem;
+			font-size: 0.85rem;
+		}
 	}
 </style>
