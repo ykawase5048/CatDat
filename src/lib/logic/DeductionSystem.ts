@@ -20,10 +20,15 @@ type NormalizedRule<T> = {
 	readonly conclusion: T
 }
 
+/**
+ * A deduction system uses a set of rules to deduce new properties from
+ * a set of assumptions, likewise for negations of properties.
+ * Reasons are given in natural language.
+ */
 export class DeductionSystem<PrefixType extends string, T extends string> {
 	public readonly rules: Rule<T>[]
 	public readonly normalized_rules: NormalizedRule<T>[] = []
-	public readonly property_ids: Set<T>
+	public readonly property_ids: Set<T> // all available properties
 	public readonly get_prefix: (id: T) => PrefixType
 	public readonly negate_prefix: (prefix: PrefixType) => string
 
@@ -42,6 +47,10 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 		if (initialize) this.init()
 	}
 
+	/**
+	 * Checks if every rule has registered assumptions and conclusions.
+	 * Throws an error if a rule is invalid.
+	 */
 	private validate_rules(): void {
 		for (const rule of this.rules) {
 			const is_valid =
@@ -51,10 +60,20 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 		}
 	}
 
+	/**
+	 * Initializes the deduction system by computing the normalized rules.
+	 */
 	public init(): void {
 		this.compute_normalized_rules()
 	}
 
+	/**
+	 * Creates the list of all normalized rules from the original rules.
+	 * A rule like "A + B => C + D" is normalized by splitting it into
+	 * two rules: "A + B => C" and "A + B => D". Also, the assumptions
+	 * are converted to sets for faster lookups in other methods.
+	 * Equivalences are also handled by adding the inverse rules.
+	 */
 	protected compute_normalized_rules(): void {
 		for (const rule of this.rules) {
 			const { conclusions, assumptions, equivalent } = rule
@@ -81,6 +100,11 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 		}
 	}
 
+	/**
+	 * Returns the list of all deductions that can be recursively made
+	 * from a list of assumptions, using the rules of the deduction system.
+	 * The reasons are given in natural language.
+	 */
 	public get_detailed_deductions(
 		assumptions: DetailedProperty<PrefixType, T>[],
 	): DetailedProperty<PrefixType, T>[] {
@@ -96,8 +120,13 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 		return deductions
 	}
 
-	// caution: the following function is not pure.
-	// for performance reasons, we change the ids in place
+	/**
+	 * Returns the list of new deductions that can be made from a set
+	 * of property IDs by looping *once* over all rules.
+	 *
+	 * Caution: This method is not pure.
+	 * For performance reasons, we change the IDs in place.
+	 */
 	private get_new_deductions(ids: Set<T>) {
 		const new_deductions: DetailedProperty<PrefixType, T>[] = []
 
@@ -117,10 +146,16 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 		return new_deductions
 	}
 
+	/**
+	 * Checks if a rule has a new conclusion and that all assumptions are met.
+	 */
 	private is_rule_applicable(rule: NormalizedRule<T>, ids: Set<T>): boolean {
 		return !ids.has(rule.conclusion) && rule.assumptions.isSubsetOf(ids)
 	}
 
+	/**
+	 * Returns a string representation of a rule in natural language.
+	 */
 	private get_rule_as_string(rule: NormalizedRule<T>) {
 		const assumption_string = Array.from(rule.assumptions)
 			.map((id) => `${this.get_prefix(id)} ${id}`)
@@ -131,6 +166,11 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 		return `Since it ${assumption_string}, we deduce that it ${conclusion_string}.`
 	}
 
+	/**
+	 * Returns the list of all negations that can be recursively deduced
+	 * from a list of assumptions and negations, using the rules of the deduction system.
+	 * The reasons are given in natural language.
+	 */
 	public get_detailed_deduced_negations(
 		assumptions: DetailedProperty<PrefixType, T>[],
 		negations: DetailedProperty<PrefixType, T>[],
@@ -152,6 +192,12 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 		return deduced_negations
 	}
 
+	/**
+	 * Returns the list of new negations that can be deduced from a set of
+	 * assumptions and negations by looping *once* over properties.
+	 * The idea is to assume a property and check if it leads to a contradiction.
+	 * If yes, we register this property as a new negation.
+	 */
 	private get_new_negations(
 		assumed_ids: T[],
 		deduced_negation_ids: Set<T>,
@@ -186,7 +232,15 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 		return new_negations
 	}
 
-	// TODO: refactor this method
+	/**
+	 * Returns a contradiction proof if a contradiction can be deduced
+	 * from a set of assumptions and negations. It loops over all rules
+	 * and stops when no new conclusions can be made or a contradiction is found.
+	 * The proof is given in natural language.
+	 *
+	 * TODO: refactor this method
+	 * TODO: find a shorter proof that removes unnecessary paths
+	 */
 	private get_contradiction(assumed_ids: T[], negated_ids: Set<T>) {
 		const deduced_ids = new Set(assumed_ids)
 		const used_rules: NormalizedRule<T>[] = []
@@ -212,13 +266,14 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 			}
 		}
 
-		// TODO: find *shorter* proof
-
 		return contradictory_id
 			? this.build_contradiction_proof(contradictory_id, used_rules)
 			: null
 	}
 
+	/**
+	 * Builds a contradiction proof in natural language.
+	 */
 	private build_contradiction_proof(
 		contradictory_id: T,
 		used_rules: NormalizedRule<T>[],
@@ -232,6 +287,12 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 		return { proof }
 	}
 
+	/**
+	 * Returns the ID of a redundant assumption within a list of assumptions,
+	 * or null if no redundancy is found.
+	 *
+	 * This method is only used for testing purposes. It is not called in the app.
+	 */
 	public get_redundancy(assumptions: DetailedProperty<PrefixType, T>[]): T | null {
 		const deductions = this.get_detailed_deductions(assumptions)
 
@@ -249,6 +310,12 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 		return null
 	}
 
+	/**
+	 * Returns the ID of a redundant negation within a list of assumptions and negations,
+	 * or null if no redundancy is found.
+	 *
+	 * This method is only used for testing purposes. It is not called in the app.
+	 */
 	public get_redundancy_of_negations(
 		assumptions: DetailedProperty<PrefixType, T>[],
 		negations: DetailedProperty<PrefixType, T>[],
@@ -275,6 +342,10 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 		return null
 	}
 
+	/**
+	 * Returns true if a contradiction can be deduced from a list of assumptions
+	 * and negations, using the rules of the deduction system.
+	 */
 	public has_contradiction(assumptions: T[], negations: T[]): boolean {
 		const assumptions_detailed: DetailedProperty<PrefixType, T>[] = assumptions.map(
 			(id) => ({
@@ -304,6 +375,11 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 		return deduction_ids.intersection(deduced_negation_ids).size > 0
 	}
 
+	/**
+	 * Returns the list of all consistent combinations of the form "P, but not Q",
+	 * where P and Q are properties from the deduction system.
+	 * Here, "consistent" means that the deduction system does not deduce Q from P.
+	 */
 	public get_basic_consistent_combinations(): { assumption: T; negation: T }[] {
 		const combinations: { assumption: T; negation: T }[] = []
 		for (const assumption of this.property_ids) {
@@ -319,12 +395,19 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 		return combinations
 	}
 
+	/**
+	 * Returns the list of all properties in the system, sorted by ID.
+	 */
 	public get_sorted_property_ids(): T[] {
 		return Array.from(this.property_ids).toSorted((a, b) =>
 			a.toLowerCase().localeCompare(b.toLowerCase()),
 		)
 	}
 
+	/**
+	 * Returns the list of all rules of the system whose assumptions or conclusions
+	 * have a given property.
+	 */
 	public get_relevant_rules(id: T): Rule<T>[] {
 		return this.rules.filter(
 			(rule) => rule.conclusions.includes(id) || rule.assumptions.includes(id),
