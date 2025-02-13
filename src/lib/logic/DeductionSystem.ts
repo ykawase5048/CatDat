@@ -131,39 +131,56 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 		return deductions
 	}
 
-	private get_contradiction(
-		assumptions: DetailedProperty<PrefixType, T>[],
-		negated_ids: Set<T>,
-	): null | { reason: string } {
-		const new_deductions = this.get_detailed_deductions(assumptions)
-		let reason = ''
-		let has_contradiction = false
+	// TODO: refactor this method
+	private get_contradiction(assumed_ids: T[], negated_ids: Set<T>) {
+		const deduced_ids = new Set(assumed_ids)
+		const used_rules: NormalizedRule<T>[] = []
 
-		for (const deduction of new_deductions) {
-			const is_irrelevant = assumptions.some(
-				(assumption) => assumption.id === deduction.id,
-			)
-			if (is_irrelevant) continue
+		let done = false
+		let contradictory_id: null | T = null
 
-			reason += `${deduction.reason} `
+		while (!done && !contradictory_id) {
+			done = true
 
-			if (negated_ids.has(deduction.id)) {
-				has_contradiction = true
-				const negated_prefix = this.negate_prefix(deduction.prefix)
-				reason += `This is a contradiction since we already know that it ${negated_prefix} ${deduction.id}.`
-				break
+			for (const rule of this.normalized_rules) {
+				const not_new = deduced_ids.has(rule.conclusion)
+				if (not_new) continue
+
+				const rule_applies = rule.assumptions.isSubsetOf(deduced_ids)
+				if (!rule_applies) continue
+
+				done = false
+
+				used_rules.push(rule)
+
+				if (negated_ids.has(rule.conclusion)) {
+					contradictory_id = rule.conclusion
+					break
+				} else {
+					deduced_ids.add(rule.conclusion)
+				}
 			}
 		}
 
-		if (has_contradiction) {
-			return { reason }
+		if (!contradictory_id) {
+			return null
 		}
 
-		return null
+		// TODO: find *shorter* proof
+
+		const negated_prefix = this.negate_prefix(this.get_prefix(contradictory_id))
+
+		const main_proof = used_rules.map((rule) => this.reason_rule(rule)).join(' ')
+
+		const finale = `This is a contradiction since we already know that it ${negated_prefix} ${contradictory_id}.`
+
+		const proof = `${main_proof} ${finale}`
+
+		return { proof }
 	}
 
 	private get_new_negations(
-		assumptions: DetailedProperty<PrefixType, T>[],
+		assumed_ids: T[],
 		deduced_negation_ids: Set<T>,
 	): DetailedProperty<PrefixType, T>[] {
 		const new_negations: DetailedProperty<PrefixType, T>[] = []
@@ -174,29 +191,20 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 
 			const prefix = this.get_prefix(id)
 
-			const new_assumptions = [
-				...assumptions,
-				{
-					id,
-					prefix,
-					reason: '-',
-				},
-			]
-
 			const contradiction = this.get_contradiction(
-				new_assumptions,
+				[...assumed_ids, id],
 				deduced_negation_ids,
 			)
 			if (!contradiction) continue
 
-			const reason = contradiction.reason
-
-			const complete_reason = `Assume for a contradiction that it ${prefix} ${id}. ${reason}`
+			const { proof } = contradiction
+			const prelude = `Assume for a contradiction that it ${prefix} ${id}.`
+			const reason = `${prelude} ${proof}`
 
 			const new_negation = {
 				id,
 				prefix: this.get_prefix(id),
-				reason: complete_reason,
+				reason,
 			}
 
 			new_negations.push(new_negation)
@@ -214,7 +222,7 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 
 		while (true) {
 			const new_negations = this.get_new_negations(
-				assumptions,
+				assumptions.map((assumption) => assumption.id),
 				deduced_negation_ids,
 			)
 			if (new_negations.length === 0) break
