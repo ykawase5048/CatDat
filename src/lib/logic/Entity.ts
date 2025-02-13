@@ -31,19 +31,18 @@ export class Entity<PrefixType extends string, S extends string, T extends strin
 		deduction_system: DeductionSystem<PrefixType, T>,
 		reason_handler: ReasonHandler<PrefixType, T>,
 	) {
-		this.deduced_properties = deduction_system.get_conclusions_with_reasons(
+		this.deduced_properties = deduction_system.get_deductions_with_reasons(
 			new Set(this.properties.map((p) => p.id)),
 			reason_handler,
 		)
 
 		const all_properties = [...this.properties, ...this.deduced_properties]
 
-		this.deduced_non_properties =
-			deduction_system.get_concluded_negations_with_reasons(
-				new Set(all_properties.map((p) => p.id)),
-				new Set(this.non_properties.map((p) => p.id)),
-				reason_handler,
-			)
+		this.deduced_non_properties = deduction_system.get_deduced_negations_with_reasons(
+			new Set(all_properties.map((p) => p.id)),
+			new Set(this.non_properties.map((p) => p.id)),
+			reason_handler,
+		)
 
 		const all_non_properties = [
 			...this.non_properties,

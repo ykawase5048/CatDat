@@ -86,10 +86,10 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 	}
 
 	/**
-	 * Returns the list of all properties that can be deduced from a list of assumptions.
+	 * Returns the list of all properties that can be deduced from a set of assumptions.
 	 * The reasons are given in natural language.
 	 */
-	public get_conclusions_with_reasons(
+	public get_deductions_with_reasons(
 		ids: Set<T>,
 		reason_handler: ReasonHandler<PrefixType, T>,
 	): PropertyWithReason<PrefixType, T>[] {
@@ -118,14 +118,6 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 	}
 
 	/**
-	 * Returns the set of all properties that can be deduced from a list of assumptions.
-	 * The reasons are not included in this method.
-	 */
-	private get_pure_deductions(ids: Set<T>): Set<T> {
-		return new Set(this.get_rules_for_deductions(ids).map((rule) => rule.conclusion))
-	}
-
-	/**
 	 * Returns the list of all properties that can be deduced from a set of assumptions,
 	 * by running *once* through the list of normalized rules.
 	 */
@@ -150,10 +142,18 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 	}
 
 	/**
+	 * Returns the set of all properties that can be deduced from a set of assumptions.
+	 * The reasons are *not* included in this method.
+	 */
+	private get_deductions(ids: Set<T>): Set<T> {
+		return new Set(this.get_rules_for_deductions(ids).map((rule) => rule.conclusion))
+	}
+
+	/**
 	 * Returns the list of all negations that can be deduced from a set of properties
 	 * and negated properties. The reasons are given in natural language.
 	 */
-	public get_concluded_negations_with_reasons(
+	public get_deduced_negations_with_reasons(
 		assumed_ids: Set<T>,
 		negated_ids: Set<T>,
 		reason_handler: ReasonHandler<PrefixType, T>,
@@ -354,12 +354,11 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 	 * This method is only used for testing purposes. It is not called in the app.
 	 */
 	public get_redundancy(assumed_ids: Set<T>): T | null {
-		const deductions = this.get_pure_deductions(assumed_ids).union(assumed_ids)
+		const deductions = this.get_deductions(assumed_ids).union(assumed_ids)
 
 		for (const id of assumed_ids) {
 			const reduced_ids = assumed_ids.difference(new Set([id]))
-			const reduced_deductions =
-				this.get_pure_deductions(reduced_ids).union(reduced_ids)
+			const reduced_deductions = this.get_deductions(reduced_ids).union(reduced_ids)
 
 			if (reduced_deductions.size === deductions.size) {
 				return id
@@ -370,7 +369,7 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 	}
 
 	/**
-	 * Returns the ID of a redundant negation within a list of assumptions and negations,
+	 * Returns the ID of a redundant negation within a set of assumptions and negations,
 	 * or null if no redundancy is found.
 	 *
 	 * This method is only used for testing purposes. It is not called in the app.
@@ -380,9 +379,8 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 		negated_ids: Set<T>,
 		reason_handler: ReasonHandler<PrefixType, T>,
 	): T | null {
-		const deduced_assumptions =
-			this.get_pure_deductions(assumed_ids).union(assumed_ids)
-		const deduced_negations = this.get_concluded_negations_with_reasons(
+		const deduced_assumptions = this.get_deductions(assumed_ids).union(assumed_ids)
+		const deduced_negations = this.get_deduced_negations_with_reasons(
 			assumed_ids,
 			negated_ids,
 			reason_handler,
@@ -393,7 +391,7 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 
 		for (const id of negated_ids) {
 			const reduced_negated_ids = negated_ids.difference(new Set([id]))
-			const reduced_deduced_negations = this.get_concluded_negations_with_reasons(
+			const reduced_deduced_negations = this.get_deduced_negations_with_reasons(
 				deduced_assumptions,
 				reduced_negated_ids,
 				reason_handler,
@@ -411,7 +409,7 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 	}
 
 	/**
-	 * Returns true if a contradiction can be deduced from a list of assumptions
+	 * Returns true if a contradiction can be deduced from a set of assumptions
 	 * and negations, using the rules of the deduction system.
 	 *
 	 * @deprecated as long as we have the reason_handler here, which should go away
@@ -421,8 +419,8 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 		negated_ids: Set<T>,
 		reason_handler: ReasonHandler<PrefixType, T>,
 	): boolean {
-		const deduced_ids = this.get_pure_deductions(assumed_ids)
-		const deduced_negated_properties = this.get_concluded_negations_with_reasons(
+		const deduced_ids = this.get_deductions(assumed_ids)
+		const deduced_negated_properties = this.get_deduced_negations_with_reasons(
 			assumed_ids,
 			negated_ids,
 			reason_handler,
@@ -443,7 +441,7 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 	public get_basic_consistent_combinations(): { assumption: T; negation: T }[] {
 		const combinations: { assumption: T; negation: T }[] = []
 		for (const assumption of this.all_property_ids) {
-			const deduced_ids = this.get_pure_deductions(new Set([assumption])).union(
+			const deduced_ids = this.get_deductions(new Set([assumption])).union(
 				new Set([assumption]),
 			)
 			for (const negation of this.all_property_ids) {

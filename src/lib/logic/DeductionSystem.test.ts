@@ -33,7 +33,7 @@ describe('constructor', () => {
 	})
 })
 
-describe('get_conclusions_with_reasons', () => {
+describe('get_deductions_with_reasons', () => {
 	const deductionSystem = new DeductionSystem<string, string>(
 		new Set(['a', 'b', 'c', 'd', 'e']),
 		[
@@ -44,7 +44,7 @@ describe('get_conclusions_with_reasons', () => {
 	)
 
 	it('should explain why the properties follow', () => {
-		const deductions = deductionSystem.get_conclusions_with_reasons(
+		const deductions = deductionSystem.get_deductions_with_reasons(
 			new Set(['a', 'b']),
 			default_reason_handler,
 		)
@@ -59,7 +59,7 @@ describe('get_conclusions_with_reasons', () => {
 	})
 })
 
-describe('get_concluded_negations_with_reasons', () => {
+describe('get_deduced_negations_with_reasons', () => {
 	const deductionSystem = new DeductionSystem<string, string>(
 		new Set(['a', 'b', 'c', 'd', 'e']),
 		[
@@ -70,7 +70,7 @@ describe('get_concluded_negations_with_reasons', () => {
 
 	it('should explain why the non-properties follow"', () => {
 		const detailed_deduced_negations =
-			deductionSystem.get_concluded_negations_with_reasons(
+			deductionSystem.get_deduced_negations_with_reasons(
 				new Set(['e']),
 				new Set(['d']),
 				default_reason_handler,
