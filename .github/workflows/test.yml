@@ -1,4 +1,5 @@
 name: test
+
 on:
     push:
     pull_request:
@@ -31,8 +32,8 @@ jobs:
             - name: Sync SvelteKit
               run: pnpm svelte-kit sync
 
-            - name: Run tests and coverage
-              run: pnpm coverage
-
             - name: Run svelte checker
               run: pnpm check
+
+            - name: Run tests and report coverage
+              run: pnpm coverage
