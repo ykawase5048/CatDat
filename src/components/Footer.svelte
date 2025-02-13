@@ -16,7 +16,6 @@
 	@media (max-width: 420px) {
 		footer {
 			gap: 0.25rem 0.5rem;
-			font-size: 0.85rem;
 		}
 	}
 </style>
