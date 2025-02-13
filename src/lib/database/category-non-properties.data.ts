@@ -141,6 +141,7 @@ export const CATEGORY_NON_PROPERTIES: Record<CategoryID, PropertyWithReason[]> =
 		{ id: 'balanced', reason: '' },
 		{ id: 'exact filtered colimits', reason: '' },
 		{ id: 'skeletal', reason: 'trivial' },
+		{ id: 'Malcev', reason: 'See <a href="https://math.stackexchange.com/questions/5033161" target="_blank">MSE/5033161</a>.' },
 	],
 	'Man': [
 		{ id: 'essentially small', reason: '' },
