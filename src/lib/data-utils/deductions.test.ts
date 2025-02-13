@@ -127,11 +127,19 @@ describe('categories with deduced properties', () => {
 	}
 })
 
-describe('TEMPORARY TEST DURING DEDUCTION REFACTORING', () => {
-	it('should have the expected properties for the category of abelian groups', () => {
+/**
+ * This test is useful during refactorings to make sure that the
+ * deduced properties and negations are still correct.
+ * It has to be adjusted whenever new properties are added to the database.
+ */
+describe('deduced categorical properties and negations', () => {
+	it('are correct for the category of abelian groups', () => {
 		const Ab = categories_with_deduced_properties_dictionary.Ab
 
-		const expected_deduced_properties = new Set([
+		const deduced_ids = new Set(Ab.deduced_properties.map((p) => p.id))
+		const negated_ids = new Set(Ab.deduced_non_properties.map((p) => p.id))
+
+		const expected_deduced_ids = new Set<PropertyID>([
 			'locally essentially small',
 			'locally finitely presentable',
 			'additive',
@@ -183,7 +191,7 @@ describe('TEMPORARY TEST DURING DEDUCTION REFACTORING', () => {
 			'cogenerator',
 		])
 
-		const expected_deduced_non_properties = new Set([
+		const expected_negated_ids = new Set<PropertyID>([
 			'small',
 			'cartesian closed',
 			'elementary topos',
@@ -206,12 +214,81 @@ describe('TEMPORARY TEST DURING DEDUCTION REFACTORING', () => {
 			'right cancellative',
 		])
 
-		expect(new Set(Ab.deduced_properties.map((p) => p.id))).toEqual(
-			expected_deduced_properties,
-		)
+		expect(deduced_ids).toEqual(expected_deduced_ids)
+		expect(negated_ids).toEqual(expected_negated_ids)
+	})
 
-		expect(new Set(Ab.deduced_non_properties.map((p) => p.id))).toEqual(
-			expected_deduced_non_properties,
-		)
+	it('are correct for the category of topological spaces', () => {
+		const Top = categories_with_deduced_properties_dictionary.Top
+
+		const deduced_ids = new Set(Top.deduced_properties.map((p) => p.id))
+		const negated_ids = new Set(Top.deduced_non_properties.map((p) => p.id))
+
+		const expected_deduced_ids = new Set<PropertyID>([
+			'locally essentially small',
+			'finitely complete',
+			'filtered limits',
+			'wide pullbacks',
+			'connected limits',
+			'products',
+			'equalizers',
+			'finite products',
+			'countable products',
+			'terminal object',
+			'binary products',
+			'pullbacks',
+			'connected',
+			'coproducts',
+			'disjoint finite coproducts',
+			'finite coproducts',
+			'Cauchy complete',
+			'sequential limits',
+			'distributive',
+			'strict initial object',
+			'inhabited',
+			'finitely cocomplete',
+			'filtered colimits',
+			'wide pushouts',
+			'connected colimits',
+			'coequalizers',
+			'countable coproducts',
+			'initial object',
+			'binary coproducts',
+			'pushouts',
+			'sequential colimits',
+		])
+
+		const expected_negated_ids = new Set<PropertyID>([
+			'discrete',
+			'locally finitely presentable',
+			'locally ℵ₁-presentable',
+			'finitary algebraic',
+			'elementary topos',
+			'Grothendieck topos',
+			'Grothendieck abelian',
+			'abelian',
+			'mono-regular',
+			'thin',
+			'essentially small',
+			'essentially finite',
+			'right cancellative',
+			'left cancellative',
+			'groupoid',
+			'epi-regular',
+			'self-dual',
+			'small',
+			'finite',
+			'essentially discrete',
+			'trivial',
+			'pointed',
+			'subobject classifier',
+			'split abelian',
+			'zero morphisms',
+			'preadditive',
+			'additive',
+		])
+
+		expect(deduced_ids).toEqual(expected_deduced_ids)
+		expect(negated_ids).toEqual(expected_negated_ids)
 	})
 })
