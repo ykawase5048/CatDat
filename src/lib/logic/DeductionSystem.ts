@@ -91,17 +91,28 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 		return `Since it ${assumption_string}, we deduce that it ${conclusion_string}.`
 	}
 
+	private build_contradiction_proof(
+		contradictory_id: T,
+		used_rules: NormalizedRule<T>[],
+	) {
+		const negated_prefix = this.negate_prefix(this.get_prefix(contradictory_id))
+		const main_proof = used_rules.map((rule) => this.reason_rule(rule)).join(' ')
+		const finale = `This is a contradiction since we already know that it ${negated_prefix} ${contradictory_id}.`
+		const proof = `${main_proof} ${finale}`
+		return { proof }
+	}
+
+	private is_rule_applicable(rule: NormalizedRule<T>, ids: Set<T>): boolean {
+		return !ids.has(rule.conclusion) && rule.assumptions.isSubsetOf(ids)
+	}
+
 	// caution: the following function is not pure.
 	// for performance reasons, we change the ids in place
 	private get_new_deductions(ids: Set<T>) {
 		const new_deductions: DetailedProperty<PrefixType, T>[] = []
 
 		for (const rule of this.normalized_rules) {
-			const not_new = ids.has(rule.conclusion)
-			if (not_new) continue
-
-			const rule_applies = rule.assumptions.isSubsetOf(ids)
-			if (!rule_applies) continue
+			if (!this.is_rule_applicable(rule, ids)) continue
 
 			const new_deduction = {
 				id: rule.conclusion,
@@ -143,14 +154,9 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 			done = true
 
 			for (const rule of this.normalized_rules) {
-				const not_new = deduced_ids.has(rule.conclusion)
-				if (not_new) continue
-
-				const rule_applies = rule.assumptions.isSubsetOf(deduced_ids)
-				if (!rule_applies) continue
+				if (!this.is_rule_applicable(rule, deduced_ids)) continue
 
 				done = false
-
 				used_rules.push(rule)
 
 				if (negated_ids.has(rule.conclusion)) {
@@ -162,21 +168,11 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 			}
 		}
 
-		if (!contradictory_id) {
-			return null
-		}
-
 		// TODO: find *shorter* proof
 
-		const negated_prefix = this.negate_prefix(this.get_prefix(contradictory_id))
-
-		const main_proof = used_rules.map((rule) => this.reason_rule(rule)).join(' ')
-
-		const finale = `This is a contradiction since we already know that it ${negated_prefix} ${contradictory_id}.`
-
-		const proof = `${main_proof} ${finale}`
-
-		return { proof }
+		return contradictory_id
+			? this.build_contradiction_proof(contradictory_id, used_rules)
+			: null
 	}
 
 	private get_new_negations(
