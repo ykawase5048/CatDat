@@ -1,4 +1,4 @@
-import type { NonEmptyArray } from '$lib/commons/utils'
+import { equal_up_to_order, type NonEmptyArray } from '$lib/commons/utils'
 import type { PropertyWithReason, ReasonHandler } from './ReasonHandler'
 
 export type Rule<T> = {
@@ -24,12 +24,18 @@ export class DeductionSystem<P extends string, T extends string> {
 	public readonly rules: Rule<T>[]
 	public readonly normalized_rules: NormalizedRule<T>[] = []
 	public readonly all_property_ids: Set<T>
+	public readonly get_dual_property?: (id: T) => T | null
 
-	constructor(all_property_ids: Set<T>, rules: Rule<T>[], initialize = true) {
+	constructor(
+		all_property_ids: Set<T>,
+		rules: Rule<T>[],
+		get_dual_property?: (id: T) => T | null,
+	) {
 		this.all_property_ids = all_property_ids
 		this.rules = rules
+		this.get_dual_property = get_dual_property
 		this.validate_rules()
-		if (initialize) this.init()
+		this.init()
 	}
 
 	/**
@@ -47,9 +53,84 @@ export class DeductionSystem<P extends string, T extends string> {
 
 	/**
 	 * Initializes the deduction system by computing the normalized rules.
+	 * If the system has dual properties, it also adds dualized rules
+	 * and self-dual rules.
 	 */
 	public init(): void {
+		if (this.get_dual_property) {
+			this.add_dualized_rules()
+			this.add_self_dual_rules()
+		}
 		this.compute_normalized_rules()
+	}
+
+	/**
+	 * Returns the dual properties of a list of properties, if they all have duals.
+	 * If any property does not have a dual, null is returned.
+	 */
+	private get_dual_properties(ids: NonEmptyArray<T>): NonEmptyArray<T> | null {
+		if (!this.get_dual_property) return null
+		const dual_properties = ids.map((id) => this.get_dual_property!(id))
+		if (dual_properties.includes(null)) return null
+		return dual_properties as NonEmptyArray<T>
+	}
+
+	/**
+	 * Adds dualized rules to the list of rules.
+	 */
+	private add_dualized_rules(): void {
+		const dual_rules: Rule<T>[] = []
+
+		for (const rule of this.rules) {
+			const dual_assumptions = this.get_dual_properties(rule.assumptions)
+			const dual_conclusions = this.get_dual_properties(rule.conclusions)
+
+			if (!dual_assumptions || !dual_conclusions) continue
+
+			const is_same =
+				equal_up_to_order(dual_assumptions, rule.assumptions) &&
+				equal_up_to_order(dual_conclusions, rule.conclusions)
+
+			if (is_same) continue
+
+			const dualized_rule: Rule<T> = rule.equivalent
+				? {
+						id: `${rule.id}_dual`,
+						equivalent: true,
+						assumptions: dual_assumptions,
+						conclusions: dual_conclusions,
+						reason: `[dualized] ${rule.reason}`,
+					}
+				: {
+						id: `${rule.id}_dual`,
+						assumptions: dual_assumptions,
+						conclusions: dual_conclusions,
+						reason: `[dualized] ${rule.reason}`,
+					}
+
+			dual_rules.push(dualized_rule)
+		}
+
+		this.rules.push(...dual_rules)
+	}
+
+	/**
+	 * Adds self-dual rules to the list of rules.
+	 */
+	private add_self_dual_rules(): void {
+		if (!this.get_dual_property) return
+		for (const id of this.all_property_ids) {
+			const dual_id = this.get_dual_property(id)
+
+			if (!dual_id || dual_id === id) continue
+
+			this.rules.push({
+				id: `${id}_selfdual`,
+				assumptions: ['self-dual' as T, id],
+				conclusions: [dual_id],
+				reason: 'trivial by self-duality',
+			})
+		}
 	}
 
 	/**

@@ -11,12 +11,12 @@ import { CATEGORIES, type CategoryID } from '$lib/database/categories.data'
 import { IMPLICATIONS } from '$lib/database/implications.data'
 import type { Prefix } from '$lib/database/prefix.data'
 import type { PropertyID } from '$lib/database/properties.data'
-import { DeductionSystemWithDuals } from '$lib/logic/DeductionSystemWithDuals'
+import { DeductionSystem } from '$lib/logic/DeductionSystem'
 import type { Entity } from '$lib/logic/Entity'
-import { EntitySystemWithDuals } from '$lib/logic/EntitySystemWithDuals'
+import { EntitySystem } from '$lib/logic/EntitySystem'
 import { ReasonHandler } from '$lib/logic/ReasonHandler'
 
-export const property_deduction_system = new DeductionSystemWithDuals<Prefix, PropertyID>(
+export const property_deduction_system = new DeductionSystem<Prefix, PropertyID>(
 	new Set(propertyIDs),
 	Array.from(IMPLICATIONS),
 	get_dual_property,
@@ -24,7 +24,7 @@ export const property_deduction_system = new DeductionSystemWithDuals<Prefix, Pr
 
 export const implications_with_duals = property_deduction_system.rules
 
-export const category_system = new EntitySystemWithDuals<Prefix, CategoryID, PropertyID>(
+export const category_system = new EntitySystem<Prefix, CategoryID, PropertyID>(
 	property_deduction_system,
 )
 

@@ -10,21 +10,11 @@ describe('constructor', () => {
 		}).toThrow()
 	})
 
-	it('should initialize by default by computing the normalized rules', () => {
+	it('should initialize by computing the normalized rules', () => {
 		const deductionSystem = new DeductionSystem<string, string>(new Set(['a', 'b']), [
 			{ id: '', assumptions: ['a'], conclusions: ['b'], reason: 'trivial' },
 		])
 		expect(deductionSystem.normalized_rules).not.toEqual([])
-	})
-
-	it('should not initialize when said so', () => {
-		const deductionSystem = new DeductionSystem<string, string>(
-			new Set(['a', 'b']),
-			[{ id: '', assumptions: ['a'], conclusions: ['b'], reason: 'trivial' }],
-
-			false,
-		)
-		expect(deductionSystem.normalized_rules).toEqual([])
 	})
 })
 
@@ -360,6 +350,91 @@ describe('relevant rules', () => {
 			id: 'rule2',
 			assumptions: ['b'],
 			conclusions: ['c'],
+			reason: 'trivial',
+		})
+	})
+})
+
+// TODO: check this test group
+describe('DeductionSystem with duals', () => {
+	const dual_config: Record<string, string> = {
+		'c': 'c^op',
+		'd': 'd^op',
+		'e': 'e^op',
+		'x': 'x',
+		'y': 'y',
+		'self-dual': 'self-dual',
+	}
+
+	const deductionSystem = new DeductionSystem<string, string>(
+		// prettier-ignore
+		new Set(['a','b','c','d','e','f','x','y','self-dual','c^op','d^op','e^op']),
+		[
+			{ id: 'ac', assumptions: ['a'], conclusions: ['c'], reason: 'trivial' },
+			{ id: 'cde', assumptions: ['c', 'd'], conclusions: ['e'], reason: 'trivial' },
+			{
+				id: 'xy',
+				equivalent: true,
+				assumptions: ['x'],
+				conclusions: ['y'],
+				reason: 'trivial',
+			},
+		],
+		(property) => dual_config[property] ?? null,
+	)
+
+	it('should have all given and all dualized rules', () => {
+		expect(deductionSystem.rules).toContainEqual({
+			id: 'ac',
+			assumptions: ['a'],
+			conclusions: ['c'],
+			reason: 'trivial',
+		})
+
+		expect(deductionSystem.rules).toContainEqual({
+			id: 'cde',
+			assumptions: ['c', 'd'],
+			conclusions: ['e'],
+			reason: 'trivial',
+		})
+
+		expect(deductionSystem.rules).toContainEqual({
+			id: 'xy',
+			equivalent: true,
+			assumptions: ['x'],
+			conclusions: ['y'],
+			reason: 'trivial',
+		})
+
+		expect(deductionSystem.rules).toContainEqual({
+			id: 'cde_dual',
+			assumptions: ['c^op', 'd^op'],
+			conclusions: ['e^op'],
+			reason: '[dualized] trivial',
+		})
+	})
+
+	it('should not contain rules that cannot be dualized', () => {
+		expect(deductionSystem.rules).not.toContainEqual({
+			id: expect.any(String),
+			assumptions: ['a^op'],
+			conclusions: ['c^op'],
+			reason: 'trivial',
+		})
+	})
+
+	it('should contain all self-dual rules', () => {
+		expect(deductionSystem.rules).toContainEqual({
+			id: 'c_selfdual',
+			assumptions: ['self-dual', 'c'],
+			conclusions: ['c^op'],
+			reason: 'trivial by self-duality',
+		})
+
+		expect(deductionSystem.rules).not.toContainEqual({
+			id: expect.any(String),
+			assumptions: ['self-dual', 'x'],
+			conclusions: ['x'],
 			reason: 'trivial',
 		})
 	})
