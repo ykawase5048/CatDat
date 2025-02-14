@@ -9,13 +9,6 @@ describe('constructor', () => {
 			])
 		}).toThrow()
 	})
-
-	it('should initialize by computing the normalized rules', () => {
-		const deductionSystem = new DeductionSystem<string, string>(new Set(['a', 'b']), [
-			{ id: '', assumptions: ['a'], conclusions: ['b'], reason: 'trivial' },
-		])
-		expect(deductionSystem.normalized_rules).not.toEqual([])
-	})
 })
 
 describe('get_deductions_with_reasons', () => {

@@ -21,19 +21,13 @@ export type NormalizedRule<T> = {
  * Reasons are given in natural language.
  */
 export class DeductionSystem<P extends string, T extends string> {
-	public readonly rules: Rule<T>[]
-	public readonly normalized_rules: NormalizedRule<T>[] = []
-	public readonly all_property_ids: Set<T>
-	public readonly get_dual_property?: (id: T) => T | null
+	private readonly normalized_rules: NormalizedRule<T>[] = []
 
 	constructor(
-		all_property_ids: Set<T>,
-		rules: Rule<T>[],
-		get_dual_property?: (id: T) => T | null,
+		public readonly all_property_ids: Set<T>,
+		public readonly rules: Rule<T>[],
+		public readonly get_dual_property?: (id: T) => T | null,
 	) {
-		this.all_property_ids = all_property_ids
-		this.rules = rules
-		this.get_dual_property = get_dual_property
 		this.validate_rules()
 		this.init()
 	}

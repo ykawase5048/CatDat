@@ -4,11 +4,8 @@ import { Entity } from './Entity'
 
 export class EntitySystem<P extends string, S extends string, T extends string> {
 	public readonly entities: Entity<P, S, T>[] = []
-	protected deduction_system: DeductionSystem<P, T>
 
-	constructor(deduction_system: DeductionSystem<P, T>) {
-		this.deduction_system = deduction_system
-	}
+	constructor(protected readonly deduction_system: DeductionSystem<P, T>) {}
 
 	public add(
 		id: S,

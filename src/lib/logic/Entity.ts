@@ -2,22 +2,15 @@ import type { DeductionSystem } from './DeductionSystem'
 import type { PropertyWithReason, ReasonHandler } from './ReasonHandler'
 
 export class Entity<P extends string, S extends string, T extends string> {
-	public readonly id: S
-	public properties: PropertyWithReason<P, T>[]
-	public non_properties: PropertyWithReason<P, T>[]
 	public deduced_properties: PropertyWithReason<P, T>[] = []
 	public deduced_non_properties: PropertyWithReason<P, T>[] = []
 	public unknown_properties: PropertyWithReason<P, T>[] = []
 
 	constructor(
-		id: S,
-		properties: PropertyWithReason<P, T>[],
-		non_properties: PropertyWithReason<P, T>[],
-	) {
-		this.id = id
-		this.properties = properties
-		this.non_properties = non_properties
-	}
+		public readonly id: S,
+		public readonly properties: PropertyWithReason<P, T>[],
+		public readonly non_properties: PropertyWithReason<P, T>[],
+	) {}
 
 	public get all_properties() {
 		return [...this.properties, ...this.deduced_properties]
