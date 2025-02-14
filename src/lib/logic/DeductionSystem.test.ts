@@ -188,73 +188,43 @@ describe('has_contradiction', () => {
 	)
 
 	it("should return true for 'a' and 'not a'", () => {
-		expect(
-			deductionSystem.has_contradiction(
-				new Set(['a']),
-				new Set(['a']),
-				default_reason_handler,
-			),
-		).toBe(true)
+		expect(deductionSystem.has_contradiction(new Set(['a']), new Set(['a']))).toBe(
+			true,
+		)
 	})
 
 	it("should return true for 'a' and 'not c'", () => {
-		expect(
-			deductionSystem.has_contradiction(
-				new Set(['a']),
-				new Set(['c']),
-				default_reason_handler,
-			),
-		).toBe(true)
+		expect(deductionSystem.has_contradiction(new Set(['a']), new Set(['c']))).toBe(
+			true,
+		)
 	})
 
 	it("should return true for 'a', 'd' and 'not f'", () => {
 		expect(
-			deductionSystem.has_contradiction(
-				new Set(['a', 'd']),
-				new Set(['f']),
-				default_reason_handler,
-			),
+			deductionSystem.has_contradiction(new Set(['a', 'd']), new Set(['f'])),
 		).toBe(true)
 	})
 
 	it("should return false for 'a' and 'b'", () => {
-		expect(
-			deductionSystem.has_contradiction(
-				new Set(['a', 'b']),
-				new Set([]),
-				default_reason_handler,
-			),
-		).toBe(false)
+		expect(deductionSystem.has_contradiction(new Set(['a', 'b']), new Set([]))).toBe(
+			false,
+		)
 	})
 
 	it("should return false for 'a' and 'c'", () => {
-		expect(
-			deductionSystem.has_contradiction(
-				new Set(['a', 'c']),
-				new Set([]),
-				default_reason_handler,
-			),
-		).toBe(false)
+		expect(deductionSystem.has_contradiction(new Set(['a', 'c']), new Set([]))).toBe(
+			false,
+		)
 	})
 
 	it("should return false for 'a' and 'b', and not 'f'", () => {
 		expect(
-			deductionSystem.has_contradiction(
-				new Set(['a', 'b']),
-				new Set(['f']),
-				default_reason_handler,
-			),
+			deductionSystem.has_contradiction(new Set(['a', 'b']), new Set(['f'])),
 		).toBe(false)
 	})
 
 	it("should return false for not 'f'", () => {
-		expect(
-			deductionSystem.has_contradiction(
-				new Set([]),
-				new Set(['f']),
-				default_reason_handler,
-			),
-		).toBe(false)
+		expect(deductionSystem.has_contradiction(new Set([]), new Set(['f']))).toBe(false)
 	})
 })
 
@@ -339,7 +309,6 @@ describe('get_redundancy_of_negations', () => {
 		const result = deductionSystem.get_redundancy_of_negations(
 			new Set(['a']),
 			new Set(['e']),
-			default_reason_handler,
 		)
 		expect(result).toBe(null)
 	})
@@ -348,7 +317,6 @@ describe('get_redundancy_of_negations', () => {
 		const result = deductionSystem.get_redundancy_of_negations(
 			new Set(['a']),
 			new Set(['d', 'e']),
-			default_reason_handler,
 		)
 		expect(result).toBe('d')
 	})

@@ -162,7 +162,7 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 		const deduced_negation_ids = new Set(negated_ids)
 
 		while (true) {
-			const new_negations = this.get_new_negations(
+			const new_negations = this.get_new_negations_with_reasons(
 				assumed_ids,
 				deduced_negation_ids,
 				reason_handler,
@@ -179,8 +179,9 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 	/**
 	 * Returns the list of all negations that can be deduced from a set of properties
 	 * and negated properties, by running *once* through the list of all properties.
+	 * The reasons are given in natural language.
 	 */
-	private get_new_negations(
+	private get_new_negations_with_reasons(
 		assumed_ids: Set<T>,
 		negated_ids: Set<T>,
 		reason_handler: ReasonHandler<PrefixType, T>,
@@ -321,6 +322,47 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 	}
 
 	/**
+	 * Returns the set of all negations that can be deduced from a set of properties
+	 * and negated properties. The reasons are *not* included in this method.
+	 */
+	private get_deduced_negations(assumed_ids: Set<T>, negated_ids: Set<T>): Set<T> {
+		const deduced_negated_ids = new Set(negated_ids)
+
+		while (true) {
+			const added = this.add_new_negations(assumed_ids, deduced_negated_ids)
+			if (!added) break
+		}
+
+		return deduced_negated_ids
+	}
+
+	/**
+	 * Adds new negations to a set of negated properties, without giving reasons.
+	 * Returns the number of new negations that were added.
+	 * Warning: This method is not pure. It mutates the set of negated properties.
+	 */
+	private add_new_negations(assumed_ids: Set<T>, negated_ids: Set<T>): number {
+		let added = 0
+
+		for (const id of this.all_property_ids) {
+			const not_new = negated_ids.has(id)
+			if (not_new) continue
+
+			const contradiction = this.get_lengthy_contradiction_rules(
+				assumed_ids.union(new Set([id])),
+				negated_ids,
+			)
+
+			if (!contradiction) continue
+
+			negated_ids.add(id)
+			added++
+		}
+
+		return added
+	}
+
+	/**
 	 * Returns the ID of a redundant assumption within a list of assumptions,
 	 * or null if no redundancy is found.
 	 *
@@ -350,30 +392,18 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 	public get_redundancy_of_negations(
 		assumed_ids: Set<T>,
 		negated_ids: Set<T>,
-		reason_handler: ReasonHandler<PrefixType, T>,
 	): T | null {
-		const deduced_assumptions = this.get_deductions(assumed_ids).union(assumed_ids)
-		const deduced_negations = this.get_deduced_negations_with_reasons(
-			assumed_ids,
-			negated_ids,
-			reason_handler,
-		)
-		const all_negated_ids = new Set(deduced_negations.map((p) => p.id)).union(
-			negated_ids,
-		)
+		const deduced_ids = this.get_deductions(assumed_ids).union(assumed_ids)
+		const deduced_negations = this.get_deduced_negations(assumed_ids, negated_ids)
 
 		for (const id of negated_ids) {
 			const reduced_negated_ids = negated_ids.difference(new Set([id]))
-			const reduced_deduced_negations = this.get_deduced_negations_with_reasons(
-				deduced_assumptions,
+			const reduced_negations = this.get_deduced_negations(
+				deduced_ids,
 				reduced_negated_ids,
-				reason_handler,
 			)
-			const all_reduced_negated_ids = new Set(
-				reduced_deduced_negations.map((p) => p.id),
-			).union(reduced_negated_ids)
 
-			if (all_reduced_negated_ids.size === all_negated_ids.size) {
+			if (reduced_negations.size === deduced_negations.size) {
 				return id
 			}
 		}
@@ -384,26 +414,11 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 	/**
 	 * Returns true if a contradiction can be deduced from a set of assumptions
 	 * and negations, using the rules of the deduction system.
-	 *
-	 * @deprecated as long as we have the reason_handler here, which should go away
 	 */
-	public has_contradiction(
-		assumed_ids: Set<T>,
-		negated_ids: Set<T>,
-		reason_handler: ReasonHandler<PrefixType, T>,
-	): boolean {
-		const deduced_ids = this.get_deductions(assumed_ids)
-		const deduced_negated_properties = this.get_deduced_negations_with_reasons(
-			assumed_ids,
-			negated_ids,
-			reason_handler,
-		)
-		const all_deduced_ids = new Set(deduced_ids).union(assumed_ids)
-		const all_deduced_negated_ids = new Set(
-			deduced_negated_properties.map((p) => p.id),
-		).union(negated_ids)
-
-		return all_deduced_negated_ids.intersection(all_deduced_ids).size > 0
+	public has_contradiction(assumed_ids: Set<T>, negated_ids: Set<T>): boolean {
+		const deduced_ids = this.get_deductions(assumed_ids).union(assumed_ids)
+		const deduced_negated_ids = this.get_deduced_negations(assumed_ids, negated_ids)
+		return deduced_ids.intersection(deduced_negated_ids).size > 0
 	}
 
 	/**

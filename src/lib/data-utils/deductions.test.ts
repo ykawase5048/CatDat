@@ -6,7 +6,6 @@ import {
 	categories_with_deduced_properties_dictionary,
 	implications_with_duals,
 	property_deduction_system,
-	reason_handler,
 } from './deductions'
 
 describe('property_deduction_system', () => {
@@ -37,7 +36,6 @@ describe('property_deduction_system', () => {
 			const redundancy = property_deduction_system.get_redundancy_of_negations(
 				new Set<PropertyID>(properties.map((p) => p.id)),
 				new Set<PropertyID>(non_properties.map((p) => p.id)),
-				reason_handler,
 			)
 			expect(redundancy).toBe(null)
 		})
