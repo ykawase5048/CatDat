@@ -74,18 +74,20 @@ This project is built with [SvelteKit](https://svelte.dev/docs/kit/introduction)
 
 The deployment is handled by a GitHub workflow (`deploy.yml`) that triggers the deployment on [Netlify](https://netlify.com) from the `main` branch when the tests have passed.
 
-## 🌐 API endpoints (v1)
+## 🌐 API endpoints
+
+> **Note:** The API is currently in beta and not stable. Changes may occur without notice. Also, additional endpoints may be introduced in the future.
 
 ### `/api/v1/categories`
 
-- `https://catdat.netlify.app/api/v1/categories` provides basic information about the categories in the database.
-- `https://catdat.netlify.app/api/v1/categories?all` includes all deduced properties and non-properties.
+- `GET https://catdat.netlify.app/api/v1/categories` provides basic information about the categories in the database.
+- `GET https://catdat.netlify.app/api/v1/categories?all` provides all the deduced information about the categories in the database (deduced properties, deduced non-properties, special morphisms, etc.)
 
 ### `/api/v1/category/[id]`
 
-Returns all the information about a category with a given ID. For example, `https://catdat.netlify.app/api/v1/category/FinAb` returns all the information about the category of finite abelian groups.
+- `GET https://catdat.netlify.app/api/v1/category/{ID}` returns all the information about a category with a given ID.
 
-Additional endpoints may be introduced in the future.
+For example, `GET https://catdat.netlify.app/api/v1/category/FinAb`returns all the information about the category of finite abelian groups.
 
 ## 🔗 Similar projects
 
