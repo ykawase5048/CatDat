@@ -2,6 +2,7 @@
 	<a href="/contribute">Contribute</a>
 	<a href="/settings">Settings</a>
 	<a href="/missing">Missing data</a>
+	<a href="/morphisms">Morphisms (beta)</a>
 </footer>
 
 <style>
