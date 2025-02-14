@@ -1,5 +1,6 @@
-import { group_items } from '$lib/commons/utils'
+import { group_items, select } from '$lib/commons/utils'
 import {
+	get_dual_morphism,
 	get_dual_property,
 	get_non_properties,
 	get_prefix,
@@ -11,6 +12,11 @@ import { CATEGORIES, type CategoryID } from '$lib/database/categories/categories
 import { IMPLICATIONS } from '$lib/database/categories/implications.data'
 import type { Prefix } from '$lib/database/categories/prefix.data'
 import type { PropertyID } from '$lib/database/categories/properties.data'
+import { MORPHISM_IMPLICATIONS } from '$lib/database/morphisms/morphism-implications.data'
+import {
+	MORPHISM_TYPES,
+	type MorphismTypeID,
+} from '$lib/database/morphisms/morphism-types.data'
 import { DeductionSystem } from '$lib/logic/DeductionSystem'
 import type { Entity } from '$lib/logic/Entity'
 import { EntitySystem } from '$lib/logic/EntitySystem'
@@ -46,4 +52,12 @@ export const categories_with_deduced_properties: CategoryWithDeducedProperties[]
 
 export const categories_with_deduced_properties_dictionary = group_items(
 	categories_with_deduced_properties,
+)
+
+export const morphism_deduction_system = new DeductionSystem<'is a', MorphismTypeID>(
+	new Set(MORPHISM_TYPES.map((m) => m.id)),
+	select('id', 'assumptions', 'conclusions', 'reason').from(
+		MORPHISM_IMPLICATIONS.filter((m) => !m.requirements),
+	),
+	get_dual_morphism,
 )

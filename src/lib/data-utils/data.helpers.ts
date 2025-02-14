@@ -15,6 +15,11 @@ import {
 	type PropertyID,
 } from '$lib/database/categories/properties.data'
 import { PROPERTY_DUALS } from '$lib/database/categories/property-duals.data'
+import {
+	MORPHISM_TYPES,
+	type MorphismType,
+	type MorphismTypeID,
+} from '$lib/database/morphisms/morphism-types.data'
 
 export const propertyIDs = PROPERTIES.map((property) => property.id)
 export const categoryIDs = CATEGORIES.map((category) => category.id)
@@ -78,4 +83,12 @@ export function get_dual_properties(ids: PropertyID[]): null | PropertyID[] {
 
 export function get_tags(id: CategoryID): string[] {
 	return CATEGORY_TAGS[id]
+}
+
+export function get_morphism(id: MorphismTypeID): MorphismType {
+	return MORPHISM_TYPES.find((m) => m.id == id)!
+}
+
+export function get_dual_morphism(id: MorphismTypeID): MorphismTypeID {
+	return get_morphism(id).dual
 }

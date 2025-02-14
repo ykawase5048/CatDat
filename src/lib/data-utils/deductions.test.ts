@@ -5,6 +5,7 @@ import {
 	categories_with_deduced_properties,
 	categories_with_deduced_properties_dictionary,
 	implications_with_duals,
+	morphism_deduction_system,
 	property_deduction_system,
 } from './deductions'
 
@@ -288,5 +289,35 @@ describe('deduced categorical properties and negations', () => {
 
 		expect(deduced_ids).toEqual(expected_deduced_ids)
 		expect(negated_ids).toEqual(expected_negated_ids)
+	})
+})
+
+describe('morphism_deduction_system', () => {
+	it('deduces correctly from isomorphisms', () => {
+		const deductions = morphism_deduction_system.get_deductions(
+			new Set(['isomorphism']),
+		)
+		expect(deductions).toContain('regular epimorphism')
+		expect(deductions).toContain('split epimorphism')
+	})
+
+	it('deduces correctly from split monos', () => {
+		const deductions = morphism_deduction_system.get_deductions(
+			new Set(['split monomorphism']),
+		)
+		expect(deductions).toContain('extremal monomorphism')
+		expect(deductions).toContain('regular monomorphism')
+		expect(deductions).not.toContain('epimorphism')
+		expect(deductions).not.toContain('isomorphism')
+	})
+
+	it('deduces correctly from mono+epi', () => {
+		const deductions = morphism_deduction_system.get_deductions(
+			new Set(['monomorphism', 'epimorphism']),
+		)
+		expect(deductions).not.toContain('isomorphism')
+		expect(deductions).toContain('morphism')
+		expect(deductions).not.toContain('monomorphism') // since this is assumed
+		expect(deductions).not.toContain('epimorphism') // since this is assumed
 	})
 })

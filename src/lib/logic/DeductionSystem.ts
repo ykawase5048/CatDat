@@ -108,9 +108,12 @@ export class DeductionSystem<P extends string, T extends string> {
 	}
 
 	/**
-	 * Adds self-dual rules to the list of rules.
+	 * Adds self-dual rules to the list of rules if 'self-dual' is a property.
 	 */
 	private add_self_dual_rules(): void {
+		const has_self_duality = (this.all_property_ids as Set<string>).has('self-dual')
+		if (!has_self_duality) return
+
 		for (const id of this.all_property_ids) {
 			const dual_id = this.get_dual_property?.(id)
 
@@ -218,7 +221,7 @@ export class DeductionSystem<P extends string, T extends string> {
 	 * Returns the set of all properties that can be deduced from a set of assumptions.
 	 * The reasons are *not* included in this method.
 	 */
-	private get_deductions(ids: Set<T>): Set<T> {
+	public get_deductions(ids: Set<T>): Set<T> {
 		return new Set(this.get_rules_for_deductions(ids).map((rule) => rule.conclusion))
 	}
 
