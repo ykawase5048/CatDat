@@ -98,6 +98,12 @@ export const MORPHISM_TYPES_INDEX = [
 		description: 'A <i>strict epimorphism</i> in a category is a morphism which is the joint coequalizer of all pairs of parallel morphisms that it coequalizes. It is automatically an epimorphism.',
 		dual: 'strict monomorphism',
 	},
+	{
+		id: 'morphism',
+		nlab_link: 'https://ncatlab.org/nlab/show/morphism',
+		description: 'A <i>morphism</i> in a category is, well, a morphism without any additional assumptions. We add this here just to formulate some implications.',
+		dual: 'morphism',
+	},
 ] as const
 
 export const MORPHISM_TYPES: readonly MorphismType[] = MORPHISM_TYPES_INDEX
