@@ -1,18 +1,18 @@
 <script lang="ts">
-	import type { MorphismImplication } from '$lib/database/morphisms/morphism-implications.data'
+	import type { MorphismImplication as MorphismImplicationType } from '$lib/database/morphisms/morphism-implications.data'
 	import type {
 		MorphismType,
 		MorphismTypeID,
 	} from '$lib/database/morphisms/morphism-types.data'
 	import { slide } from 'svelte/transition'
 	import MorphismCard from './MorphismCard.svelte'
-	import MorphismImplicationItem from './MorphismImplicationItem.svelte'
+	import MorphismImplication from './MorphismImplication.svelte'
 	import { prefersReducedMotion } from 'svelte/motion'
 
 	type Props = {
 		data: {
 			morphisms: MorphismType[]
-			morphism_implications: MorphismImplication[]
+			morphism_implications: MorphismImplicationType[]
 		}
 	}
 
@@ -68,14 +68,16 @@
 
 <section>
 	<h2>Implications of morphisms</h2>
+
 	<p class="hint">
 		Of course, these implications may be dualized in the usual way. The brackets
 		[property] mean that the ambient category needs to satisfy this property.
 	</p>
+
 	<ul>
 		{#each data.morphism_implications as implication}
 			<li>
-				<MorphismImplicationItem {implication} />
+				<MorphismImplication {implication} />
 			</li>
 		{/each}
 	</ul>

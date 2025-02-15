@@ -1,9 +1,9 @@
 <script lang="ts">
 	import Tooltip from '$components/Tooltip.svelte'
-	import type { MorphismImplication } from '$lib/database/morphisms/morphism-implications.data'
+	import type { MorphismImplication as MorphismImplicationType } from '$lib/database/morphisms/morphism-implications.data'
 
 	type Props = {
-		implication: MorphismImplication
+		implication: MorphismImplicationType
 	}
 
 	let { implication }: Props = $props()
