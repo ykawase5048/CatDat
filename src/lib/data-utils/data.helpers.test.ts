@@ -1,4 +1,6 @@
 import {
+	categoryIDs,
+	get_categories_with_tag,
 	get_category,
 	get_dual_properties,
 	get_dual_property,
@@ -133,5 +135,31 @@ describe('get_tags', () => {
 		const tags = get_tags('FinAb')
 		expect(tags.length).toBeGreaterThan(0)
 		expect(tags).toContain('algebra')
+	})
+})
+
+describe('get_categories_with_tag', () => {
+	it('returns all categories if tag is null', () => {
+		const categories = get_categories_with_tag(null)
+		expect(categories).toHaveLength(categoryIDs.length)
+	})
+
+	it("returns all categories tagged with 'algebra'", () => {
+		const categories = get_categories_with_tag('algebra')
+
+		expect(categories).toContainEqual({
+			id: 'FinAb',
+			name: 'category of finite abelian groups',
+		})
+
+		expect(categories).toContainEqual({
+			id: 'Ring',
+			name: 'category of rings',
+		})
+
+		expect(categories).not.toContainEqual({
+			id: 'Top',
+			name: expect.any(String),
+		})
 	})
 })

@@ -85,6 +85,12 @@ export function get_tags(id: CategoryID): string[] {
 	return CATEGORY_TAGS[id]
 }
 
+export function get_categories_with_tag(tag: string | null): CategorySimple[] {
+	const categories = select('id', 'name').from(CATEGORIES)
+	if (!tag) return categories
+	return categories.filter(({ id }) => get_tags(id).includes(tag))
+}
+
 // export function get_morphism(id: MorphismTypeID): MorphismType {
 // 	return MORPHISM_TYPES.find((m) => m.id == id)!
 // }
