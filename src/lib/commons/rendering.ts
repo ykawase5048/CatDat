@@ -3,7 +3,7 @@ import { is_object } from './utils'
 
 function render_formula(formula: string): string {
 	return katex.renderToString(formula, {
-		throwOnError: false,
+		throwOnError: true,
 	})
 }
 

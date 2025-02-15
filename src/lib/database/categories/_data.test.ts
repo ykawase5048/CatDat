@@ -1,11 +1,17 @@
 // This file is testing all the files in the present data folder.
 
+import { render_formulas, render_nested_formulas } from '$lib/commons/rendering'
 import { CATEGORIES } from '$lib/database/categories/categories.data'
 import { IMPLICATIONS } from '$lib/database/categories/implications.data'
 import { PREFIXES } from '$lib/database/categories/prefix.data'
 import { PROPERTIES } from '$lib/database/categories/properties.data'
 import { PROPERTY_DUALS } from '$lib/database/categories/property-duals.data'
 import { TAGS } from '$lib/database/categories/tags.data'
+import { CATEGORY_EPIMORPHISMS } from './category-epimorphisms.data'
+import { CATEGORY_ISOMORPHISMS } from './category-isomorphisms.data'
+import { CATEGORY_MONOMORPHISMS } from './category-monomorphisms.data'
+import { CATEGORY_NON_PROPERTIES } from './category-non-properties.data'
+import { CATEGORY_PROPERTIES } from './category-properties.data'
 
 describe('list of tags', () => {
 	it('are unique', () => {
@@ -47,6 +53,14 @@ describe('list of categories', () => {
 			expect(keys).toEqual(sorted_keys)
 		}
 	})
+
+	it('should have no errors in LaTeX', () => {
+		for (const category of CATEGORIES) {
+			expect(() => {
+				render_nested_formulas(category)
+			}).not.toThrow()
+		}
+	})
 })
 
 describe('list of properties', () => {
@@ -82,6 +96,14 @@ describe('list of properties', () => {
 			const are_same = keys.every((key, index) => key === sorted_keys[index])
 			if (!are_same) console.warn(property.id)
 			expect(keys).toEqual(sorted_keys)
+		}
+	})
+
+	it("should have no errors in LaTeX in the 'description' field", () => {
+		for (const property of PROPERTIES) {
+			expect(() => {
+				render_formulas(property.description)
+			}).not.toThrow()
 		}
 	})
 })
@@ -150,6 +172,44 @@ describe('list of implications', () => {
 					implication.conclusions.length,
 				)
 			}
+		}
+	})
+
+	it("should have no errors in LaTeX in the 'reason' field", () => {
+		for (const implication of IMPLICATIONS) {
+			expect(() => {
+				render_formulas(implication.reason)
+			}).not.toThrow()
+		}
+	})
+})
+
+describe('special morphisms (mono, epi, iso)', () => {
+	it('should have no errors in LaTeX', () => {
+		const special_morphisms = [
+			...Object.values(CATEGORY_EPIMORPHISMS),
+			...Object.values(CATEGORY_ISOMORPHISMS),
+			...Object.values(CATEGORY_MONOMORPHISMS),
+		]
+
+		for (const entry of special_morphisms) {
+			expect(() => {
+				render_nested_formulas(entry)
+			}).not.toThrow()
+		}
+	})
+})
+
+describe('properties and non-properties satisfied by categories', () => {
+	const property_data = [
+		...Object.values(CATEGORY_PROPERTIES),
+		...Object.values(CATEGORY_NON_PROPERTIES),
+	]
+	it('should not contain any errors in LaTeX', () => {
+		for (const entry of property_data) {
+			expect(() => {
+				render_nested_formulas(entry)
+			}).not.toThrow()
 		}
 	})
 })

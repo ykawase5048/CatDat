@@ -14,6 +14,12 @@ describe('render_formulas', () => {
 		const text = 'This is a text without formulas.'
 		expect(render_formulas(text)).toBe(text)
 	})
+
+	it('throws an error for invalid formulas', () => {
+		expect(() =>
+			render_formulas('This is an invalid formula $x = \\frac{y}{z$'),
+		).toThrow()
+	})
 })
 
 describe('render_nested_formulas', () => {
