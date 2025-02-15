@@ -6,6 +6,10 @@
  * It just adapts the remaining data to these lists.
  */
 
+import fs from 'fs'
+import path from 'path'
+
+import { categoryIDs, propertyIDs } from '$lib/data-utils/data.helpers'
 import { CATEGORY_EPIMORPHISMS } from '$lib/database/categories/category-epimorphisms.data'
 import { CATEGORY_ISOMORPHISMS } from '$lib/database/categories/category-isomorphisms.data'
 import { CATEGORY_MONOMORPHISMS } from '$lib/database/categories/category-monomorphisms.data'
@@ -15,9 +19,6 @@ import { CATEGORY_RELATIONS } from '$lib/database/categories/category-relations.
 import { CATEGORY_TAGS } from '$lib/database/categories/category-tags.data'
 import { PROPERTY_DUALS } from '$lib/database/categories/property-duals.data'
 import { PROPERTY_RELATIONS } from '$lib/database/categories/property-relations.data'
-import fs from 'fs'
-import path from 'path'
-import { categoryIDs, propertyIDs } from './data.helpers'
 
 function sort_dictionary(
 	keys: string[],

@@ -16,8 +16,8 @@
 		"test:run": "vitest --run",
 		"coverage": "vitest run --coverage",
 		"prepare": "husky",
-		"data:sort": "tsx src/lib/data-utils/sort.ts",
-		"data:reasons": "tsx src/lib/data-utils/reasons.ts"
+		"data:sort": "tsx src/lib/scripts/sort.ts",
+		"data:reasons": "tsx src/lib/scripts/reasons.ts"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.0.0",
