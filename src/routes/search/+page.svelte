@@ -7,7 +7,7 @@
 		separator_in_url,
 		storage_key_non_properties,
 		storage_key_properties,
-	} from '$lib/commons/search'
+	} from '$lib/commons/search.config'
 	import Warning from '$components/Warning.svelte'
 	import { concatenate_info } from '$lib/commons/utils'
 	import Selection from '$components/Selection.svelte'
