@@ -85,10 +85,10 @@ export function get_tags(id: CategoryID): string[] {
 	return CATEGORY_TAGS[id]
 }
 
-export function get_morphism(id: MorphismTypeID): MorphismType {
-	return MORPHISM_TYPES.find((m) => m.id == id)!
-}
+// export function get_morphism(id: MorphismTypeID): MorphismType {
+// 	return MORPHISM_TYPES.find((m) => m.id == id)!
+// }
 
-export function get_dual_morphism(id: MorphismTypeID): MorphismTypeID {
-	return get_morphism(id).dual
-}
+// export function get_dual_morphism(id: MorphismTypeID): MorphismTypeID {
+// 	return get_morphism(id).dual
+// }
