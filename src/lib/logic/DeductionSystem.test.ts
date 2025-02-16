@@ -348,8 +348,7 @@ describe('relevant rules', () => {
 	})
 })
 
-// TODO: check this test group
-describe('DeductionSystem with duals', () => {
+describe('DeductionSystem with duals and self-duality', () => {
 	const dual_config: Record<string, string> = {
 		'c': 'c^op',
 		'd': 'd^op',
@@ -429,6 +428,39 @@ describe('DeductionSystem with duals', () => {
 			assumptions: ['self-dual', 'x'],
 			conclusions: ['x'],
 			reason: 'trivial',
+		})
+	})
+})
+
+describe('DeductionSystem with duals but without self-duality', () => {
+	const dual_config: Record<string, string> = {
+		'a': 'a^op',
+		'a^op': 'a',
+		'b': 'b^op',
+		'b^op': 'b',
+	}
+
+	const deductionSystem = new DeductionSystem<string, string>(
+		new Set(['a', 'a^op', 'b', 'b^op']),
+		[{ id: 'ab', assumptions: ['a'], conclusions: ['b'], reason: 'trivial' }],
+		(property) => dual_config[property] ?? null,
+	)
+
+	it('should have the dualized rules', () => {
+		expect(deductionSystem.rules).toContainEqual({
+			id: 'ab_dual',
+			assumptions: ['a^op'],
+			conclusions: ['b^op'],
+			reason: '[dualized] trivial',
+		})
+	})
+
+	it('should not have the self-dual rules', () => {
+		expect(deductionSystem.rules).not.toContainEqual({
+			id: expect.any(String),
+			assumptions: ['self-dual', 'a'],
+			conclusions: ['a^op'],
+			reason: expect.any(String),
 		})
 	})
 })
