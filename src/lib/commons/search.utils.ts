@@ -28,6 +28,7 @@ export function get_saved_search(): [PropertyID[], PropertyID[]] {
 
 		return is_valid ? [parsed_properties, parsed_non_properties] : [[], []]
 	} catch {
+		console.error('Error parsing saved search from sessionStorage')
 		return [[], []]
 	}
 }

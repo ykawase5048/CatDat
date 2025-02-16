@@ -14,7 +14,7 @@
 	import { is_valid_property, propertyIDs } from '$lib/data-utils/data.helpers'
 	import type { PropertyID } from '$lib/database/categories/properties.data'
 	import { encode_property_ID } from '$lib/commons/property.url'
-	import { get_saved_search } from './search.utils'
+	import { get_saved_search } from '$lib/commons/search.utils.js'
 
 	$effect(() => {
 		if (!browser) return
