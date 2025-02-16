@@ -16,7 +16,7 @@
 		"test:run": "vitest --run",
 		"coverage": "vitest run --coverage",
 		"prepare": "husky",
-		"data:sort": "tsx src/lib/scripts/sort.ts",
+		"data:sort": "tsx src/lib/scripts/sort.ts && prettier --write src/lib/database/**/*.ts",
 		"data:reasons": "tsx src/lib/scripts/reasons.ts"
 	},
 	"devDependencies": {

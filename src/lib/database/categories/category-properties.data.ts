@@ -381,10 +381,7 @@ export const CATEGORY_PROPERTIES: Record<CategoryID, PropertyWithReason[]> = {
 		{ id: 'small', reason: 'trivial' },
 		{ id: 'products', reason: 'Take the $\\gcd$ of a subset.' },
 		{ id: 'distributive', reason: 'Using prime factorizations, one can prove that $\\gcd(a, \\mathrm{lcm} \\{b_i \\}) = \\mathrm{lcm} \\{ \\gcd(a, b_i) \\}$ for finitely many $b_i$.' },
-		{
-			id: 'locally ℵ₁-presentable',
-			reason: 'Every $\\aleph_1$-directed diagram is eventually constant.',
-		},
+		{ id: 'locally ℵ₁-presentable', reason: 'Every $\\aleph_1$-directed diagram is eventually constant.' },
 	],
 	'Noo': [
 		{ id: 'small', reason: 'trivial' },
