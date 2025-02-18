@@ -4,6 +4,7 @@
 	import Fa from 'svelte-fa'
 	import { faCircleQuestion } from '@fortawesome/free-regular-svg-icons'
 	import { outsideclick_action } from '$lib/commons/actions'
+	import { selected_tooltip } from '$lib/states/tooltip.svelte'
 
 	type Props = {
 		children: Snippet
@@ -11,17 +12,21 @@
 
 	let { children }: Props = $props()
 
-	let open = $state(false)
+	const tooltip_id = 'tooltip-' + Math.random().toString(36).slice(2, 9)
+
+	let open = $derived(selected_tooltip.id === tooltip_id)
 
 	function toggle() {
-		open = !open
+		if (open) {
+			selected_tooltip.id = null
+		} else {
+			selected_tooltip.id = tooltip_id
+		}
 	}
 
 	function close() {
-		open = false
+		selected_tooltip.id = null
 	}
-
-	const tooltip_id = 'tooltip-' + Math.random().toString(36).slice(2, 9)
 </script>
 
 <button
