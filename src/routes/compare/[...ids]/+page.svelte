@@ -1,4 +1,5 @@
 <script lang="ts">
+	import MetaData from '$components/MetaData.svelte'
 	import { get_property_url } from '$lib/commons/property.url'
 	import {
 		faCheck,
@@ -34,9 +35,10 @@
 	})
 </script>
 
-<svelte:head>
-	<title>Comparison of categories</title>
-</svelte:head>
+<MetaData
+	title="Comparison of categories"
+	description={compared_categories.map((c) => c.name).join(', ')}
+/>
 
 <h2>Comparison of categories</h2>
 

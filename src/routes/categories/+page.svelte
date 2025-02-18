@@ -1,5 +1,6 @@
 <script lang="ts">
 	import CategoryList from '$components/CategoryList.svelte'
+	import MetaData from '$components/MetaData.svelte'
 
 	let { data } = $props()
 
@@ -12,11 +13,13 @@
 			? `The following ${data.categories.length} categories are tagged as "${data.tag}".`
 			: `The following ${data.categories.length} categories are available.`,
 	)
+
+	let meta_description = $derived(
+		data.tag ? `Categories tagged as "${data.tag}"` : 'All available categories',
+	)
 </script>
 
-<svelte:head>
-	<title>{title}</title>
-</svelte:head>
+<MetaData {title} description={meta_description} />
 
 <h2>{title}</h2>
 

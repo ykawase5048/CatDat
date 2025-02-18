@@ -8,6 +8,7 @@
 	import MorphismCard from './MorphismCard.svelte'
 	import MorphismImplication from './MorphismImplication.svelte'
 	import { prefersReducedMotion } from 'svelte/motion'
+	import MetaData from '$components/MetaData.svelte'
 
 	type Props = {
 		data: {
@@ -29,9 +30,10 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Morphisms</title>
-</svelte:head>
+<MetaData
+	title="Morphisms in categories"
+	description="Various types of morphisms and their implications"
+/>
 
 <section>
 	<h2>Types of morphisms</h2>

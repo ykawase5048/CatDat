@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { browser } from '$app/environment'
 	import { goto } from '$app/navigation'
+	import MetaData from '$components/MetaData.svelte'
 	import Selection from '$components/Selection.svelte'
 	import { max_categories, storage_key } from '$lib/commons/comparison.config'
 	import { get_saved_category_names } from '$lib/commons/comparison.utils.js'
@@ -33,9 +34,10 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Choose categories for comparison</title>
-</svelte:head>
+<MetaData
+	title="Choose categories for comparison"
+	description="Compare categories based on their properties"
+/>
 
 <h2>Choose categories for comparison</h2>
 

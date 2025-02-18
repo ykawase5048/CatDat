@@ -10,10 +10,13 @@
 		update_category_detail_level,
 	} from '$lib/states/detail_level.svelte'
 	import { theme, THEMES, update_theme } from '$lib/states/theme.svelte'
+	import MetaData from '$components/MetaData.svelte'
 
 	$effect(() => update_theme(theme.value))
 	$effect(() => update_category_detail_level(category_detail_level.value))
 </script>
+
+<MetaData title="Settings" description="Customize the appearance of CatDat" />
 
 <h2>Settings</h2>
 

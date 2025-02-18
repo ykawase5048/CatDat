@@ -1,6 +1,8 @@
-<svelte:head>
-	<title>How to contribute</title>
-</svelte:head>
+<script lang="ts">
+	import MetaData from '$components/MetaData.svelte'
+</script>
+
+<MetaData title="How to contribute" description="Options to contribute to CatDat" />
 
 <h2>How to contribute</h2>
 

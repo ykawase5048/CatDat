@@ -1,12 +1,11 @@
 <script lang="ts">
+	import MetaData from '$components/MetaData.svelte'
 	import PropertyList from '$components/PropertyList.svelte'
 
 	let { data } = $props()
 </script>
 
-<svelte:head>
-	<title>List of Properties</title>
-</svelte:head>
+<MetaData title="List of Properties" description="All categorical properties" />
 
 <h2>List of Properties</h2>
 

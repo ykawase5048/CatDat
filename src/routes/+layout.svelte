@@ -6,6 +6,7 @@
 
 	import { onNavigate } from '$app/navigation'
 	import { selected_tooltip } from '$lib/states/tooltip.svelte'
+	import MetaData from '$components/MetaData.svelte'
 
 	onNavigate((navigation) => {
 		if (!document.startViewTransition) return
@@ -25,22 +26,9 @@
 	}
 </script>
 
+<MetaData />
+
 <svelte:head>
-	<title>CatDat</title>
-	<meta
-		name="description"
-		content="A searchable database of categories and their properties"
-	/>
-
-	<meta property="og:title" content="CatDat" />
-	<meta
-		property="og:description"
-		content="A searchable database of categories and their properties"
-	/>
-	<meta property="og:url" content="https://catdat.info/" />
-	<meta property="og:type" content="website" />
-	<meta property="og:site_name" content="CatDat" />
-
 	<link
 		rel="stylesheet"
 		href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.css"

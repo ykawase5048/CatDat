@@ -5,6 +5,7 @@
 	import Chip from '$components/Chip.svelte'
 	import MorphismInfo from '$components/MorphismInfo.svelte'
 	import { goto } from '$app/navigation'
+	import MetaData from '$components/MetaData.svelte'
 
 	let { data } = $props()
 
@@ -15,9 +16,10 @@
 	}
 </script>
 
-<svelte:head>
-	<title>{category.name}</title>
-</svelte:head>
+<MetaData
+	title={category.name}
+	description="Discover the properties and non-properties of this category"
+/>
 
 <h2>{category.name}</h2>
 

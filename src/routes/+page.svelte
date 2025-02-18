@@ -1,6 +1,8 @@
-<svelte:head>
-	<title>CatDat</title>
-</svelte:head>
+<script lang="ts">
+	import MetaData from '$components/MetaData.svelte'
+</script>
+
+<MetaData />
 
 <h2>A comprehensive database of categories and their properties</h2>
 

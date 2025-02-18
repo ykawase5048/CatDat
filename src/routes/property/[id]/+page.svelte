@@ -1,6 +1,7 @@
 <script lang="ts">
 	import CategoryList from '$components/CategoryList.svelte'
 	import ImplicationList from '$components/ImplicationList.svelte'
+	import MetaData from '$components/MetaData.svelte'
 	import { get_property_url } from '$lib/commons/property.url'
 
 	let { data } = $props()
@@ -14,9 +15,7 @@
 	let unknown_categories = $derived(data.unknown_categories)
 </script>
 
-<svelte:head>
-	<title>{property.id}</title>
-</svelte:head>
+<MetaData title={property.id} description="Discover this property of categories" />
 
 <h2>{property.id}</h2>
 

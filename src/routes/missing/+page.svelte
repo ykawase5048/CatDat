@@ -1,5 +1,6 @@
 <script>
 	import CategoryList from '$components/CategoryList.svelte'
+	import MetaData from '$components/MetaData.svelte'
 	import { negate_prefix } from '$lib/data-utils/data.helpers'
 
 	const { data } = $props()
@@ -12,9 +13,10 @@
 	} = data
 </script>
 
-<svelte:head>
-	<title>Missing data</title>
-</svelte:head>
+<MetaData
+	title="Missing data in CatDat"
+	description="Missing properties, missing special morphisms, missing examples, and more."
+/>
 
 <h2>Missing data</h2>
 

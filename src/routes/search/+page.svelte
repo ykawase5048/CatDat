@@ -15,6 +15,7 @@
 	import type { PropertyID } from '$lib/database/categories/properties.data'
 	import { encode_property_ID } from '$lib/commons/property.url'
 	import { get_saved_search } from '$lib/commons/search.utils.js'
+	import MetaData from '$components/MetaData.svelte'
 
 	$effect(() => {
 		if (!browser) return
@@ -69,9 +70,10 @@
 		'/search?properties=finitely_complete--pointed&non_properties=complete'
 </script>
 
-<svelte:head>
-	<title>Search for categories</title>
-</svelte:head>
+<MetaData
+	title="Search for categories"
+	description="Search for categories that satisfy a specific set of properties while simultaneously not satisfying another set of properties. "
+/>
 
 <h2>Search for categories</h2>
 
