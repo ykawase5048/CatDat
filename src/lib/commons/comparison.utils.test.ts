@@ -22,7 +22,7 @@ describe('get_saved_category_names', () => {
 
 	it('should return an empty array if sessionStorage item is not valid JSON', () => {
 		vi.spyOn(appenv, 'browser', 'get').mockReturnValueOnce(true)
-		const console_error_spy = vi.spyOn(console, 'error')
+		const console_error_spy = vi.spyOn(console, 'error').mockImplementation(() => {})
 		sessionStorage.setItem('selected_category_names', 'invalid')
 		expect(get_saved_category_names()).toEqual([])
 		expect(console_error_spy).toHaveBeenCalled()

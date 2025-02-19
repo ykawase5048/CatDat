@@ -21,7 +21,7 @@ describe('get_saved_search', () => {
 
 	it("returns empty arrays when the sessionStorage doesn't contain valid search data", () => {
 		vi.spyOn(appenv, 'browser', 'get').mockReturnValueOnce(true)
-		const console_error_spy = vi.spyOn(console, 'error')
+		const console_error_spy = vi.spyOn(console, 'error').mockImplementation(() => {})
 		sessionStorage.setItem('search_properties', 'invalid')
 		sessionStorage.setItem('search_non_properties', 'a')
 		expect(get_saved_search()).toEqual([[], []])
