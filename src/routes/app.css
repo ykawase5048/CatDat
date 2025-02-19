@@ -57,9 +57,8 @@ body[data-theme='pink'] {
 }
 
 body {
-	font-family:
-		'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode',
-		Geneva, Verdana, sans-serif;
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+		'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 	font-size: 1.125rem;
 	background-color: var(--bg-color);
 	color: var(--text-color);
@@ -179,6 +178,11 @@ button:focus-visible {
 	width: 1px;
 	overflow: hidden;
 	white-space: nowrap;
+}
+
+summary:focus-visible {
+	outline: 1px solid var(--text-color);
+	outline-offset: 2px;
 }
 
 ::view-transition-old(root),

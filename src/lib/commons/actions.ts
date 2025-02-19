@@ -6,6 +6,10 @@ interface Attributes {
 	onoutsideclick: (event: CustomEvent) => void
 }
 
+/**
+ * @deprecated This action is currently not used.
+ * We keep it here in case we need it in the future.
+ */
 export const outsideclick_action: Action<HTMLElement, IgnoreSelector, Attributes> = (
 	node,
 	ignore,

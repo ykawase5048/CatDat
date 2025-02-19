@@ -1,11 +1,12 @@
 <script lang="ts">
-	import { category_detail_level } from '$lib/states/detail_level.svelte.js'
+	import { goto } from '$app/navigation'
+
+	import MetaData from '$components/MetaData.svelte'
 	import PropertyList from '$components/PropertyList.svelte'
 	import ChipGroup from '$components/ChipGroup.svelte'
 	import Chip from '$components/Chip.svelte'
-	import MorphismInfo from '$components/MorphismInfo.svelte'
-	import { goto } from '$app/navigation'
-	import MetaData from '$components/MetaData.svelte'
+	import LabelWithReason from '$components/LabelWithReason.svelte'
+	import { category_detail_level } from '$lib/states/detail_level.svelte.js'
 
 	let { data } = $props()
 
@@ -141,13 +142,19 @@
 	<h3>Special morphisms</h3>
 	<ul>
 		<li>
-			<MorphismInfo name="Isomorphisms" {...category.isomorphisms} />
+			<LabelWithReason reason={category.isomorphisms.reason}>
+				Isomorphisms: {@html category.isomorphisms.description}
+			</LabelWithReason>
 		</li>
 		<li>
-			<MorphismInfo name="Monomorphisms" {...category.monomorphisms} />
+			<LabelWithReason reason={category.monomorphisms.reason}>
+				Monomorphisms: {@html category.monomorphisms.description}
+			</LabelWithReason>
 		</li>
 		<li>
-			<MorphismInfo name="Epimorphisms" {...category.epimorphisms} />
+			<LabelWithReason reason={category.epimorphisms.reason}>
+				Epimorphisms: {@html category.epimorphisms.description}
+			</LabelWithReason>
 		</li>
 	</ul>
 </section>

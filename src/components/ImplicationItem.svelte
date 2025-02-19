@@ -8,15 +8,15 @@
 
 	import type { PropertyID } from '$lib/database/categories/properties.data'
 	import type { Implication } from '$lib/database/categories/implications.data'
-	import Tooltip from './Tooltip.svelte'
 	import { get_property_url } from '$lib/commons/property.url'
+	import LabelWithReason from './LabelWithReason.svelte'
 
 	type Props = { implication: Implication; highlighted_property?: PropertyID }
 
 	let { implication, highlighted_property }: Props = $props()
 </script>
 
-<div class="implication">
+<LabelWithReason reason={implication.reason}>
 	{#each implication.assumptions as assumption, i}
 		<a
 			href={get_property_url(assumption)}
@@ -54,17 +54,9 @@
 			<span class="visually-hidden">and &nbsp;</span>
 		{/if}
 	{/each}
-
-	{#if implication.reason}
-		<Tooltip>{@html implication.reason}</Tooltip>
-	{/if}
-</div>
+</LabelWithReason>
 
 <style>
-	.implication {
-		position: relative; /* for tooltip positioning */
-	}
-
 	a:not(.highlighted) {
 		text-decoration: none;
 	}

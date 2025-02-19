@@ -3,7 +3,7 @@
 	import type { Prefix } from '$lib/database/categories/prefix.data'
 	import { negate_prefix } from '$lib/data-utils/data.helpers'
 	import { get_property_url } from '$lib/commons/property.url'
-	import Tooltip from './Tooltip.svelte'
+	import LabelWithReason from './LabelWithReason.svelte'
 
 	type Props = {
 		properties: {
@@ -29,18 +29,14 @@
 	<ul>
 		{#each properties as { id, prefix, reason }}
 			<li>
-				{#if with_prefix}
-					{negated ? negate_prefix(prefix) : prefix}
-				{/if}
-				<a href={get_property_url(id)}>
-					{id}
-				</a>
-
-				{#if reason}
-					<Tooltip>
-						{@html reason}
-					</Tooltip>
-				{/if}
+				<LabelWithReason {reason}>
+					{#if with_prefix}
+						{negated ? negate_prefix(prefix) : prefix}
+					{/if}
+					<a href={get_property_url(id)}>
+						{id}
+					</a>
+				</LabelWithReason>
 			</li>
 		{/each}
 	</ul>

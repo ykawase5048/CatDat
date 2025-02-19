@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Tooltip from '$components/Tooltip.svelte'
+	import LabelWithReason from '$components/LabelWithReason.svelte'
 	import type { MorphismImplication as MorphismImplicationType } from '$lib/database/morphisms/morphism-implications.data'
 
 	type Props = {
@@ -9,22 +9,11 @@
 	let { implication }: Props = $props()
 </script>
 
-<div>
+<LabelWithReason reason={implication.reason}>
 	{#if implication.requirements}
 		[{implication.requirements.join(' + ')}]
 	{/if}
-
-	{implication.assumptions.join(' + ')} &rarr; {implication.conclusions.join(' + ')}
-
-	{#if implication.reason}
-		<Tooltip>
-			{@html implication.reason}
-		</Tooltip>
-	{/if}
-</div>
-
-<style>
-	div {
-		position: relative;
-	}
-</style>
+	{implication.assumptions.join(' + ')}
+	&rarr;
+	{implication.conclusions.join(' + ')}
+</LabelWithReason>

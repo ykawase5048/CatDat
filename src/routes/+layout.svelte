@@ -5,8 +5,6 @@
 	import './app.css'
 
 	import { onNavigate } from '$app/navigation'
-	import { selected_tooltip } from '$lib/states/tooltip.svelte'
-	import MetaData from '$components/MetaData.svelte'
 
 	onNavigate((navigation) => {
 		if (!document.startViewTransition) return
@@ -18,12 +16,6 @@
 			})
 		})
 	})
-
-	function handle_keydown(event: KeyboardEvent) {
-		if (event.key === 'Escape') {
-			selected_tooltip.id = null
-		}
-	}
 </script>
 
 <svelte:head>
@@ -52,8 +44,6 @@
 
 	<Footer />
 </div>
-
-<svelte:window onkeydown={handle_keydown} />
 
 <style>
 	main {
