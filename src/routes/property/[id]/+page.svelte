@@ -6,13 +6,15 @@
 
 	let { data } = $props()
 
-	let property = $derived(data.property)
-	let dual_property = $derived(data.dual_property)
-	let related_properties = $derived(data.related_properties)
-	let relevant_implications = $derived(data.relevant_implications)
-	let categories_with_this_property = $derived(data.categories_with_this_property)
-	let categories_without_this_property = $derived(data.categories_without_this_property)
-	let unknown_categories = $derived(data.unknown_categories)
+	let {
+		property,
+		dual_property,
+		related_properties,
+		relevant_implications,
+		categories_with_this_property,
+		categories_without_this_property,
+		unknown_categories,
+	} = $derived(data)
 </script>
 
 <MetaData title={property.id} description="Discover this property of categories" />
