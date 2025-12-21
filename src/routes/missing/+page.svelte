@@ -4,13 +4,6 @@
 	import { negate_prefix } from '$lib/data-utils/data.helpers'
 
 	const { data } = $props()
-
-	const {
-		missing_basic_combinations_with_prefixes,
-		categories_with_unknown_properties,
-		categories_with_unknown_special_morphisms,
-		total_number_unknown_properties,
-	} = data
 </script>
 
 <MetaData
@@ -28,34 +21,34 @@
 <h3>Categories with unknown properties</h3>
 
 <p class="hint">
-	There are {categories_with_unknown_properties.length} categories that have some unknown
+	There are {data.categories_with_unknown_properties.length} categories that have some unknown
 	properties.
 </p>
 
-<CategoryList categories={categories_with_unknown_properties} />
+<CategoryList categories={data.categories_with_unknown_properties} />
 
 <p class="hint">
-	In total, there are {total_number_unknown_properties} unknown properties of categories.
+	In total, there are {data.total_number_unknown_properties} unknown properties of categories.
 </p>
 
 <h3>Categories with unknown special morphisms</h3>
 
-<CategoryList categories={categories_with_unknown_special_morphisms} />
+<CategoryList categories={data.categories_with_unknown_special_morphisms} />
 
 <h3>Missing combinations</h3>
 
 <p class="hint">
 	Among the consistent combinations of the form <strong>P &#8743; &#172;Q</strong>
-	the following {missing_basic_combinations_with_prefixes.length}
+	the following {data.missing_basic_combinations_with_prefixes.length}
 	combinations are currently not yet witnessed by an example category (or its dual) in our
-	database. Please help us fill in the gaps by <a href="/contribute">contributing</a> to
-	this project. Please also report in case some combination is inconsistent. This means that
-	an implication is missing in the database.
+	database. Please help us fill in the gaps by <a href="/contribute">contributing</a> to this
+	project. Please also report in case some combination is inconsistent. This means that an
+	implication is missing in the database.
 </p>
 
-{#if missing_basic_combinations_with_prefixes.length}
+{#if data.missing_basic_combinations_with_prefixes.length}
 	<ul>
-		{#each missing_basic_combinations_with_prefixes as combination}
+		{#each data.missing_basic_combinations_with_prefixes as combination}
 			<li>
 				{combination.assumption_prefix}
 				{combination.assumption}, <!---->

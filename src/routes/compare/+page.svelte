@@ -8,8 +8,8 @@
 
 	let { data } = $props()
 
-	const categories = data.categories
-	const category_names = categories.map((category) => category.name)
+	let categories = $derived(data.categories)
+	let category_names = $derived(categories.map((category) => category.name))
 
 	let selected_category_names: string[] = $state(get_saved_category_names())
 

@@ -34,9 +34,11 @@
 	let { data } = $props()
 
 	let selected_properties = $state<PropertyID[]>(
+		// svelte-ignore state_referenced_locally
 		data.is_search && data.properties ? data.properties : saved_properties,
 	)
 	let selected_non_properties = $state<PropertyID[]>(
+		// svelte-ignore state_referenced_locally
 		data.is_search && data.non_properties
 			? data.non_properties
 			: saved_non_properties,

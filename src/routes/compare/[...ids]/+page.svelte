@@ -10,7 +10,8 @@
 	import Fa from 'svelte-fa'
 
 	let { data } = $props()
-	let { compared_categories, comparison_table } = data
+	let compared_categories = $derived(data.compared_categories)
+	let comparison_table = $derived(data.comparison_table)
 
 	const icon_config: Record<string, IconDefinition> = {
 		true: faCheck,
