@@ -41,21 +41,6 @@ body[data-theme='dark'] {
 	--shadow-color: #000a;
 }
 
-body[data-theme='pink'] {
-	--bg-color: #c73880;
-	--secondary-bg-color: #d75696;
-	--text-color: #fff;
-	--secondary-text-color: #f2c4dc;
-	--outline-color: #db96b8;
-	--secondary-outline-color: #ddd;
-	--accent-color: #ffff00;
-	--heading-color: #00f7ff;
-	--button-color: #692b9f;
-	--success-color: #00ff00;
-	--error-color: #333;
-	--shadow-color: #0005;
-}
-
 body {
 	font-family:
 		'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode',

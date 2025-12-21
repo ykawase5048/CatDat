@@ -1,6 +1,6 @@
 import { browser } from '$app/environment'
 
-export const THEMES = ['light', 'dark', 'pink'] as const
+export const THEMES = ['light', 'dark'] as const
 
 export type Theme = (typeof THEMES)[number]
 
