@@ -43,8 +43,10 @@
 	"dependencies": {
 		"@fortawesome/free-regular-svg-icons": "^7.1.0",
 		"@fortawesome/free-solid-svg-icons": "^7.1.0",
+		"@libsql/client": "^0.17.0",
 		"@types/katex": "^0.16.7",
 		"katex": "^0.16.27",
+		"sql-template-tag": "^5.2.1",
 		"svelte-fa": "^4.0.4"
 	}
 }

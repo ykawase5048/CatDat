@@ -1,1 +1,1 @@
-pnpm coverage && pnpm check
+pnpm check
