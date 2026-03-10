@@ -72,21 +72,6 @@ This project is built with [SvelteKit](https://svelte.dev/docs/kit/introduction)
 
 The deployment is handled by a GitHub workflow (`deploy.yml`) that triggers the deployment on [Netlify](https://netlify.com) from the `main` branch when the tests have passed.
 
-## API endpoints
-
-> **Note:** The API is currently in beta and not stable. Changes may occur without notice. Also, additional endpoints may be introduced in the future.
-
-### `/api/v1/categories`
-
-- `GET https://catdat.info/api/v1/categories` provides basic information about the categories in the database.
-- `GET https://catdat.info/api/v1/categories?all` provides all the deduced information about the categories in the database (deduced properties, deduced non-properties, special morphisms, etc.)
-
-### `/api/v1/category/[id]`
-
-- `GET https://catdat.info/api/v1/category/{ID}` returns all the information about a category with a given ID.
-
-For example, `GET https://catdat.info/api/v1/category/FinAb`returns all the information about the category of finite abelian groups.
-
 ## Similar projects
 
 - **[Catabase](https://catabase.fly.dev)**: A similar project that appears to be abandoned. It is more ambitious in terms of available data types but less complete for basic categories. The UI is not very intuitive, and it lacks an integrated deduction system between properties. See the [nForum announcement](https://nforum.ncatlab.org/discussion/13419/catabase-a-database-of-categories/).
