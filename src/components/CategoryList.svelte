@@ -1,8 +1,6 @@
 <script lang="ts">
-	import type { CategorySimple } from '$lib/data-utils/data.helpers'
-
 	type Props = {
-		categories: CategorySimple[]
+		categories: { id: string; name: string }[]
 		description?: string
 	}
 
