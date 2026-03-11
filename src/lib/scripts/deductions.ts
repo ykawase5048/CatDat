@@ -19,6 +19,44 @@ async function main() {
 	}
 }
 
+// TODO: compute also dualized implications
+async function get_normalized_implications() {
+	const { rows: all_implications_db, err: err_imp } = await query<{
+		assumptions: string
+		conclusions: string
+		is_equivalence: number
+	}>(sql`
+		SELECT id, assumptions, conclusions, is_equivalence
+		FROM implications_view
+	`)
+
+	if (err_imp) return []
+
+	const implications: { assumptions: Set<string>; conclusion: string }[] = []
+
+	for (const impl of all_implications_db) {
+		const assumptions: string[] = JSON.parse(impl.assumptions)
+		const conclusions: string[] = JSON.parse(impl.conclusions)
+		for (const conclusion of conclusions) {
+			implications.push({
+				assumptions: new Set(assumptions),
+				conclusion,
+			})
+		}
+
+		if (impl.is_equivalence) {
+			for (const assumption of assumptions) {
+				implications.push({
+					assumptions: new Set(conclusions),
+					conclusion: assumption,
+				})
+			}
+		}
+	}
+
+	return implications
+}
+
 async function deduce_properties(category_id: string) {
 	console.info('Deduce properties for category:', category_id)
 
@@ -46,46 +84,12 @@ async function deduce_properties(category_id: string) {
 		console.info(Array.from(properties))
 	}
 
-	const { rows: all_implications_db, err: err_imp } = await query<{
-		assumptions: string
-		conclusions: string
-		is_equivalence: number
-	}>(sql`
-		SELECT id, assumptions, conclusions, is_equivalence
-		FROM implications_view
-	`)
-
-	if (err_imp) return
-
-	// TODO: compute dualized implications
-	// TODO: add order
-	// TODO: extract the fetching of implications
-
-	const implications: { assumptions: Set<string>; conclusion: string }[] = []
-
-	for (const impl of all_implications_db) {
-		const assumptions: string[] = JSON.parse(impl.assumptions)
-		const conclusions: string[] = JSON.parse(impl.conclusions)
-		for (const conclusion of conclusions) {
-			implications.push({
-				assumptions: new Set(assumptions),
-				conclusion,
-			})
-		}
-
-		if (impl.is_equivalence) {
-			for (const assumption of assumptions) {
-				implications.push({
-					assumptions: new Set(conclusions),
-					conclusion: assumption,
-				})
-			}
-		}
-	}
+	const implications = await get_normalized_implications()
 
 	const deduced_properties = new Set<string>()
 	const reasons: Record<string, string> = {}
 
+	// TODO: add order of deduced properties in db
 	while (true) {
 		const implication = implications.find(
 			({ assumptions, conclusion }) =>
