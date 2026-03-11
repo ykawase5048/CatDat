@@ -19,7 +19,8 @@
 		"data:sort": "tsx src/lib/scripts/sort.ts && prettier --write src/lib/database/**/*.ts",
 		"data:reasons": "tsx src/lib/scripts/reasons.ts",
 		"db:shell": "sqlite3 database/local.db",
-		"db:seed": "./scripts/seed.sh"
+		"db:seed": "./scripts/seed.sh",
+		"db:deduce": "npx vite-node --options.transformMode.ssr='/.*/' src/lib/server/deductions.ts"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^7.0.0",

@@ -38,3 +38,5 @@ export function equal_up_to_order(a: string[], b: string[]): boolean {
 		JSON.stringify(a.toSorted()) === JSON.stringify(b.toSorted())
 	)
 }
+
+export const sleep = (delay: number) => new Promise<void>((res) => setTimeout(res, delay))
