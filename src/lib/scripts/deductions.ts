@@ -1,5 +1,5 @@
 import { sleep } from '$lib/commons/utils'
-import { batch, query } from './db'
+import { batch, query } from '$lib/server/db'
 import sql from 'sql-template-tag'
 
 const LOG_DETAILS = false
