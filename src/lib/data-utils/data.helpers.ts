@@ -50,7 +50,8 @@ export function is_valid_property(id: string): id is PropertyID {
 	return id in properties_dictionary
 }
 
-export function negate_prefix(prefix: Prefix) {
+export function negate_prefix(prefix: string) {
+	// @ts-expect-error need to get negation from db
 	return PREFIXES[prefix]
 }
 

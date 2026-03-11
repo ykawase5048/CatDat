@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { PropertyID } from '$lib/database/properties.data'
 	import type { Prefix } from '$lib/database/prefix.data'
 	import { negate_prefix } from '$lib/data-utils/data.helpers'
 	import { get_property_url } from '$lib/commons/property.url'
@@ -7,8 +6,8 @@
 
 	type Props = {
 		properties: {
-			id: PropertyID
-			prefix: Prefix
+			id: string
+			prefix: string
 			reason?: string
 		}[]
 		description?: string

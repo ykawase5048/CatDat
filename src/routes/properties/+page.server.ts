@@ -1,11 +1,14 @@
-import { select } from '$lib/commons/utils'
-import { PROPERTIES } from '$lib/database/properties.data'
-import type { PageServerLoad } from './$types'
+import { query } from '$lib/server/db'
+import { error } from '@sveltejs/kit'
+import sql from 'sql-template-tag'
 
-export const load: PageServerLoad = () => {
-	const sorted_properties = PROPERTIES.toSorted((a, b) =>
-		a.id.toLowerCase().localeCompare(b.id.toLowerCase()),
-	)
+export const load = async () => {
+	const { rows: properties, err } = await query<{ prefix: string; id: string }>(sql`
+		SELECT prefix, id FROM properties
+		ORDER BY lower(id)
+	`)
 
-	return { properties: select('id', 'prefix').from(sorted_properties) }
+	if (err) error(500, 'Could not load properties')
+
+	return { properties }
 }
