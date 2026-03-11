@@ -1,6 +1,4 @@
 <script lang="ts">
-	import type { Prefix } from '$lib/database/prefix.data'
-	import { negate_prefix } from '$lib/data-utils/data.helpers'
 	import { get_property_url } from '$lib/commons/property.url'
 	import LabelWithReason from './LabelWithReason.svelte'
 
@@ -11,11 +9,9 @@
 			reason?: string
 		}[]
 		description?: string
-		with_prefix?: boolean
-		negated?: boolean
 	}
 
-	let { properties, description, with_prefix = true, negated = false }: Props = $props()
+	let { properties, description }: Props = $props()
 </script>
 
 {#if description}
@@ -29,9 +25,7 @@
 		{#each properties as { id, prefix, reason }}
 			<li>
 				<LabelWithReason {reason}>
-					{#if with_prefix}
-						{negated ? negate_prefix(prefix) : prefix}
-					{/if}
+					{prefix}
 					<a href={get_property_url(id)}>
 						{id}
 					</a>

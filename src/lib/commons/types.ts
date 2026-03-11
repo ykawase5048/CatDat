@@ -51,3 +51,9 @@ export type DescriptionWithReason = {
 	description: string
 	reason: string
 }
+
+export type CategoryProperty = {
+	id: string
+	reason: string
+	prefix: string
+}

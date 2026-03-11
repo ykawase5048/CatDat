@@ -64,31 +64,32 @@
 	{/if}
 </section>
 
-<!-- TODO: bring back list of properties -->
-
 <!-- The key fixes a weird rerendering bug when category page is changed -->
-<!-- {#key category.id}
+{#key category.id}
 	<div class="two-columns">
 		<section>
 			<h3>Properties</h3>
 
 			{#if category_detail_level.value === 'all'}
 				<PropertyList
-					properties={category.properties}
+					properties={data.direct_properties}
 					description="Properties from the database"
 				/>
 
+				<!-- TODO: bring back deduced properties -->
+
+				<!--
 				<PropertyList
 					properties={category.deduced_properties}
 					description="Deduced properties"
-				/>
+				/> -->
 			{:else if category_detail_level.value === 'merged'}
-				<PropertyList
+				<!-- <PropertyList
 					properties={[...category.properties, ...category.deduced_properties]}
-				/>
+				/> -->
 			{:else if category_detail_level.value === 'basic'}
 				<PropertyList
-					properties={category.properties}
+					properties={data.direct_properties}
 					description="Properties from the database. Further properties can be deduced."
 				/>
 			{/if}
@@ -99,46 +100,46 @@
 
 			{#if category_detail_level.value === 'all'}
 				<PropertyList
-					properties={category.non_properties}
+					properties={data.direct_non_properties}
 					description="Non-Properties from the database"
-					negated={true}
 				/>
-				<PropertyList
+
+				<!-- TODO: bring back deduced non-properties -->
+
+				<!-- <PropertyList
 					properties={category.deduced_non_properties}
 					description="Deduced Non-Properties*"
 					negated={true}
-				/>
+				/> -->
 				<p class="hint">*This also uses the deduced properties.</p>
 			{:else if category_detail_level.value === 'merged'}
-				<PropertyList
+				<!-- <PropertyList
 					properties={[
 						...category.non_properties,
 						...category.deduced_non_properties,
 					]}
 					negated={true}
-				/>
+				/> -->
 			{:else if category_detail_level.value === 'basic'}
 				<PropertyList
-					properties={category.non_properties}
+					properties={data.direct_non_properties}
 					description="Non-Properties from the database. Further non-properties can be deduced."
-					negated={true}
 				/>
 			{/if}
 		</section>
 	</div>
 
-	<section>
+	<!-- <section>
 		<h3>Unknown properties</h3>
 
 		<PropertyList
 			properties={category.unknown_properties}
-			negated={false}
 			description={category.unknown_properties.length
 				? "For these properties the database currently doesn't have an answer if they are satisfied or not. Please help to complete the data!"
 				: undefined}
 		/>
-	</section>
-{/key} -->
+	</section> -->
+{/key}
 
 <section>
 	<h3>Special morphisms</h3>
@@ -172,11 +173,11 @@
 		margin-top: 1.5rem;
 	}
 
-	/* @media (min-width: 720px) {
+	@media (min-width: 720px) {
 		.two-columns {
 			display: grid;
 			grid-template-columns: 1fr 1fr;
 			gap: 0.5rem;
 		}
-	} */
+	}
 </style>

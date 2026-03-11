@@ -4,6 +4,7 @@ import { batch } from '$lib/server/db'
 import sql from 'sql-template-tag'
 import type {
 	CategoryDisplay,
+	CategoryProperty,
 	DescriptionWithReason,
 	RelatedCategory,
 } from '$lib/commons/types'
@@ -11,7 +12,7 @@ import type {
 export const load = async (event) => {
 	const id = event.params.id
 
-	// TODO: load properties (direct + deduced) of given category
+	// TODO: load deduced properties and non-properties of given category
 
 	const { results, err } = await batch<
 		[
@@ -21,6 +22,8 @@ export const load = async (event) => {
 			DescriptionWithReason,
 			DescriptionWithReason,
 			DescriptionWithReason,
+			CategoryProperty,
+			CategoryProperty,
 		]
 	>([
 		sql`
@@ -59,12 +62,41 @@ export const load = async (event) => {
 			FROM category_monomorphisms
 			WHERE category_id = ${id}
 		`,
+		sql`
+			SELECT
+				cp.property_id AS id,
+				cp.reason,
+				p.prefix
+			FROM category_properties cp
+			INNER JOIN properties p ON p.id = cp.property_id
+			WHERE cp.category_id = ${id}
+			ORDER BY cp.property_id
+		`,
+		sql`
+			SELECT
+				cp.non_property_id AS id,
+				cp.reason,
+				pf.negation as prefix
+			FROM category_non_properties cp
+			INNER JOIN properties p ON p.id = cp.non_property_id
+			INNER JOIN prefixes pf ON pf.prefix = p.prefix
+			WHERE cp.category_id = ${id}
+			ORDER BY cp.non_property_id
+		`,
 	])
 
 	if (err) error(500, 'Could not load category')
 
-	const [categories, related_categories, tag_objects, iso_rows, epi_rows, mono_rows] =
-		results
+	const [
+		categories,
+		related_categories,
+		tag_objects,
+		iso_rows,
+		epi_rows,
+		mono_rows,
+		direct_properties,
+		direct_non_properties,
+	] = results
 
 	if (!categories.length) error(404, `Could not find category with ID '${id}'`)
 
@@ -81,5 +113,7 @@ export const load = async (event) => {
 		isomorphisms,
 		epimorphisms,
 		monomorphisms,
+		direct_properties,
+		direct_non_properties,
 	})
 }
