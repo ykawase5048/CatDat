@@ -8,7 +8,6 @@
 
 	let {
 		property,
-		dual_property,
 		related_properties,
 		relevant_implications,
 		categories_with_this_property,
@@ -23,19 +22,20 @@
 
 <p>
 	{@html property.description}
-	{#if property.invariant === false}
+
+	{#if property.invariant_under_equivalences === false}
 		Warning: This property is not invariant under equivalences.
 	{/if}
 </p>
 
-{#if dual_property || related_properties.length || property.nlab_link}
+{#if property.dual_property || related_properties.length || property.nlab_link}
 	<ul>
-		{#if dual_property}
+		{#if property.dual_property}
 			<li>
-				Dual property: <a href={get_property_url(dual_property)}
-					>{dual_property}</a
+				Dual property: <a href={get_property_url(property.dual_property)}
+					>{property.dual_property}</a
 				>
-				{#if dual_property === property.id}
+				{#if property.dual_property === property.id}
 					(self-dual)
 				{/if}
 			</li>
@@ -61,14 +61,16 @@
 	</ul>
 {/if}
 
+<!-- TODO: bring these components back -->
+
+<!-- 
+
 <h3>Relevant implications</h3>
 
-<!-- FIXME -->
-
-<!-- <ImplicationList
+<ImplicationList
 	implications={relevant_implications}
 	highlighted_property={property.id}
-/> -->
+/>
 
 <h3>Examples</h3>
 
@@ -85,3 +87,4 @@
 	description="For these categories the database has no info if they satisfy this property or
 		not."
 />
+-->
