@@ -19,7 +19,6 @@ async function main() {
 	}
 }
 
-// TODO: compute also dualized implications
 async function get_normalized_implications() {
 	const { rows: all_implications_db, err: err_imp } = await query<{
 		assumptions: string

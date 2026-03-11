@@ -5,6 +5,7 @@ SELECT
     i.id,
     i.is_equivalence,
     i.reason,
+    i.is_deduced,
     (
         SELECT json_group_array(property_id) FROM (
             SELECT property_id
@@ -31,5 +32,6 @@ SELECT
     NULL AS is_equivalence,
     NULL AS assumptions,
     NULL AS conclusions,
-    NULL AS reason;
+    NULL AS reason,
+    NULL AS is_deduced;
 

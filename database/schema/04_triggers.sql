@@ -88,8 +88,13 @@ END;
 CREATE TRIGGER trg_implication_input_insert
 INSTEAD OF INSERT ON implication_input
 BEGIN
-    INSERT INTO implications (id, is_equivalence, reason)
-    VALUES (NEW.id, NEW.is_equivalence, NEW.reason);
+    INSERT INTO implications (id, is_equivalence, reason, is_deduced)
+    VALUES (
+        NEW.id,
+        COALESCE(NEW.is_equivalence, FALSE),
+        NEW.reason,
+        COALESCE(NEW.is_deduced, FALSE)
+    );
 
     INSERT INTO implication_assumptions (implication_id, property_id)
     SELECT NEW.id, value

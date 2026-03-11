@@ -5,14 +5,13 @@ import { error } from '@sveltejs/kit'
 import type { ImplicationDB, ImplicationDisplay } from '$lib/commons/types'
 
 export const load = async (event) => {
-	// TODO: get dualized implications when ?show_all is present
 	const show_all_implications = event.url.searchParams.has('show_all')
 
 	const { rows, err } = await query<ImplicationDB>(sql`
 		SELECT id, is_equivalence, reason, assumptions, conclusions
 		FROM implications_view
-		ORDER BY lower(assumptions) || ' ' || lower(conclusions);
-	`)
+		${show_all_implications ? sql`` : sql`WHERE is_deduced = FALSE`}
+		ORDER BY lower(assumptions) || ' ' || lower(conclusions)`)
 
 	if (err) error(500, 'Could not load implications')
 
@@ -24,7 +23,8 @@ export const load = async (event) => {
 		conclusions: JSON.parse(row.conclusions),
 	}))
 
-	const rendered_implications = implications.map(render_nested_formulas)
-
-	return { implications: rendered_implications, show_all_implications }
+	return {
+		implications: render_nested_formulas(implications),
+		show_all_implications,
+	}
 }
