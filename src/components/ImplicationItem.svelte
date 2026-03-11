@@ -7,11 +7,11 @@
 	import Fa from 'svelte-fa'
 
 	import type { PropertyID } from '$lib/database/properties.data'
-	import type { Implication } from '$lib/database/implications.data'
 	import { get_property_url } from '$lib/commons/property.url'
 	import LabelWithReason from './LabelWithReason.svelte'
+	import type { ImplicationDisplay } from '$lib/commons/types'
 
-	type Props = { implication: Implication; highlighted_property?: PropertyID }
+	type Props = { implication: ImplicationDisplay; highlighted_property?: PropertyID }
 
 	let { implication, highlighted_property }: Props = $props()
 </script>
@@ -29,7 +29,7 @@
 	{/each}
 
 	<span aria-hidden="true">
-		{#if implication.equivalent}
+		{#if implication.is_equivalence}
 			<Fa icon={faArrowsLeftRight} class="operator" />
 		{:else}
 			<Fa icon={faArrowRight} class="operator" />
@@ -37,7 +37,7 @@
 	</span>
 
 	<span class="visually-hidden">
-		{#if implication.equivalent}
+		{#if implication.is_equivalence}
 			is equivalent to &nbsp;
 		{:else}
 			implies &nbsp;

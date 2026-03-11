@@ -5,13 +5,19 @@ SELECT
     i.id,
     i.is_equivalence,
     i.reason,
-    COALESCE(GROUP_CONCAT(DISTINCT a.property_id), '') AS assumptions,
-    COALESCE(GROUP_CONCAT(DISTINCT c.property_id), '') AS conclusions
-FROM implications i
-LEFT JOIN implication_assumptions a ON i.id = a.implication_id
-LEFT JOIN implication_conclusions c ON i.id = c.implication_id
-GROUP BY i.id;
-
+    (SELECT json_group_array(property_id)
+     FROM (SELECT property_id
+           FROM implication_assumptions a
+           WHERE a.implication_id = i.id
+           ORDER BY lower(property_id))
+    ) AS assumptions,
+    (SELECT json_group_array(property_id)
+     FROM (SELECT property_id
+           FROM implication_conclusions c
+           WHERE c.implication_id = i.id
+           ORDER BY lower(property_id))
+    ) AS conclusions
+FROM implications i;
 
 DROP VIEW IF EXISTS implication_input;
 

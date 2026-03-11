@@ -1,10 +1,10 @@
 <script lang="ts">
-	import type { Implication } from '$lib/database/implications.data'
+	import type { ImplicationDisplay } from '$lib/commons/types'
 	import type { PropertyID } from '$lib/database/properties.data'
 	import ImplicationItem from './ImplicationItem.svelte'
 
 	type Props = {
-		implications: Implication[]
+		implications: ImplicationDisplay[]
 		description?: string
 		highlighted_property?: PropertyID
 	}

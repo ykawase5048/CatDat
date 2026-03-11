@@ -63,10 +63,12 @@
 
 <h3>Relevant implications</h3>
 
-<ImplicationList
+<!-- FIXME -->
+
+<!-- <ImplicationList
 	implications={relevant_implications}
 	highlighted_property={property.id}
-/>
+/> -->
 
 <h3>Examples</h3>
 
