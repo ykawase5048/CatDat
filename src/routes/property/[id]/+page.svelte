@@ -68,23 +68,23 @@
 	highlighted_property={property.id}
 />
 
-<!-- TODO: bring these components back -->
-
-<!--
-
 <h3>Examples</h3>
 
-<CategoryList categories={categories_with_this_property} />
+<CategoryList
+	categories={categories_with_this_property}
+	description="There are {categories_with_this_property.length} categories with this property."
+/>
 
 <h3>Counterexamples</h3>
 
-<CategoryList categories={categories_without_this_property} />
+<CategoryList
+	categories={categories_without_this_property}
+	description="There are {categories_without_this_property.length} categories without this property."
+/>
 
 <h3>Unknown</h3>
 
 <CategoryList
 	categories={unknown_categories}
-	description="For these categories the database has no info if they satisfy this property or
-		not."
+	description="There are {unknown_categories.length} categories for which the database has no information on whether they satisfy this property."
 />
--->

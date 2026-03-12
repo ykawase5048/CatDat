@@ -1,26 +1,25 @@
 import { error } from '@sveltejs/kit'
-import type { PageServerLoad } from './$types'
-
 import { render_nested_formulas } from '$lib/commons/rendering'
-import { PROPERTY_RELATIONS } from '$lib/database/property-relations.data'
-import { PROPERTY_DUALS } from '$lib/database/property-duals.data'
 import { decode_property_ID } from '$lib/commons/property.url'
-import {
-	get_category,
-	get_property,
-	is_valid_property,
-} from '$lib/data-utils/data.helpers'
-import { category_system, property_deduction_system } from '$lib/data-utils/deductions'
-import { batch, query } from '$lib/server/db'
+import { batch } from '$lib/server/db'
 import sql from 'sql-template-tag'
-import type { PropertyDB, PropertyDisplay } from '$lib/commons/types'
+import type { CategoryShort, PropertyDB } from '$lib/commons/types'
 import type { ImplicationDB } from '$lib/commons/types'
 import { display_implication, display_property } from '$lib/server/utils'
 
-export const load: PageServerLoad = async (event) => {
+export const load = async (event) => {
 	const id = decode_property_ID(event.params.id)
 
-	const { results, err } = await batch<[PropertyDB, { id: string }, ImplicationDB]>([
+	const { results, err } = await batch<
+		[
+			PropertyDB,
+			{ id: string },
+			ImplicationDB,
+			CategoryShort,
+			CategoryShort,
+			CategoryShort,
+		]
+	>([
 		sql`
 			SELECT
 				id, prefix, description, dual_property_id,
@@ -50,11 +49,43 @@ export const load: PageServerLoad = async (event) => {
 				)
 			ORDER BY lower(assumptions) || ' ' || lower(conclusions)
 		`,
+		sql`
+			SELECT c.id, c.name
+			FROM category_properties cp
+			INNER JOIN categories c ON c.id = cp.category_id
+			WHERE cp.property_id = ${id}
+		`,
+		sql`
+			SELECT c.id, c.name
+			FROM category_non_properties cnp
+			INNER JOIN categories c ON c.id = cnp.category_id
+			WHERE cnp.non_property_id = ${id}
+		`,
+		sql`
+			SELECT c.id, c.name
+			FROM categories c
+			LEFT JOIN category_properties cp
+				ON cp.category_id = c.id
+				AND cp.property_id = ${id}
+			LEFT JOIN category_non_properties cnp
+				ON cnp.category_id = c.id
+				AND cnp.non_property_id = ${id}
+			WHERE
+				cp.property_id IS NULL
+				AND cnp.non_property_id IS NULL;
+		`,
 	])
 
 	if (err) error(500, 'Could not load property')
 
-	const [properties, related, relevant_implications_db] = results
+	const [
+		properties,
+		related,
+		relevant_implications_db,
+		categories_with_this_property,
+		categories_without_this_property,
+		unknown_categories,
+	] = results
 
 	if (!properties.length) error(404, 'Property not found')
 
@@ -67,26 +98,9 @@ export const load: PageServerLoad = async (event) => {
 	return render_nested_formulas({
 		property,
 		related_properties,
-		/* TODO: bring these values back */
-		categories_with_this_property: [],
-		categories_without_this_property: [],
-		unknown_categories: [],
+		categories_with_this_property,
+		categories_without_this_property,
+		unknown_categories,
 		relevant_implications,
 	})
 }
-
-// const categories_with_this_property = category_system
-// 	.search([id], [], [])
-// 	.map((result) => get_category(result.id))
-
-// const categories_without_this_property = category_system
-// 	.search([], [id], [])
-// 	.map((result) => get_category(result.id))
-
-// const unknown_categories = category_system
-// 	.search([], [], [id])
-// 	.map((result) => get_category(result.id))
-
-// const relevant_implications = property_deduction_system
-// 	.get_relevant_rules(id)
-// 	.map(render_nested_formulas)
