@@ -42,11 +42,13 @@ export const load = async (event) => {
 			FROM related_categories r
 			INNER JOIN categories c ON c.id = r.related_category_id
 			WHERE r.category_id = ${id}
+			ORDER BY id
 		`,
 		sql`
 			SELECT tag
 			FROM category_tags
 			WHERE category_id = ${id}
+			ORDER BY tag
 		`,
 		sql`
 			SELECT description, reason
@@ -72,7 +74,7 @@ export const load = async (event) => {
 			FROM category_properties cp
 			INNER JOIN properties p ON p.id = cp.property_id
 			WHERE cp.category_id = ${id}
-			ORDER BY cp.property_id
+			ORDER BY cp.position, cp.property_id
 		`,
 		sql`
 			SELECT
@@ -84,7 +86,7 @@ export const load = async (event) => {
 			INNER JOIN properties p ON p.id = cnp.non_property_id
 			INNER JOIN prefixes pf ON pf.prefix = p.prefix
 			WHERE cnp.category_id = ${id}
-			ORDER BY cnp.non_property_id
+			ORDER BY cnp.position, cnp.non_property_id
 		`,
 		sql`
 			SELECT

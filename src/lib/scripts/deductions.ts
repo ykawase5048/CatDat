@@ -92,10 +92,9 @@ async function deduce_properties(
 		console.info(Array.from(properties))
 	}
 
-	const deduced_properties = new Set<string>()
+	const deduced_properties: string[] = []
 	const reasons: Record<string, string> = {}
 
-	// TODO: add order of deduced properties in db
 	while (true) {
 		const implication = implications.find(
 			({ assumptions, conclusion }) =>
@@ -105,31 +104,31 @@ async function deduce_properties(
 		const { assumptions, conclusion } = implication
 
 		properties.add(conclusion)
-		deduced_properties.add(conclusion)
+		deduced_properties.push(conclusion)
 
 		// TODO: add prefixes to the reason text, and make it readable
 		const reason = `${Array.from(assumptions).join(', ')} => ${conclusion}.`
 		reasons[conclusion] = reason
 	}
 
-	const deduced_properties_list = Array.from(deduced_properties)
-
 	if (LOG_DETAILS) {
-		console.info(`${deduced_properties.size} properties have been deduced`)
-		console.info(deduced_properties_list)
+		console.info(`${deduced_properties.length} properties have been deduced`)
+		console.info(deduced_properties)
 	}
 
-	const insert_query = (id: string) => sql`
+	const insert_query = (id: string, position: number) => sql`
 		INSERT INTO category_properties
-			(property_id, category_id, reason, is_deduced)
-		VALUES (${id}, ${category_id}, ${reasons[id]}, TRUE)
+			(property_id, category_id, reason, position, is_deduced)
+		VALUES (${id}, ${category_id}, ${reasons[id]}, ${position}, TRUE)
 	`
 
-	const { err } = await batch(deduced_properties_list.map(insert_query))
+	const { err } = await batch(
+		deduced_properties.map((id, index) => insert_query(id, index + 1)),
+	)
 
 	if (err) return
 
-	console.info(`Added ${deduced_properties.size} properties to the database\n`)
+	console.info(`Added ${deduced_properties.length} properties to the database\n`)
 }
 
 async function deduce_non_properties(
@@ -176,10 +175,8 @@ async function deduce_non_properties(
 		console.info(Array.from(non_properties))
 	}
 
-	const deduced_non_properties = new Set<string>()
+	const deduced_non_properties: string[] = []
 	const reasons: Record<string, string> = {}
-
-	// TODO: add order of deduced non-properties in db
 
 	function get_next_implication() {
 		for (const implication of implications) {
@@ -208,29 +205,31 @@ async function deduce_non_properties(
 		}
 
 		non_properties.add(non_property)
-		deduced_non_properties.add(non_property)
+		deduced_non_properties.push(non_property)
 
 		// TODO: add prefixes, and make it readable
 		const reason = `Assume ${non_property}. But ${[...implication.assumptions].join(', ')} => ${implication.conclusion}. This is a contradiction.`
 		reasons[non_property] = reason
 	}
 
-	const deduced_non_properties_list = Array.from(deduced_non_properties)
-
 	if (LOG_DETAILS) {
-		console.info(`${deduced_non_properties.size} non-properties have been deduced`)
-		console.info(deduced_non_properties_list)
+		console.info(`${deduced_non_properties.length} non-properties have been deduced`)
+		console.info(deduced_non_properties)
 	}
 
-	const insert_query = (id: string) => sql`
+	const insert_query = (id: string, position: number) => sql`
 		INSERT INTO category_non_properties
-			(non_property_id, category_id, reason, is_deduced)
-		VALUES (${id}, ${category_id}, ${reasons[id]}, TRUE)
+			(non_property_id, category_id, reason, position, is_deduced)
+		VALUES (${id}, ${category_id}, ${reasons[id]}, ${position}, TRUE)
 	`
 
-	const { err } = await batch(deduced_non_properties_list.map(insert_query))
+	const { err } = await batch(
+		deduced_non_properties.map((id, index) => insert_query(id, index + 1)),
+	)
 
 	if (err) return
 
-	console.info(`Added ${deduced_non_properties.size} non-properties to the database\n`)
+	console.info(
+		`Added ${deduced_non_properties.length} non-properties to the database\n`,
+	)
 }
