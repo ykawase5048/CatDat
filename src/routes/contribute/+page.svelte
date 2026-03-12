@@ -18,7 +18,7 @@
 	observe new combinations of properties.
 </p>
 
-<p>There are two canonical options to contribute to this project:</p>
+<p>There are two options to contribute to this project:</p>
 
 <ul>
 	<li>
@@ -30,15 +30,14 @@
 		>,
 	</li>
 	<li>
-		or create an
-		<a
-			class="accent"
-			href="https://github.com/ScriptRaccoon/CatDat/issues"
-			target="_blank">issue</a
-		>
-		on GitHub.
+		or submit our
+		<a class="accent" href="https://forms.gle/8LBmro5FfSa43pD2A" target="_blank"
+			>Google form</a
+		>.
 	</li>
 </ul>
+
+<p>The form does not require any knowledge of GitHub or coding.</p>
 
 <p>
 	Make sure to follow the
@@ -47,12 +46,4 @@
 		href="https://github.com/ScriptRaccoon/CatDat/blob/main/CONTRIBUTING.md"
 		target="_blank">contribution guidelines</a
 	>.
-</p>
-
-<p>
-	A third option is offered via a <a
-		class="accent"
-		href="https://forms.gle/8LBmro5FfSa43pD2A"
-		target="_blank">Google form</a
-	>. This option does not require any knowledge of GitHub or coding.
 </p>
