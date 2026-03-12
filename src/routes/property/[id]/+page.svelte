@@ -28,14 +28,14 @@
 	{/if}
 </p>
 
-{#if property.dual_property || related_properties.length || property.nlab_link}
+{#if property.dual_property_id || related_properties.length || property.nlab_link}
 	<ul>
-		{#if property.dual_property}
+		{#if property.dual_property_id}
 			<li>
-				Dual property: <a href={get_property_url(property.dual_property)}
-					>{property.dual_property}</a
+				Dual property: <a href={get_property_url(property.dual_property_id)}
+					>{property.dual_property_id}</a
 				>
-				{#if property.dual_property === property.id}
+				{#if property.dual_property_id === property.id}
 					(self-dual)
 				{/if}
 			</li>

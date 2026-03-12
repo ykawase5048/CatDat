@@ -42,7 +42,7 @@ export type PropertyDB = {
 	id: string
 	prefix: string
 	description: string
-	dual_property: string | null
+	dual_property_id: string | null
 	nlab_link: string | null
 	invariant_under_equivalences: number
 }
