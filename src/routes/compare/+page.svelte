@@ -3,8 +3,6 @@
 	import { goto } from '$app/navigation'
 	import MetaData from '$components/MetaData.svelte'
 	import Selection from '$components/Selection.svelte'
-	import { max_categories, storage_key } from '$lib/commons/comparison.config'
-	import { get_saved_category_names } from '$lib/commons/comparison.utils'
 
 	let { data } = $props()
 
@@ -13,10 +11,31 @@
 
 	let selected_category_names: string[] = $state(get_saved_category_names())
 
+	const COMPARISON_STORAGE_KEY = 'comparison'
+
+	function get_saved_category_names(): string[] {
+		if (!browser) return []
+
+		const names_string = window.sessionStorage.getItem(COMPARISON_STORAGE_KEY)
+		if (!names_string) return []
+
+		try {
+			const parsed_names: unknown = JSON.parse(names_string)
+			const is_valid =
+				Array.isArray(parsed_names) &&
+				parsed_names.every((name) => typeof name === 'string')
+
+			return is_valid ? parsed_names : []
+		} catch {
+			console.error('Error parsing category names from sessionStorage')
+			return []
+		}
+	}
+
 	$effect(() => {
 		if (!browser) return
 		window.sessionStorage.setItem(
-			storage_key,
+			COMPARISON_STORAGE_KEY,
 			JSON.stringify(selected_category_names),
 		)
 	})
@@ -26,7 +45,10 @@
 			.map((name) => categories.find((category) => category.name === name))
 			.filter((category) => category !== undefined)
 
-		if (chosen_categories.length === 0 || chosen_categories.length > max_categories)
+		if (
+			chosen_categories.length === 0 ||
+			chosen_categories.length > data.max_categories_compare
+		)
 			return
 
 		const path = chosen_categories.map((category) => category.id).join('/')
@@ -42,7 +64,8 @@
 <h2>Choose categories for comparison</h2>
 
 <p class="hint">
-	Select up to {max_categories} categories to compare their properties with each other.
+	Select up to {data.max_categories_compare} categories to compare their properties with each
+	other.
 </p>
 
 <Selection

@@ -1,12 +1,12 @@
 import { LOG_DETAILS } from '$env/static/private'
 import type { NormalizedImplication } from '$lib/commons/types'
-import { sleep } from '$lib/commons/utils'
 import { batch, query } from '$lib/server/db'
 import {
 	get_assumption_string,
 	get_conclusion_string,
 	get_normalized_implications,
 } from '$lib/server/normalized-implications'
+import { sleep } from '$lib/server/utils'
 import sql from 'sql-template-tag'
 
 deduce_all_properties()

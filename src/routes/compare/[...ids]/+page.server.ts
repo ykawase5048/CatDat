@@ -1,15 +1,18 @@
 import { error } from '@sveltejs/kit'
 import { query } from '$lib/server/db'
-import { render_nested_formulas } from '$lib/commons/rendering'
-import { max_categories } from '$lib/commons/comparison.config'
+import { render_nested_formulas } from '$lib/server/rendering'
+import { MAX_CATEGORIES_COMPARE } from '$lib/server/config'
 
 export const load = async (event) => {
 	const compared_ids = event.params.ids.split('/')
 
 	if (!compared_ids.length) error(400, 'No category selected for comparison')
 
-	if (compared_ids.length > max_categories) {
-		error(400, `It is only possible to compare up to ${max_categories} categories`)
+	if (compared_ids.length > MAX_CATEGORIES_COMPARE) {
+		error(
+			400,
+			`It is only possible to compare up to ${MAX_CATEGORIES_COMPARE} categories`,
+		)
 	}
 
 	const placeholders = compared_ids.map(() => '?').join(', ')

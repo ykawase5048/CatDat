@@ -1,0 +1,1 @@
+export const MAX_CATEGORIES_COMPARE = 10

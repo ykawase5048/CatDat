@@ -12,12 +12,7 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
 		"lint": "prettier --check .",
-		"test": "vitest",
-		"test:run": "vitest --run",
-		"coverage": "vitest run --coverage",
 		"prepare": "husky",
-		"data:sort": "tsx src/lib/scripts/sort.ts && prettier --write src/lib/database/**/*.ts",
-		"data:reasons": "tsx src/lib/scripts/reasons.ts",
 		"db:shell": "sqlite3 database/local.db",
 		"db:seed": "./scripts/seed.sh",
 		"db:deduce-implications": "npx vite-node --options.transformMode.ssr='/.*/' src/lib/scripts/deduce-implications.ts",
@@ -30,15 +25,13 @@
 		"@sveltejs/kit": "^2.49.2",
 		"@sveltejs/vite-plugin-svelte": "^6.2.1",
 		"@types/node": "^25.0.3",
-		"@vitest/coverage-v8": "^4.0.16",
 		"husky": "^9.1.7",
 		"prettier": "^3.7.4",
 		"prettier-plugin-svelte": "^3.4.1",
 		"svelte": "^5.46.0",
 		"svelte-check": "^4.3.5",
 		"typescript": "^5.9.3",
-		"vite": "^7.3.0",
-		"vitest": "^4.0.16"
+		"vite": "^7.3.0"
 	},
 	"engines": {
 		"node": ">=22.13.0"

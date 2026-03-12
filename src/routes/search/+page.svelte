@@ -3,24 +3,51 @@
 	import { fade } from 'svelte/transition'
 	import { browser } from '$app/environment'
 	import CategoryList from '$components/CategoryList.svelte'
-	import {
-		search_separator,
-		storage_key_non_properties,
-		storage_key_properties,
-	} from '$lib/commons/search.config'
 	import Selection from '$components/Selection.svelte'
 	import { encode_property_ID } from '$lib/commons/property.url'
-	import { get_saved_search } from '$lib/commons/search.utils'
+
 	import MetaData from '$components/MetaData.svelte'
+
+	const SELECTED_PROPERTIES_STORAGE_KEY = 'search_properties'
+	const SELECTED_NON_PROPERTIES_STORAGE_KEY = 'search_non_properties'
+
+	function get_saved_search(): [string[], string[]] {
+		if (!browser) return [[], []]
+
+		const properties_string = window.sessionStorage.getItem(
+			SELECTED_PROPERTIES_STORAGE_KEY,
+		)
+		const non_properties_string = window.sessionStorage.getItem(
+			SELECTED_NON_PROPERTIES_STORAGE_KEY,
+		)
+
+		if (!properties_string || !non_properties_string) return [[], []]
+
+		try {
+			const parsed_properties: unknown = JSON.parse(properties_string)
+			const parsed_non_properties: unknown = JSON.parse(non_properties_string)
+
+			const is_valid =
+				Array.isArray(parsed_properties) &&
+				parsed_properties.every((p) => typeof p === 'string') &&
+				Array.isArray(parsed_non_properties) &&
+				parsed_non_properties.every((p) => typeof p === 'string')
+
+			return is_valid ? [parsed_properties, parsed_non_properties] : [[], []]
+		} catch {
+			console.error('Error parsing saved search from sessionStorage')
+			return [[], []]
+		}
+	}
 
 	$effect(() => {
 		if (!browser) return
 		window.sessionStorage.setItem(
-			storage_key_properties,
+			SELECTED_PROPERTIES_STORAGE_KEY,
 			JSON.stringify(selected_properties),
 		)
 		window.sessionStorage.setItem(
-			storage_key_non_properties,
+			SELECTED_NON_PROPERTIES_STORAGE_KEY,
 			JSON.stringify(selected_non_properties),
 		)
 	})
@@ -45,11 +72,11 @@
 	function request_search_results() {
 		const properties_query = selected_properties
 			.map(encode_property_ID)
-			.join(search_separator)
+			.join(data.search_separator)
 
 		const non_properties_query = selected_non_properties
 			.map(encode_property_ID)
-			.join(search_separator)
+			.join(data.search_separator)
 
 		const url = new URL('/search', window.location.origin)
 
@@ -71,11 +98,11 @@
 
 		const properties_query = data.dual_selected_properties
 			.map(encode_property_ID)
-			.join(search_separator)
+			.join(data.search_separator)
 
 		const non_properties_query = data.selected_non_properties
 			.map(encode_property_ID)
-			.join(search_separator)
+			.join(data.search_separator)
 
 		const url = new URL('/search', window.location.origin)
 
@@ -127,15 +154,6 @@
 
 	<button type="button" class="button" onclick={request_search_results}>Search</button>
 </div>
-
-<!-- TODO: bring back contradiction detection -->
-
-<!-- {#if data.contradiction}
-	<Warning>
-		The properties and non-properties contradict each other according to the
-		<a href="/implications">implications</a>. There cannot be any search results.
-	</Warning>
-{/if} -->
 
 {#if data.is_search}
 	<section transition:fade={{ duration: 150 }}>

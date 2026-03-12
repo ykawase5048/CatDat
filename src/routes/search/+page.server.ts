@@ -1,9 +1,10 @@
 import { decode_property_ID } from '$lib/commons/property.url'
-import { search_separator } from '$lib/commons/search.config.js'
 import type { CategoryShort } from '$lib/commons/types'
 import { query } from '$lib/server/db'
 import { error } from '@sveltejs/kit'
 import sql from 'sql-template-tag'
+
+const SEARCH_SEPARATOR = '~'
 
 export const load = async (event) => {
 	const { rows: rows_props, err: err_all } = await query<{
@@ -28,6 +29,7 @@ export const load = async (event) => {
 	if (!properties_query && !non_properties_query) {
 		return {
 			is_search: false,
+			search_separator: SEARCH_SEPARATOR,
 			all_properties,
 			found_categories: [],
 		}
@@ -36,11 +38,11 @@ export const load = async (event) => {
 	const all_properties_set = new Set(all_properties)
 
 	const selected_properties = properties_query
-		? properties_query.split(search_separator).map(decode_property_ID)
+		? properties_query.split(SEARCH_SEPARATOR).map(decode_property_ID)
 		: []
 
 	const selected_non_properties = non_properties_query
-		? non_properties_query.split(search_separator).map(decode_property_ID)
+		? non_properties_query.split(SEARCH_SEPARATOR).map(decode_property_ID)
 		: []
 
 	const dual_selected_properties_potential = selected_properties.map(
@@ -101,6 +103,7 @@ export const load = async (event) => {
 
 	return {
 		is_search: true,
+		search_separator: SEARCH_SEPARATOR,
 		all_properties,
 		selected_properties,
 		selected_non_properties,

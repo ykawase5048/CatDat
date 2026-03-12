@@ -1,5 +1,5 @@
 import { error } from '@sveltejs/kit'
-import { render_nested_formulas } from '$lib/commons/rendering'
+import { render_nested_formulas } from '$lib/server/rendering'
 import { decode_property_ID } from '$lib/commons/property.url'
 import { batch } from '$lib/server/db'
 import sql from 'sql-template-tag'

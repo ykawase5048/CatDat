@@ -25,3 +25,9 @@ export function display_property(property: PropertyDB): PropertyDisplay {
 		invariant_under_equivalences: Boolean(property.invariant_under_equivalences),
 	}
 }
+
+export function is_object(obj: unknown): obj is Record<string, unknown> {
+	return obj != null && obj.constructor.name === 'Object'
+}
+
+export const sleep = (delay: number) => new Promise<void>((res) => setTimeout(res, delay))
