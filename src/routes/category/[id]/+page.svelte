@@ -137,6 +137,8 @@
 					Isomorphisms: {@html data.isomorphisms.description}
 				</LabelWithReason>
 			</li>
+		{:else}
+			<li>Isomorphisms: unknown</li>
 		{/if}
 		{#if data.monomorphisms}
 			<li>
@@ -144,6 +146,8 @@
 					Monomorphisms: {@html data.monomorphisms.description}
 				</LabelWithReason>
 			</li>
+		{:else}
+			<li>Monomorphisms: unknown</li>
 		{/if}
 		{#if data.epimorphisms}
 			<li>
@@ -151,6 +155,8 @@
 					Epimorphisms: {@html data.epimorphisms.description}
 				</LabelWithReason>
 			</li>
+		{:else}
+			<li>Epimorphisms: unknown</li>
 		{/if}
 	</ul>
 </section>

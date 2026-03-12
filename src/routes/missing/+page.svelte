@@ -1,7 +1,6 @@
 <script>
 	import CategoryList from '$components/CategoryList.svelte'
 	import MetaData from '$components/MetaData.svelte'
-	import { negate_prefix } from '$lib/data-utils/data.helpers'
 
 	const { data } = $props()
 </script>
@@ -33,9 +32,15 @@
 
 <h3>Categories with unknown special morphisms</h3>
 
-<CategoryList categories={data.categories_with_unknown_special_morphisms} />
+<CategoryList
+	categories={data.categories_with_missing_morphisms}
+	description="There are {data.categories_with_missing_morphisms
+		.length} categories whose iso-, epi-, or monomorphisms are unknown."
+/>
 
-<h3>Missing combinations</h3>
+<!-- TODO: bring back missing combinations -->
+
+<!-- <h3>Missing combinations</h3>
 
 <p class="hint">
 	Among the consistent combinations of the form <strong>P &#8743; &#172;Q</strong>
@@ -51,10 +56,10 @@
 		{#each data.missing_basic_combinations_with_prefixes as combination}
 			<li>
 				{combination.assumption_prefix}
-				{combination.assumption}, <!---->
+				{combination.assumption}, 
 				but {negate_prefix(combination.negation_prefix)}
 				{combination.negation}
 			</li>
 		{/each}
 	</ul>
-{/if}
+{/if} -->
