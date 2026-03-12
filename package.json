@@ -20,9 +20,9 @@
 		"data:reasons": "tsx src/lib/scripts/reasons.ts",
 		"db:shell": "sqlite3 database/local.db",
 		"db:seed": "./scripts/seed.sh",
-		"db:deduce": "npx vite-node --options.transformMode.ssr='/.*/' src/lib/scripts/deductions.ts",
-		"db:dualize": "npx vite-node --options.transformMode.ssr='/.*/' src/lib/scripts/dualizations.ts",
-		"db:create": "pnpm db:seed && pnpm db:dualize && pnpm db:deduce"
+		"db:deduce-implications": "npx vite-node --options.transformMode.ssr='/.*/' src/lib/scripts/deduce-implications.ts",
+		"db:deduce-properties": "npx vite-node --options.transformMode.ssr='/.*/' src/lib/scripts/deduce-properties.ts",
+		"db:create": "pnpm db:seed && pnpm db:deduce-implications && pnpm db:deduce-properties"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^7.0.0",

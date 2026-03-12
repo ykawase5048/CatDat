@@ -38,6 +38,12 @@ export type ImplicationDisplay = Replace<
 	}
 >
 
+export type NormalizedImplication = {
+	assumptions: Set<string>
+	conclusion: string
+	prefixes: Record<string, string>
+}
+
 export type PropertyDB = {
 	id: string
 	prefix: string

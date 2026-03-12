@@ -2,15 +2,20 @@ import { LOG_DETAILS } from '$env/static/private'
 import { query } from '$lib/server/db'
 import sql from 'sql-template-tag'
 
-create_dualized_implications()
+deduce_implications()
 
-async function create_dualized_implications() {
+async function deduce_implications() {
 	const { err: err_clear } = await query(sql`
         DELETE FROM implications WHERE is_deduced = TRUE    
     `)
 
 	if (err_clear) return
 
+	await create_dualized_implications()
+	await create_self_dual_implications()
+}
+
+async function create_dualized_implications() {
 	const { rows: dual_implications, err } = await query<{ id: string }>(sql`
        INSERT INTO implication_input (
             id,
@@ -67,8 +72,10 @@ async function create_dualized_implications() {
 
 	console.info(`Dualized ${dual_implications.length} implications`)
 	if (LOG_DETAILS === 'true') console.info(dual_implications.map((i) => i.id))
+}
 
-	const { rows: self_dual_implications, err: err_self_dual } = await query<{
+async function create_self_dual_implications() {
+	const { rows: self_dual_implications, err } = await query<{
 		id: string
 	}>(sql`
         INSERT INTO implication_input (
@@ -96,7 +103,7 @@ async function create_dualized_implications() {
         RETURNING id
     `)
 
-	if (err_self_dual) return
+	if (err) return
 
 	console.info(`Created ${self_dual_implications.length} self-dual implications`)
 	if (LOG_DETAILS === 'true') console.info(self_dual_implications.map((i) => i.id))

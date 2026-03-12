@@ -1,11 +1,17 @@
 import { LOG_DETAILS } from '$env/static/private'
+import type { NormalizedImplication } from '$lib/commons/types'
 import { sleep } from '$lib/commons/utils'
 import { batch, query } from '$lib/server/db'
+import {
+	get_assumption_string,
+	get_conclusion_string,
+	get_normalized_implications,
+} from '$lib/server/normalized-implications'
 import sql from 'sql-template-tag'
 
-create_deductions()
+deduce_all_properties()
 
-async function create_deductions() {
+async function deduce_all_properties() {
 	const implications = await get_normalized_implications()
 	if (!implications) return
 
@@ -20,69 +26,9 @@ async function create_deductions() {
 
 async function get_categories() {
 	const { rows } = await query<{ category_id: string }>(sql`
-		SELECT id AS category_id FROM categories
+		SELECT id AS category_id FROM categories ORDER BY name
 	`)
 	return rows ?? []
-}
-
-type NormalizedImplication = {
-	assumptions: Set<string>
-	conclusion: string
-	prefixes: Record<string, string>
-}
-
-async function get_normalized_implications() {
-	const { rows: all_implications_db, err: err_imp } = await query<{
-		assumptions: string
-		conclusions: string
-		is_equivalence: number
-		prefixes: string
-	}>(sql`
-		SELECT
-			v.assumptions,
-			v.conclusions,
-			v.is_equivalence,
-			(
-				SELECT json_group_object(p.id, p.prefix)
-				FROM properties p
-				WHERE p.id IN (
-					SELECT value FROM json_each(v.assumptions)
-					UNION
-					SELECT value FROM json_each(v.conclusions)
-				)
-			) AS prefixes
-		FROM implications_view v
-	`)
-
-	if (err_imp) return null
-
-	const implications: NormalizedImplication[] = []
-
-	for (const impl of all_implications_db) {
-		const assumptions: string[] = JSON.parse(impl.assumptions)
-		const conclusions: string[] = JSON.parse(impl.conclusions)
-		const prefixes: Record<string, string> = JSON.parse(impl.prefixes)
-
-		for (const conclusion of conclusions) {
-			implications.push({
-				assumptions: new Set(assumptions),
-				conclusion,
-				prefixes,
-			})
-		}
-
-		if (impl.is_equivalence) {
-			for (const assumption of assumptions) {
-				implications.push({
-					assumptions: new Set(conclusions),
-					conclusion: assumption,
-					prefixes,
-				})
-			}
-		}
-	}
-
-	return implications
 }
 
 async function deduce_properties(
@@ -265,16 +211,4 @@ async function deduce_non_properties(
 	console.info(
 		`Added ${deduced_non_properties.length} non-properties to the database\n`,
 	)
-}
-
-function get_assumption_string(implication: NormalizedImplication): string {
-	const { assumptions, prefixes } = implication
-	return Array.from(assumptions)
-		.map((assumption) => `${prefixes[assumption]} ${assumption}`)
-		.join(' and ')
-}
-
-function get_conclusion_string(implication: NormalizedImplication): string {
-	const { conclusion, prefixes } = implication
-	return `${prefixes[conclusion]} ${conclusion}`
 }
