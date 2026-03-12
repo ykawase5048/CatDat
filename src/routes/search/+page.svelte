@@ -5,8 +5,8 @@
 	import CategoryList from '$components/CategoryList.svelte'
 	import Selection from '$components/Selection.svelte'
 	import { encode_property_ID } from '$lib/commons/property.url'
-
 	import MetaData from '$components/MetaData.svelte'
+	import { is_string_array } from '$lib/commons/utils'
 
 	const SELECTED_PROPERTIES_STORAGE_KEY = 'search_properties'
 	const SELECTED_NON_PROPERTIES_STORAGE_KEY = 'search_non_properties'
@@ -28,10 +28,8 @@
 			const parsed_non_properties: unknown = JSON.parse(non_properties_string)
 
 			const is_valid =
-				Array.isArray(parsed_properties) &&
-				parsed_properties.every((p) => typeof p === 'string') &&
-				Array.isArray(parsed_non_properties) &&
-				parsed_non_properties.every((p) => typeof p === 'string')
+				is_string_array(parsed_properties) &&
+				is_string_array(parsed_non_properties)
 
 			return is_valid ? [parsed_properties, parsed_non_properties] : [[], []]
 		} catch {

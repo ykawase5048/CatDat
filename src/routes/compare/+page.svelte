@@ -3,17 +3,13 @@
 	import { goto } from '$app/navigation'
 	import MetaData from '$components/MetaData.svelte'
 	import Selection from '$components/Selection.svelte'
+	import { is_string_array } from '$lib/commons/utils'
 
 	let { data } = $props()
 
-	let categories = $derived(data.categories)
-	let category_names = $derived(categories.map((category) => category.name))
-
 	const COMPARISON_STORAGE_KEY = 'comparison'
 
-	let selected_category_names: string[] = $state(get_saved_category_names())
-
-	function get_saved_category_names(): string[] {
+	function get_compared_categories(): string[] {
 		if (!browser) return []
 
 		const names_string = window.sessionStorage.getItem(COMPARISON_STORAGE_KEY)
@@ -21,28 +17,27 @@
 
 		try {
 			const parsed_names: unknown = JSON.parse(names_string)
-			const is_valid =
-				Array.isArray(parsed_names) &&
-				parsed_names.every((name) => typeof name === 'string')
-
+			const is_valid = is_string_array(parsed_names)
 			return is_valid ? parsed_names : []
 		} catch {
-			console.error('Error parsing category names from sessionStorage')
+			console.error('Error parsing saved categories from sessionStorage')
 			return []
 		}
 	}
+
+	let compared_categories: string[] = $state(get_compared_categories())
 
 	$effect(() => {
 		if (!browser) return
 		window.sessionStorage.setItem(
 			COMPARISON_STORAGE_KEY,
-			JSON.stringify(selected_category_names),
+			JSON.stringify(compared_categories),
 		)
 	})
 
 	function compare_categories() {
-		const chosen_categories = selected_category_names
-			.map((name) => categories.find((category) => category.name === name))
+		const chosen_categories = compared_categories
+			.map((name) => data.categories.find((category) => category.name === name))
 			.filter((category) => category !== undefined)
 
 		if (
@@ -69,10 +64,10 @@
 </p>
 
 <Selection
-	allowed_items={category_names}
+	allowed_items={data.categories.map((category) => category.name)}
 	section_label="selected categories"
 	item_label="category"
-	bind:selected_items={selected_category_names}
+	bind:selected_items={compared_categories}
 />
 
 <p>
