@@ -25,16 +25,33 @@ async function get_categories() {
 	return rows ?? []
 }
 
-type NormalizedImplication = { assumptions: Set<string>; conclusion: string }
+type NormalizedImplication = {
+	assumptions: Set<string>
+	conclusion: string
+	prefixes: Record<string, string>
+}
 
 async function get_normalized_implications() {
 	const { rows: all_implications_db, err: err_imp } = await query<{
 		assumptions: string
 		conclusions: string
 		is_equivalence: number
+		prefixes: string
 	}>(sql`
-		SELECT id, assumptions, conclusions, is_equivalence
-		FROM implications_view
+		SELECT
+			v.assumptions,
+			v.conclusions,
+			v.is_equivalence,
+			(
+				SELECT json_group_object(p.id, p.prefix)
+				FROM properties p
+				WHERE p.id IN (
+					SELECT value FROM json_each(v.assumptions)
+					UNION
+					SELECT value FROM json_each(v.conclusions)
+				)
+			) AS prefixes
+		FROM implications_view v
 	`)
 
 	if (err_imp) return null
@@ -44,10 +61,13 @@ async function get_normalized_implications() {
 	for (const impl of all_implications_db) {
 		const assumptions: string[] = JSON.parse(impl.assumptions)
 		const conclusions: string[] = JSON.parse(impl.conclusions)
+		const prefixes: Record<string, string> = JSON.parse(impl.prefixes)
+
 		for (const conclusion of conclusions) {
 			implications.push({
 				assumptions: new Set(assumptions),
 				conclusion,
+				prefixes,
 			})
 		}
 
@@ -56,6 +76,7 @@ async function get_normalized_implications() {
 				implications.push({
 					assumptions: new Set(conclusions),
 					conclusion: assumption,
+					prefixes,
 				})
 			}
 		}
@@ -103,12 +124,16 @@ async function deduce_properties(
 				assumptions.isSubsetOf(properties) && !properties.has(conclusion),
 		)
 		if (!implication) break
-		const { assumptions, conclusion } = implication
+		const { conclusion } = implication
 
 		properties.add(conclusion)
 		deduced_properties.push(conclusion)
 
-		const reason = `${Array.from(assumptions).join(', ')} => ${conclusion}.`
+		const assumption_string = get_assumption_string(implication)
+		const conclusion_string = get_conclusion_string(implication)
+
+		const reason = `Since it ${assumption_string}, it ${conclusion_string}.`
+
 		reasons[conclusion] = reason
 	}
 
@@ -201,6 +226,8 @@ async function deduce_non_properties(
 
 		const { implication, non_property } = next
 
+		const { prefixes } = implication
+
 		if (properties.has(non_property)) {
 			throw new Error('Contradiction has been found')
 		}
@@ -208,7 +235,13 @@ async function deduce_non_properties(
 		non_properties.add(non_property)
 		deduced_non_properties.push(non_property)
 
-		const reason = `Assume ${non_property}. But ${[...implication.assumptions].join(', ')} => ${implication.conclusion}. This is a contradiction.`
+		const assumption_string = get_assumption_string(implication)
+		const conclusion_string = get_conclusion_string(implication)
+
+		const reason =
+			`Assume that it ${prefixes[non_property]} ${non_property}. ` +
+			`But since it ${assumption_string}, it ${conclusion_string} – contradiction.`
+
 		reasons[non_property] = reason
 	}
 
@@ -232,4 +265,16 @@ async function deduce_non_properties(
 	console.info(
 		`Added ${deduced_non_properties.length} non-properties to the database\n`,
 	)
+}
+
+function get_assumption_string(implication: NormalizedImplication): string {
+	const { assumptions, prefixes } = implication
+	return Array.from(assumptions)
+		.map((assumption) => `${prefixes[assumption]} ${assumption}`)
+		.join(' and ')
+}
+
+function get_conclusion_string(implication: NormalizedImplication): string {
+	const { conclusion, prefixes } = implication
+	return `${prefixes[conclusion]} ${conclusion}`
 }
