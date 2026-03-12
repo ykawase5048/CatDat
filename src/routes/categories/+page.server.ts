@@ -1,3 +1,4 @@
+import type { CategoryShort } from '$lib/commons/types'
 import { query } from '$lib/server/db'
 import { error } from '@sveltejs/kit'
 import sql from 'sql-template-tag'
@@ -18,7 +19,7 @@ export const load = async (event) => {
 			ORDER BY name
 	`
 
-	const { rows: categories, err } = await query<{ id: string; name: string }>(stmt)
+	const { rows: categories, err } = await query<CategoryShort>(stmt)
 
 	if (err) error(500, 'Categories could not be loaded')
 

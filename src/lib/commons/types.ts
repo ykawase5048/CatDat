@@ -4,6 +4,11 @@ export type Arrayed<T extends readonly unknown[]> = {
 
 type Replace<T, R extends Partial<Record<keyof T, any>>> = Omit<T, keyof R> & R
 
+export type CategoryShort = {
+	id: string
+	name: string
+}
+
 export type CategoryDisplay = {
 	id: string
 	name: string
