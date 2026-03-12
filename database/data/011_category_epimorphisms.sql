@@ -43,21 +43,6 @@ VALUES
 		'The forgetful functor to abelian groups is faithful and preserves colimits, hence reflects and preserves epimorphisms. Alternatively, just use the same proof as for abelian groups.'
 	),
 	(
-		'Ring',
-		'',
-		''
-	),
-	(
-		'CRing',
-		'',
-		''
-	),
-	(
-		'Rng',
-		'',
-		''
-	),
-	(
 		'FinSet',
 		'surjective maps',
 		'Use the same proof as for sets.'
@@ -83,11 +68,6 @@ VALUES
 		'This holds in every functor category $[\mathcal{C},\mathbf{Set}]$.'
 	),
 	(
-		'Mon',
-		'',
-		''
-	),
-	(
 		'Pos',
 		'surjective order-preserving functions',
 		'Use the same proof as for sets, where $2 = \{0,1\}$ is endowed with the trivial order in which $0$, $1$ have no relation.'
@@ -108,28 +88,8 @@ VALUES
 		'The forgetful functor to abelian groups is faithful and preserves colimits, hence reflects and preserves epimorphisms. Alternatively, just use the same proof as for abelian groups.'
 	),
 	(
-		'Met',
-		'',
-		''
-	),
-	(
-		'Met_oo',
-		'',
-		''
-	),
-	(
-		'Met_c',
-		'',
-		''
-	),
-	(
 		'Ban',
 		'linear contractions with dense image',
-		''
-	),
-	(
-		'Man',
-		'',
 		''
 	),
 	(
@@ -151,16 +111,6 @@ VALUES
 		'On',
 		'every morphism',
 		'It is a thin category.'
-	),
-	(
-		'LRS',
-		'',
-		''
-	),
-	(
-		'Sch',
-		'',
-		''
 	),
 	(
 		'Fld',
