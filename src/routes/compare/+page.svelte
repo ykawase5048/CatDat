@@ -4,7 +4,7 @@
 	import MetaData from '$components/MetaData.svelte'
 	import Selection from '$components/Selection.svelte'
 	import { max_categories, storage_key } from '$lib/commons/comparison.config'
-	import { get_saved_category_names } from '$lib/commons/comparison.utils.js'
+	import { get_saved_category_names } from '$lib/commons/comparison.utils'
 
 	let { data } = $props()
 
