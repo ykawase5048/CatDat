@@ -1,8 +1,14 @@
-import { select } from '$lib/commons/utils'
-import type { CategorySimple } from '$lib/data-utils/data.helpers'
-import { CATEGORIES } from '$lib/database/categories.data'
+import type { CategoryShort } from '$lib/commons/types'
+import sql from 'sql-template-tag'
+import { query } from '$lib/server/db'
+import { error } from '@sveltejs/kit'
 
-export const load = () => {
-	const categories: CategorySimple[] = select('id', 'name').from(CATEGORIES)
+export const load = async () => {
+	const { rows: categories, err } = await query<CategoryShort>(sql`
+		SELECT id, name FROM categories ORDER BY name
+	`)
+
+	if (err) error(500, 'Categories could not be loaded')
+
 	return { categories }
 }

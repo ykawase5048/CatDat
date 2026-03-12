@@ -10,13 +10,14 @@
 	import Fa from 'svelte-fa'
 
 	let { data } = $props()
-	let compared_categories = $derived(data.compared_categories)
+
+	let compared_categories = $derived(data.categories)
 	let comparison_table = $derived(data.comparison_table)
 
 	const icon_config: Record<string, IconDefinition> = {
-		true: faCheck,
-		false: faXmark,
-		null: faQuestion,
+		yes: faCheck,
+		no: faXmark,
+		unknown: faQuestion,
 	}
 
 	let paragraph_element = $state<HTMLElement | null>(null)
@@ -61,6 +62,7 @@
 			{/each}
 		</tr>
 	</thead>
+
 	<tbody>
 		{#each comparison_table as [property, ...values]}
 			{@const is_different = new Set(values).size > 1}
@@ -68,14 +70,13 @@
 				<td>
 					<a href={get_property_url(property)}>{property}</a>
 				</td>
-
 				{#each compared_categories as _, i}
 					{@const value = values[i]}
 					<td
-						class={JSON.stringify(value)}
+						class={value}
 						aria-label={value === null ? 'Unknown' : value ? 'Yes' : 'No'}
 					>
-						<Fa icon={icon_config[JSON.stringify(value)]} />
+						<Fa icon={icon_config[value]} />
 					</td>
 				{/each}
 			</tr>
@@ -131,15 +132,15 @@
 		text-align: center;
 	}
 
-	td.true {
+	td.yes {
 		color: var(--success-color);
 	}
 
-	td.false {
+	td.no {
 		color: var(--error-color);
 	}
 
-	td.null {
+	td.unknown {
 		color: var(--secondary-text-color);
 	}
 
