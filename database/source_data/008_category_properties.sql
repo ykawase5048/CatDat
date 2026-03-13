@@ -159,7 +159,7 @@ VALUES
 	(
 		'Grp',
 		'Malcev',
-		'easy; see also Borceux & Bourn (2004), Ex. 2.2.4'
+		'See Example 2.2.4 in <a href="https://ncatlab.org/nlab/show/Malcev,+protomodular,+homological+and+semi-abelian+categories" target="_blank">Malcev, protomodular, homological and semi-abelian categories</a>.'
 	),
 	(
 		'Vect',

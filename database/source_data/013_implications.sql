@@ -585,10 +585,10 @@ VALUES
 		FALSE
 	),
 	(
-		'abelian_malcev_consequence',
-		'["abelian"]',
+		'malcev_additive_criterion',
+		'["finitely complete", "additive"]',
 		'["Malcev"]',
-		NULL,
+		'See Prop. 2.2.13. in <a href="https://ncatlab.org/nlab/show/Malcev,+protomodular,+homological+and+semi-abelian+categories" target="_blank">Malcev, protomodular, homological and semi-abelian categories</a>.',
 		FALSE
 	),
 	(
