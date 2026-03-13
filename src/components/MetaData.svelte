@@ -16,7 +16,7 @@
 	<meta name="description" content={description} />
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={description} />
-	<meta property="og:url" content="https://catdat.info/" />
+	<meta property="og:url" content="https://catdat.netlify.app/" />
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content="CatDat" />
 </svelte:head>

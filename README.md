@@ -5,7 +5,7 @@
 
 _A comprehensive and searchable database of categories and their properties_
 
-<https://catdat.info>
+<https://catdat.netlify.app>
 
 ## Features
 
