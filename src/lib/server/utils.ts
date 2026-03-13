@@ -9,6 +9,10 @@ export function is_object(obj: unknown): obj is Record<string, unknown> {
 	return obj != null && obj.constructor.name === 'Object'
 }
 
+export function are_equal_sets<T>(a: Set<T>, b: Set<T>) {
+	return a.size === b.size && a.isSubsetOf(b)
+}
+
 export const sleep = (delay: number) => new Promise<void>((res) => setTimeout(res, delay))
 
 export function display_implication(implication: ImplicationDB): ImplicationDisplay {
