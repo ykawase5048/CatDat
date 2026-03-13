@@ -10,6 +10,7 @@
 		selected_items: string[]
 		section_label: string
 		item_label: string
+		max?: number
 	}
 
 	let {
@@ -18,13 +19,16 @@
 		selected_items = $bindable(),
 		section_label,
 		item_label,
+		max = Infinity,
 	}: Props = $props()
 
 	let item: string = $state('')
 
 	let is_valid = $derived(
 		item.length === 0 ||
-			(allowed_items.includes(item) && !selected_items.includes(item)),
+			(allowed_items.includes(item) &&
+				!selected_items.includes(item) &&
+				selected_items.length < max),
 	)
 
 	function handle_submit(e: SubmitEvent) {
@@ -52,7 +56,7 @@
 			bind:value={item}
 			list="list-{item_label}"
 		/>
-		<button type="submit" class="button">
+		<button type="submit" class="button" disabled={selected_items.length >= max}>
 			<Fa icon={faPlus} />
 		</button>
 	</form>

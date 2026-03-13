@@ -3,6 +3,7 @@
 	import { goto } from '$app/navigation'
 	import MetaData from '$components/MetaData.svelte'
 	import Selection from '$components/Selection.svelte'
+	import type { CategoryShort } from '$lib/commons/types'
 	import { is_string_array } from '$lib/commons/utils'
 	import { MAX_CATEGORIES_COMPARE } from './compare.config'
 
@@ -36,17 +37,19 @@
 		)
 	})
 
-	function compare_categories() {
-		const chosen_categories = compared_categories
+	let chosen_categories: CategoryShort[] = $derived(
+		compared_categories
 			.map((name) => data.categories.find((category) => category.name === name))
-			.filter((category) => category !== undefined)
+			.filter((category) => category !== undefined),
+	)
 
-		if (
-			chosen_categories.length === 0 ||
-			chosen_categories.length > MAX_CATEGORIES_COMPARE
-		)
-			return
+	let is_valid_comparison = $derived(
+		chosen_categories.length > 0 &&
+			chosen_categories.length <= MAX_CATEGORIES_COMPARE,
+	)
 
+	function compare_categories() {
+		if (!is_valid_comparison) return
 		const path = chosen_categories.map((category) => category.id).join('/')
 		goto(`/compare/${path}`)
 	}
@@ -61,6 +64,9 @@
 
 <p class="hint">
 	Select up to {MAX_CATEGORIES_COMPARE} categories to compare their properties with each other.
+	{#if compared_categories.length === MAX_CATEGORIES_COMPARE}
+		The maximum is reached.
+	{/if}
 </p>
 
 <Selection
@@ -68,8 +74,11 @@
 	section_label="selected categories"
 	item_label="category"
 	bind:selected_items={compared_categories}
+	max={MAX_CATEGORIES_COMPARE}
 />
 
 <p>
-	<button class="button" onclick={compare_categories}>Compare</button>
+	<button class="button" onclick={compare_categories} disabled={!is_valid_comparison}>
+		Compare
+	</button>
 </p>

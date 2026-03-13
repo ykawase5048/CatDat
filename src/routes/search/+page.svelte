@@ -171,7 +171,7 @@
 			data-sveltekit-reload="true"
 		>
 			dual search
-		</a>,
+		</a>.
 	</p>
 {/if}
 
