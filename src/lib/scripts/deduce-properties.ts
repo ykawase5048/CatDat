@@ -6,7 +6,6 @@ import {
 	get_conclusion_string,
 	get_normalized_implications,
 } from '$lib/server/normalized-implications'
-import { sleep } from '$lib/server/utils'
 import sql from 'sql-template-tag'
 
 deduce_all_properties()
@@ -20,7 +19,6 @@ async function deduce_all_properties() {
 	for (const { category_id } of categories) {
 		await deduce_properties(category_id, implications)
 		await deduce_non_properties(category_id, implications)
-		await sleep(100)
 	}
 }
 
