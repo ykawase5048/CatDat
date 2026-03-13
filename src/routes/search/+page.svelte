@@ -98,7 +98,7 @@
 			.map(encode_property_ID)
 			.join(data.search_separator)
 
-		const non_properties_query = data.selected_non_properties
+		const non_properties_query = data.dual_selected_non_properties
 			.map(encode_property_ID)
 			.join(data.search_separator)
 
