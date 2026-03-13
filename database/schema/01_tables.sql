@@ -27,7 +27,7 @@ CREATE TABLE categories (
     objects TEXT NOT NULL,
     morphisms TEXT NOT NULL,
     description TEXT,
-    nlab_link TEXT,
+    nlab_link TEXT CHECK (nlab_link IS NULL OR nlab_link like 'https://%'),
     created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
@@ -71,7 +71,7 @@ CREATE TABLE properties (
     id TEXT PRIMARY KEY,
     prefix TEXT NOT NULL,
     description TEXT NOT NULL,
-    nlab_link TEXT,
+    nlab_link TEXT CHECK (nlab_link IS NULL OR nlab_link like 'https://%'),
     invariant_under_equivalences INTEGER NOT NULL DEFAULT TRUE,
     dual_property_id TEXT,
     created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,

@@ -29,7 +29,7 @@ VALUES
 		'locally essentially small',
 		'is',
 		'A category is <i>locally essentially small</i> when for every pair of objects $A,B$ the collection of morphisms $A \to B$ is isomorphic to a set. (Here, we work with a set-theoretic foundation in which there are sets and collections. Categories are based on collections of objects and morphisms.) Equivalently, the category is equivalent to a locally small category. In contrast to being locally small, this condition is invariant under equivalences of categories. This is why we have added it to the database. For instance, every algebraic category is locally essentially small, but not necessarily locally small. This indicates that this is the "right" notion to work with.',
-		'undefined',
+		NULL,
 		'locally essentially small',
 		TRUE
 	),
@@ -237,7 +237,7 @@ VALUES
 		'countable products',
 		'has',
 		'A category has <i>countable products</i> if it has products for countable families of objects.',
-		'undefined',
+		NULL,
 		'countable coproducts',
 		TRUE
 	),
@@ -245,7 +245,7 @@ VALUES
 		'countable coproducts',
 		'has',
 		'A category has <i>countable coproducts</i> if it has coproducts for countable families of objects.',
-		'undefined',
+		NULL,
 		'countable products',
 		TRUE
 	),
@@ -397,7 +397,7 @@ VALUES
 		'essentially finite',
 		'is',
 		'A category is <i>essentially finite</i> if it is equivalent to a finite category. Equivalently, there are only finitely many objects up to isomorphism, and the collection of morphisms between any two objects is isomorphic to a finite set. In contrast to being finite, this property is invariant under equivalences of categories.',
-		'undefined',
+		NULL,
 		'essentially finite',
 		TRUE
 	),
