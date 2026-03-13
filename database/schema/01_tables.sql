@@ -122,7 +122,7 @@ CREATE TABLE category_non_properties (
 CREATE TABLE category_isomorphisms (
     category_id TEXT PRIMARY KEY,
     description TEXT NOT NULL,
-    reason TEXT CHECK (reason IS NULL OR length(reason) > 0),
+    reason TEXT NOT NULL CHECK (length(reason) > 0),
     created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (category_id) REFERENCES categories (id) ON DELETE CASCADE
@@ -132,7 +132,7 @@ CREATE TABLE category_isomorphisms (
 CREATE TABLE category_epimorphisms (
     category_id TEXT PRIMARY KEY,
     description TEXT NOT NULL,
-    reason TEXT CHECK (reason IS NULL OR length(reason) > 0),
+    reason TEXT NOT NULL CHECK (length(reason) > 0),
     created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (category_id) REFERENCES categories (id) ON DELETE CASCADE
@@ -142,7 +142,7 @@ CREATE TABLE category_epimorphisms (
 CREATE TABLE category_monomorphisms (
     category_id TEXT PRIMARY KEY,
     description TEXT NOT NULL,
-    reason TEXT CHECK (reason IS NULL OR length(reason) > 0),
+    reason TEXT NOT NULL CHECK (length(reason) > 0),
     created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (category_id) REFERENCES categories (id) ON DELETE CASCADE
