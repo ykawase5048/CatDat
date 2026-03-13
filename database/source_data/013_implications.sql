@@ -6,7 +6,7 @@ INSERT INTO implication_input (
 	id,				-- ID of the implication, for internal use only
 	assumptions,	-- list of assumptions
 	conclusions,	-- list of conclusions
-	reason,			-- proof or reference
+	reason,			-- proof or reference (required)
 	is_equivalence	-- TRUE/FALSE
 )
 VALUES

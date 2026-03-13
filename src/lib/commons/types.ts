@@ -21,7 +21,7 @@ export type RelatedCategory = Pick<CategoryDisplay, 'id' | 'name' | 'notation'>
 export type ImplicationDB = {
 	id: string
 	is_equivalence: number
-	reason: string | null
+	reason: string
 	assumptions: string
 	conclusions: string
 	is_deduced: number

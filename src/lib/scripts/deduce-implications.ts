@@ -24,7 +24,7 @@ async function create_dualized_implications() {
 		dual_assumptions: string
 		dual_conclusions: string
 		is_equivalence: boolean
-		reason: string | null
+		reason: string
 	}>(sql`
         SELECT
             v.id,

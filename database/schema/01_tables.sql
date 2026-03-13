@@ -151,7 +151,7 @@ CREATE TABLE category_monomorphisms (
 -- implications between properties of categories
 CREATE TABLE implications (
     id TEXT PRIMARY KEY,
-    reason TEXT CHECK (reason IS NULL OR length(reason) > 0),
+    reason TEXT NOT NULL CHECK (length(reason) > 0),
     is_equivalence INTEGER NOT NULL DEFAULT FALSE,
     is_deduced INTEGER NOT NULL DEFAULT FALSE,
     created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
