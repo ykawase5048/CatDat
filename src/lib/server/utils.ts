@@ -20,6 +20,7 @@ export function display_implication(implication: ImplicationDB): ImplicationDisp
 		id: implication.id,
 		is_equivalence: Boolean(implication.is_equivalence),
 		reason: implication.reason,
+		is_deduced: Boolean(implication.is_deduced),
 		assumptions: JSON.parse(implication.assumptions),
 		conclusions: JSON.parse(implication.conclusions),
 	}

@@ -1,8 +1,22 @@
 <script>
+	import { browser } from '$app/environment'
 	import ImplicationList from '$components/ImplicationList.svelte'
 	import MetaData from '$components/MetaData.svelte'
 
 	let { data } = $props()
+
+	let show_deduced_implications = $state(false)
+
+	function toggle() {
+		show_deduced_implications = !show_deduced_implications
+		if (browser) window.scrollTo({ top: 0, behavior: 'smooth' })
+	}
+
+	let displayed_implications = $derived(
+		show_deduced_implications
+			? data.implications
+			: data.implications.filter((implication) => !implication.is_deduced),
+	)
 </script>
 
 <MetaData
@@ -13,9 +27,8 @@
 <h2>List of Implications</h2>
 
 <ImplicationList
-	implications={data.implications}
-	description="The following {data.implications
-		.length} implications and equivalences are available*."
+	implications={displayed_implications}
+	description="The following {displayed_implications.length} implications and equivalences are available*."
 />
 
 <p class="hint">
@@ -24,18 +37,18 @@
 	property of having a terminal object is automatically inferred and added.
 </p>
 
-{#if !data.show_all_implications}
-	<p class="hint">
-		Moreover, implications are automatically dualized when the corresponding dual
-		properties exist. For example, the statement that finitely complete categories
-		with filtered limits are complete automatically implies that finitely cocomplete
-		categories with filtered colimits are cocomplete. Similarly, if a category is
-		self-dual and, for example, complete, it is automatically inferred to be
-		cocomplete as well. Use <a href="/implications?show_all">this link</a> to see all implications,
-		including the dualizations.
-	</p>
-{:else}
-	<p class="hint">
-		Use <a href="/implications">this link</a> to hide the dualizations.
-	</p>
-{/if}
+<p class="hint">
+	Moreover, implications are automatically dualized when the corresponding dual
+	properties exist. For example, the statement that finitely complete categories with
+	filtered limits are complete automatically implies that finitely cocomplete categories
+	with filtered colimits are cocomplete. Similarly, if a category is self-dual and, for
+	example, complete, it is automatically inferred to be cocomplete as well.
+</p>
+
+<button class="button" onclick={toggle}>
+	{#if show_deduced_implications}
+		Hide deduced implications
+	{:else}
+		Show deduced implications
+	{/if}
+</button>

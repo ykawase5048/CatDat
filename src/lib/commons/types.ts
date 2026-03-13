@@ -24,12 +24,14 @@ export type ImplicationDB = {
 	reason: string | null
 	assumptions: string
 	conclusions: string
+	is_deduced: number
 }
 
 export type ImplicationDisplay = Replace<
 	ImplicationDB,
 	{
 		is_equivalence: boolean
+		is_deduced: boolean
 		assumptions: string[]
 		conclusions: string[]
 	}

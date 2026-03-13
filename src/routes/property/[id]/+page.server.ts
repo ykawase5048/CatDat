@@ -33,7 +33,13 @@ export const load = async (event) => {
 			WHERE property_id = ${id}
 		`,
 		sql`
-			SELECT id, is_equivalence, reason, assumptions, conclusions
+			SELECT
+				id,
+				is_equivalence,
+				reason,
+				assumptions,
+				conclusions,
+				is_deduced
 			FROM implications_view
 			WHERE
 				EXISTS (
