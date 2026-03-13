@@ -7,8 +7,8 @@ import type {
 	CategoryProperty,
 	CategoryPropertyDB,
 	DescriptionWithReason,
+	PropertyShort,
 	RelatedCategory,
-	UnknownCategoryProperty,
 } from '$lib/commons/types'
 
 export const prerender = true
@@ -26,7 +26,7 @@ export const load = async (event) => {
 			DescriptionWithReason,
 			CategoryPropertyDB,
 			CategoryPropertyDB,
-			UnknownCategoryProperty,
+			PropertyShort,
 		]
 	>([
 		sql`

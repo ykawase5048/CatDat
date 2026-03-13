@@ -3,6 +3,8 @@ import sql from 'sql-template-tag'
 import type { CategoryShort } from '$lib/commons/types'
 import { error } from '@sveltejs/kit'
 
+export const prerender = true
+
 export const load = async () => {
 	const { results, err } = await batch<
 		[CategoryShort, CategoryShort, { total: number }]
