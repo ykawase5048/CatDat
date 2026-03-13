@@ -3,24 +3,13 @@
 	import MetaData from '$components/MetaData.svelte'
 
 	let { data } = $props()
-
-	let title = $derived(
-		data.tag ? `List of categories tagged as "${data.tag}"` : `List of categories`,
-	)
-
-	let description = $derived(
-		data.tag
-			? `The following ${data.categories.length} categories are tagged as "${data.tag}".`
-			: `The following ${data.categories.length} categories are available.`,
-	)
-
-	let meta_description = $derived(
-		data.tag ? `Categories tagged as "${data.tag}"` : 'All available categories',
-	)
 </script>
 
-<MetaData {title} description={meta_description} />
+<MetaData title="List of categories" description="All available categories" />
 
-<h2>{title}</h2>
+<h2>List of categories</h2>
 
-<CategoryList categories={data.categories} {description} />
+<CategoryList
+	categories={data.categories}
+	description="The following {data.categories.length} categories are available."
+/>

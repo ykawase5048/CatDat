@@ -5,12 +5,17 @@ import sql from 'sql-template-tag'
 
 export const prerender = true
 
-export const load = async () => {
+export const load = async (event) => {
+	const tag = event.params.tag
+
 	const { rows: categories, err } = await query<CategoryShort>(sql`
-		SELECT id, name FROM categories ORDER BY name
+		SELECT c.id, c.name FROM categories c
+		LEFT JOIN category_tags t ON c.id = t.category_id
+		WHERE t.tag = ${tag}
+		ORDER BY name
 	`)
 
 	if (err) error(500, 'Categories could not be loaded')
 
-	return { categories }
+	return { categories, tag }
 }

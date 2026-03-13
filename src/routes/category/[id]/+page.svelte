@@ -11,7 +11,7 @@
 	let { data } = $props()
 
 	function filter_by_tag(tag: string) {
-		goto(`/categories?tag=${tag}`)
+		goto(`/categories/${tag}`)
 	}
 
 	let category = $derived(data.category)
