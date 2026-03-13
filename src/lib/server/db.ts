@@ -1,5 +1,5 @@
 import { DB_AUTH_TOKEN, DB_URL } from '$env/static/private'
-import { createClient, LibsqlError } from '@libsql/client'
+import { createClient, type LibsqlError } from '@libsql/client'
 import type { Arrayed } from '$lib/commons/types'
 
 const db = createClient({
@@ -15,7 +15,7 @@ db.execute('PRAGMA foreign_keys = ON')
  */
 export async function query<T>(stmt: { sql: string; values: any[] }) {
 	try {
-		const { rows } = await db.execute(stmt.sql, stmt.values as any[])
+		const { rows } = await db.execute(stmt.sql, stmt.values)
 		return { rows: rows as T[], err: null }
 	} catch (err) {
 		console.error(err)
@@ -32,7 +32,7 @@ export async function batch<T extends any[]>(queries: { sql: string; values: any
 		const results = await db.batch(
 			queries.map((query) => ({
 				sql: query.sql,
-				args: query.values as any[],
+				args: query.values,
 			})),
 		)
 		return { results: results.map(({ rows }) => rows) as Arrayed<T>, err: null }
