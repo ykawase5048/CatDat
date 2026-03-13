@@ -39,34 +39,34 @@ This project is built with [SvelteKit](https://svelte.dev/docs/kit/introduction)
 
 ### Setup
 
-0. **Clone the repository**
+1. **Clone the repository**
 
     ```sh
     git clone https://github.com/ScriptRaccoon/CatDat.git
     ```
 
-1. **Install Dependencies**:
+2. **Install Dependencies**:
 
     ```sh
     pnpm install
     ```
 
-2. **Create .env from .env.example**:
+3. **Create .env from .env.example**:
 
     ```sh
     cp .env.example .env
     ```
 
-3. **Start Development Server**:
-
-    ```sh
-    pnpm dev
-    ```
-
-4. **Build the database**:
+4. **Build Database**:
 
     ```sh
     pnpm db:create
+    ```
+
+5. **Start Development Server**:
+
+    ```sh
+    pnpm dev
     ```
 
 ## Similar projects
@@ -74,3 +74,4 @@ This project is built with [SvelteKit](https://svelte.dev/docs/kit/introduction)
 - **[Catabase](https://catabase.fly.dev)**: A similar project that appears to be abandoned. It is more ambitious in terms of available data types but less complete for basic categories. The UI is not very intuitive, and it lacks an integrated deduction system between properties. See the [nForum announcement](https://nforum.ncatlab.org/discussion/13419/catabase-a-database-of-categories/).
 - **[nLab](https://ncatlab.org)**: A wiki for (higher) category theory. _CatDat_ refers to nLab pages for detailed information on its entries.
 - **[Clowder Project](https://clowderproject.com)**: A new online reference for category theory. Unlike _CatDat_, which is data-based, Clowder follows a textbook-based approach.
+- **[Database of Ring Theory](https://ringtheory.herokuapp.com/)**: This database focuses on ring theory and module theory rather than category theory, but is very similar in nature and was a major inspiration for _CatDat_.
