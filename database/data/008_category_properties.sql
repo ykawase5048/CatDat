@@ -864,7 +864,7 @@ VALUES
 	(
 		'FreeAb',
 		'locally small',
-		'There is a forgetful functor $\mathbf{FreeAb} \to \mathbf{Set}$ and $\mathbf{Ab}$ is locally small.'
+		'There is a forgetful functor $\mathbf{FreeAb} \to \mathbf{Set}$ and $\mathbf{Set}$ is locally small.'
 	),
 	(
 		'FreeAb',
@@ -1074,7 +1074,7 @@ VALUES
 	(
 		'Setne',
 		'locally small',
-		'There is a forgetful functor $\mathbf{Set}_{\neq \emptyset} \to \mathbf{Set}$ and $\mathbf{Ab}$ is locally small.'
+		'There is a forgetful functor $\mathbf{Set}_{\neq \emptyset} \to \mathbf{Set}$ and $\mathbf{Set}$ is locally small.'
 	),
 	(
 		'Setne',
@@ -1129,7 +1129,7 @@ VALUES
 	(
 		'B',
 		'locally small',
-		'There is a forgetful functor $\mathbb{B} \to \mathbf{Set}$ and $\mathbf{Ab}$ is locally small.'
+		'There is a forgetful functor $\mathbb{B} \to \mathbf{Set}$ and $\mathbf{Set}$ is locally small.'
 	),
 	(
 		'B',
@@ -1149,7 +1149,7 @@ VALUES
 	(
 		'FI',
 		'locally small',
-		'There is a forgetful functor $\mathbf{FI} \to \mathbf{Set}$ and $\mathbf{Ab}$ is locally small.'
+		'There is a forgetful functor $\mathbf{FI} \to \mathbf{Set}$ and $\mathbf{Set}$ is locally small.'
 	),
 	(
 		'FI',
@@ -1189,7 +1189,7 @@ VALUES
 	(
 		'FS',
 		'locally small',
-		'There is a forgetful functor $\mathbf{FS} \to \mathbf{Set}$ and $\mathbf{Ab}$ is locally small.'
+		'There is a forgetful functor $\mathbf{FS} \to \mathbf{Set}$ and $\mathbf{Set}$ is locally small.'
 	),
 	(
 		'FS',
@@ -1269,7 +1269,7 @@ VALUES
 	(
 		'FinOrd',
 		'locally small',
-		'There is a forgetful functor $\mathbf{FinOrd} \to \mathbf{Set}$ and $\mathbf{Ab}$ is locally small.'
+		'There is a forgetful functor $\mathbf{FinOrd} \to \mathbf{Set}$ and $\mathbf{Set}$ is locally small.'
 	),
 	(
 		'FinOrd',
