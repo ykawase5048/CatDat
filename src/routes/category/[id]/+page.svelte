@@ -5,9 +5,9 @@
 	import PropertyList from '$components/PropertyList.svelte'
 	import ChipGroup from '$components/ChipGroup.svelte'
 	import Chip from '$components/Chip.svelte'
-	import LabelWithReason from '$components/LabelWithReason.svelte'
 	import { category_detail_level } from '$lib/states/detail_level.svelte'
 	import { faQuestion } from '@fortawesome/free-solid-svg-icons'
+	import TextWithReason from '$components/TextWithReason.svelte'
 
 	let { data } = $props()
 
@@ -134,27 +134,27 @@
 	<ul>
 		{#if data.isomorphisms}
 			<li>
-				<LabelWithReason reason={data.isomorphisms.reason}>
+				<TextWithReason reason={data.isomorphisms.reason}>
 					Isomorphisms: {@html data.isomorphisms.description}
-				</LabelWithReason>
+				</TextWithReason>
 			</li>
 		{:else}
 			<li>Isomorphisms: <Fa icon={faQuestion} scale={0.825} /></li>
 		{/if}
 		{#if data.monomorphisms}
 			<li>
-				<LabelWithReason reason={data.monomorphisms.reason}>
+				<TextWithReason reason={data.monomorphisms.reason}>
 					Monomorphisms: {@html data.monomorphisms.description}
-				</LabelWithReason>
+				</TextWithReason>
 			</li>
 		{:else}
 			<li>Monomorphisms: <Fa icon={faQuestion} scale={0.825} /></li>
 		{/if}
 		{#if data.epimorphisms}
 			<li>
-				<LabelWithReason reason={data.epimorphisms.reason}>
+				<TextWithReason reason={data.epimorphisms.reason}>
 					Epimorphisms: {@html data.epimorphisms.description}
-				</LabelWithReason>
+				</TextWithReason>
 			</li>
 		{:else}
 			<li>Epimorphisms: <Fa icon={faQuestion} scale={0.825} /></li>

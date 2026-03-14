@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { get_property_url } from '$lib/commons/property.url'
-	import LabelWithReason from './LabelWithReason.svelte'
+	import TextWithReason from './TextWithReason.svelte'
 
 	type Props = {
 		properties: {
@@ -15,21 +15,17 @@
 </script>
 
 {#if description}
-	<p class="hint">
-		{description}
-	</p>
+	<p class="hint">{description}</p>
 {/if}
 
 {#if properties.length}
 	<ul>
 		{#each properties as { id, prefix, reason }}
 			<li>
-				<LabelWithReason {reason}>
+				<TextWithReason {reason}>
 					{prefix}
-					<a href={get_property_url(id)}>
-						{id}
-					</a>
-				</LabelWithReason>
+					<a href={get_property_url(id)}>{id}</a>
+				</TextWithReason>
 			</li>
 		{/each}
 	</ul>

@@ -5,17 +5,16 @@
 		faPlus,
 	} from '@fortawesome/free-solid-svg-icons'
 	import Fa from 'svelte-fa'
-
 	import { get_property_url } from '$lib/commons/property.url'
-	import LabelWithReason from './LabelWithReason.svelte'
 	import type { ImplicationDisplay } from '$lib/commons/types'
+	import TextWithReason from './TextWithReason.svelte'
 
 	type Props = { implication: ImplicationDisplay; highlighted_property?: string }
 
 	let { implication, highlighted_property }: Props = $props()
 </script>
 
-<LabelWithReason reason={implication.reason}>
+<TextWithReason reason={implication.reason}>
 	{#each implication.assumptions as assumption, i}
 		<a
 			href={get_property_url(assumption)}
@@ -53,7 +52,7 @@
 			<span class="visually-hidden">and &nbsp;</span>
 		{/if}
 	{/each}
-</LabelWithReason>
+</TextWithReason>
 
 <style>
 	a:not(.highlighted) {
