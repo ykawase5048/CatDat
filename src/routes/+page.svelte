@@ -22,9 +22,14 @@
 </p>
 
 <p>
-	This community-driven project welcomes <a class="accent" href="/contribute"
-		>contributions</a
+	This community-driven project is <a
+		class="accent"
+		href="https://github.com/ScriptRaccoon/catdat"
+		target="_blank"
 	>
+		open-source
+	</a>
+	and welcomes <a class="accent" href="/contribute">contributions</a>
 	to fill in <a class="accent" href="/missing">missing data</a>
 	or observe new combinations of properties.
 </p>
