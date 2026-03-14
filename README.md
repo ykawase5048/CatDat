@@ -27,47 +27,8 @@ This project is a **community effort**. See our [contribution guidelines](CONTRI
 ## Documentation
 
 - [The database of _CatDat_](DATABASE.md)
-
-## Development
-
-This project is built with [SvelteKit](https://svelte.dev/docs/kit/introduction) and [TypeScript](https://www.typescriptlang.org).
-
-### Prerequisites
-
-- [NodeJS](https://nodejs.org/) (version specified in [.nvmrc](.nvmrc))
-- [pnpm](https://pnpm.io/)
-
-### Setup
-
-1. **Clone the repository**
-
-    ```sh
-    git clone https://github.com/ScriptRaccoon/CatDat.git
-    ```
-
-2. **Install Dependencies**:
-
-    ```sh
-    pnpm install
-    ```
-
-3. **Create .env from .env.example**:
-
-    ```sh
-    cp .env.example .env
-    ```
-
-4. **Build Database**:
-
-    ```sh
-    pnpm db:create
-    ```
-
-5. **Start Development Server**:
-
-    ```sh
-    pnpm dev
-    ```
+- [Development](DEVELOPMENT.md)
+- [Deployment](DEPLOYMENT.md)
 
 ## Similar projects
 

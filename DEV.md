@@ -1,4 +1,0 @@
-- GitHub: <https://github.com/ScriptRaccoon/catdat>
-- Netlify: <https://app.netlify.com/sites/catdat/overview>
-- Todos: <https://github.com/users/ScriptRaccoon/projects/1/>
-- Backup Script: <https://script.google.com/u/0/home/projects/1R9Uw-28pZoaxpQrKkNbvjIzpjmNGQXoUzae9FFskIl9HcpiTQlBY50CT/edit>
