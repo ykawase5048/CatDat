@@ -49,6 +49,10 @@
 <style>
 	nav {
 		padding-bottom: 1.5rem;
+
+		@media (width <= 600px) {
+			display: none;
+		}
 	}
 
 	ul {

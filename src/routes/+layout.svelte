@@ -1,8 +1,26 @@
 <script lang="ts">
+	import { afterNavigate } from '$app/navigation'
 	import Footer from '$components/Footer.svelte'
 	import Heading from '$components/Heading.svelte'
 	import Nav from '$components/Nav.svelte'
+	import NavMobile from '$components/NavMobile.svelte'
 	import './app.css'
+
+	let { children } = $props()
+
+	let show_mobile_nav = $state(false)
+
+	function open_mobile_nav() {
+		show_mobile_nav = true
+	}
+
+	function close_mobile_nav() {
+		show_mobile_nav = false
+	}
+
+	afterNavigate(() => {
+		close_mobile_nav()
+	})
 </script>
 
 <svelte:head>
@@ -30,15 +48,19 @@
 </svelte:head>
 
 <div class="container">
-	<Heading />
+	<Heading {open_mobile_nav} />
 	<Nav />
 
 	<main>
-		<slot></slot>
+		{@render children()}
 	</main>
 
 	<Footer />
 </div>
+
+{#if show_mobile_nav}
+	<NavMobile close={close_mobile_nav} />
+{/if}
 
 <style>
 	main {

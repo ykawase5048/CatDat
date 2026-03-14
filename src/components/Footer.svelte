@@ -13,9 +13,9 @@
 		gap: 1rem;
 	}
 
-	@media (max-width: 420px) {
+	@media (width <= 600px) {
 		footer {
-			gap: 0.25rem 0.5rem;
+			display: none;
 		}
 	}
 </style>
