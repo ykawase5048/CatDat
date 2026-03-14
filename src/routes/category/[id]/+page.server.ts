@@ -27,6 +27,7 @@ export const load = async (event) => {
 			CategoryPropertyDB,
 			CategoryPropertyDB,
 			PropertyShort,
+			{ id: number; comment: string },
 		]
 	>([
 		sql`
@@ -105,6 +106,11 @@ export const load = async (event) => {
 			)
 			ORDER BY lower(p.id)
 		`,
+		sql`
+			SELECT id, comment FROM category_comments
+			WHERE category_id = ${id}
+			ORDER BY created_at
+		`,
 	])
 
 	if (err) error(500, 'Could not load category')
@@ -119,6 +125,7 @@ export const load = async (event) => {
 		properties_db,
 		non_properties_db,
 		unknown_properties,
+		comments,
 	] = results
 
 	if (!categories.length) error(404, `Could not find category with ID '${id}'`)
@@ -153,5 +160,6 @@ export const load = async (event) => {
 		properties,
 		non_properties,
 		unknown_properties,
+		comments,
 	})
 }

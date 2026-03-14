@@ -162,6 +162,18 @@
 	</ul>
 </section>
 
+{#if data.comments.length}
+	<section>
+		<h3>Comments</h3>
+
+		<ul>
+			{#each data.comments as { id, comment } (id)}
+				<li class="hint">{@html comment}</li>
+			{/each}
+		</ul>
+	</section>
+{/if}
+
 <style>
 	.main {
 		margin-top: 1.5rem;

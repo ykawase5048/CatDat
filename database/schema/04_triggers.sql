@@ -5,6 +5,7 @@ DROP TRIGGER IF EXISTS trg_update_implication;
 DROP TRIGGER IF EXISTS trg_update_category_isomorphism;
 DROP TRIGGER IF EXISTS trg_update_category_epimorphism;
 DROP TRIGGER IF EXISTS trg_update_category_monomorphism;
+DROP TRIGGER IF EXISTS trg_update_category_comments;
 DROP TRIGGER IF EXISTS trg_implication_input_insert;
 DROP TRIGGER IF EXISTS trg_prevent_contradictory_property;
 DROP TRIGGER IF EXISTS trg_prevent_contradictory_non_property;
@@ -82,6 +83,17 @@ FOR EACH ROW
 WHEN OLD.updated_at IS NEW.updated_at
 BEGIN
     UPDATE category_monomorphisms
+    SET updated_at = CURRENT_TIMESTAMP
+    WHERE id = NEW.id;
+END;
+
+-- updates 'updated_at'
+CREATE TRIGGER trg_update_category_comments
+AFTER UPDATE ON category_comments
+FOR EACH ROW
+WHEN OLD.updated_at IS NEW.updated_at
+BEGIN
+    UPDATE category_comments
     SET updated_at = CURRENT_TIMESTAMP
     WHERE id = NEW.id;
 END;

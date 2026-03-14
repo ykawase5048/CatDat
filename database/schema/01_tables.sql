@@ -16,6 +16,7 @@ DROP TABLE IF EXISTS category_monomorphisms;
 DROP TABLE IF EXISTS implications;
 DROP TABLE IF EXISTS implication_conclusions;
 DROP TABLE IF EXISTS implication_assumptions;
+DROP TABLE IF EXISTS category_comments;
 
 PRAGMA foreign_keys = ON;
 
@@ -178,3 +179,12 @@ CREATE TABLE implication_conclusions (
     FOREIGN KEY (property_id) REFERENCES properties (id) ON DELETE CASCADE
 );
 
+-- minor comments to categories
+CREATE TABLE category_comments (
+    id INTEGER PRIMARY KEY,
+    category_id TEXT NOT NULL,
+    comment TEXT NOT NULL,
+    created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (category_id) REFERENCES categories (id) ON DELETE CASCADE
+);

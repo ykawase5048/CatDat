@@ -30,6 +30,7 @@ Further tables are:
 - `category_epimorphisms`
 - `category_monomorphisms`
 - `related_properties`
+- `category_comments`
 
 See [tables.sql](/database/schema/01_tables.sql) in the folder [/database/schema](/database/schema) for detailed table definitions. The other files in this folder provide indices, triggers, and views for these tables.
 
