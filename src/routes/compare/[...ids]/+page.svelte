@@ -55,7 +55,7 @@
 			<th>Property</th>
 			{#each compared_categories as category}
 				<th>
-					<a href="/category/{category.id}">
+					<a href="/category/{category.id}" aria-label={category.name}>
 						{@html category.notation}
 					</a>
 				</th>

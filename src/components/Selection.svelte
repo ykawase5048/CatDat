@@ -56,7 +56,12 @@
 			bind:value={item}
 			list="list-{item_label}"
 		/>
-		<button type="submit" class="button" disabled={selected_items.length >= max}>
+		<button
+			type="submit"
+			class="button"
+			disabled={selected_items.length >= max}
+			aria-label="add item"
+		>
 			<Fa icon={faPlus} />
 		</button>
 	</form>
