@@ -17,27 +17,27 @@ Create a [**pull request**](https://github.com/ScriptRaccoon/CatDat/pulls). You 
 4. Start the local development server with `pnpm dev`.
 5. Create the local database with `pnpm db:create`.
 
-All your updates to the _data_ happen in the folder [database/source_data](database/source_data/), see also [database.md](/DATABASE.md).
+All your updates to the _data_ happen in the folder [database/data](database/data/), see also [database.md](/DATABASE.md).
 
 ### Adding a New Category
 
-- Add the basic info of the category to the file [categories.sql](database/source_data/002_categories.sql).
-- Add a related categories to [related_categories.sql](database/source_data/003_related_categories.sql) (optional).
-- Add tags to [category_tags.sql](database/source_data/004_category_tags.sql).
-- To add properties of the category, edit the file [category_properties.sql](database/source_data/008_category_properties.sql).
-- To add non-properties of the category, edit the file [category_non_properties.sql](database/source_data/009_category_non_properties.sql).
-- Add the descriptions of special morphisms in [category_isomorphisms.sql](database/source_data/010_category_isomorphisms.sql), [category_epimorphisms.sql](database/source_data/011_category_epimorphisms.sql), and [category_monomorphisms.sql](database/source_data/012_category_monomorphisms.sql) (if known).
+- Add the basic info of the category to the file [categories.sql](database/data/002_categories.sql).
+- Add a related categories to [related_categories.sql](database/data/003_related_categories.sql) (optional).
+- Add tags to [category_tags.sql](database/data/004_category_tags.sql).
+- To add properties of the category, edit the file [category_properties.sql](database/data/008_category_properties.sql).
+- To add non-properties of the category, edit the file [category_non_properties.sql](database/data/009_category_non_properties.sql).
+- Add the descriptions of special morphisms in [category_isomorphisms.sql](database/data/010_category_isomorphisms.sql), [category_epimorphisms.sql](database/data/011_category_epimorphisms.sql), and [category_monomorphisms.sql](database/data/012_category_monomorphisms.sql) (if known).
 
 ### Adding a New Property
 
-- Add the basic info of the property to [properties.sql](database/source_data/006_properties.sql).
-- Add related properties to [related_properties](database/source_data/007_related_properties.sql) (optional).
+- Add the basic info of the property to [properties.sql](database/data/006_properties.sql).
+- Add related properties to [related_properties](database/data/007_related_properties.sql) (optional).
 - Add categories with and without this property (see above).
 - Add implications involving this property (see below).
 
 ### Adding a New Implication
 
-- Edit the file [implications.sql](database/source_data/013_implications.sql).
+- Edit the file [implications.sql](database/data/013_implications.sql).
 
 ### Updating the local database
 

@@ -35,7 +35,7 @@ See [tables.sql](/database/schema/01_tables.sql) in the folder [/database/schema
 
 ## Source Data
 
-The SQL files in the folder [/database/source_data](/database/source_data/) provide the data source for these tables. The command `pnpm db:seed` applies the table definitions and the SQL files to the database.
+The SQL files in the folder [/database/data](/database/data/) provide the data source for these tables. The command `pnpm db:seed` applies the table definitions and the SQL files to the database.
 
 Changes to the database are made by updating the mentioned SQL files in the repository.
 
