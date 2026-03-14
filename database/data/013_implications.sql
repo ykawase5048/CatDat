@@ -627,6 +627,13 @@ VALUES
 		FALSE
 	),
 	(
+		'groupoid_zero',
+		'["groupoid", "zero morphisms", "inhabited"]',
+		'["trivial"]',
+		'easy',
+		FALSE
+	),
+	(
 		'connected_consequence',
 		'["connected"]',
 		'["inhabited"]',

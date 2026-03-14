@@ -808,8 +808,13 @@ VALUES
 	),
 	(
 		'Sch',
-		'finitely complete',
-		NULL
+		'terminal object',
+		'The scheme $\mathrm{Spec}(\mathbf{Z})$ is terminal.'
+	),
+	(
+		'Sch',
+		'pullbacks',
+		'This is the well-known construction of the fiber product of schemes, see e.g. EGA I, Chap. I, Théorème 3.2.1.'
 	),
 	(
 		'Sch',
@@ -1330,6 +1335,11 @@ VALUES
 		'Rel',
 		'well-powered',
 		'Any relation $R : A \to B$ induces an injective map $P(A) \to P(B)$, so that in particular there is an injective map $A \to P(B)$.'
+	),
+	(
+		'Rel',
+		'balanced',
+		'See <a href="https://math.stackexchange.com/questions/5030393" target="_blank">MSE/5030393</a>.'
 	),
 	(
 		'Sp',

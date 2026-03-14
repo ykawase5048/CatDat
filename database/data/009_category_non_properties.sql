@@ -9,17 +9,17 @@ VALUES
 	(
 		'0',
 		'inhabited',
-		NULL
+		'trivial'
 	),
 	(
 		'2',
 		'connected',
-		NULL
+		'The objects $0$, $1$ have no zig-zag path between them.'
 	),
 	(
 		'Set',
 		'strict terminal object',
-		NULL
+		'trivial'
 	),
 	(
 		'Set',
@@ -34,7 +34,7 @@ VALUES
 	(
 		'Ab',
 		'split abelian',
-		NULL
+		'The short exact sequence $0 \xrightarrow{} \mathbb{Z} \xrightarrow{p} \mathbb{Z} \xrightarrow{} \mathbb{Z}/p \xrightarrow{} 0$ does not split. '
 	),
 	(
 		'Ab',
@@ -44,22 +44,22 @@ VALUES
 	(
 		'Top',
 		'cartesian closed',
-		NULL
+		'The functor $\mathbb{Q} \times - : \mathbf{Top} \to \mathbf{Top}$ does not preserve colimits, hence has no right adjoint. See <a href="https://math.stackexchange.com/questions/2969372" target="_blank">MSE/2969372</a> for a proof.'
 	),
 	(
 		'Top',
 		'locally presentable',
-		NULL
+		'In fact, it does not have any small dense subcategory by <a href="https://math.stackexchange.com/questions/4097315/" target="_blank">MSE/4097315</a>. For a related result, see <a href="https://mathoverflow.net/questions/288648" target="_blank">MO/288648</a>.'
 	),
 	(
 		'Top',
 		'strict terminal object',
-		NULL
+		'trivial'
 	),
 	(
 		'Top',
 		'balanced',
-		NULL
+		'If $X$ is a set, consider the discrete space $X_d$ on $X$ and the indiscrete space $X_i$ on $X$. The identity map $X \to X$ lifts to a continuous map $X_d \to X_i$, which is bijective and therefore both a mono- and an epimorphism, but it is not an isomorphism unless $X$ has at most one element.'
 	),
 	(
 		'Top',
@@ -74,12 +74,12 @@ VALUES
 	(
 		'Top',
 		'Malcev',
-		NULL
+		'This is clear since $\mathbf{Set}$ is not Malcev and can be interpreted as the subcategory of discrete spaces.'
 	),
 	(
 		'Grp',
 		'subobject classifier',
-		NULL
+		'If there was a subgroup classifier $\Omega$, every subgroup of any group would be the kernel of a homomorphism to $\Omega$. But not every subgroup is normal.'
 	),
 	(
 		'Grp',
@@ -94,7 +94,7 @@ VALUES
 	(
 		'Vect',
 		'trivial',
-		NULL
+		'trivial'
 	),
 	(
 		'Vect',
@@ -104,12 +104,12 @@ VALUES
 	(
 		'Ring',
 		'strict initial object',
-		NULL
+		'The homomorphism $p_1 : \mathbb{Z} \times \mathbb{Z} \to \mathbb{Z}$ is not an isomorphism, and $\mathbb{Z}$ is initial.'
 	),
 	(
 		'Ring',
 		'balanced',
-		NULL
+		'The inclusion $\mathbb{Z} \hookrightarrow \mathbb{Q}$ is a counterexample.'
 	),
 	(
 		'Ring',
@@ -129,12 +129,12 @@ VALUES
 	(
 		'CRing',
 		'strict initial object',
-		NULL
+		'The homomorphism $p_1 : \mathbb{Z} \times \mathbb{Z} \to \mathbb{Z}$ is not an isomorphism, and $\mathbb{Z}$ is initial.'
 	),
 	(
 		'CRing',
 		'balanced',
-		NULL
+		'The inclusion $\mathbb{Z} \hookrightarrow \mathbb{Q}$ is a counterexample.'
 	),
 	(
 		'CRing',
@@ -144,7 +144,7 @@ VALUES
 	(
 		'CRing',
 		'disjoint finite coproducts',
-		NULL
+		'The coproduct inclusion $\mathbb{Z}/2 \to \mathbb{Z}/2 \otimes \mathbb{Z}/3 = 0$ is not a monomorphism.'
 	),
 	(
 		'CRing',
@@ -159,7 +159,7 @@ VALUES
 	(
 		'Rng',
 		'balanced',
-		NULL
+		'The inclusion $\mathbb{Z} \hookrightarrow \mathbb{Q}$ is a counterexample. (The proof can be reduced to the unital case.)'
 	),
 	(
 		'Rng',
@@ -174,12 +174,12 @@ VALUES
 	(
 		'FinSet',
 		'small',
-		NULL
+		'Even the collection of all singletons is not a set.'
 	),
 	(
 		'FinSet',
 		'strict terminal object',
-		NULL
+		'trivial'
 	),
 	(
 		'FinSet',
@@ -309,7 +309,7 @@ VALUES
 	(
 		'Pos',
 		'strict terminal object',
-		NULL
+		'trivial'
 	),
 	(
 		'Pos',
@@ -339,7 +339,7 @@ VALUES
 	(
 		'M-Set',
 		'strict terminal object',
-		NULL
+		'Take any set $X$ with an element $x \in X$, endow $X$ with the trivial $M$-action. Then the morphism $x : 1 \to X$ is only an isomorphism when $X = \{x\}$.'
 	),
 	(
 		'M-Set',
@@ -374,12 +374,12 @@ VALUES
 	(
 		'Met',
 		'strict terminal object',
-		NULL
+		'trivial'
 	),
 	(
 		'Met',
 		'balanced',
-		NULL
+		'The inclusion $\mathbb{Q} \hookrightarrow \mathbb{R}$ is a counterexample; it is an epimorphism since $\mathbb{Q}$ is dense in $\mathbb{R}$.'
 	),
 	(
 		'Met',
@@ -409,7 +409,7 @@ VALUES
 	(
 		'Met_oo',
 		'strict terminal object',
-		NULL
+		'trivial'
 	),
 	(
 		'Met_oo',
@@ -444,7 +444,7 @@ VALUES
 	(
 		'Met_c',
 		'strict terminal object',
-		NULL
+		'trivial'
 	),
 	(
 		'Met_c',
@@ -524,7 +524,7 @@ VALUES
 	(
 		'Man',
 		'strict terminal object',
-		NULL
+		'trivial'
 	),
 	(
 		'Man',
@@ -544,12 +544,12 @@ VALUES
 	(
 		'Meas',
 		'strict terminal object',
-		NULL
+		'trivial'
 	),
 	(
 		'Meas',
 		'balanced',
-		NULL
+		'Take a set $X$ with two different $\sigma$-algebras $\mathcal{A} \subset \mathcal{B}$ (for example, $\mathcal{A} = \{\emptyset,X\}$ and $\mathcal{B} = P(X)$ when $X$ has at least $2$ elements), then the identity map $(X,\mathcal{B}) \to (X,\mathcal{A})$ provides a counterexample.'
 	),
 	(
 		'Meas',
@@ -564,17 +564,17 @@ VALUES
 	(
 		'N',
 		'countable coproducts',
-		NULL
+		'The numbers $0,1,2,\dotsc$ have no supremum, i.e. no coproduct.'
 	),
 	(
 		'N',
 		'essentially finite',
-		NULL
+		'trivial'
 	),
 	(
 		'Cat',
 		'strict terminal object',
-		NULL
+		'A functor $1 \to \mathcal{C}$ is just the choice of an object of $\mathcal{C}$, it does not force $\mathcal{C}$ to be trivial.'
 	),
 	(
 		'Cat',
@@ -604,12 +604,12 @@ VALUES
 	(
 		'On',
 		'terminal object',
-		NULL
+		'There is no largest ordinal $\alpha$ since $\alpha + 1$ will always be larger.'
 	),
 	(
 		'On',
 		'well-copowered',
-		NULL
+		'The "quotients" of $0$ are all ordinals.'
 	),
 	(
 		'LRS',
@@ -619,7 +619,12 @@ VALUES
 	(
 		'LRS',
 		'strict terminal object',
-		NULL
+		'This is because $\mathbf{CRing}$ does not have a strict initial object.'
+	),
+	(
+		'LRS',
+		'balanced',
+		'The canonical morphism $\mathrm{Spec}(\mathbb{Z}/2 \times \mathbb{Z}[1/2]) \longrightarrow \mathrm{Spec}(\mathbb{Z})$ is a mono- and an epimorphism, but no isomorphism.'
 	),
 	(
 		'LRS',
@@ -633,13 +638,13 @@ VALUES
 	),
 	(
 		'Sch',
-		'coequalizers',
-		NULL
+		'pushouts',
+		'The span $\mathbb{A}^1 \leftarrow \mathrm{Spec}(k(t)) \rightarrow \mathbb{A}^1$ has no pushout, see <a href="https://mathoverflow.net/questions/9961" target="_blank">MO/9961</a>.'
 	),
 	(
 		'Sch',
 		'countable products',
-		NULL
+		'While all diagrams of affine schemes have a limit in the category of schemes, one can show that an infinite product of quasi-compact non-empty schemes only exists when almost all of them are affine, see <a href="https://mathoverflow.net/questions/65506" target="_blank">MO/65506</a>. Thus, for example the infinite power $(\mathbb{P}^1)^{\mathbb{N}}$ does not exist in $\mathbf{Sch}$.'
 	),
 	(
 		'Sch',
@@ -649,7 +654,12 @@ VALUES
 	(
 		'Sch',
 		'strict terminal object',
-		NULL
+		'This is because $\mathbf{CRing}$ does not have a strict initial object.'
+	),
+	(
+		'Sch',
+		'balanced',
+		'The canonical morphism $\mathrm{Spec}(\mathbb{Z}/2 \times \mathbb{Z}[1/2]) \longrightarrow \mathrm{Spec}(\mathbb{Z})$ is a mono- and an epimorphism, but no isomorphism.'
 	),
 	(
 		'Sch',
@@ -664,7 +674,7 @@ VALUES
 	(
 		'Fld',
 		'connected',
-		NULL
+		'A field of characteristic $0$ cannot be connected with a field of characteristic $p > 0$. in fact, the connected components of $\mathbb{Fld}$ are the subcategories $\mathbb{Fld}_p$ of fields of characteristic $p$, where $p$ is a prime or $0$.'
 	),
 	(
 		'Fld',
@@ -704,7 +714,7 @@ VALUES
 	(
 		'FreeAb',
 		'balanced',
-		NULL
+		'The homomorphism $2 : \mathbb{Z} \to \mathbb{Z}$ is a counterexample.'
 	),
 	(
 		'FreeAb',
@@ -724,7 +734,7 @@ VALUES
 	(
 		'Z',
 		'strict terminal object',
-		NULL
+		'This is because $\mathbf{CRing}$ does not have a strict initial object.'
 	),
 	(
 		'Z',
@@ -738,23 +748,23 @@ VALUES
 	),
 	(
 		'BG',
-		'zero morphisms',
-		NULL
+		'trivial',
+		'trivial'
 	),
 	(
 		'BG',
 		'essentially finite',
-		NULL
+		'This is because we choose $G$ to be infinite.'
 	),
 	(
 		'BGf',
-		'zero morphisms',
-		NULL
+		'trivial',
+		'trivial'
 	),
 	(
 		'BN',
 		'essentially finite',
-		NULL
+		'trivial'
 	),
 	(
 		'BN',
@@ -809,7 +819,7 @@ VALUES
 	(
 		'Setne',
 		'strict terminal object',
-		NULL
+		'trivial'
 	),
 	(
 		'Setne',
@@ -974,7 +984,7 @@ VALUES
 	(
 		'FinOrd',
 		'strict terminal object',
-		NULL
+		'trivial'
 	),
 	(
 		'FinOrd',
@@ -1029,7 +1039,7 @@ VALUES
 	(
 		'Sp',
 		'strict terminal object',
-		NULL
+		'trivial'
 	),
 	(
 		'Sp',
