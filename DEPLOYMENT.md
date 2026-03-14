@@ -27,3 +27,8 @@ Prerendering also implies that for every deployment, database changes should be 
 ## Backups
 
 Since the whole database is defined by static SQL files in this repository, a database backup is not strictly necessary. Still, there is an API endpoint `/api/db_dump` that dumps the SQLite database. It is secured with an API key. A Google Apps Script regularly fetches this API endpoint and saves the dump to Google Drive.
+
+## Domains
+
+- Main domain: <https://catdat.app>
+- Backup domain: <https://catdat.netlify.app>
