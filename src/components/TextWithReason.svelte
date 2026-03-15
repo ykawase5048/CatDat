@@ -23,8 +23,6 @@
 {#if reason}
 	<span class="wrapper">
 		<span>
-			{@render children()}
-
 			<button
 				onclick={toggle}
 				class="toggle"
@@ -34,6 +32,8 @@
 			>
 				<Fa icon={faCommentDots} scale={0.825} />
 			</button>
+
+			{@render children()}
 		</span>
 
 		{#if show_reason}
