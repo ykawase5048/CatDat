@@ -27,8 +27,16 @@ This project is a **community effort**. See our [contribution guidelines](CONTRI
 ## Documentation
 
 - [The database of _CatDat_](DATABASE.md)
-- [Development](DEVELOPMENT.md)
 - [Deployment](DEPLOYMENT.md)
+
+## Tech Stack
+
+- Language: [TypeScript](https://www.typescriptlang.org)
+- App framework: [SvelteKit](https://svelte.dev/docs/kit/introduction)
+- Database: [SQLite](https://sqlite.org/)
+- App Deployment: [Netlify](https://netlify.com)
+- Database Deployment: [Turso](https://turso.tech)
+- TeX math rendering: [katex](https://www.npmjs.com/package/katex)
 
 ## Similar projects
 

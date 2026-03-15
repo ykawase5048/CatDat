@@ -2,7 +2,9 @@
 
 ## Overview
 
-_CatDat_ is based on a [SQLite database](https://sqlite.org/) defined in the folder [/database](/database/). It has three main tables:
+_CatDat_ is based on a [SQLite database](https://sqlite.org/). During runtime of the application, it is read-only.
+
+During development, the database is located in the file `/database/local.db`. It has three main tables:
 
 - `categories`
 - `properties`
@@ -32,20 +34,10 @@ Further tables are:
 - `related_properties`
 - `category_comments`
 
-## Migrations
-
-The database is built up incrementally and updated with the help of migration files in the folder [/database/migrations](/database/migrations/). The command `pnpm db:migrate` runs the migrations that are not yet applied.
-
 ## Derived Data
 
-From the defined properties for a given category, new properties can be derived automatically by using the implications (the same holds for non-properties). Also, suitable implications may be dualized.
+From the defined properties for a given category, new properties can be derived automatically by using the implications (the same holds for non-properties). Also, suitable implications may be dualized. Notice that the migration files (see below) do _not_ contain derived data.
 
-These deductions are computed and applied to the database via the commands `pnpm db:deduce-implications` and `pnpm db:deduce-properties`. Notice that the SQL files do _not_ contain derived data.
+## Migrations
 
-## Commands
-
-The command `pnpm db:create` executes all the previous commands in sequence. The command `pnpm db:check` executes some sanity checks on the generated data.
-
-For every one of the mentioned commands there is a version for the remote database hosted on [Turso](https://turso.tech). For example, `pnpm db:create:remote` creates the whole remote database; this runs automatically before every `git push` to the main branch.
-
-During runtime of the application, the database is read-only.
+The database is built up incrementally and updated with the help of migration files in the folder [/database/migrations](/database/migrations/). The command `pnpm db:update` runs the migrations that are not yet applied, deduces implications and properties, and checks if the changes are sound.

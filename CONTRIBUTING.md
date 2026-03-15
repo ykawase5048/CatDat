@@ -7,43 +7,27 @@ There are three ways to contribute:
 
 ## Option 1: Create a Pull Request
 
-Create a [**pull request**](https://github.com/ScriptRaccoon/CatDat/pulls). You will need a GitHub account for this.
+Create a [**pull request**](https://github.com/ScriptRaccoon/CatDat/pulls). You will need a GitHub account.
 
 ### Local Setup
 
-1. Clone the repository
-2. Install the dependencies with `pnpm install`
-3. Create the local `.env` file based on the `.env.example` file.
-4. Create the local database with `pnpm db:create`.
+You need to have [NodeJS](https://nodejs.org/) and [pnpm](https://pnpm.io/) installed.
+
+1. Clone the repository with `git clone https://github.com/ScriptRaccoon/CatDat.git`.
+2. Install the dependencies with `pnpm install`.
+3. Create the local `.env` file based on `.env.example`.
+4. Create the local database with `pnpm db:update`.
 5. Start the local development server with `pnpm dev`.
 
-See [here](DEVELOPMENT.md) for details. All your updates to the _data_ happen in the folder [database/data](database/data/), see also [database.md](/DATABASE.md).
+### Migrations
 
-### Adding a New Category
+All updates to the database are made in the folder [database/migrations](database/migrations/) (see also [DATABASE.md](/DATABASE.md)). Each update is a new migration file written in SQL. Apply migrations using:
 
-- Add the basic info of the category to the file [categories.sql](database/data/002_categories.sql).
-- Add a related categories to [related_categories.sql](database/data/003_related_categories.sql) (optional).
-- Add tags to [category_tags.sql](database/data/004_category_tags.sql).
-- To add properties of the category, edit the file [category_properties.sql](database/data/008_category_properties.sql).
-- To add non-properties of the category, edit the file [category_non_properties.sql](database/data/009_category_non_properties.sql).
-- Add the descriptions of special morphisms in [category_isomorphisms.sql](database/data/010_category_isomorphisms.sql), [category_epimorphisms.sql](database/data/011_category_epimorphisms.sql), and [category_monomorphisms.sql](database/data/012_category_monomorphisms.sql) (if known).
+```sh
+pnpm db:update
+```
 
-### Adding a New Property
-
-- Add the basic info of the property to [properties.sql](database/data/006_properties.sql).
-- Add related properties to [related_properties](database/data/007_related_properties.sql) (optional).
-- Add categories with and without this property (see above).
-- Add implications involving this property (see below).
-
-### Adding a New Implication
-
-- Edit the file [implications.sql](database/data/013_implications.sql).
-
-### Updating the local database
-
-Run `pnpm db:create` to create the local database from scratch. Ensure that it completes without errors.
-
-Then, run `pnpm db:check` to perform sanity checks. If it fails, either there is an issue in your PR, or the data used by this script needs to be updated.
+Ensure that it does not error. A pull request may have multiple new migrations.
 
 ### Guidelines for Adding New Data
 
@@ -59,7 +43,7 @@ When contributing new data (categories, properties, implications), please follow
 
 - **Proofs for New Properties**: For every new property, for each existing category try to find a proof for whether it has this property or not, unless it can be deduced from existing properties.
 
-- **Counterexamples**: Ensure that at least one category does not satisfy any new property added. This is enforced with a unit test. If no existing category fits, add a new category that does not have the new property.
+- **Counterexamples**: Ensure that at least one category does not satisfy any new property added. If no existing category fits, add a new category that does not have the new property.
 
 - **Reduce Unknowns**: Aim to reduce the number of unknown properties of categories in the database. Use the [page with missing data](https://catdat.app/missing) to identify these.
 
