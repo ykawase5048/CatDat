@@ -35,6 +35,6 @@
 </p>
 
 <p>
-	Notice that this project is still in its early stages. Breaking changes are possible.
-	Also, the domain might change in the near future.
+	Note that this project is still in its early stages. Breaking changes are likely, and
+	the structure of the application and the database may change without notice.
 </p>
