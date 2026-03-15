@@ -316,7 +316,7 @@ VALUES
 		'subobject_classifier_consequence',
 		'["subobject classifier"]',
 		'["finitely complete", "mono-regular"]',
-		'The first part holds by convention, and the second part: any monomorphism $U \to X$ is the equalizer of $$\chi_U,\chi_X : X \to \Omega$.',
+		'The first part holds by convention, and the second part: any monomorphism $U \to X$ is the equalizer of $\chi_U,\chi_X : X \to \Omega$.',
 		FALSE
 	),
 	(
