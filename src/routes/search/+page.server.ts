@@ -4,6 +4,7 @@ import { query } from '$lib/server/db'
 import { error } from '@sveltejs/kit'
 import sql from 'sql-template-tag'
 import { SEARCH_SEPARATOR } from './search.config'
+import { check_consistency } from '$lib/server/consistency'
 
 export const load = async (event) => {
 	const properties_query = event.url.searchParams.get('properties')
@@ -23,6 +24,7 @@ export const load = async (event) => {
 	if (!properties_query && !non_properties_query) {
 		return {
 			is_search: false,
+			is_consistent: true,
 			all_properties,
 			found_categories: [],
 		}
@@ -63,6 +65,26 @@ export const load = async (event) => {
 		? (potential_dual_selected_non_properties as string[])
 		: null
 
+	const check = await check_consistency(
+		new Set(selected_properties),
+		new Set(selected_non_properties),
+	)
+
+	if (!check) error(500, 'Search failed')
+
+	if (!check.consistent) {
+		return {
+			is_search: true,
+			is_consistent: false,
+			all_properties,
+			selected_properties,
+			selected_non_properties,
+			found_categories: [],
+			dual_selected_properties,
+			dual_selected_non_properties,
+		}
+	}
+
 	const join_fragments_properties: string[] = []
 	const join_fragments_non_properties: string[] = []
 	const values: string[] = []
@@ -87,7 +109,7 @@ export const load = async (event) => {
 		values.push(p)
 	})
 
-	const stmt = `
+	const search_sql = `
 		SELECT c.id, c.name
 		FROM categories c
 		${join_fragments_properties.join('\n')}
@@ -95,7 +117,7 @@ export const load = async (event) => {
 	`
 
 	const { rows: found_categories, err } = await query<CategoryShort>({
-		sql: stmt,
+		sql: search_sql,
 		values,
 	})
 
@@ -103,6 +125,7 @@ export const load = async (event) => {
 
 	return {
 		is_search: true,
+		is_consistent: true,
 		all_properties,
 		selected_properties,
 		selected_non_properties,

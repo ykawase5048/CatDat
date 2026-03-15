@@ -119,22 +119,26 @@
 	<section transition:fade={{ duration: 150 }}>
 		<h2>Results</h2>
 
-		<CategoryList
-			categories={data.found_categories ?? []}
-			description="Found {data.found_categories.length} categories."
-		/>
-	</section>
-{/if}
+		{#if data.is_consistent}
+			<CategoryList
+				categories={data.found_categories ?? []}
+				description="Found {data.found_categories.length} categories."
+			/>
+		{:else}
+			<p>No categories found because the requirements are inconsistent.</p>
+		{/if}
 
-{#if data.dual_selected_properties && data.dual_selected_non_properties}
-	<p class="hint">
-		All selected properties have a dual, you may perform the <a
-			href={get_dual_search_results_link()}
-			data-sveltekit-reload="true"
-		>
-			dual search
-		</a>.
-	</p>
+		{#if data.dual_selected_properties && data.dual_selected_non_properties}
+			<p class="hint">
+				All selected properties have a dual, you may perform the <a
+					href={get_dual_search_results_link()}
+					data-sveltekit-reload="true"
+				>
+					dual search
+				</a>.
+			</p>
+		{/if}
+	</section>
 {/if}
 
 <style>
