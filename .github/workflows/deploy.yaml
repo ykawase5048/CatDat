@@ -1,0 +1,65 @@
+name: deployment from main branch
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+
+    workflow_dispatch:
+
+jobs:
+    build-and-deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Install pnpm
+              uses: pnpm/action-setup@v4
+              with:
+                  version: 10
+
+            - name: Use Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 22.13.0
+                  cache: 'pnpm'
+
+            - name: Install Dependencies
+              run: pnpm i
+
+            - name: Generate SvelteKit config
+              run: pnpm svelte-kit sync
+
+            - name: Install Netlify CLI
+              run: pnpm i -g netlify-cli@24.2.0
+
+            - name: Update database
+              env:
+                  DB_URL: ${{ secrets.DB_URL }}
+                  DB_AUTH_TOKEN: ${{ secrets.DB_AUTH_TOKEN }}
+                  LOG_DETAILS: ${{ vars.LOG_DETAILS}}
+              run: |
+                  pnpm db:update
+
+            - name: Build app
+              env:
+                  DB_URL: ${{ secrets.DB_URL }}
+                  DB_AUTH_TOKEN: ${{ secrets.DB_AUTH_TOKEN }}
+                  DB_HTTP_URL: ${{ secrets.DB_HTTP_URL }}
+                  DB_AUTH_TOKEN_HTTP: ${{ secrets.DB_AUTH_TOKEN_HTTP }}
+                  INTERNAL_API_KEY: ${{ secrets.INTERNAL_API_KEY }}
+              run: pnpm build
+
+            - name: Deploy to Netlify
+              run: |
+                  netlify deploy --no-build \
+                    --dir build \
+                    --site ${{ secrets.NETLIFY_SITE_ID }} \
+                    --auth ${{ secrets.NETLIFY_ACCESS_TOKEN }} \
+                    --message "${{ github.event.head_commit.message }}" \
+                    --prod
