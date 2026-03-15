@@ -15,17 +15,9 @@
 		"lint": "prettier --check .",
 		"prepare": "husky",
 		"db:shell": "sqlite3 database/local.db",
-		"db:migrate": "tsx scripts/migrate.ts",
-		"db:deduce-implications": "tsx scripts/deduce-implications.ts",
-		"db:deduce-properties": "tsx scripts/deduce-properties.ts",
-		"db:check": "tsx scripts/check.ts",
-		"db:update": "pnpm db:migrate && pnpm db:deduce-implications && pnpm db:deduce-properties && pnpm db:check",
 		"db:shell:remote": "turso db shell catdat",
-		"db:migrate:remote": "vite-node --mode prod scripts/migrate.ts",
-		"db:deduce-implications:remote": "vite-node --mode prod scripts/deduce-implications.ts",
-		"db:deduce-properties:remote": "vite-node --mode prod scripts/deduce-properties.ts",
-		"db:check:remote": "vite-node --mode prod scripts/check.ts",
-		"db:update:remote": "pnpm db:migrate:remote && pnpm db:deduce-implications:remote && pnpm db:deduce-properties:remote && pnpm db:check:remote"
+		"db:update": "tsx scripts/update.ts",
+		"db:update:remote": "vite-node --mode prod scripts/update.ts"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-netlify": "^6.0.4",

@@ -1,36 +1,23 @@
+import { type Client } from '@libsql/client'
+import { are_equal_sets } from './utils'
 import dotenv from 'dotenv'
-import { createClient } from '@libsql/client'
 
-dotenv.config()
+dotenv.config({ quiet: true })
 
-const DB_URL = process.env.DB_URL
-const DB_AUTH_TOKEN = process.env.DB_AUTH_TOKEN
 const LOG_DETAILS = process.env.LOG_DETAILS
-
-if (!DB_URL) throw new Error('No DB_URL found')
-if (!DB_AUTH_TOKEN) throw new Error('No DB_AUTH_TOKEN found')
 if (!LOG_DETAILS) console.warn('No LOG_DETAILS found')
 
-const db = createClient({
-	url: DB_URL,
-	authToken: DB_AUTH_TOKEN!,
-})
-
-await db.execute('PRAGMA foreign_keys = ON')
-
-deduce_implications()
-
-async function deduce_implications() {
-	await clear_deduced_implications()
-	await create_dualized_implications()
-	await create_self_dual_implications()
+export async function deduce_implications(db: Client) {
+	await clear_deduced_implications(db)
+	await create_dualized_implications(db)
+	await create_self_dual_implications(db)
 }
 
-async function clear_deduced_implications() {
+async function clear_deduced_implications(db: Client) {
 	await db.execute(`DELETE FROM implications WHERE is_deduced = TRUE`)
 }
 
-async function create_dualized_implications() {
+async function create_dualized_implications(db: Client) {
 	const res = await db.execute(`
         SELECT
             v.id,
@@ -105,7 +92,7 @@ async function create_dualized_implications() {
 	if (LOG_DETAILS === 'true') console.info(dualizable_implications.map((i) => i.id))
 }
 
-async function create_self_dual_implications() {
+async function create_self_dual_implications(db: Client) {
 	const { rows } = await db.execute(`
         INSERT INTO implication_input (
             id,
@@ -134,8 +121,4 @@ async function create_self_dual_implications() {
 
 	console.info(`Created ${rows.length} self-dual implications`)
 	if (LOG_DETAILS === 'true') console.info(rows.map((i) => i.id))
-}
-
-function are_equal_sets<T>(a: Set<T>, b: Set<T>) {
-	return a.size === b.size && [...a].every((el) => b.has(el))
 }

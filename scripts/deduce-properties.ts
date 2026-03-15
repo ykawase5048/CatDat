@@ -1,22 +1,10 @@
+import { type Client } from '@libsql/client'
 import dotenv from 'dotenv'
-import { createClient } from '@libsql/client'
 
-dotenv.config()
+dotenv.config({ quiet: true })
 
-const DB_URL = process.env.DB_URL
-const DB_AUTH_TOKEN = process.env.DB_AUTH_TOKEN
 const LOG_DETAILS = process.env.LOG_DETAILS
-
-if (!DB_URL) throw new Error('No DB_URL found')
-if (!DB_AUTH_TOKEN) throw new Error('No DB_AUTH_TOKEN found')
 if (!LOG_DETAILS) console.warn('No LOG_DETAILS found')
-
-const db = createClient({
-	url: DB_URL,
-	authToken: DB_AUTH_TOKEN!,
-})
-
-await db.execute('PRAGMA foreign_keys = ON')
 
 type NormalizedImplication = {
 	assumptions: Set<string>
@@ -24,21 +12,19 @@ type NormalizedImplication = {
 	prefixes: Record<string, string>
 }
 
-deduce_all_properties()
-
-async function deduce_all_properties() {
-	const implications = await get_normalized_implications()
+export async function deduce_all_properties(db: Client) {
+	const implications = await get_normalized_implications(db)
 	if (!implications) return
 
-	const categories = await get_categories()
+	const categories = await get_categories(db)
 
 	for (const { category_id } of categories) {
-		await deduce_properties(category_id, implications)
-		await deduce_non_properties(category_id, implications)
+		await deduce_properties(db, category_id, implications)
+		await deduce_non_properties(db, category_id, implications)
 	}
 }
 
-async function get_categories() {
+async function get_categories(db: Client) {
 	const res = await db.execute(`
 		SELECT id AS category_id FROM categories ORDER BY name
 	`)
@@ -46,6 +32,7 @@ async function get_categories() {
 }
 
 async function deduce_properties(
+	db: Client,
 	category_id: string,
 	implications: NormalizedImplication[],
 ) {
@@ -137,6 +124,7 @@ async function deduce_properties(
 }
 
 async function deduce_non_properties(
+	db: Client,
 	category_id: string,
 	implications: NormalizedImplication[],
 ) {
@@ -265,7 +253,7 @@ async function deduce_non_properties(
 	}
 }
 
-async function get_normalized_implications(): Promise<NormalizedImplication[]> {
+async function get_normalized_implications(db: Client): Promise<NormalizedImplication[]> {
 	const res = await db.execute(`
         SELECT
             v.assumptions,
