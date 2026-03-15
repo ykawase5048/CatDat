@@ -1,4 +1,4 @@
-import { type Client } from '@libsql/client'
+import type { Transaction, Client } from '@libsql/client'
 import dotenv from 'dotenv'
 
 dotenv.config({ quiet: true })
@@ -13,223 +13,217 @@ type NormalizedImplication = {
 }
 
 export async function deduce_all_properties(db: Client) {
-	const implications = await get_normalized_implications(db)
-	if (!implications) return
+	const tx = await db.transaction()
 
-	const categories = await get_categories(db)
+	try {
+		const implications = await get_normalized_implications(tx)
+		if (!implications) return
 
-	for (const { category_id } of categories) {
-		await deduce_properties(db, category_id, implications)
-		await deduce_non_properties(db, category_id, implications)
+		const categories = await get_categories(tx)
+
+		for (const { category_id } of categories) {
+			await deduce_properties(tx, category_id, implications)
+			await deduce_non_properties(tx, category_id, implications)
+		}
+
+		await tx.commit()
+	} catch (err) {
+		console.error(err)
+		await tx.rollback()
+		throw err
 	}
 }
 
-async function get_categories(db: Client) {
-	const res = await db.execute(`
+async function get_categories(tx: Transaction) {
+	const res = await tx.execute(`
 		SELECT id AS category_id FROM categories ORDER BY name
 	`)
 	return res.rows as unknown as { category_id: string }[]
 }
 
 async function deduce_properties(
-	db: Client,
+	tx: Transaction,
 	category_id: string,
 	implications: NormalizedImplication[],
 ) {
 	console.info('Deduce properties for category:', category_id)
 
-	const tx = await db.transaction()
+	await tx.execute({
+		sql: `
+			DELETE FROM category_properties
+			WHERE category_id = ? AND is_deduced = TRUE`,
+		args: [category_id],
+	})
 
-	try {
-		tx.execute({
-			sql: `
-				DELETE FROM category_properties
-				WHERE category_id = ? AND is_deduced = TRUE
-			`,
-			args: [category_id],
-		})
+	const props_res = await tx.execute({
+		sql: `
+			SELECT property_id
+			FROM category_properties
+			WHERE category_id = ? AND is_deduced = FALSE`,
+		args: [category_id],
+	})
 
-		const props_res = await tx.execute({
-			sql: `
-				SELECT property_id
-				FROM category_properties
-				WHERE category_id = ? AND is_deduced = FALSE
-			`,
-			args: [category_id],
-		})
+	const props_rows = props_res.rows as unknown as { property_id: string }[]
 
-		const props_rows = props_res.rows as unknown as { property_id: string }[]
+	const properties = new Set(
+		props_rows.map(({ property_id }) => property_id),
+	) as Set<string>
 
-		const properties = new Set(
-			props_rows.map(({ property_id }) => property_id),
-		) as Set<string>
-
-		if (LOG_DETAILS === 'true') {
-			console.info(`Found ${properties.size} properties in the database`)
-			console.info(Array.from(properties))
-		}
-
-		const deduced_properties: string[] = []
-		const reasons: Record<string, string> = {}
-
-		while (true) {
-			const implication = implications.find(
-				({ assumptions, conclusion }) =>
-					[...assumptions].every((p) => properties.has(p)) &&
-					!properties.has(conclusion),
-			)
-			if (!implication) break
-
-			const { conclusion } = implication
-
-			properties.add(conclusion)
-			deduced_properties.push(conclusion)
-
-			const assumption_string = get_assumption_string(implication)
-			const conclusion_string = get_conclusion_string(implication)
-
-			const reason = `Since it ${assumption_string}, it ${conclusion_string}.`
-
-			reasons[conclusion] = reason
-		}
-
-		if (LOG_DETAILS === 'true') {
-			console.info(`${deduced_properties.length} properties have been deduced`)
-			console.info(deduced_properties)
-		}
-
-		for (let i = 0; i < deduced_properties.length; i++) {
-			const id = deduced_properties[i]
-			await tx.execute({
-				sql: `
-					INSERT INTO category_properties (
-						property_id,
-						category_id,
-						reason,
-						position,
-						is_deduced
-					)
-					VALUES (?, ?, ?, ?, TRUE)`,
-				args: [id, category_id, reasons[id], i + 1],
-			})
-		}
-
-		await tx.commit()
-
-		console.info(`Added ${deduced_properties.length} properties to the database\n`)
-	} catch (err) {
-		tx.rollback()
-		throw err
+	if (LOG_DETAILS === 'true') {
+		console.info(`Found ${properties.size} properties in the database`)
+		console.info(Array.from(properties))
 	}
+
+	const deduced_properties: string[] = []
+	const reasons: Record<string, string> = {}
+
+	while (true) {
+		const implication = implications.find(
+			({ assumptions, conclusion }) =>
+				[...assumptions].every((p) => properties.has(p)) &&
+				!properties.has(conclusion),
+		)
+		if (!implication) break
+
+		const { conclusion } = implication
+
+		properties.add(conclusion)
+		deduced_properties.push(conclusion)
+
+		const assumption_string = get_assumption_string(implication)
+		const conclusion_string = get_conclusion_string(implication)
+
+		const reason = `Since it ${assumption_string}, it ${conclusion_string}.`
+
+		reasons[conclusion] = reason
+	}
+
+	if (LOG_DETAILS === 'true') {
+		console.info(`${deduced_properties.length} properties have been deduced`)
+		console.info(deduced_properties)
+	}
+
+	for (let i = 0; i < deduced_properties.length; i++) {
+		const id = deduced_properties[i]
+		await tx.execute({
+			sql: `
+				INSERT INTO category_properties (
+					property_id,
+					category_id,
+					reason,
+					position,
+					is_deduced
+				)
+				VALUES (?, ?, ?, ?, TRUE)`,
+			args: [id, category_id, reasons[id], i + 1],
+		})
+	}
+
+	console.info(`Added ${deduced_properties.length} properties to the database\n`)
 }
 
 async function deduce_non_properties(
-	db: Client,
+	tx: Transaction,
 	category_id: string,
 	implications: NormalizedImplication[],
 ) {
 	console.info('Deduce non-properties for category:', category_id)
 
-	const tx = await db.transaction()
-
-	try {
-		await tx.execute({
-			sql: `
+	await tx.execute({
+		sql: `
 				DELETE FROM category_non_properties
 				WHERE category_id = ? AND is_deduced = TRUE`,
-			args: [category_id],
-		})
+		args: [category_id],
+	})
 
-		const props_res = await tx.execute({
-			sql: `
+	const props_res = await tx.execute({
+		sql: `
 				SELECT property_id
 				FROM category_properties
 				WHERE category_id = ?
 			`,
-			args: [category_id],
-		})
+		args: [category_id],
+	})
 
-		const props_rows = props_res.rows as unknown as { property_id: string }[]
+	const props_rows = props_res.rows as unknown as { property_id: string }[]
 
-		const properties = new Set(props_rows.map(({ property_id }) => property_id))
+	const properties = new Set(props_rows.map(({ property_id }) => property_id))
 
-		const non_props_res = await tx.execute({
-			sql: `
+	const non_props_res = await tx.execute({
+		sql: `
 				SELECT non_property_id
 				FROM category_non_properties
 				WHERE category_id = ? AND is_deduced = FALSE
 			`,
-			args: [category_id],
-		})
+		args: [category_id],
+	})
 
-		const non_props_rows = non_props_res.rows as unknown as {
-			non_property_id: string
-		}[]
+	const non_props_rows = non_props_res.rows as unknown as {
+		non_property_id: string
+	}[]
 
-		const non_properties = new Set(
-			non_props_rows.map(({ non_property_id }) => non_property_id),
-		)
+	const non_properties = new Set(
+		non_props_rows.map(({ non_property_id }) => non_property_id),
+	)
 
-		if (LOG_DETAILS === 'true') {
-			console.info(`Found ${non_properties.size} non-properties in the database`)
-			console.info(Array.from(non_properties))
-		}
+	if (LOG_DETAILS === 'true') {
+		console.info(`Found ${non_properties.size} non-properties in the database`)
+		console.info(Array.from(non_properties))
+	}
 
-		const deduced_non_properties: string[] = []
-		const reasons: Record<string, string> = {}
+	const deduced_non_properties: string[] = []
+	const reasons: Record<string, string> = {}
 
-		function get_next_implication() {
-			for (const implication of implications) {
-				if (!non_properties.has(implication.conclusion)) continue
-				for (const p of implication.assumptions) {
-					const is_valid =
-						!non_properties.has(p) &&
-						[...implication.assumptions].every(
-							(q) => q === p || properties.has(q),
-						)
-					if (is_valid) return { implication, non_property: p }
-				}
+	function get_next_implication() {
+		for (const implication of implications) {
+			if (!non_properties.has(implication.conclusion)) continue
+			for (const p of implication.assumptions) {
+				const is_valid =
+					!non_properties.has(p) &&
+					[...implication.assumptions].every(
+						(q) => q === p || properties.has(q),
+					)
+				if (is_valid) return { implication, non_property: p }
 			}
-
-			return null
 		}
 
-		while (true) {
-			const next = get_next_implication()
-			if (!next) break
+		return null
+	}
 
-			const { implication, non_property } = next
+	while (true) {
+		const next = get_next_implication()
+		if (!next) break
 
-			const { prefixes } = implication
+		const { implication, non_property } = next
 
-			if (properties.has(non_property)) {
-				throw new Error(`Contradiction has been found for: ${non_property}`)
-			}
+		const { prefixes } = implication
 
-			non_properties.add(non_property)
-			deduced_non_properties.push(non_property)
-
-			const assumption_string = get_assumption_string(implication)
-			const conclusion_string = get_conclusion_string(implication)
-
-			const reason =
-				`Assume that it ${prefixes[non_property]} ${non_property}. ` +
-				`But since it ${assumption_string}, it ${conclusion_string} – contradiction.`
-
-			reasons[non_property] = reason
+		if (properties.has(non_property)) {
+			throw new Error(`Contradiction has been found for: ${non_property}`)
 		}
 
-		if (LOG_DETAILS === 'true') {
-			console.info(
-				`${deduced_non_properties.length} non-properties have been deduced`,
-			)
-			console.info(deduced_non_properties)
-		}
+		non_properties.add(non_property)
+		deduced_non_properties.push(non_property)
 
-		for (let i = 0; i < deduced_non_properties.length; i++) {
-			const id = deduced_non_properties[i]
-			await tx.execute({
-				sql: `
+		const assumption_string = get_assumption_string(implication)
+		const conclusion_string = get_conclusion_string(implication)
+
+		const reason =
+			`Assume that it ${prefixes[non_property]} ${non_property}. ` +
+			`But since it ${assumption_string}, it ${conclusion_string} – contradiction.`
+
+		reasons[non_property] = reason
+	}
+
+	if (LOG_DETAILS === 'true') {
+		console.info(`${deduced_non_properties.length} non-properties have been deduced`)
+		console.info(deduced_non_properties)
+	}
+
+	for (let i = 0; i < deduced_non_properties.length; i++) {
+		const id = deduced_non_properties[i]
+		await tx.execute({
+			sql: `
 					INSERT INTO category_non_properties (
 						non_property_id,
 						category_id,
@@ -238,23 +232,19 @@ async function deduce_non_properties(
 						is_deduced
 					)
 					VALUES (?, ?, ?, ?, TRUE)`,
-				args: [id, category_id, reasons[id], i + 1],
-			})
-		}
-
-		await tx.commit()
-
-		console.info(
-			`Added ${deduced_non_properties.length} non-properties to the database\n`,
-		)
-	} catch (err) {
-		await tx.rollback()
-		throw err
+			args: [id, category_id, reasons[id], i + 1],
+		})
 	}
+
+	console.info(
+		`Added ${deduced_non_properties.length} non-properties to the database\n`,
+	)
 }
 
-async function get_normalized_implications(db: Client): Promise<NormalizedImplication[]> {
-	const res = await db.execute(`
+async function get_normalized_implications(
+	tx: Transaction,
+): Promise<NormalizedImplication[]> {
+	const res = await tx.execute(`
         SELECT
             v.assumptions,
             v.conclusions,
