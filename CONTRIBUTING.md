@@ -30,6 +30,10 @@ pnpm db:update
 
 Ensure that it does not error. A pull request may have multiple new migrations.
 
+### Typos
+
+For small fixes, like correcting typos in descriptions, it is acceptable to update the database directly and also update the corresponding migration file if needed ([Example](https://github.com/ScriptRaccoon/CatDat/commit/4f5b92e8ed2b8731225eba6e94899975ab8ff5dc)). You do not need to create a new migration just for such corrections.
+
 ### Guidelines for Adding New Data
 
 When contributing new data (categories, properties, implications), please follow these guidelines:
