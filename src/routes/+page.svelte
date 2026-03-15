@@ -1,5 +1,12 @@
 <script lang="ts">
 	import MetaData from '$components/MetaData.svelte'
+	import {
+		faChartBar,
+		faChartDiagram,
+		faSearch,
+		faUsers,
+	} from '@fortawesome/free-solid-svg-icons'
+	import Fa from 'svelte-fa'
 </script>
 
 <MetaData />
@@ -9,48 +16,90 @@
 <p>
 	<i>CatDat</i> provides a growing collection of
 	<a class="accent" href="/categories">categories</a>, each with detailed descriptions,
-	properties, and non-properties. It leverages a powerful deduction system based on a
-	list of <a class="accent" href="/implications">implications</a> between
-	<a class="accent" href="/properties">properties</a>, which allows for automatic
-	deduction of properties and non-properties from more basic ones.
+	properties, and non-properties. Built by and for those who love
+	<a href="https://en.wikipedia.org/wiki/Category_theory" target="_blank"
+		>category theory</a
+	>.
 </p>
 
-<p>
-	Additionally, you can <a class="accent" href="/search">search</a> for categories with
-	specific properties or non-properties, and also
-	<a class="accent" href="/compare">compare</a> several categories to see how their properties
-	align or differ.
-</p>
+<div class="features">
+	<article class="feature-card">
+		<h3>
+			<Fa icon={faChartDiagram} />
+			Deduction System
+		</h3>
 
-<p>
-	This community-driven project is <a
-		class="accent"
-		href="https://github.com/ScriptRaccoon/catdat"
-		target="_blank"
-	>
-		open-source
-	</a>
-	and welcomes <a class="accent" href="/contribute">contributions</a>
-	to fill in <a class="accent" href="/missing">missing data</a>
-	or observe new combinations of properties.
-</p>
+		<p>
+			A list of
+			<a class="accent" href="/implications">implications</a>
+			between
+			<a class="accent" href="/properties">properties</a> allows for automatic deduction
+			of properties and non-properties from more basic ones.
+		</p>
+	</article>
+
+	<article class="feature-card">
+		<h3>
+			<Fa icon={faSearch} /> Search by properties
+		</h3>
+		<p>
+			You can easily <a class="accent" href="/search">search for categories</a> with specific
+			properties and non-properties.
+		</p>
+	</article>
+
+	<article class="feature-card">
+		<h3>
+			<Fa icon={faChartBar} /> Compare categories
+		</h3>
+		<p>
+			You can <a class="accent" href="/compare">compare categories</a> to see how their
+			properties align or differ.
+		</p>
+	</article>
+
+	<article class="feature-card">
+		<h3>
+			<Fa icon={faUsers} /> Community-driven
+		</h3>
+		<p>
+			This project is <a
+				class="accent"
+				href="https://github.com/ScriptRaccoon/catdat"
+				target="_blank"
+			>
+				open-source
+			</a>
+			and welcomes <a class="accent" href="/contribute">contributions</a>
+			to fill in <a class="accent" href="/missing">missing data</a>
+			or observe new combinations of properties.
+		</p>
+	</article>
+</div>
 
 <p>
 	Note that this project is still in its early stages. Breaking changes are likely, and
 	the structure of the application and the database may change without notice.
 </p>
 
-<p class="hint">
-	If you are not familiar with category theory, it may be helpful to first consult the
-	Wikipedia article on <a
-		class="accent"
-		href="https://en.wikipedia.org/wiki/Category_theory"
-		target="_blank">category theory</a
-	>.
-</p>
-
 <style>
-	h2 {
-		margin-bottom: 2rem;
+	.features {
+		margin-block: 1rem;
+		display: grid;
+		gap: 1.25rem;
+
+		@media (min-width: 600px) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	.feature-card {
+		background-color: var(--card-color);
+		padding: 1rem 1.5rem;
+		border-radius: 1rem;
+
+		h3 {
+			margin-block: 1rem;
+		}
 	}
 </style>
