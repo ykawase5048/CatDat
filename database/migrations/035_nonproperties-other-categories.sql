@@ -1,0 +1,196 @@
+INSERT INTO category_non_properties (
+	category_id,
+	non_property_id,
+	reason
+)
+VALUES
+	(
+		'Ban',
+		'preadditive',
+		NULL
+	),
+	(
+		'Ban',
+		'balanced',
+		NULL
+	),
+	(
+		'Ban',
+		'exact filtered colimits',
+		NULL
+	),
+	(
+		'Ban',
+		'skeletal',
+		'trivial'
+	),
+	(
+		'Ban',
+		'Malcev',
+		'See <a href="https://math.stackexchange.com/questions/5033161" target="_blank">MSE/5033161</a>.'
+	),
+	(
+		'Man',
+		'essentially small',
+		NULL
+	),
+	(
+		'Man',
+		'countable products',
+		NULL
+	),
+	(
+		'Man',
+		'coproducts',
+		NULL
+	),
+	(
+		'Man',
+		'cartesian closed',
+		NULL
+	),
+	(
+		'Man',
+		'coequalizers',
+		NULL
+	),
+	(
+		'Man',
+		'equalizers',
+		NULL
+	),
+	(
+		'Man',
+		'strict terminal object',
+		'trivial'
+	),
+	(
+		'Man',
+		'balanced',
+		NULL
+	),
+	(
+		'Man',
+		'skeletal',
+		'trivial'
+	),
+	(
+		'Meas',
+		'cartesian closed',
+		NULL
+	),
+	(
+		'Meas',
+		'strict terminal object',
+		'trivial'
+	),
+	(
+		'Meas',
+		'balanced',
+		'Take a set $X$ with two different $\sigma$-algebras $\mathcal{A} \subset \mathcal{B}$ (for example, $\mathcal{A} = \{\emptyset,X\}$ and $\mathcal{B} = P(X)$ when $X$ has at least $2$ elements), then the identity map $(X,\mathcal{B}) \to (X,\mathcal{A})$ provides a counterexample.'
+	),
+	(
+		'Meas',
+		'skeletal',
+		'trivial'
+	),
+	(
+		'Meas',
+		'Malcev',
+		NULL
+	),
+	(
+		'Cat',
+		'strict terminal object',
+		'A functor $1 \to \mathcal{C}$ is just the choice of an object of $\mathcal{C}$, it does not force $\mathcal{C}$ to be trivial.'
+	),
+	(
+		'Cat',
+		'finitary algebraic',
+		NULL
+	),
+	(
+		'Cat',
+		'balanced',
+		NULL
+	),
+	(
+		'Cat',
+		'cogenerator',
+		NULL
+	),
+	(
+		'Cat',
+		'skeletal',
+		'trivial'
+	),
+	(
+		'Cat',
+		'Malcev',
+		NULL
+	),
+	(
+		'Fld',
+		'connected',
+		'A field of characteristic $0$ cannot be connected with a field of characteristic $p > 0$. in fact, the connected components of $\mathbb{Fld}$ are the subcategories $\mathbb{Fld}_p$ of fields of characteristic $p$, where $p$ is a prime or $0$.'
+	),
+	(
+		'Fld',
+		'well-copowered',
+		NULL
+	),
+	(
+		'Fld',
+		'pushouts',
+		NULL
+	),
+	(
+		'Fld',
+		'balanced',
+		NULL
+	),
+	(
+		'Fld',
+		'generator',
+		NULL
+	),
+	(
+		'Fld',
+		'cogenerator',
+		NULL
+	),
+	(
+		'Fld',
+		'skeletal',
+		'trivial'
+	),
+	(
+		'Sp',
+		'locally small',
+		NULL
+	),
+	(
+		'Sp',
+		'strict terminal object',
+		'trivial'
+	),
+	(
+		'Sp',
+		'countable products',
+		NULL
+	),
+	(
+		'Sp',
+		'countable coproducts',
+		NULL
+	),
+	(
+		'Sp',
+		'skeletal',
+		'trivial'
+	),
+	(
+		'Sp',
+		'Malcev',
+		NULL
+	);

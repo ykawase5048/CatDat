@@ -25,7 +25,8 @@
 		"db:deduce-implications:remote": "vite-node --mode prod --options.transformMode.ssr='/.*/' src/lib/scripts/deduce-implications.ts",
 		"db:deduce-properties:remote": "vite-node --mode prod --options.transformMode.ssr='/.*/' src/lib/scripts/deduce-properties.ts",
 		"db:create:remote": "pnpm db:seed:remote && pnpm db:deduce-implications:remote && pnpm db:deduce-properties:remote",
-		"db:check:remote": "vite-node --mode prod --options.transformMode.ssr='/.*/' src/lib/scripts/check.ts"
+		"db:check:remote": "vite-node --mode prod --options.transformMode.ssr='/.*/' src/lib/scripts/check.ts",
+		"db:migrate": "tsx scripts/migrate.ts"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-netlify": "^6.0.4",
@@ -33,6 +34,7 @@
 		"@sveltejs/vite-plugin-svelte": "^7.0.0",
 		"@types/katex": "^0.16.8",
 		"@types/node": "^25.5.0",
+		"dotenv": "^17.3.1",
 		"husky": "^9.1.7",
 		"prettier": "^3.8.1",
 		"prettier-plugin-svelte": "^3.5.1",
