@@ -19,4 +19,5 @@
 	<meta property="og:url" content="https://catdat.app/" />
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content="CatDat" />
+	<meta property="og:image" content="https://catdat.app/og-image.webp" />
 </svelte:head>
