@@ -95,33 +95,35 @@ export async function get_missing_combinations() {
 
 	const properties: string[] = props.map(({ id }) => id)
 
+	const { rows: existing, err: err_existing } = await query<{
+		property_id: string
+		non_property_id: string
+	}>(sql`
+		SELECT DISTINCT cp.property_id, cnp.non_property_id
+		FROM category_properties cp
+		INNER JOIN category_non_properties cnp
+		ON cp.category_id = cnp.category_id
+	`)
+
+	if (err_existing) return null
+
+	const existing_pairs = new Set(
+		existing.map((pair) => `${pair.property_id}|${pair.non_property_id}`),
+	)
+
 	const missing_pairs: [string, string][] = []
 
 	for (let i = 0; i < properties.length; i++) {
 		for (let j = i + 1; j < properties.length; j++) {
 			const p = properties[i]
 			const q = properties[j]
+			if (existing_pairs.has(`${p}|${q}`)) continue
 			const { consistent } = check_consistency_worker(
 				new Set([p]),
 				new Set([q]),
 				implications,
 			)
-			if (!consistent) continue
-
-			const { rows: matches, err } = await query<{ category_id: string }>(sql`
-				SELECT cp.category_id
-				FROM category_properties cp
-				INNER JOIN category_non_properties cnp
-				ON cp.category_id = cnp.category_id
-				WHERE
-					cp.property_id = ${p}
-					AND cnp.non_property_id = ${q}
-				LIMIT 1
-			`)
-
-			if (err) return null
-
-			if (!matches.length) missing_pairs.push([p, q])
+			if (consistent) missing_pairs.push([p, q])
 		}
 	}
 
