@@ -1,3 +1,5 @@
+import properties_Set from './expected-data/properties/Set.json'
+import non_properties_Set from './expected-data/non_properties/Set.json'
 import properties_Ab from './expected-data/properties/Ab.json'
 import non_properties_Ab from './expected-data/non_properties/Ab.json'
 import properties_Top from './expected-data/properties/Top.json'
@@ -18,21 +20,32 @@ const db = createClient({
 	authToken: DB_AUTH_TOKEN,
 })
 
-await test_properties('Ab', properties_Ab)
-await test_non_properties('Ab', non_properties_Ab)
-await test_properties('Top', properties_Top)
-await test_non_properties('Top', non_properties_Top)
-await assert_no_unknown_properties('Set')
-await assert_no_unknown_properties('Ab')
+const properties_dict = {
+	Set: properties_Set,
+	Ab: properties_Ab,
+	Top: properties_Top,
+} as Record<string, string[]>
 
-async function test_properties(category_id: string, expected: string[]) {
+const non_properties_dict = {
+	Set: non_properties_Set,
+	Ab: non_properties_Ab,
+	Top: non_properties_Top,
+} as Record<string, string[]>
+
+for (const cat in properties_dict) {
+	await test_properties(cat, properties_dict[cat])
+	await test_non_properties(cat, non_properties_dict[cat])
+	assert_no_unknown_properties(cat)
+}
+
+async function test_properties(category_id: string, expected: readonly string[]) {
 	const properties = await get_properties(category_id)
 	const ok = are_equal_sets(new Set(properties), new Set(expected))
 	if (!ok) throw new Error(`❌ Incorrect properties of ${category_id}`)
 	console.info(`✅ Properties of ${category_id} are correct`)
 }
 
-async function test_non_properties(category_id: string, expected: string[]) {
+async function test_non_properties(category_id: string, expected: readonly string[]) {
 	const non_properties = await get_non_properties(category_id)
 	const ok = are_equal_sets(new Set(non_properties), new Set(expected))
 	if (!ok) throw new Error(`❌ Incorrect non-properties of ${category_id}`)
@@ -41,11 +54,10 @@ async function test_non_properties(category_id: string, expected: string[]) {
 
 async function assert_no_unknown_properties(category_id: string) {
 	const unknown_properties = await get_unknown_properties(category_id)
-	if (unknown_properties.length > 0) {
-		throw new Error(
-			`❌ Found ${unknown_properties.length} unknown properties for ${category_id}, expected 0.`,
-		)
-	}
+	const msg =
+		`❌ Found ${unknown_properties.length} unknown properties` +
+		` for ${category_id}, expected 0.`
+	if (unknown_properties.length > 0) throw new Error(msg)
 	console.info(`✅ No unknown properties for ${category_id}`)
 }
 
