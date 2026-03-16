@@ -123,7 +123,7 @@ async function deduce_properties(
 		await tx.execute({ sql: insert_sql, args: values })
 	}
 
-	console.info(`Added ${deduced_properties.length} properties to the database\n`)
+	console.info(`Added ${deduced_properties.length} properties to the database`)
 }
 
 async function deduce_non_properties(
@@ -244,9 +244,7 @@ async function deduce_non_properties(
 		await tx.execute({ sql: insert_query, args: values })
 	}
 
-	console.info(
-		`Added ${deduced_non_properties.length} non-properties to the database\n`,
-	)
+	console.info(`Added ${deduced_non_properties.length} non-properties to the database`)
 }
 
 async function get_normalized_implications(
