@@ -23,10 +23,11 @@ Create a [**pull request**](https://github.com/ScriptRaccoon/CatDat/pulls). You 
 You need to have [NodeJS](https://nodejs.org/) and [pnpm](https://pnpm.io/) installed.
 
 1. Clone the repository with `git clone https://github.com/ScriptRaccoon/CatDat.git`.
-2. Install the dependencies with `pnpm install`.
-3. Create the local `.env` file based on `.env.example`.
-4. Create the local database with `pnpm db:update`.
-5. Start the local development server with `pnpm dev`.
+2. Change the directory with `cd CatDat`.
+3. Install the dependencies with `pnpm install`.
+4. Create the local `.env` file based on `.env.example`.
+5. Create the local database with `pnpm db:update`.
+6. Start the local development server with `pnpm dev`.
 
 ### Updating the Database
 
