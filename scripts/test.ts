@@ -1,10 +1,7 @@
-import properties_Set from './expected-data/properties/Set.json'
-import non_properties_Set from './expected-data/non_properties/Set.json'
-import properties_Ab from './expected-data/properties/Ab.json'
-import non_properties_Ab from './expected-data/non_properties/Ab.json'
-import properties_Top from './expected-data/properties/Top.json'
-import non_properties_Top from './expected-data/non_properties/Top.json'
-import { are_equal_sets } from './utils'
+import Set_expected from './expected-data/Set.json'
+import Ab_expected from './expected-data/Ab.json'
+import Top_expected from './expected-data/Top.json'
+import { get_excluded } from './utils'
 import { createClient } from '@libsql/client'
 import dotenv from 'dotenv'
 
@@ -20,85 +17,91 @@ const db = createClient({
 	authToken: DB_AUTH_TOKEN,
 })
 
-const properties_dict = {
-	Set: properties_Set,
-	Ab: properties_Ab,
-	Top: properties_Top,
-} as Record<string, string[]>
+const expected = {
+	Set: Set_expected,
+	Ab: Ab_expected,
+	Top: Top_expected,
+} as Record<string, { properties: string[]; non_properties: string[] }>
 
-const non_properties_dict = {
-	Set: non_properties_Set,
-	Ab: non_properties_Ab,
-	Top: non_properties_Top,
-} as Record<string, string[]>
-
-for (const cat in properties_dict) {
-	await test_properties(cat, properties_dict[cat])
-	await test_non_properties(cat, non_properties_dict[cat])
-	assert_no_unknown_properties(cat)
+for (const cat in expected) {
+	await test_properties(cat, expected[cat])
 }
 
-async function test_properties(category_id: string, expected: readonly string[]) {
-	const properties = await get_properties(category_id)
-	const ok = are_equal_sets(new Set(properties), new Set(expected))
-	if (!ok) throw new Error(`❌ Incorrect properties of ${category_id}`)
-	console.info(`✅ Properties of ${category_id} are correct`)
-}
+async function test_properties(
+	category_id: string,
+	expected: { properties: string[]; non_properties: string[] },
+) {
+	const [props_res, non_props_res, unknown_props_res] = await db.batch([
+		{
+			sql: `
+				SELECT property_id AS id
+				FROM category_properties
+				WHERE category_id = ?`,
+			args: [category_id],
+		},
+		{
+			sql: `
+				SELECT non_property_id AS id
+				FROM category_non_properties
+				WHERE category_id = ?`,
+			args: [category_id],
+		},
+		{
+			sql: `
+				SELECT p.id FROM properties p
+				WHERE NOT EXISTS
+					(
+						SELECT 1 FROM category_properties
+						WHERE category_id = ? AND property_id = p.id
+					)
+				AND NOT EXISTS
+					(
+						SELECT 1 FROM category_non_properties
+						WHERE category_id = ? AND non_property_id = p.id
+					)
+			`,
+			args: [category_id, category_id],
+		},
+	])
 
-async function test_non_properties(category_id: string, expected: readonly string[]) {
-	const non_properties = await get_non_properties(category_id)
-	const ok = are_equal_sets(new Set(non_properties), new Set(expected))
-	if (!ok) throw new Error(`❌ Incorrect non-properties of ${category_id}`)
-	console.info(`✅ Non-properties of ${category_id} are correct`)
-}
+	const properties = props_res.rows.map((row) => row.id) as string[]
+	const non_properties = non_props_res.rows.map((row) => row.id) as string[]
+	const unknown_properties = unknown_props_res.rows.map((row) => row.id) as string[]
 
-async function assert_no_unknown_properties(category_id: string) {
-	const unknown_properties = await get_unknown_properties(category_id)
-	const msg =
-		`❌ Found ${unknown_properties.length} unknown properties` +
-		` for ${category_id}, expected 0.`
-	if (unknown_properties.length > 0) throw new Error(msg)
-	console.info(`✅ No unknown properties for ${category_id}`)
-}
+	const unexpected_property = get_excluded(properties, expected.properties)
 
-async function get_properties(category_id: string) {
-	const res = await db.execute(
-		`
-			SELECT property_id FROM category_properties
-			WHERE category_id = ?
-		`,
-		[category_id],
-	)
-	return res.rows.map(({ property_id }) => property_id) as string[]
-}
+	if (unexpected_property) {
+		throw new Error(
+			`❌ Unexpected property of ${category_id}: ${unexpected_property}`,
+		)
+	}
 
-async function get_non_properties(category_id: string) {
-	const res = await db.execute(
-		`
-			SELECT non_property_id FROM category_non_properties
-			WHERE category_id = ?
-		`,
-		[category_id],
-	)
-	return res.rows.map(({ non_property_id }) => non_property_id) as string[]
-}
+	const expected_property = get_excluded(expected.properties, properties)
+	if (expected_property) {
+		throw new Error(`❌ Expected property of ${category_id}: ${expected_property}`)
+	}
 
-async function get_unknown_properties(category_id: string) {
-	const res = await db.execute(
-		`
-			SELECT p.id FROM properties p
-			WHERE NOT EXISTS (
-				SELECT 1 FROM category_properties
-				WHERE property_id = p.id AND category_id = ?
-			)
-			AND NOT EXISTS (
-				SELECT 1 FROM category_non_properties
-				WHERE non_property_id = p.id AND category_id = ?
-			)
-			ORDER BY lower(p.id)
-		`,
-		[category_id, category_id],
-	)
+	const unexpected_non_property = get_excluded(non_properties, expected.non_properties)
 
-	return res.rows.map(({ id }) => id) as string[]
+	if (unexpected_non_property) {
+		throw new Error(
+			`❌ Unexpected non_property of ${category_id}: ${unexpected_non_property}`,
+		)
+	}
+
+	const expected_non_property = get_excluded(expected.properties, properties)
+	if (expected_non_property) {
+		throw new Error(
+			`❌ Expected non_property of ${category_id}: ${expected_non_property}`,
+		)
+	}
+
+	if (unknown_properties.length > 0) {
+		throw new Error(
+			`❌ Found unknown properties of ${category_id}: ` +
+				unknown_properties.join(','),
+		)
+	}
+
+	console.info(`✅ Properties and non-properties of ${category_id} are correct`)
 }
