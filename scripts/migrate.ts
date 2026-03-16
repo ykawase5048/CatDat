@@ -17,6 +17,9 @@ export async function migrate(db: Client): Promise<boolean> {
 	const unsorted_files = await fs.readdir(migrations_folder, 'utf8')
 	const files = unsorted_files.filter((f) => f.endsWith('.sql')).sort()
 
+	const invalid_file = files.find((file) => !file.match(/^\d{3}_/))
+	if (invalid_file) throw new Error(`Invalid file name: ${invalid_file}`)
+
 	const all_done = files.every((file) => applied_migrations.has(file))
 
 	if (all_done) {
