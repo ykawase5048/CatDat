@@ -29,6 +29,16 @@ This project is a **community effort**. See our [contribution guidelines](CONTRI
 - [The database of _CatDat_](DATABASE.md)
 - [Deployment](DEPLOYMENT.md)
 
+## Local Setup
+
+You need to have [NodeJS](https://nodejs.org/) and [pnpm](https://pnpm.io/) installed.
+
+1. Clone the repository with `git clone https://github.com/ScriptRaccoon/CatDat.git`.
+2. Install the dependencies with `pnpm install`.
+3. Create the local `.env` file based on `.env.example`.
+4. Create or Update the local database with `pnpm db:update`.
+5. Start the local development server with `pnpm dev`.
+
 ## Tech Stack
 
 - Language: [TypeScript](https://www.typescriptlang.org)
