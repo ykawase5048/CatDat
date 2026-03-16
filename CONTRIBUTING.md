@@ -2,11 +2,19 @@
 
 There are three ways to contribute:
 
-- [Create a Pull Request](#option-1-create-a-pull-request)
 - [Submit Our Google Form](#option-2-submit-our-google-form)
+- [Create a Pull Request](#option-1-create-a-pull-request)
 - [Create an Issue](#option-3-create-an-issue)
 
-## Option 1: Create a Pull Request
+## Option 1: Submit our Google Form
+
+The Google Form is the least technical way to submit new categories, properties, and implications. Issues and feature requests may be submitted as well. This option does not require any knowledge of GitHub or coding, making it accessible to everyone.
+
+[**Link to the Google Form**](https://forms.gle/8LBmro5FfSa43pD2A)
+
+We will then have a look at your submission and try to implement it.
+
+## Option 2: Create a Pull Request
 
 Create a [**pull request**](https://github.com/ScriptRaccoon/CatDat/pulls). You will need a GitHub account.
 
@@ -59,14 +67,6 @@ When contributing new data (categories, properties, implications), please follow
 - **Positive Properties**: Do not add negated properties to the database. For example, do not add "large" as the negation of "small". Instead, add "small" to the list of non-properties for a category. As a rule of thumb, every registered property should be satisfied by the trivial category.
 
 - **Proofs for Claims**: Provide proofs for all new claims (properties and implications). (We are currently working on filling in the existing ones.)
-
-## Option 2: Submit our Google Form
-
-The Google Form is the least technical way to submit new categories, properties, and implications. Issues and feature requests may be submitted as well. This option does not require any knowledge of GitHub or coding, making it accessible to everyone.
-
-[**Link to the Google Form**](https://forms.gle/8LBmro5FfSa43pD2A)
-
-We will then have a look at your submission and try to implement it.
 
 ## Option 3: Create an Issue
 
