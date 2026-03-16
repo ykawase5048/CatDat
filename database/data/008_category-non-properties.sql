@@ -170,16 +170,16 @@ VALUES
 		'Malcev',
 		NULL
 	),
-
+	
 	(
 		'Mon',
 		'preadditive',
-		NULL
+		'In fact, already $\mathbf{Grp}$ is not preadditive.'
 	),
 	(
 		'Mon',
 		'balanced',
-		NULL
+		'The inclusion of additive monoids $\mathbb{N} \hookrightarrow \mathbb{Z}$ is a counterexample.'
 	),
 	(
 		'Mon',
