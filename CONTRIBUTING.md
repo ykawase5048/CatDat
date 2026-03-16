@@ -31,9 +31,9 @@ You need to have [NodeJS](https://nodejs.org/) and [pnpm](https://pnpm.io/) inst
 
 ### Updating the Database
 
-All updates to the database are made in the folder [/database](database/) (see also [DATABASE.md](/DATABASE.md)).
+All updates to the database are made by updating the SQL files in the folder [/database](database/) (see also [DATABASE.md](/DATABASE.md)).
 
-For example, when you want to change the description of a category, edit [categories.sql](/database/data/001_categories.sql). Or, when you want to assign a property to a category, add it to the file [category-properties.sql](/database/data/007_category-properties.sql). Stick to the format of the existing entries.
+For example, when you want to change the description of a category, edit [categories.sql](/database/data/001_categories.sql). Or, when you want to assign a property to a category, add it to the file [category-properties.sql](/database/data/007_category-properties.sql). You may have a look at [an example commit](https://github.com/ScriptRaccoon/CatDat/commit/99cddd7530c4820830e5311c7a0c38ca633570a1).
 
 Apply the updates using:
 
@@ -67,7 +67,7 @@ When contributing new data (categories, properties, implications), please follow
 
 - **Positive Properties**: Do not add negated properties to the database. For example, do not add "large" as the negation of "small". Instead, add "small" to the list of non-properties for a category. As a rule of thumb, every registered property should be satisfied by the trivial category.
 
-- **Proofs for Claims**: Provide proofs for all new claims (properties and implications). (We are currently working on filling in the existing ones.)
+- **Proofs for Claims**: Provide proofs for all new claims (properties, implications, morphism descriptions). (We are currently working on filling in the existing ones.)
 
 ## Option 3: Create an Issue
 
