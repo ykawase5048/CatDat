@@ -4,6 +4,7 @@
 	import Heading from '$components/Heading.svelte'
 	import Nav from '$components/Nav.svelte'
 	import NavMobile from '$components/NavMobile.svelte'
+	import { track_visit } from '$lib/client/track'
 	import './app.css'
 
 	let { children } = $props()
@@ -20,6 +21,10 @@
 
 	afterNavigate(() => {
 		close_mobile_nav()
+	})
+
+	$effect(() => {
+		track_visit()
 	})
 </script>
 
