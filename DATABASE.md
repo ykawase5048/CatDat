@@ -4,7 +4,7 @@
 
 _CatDat_ is based on a [SQLite database](https://sqlite.org/). During runtime of the application, it is read-only.
 
-During development, the database is located in the file `/database/local.db`. It has three main tables:
+The local copy of the database is located at `/database/local.db`. It has three main tables:
 
 - `categories`
 - `properties`
@@ -34,25 +34,21 @@ Further tables are:
 - `related_properties`
 - `category_comments`
 
+## Migrations vs. Data
+
+Migrations update the database structure: tables, views, indexes, and triggers. They are defined in SQL files located in the subfolder [/database/migrations](/database/migrations/). The command `pnpm db:migrate` applies any new migrations.
+
+Database entries (categories, properties, implications, etc.) are defined via SQL files in the subfolder [/database/data](/database/data). The command `pnpm db:seed` replaces the current database by clearing all existing data and inserting the entries defined in these SQL files.
+
 ## Derived Data
 
-From the defined properties for a given category, new properties can be derived automatically by using the implications (the same holds for non-properties). Also, suitable implications may be dualized. Notice that the migration files (see below) do _not_ contain derived data.
+From the defined properties of a given category, new properties can be automatically deduced using the implications. (For example, when a category has equalizers and products, we can infer that it is complete.) The same applies to non-properties. Additionally, suitable implications may be dualized. Note that the SQL files mentioned above do _not_ contain any derived data.
 
-## Migrations
+The command `pnpm db:deduce` deduces implications, properties, and non-properties.
 
-The database is built up incrementally and updated with the help of migration files in the folder [/database/migrations](/database/migrations/). The command `pnpm db:update` runs the migrations that are not yet applied, deduces implications and properties, and checks if the changes are sound.
+## One command for everything
 
-## Preview Database Changes Locally
-
-We are working on a user-friendly way to preview local database changes and automate migration file creation. For now, you can use the following method, which requires the [`sqldiff`](https://sqlite.org/sqldiff.html) utility:
-
-1. Before making changes, create a backup of the local database with `cd database && cp local.db original.db`.
-2. Modify `local.db` either directly in the `sqlite3` shell or using a GUI like [DBeaver](https://dbeaver.io/).
-3. Preview the changes in the application using the local development server (`pnpm dev`), which reads from `local.db`.
-4. When ready, run `pnpm db:diff` to execute `sqldiff` and compare `local.db` with `original.db`.
-5. Copy the output into a new migration `.sql` file.
-6. Refine the migration code by formatting it, removing redundant columns (such as `created_at`), and replacing numeric `rowid` values with meaningful IDs.
-7. Delete `local.db`, rename `original.db` to `local.db` to restore the original state, and apply the migration with `pnpm db:update`.
+Use `pnpm db:update` to run all the commands in sequence: `pnpm db:migrate`, `pnpm db:seed`, and `pnpm db:deduce`.
 
 ## Diagram
 

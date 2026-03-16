@@ -12,7 +12,7 @@ The application is deployed on [Netlify](https://netlify.com). The database is h
 
 ## CI/CD
 
-Every push to the `main` branch triggers the deployment pipeline on GitHub ([deploy.yaml](.github/workflows/deploy.yaml)) which updates the remote database via `pnpm db:update`, builds the application, and deploys it Netlify.
+Every push to the `main` branch triggers the deployment pipeline on GitHub ([deploy.yaml](.github/workflows/deploy.yaml)) which updates the remote database via `pnpm db:update`, builds the application, and deploys it on Netlify.
 
 ## Prerendering
 

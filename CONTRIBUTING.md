@@ -20,19 +20,19 @@ You need to have [NodeJS](https://nodejs.org/) and [pnpm](https://pnpm.io/) inst
 4. Create the local database with `pnpm db:update`.
 5. Start the local development server with `pnpm dev`.
 
-### Migrations
+### Updating the Database
 
-All updates to the database are made in the folder [database/migrations](database/migrations/) (see also [DATABASE.md](/DATABASE.md)). Each update is a new migration file written in SQL. Apply migrations using:
+All updates to the database are made in the folder [/database](database/) (see also [DATABASE.md](/DATABASE.md)).
+
+For example, when you want to change the description of a category, edit [categories.sql](/database/data/001_categories.sql). Or, when you want to assign a property to a category, add it to the file [category-properties.sql](/database/data/007_category-properties.sql). Stick to the format of the existing entries.
+
+Apply the updates using:
 
 ```sh
 pnpm db:update
 ```
 
-Ensure that it does not error. A pull request may have multiple new migrations.
-
-### Typos
-
-For small fixes, like correcting typos in descriptions, it is acceptable to update the database directly and also update the corresponding migration file if needed ([Example](https://github.com/ScriptRaccoon/CatDat/commit/4f5b92e8ed2b8731225eba6e94899975ab8ff5dc)). You do not need to create a new migration just for such corrections.
+Ensure that it does not error.
 
 ### Guidelines for Adding New Data
 
