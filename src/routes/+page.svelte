@@ -84,7 +84,7 @@
 
 <style>
 	.features {
-		margin-block: 1rem;
+		margin-block: 2rem;
 		display: grid;
 		gap: 1.25rem;
 
@@ -97,6 +97,7 @@
 		background-color: var(--card-color);
 		padding: 1rem 1.5rem;
 		border-radius: 1rem;
+		outline: 1px solid var(--secondary-outline-color);
 
 		h3 {
 			margin-block: 1rem;
