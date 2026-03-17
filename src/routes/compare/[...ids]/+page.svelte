@@ -45,8 +45,9 @@
 <h2>Comparison of categories</h2>
 
 <p class="hint" bind:this={paragraph_element}>
-	Comparison of {compared_categories.length} categories:
+	Selected:
 	{compared_categories.map((c) => c.name).join(', ')}.
+	<a href="/compare">Choose different categories</a>.
 </p>
 
 <table>
@@ -86,20 +87,17 @@
 
 <style>
 	table {
-		border-spacing: 0;
-		margin-inline: auto;
+		border-collapse: collapse;
+		width: 100%;
 	}
 
 	thead {
-		top: 1px;
+		top: 0;
 		position: sticky;
 		background-color: var(--bg-color);
-		outline: 1px solid transparent;
-		transition: outline-color 200ms;
 	}
 
 	thead.outlined {
-		outline: 1px solid var(--outline-color);
 		box-shadow: 0px 10px 30px var(--shadow-color);
 	}
 
@@ -117,14 +115,14 @@
 	}
 
 	td {
-		padding-block: 0.125rem;
+		padding-block: 0.25rem;
 	}
 
 	th {
 		padding-block: 0.5rem;
 	}
 
-	td:first-child a {
+	table a {
 		text-decoration: none;
 	}
 
@@ -146,5 +144,11 @@
 
 	tr.highlight {
 		background-color: var(--secondary-bg-color);
+	}
+
+	@media (max-width: 600px) {
+		table {
+			font-size: 0.875rem;
+		}
 	}
 </style>

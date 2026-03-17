@@ -98,6 +98,7 @@
 		padding: 1rem 1.5rem;
 		border-radius: 1rem;
 		outline: 1px solid var(--secondary-outline-color);
+		box-shadow: 0 0 1rem var(--card-shadow);
 
 		h3 {
 			margin-block: 1rem;

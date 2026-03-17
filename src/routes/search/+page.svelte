@@ -82,16 +82,15 @@
 </script>
 
 <MetaData
-	title="Search for categories"
+	title="Property combo search"
 	description="Search for categories that satisfy a specific set of properties while simultaneously not satisfying another set of properties. "
 />
 
-<h2>Search for categories</h2>
+<h2>Property combo search</h2>
 
 <p class="hint">
-	Search for categories that satisfy a specific set of properties while simultaneously
-	not satisfying another set of properties. For example, you can
-	<a href={sample_search_url} data-sveltekit-reload="true">look</a>
+	Search for categories with certain properties while excluding others. For example, you
+	can <a href={sample_search_url} data-sveltekit-reload="true">look</a>
 	for categories that are finitely complete and pointed but not complete.
 </p>
 

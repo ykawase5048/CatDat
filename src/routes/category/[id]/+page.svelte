@@ -34,28 +34,36 @@
 <section aria-label="main info" class="main">
 	<ul class="with-margins">
 		<li>
-			notation: {@html category.notation}
+			<strong>notation:</strong>
+			{@html category.notation}
 		</li>
+
 		<li>
-			objects: {@html category.objects}
+			<strong>objects:</strong>
+			{@html category.objects}
 		</li>
+
 		<li>
-			morphisms: {@html category.morphisms}
+			<strong>morphisms:</strong>
+			{@html category.morphisms}
 		</li>
-		{#if category.nlab_link}
-			<li>
-				<a href={category.nlab_link} target="_blank">nLab Link</a>
-			</li>
-		{/if}
+
 		{#if data.related_categories.length}
 			<li>
-				Related categories: {#each data.related_categories as { id, name, notation }, i}
+				<strong>Related categories:</strong>
+				{#each data.related_categories as { id, name, notation }, i}
 					<a href={`/category/${id}`} aria-label={name}>
 						{@html notation}
 					</a>{#if i < data.related_categories.length - 1}
 						,&nbsp;
 					{/if}
 				{/each}
+			</li>
+		{/if}
+
+		{#if category.nlab_link}
+			<li>
+				<a href={category.nlab_link} target="_blank">nLab Link</a>
 			</li>
 		{/if}
 	</ul>

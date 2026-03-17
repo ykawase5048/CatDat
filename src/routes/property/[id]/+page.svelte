@@ -32,7 +32,8 @@
 	<ul>
 		{#if property.dual_property_id}
 			<li>
-				Dual property: <a href={get_property_url(property.dual_property_id)}
+				<strong>Dual property:</strong>
+				<a href={get_property_url(property.dual_property_id)}
 					>{property.dual_property_id}</a
 				>
 				{#if property.dual_property_id === property.id}
@@ -43,7 +44,8 @@
 
 		{#if related_properties.length}
 			<li>
-				Related properties: {#each related_properties as related_property, i}
+				<strong>Related properties:</strong>
+				{#each related_properties as related_property, i}
 					<a href={get_property_url(related_property)}>
 						{related_property}
 					</a>{#if i < related_properties.length - 1}

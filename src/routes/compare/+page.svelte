@@ -33,11 +33,11 @@
 </script>
 
 <MetaData
-	title="Choose categories for comparison"
+	title="Compare categories"
 	description="Compare categories based on their properties"
 />
 
-<h2>Choose categories for comparison</h2>
+<h2>Compare categories</h2>
 
 <p class="hint">
 	Select up to {MAX_CATEGORIES_COMPARE} categories to compare their properties with each other.

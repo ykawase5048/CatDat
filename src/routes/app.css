@@ -26,6 +26,7 @@ body {
 	--error-color: #ff0000;
 	--shadow-color: #0004;
 	--card-color: #e0e0e8;
+	--card-shadow: transparent;
 }
 
 body[data-theme='dark'] {
@@ -43,6 +44,7 @@ body[data-theme='dark'] {
 	--error-color: #ed3e2b;
 	--shadow-color: #000a;
 	--card-color: #000008;
+	--card-shadow: #ffffff06;
 }
 
 body {
@@ -53,6 +55,13 @@ body {
 	background-color: var(--bg-color);
 	color: var(--text-color);
 	line-height: 1.5;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	body,
+	html {
+		scroll-behavior: smooth;
+	}
 }
 
 p {
@@ -66,16 +75,19 @@ a {
 	text-decoration-color: var(--outline-color);
 }
 
+a:focus-visible {
+	outline: 1px solid var(--text-color);
+	outline-offset: 2px;
+}
+
 a.accent,
 a:active {
 	color: var(--accent-color);
 	text-decoration-color: currentColor;
 }
 
-a:focus-visible,
-mjx-container:focus-visible {
-	outline: 1px solid var(--text-color);
-	outline-offset: 2px;
+strong {
+	font-weight: 600;
 }
 
 h1,
@@ -85,10 +97,6 @@ h3 {
 	font-weight: 500;
 	color: var(--heading-color);
 	font-family: 'DM Mono', monospace;
-}
-
-h1 {
-	font-size: 2.25rem;
 }
 
 h2 {
@@ -190,9 +198,11 @@ summary {
 	}
 }
 
-@media (prefers-reduced-motion: no-preference) {
-	body,
-	html {
-		scroll-behavior: smooth;
-	}
+dialog {
+	font: inherit;
+	color: inherit;
+	background: none;
+	outline: none;
+	border: none;
+	width: 100%;
 }
