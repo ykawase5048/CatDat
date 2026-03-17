@@ -6,12 +6,11 @@
 	let { data } = $props()
 
 	let search = $state('')
-	let search_t = $derived(search.trim())
 
 	let searched_properties = $derived(
-		search_t
+		search
 			? data.properties.filter((property) =>
-					property.id.toLowerCase().includes(search_t.toLowerCase()),
+					property.id.toLowerCase().includes(search.toLowerCase()),
 				)
 			: data.properties,
 	)

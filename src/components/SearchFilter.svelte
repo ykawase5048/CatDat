@@ -3,6 +3,12 @@
 	import Fa from 'svelte-fa'
 
 	let { search = $bindable() }: { search: string } = $props()
+
+	let search_actual = $state('')
+
+	$effect(() => {
+		search = search_actual.trim()
+	})
 </script>
 
 <div class="search-container">
@@ -11,7 +17,7 @@
 			type="search"
 			id="search"
 			aria-label="search filter"
-			bind:value={search}
+			bind:value={search_actual}
 			placeholder="Search..."
 		/>
 

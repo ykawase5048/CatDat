@@ -6,12 +6,11 @@
 	let { data } = $props()
 
 	let search = $state('')
-	let search_t = $derived(search.trim())
 
 	let searched_categories = $derived(
-		search_t
+		search
 			? data.categories.filter((category) =>
-					category.name.toLowerCase().includes(search_t.toLowerCase()),
+					category.name.toLowerCase().includes(search.toLowerCase()),
 				)
 			: data.categories,
 	)

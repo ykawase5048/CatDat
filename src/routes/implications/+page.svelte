@@ -20,17 +20,16 @@
 	)
 
 	let search = $state('')
-	let search_t = $derived(search.trim())
 
 	let searched_implications = $derived(
-		search_t
+		search
 			? displayed_implications.filter(
 					(implication) =>
 						implication.assumptions.some((prop) =>
-							prop.toLowerCase().includes(search_t.toLowerCase()),
+							prop.toLowerCase().includes(search.toLowerCase()),
 						) ||
 						implication.conclusions.some((prop) =>
-							prop.toLowerCase().includes(search_t.toLowerCase()),
+							prop.toLowerCase().includes(search.toLowerCase()),
 						),
 				)
 			: displayed_implications,
