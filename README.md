@@ -7,6 +7,8 @@ _A comprehensive and searchable database of categories and their properties_
 
 👉 <https://catdat.app>
 
+👉 [Watch the YouTube video](https://youtu.be/dQXbPxk__qA)
+
 ## Features
 
 - **Searchable Database**: Easily find [categories](https://en.wikipedia.org/wiki/Category_theory) based on properties and non-properties.
