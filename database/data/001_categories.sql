@@ -421,7 +421,7 @@ VALUES
 		'$B\mathbb{N}$',
 		'a single object',
 		'the natural numbers, with addition serving as composition',
-		'Every monoid $M$ induces a one-object category $BM$ with morphisms given by the elements of $M$, and composition given by the monoid operation. Some of the properties of this category depend on the specific monoid. In this example, we take the commutative monoid $M = (\mathbb{N},+,0)$.',
+		'Every monoid $M$ induces a one-object category $BM$ with morphisms given by the elements of $M$, and composition given by the monoid operation. Some of the properties of this category depend on the specific monoid. In this example, we take the commutative monoid $M = (\mathbb{N},+,0)$, so composition is $n \circ m = n + m$.',
 		NULL
 	),
 	(
@@ -430,7 +430,7 @@ VALUES
 		'$B\mathbf{On}$',
 		'a single object',
 		'ordinal numbers, with addition as composition',
-		'Every monoid $M$ induces a one-object category $BM$. This also works when $M$ is large, in which case $BM$ is not locally small. In this example, we apply this construction to the large monoid of ordinal numbers with respect to addition.',
+		'Every monoid $M$ induces a one-object category $BM$. This also works when $M$ is large, in which case $BM$ is not locally small. In this example, we apply this construction to the large monoid of ordinal numbers with respect to addition, so composition is $\alpha \circ \beta = \alpha + \beta$.',
 		NULL
 	),
 

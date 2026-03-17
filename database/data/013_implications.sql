@@ -439,6 +439,20 @@ VALUES
 		'In a thin category, every subobject of $X^2 = X$ containing $X$ is already $X$.',
 		FALSE
 	),
+	(
+		'zero-no-mono',
+		'["left cancellative", "zero morphisms"]',
+		'["thin"]',
+		'If $f,g : A \to B$ are two morphisms, then $0_{B,B} \circ f = 0_{A,B} = 0_{B,B} \circ g$, so that $f = g$.',
+		FALSE
+	),
+	(
+		'codiagonal-no-mono',
+		'["left cancellative", "binary coproducts"]',
+		'["thin"]',
+		'For every object $A$ the codiagonal $A + A \to A$ is a split epimorphism, and by assumption a monomorphism, hence an isomorphism. Hence, the two inclusions $i_1,i_2 : A \to A + A$ coincide. Now, if $f, g : A \to B$ are two morphisms, consider the induced morphism $h : A + A \to B$ and compute $f = h \circ i_1 = h \circ i_2 = g$.',
+		FALSE
+	),
 
 	-- standard implications
 	(
@@ -455,7 +469,6 @@ VALUES
 		'<a href="https://ncatlab.org/nlab/show/Categories+for+the+Working+Mathematician" target="_blank">Mac Lane</a>, V.2, Prop. 3. The proof can easily be adapted to this case.',
 		FALSE
 	),
-
 	(
 		'complete_characterization',
 		'["complete"]',
@@ -470,7 +483,6 @@ VALUES
 		'<a href="https://ncatlab.org/nlab/show/Categories+for+the+Working+Mathematician" target="_blank">Mac Lane</a>, V.2, Cor. 1',
 		TRUE
 	),
-
 	(
 		'pullbacks_criterion',
 		'["binary products", "equalizers"]',

@@ -31,10 +31,6 @@ INSERT INTO category_comments (
         'Lots of properties are unknown here. Please help to fill in the gaps!'
     ),
     (
-        'BOn',
-        'Lots of properties are unknown here. Please help to fill in the gaps!'
-    ),
-    (
         'FreeAb',
         'Sequential colimits are discussed at <a href="https://math.stackexchange.com/questions/5025660/" target="_blank">MSE/5025660</a>. Probably they do not exist.'
     ),

@@ -875,64 +875,58 @@ VALUES
 	),
 	(
 		'BN',
-		'zero morphisms',
-		NULL
-	),
-	(
-		'BN',
-		'equalizers',
-		NULL
+		'thin',
+		'trivial'
 	),
 	(
 		'BN',
 		'sequential limits',
-		NULL
+		'Assume that the sequence $\cdots \xrightarrow{1}  \bullet \xrightarrow{1} \bullet \xrightarrow{1} \bullet$ has a limit. This is a (universal) sequence of natural numbers $n_0,n_1,\dotsc$ satisfying $n_i = n_{i+1} + 1$. But then $n_i = n_0 - i$, and in particular $n_{n_0 + 1} = - 1$, a contradiction.'
 	),
-
 	(
 		'BOn',
 		'locally essentially small',
-		NULL
+		'This is because $\mathbf{On}$ is large.'
 	),
 	(
 		'BOn',
 		'initial object',
-		NULL
+		'trivial'
 	),
 	(
 		'BOn',
 		'terminal object',
-		NULL
+		'trivial'
 	),
 	(
 		'BOn',
 		'right cancellative',
-		NULL
-	),
-	(
-		'BOn',
-		'zero morphisms',
-		NULL
+		'Since $1 + \omega = 0 + \omega$, the ordinal $\omega$ is not an epimorphism. In fact, the epimorphisms are exactly the finite ordinals (see below).'
 	),
 	(
 		'BOn',
 		'balanced',
-		NULL
+		'Every finite ordinal is both a mono- and an epimorphism (see below), but only $0$ is an isomorphism.'
 	),
 	(
 		'BOn',
 		'binary products',
-		NULL
-	),
-	(
-		'BOn',
-		'binary coproducts',
-		NULL
+		'Assume that the unique object has a product with itself. This amounts to a pair of ordinals $\pi_1,\pi_2$ such that for every pair of ordinals $\alpha_1,\alpha_2$ there is a unique ordinal $\tau$ with $\pi_i + \tau = \alpha_i$ for $i = 1,2$. Applying this to $\alpha_i = 0$ we get $\pi_i = 0$. Now we get a contradiction for any distinct $\alpha_1,\alpha_2$.'
 	),
 	(
 		'BOn',
 		'well-powered',
-		NULL
+		'This is because all ordinals are monomorphisms (see below) and they do not form a set.'
+	),
+	(
+		'BOn',
+		'sequential colimits',
+		'Assume that the sequence $\bullet \xrightarrow{1} \bullet \xrightarrow{1} \cdots$ has a colimit. This mounts to a (universal) sequence of ordinals $\alpha_n$ with $\alpha_n = \alpha_{n+1} + 1$. But then $\alpha_{n+1} < \alpha_n$, contradicting the fact that $\alpha_0$ is well-ordered.'
+	),
+	(
+		'BOn',
+		'pushouts',
+		'Assume that $1,\omega$ have a pushout. This is a (universal) pair of ordinals $\alpha,\beta$ with $\alpha + 1 = \beta + \omega$. But $\beta + \omega$ is a limit ordinal, while $\alpha + 1$ is not.'
 	),
 
 	-- various categories
