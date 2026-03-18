@@ -7,6 +7,7 @@ const LOG_DETAILS = process.env.LOG_DETAILS
 if (!LOG_DETAILS) console.warn('No LOG_DETAILS found')
 
 type NormalizedImplication = {
+	id: string
 	assumptions: Set<string>
 	conclusion: string
 	prefixes: Record<string, string>
@@ -87,7 +88,7 @@ async function deduce_properties(
 		)
 		if (!implication) break
 
-		const { conclusion } = implication
+		const { id: implication_id, conclusion } = implication
 
 		properties.add(conclusion)
 		deduced_properties.push(conclusion)
@@ -95,7 +96,8 @@ async function deduce_properties(
 		const assumption_string = get_assumption_string(implication)
 		const conclusion_string = get_conclusion_string(implication)
 
-		const reason = `Since it ${assumption_string}, it ${conclusion_string}.`
+		const ref = `(see <a href="/implication/${implication_id}">here</a>)`
+		const reason = `Since it ${assumption_string}, it ${conclusion_string} ${ref}.`
 
 		reasons[conclusion] = reason
 	}
@@ -206,7 +208,7 @@ async function deduce_non_properties(
 
 		const { implication, non_property } = next
 
-		const { prefixes } = implication
+		const { id: implication_id, prefixes } = implication
 
 		if (properties.has(non_property)) {
 			throw new Error(`Contradiction has been found for: ${non_property}`)
@@ -218,9 +220,11 @@ async function deduce_non_properties(
 		const assumption_string = get_assumption_string(implication)
 		const conclusion_string = get_conclusion_string(implication)
 
+		const ref = `(see <a href="/implication/${implication_id}">here</a>)`
+
 		const reason =
 			`Assume that it ${prefixes[non_property]} ${non_property}. ` +
-			`But since it ${assumption_string}, it ${conclusion_string} – contradiction.`
+			`But since it ${assumption_string}, it ${conclusion_string} ${ref} – contradiction.`
 
 		reasons[non_property] = reason
 	}
@@ -260,6 +264,7 @@ async function get_normalized_implications(
 ): Promise<NormalizedImplication[]> {
 	const res = await tx.execute(`
         SELECT
+			v.id,
             v.assumptions,
             v.conclusions,
             v.is_equivalence,
@@ -276,6 +281,7 @@ async function get_normalized_implications(
     `)
 
 	const all_implications_db = res.rows as unknown as {
+		id: string
 		assumptions: string
 		conclusions: string
 		is_equivalence: number
@@ -291,6 +297,7 @@ async function get_normalized_implications(
 
 		for (const conclusion of conclusions) {
 			implications.push({
+				id: impl.id,
 				assumptions: new Set(assumptions),
 				conclusion,
 				prefixes,
@@ -300,6 +307,7 @@ async function get_normalized_implications(
 		if (impl.is_equivalence) {
 			for (const assumption of assumptions) {
 				implications.push({
+					id: impl.id,
 					assumptions: new Set(conclusions),
 					conclusion: assumption,
 					prefixes,
