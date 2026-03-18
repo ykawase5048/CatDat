@@ -6,7 +6,7 @@
 		"node_modules": true,
 		"build": true
 	},
-	"cSpell.ignoreWords": ["Abfg", "Vect", "Zdiv", "Setne", "Xmark"],
+	"cSpell.ignoreWords": ["Abfg", "Vect", "Zdiv", "Setne", "Xmark", "notrack"],
 	"cSpell.words": [
 		"abelian",
 		"Adamek",

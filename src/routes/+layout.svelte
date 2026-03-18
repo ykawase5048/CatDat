@@ -5,6 +5,7 @@
 	import Nav from '$components/Nav.svelte'
 	import NavMobile from '$components/NavMobile.svelte'
 	import { track_visit } from '$lib/client/track'
+	import { tracking } from '$lib/states/tracking.svelte'
 	import './app.css'
 
 	let { children } = $props()
@@ -22,7 +23,7 @@
 	})
 
 	$effect(() => {
-		track_visit()
+		if (tracking.allow) track_visit()
 	})
 
 	let nav_dialog = $state<HTMLDialogElement | null>(null)

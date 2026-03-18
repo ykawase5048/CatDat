@@ -11,9 +11,11 @@
 	} from '$lib/states/detail_level.svelte'
 	import { theme, THEMES, update_theme } from '$lib/states/theme.svelte'
 	import MetaData from '$components/MetaData.svelte'
+	import { set_tracking, tracking } from '$lib/states/tracking.svelte'
 
 	$effect(() => update_theme(theme.value))
 	$effect(() => update_category_detail_level(category_detail_level.value))
+	$effect(() => set_tracking(tracking.allow))
 </script>
 
 <MetaData title="Settings" description="Customize the appearance of CatDat" />
@@ -74,6 +76,39 @@
 	<p class="hint" aria-live="polite">
 		{CATEGORY_DETAIL_LEVELS[category_detail_level.value]}
 	</p>
+</section>
+
+<section>
+	<h3>Track visits</h3>
+	<p class="hint">
+		To measure how this application is used, we collect anonymous page visit data:
+		time, device type (mobile, tablet, desktop), theme (light/dark), and country. We
+		do not collect data that directly identifies you. Here you can disable this
+		tracking.
+	</p>
+
+	<ChipGroup>
+		{#each [true, false] as allow}
+			{@const selected = tracking.allow === allow}
+			<label class:selected>
+				<input
+					class="visually-hidden"
+					type="radio"
+					name="tracking"
+					value={allow}
+					bind:group={tracking.allow}
+				/>
+
+				<Chip>
+					{allow ? 'On' : 'Off'}
+					{#if selected}
+						&nbsp;
+						<Fa icon={faCheckCircle} />
+					{/if}
+				</Chip>
+			</label>
+		{/each}
+	</ChipGroup>
 </section>
 
 <style>
