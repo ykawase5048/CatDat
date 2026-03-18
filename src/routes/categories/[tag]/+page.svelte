@@ -6,14 +6,13 @@
 </script>
 
 <MetaData
-	title="List of categories tagged as '{data.tag}'"
-	description="Categories tagged as '{data.tag}'"
+	title="List of categories tagged with '{data.tag}'"
+	description="Categories tagged with '{data.tag}'"
 />
 
-<h2>List of categories tagged as '{data.tag}'</h2>
+<h2>List of categories tagged with '{data.tag}'</h2>
 
 <CategoryList
 	categories={data.categories}
-	description="The following {data.categories
-		.length} categories are tagged as '{data.tag}'"
+	description="Found {data.categories.length} categories"
 />

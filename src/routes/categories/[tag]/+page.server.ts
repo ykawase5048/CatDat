@@ -1,4 +1,4 @@
-import type { CategoryShort } from '$lib/commons/types'
+import type { CategoryShort, TagObject } from '$lib/commons/types'
 import { query } from '$lib/server/db'
 import { error } from '@sveltejs/kit'
 import sql from 'sql-template-tag'
@@ -7,9 +7,7 @@ import type { EntryGenerator } from './$types'
 export const prerender = true
 
 export const entries: EntryGenerator = async () => {
-	const { rows, err } = await query<{ tag: string }>(sql`
-		SELECT tag FROM tags
-	`)
+	const { rows, err } = await query<TagObject>(sql`SELECT tag FROM tags`)
 	if (err) throw new Error('Database error: Failed to load tags')
 	return rows
 }

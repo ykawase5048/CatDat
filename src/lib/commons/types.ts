@@ -18,6 +18,10 @@ export type CategoryShort = Pick<CategoryDisplay, 'id' | 'name'>
 
 export type RelatedCategory = Pick<CategoryDisplay, 'id' | 'name' | 'notation'>
 
+export type TagObject = { tag: string }
+
+export type CommentObject = { id: number; comment: string }
+
 export type ImplicationDB = {
 	id: string
 	is_equivalence: number

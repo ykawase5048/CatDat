@@ -1,16 +1,21 @@
-import type { CategoryShort } from '$lib/commons/types'
-import { query } from '$lib/server/db'
+import type { CategoryShort, TagObject } from '$lib/commons/types'
+import { batch } from '$lib/server/db'
 import { error } from '@sveltejs/kit'
 import sql from 'sql-template-tag'
 
 export const prerender = true
 
 export const load = async () => {
-	const { rows: categories, err } = await query<CategoryShort>(sql`
-		SELECT id, name FROM categories ORDER BY name
-	`)
+	const { results, err } = await batch<[CategoryShort, TagObject]>([
+		sql`SELECT id, name FROM categories ORDER BY name`,
+		sql`SELECT tag FROM tags ORDER BY position`,
+	])
 
 	if (err) error(500, 'Categories could not be loaded')
 
-	return { categories }
+	const [categories, tag_objects] = results
+
+	const tags = tag_objects.map(({ tag }) => tag)
+
+	return { categories, tags }
 }

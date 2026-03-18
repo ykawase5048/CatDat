@@ -6,9 +6,11 @@ import type {
 	CategoryDisplay,
 	CategoryProperty,
 	CategoryPropertyDB,
+	CommentObject,
 	DescriptionWithReason,
 	PropertyShort,
 	RelatedCategory,
+	TagObject,
 } from '$lib/commons/types'
 
 export const prerender = true
@@ -20,14 +22,14 @@ export const load = async (event) => {
 		[
 			CategoryDisplay,
 			RelatedCategory,
-			{ tag: string },
+			TagObject,
 			DescriptionWithReason,
 			DescriptionWithReason,
 			DescriptionWithReason,
 			CategoryPropertyDB,
 			CategoryPropertyDB,
 			PropertyShort,
-			{ id: number; comment: string },
+			CommentObject,
 		]
 	>([
 		sql`

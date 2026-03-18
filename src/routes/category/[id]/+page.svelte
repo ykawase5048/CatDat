@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { goto } from '$app/navigation'
 	import Fa from 'svelte-fa'
 	import MetaData from '$components/MetaData.svelte'
 	import PropertyList from '$components/PropertyList.svelte'
@@ -8,12 +7,9 @@
 	import { category_detail_level } from '$lib/states/detail_level.svelte'
 	import { faQuestion } from '@fortawesome/free-solid-svg-icons'
 	import TextWithReason from '$components/TextWithReason.svelte'
+	import { filter_by_tag } from '$lib/client/utils'
 
 	let { data } = $props()
-
-	function filter_by_tag(tag: string) {
-		goto(`/categories/${tag}`)
-	}
 
 	let category = $derived(data.category)
 </script>

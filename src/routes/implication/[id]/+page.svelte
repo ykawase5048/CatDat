@@ -1,6 +1,6 @@
 <script lang="ts">
 	import MetaData from '$components/MetaData.svelte'
-	import { get_property_url } from '$lib/commons/property.url.js'
+	import { get_property_url } from '$lib/commons/property.url'
 	import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 	import Fa from 'svelte-fa'
 
