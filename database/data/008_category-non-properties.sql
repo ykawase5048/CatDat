@@ -1097,11 +1097,6 @@ VALUES
 	),
 	(
 		'Fld',
-		'well-copowered',
-		NULL
-	),
-	(
-		'Fld',
 		'pushouts',
 		NULL
 	),

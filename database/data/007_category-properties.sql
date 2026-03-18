@@ -1368,7 +1368,11 @@ VALUES
 		'well-powered',
 		'The subfields of a given field form a set.'
 	),
-
+	(
+		'Fld',
+		'well-copowered',
+		'Epimorphisms are the purely inseparable field extensions. If $K \to L$ is purely inseparable, then for all $x \in L$ there is some $n \in \mathbb{N}$ with $x^n \in L$. An element of $K$ has at most $n$ $n$th-roots. So we can bound the size of $L$.'
+	),
 	(
 		'FinOrd',
 		'essentially small',
