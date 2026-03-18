@@ -1093,7 +1093,7 @@ VALUES
 	(
 		'Fld',
 		'connected',
-		'A field of characteristic $0$ cannot be connected with a field of characteristic $p > 0$. in fact, the connected components of $\mathbb{Fld}$ are the subcategories $\mathbb{Fld}_p$ of fields of characteristic $p$, where $p$ is a prime or $0$.'
+		'A field of characteristic $0$ cannot be connected with a field of characteristic $p > 0$. in fact, the connected components of $\mathbf{Fld}$ are the subcategories $\mathbf{Fld}_p$ of fields of characteristic $p$, where $p$ is a prime or $0$.'
 	),
 	(
 		'Fld',
