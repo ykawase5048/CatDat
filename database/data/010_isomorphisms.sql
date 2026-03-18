@@ -90,6 +90,11 @@ VALUES
 		'This characterization holds in every algebraic category.'
 	),
 	(
+		'CMon',
+		'bijective homomorphisms',
+		'This characterization holds in every algebraic category.'
+	),
+	(
 		'Pos',
 		'bijective order-preserving and order-reflecting functions',
 		'easy'
