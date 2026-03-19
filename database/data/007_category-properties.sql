@@ -1539,6 +1539,11 @@ VALUES
 	),
 	(
 		'Setne',
+		'binary coproducts',
+		'The disjoint union of two non-empty sets is non-empty.'
+	),
+	(
+		'Setne',
 		'wide pushouts',
 		'The wide pushout taken in $\mathbf{Set}$ is clearly non-empty, and it still satisfies the universal property.'
 	),

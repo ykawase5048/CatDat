@@ -1179,8 +1179,8 @@ VALUES
 	),
 	(
 		'Setne',
-		'binary coproducts',
-		NULL
+		'initial object',
+		'Assume that there is an initial object $X$. In particular, there must be a unique map of sets $X \to \{0,1\}$, so $X$ has a unique subset, which means $X$ is empty; a contradiction.'
 	),
 	(
 		'Setne',
@@ -1190,7 +1190,7 @@ VALUES
 	(
 		'Setne',
 		'sequential limits',
-		NULL
+		'Assume that the sequence of inclusions $\cdots \to \mathbb{N}_{\geq 2} \to \mathbb{N}_{\geq 1} \to \mathbb{N}_{\geq 0} = \mathbb{N}$ as a limit $X$, consisting of maps $X \to \mathbb{N}_{\geq n}$. Since $X$ is non-empty, there is a map $1 \to X$. This corresponds to a family of compatible maps $ 1 \to \mathbb{N}_{\geq n}$, i.e. to compatible elements in $\mathbb{N}_{\geq n}$. But the set $\bigcap_{n \geq 0} \mathbb{N}_{\geq n}$ is empty.'
 	),
 	(
 		'Setne',
