@@ -7,28 +7,19 @@
 	import { encode_property_ID } from '$lib/commons/property.url'
 	import MetaData from '$components/MetaData.svelte'
 	import { SEARCH_SEPARATOR } from './search.config'
-	import { get_saved_search, save_search } from './search.utils'
-
-	const [saved_properties, saved_non_properties] = get_saved_search()
 
 	let { data } = $props()
 
 	let selected_properties = $state<string[]>(
 		// svelte-ignore state_referenced_locally
-		data.is_search && data.selected_properties
-			? data.selected_properties
-			: saved_properties,
+		data.is_search && data.selected_properties ? data.selected_properties : [],
 	)
 	let selected_non_properties = $state<string[]>(
 		// svelte-ignore state_referenced_locally
 		data.is_search && data.selected_non_properties
 			? data.selected_non_properties
-			: saved_non_properties,
+			: [],
 	)
-
-	$effect(() => {
-		save_search(selected_properties, selected_non_properties)
-	})
 
 	function request_search_results() {
 		const properties_query = selected_properties
