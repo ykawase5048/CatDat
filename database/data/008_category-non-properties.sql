@@ -293,11 +293,21 @@ VALUES
 	(
 		'R-Mod',
 		'split abelian',
-		NULL
+		'By assumption, $R$ is not semisimple, so that there is a non-projective $R$-module, which yields a non-split sequence.'
 	),
 	(
 		'R-Mod',
 		'skeletal',
+		'trivial'
+	),
+	(
+		'R-Mod_div',
+		'skeletal',
+		'trivial'
+	),
+	(
+		'R-Mod_div',
+		'trivial',
 		'trivial'
 	),
 	(

@@ -146,11 +146,21 @@ VALUES
 	),
 	(
 		'R-Mod',
-		'category of left R-modules',
+		'category of left modules over a ring',
 		'$R{-}\mathbf{Mod}$',
 		'left $R$-modules',
 		'$R$-linear maps',
-		'This is the category of left modules over a ring $R$. It is the prototype of an abelian category. The category of right modules is the same with the opposite ring $R^{\mathrm{op}}$, hence not listed here. The non-properties refer to the case that the ring is non-trivial, since for the trivial ring we get a trivial category which has all properties anyway. The category $R{-}\mathbf{Mod}$ is split abelian iff $R$ is a semisimple ring, so usually it is not the case, which is why we have negated this property here.',
+		'This is the prototype of an abelian category. The category of right modules is the same with the opposite ring $R^{\mathrm{op}}$, hence not listed here.<br>
+		To settle the non-properties, we make several assumptions: $R \neq 0$ (otherwise we would have the trivial category), that $R$ is not a field (otherwise we would have the category of vector spaces, which is in a separate entry), and moreover that $R$ is <i>not</i> semisimple: If $R$ is semisimple, then by the Artin-Wedderburn theorem, the category is equivalent to a finite direct product of categories $D{-}\mathbf{Mod}$ for division rings $D$, and the case of division rings is in a separate entry.',
+		'https://ncatlab.org/nlab/show/module'
+	),
+	(
+		'R-Mod_div',
+		'category of left modules over a division ring',
+		'$R{-}\mathbf{Mod}$',
+		'left $R$-modules',
+		'$R$-linear maps',
+		'Here, we assume that $R$ is a non-commutative division ring, i.e. a skew-field which is not a field. The category of modules behaves mostly the same as in the commutative case.',
 		'https://ncatlab.org/nlab/show/module'
 	),
     (
