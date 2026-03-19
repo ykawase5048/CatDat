@@ -226,7 +226,7 @@ VALUES
 		'$0$',
 		'no objects',
 		'no morphisms',
-		'This is the category with no objects and no morphisms. It is the initial object in the category of small categories.',
+		'This is the category with no objects and no morphisms. It is the initial object in the category of (small) categories.',
 		'https://ncatlab.org/nlab/show/empty+category'
 	),
 	(
