@@ -639,6 +639,13 @@ VALUES
 		FALSE
 	),
 	(
+		'algebraic_well-copowered',
+		'["finitary algebraic"]',
+		'["well-copowered"]',
+		'See <a href="https://mathoverflow.net/questions/486607" target="_blank">MSE/486607</a>. Alternatively, one may combine the facts that finitary algebraic categories are locally (finitely) presentable and that locally presentable categories are well-copowered, both of which are saved in the database. But we include the direct proof here as well, since it makes it easier to deduce the property for finitary algebraic categories appearing in practice.',
+		FALSE
+	),
+	(
 		'locally_finitely_presentable_consequence',
 		'["locally finitely presentable"]',
 		'["exact filtered colimits"]',
