@@ -17,6 +17,8 @@ const db = createClient({
 	authToken: DB_AUTH_TOKEN,
 })
 
+await test_mutual_duality()
+
 const expected = {
 	Set: Set_expected,
 	Ab: Ab_expected,
@@ -104,4 +106,27 @@ async function test_properties(
 	}
 
 	console.info(`✅ Properties and non-properties of ${category_id} are correct`)
+}
+
+async function test_mutual_duality() {
+	const res = await db.execute('SELECT id, dual_property_id FROM properties')
+	const dict: Record<string, string | null> = {}
+
+	const properties = res.rows as unknown as {
+		id: string
+		dual_property_id: string | null
+	}[]
+
+	for (const { id, dual_property_id } of properties) {
+		dict[id] = dual_property_id
+	}
+
+	for (const id in dict) {
+		const dual = dict[id]
+		if (dual && dict[dual] !== id) {
+			throw new Error(`❌ Found non-mutual duality: ${id}, ${dual}`)
+		}
+	}
+
+	console.info(`✅ Properties are mutually dual`)
 }
