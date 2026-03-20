@@ -63,13 +63,15 @@ When contributing new data (categories, properties, implications), please follow
 
 - **No equivalent categories**: Do not add categories that are equivalent or even isomorphic to categories already in the database. If the equivalence is non-trivial, mention it in the description of the original category. Some exceptions are allowed, since certain properties (such as being skeletal) are not invariant under equivalence.
 
+- **Special Objects and Morphisms**: For each new category, try to specify its special objects (terminal object, initial object, etc.) in the corresponding table. Also try to specify its special morphisms (isomorphisms, monomorphisms, epimorphisms).
+
 - **Proofs for New Properties**: For every new property, for each existing category, try to find a proof for whether it has this property or not, in case this has not already been deduced automatically. Use the property detail page to check unknown categories.
 
 - **Counterexamples**: Ensure that at least one category does not satisfy any new property that is added. If no existing category fits, add a new category that does not have the new property.
 
 - **Positive Properties**: Do not add negated properties to the database. For example, do not add "large" as the negation of "small". Instead, add "small" to the list of non-properties for a category. As a rule of thumb, every registered property should be satisfied at least by the trivial category.
 
-- **Proofs for Claims**: Provide proofs for all new claims (properties, non-properties, implications, morphism descriptions). (We are currently working on filling in the existing ones.)
+- **Proofs for Claims**: Provide proofs for all new claims (properties, non-properties, implications, special morphisms). (We are currently working on filling in the existing ones.)
 
 - **Atomic Implications**: Do not add implications that can be deduced from others. For example, do not add "complete => finite products" since it can be deduced from "complete => finitely complete" and "finitely complete => finite products". These are deduced automatically.
 

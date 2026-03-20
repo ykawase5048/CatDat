@@ -28,9 +28,10 @@ Further tables are:
 - `category_tags`
 - `related_categories`
 - `prefixes`
-- `category_isomorphisms`
-- `category_epimorphisms`
-- `category_monomorphisms`
+- `special_object_types`
+- `special_objects`
+- `special_morphism_types`
+- `special_morphisms`
 - `related_properties`
 - `category_comments`
 
