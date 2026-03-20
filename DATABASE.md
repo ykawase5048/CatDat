@@ -47,9 +47,13 @@ From the defined properties of a given category, new properties can be automatic
 
 The command `pnpm db:deduce` deduces implications, properties, and non-properties.
 
+## Test Data
+
+The command `pnpm db:test` executes some tests and verifies that the data behaves as expected.
+
 ## One command for everything
 
-Use `pnpm db:update` to run all the commands in sequence: `pnpm db:migrate`, `pnpm db:seed`, and `pnpm db:deduce`.
+Use `pnpm db:update` to run all the commands in sequence: `pnpm db:migrate`, `pnpm db:seed`,`pnpm db:deduce`, and `pnpm db:test`.
 
 Use `pnpm db:watch` to run this command automatically every time a file in the subfolder [/database/data](/database/data) changes. This is useful in particular during development.
 
