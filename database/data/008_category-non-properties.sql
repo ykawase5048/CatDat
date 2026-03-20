@@ -1,6 +1,12 @@
+CREATE TEMP TABLE category_non_properties (
+    category_id TEXT NOT NULL,
+    property_id TEXT NOT NULL,
+    reason TEXT
+);
+
 INSERT INTO category_non_properties (
 	category_id,
-	non_property_id,
+	property_id,
 	reason
 )
 VALUES
@@ -1227,3 +1233,11 @@ VALUES
 		'skeletal',
 		'trivial'
 	);
+
+INSERT INTO category_property_assignments
+	(category_id, property_id, reason, is_satisfied)
+SELECT
+	category_id, property_id, reason, FALSE
+FROM category_non_properties;
+
+DROP TABLE category_non_properties;

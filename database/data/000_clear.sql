@@ -10,8 +10,7 @@ DELETE FROM special_morphism_types;
 DELETE FROM special_objects;
 DELETE FROM special_object_types;
 
-DELETE FROM category_non_properties;
-DELETE FROM category_properties;
+DELETE FROM category_property_assignments;
 
 DELETE FROM category_comments;
 DELETE FROM related_categories;

@@ -5,7 +5,6 @@
 	import ChipGroup from '$components/ChipGroup.svelte'
 	import Chip from '$components/Chip.svelte'
 	import { category_detail_level } from '$lib/states/detail_level.svelte'
-	import { faQuestion } from '@fortawesome/free-solid-svg-icons'
 	import TextWithReason from '$components/TextWithReason.svelte'
 	import { filter_by_tag } from '$lib/client/utils'
 
@@ -14,10 +13,7 @@
 	let category = $derived(data.category)
 </script>
 
-<MetaData
-	title={category.name}
-	description="Discover the properties and non-properties of this category"
-/>
+<MetaData title={category.name} description="Discover the properties of this category" />
 
 <h2>{category.name}</h2>
 
@@ -73,49 +69,49 @@
 {#key category.id}
 	<div class="two-columns">
 		<section>
-			<h3>Properties</h3>
+			<h3>Satisfied Properties</h3>
 
 			{#if category_detail_level.value === 'all'}
 				<PropertyList
-					properties={data.properties.filter((p) => !p.is_deduced)}
+					properties={data.satisfied_properties.filter((p) => !p.is_deduced)}
 					description="Properties from the database"
 				/>
 
 				<PropertyList
-					properties={data.properties.filter((p) => p.is_deduced)}
+					properties={data.satisfied_properties.filter((p) => p.is_deduced)}
 					description="Deduced properties"
 				/>
 			{:else if category_detail_level.value === 'merged'}
-				<PropertyList properties={data.properties} />
+				<PropertyList properties={data.satisfied_properties} />
 			{:else if category_detail_level.value === 'basic'}
 				<PropertyList
-					properties={data.properties.filter((p) => !p.is_deduced)}
-					description="Properties from the database. Further properties can be deduced."
+					properties={data.satisfied_properties.filter((p) => !p.is_deduced)}
+					description="Properties from the database; further properties can be deduced."
 				/>
 			{/if}
 		</section>
 
 		<section>
-			<h3>Non-Properties</h3>
+			<h3>Unsatisfied Properties</h3>
 
 			{#if category_detail_level.value === 'all'}
 				<PropertyList
-					properties={data.non_properties.filter((p) => !p.is_deduced)}
-					description="Non-Properties from the database"
+					properties={data.unsatisfied_properties.filter((p) => !p.is_deduced)}
+					description="Properties from the database"
 				/>
 
 				<PropertyList
-					properties={data.non_properties.filter((p) => p.is_deduced)}
-					description="Deduced Non-Properties*"
+					properties={data.unsatisfied_properties.filter((p) => p.is_deduced)}
+					description="Deduced properties*"
 				/>
 
-				<p class="hint">*This also uses the deduced properties.</p>
+				<p class="hint">*This also uses the deduced satisfied properties.</p>
 			{:else if category_detail_level.value === 'merged'}
-				<PropertyList properties={data.non_properties} />
+				<PropertyList properties={data.unsatisfied_properties} />
 			{:else if category_detail_level.value === 'basic'}
 				<PropertyList
-					properties={data.non_properties.filter((p) => !p.is_deduced)}
-					description="Non-Properties from the database. Further non-properties can be deduced."
+					properties={data.unsatisfied_properties.filter((p) => !p.is_deduced)}
+					description="Properties from the database; further properties can be deduced."
 				/>
 			{/if}
 		</section>

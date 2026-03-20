@@ -17,11 +17,11 @@ export const load = async (event) => {
 			PropertyDB,
 			{ id: string },
 			ImplicationDB,
-			CategoryShort,
-			CategoryShort,
+			CategoryShort & { is_satisfied: number },
 			CategoryShort,
 		]
 	>([
+		// basic information
 		sql`
 			SELECT
 				id, prefix, description, dual_property_id,
@@ -29,11 +29,13 @@ export const load = async (event) => {
 			FROM properties
 			WHERE id = ${id}
 		`,
+		// related properties
 		sql`
 			SELECT related_property_id AS id
 			FROM related_properties
 			WHERE property_id = ${id}
 		`,
+		// relevant implications
 		sql`
 			SELECT
 				id,
@@ -57,30 +59,23 @@ export const load = async (event) => {
 				)
 			ORDER BY lower(assumptions) || ' ' || lower(conclusions)
 		`,
+		// known categories
 		sql`
-			SELECT c.id, c.name
-			FROM category_properties cp
+			SELECT c.id, c.name, cp.is_satisfied
+			FROM category_property_assignments cp
 			INNER JOIN categories c ON c.id = cp.category_id
 			WHERE cp.property_id = ${id}
 		`,
-		sql`
-			SELECT c.id, c.name
-			FROM category_non_properties cnp
-			INNER JOIN categories c ON c.id = cnp.category_id
-			WHERE cnp.non_property_id = ${id}
-		`,
+		// unknown categories
 		sql`
 			SELECT c.id, c.name
 			FROM categories c
-			LEFT JOIN category_properties cp
+			LEFT JOIN category_property_assignments cp
 				ON cp.category_id = c.id
 				AND cp.property_id = ${id}
-			LEFT JOIN category_non_properties cnp
-				ON cnp.category_id = c.id
-				AND cnp.non_property_id = ${id}
 			WHERE
 				cp.property_id IS NULL
-				AND cnp.non_property_id IS NULL;
+			ORDER BY c.name
 		`,
 	])
 
@@ -90,8 +85,7 @@ export const load = async (event) => {
 		properties,
 		related,
 		relevant_implications_db,
-		categories_with_this_property,
-		categories_without_this_property,
+		known_categories,
 		unknown_categories,
 	] = results
 
@@ -101,13 +95,16 @@ export const load = async (event) => {
 
 	const related_properties = related.map(({ id }) => id)
 
+	const examples = known_categories.filter((c) => c.is_satisfied)
+	const counterexamples = known_categories.filter((c) => !c.is_satisfied)
+
 	const relevant_implications = relevant_implications_db.map(display_implication)
 
 	return render_nested_formulas({
 		property,
 		related_properties,
-		categories_with_this_property,
-		categories_without_this_property,
+		examples,
+		counterexamples,
 		unknown_categories,
 		relevant_implications,
 	})

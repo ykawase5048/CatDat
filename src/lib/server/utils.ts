@@ -36,6 +36,10 @@ export function display_property(property: PropertyDB): PropertyDisplay {
 	}
 }
 
+export function to_placeholders(arr: string[]): string {
+	return arr.map(() => '?').join(', ')
+}
+
 const crawler_detector = new Crawler()
 
 function is_bot(request: Request): boolean {

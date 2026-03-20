@@ -15,11 +15,11 @@
 
 <p>
 	<i>CatDat</i> provides a growing collection of
-	<a class="accent" href="/categories">categories</a>, each with detailed descriptions,
-	properties, and non-properties. Built by and for those who love
-	<a href="https://en.wikipedia.org/wiki/Category_theory" target="_blank"
-		>category theory</a
-	>.
+	<a class="accent" href="/categories">categories</a>, each with detailed descriptions
+	and properties. Built by and for those who love
+	<a href="https://en.wikipedia.org/wiki/Category_theory" target="_blank">
+		category theory
+	</a>.
 </p>
 
 <div class="video-container">
@@ -41,11 +41,9 @@
 		</h3>
 
 		<p>
-			A list of
-			<a class="accent" href="/implications">implications</a>
-			between
+			A list of <a class="accent" href="/implications">implications</a> between
 			<a class="accent" href="/properties">properties</a> allows for automatic deduction
-			of properties and non-properties from more basic ones.
+			of satisfied and unsatisfied properties from more basic ones.
 		</p>
 	</article>
 
@@ -54,8 +52,8 @@
 			<Fa icon={faSearch} /> Search by properties
 		</h3>
 		<p>
-			You can easily <a class="accent" href="/search">search for categories</a> with specific
-			properties and non-properties.
+			You can easily <a class="accent" href="/search">search for categories</a> that satisfy
+			specific properties while not satisfying others.
 		</p>
 	</article>
 

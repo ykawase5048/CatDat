@@ -5,28 +5,34 @@ import { error } from '@sveltejs/kit'
 import sql from 'sql-template-tag'
 import { SEARCH_SEPARATOR } from './search.config'
 import { check_consistency } from '$lib/server/consistency'
+import { to_placeholders } from '$lib/server/utils'
 
 export const load = async (event) => {
-	const properties_query = event.url.searchParams.get('properties')
-	const non_properties_query = event.url.searchParams.get('non_properties')
+	const satisfied_query = event.url.searchParams.get('satisfied')
+	const unsatisfied_query = event.url.searchParams.get('unsatisfied')
 
 	const { rows: all_properties_objects, err: err_all } = await query<{
 		id: string
 		dual_property_id: string | null
 	}>(sql`
-		SELECT id, dual_property_id FROM properties	
+		SELECT id, dual_property_id FROM properties	ORDER BY lower(id)
 	`)
 
 	if (err_all) error(500, 'Failed to load properties')
 
 	const all_properties = all_properties_objects.map(({ id }) => id)
 
-	if (!properties_query && !non_properties_query) {
+	if (!satisfied_query && !unsatisfied_query) {
 		return {
 			is_search: false,
 			is_consistent: true,
 			all_properties,
+			satisfied_properties: [],
+			unsatisfied_properties: [],
 			found_categories: [],
+			dual_satisfied_properties: [],
+			dual_unsatisfied_properties: [],
+			dual_search_available: false,
 		}
 	}
 
@@ -35,39 +41,29 @@ export const load = async (event) => {
 		dual_properties_dict[row.id] = row.dual_property_id
 	}
 
-	const all_properties_set = new Set(all_properties)
-
-	const selected_properties = properties_query
-		? properties_query.split(SEARCH_SEPARATOR).map(decode_property_ID)
+	const satisfied_properties = satisfied_query
+		? satisfied_query.split(SEARCH_SEPARATOR).map(decode_property_ID)
 		: []
 
-	const selected_non_properties = non_properties_query
-		? non_properties_query.split(SEARCH_SEPARATOR).map(decode_property_ID)
+	const unsatisfied_properties = unsatisfied_query
+		? unsatisfied_query.split(SEARCH_SEPARATOR).map(decode_property_ID)
 		: []
 
-	const potential_dual_selected_properties = selected_properties.map(
+	const dual_satisfied_properties = satisfied_properties.map(
 		(p) => dual_properties_dict[p],
 	)
 
-	const potential_dual_selected_non_properties = selected_non_properties.map(
+	const dual_unsatisfied_properties = unsatisfied_properties.map(
 		(p) => dual_properties_dict[p],
 	)
 
-	const dual_selected_properties = potential_dual_selected_properties.every(
-		(p) => p !== null,
-	)
-		? potential_dual_selected_properties
-		: null
-
-	const dual_selected_non_properties = potential_dual_selected_non_properties.every(
-		(p) => p !== null,
-	)
-		? (potential_dual_selected_non_properties as string[])
-		: null
+	const dual_search_available =
+		dual_satisfied_properties.every(Boolean) &&
+		dual_unsatisfied_properties.every(Boolean)
 
 	const check = await check_consistency(
-		new Set(selected_properties),
-		new Set(selected_non_properties),
+		new Set(satisfied_properties),
+		new Set(unsatisfied_properties),
 	)
 
 	if (!check) error(500, 'Search failed')
@@ -77,48 +73,47 @@ export const load = async (event) => {
 			is_search: true,
 			is_consistent: false,
 			all_properties,
-			selected_properties,
-			selected_non_properties,
+			satisfied_properties,
+			unsatisfied_properties,
 			found_categories: [],
-			dual_selected_properties,
-			dual_selected_non_properties,
+			dual_satisfied_properties,
+			dual_unsatisfied_properties,
+			dual_search_available,
 		}
 	}
 
-	const join_fragments_properties: string[] = []
-	const join_fragments_non_properties: string[] = []
-	const values: string[] = []
+	const all_props = satisfied_properties.concat(unsatisfied_properties)
 
-	selected_properties.forEach((p, i) => {
-		if (!all_properties_set.has(p)) return
-		join_fragments_properties.push(`
-			INNER JOIN category_properties cp${i}
-			ON cp${i}.category_id = c.id
-			AND cp${i}.property_id = ?
-		`)
-		values.push(p)
-	})
-
-	selected_non_properties.forEach((p, i) => {
-		if (!all_properties_set.has(p)) return
-		join_fragments_properties.push(`
-			INNER JOIN category_non_properties cnp${i}
-			ON cnp${i}.category_id = c.id
-			AND cnp${i}.non_property_id = ?
-		`)
-		values.push(p)
-	})
-
-	const search_sql = `
-		SELECT c.id, c.name
-		FROM categories c
-		${join_fragments_properties.join('\n')}
-		${join_fragments_non_properties.join('\n')}
+	const search_query = `
+  		SELECT c.id, c.name FROM categories c
+		INNER JOIN category_property_assignments cp ON cp.category_id = c.id
+  		WHERE property_id IN (${to_placeholders(all_props)})
+  		GROUP BY category_id
+  		HAVING
+    		SUM (
+				CASE
+					WHEN
+						property_id IN (${to_placeholders(satisfied_properties)})
+						AND is_satisfied = TRUE
+					THEN 1
+					ELSE 0
+				END
+			) = ${satisfied_properties.length}
+    		AND
+    		SUM(
+				CASE
+					WHEN
+						property_id IN (${to_placeholders(unsatisfied_properties)})
+						AND is_satisfied = TRUE
+					THEN 1
+					ELSE 0
+				END
+			) = 0
 	`
 
 	const { rows: found_categories, err } = await query<CategoryShort>({
-		sql: search_sql,
-		values,
+		sql: search_query,
+		values: [...all_props, ...satisfied_properties, ...unsatisfied_properties],
 	})
 
 	if (err) error(500, 'Search failed')
@@ -127,10 +122,11 @@ export const load = async (event) => {
 		is_search: true,
 		is_consistent: true,
 		all_properties,
-		selected_properties,
-		selected_non_properties,
+		satisfied_properties,
+		unsatisfied_properties,
 		found_categories,
-		dual_selected_properties,
-		dual_selected_non_properties,
+		dual_satisfied_properties,
+		dual_unsatisfied_properties,
+		dual_search_available,
 	}
 }

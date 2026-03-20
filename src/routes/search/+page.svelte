@@ -11,66 +11,48 @@
 
 	let { data } = $props()
 
-	let selected_properties = $state<string[]>(
-		// svelte-ignore state_referenced_locally
-		data.is_search && data.selected_properties ? data.selected_properties : [],
-	)
-	let selected_non_properties = $state<string[]>(
-		// svelte-ignore state_referenced_locally
-		data.is_search && data.selected_non_properties
-			? data.selected_non_properties
-			: [],
-	)
+	// svelte-ignore state_referenced_locally
+	let satisfied_properties = $state(data.satisfied_properties)
+	// svelte-ignore state_referenced_locally
+	let unsatisfied_properties = $state(data.unsatisfied_properties)
 
 	function request_search_results() {
-		const properties_query = selected_properties
+		const satisfied_query = satisfied_properties
 			.map(encode_property_ID)
 			.join(SEARCH_SEPARATOR)
 
-		const non_properties_query = selected_non_properties
+		const unsatisfied_query = unsatisfied_properties
 			.map(encode_property_ID)
 			.join(SEARCH_SEPARATOR)
 
 		const url = new URL('/search', window.location.origin)
 
-		if (properties_query) {
-			url.searchParams.set('properties', properties_query)
-		}
-
-		if (non_properties_query) {
-			url.searchParams.set('non_properties', non_properties_query)
-		}
+		if (satisfied_query) url.searchParams.set('satisfied', satisfied_query)
+		if (unsatisfied_query) url.searchParams.set('unsatisfied', unsatisfied_query)
 
 		goto(url, { invalidateAll: true })
 	}
 
 	function get_dual_search_results_link() {
-		if (!data.dual_selected_properties) return '/'
-		if (!data.dual_selected_non_properties) return '/'
-		if (!browser) return '/'
+		if (!data.dual_search_available || !browser) return '/'
 
-		const properties_query = data.dual_selected_properties
+		const satisfied_query = (data.dual_satisfied_properties as string[])
 			.map(encode_property_ID)
 			.join(SEARCH_SEPARATOR)
 
-		const non_properties_query = data.dual_selected_non_properties
+		const unsatisfied_query = (data.dual_unsatisfied_properties as string[])
 			.map(encode_property_ID)
 			.join(SEARCH_SEPARATOR)
 
 		const url = new URL('/search', window.location.origin)
 
-		if (properties_query) {
-			url.searchParams.set('properties', properties_query)
-		}
-
-		if (non_properties_query) {
-			url.searchParams.set('non_properties', non_properties_query)
-		}
+		if (satisfied_query) url.searchParams.set('satisfied', satisfied_query)
+		if (unsatisfied_query) url.searchParams.set('unsatisfied', unsatisfied_query)
 
 		return decodeURIComponent(url.toString())
 	}
 
-	const sample_search_url = `/search?properties=finitely_complete${SEARCH_SEPARATOR}pointed&non_properties=complete`
+	const sample_search_url = `/search?satisfied=finitely_complete${SEARCH_SEPARATOR}pointed&unsatisfied=complete`
 </script>
 
 <MetaData
@@ -89,18 +71,18 @@
 <div class="form">
 	<Selection
 		title="Looking for categories with these properties:"
-		bind:selected_items={selected_properties}
+		bind:selected_items={satisfied_properties}
 		allowed_items={data.all_properties}
-		section_label="Properties"
-		item_label="Property"
+		section_label="Satisfied properties"
+		item_label="Satisfied property"
 	/>
 
 	<Selection
 		title="... and <i>not</i> with these properties:"
-		bind:selected_items={selected_non_properties}
+		bind:selected_items={unsatisfied_properties}
 		allowed_items={data.all_properties}
-		section_label="Non-properties"
-		item_label="Non-property"
+		section_label="Unsatisfied properties"
+		item_label="Unsatisfied property"
 	/>
 
 	<button type="button" class="button" onclick={request_search_results}>Search</button>
@@ -122,12 +104,10 @@
 			<p>No categories found because the requirements are inconsistent.</p>
 		{/if}
 
-		{#if data.dual_selected_properties && data.dual_selected_non_properties}
+		{#if data.dual_search_available}
 			<p class="hint">
-				All selected properties have a dual, you may perform the <a
-					href={get_dual_search_results_link()}
-					data-sveltekit-reload="true"
-				>
+				All selected properties have a dual, you may perform the
+				<a href={get_dual_search_results_link()} data-sveltekit-reload="true">
 					dual search
 				</a>.
 			</p>

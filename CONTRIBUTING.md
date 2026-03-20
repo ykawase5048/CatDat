@@ -57,7 +57,7 @@ When contributing new data (categories, properties, implications), please follow
 
 - **Reduce Unknowns**: Try to reduce the number of unknown properties of categories, in particular when adding a new category. Use the category detail page to see its unknown properties. Use the [page with missing data](https://catdat.app/missing) to identify categories with unknown properties.
 
-- **Atomic Properties**: Only assign properties to a category that cannot be deduced from other properties; likewise for non-properties. For example, if a category is complete, add the property "complete", but do not add "terminal object". The application infers this property automatically.
+- **Atomic Properties**: Only assign properties to a category that cannot be deduced from other properties (satisfied or not). For example, if a category is complete, add the property "complete", but do not add "terminal object". The application infers this property automatically.
 
 - **No dual categories**: As a rule of thumb, do not add categories that are dual to categories already in the database. Properties of the dual category should instead be added as properties of the original category (use the corresponding dual property). For example, do not add the dual of the category of sets.
 
@@ -69,9 +69,9 @@ When contributing new data (categories, properties, implications), please follow
 
 - **Counterexamples**: Ensure that at least one category does not satisfy any new property that is added. If no existing category fits, add a new category that does not have the new property.
 
-- **Positive Properties**: Do not add negated properties to the database. For example, do not add "large" as the negation of "small". Instead, add "small" to the list of non-properties for a category. As a rule of thumb, every registered property should be satisfied at least by the trivial category.
+- **Positive Properties**: Do not add negated properties to the database. For example, do not add "large" as the negation of "small". Instead, add "small" to the list of unsatisfied properties for a category. As a rule of thumb, every registered property should be satisfied at least by the trivial category.
 
-- **Proofs for Claims**: Provide proofs for all new claims (properties, non-properties, implications, special morphisms). (We are currently working on filling in the existing ones.)
+- **Proofs for Claims**: Provide proofs for all new claims (satisfied properties, unsatisfied properties, implications, special morphisms). (We are currently working on filling in the existing ones.)
 
 - **Atomic Implications**: Do not add implications that can be deduced from others. For example, do not add "complete => finite products" since it can be deduced from "complete => finitely complete" and "finitely complete => finite products". These are deduced automatically.
 
@@ -79,9 +79,9 @@ When contributing new data (categories, properties, implications), please follow
 
 - **Relevant implications**: When adding a new property, include implications involving this property and existing properties. For example, when adding "countable products", also add "countable products => finite products". Refactor existing implications if necessary. Ensure that for most categories, it will be inferred if the property holds or not.
 
-- **Simplify Implications**: When adding a new implication, check if it simplifies existing implications and if it deduces some previously non-deduced properties (and non-properties) for categories.
+- **Simplify Implications**: When adding a new implication, check if it simplifies existing implications and if it deduces some previously non-deduced properties for categories.
 
-- **New Combinations**: Add new categories that satisfy combinations of properties and non-properties not yet in the database. For example, you may add a category that is abelian but neither cocomplete nor essentially small (if it is not already present). The [page with missing data](https://catdat.app/missing) lists consistent combinations of the form $p \land \neg q$ that are not yet witnessed by a category in the database.
+- **New Combinations**: Add new categories that satisfy combinations of satisfied properties and unsatisfied properties and not yet in the database. For example, you may add a category that is abelian but neither cocomplete nor essentially small (if it is not already present). The [page with missing data](https://catdat.app/missing) lists consistent combinations of the form $p \land \neg q$ that are not yet witnessed by a category in the database.
 
 ## Option 3: Create an Issue
 

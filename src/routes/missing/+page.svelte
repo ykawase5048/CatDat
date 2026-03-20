@@ -22,13 +22,12 @@
 
 <CategoryList
 	categories={data.categories_with_unknown_properties}
-	description="There are {data.categories_with_unknown_properties
-		.length} categories that have some unknown
-	properties."
+	description="There are {data.categories_with_unknown_properties.length} categories
+	that have some unknown properties."
 />
 
 <p class="hint">
-	In total, there are {data.total_number_unknown_properties} unknown (category, property)-pairs.
+	In total, there are {data.total_number_unknown_pairs} unknown (category, property)-pairs.
 </p>
 
 <h3>Categories with properties without recorded reason</h3>
@@ -36,15 +35,7 @@
 <CategoryList
 	categories={data.categories_with_unreasoned_properties}
 	description="There are {data.categories_with_unreasoned_properties
-		.length} categories with properties that have no reason."
-/>
-
-<h3>Categories with non-properties without recorded reason</h3>
-
-<CategoryList
-	categories={data.categories_with_unreasoned_non_properties}
-	description="There are {data.categories_with_unreasoned_non_properties
-		.length} categories with non-properties that have no reason."
+		.length} categories with properties (satisfied or unsatisfied) that have no reason specified."
 />
 
 <h3>Categories with unknown special morphisms</h3>

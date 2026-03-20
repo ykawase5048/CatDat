@@ -1,3 +1,9 @@
+CREATE TEMP TABLE category_properties (
+    category_id TEXT NOT NULL,
+    property_id TEXT NOT NULL,
+    reason TEXT
+);
+
 INSERT INTO category_properties (
 	category_id,
 	property_id,
@@ -1602,3 +1608,10 @@ VALUES
 		'This follows as for $\mathbf{Set}$.'
 	);
 
+INSERT INTO category_property_assignments
+	(category_id, property_id, reason, is_satisfied)
+SELECT
+	category_id, property_id, reason, TRUE
+FROM category_properties;
+
+DROP TABLE category_properties;

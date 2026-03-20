@@ -10,10 +10,9 @@ The local copy of the database is located at `/database/local.db`. It has three 
 - `properties`
 - `implications`
 
-To associate (non-)properties with categories, there are two tables:
+To associate properties with categories (satisfied or not), there is a table:
 
-- `category_properties`
-- `category_non_properties`
+- `category_property_assignments`
 
 To mark properties as assumptions or conclusions of an implication, there are two tables:
 
@@ -43,9 +42,9 @@ Database entries (categories, properties, implications, etc.) are defined via SQ
 
 ## Derived Data
 
-From the defined properties of a given category, new properties can be automatically deduced using the implications. (For example, when a category has equalizers and products, we can infer that it is complete.) The same applies to non-properties. Additionally, suitable implications may be dualized. Note that the SQL files mentioned above do _not_ contain any derived data.
+From the defined satisfied properties of a given category, new properties can be automatically deduced using the implications. (For example, when a category has equalizers and products, we can infer that it is complete.) The same applies to unsatisfied properties. Additionally, suitable implications may be dualized. Note that the SQL files mentioned above do _not_ contain any derived data.
 
-The command `pnpm db:deduce` deduces implications, properties, and non-properties.
+The command `pnpm db:deduce` deduces implications, satisfied properties, and unsatisfied properties.
 
 ## Test Data
 

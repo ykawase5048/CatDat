@@ -1,7 +1,6 @@
 import Set_expected from './expected-data/Set.json'
 import Ab_expected from './expected-data/Ab.json'
 import Top_expected from './expected-data/Top.json'
-import { get_excluded } from './utils'
 import { createClient } from '@libsql/client'
 import dotenv from 'dotenv'
 
@@ -23,28 +22,18 @@ const expected = {
 	Set: Set_expected,
 	Ab: Ab_expected,
 	Top: Top_expected,
-} as Record<string, { properties: string[]; non_properties: string[] }>
+} as Record<string, Record<string, boolean>>
 
 for (const cat in expected) {
 	await test_properties(cat, expected[cat])
 }
 
-async function test_properties(
-	category_id: string,
-	expected: { properties: string[]; non_properties: string[] },
-) {
-	const [props_res, non_props_res, unknown_props_res] = await db.batch([
+async function test_properties(category_id: string, expected: Record<string, boolean>) {
+	const [props_res, unknown_props_res] = await db.batch([
 		{
 			sql: `
-				SELECT property_id AS id
-				FROM category_properties
-				WHERE category_id = ?`,
-			args: [category_id],
-		},
-		{
-			sql: `
-				SELECT non_property_id AS id
-				FROM category_non_properties
+				SELECT property_id AS id, is_satisfied
+				FROM category_property_assignments
 				WHERE category_id = ?`,
 			args: [category_id],
 		},
@@ -53,49 +42,23 @@ async function test_properties(
 				SELECT p.id FROM properties p
 				WHERE NOT EXISTS
 					(
-						SELECT 1 FROM category_properties
+						SELECT 1 FROM category_property_assignments
 						WHERE category_id = ? AND property_id = p.id
 					)
-				AND NOT EXISTS
-					(
-						SELECT 1 FROM category_non_properties
-						WHERE category_id = ? AND non_property_id = p.id
-					)
 			`,
-			args: [category_id, category_id],
+			args: [category_id],
 		},
 	])
 
-	const properties = props_res.rows.map((row) => row.id) as string[]
-	const non_properties = non_props_res.rows.map((row) => row.id) as string[]
+	const properties = props_res.rows as unknown as { id: string; is_satisfied: number }[]
+
 	const unknown_properties = unknown_props_res.rows.map((row) => row.id) as string[]
 
-	const unexpected_property = get_excluded(properties, expected.properties)
-
-	if (unexpected_property) {
-		throw new Error(
-			`❌ Unexpected property of ${category_id}: ${unexpected_property}`,
-		)
-	}
-
-	const expected_property = get_excluded(expected.properties, properties)
-	if (expected_property) {
-		throw new Error(`❌ Expected property of ${category_id}: ${expected_property}`)
-	}
-
-	const unexpected_non_property = get_excluded(non_properties, expected.non_properties)
-
-	if (unexpected_non_property) {
-		throw new Error(
-			`❌ Unexpected non_property of ${category_id}: ${unexpected_non_property}`,
-		)
-	}
-
-	const expected_non_property = get_excluded(expected.properties, properties)
-	if (expected_non_property) {
-		throw new Error(
-			`❌ Expected non_property of ${category_id}: ${expected_non_property}`,
-		)
+	for (const { id, is_satisfied } of properties) {
+		const ok = Boolean(is_satisfied) === expected[id]
+		if (!ok) {
+			throw new Error(`❌ Incorrect property of ${category_id}: ${id}`)
+		}
 	}
 
 	if (unknown_properties.length > 0) {
@@ -105,7 +68,7 @@ async function test_properties(
 		)
 	}
 
-	console.info(`✅ Properties and non-properties of ${category_id} are correct`)
+	console.info(`✅ Properties of ${category_id} are correct`)
 }
 
 async function test_mutual_duality() {

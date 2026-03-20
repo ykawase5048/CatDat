@@ -22,8 +22,9 @@ export async function deduce_all_properties(db: Client) {
 		const categories = await get_categories(tx)
 
 		for (const { category_id } of categories) {
-			await deduce_properties(tx, category_id, implications)
-			await deduce_non_properties(tx, category_id, implications)
+			await delete_deduced_properties(tx, category_id)
+			await deduce_satisfied_properties(tx, category_id, implications)
+			await deduce_unsatisfied_properties(tx, category_id, implications)
 		}
 
 		await tx.commit()
@@ -41,56 +42,61 @@ async function get_categories(tx: Transaction) {
 	return res.rows as unknown as { category_id: string }[]
 }
 
-async function deduce_properties(
+async function delete_deduced_properties(tx: Transaction, category_id: string) {
+	await tx.execute({
+		sql: `
+			DELETE FROM category_property_assignments
+			WHERE category_id = ? AND is_deduced = TRUE
+		`,
+		args: [category_id],
+	})
+}
+
+async function deduce_satisfied_properties(
 	tx: Transaction,
 	category_id: string,
 	implications: NormalizedImplication[],
 ) {
 	if (LOG_DETAILS === 'true') {
-		console.info('Deduce properties for category:', category_id)
+		console.info('Deduce satisfied properties for category:', category_id)
 	}
 
-	await tx.execute({
-		sql: `
-			DELETE FROM category_properties
-			WHERE category_id = ? AND is_deduced = TRUE`,
-		args: [category_id],
-	})
-
-	const props_res = await tx.execute({
+	const satisfied_res = await tx.execute({
 		sql: `
 			SELECT property_id
-			FROM category_properties
-			WHERE category_id = ? AND is_deduced = FALSE`,
+			FROM category_property_assignments
+			WHERE
+				category_id = ?
+				AND is_satisfied = TRUE
+				AND is_deduced = FALSE
+		`,
 		args: [category_id],
 	})
 
-	const props_rows = props_res.rows as unknown as { property_id: string }[]
-
-	const properties = new Set(
-		props_rows.map(({ property_id }) => property_id),
+	const satisfied_props = new Set(
+		satisfied_res.rows.map((row) => row.property_id) as string[],
 	) as Set<string>
 
 	if (LOG_DETAILS === 'true') {
-		console.info(`Found ${properties.size} properties in the database`)
-		console.info(Array.from(properties))
+		console.info(`Found ${satisfied_props.size} satisfied properties in the database`)
+		console.info(Array.from(satisfied_props))
 	}
 
-	const deduced_properties: string[] = []
+	const deduced_satisfied_props: string[] = []
 	const reasons: Record<string, string> = {}
 
 	while (true) {
 		const implication = implications.find(
 			({ assumptions, conclusion }) =>
-				[...assumptions].every((p) => properties.has(p)) &&
-				!properties.has(conclusion),
+				[...assumptions].every((p) => satisfied_props.has(p)) &&
+				!satisfied_props.has(conclusion),
 		)
 		if (!implication) break
 
 		const { id: implication_id, conclusion } = implication
 
-		properties.add(conclusion)
-		deduced_properties.push(conclusion)
+		satisfied_props.add(conclusion)
+		deduced_satisfied_props.push(conclusion)
 
 		const assumption_string = get_assumption_string(implication)
 		const conclusion_string = get_conclusion_string(implication)
@@ -102,99 +108,96 @@ async function deduce_properties(
 	}
 
 	if (LOG_DETAILS === 'true') {
-		console.info(`${deduced_properties.length} properties have been deduced`)
-		console.info(deduced_properties)
+		console.info(
+			`${deduced_satisfied_props.length} satisfied properties have been deduced`,
+		)
+		console.info(deduced_satisfied_props)
 	}
 
-	if (deduced_properties.length > 0) {
+	if (deduced_satisfied_props.length > 0) {
 		const value_fragments: string[] = []
 		const values: (string | number)[] = []
 
-		for (let i = 0; i < deduced_properties.length; i++) {
-			const id = deduced_properties[i]
-			value_fragments.push(`(?, ?, ?, ?, TRUE)`)
-			values.push(id, category_id, reasons[id], i + 1)
+		for (let i = 0; i < deduced_satisfied_props.length; i++) {
+			const id = deduced_satisfied_props[i]
+			value_fragments.push(`(?, ?, TRUE, ?, ?, TRUE)`)
+			values.push(category_id, id, reasons[id], i + 1)
 		}
 
 		const insert_sql = `
-			INSERT INTO category_properties (
-				property_id, category_id, reason, position, is_deduced
+			INSERT INTO category_property_assignments (
+				category_id, property_id, is_satisfied, reason, position, is_deduced
 			)
 			VALUES
-			${value_fragments.join(',\n')}`
+			${value_fragments.join(',\n')}
+		`
 
 		await tx.execute({ sql: insert_sql, args: values })
 	}
 
 	console.info(
-		`Added ${deduced_properties.length} properties for ${category_id} to the database`,
+		`Added ${deduced_satisfied_props.length} satisfied properties for ${category_id} to the database`,
 	)
 }
 
-async function deduce_non_properties(
+async function deduce_unsatisfied_properties(
 	tx: Transaction,
 	category_id: string,
 	implications: NormalizedImplication[],
 ) {
 	if (LOG_DETAILS === 'true') {
-		console.info('Deduce non-properties for category:', category_id)
+		console.info('Deduce unsatisfied properties for category:', category_id)
 	}
 
-	await tx.execute({
-		sql: `
-			DELETE FROM category_non_properties
-			WHERE category_id = ? AND is_deduced = TRUE`,
-		args: [category_id],
-	})
-
-	const props_res = await tx.execute({
+	const satisfied_res = await tx.execute({
 		sql: `
 			SELECT property_id
-			FROM category_properties
-			WHERE category_id = ?
-			`,
+			FROM category_property_assignments
+			WHERE category_id = ? AND is_satisfied = TRUE
+		`,
 		args: [category_id],
 	})
 
-	const props_rows = props_res.rows as unknown as { property_id: string }[]
+	const satisfied_props = new Set(
+		satisfied_res.rows.map((row) => row.property_id) as string[],
+	)
 
-	const properties = new Set(props_rows.map(({ property_id }) => property_id))
-
-	const non_props_res = await tx.execute({
+	const unsatisfied_res = await tx.execute({
 		sql: `
-			SELECT non_property_id
-			FROM category_non_properties
-			WHERE category_id = ? AND is_deduced = FALSE
-			`,
+			SELECT property_id
+			FROM category_property_assignments
+			WHERE
+				category_id = ?
+				AND is_satisfied = FALSE
+				AND is_deduced = FALSE
+		`,
 		args: [category_id],
 	})
 
-	const non_props_rows = non_props_res.rows as unknown as {
-		non_property_id: string
-	}[]
-
-	const non_properties = new Set(
-		non_props_rows.map(({ non_property_id }) => non_property_id),
+	const unsatisfied_props = new Set(
+		unsatisfied_res.rows.map((row) => row.property_id) as string[],
 	)
 
 	if (LOG_DETAILS === 'true') {
-		console.info(`Found ${non_properties.size} non-properties in the database`)
-		console.info(Array.from(non_properties))
+		console.info(
+			`Found ${unsatisfied_props.size} unsatisfied properties in the database`,
+		)
+		console.info(Array.from(unsatisfied_props))
 	}
 
-	const deduced_non_properties: string[] = []
+	const deduced_unsatisfied_props: string[] = []
 	const reasons: Record<string, string> = {}
 
 	function get_next_implication() {
 		for (const implication of implications) {
-			if (!non_properties.has(implication.conclusion)) continue
+			if (!unsatisfied_props.has(implication.conclusion)) continue
 			for (const p of implication.assumptions) {
 				const is_valid =
-					!non_properties.has(p) &&
+					!unsatisfied_props.has(p) &&
 					[...implication.assumptions].every(
-						(q) => q === p || properties.has(q),
+						(q) => q === p || satisfied_props.has(q),
 					)
-				if (is_valid) return { implication, non_property: p }
+				if (is_valid) return { implication, property: p }
 			}
 		}
 
@@ -205,16 +208,15 @@ async function deduce_non_properties(
 		const next = get_next_implication()
 		if (!next) break
 
-		const { implication, non_property } = next
-
+		const { implication, property } = next
 		const { id: implication_id, prefixes } = implication
 
-		if (properties.has(non_property)) {
-			throw new Error(`Contradiction has been found for: ${non_property}`)
+		if (satisfied_props.has(property)) {
+			throw new Error(`Contradiction has been found for: ${property}`)
 		}
 
-		non_properties.add(non_property)
-		deduced_non_properties.push(non_property)
+		unsatisfied_props.add(property)
+		deduced_unsatisfied_props.push(property)
 
 		const assumption_string = get_assumption_string(implication)
 		const conclusion_string = get_conclusion_string(implication)
@@ -222,30 +224,32 @@ async function deduce_non_properties(
 		const ref = `(see <a href="/implication/${implication_id}">here</a>)`
 
 		const reason =
-			`Assume that it ${prefixes[non_property]} ${non_property}. ` +
+			`Assume that it ${prefixes[property]} ${property}. ` +
 			`But since it ${assumption_string}, it ${conclusion_string} ${ref} – contradiction.`
 
-		reasons[non_property] = reason
+		reasons[property] = reason
 	}
 
 	if (LOG_DETAILS === 'true') {
-		console.info(`${deduced_non_properties.length} non-properties have been deduced`)
-		console.info(deduced_non_properties)
+		console.info(
+			`${deduced_unsatisfied_props.length} unsatisfied properties have been deduced`,
+		)
+		console.info(deduced_unsatisfied_props)
 	}
 
-	if (deduced_non_properties.length > 0) {
+	if (deduced_unsatisfied_props.length > 0) {
 		const value_fragments: string[] = []
 		const values: (string | number)[] = []
 
-		for (let i = 0; i < deduced_non_properties.length; i++) {
-			const id = deduced_non_properties[i]
-			value_fragments.push('(?, ?, ?, ?, TRUE)')
-			values.push(id, category_id, reasons[id], i + 1)
+		for (let i = 0; i < deduced_unsatisfied_props.length; i++) {
+			const id = deduced_unsatisfied_props[i]
+			value_fragments.push('(?, ?, FALSE, ?, ?, TRUE)')
+			values.push(category_id, id, reasons[id], i + 1)
 		}
 
 		const insert_query = `
-			INSERT INTO category_non_properties (
-				non_property_id, category_id, reason, position, is_deduced
+			INSERT INTO category_property_assignments (
+				category_id, property_id, is_satisfied, reason, position, is_deduced
 			)
 			VALUES
 			${value_fragments.join(',\n')}`
@@ -254,6 +258,6 @@ async function deduce_non_properties(
 	}
 
 	console.info(
-		`Added ${deduced_non_properties.length} non-properties for ${category_id} to the database`,
+		`Added ${deduced_unsatisfied_props.length} unsatisfied properties for ${category_id} to the database`,
 	)
 }

@@ -8,8 +8,9 @@ export const prerender = true
 
 export const load = async () => {
 	const { results, err } = await batch<
-		[CategoryShort, CategoryShort, { total: number }, CategoryShort, CategoryShort]
+		[CategoryShort, CategoryShort, { total: number }, CategoryShort]
 	>([
+		// missing special morphisms
 		sql`
 			SELECT c.id, c.name
 			FROM categories c
@@ -27,48 +28,37 @@ export const load = async () => {
 				OR sm_epi.category_id IS NULL
 				OR sm_mono.category_id IS NULL
 		`,
+		// categories with unknown properties
 		sql`
 			SELECT DISTINCT c.id, c.name
 			FROM categories c
 			INNER JOIN properties p
-			LEFT JOIN category_properties cp
+			LEFT JOIN category_property_assignments cp
 				ON cp.category_id = c.id
 				AND cp.property_id = p.id
-			LEFT JOIN category_non_properties cnp
-				ON cnp.category_id = c.id
-				AND cnp.non_property_id = p.id
 			WHERE
 				cp.property_id IS NULL
-				AND cnp.non_property_id IS NULL
 			ORDER BY c.id
 		`,
+		// number of unknown (category, property)-pairs
 		sql`
 			SELECT COUNT(*) as total
 			FROM categories c
 			JOIN properties p
-			LEFT JOIN category_properties cp
+			LEFT JOIN category_property_assignments cp
 				ON cp.category_id = c.id
 				AND cp.property_id = p.id
-			LEFT JOIN category_non_properties cnp
-				ON cnp.category_id = c.id
-				AND cnp.non_property_id = p.id
 			WHERE
 				cp.property_id IS NULL
-				AND cnp.non_property_id IS NULL
 		`,
+		// missing reasons
 		sql`
-			SELECT DISTINCT c.id, c.name
+			SELECT c.id, c.name
 			FROM categories c
-			INNER JOIN category_properties cp
-				ON cp.category_id = c.id
-			WHERE cp.reason IS NULL
-		`,
-		sql`
-			SELECT DISTINCT c.id, c.name
-			FROM categories c
-			INNER JOIN category_non_properties cnp
-				ON cnp.category_id = c.id
-			WHERE cnp.reason IS NULL
+			WHERE EXISTS (
+				SELECT 1 FROM category_property_assignments cp
+				WHERE cp.category_id = c.id AND cp.reason IS NULL
+			)
 		`,
 	])
 
@@ -77,21 +67,19 @@ export const load = async () => {
 	const [
 		categories_with_missing_morphisms,
 		categories_with_unknown_properties,
-		total_objects,
+		unknown_pair_count,
 		categories_with_unreasoned_properties,
-		categories_with_unreasoned_non_properties,
 	] = results
 
-	const total_number_unknown_properties = total_objects[0].total
+	const total_number_unknown_pairs = unknown_pair_count[0].total
 
-	const missing_combinations = await get_missing_combinations()
+	const missing_combinations = await get_missing_combinations() // FIXME
 
 	return {
 		categories_with_unknown_properties,
-		total_number_unknown_properties,
+		total_number_unknown_pairs,
 		categories_with_missing_morphisms,
 		categories_with_unreasoned_properties,
-		categories_with_unreasoned_non_properties,
 		missing_combinations,
 	}
 }

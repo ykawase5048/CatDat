@@ -1,46 +1,51 @@
 import sql from 'sql-template-tag'
 import { query } from '$lib/server/db'
+
 type AtomicImplication = { assumptions: string[]; conclusion: string }
 
 export async function check_consistency(
-	properties: Set<string>,
-	non_properties: Set<string>,
+	satisfied_properties: Set<string>,
+	unsatisfied_properties: Set<string>,
 ): Promise<{ consistent: boolean } | null> {
-	for (const p of properties) {
-		if (non_properties.has(p)) return { consistent: false }
+	for (const p of satisfied_properties) {
+		if (unsatisfied_properties.has(p)) return { consistent: false }
 	}
 
 	const implications = await get_atomic_implications()
 	if (!implications) return null
 
-	return check_consistency_worker(properties, non_properties, implications)
+	return check_consistency_worker(
+		satisfied_properties,
+		unsatisfied_properties,
+		implications,
+	)
 }
 
 function check_consistency_worker(
-	properties: Set<string>,
-	non_properties: Set<string>,
+	satisfied_properties: Set<string>,
+	unsatisfied_properties: Set<string>,
 	implications: AtomicImplication[],
 ): { consistent: boolean } {
-	for (const p of properties) {
-		if (non_properties.has(p)) return { consistent: false }
+	for (const p of satisfied_properties) {
+		if (unsatisfied_properties.has(p)) return { consistent: false }
 	}
 
-	const deduced_properties = new Set<string>()
+	const deduced_satisfied_properties = new Set<string>()
 
 	while (true) {
 		const implication = implications.find(
 			({ assumptions, conclusion }) =>
-				assumptions.every((p) => properties.has(p)) &&
-				!properties.has(conclusion),
+				assumptions.every((p) => satisfied_properties.has(p)) &&
+				!satisfied_properties.has(conclusion),
 		)
 		if (!implication) break
 
 		const { conclusion } = implication
 
-		if (non_properties.has(conclusion)) return { consistent: false }
+		if (unsatisfied_properties.has(conclusion)) return { consistent: false }
 
-		properties.add(conclusion)
-		deduced_properties.add(conclusion)
+		satisfied_properties.add(conclusion)
+		deduced_satisfied_properties.add(conclusion)
 	}
 
 	return { consistent: true }
@@ -96,20 +101,19 @@ export async function get_missing_combinations() {
 	const properties: string[] = props.map(({ id }) => id)
 
 	const { rows: existing, err: err_existing } = await query<{
-		property_id: string
-		non_property_id: string
+		p: string
+		q: string
 	}>(sql`
-		SELECT DISTINCT cp.property_id, cnp.non_property_id
-		FROM category_properties cp
-		INNER JOIN category_non_properties cnp
+		SELECT DISTINCT cp.property_id AS p, cnp.property_id AS q
+		FROM category_property_assignments cp
+		INNER JOIN category_property_assignments cnp
 		ON cp.category_id = cnp.category_id
+		WHERE cp.is_satisfied = TRUE AND cnp.is_satisfied = FALSE
 	`)
 
 	if (err_existing) return null
 
-	const existing_pairs = new Set(
-		existing.map((pair) => `${pair.property_id}|${pair.non_property_id}`),
-	)
+	const existing_pairs = new Set(existing.map(({ p, q }) => `${p}|${q}`))
 
 	const missing_pairs: [string, string][] = []
 

@@ -24,8 +24,7 @@ export const load = async (event) => {
 			CategoryDisplay,
 			RelatedCategory,
 			TagObject,
-			CategoryPropertyDB,
-			CategoryPropertyDB,
+			CategoryPropertyDB & { is_satisfied: number },
 			PropertyShort,
 			SpecialObject,
 			SpecialMorphism,
@@ -63,26 +62,18 @@ export const load = async (event) => {
 		sql`
 			SELECT
 				cp.property_id AS id,
+				cp.is_satisfied,
 				cp.reason,
 				cp.is_deduced,
-				p.prefix
-			FROM category_properties cp
+				CASE
+        			WHEN cp.is_satisfied = TRUE THEN p.prefix
+        			ELSE pf.negation
+    			END AS prefix
+			FROM category_property_assignments cp
 			INNER JOIN properties p ON p.id = cp.property_id
+			INNER JOIN prefixes pf ON pf.prefix = p.prefix
 			WHERE cp.category_id = ${id}
 			ORDER BY cp.position, lower(cp.property_id)
-		`,
-		// non-properties
-		sql`
-			SELECT
-				cnp.non_property_id AS id,
-				cnp.reason,
-				cnp.is_deduced,
-				pf.negation as prefix
-			FROM category_non_properties cnp
-			INNER JOIN properties p ON p.id = cnp.non_property_id
-			INNER JOIN prefixes pf ON pf.prefix = p.prefix
-			WHERE cnp.category_id = ${id}
-			ORDER BY cnp.position, lower(cnp.non_property_id)
 		`,
 		// unknown properties
 		sql`
@@ -91,12 +82,8 @@ export const load = async (event) => {
 				p.prefix
 			FROM properties p
 			WHERE NOT EXISTS (
-				SELECT 1 FROM category_properties
-				WHERE property_id = p.id AND category_id = ${id}
-			)
-			AND NOT EXISTS (
-				SELECT 1 FROM category_non_properties
-				WHERE non_property_id = p.id AND category_id = ${id}
+				SELECT 1 FROM category_property_assignments
+				WHERE category_id = ${id} AND property_id = p.id
 			)
 			ORDER BY lower(p.id)
 		`,
@@ -131,7 +118,6 @@ export const load = async (event) => {
 		related_categories,
 		tag_objects,
 		properties_db,
-		non_properties_db,
 		unknown_properties,
 		special_objects,
 		special_morphisms,
@@ -143,26 +129,30 @@ export const load = async (event) => {
 	const category = categories[0]
 	const tags = tag_objects.map(({ tag }) => tag)
 
-	const properties: CategoryProperty[] = properties_db.map((p) => ({
-		id: p.id,
-		reason: p.reason,
-		prefix: p.prefix,
-		is_deduced: Boolean(p.is_deduced),
-	}))
+	const satisfied_properties: CategoryProperty[] = properties_db
+		.filter((obj) => obj.is_satisfied)
+		.map((p) => ({
+			id: p.id,
+			reason: p.reason,
+			is_deduced: Boolean(p.is_deduced),
+			prefix: p.prefix,
+		}))
 
-	const non_properties: CategoryProperty[] = non_properties_db.map((p) => ({
-		id: p.id,
-		reason: p.reason,
-		prefix: p.prefix,
-		is_deduced: Boolean(p.is_deduced),
-	}))
+	const unsatisfied_properties: CategoryProperty[] = properties_db
+		.filter((obj) => !obj.is_satisfied)
+		.map((p) => ({
+			id: p.id,
+			reason: p.reason,
+			is_deduced: Boolean(p.is_deduced),
+			prefix: p.prefix,
+		}))
 
 	return render_nested_formulas({
 		category,
 		related_categories,
 		tags,
-		properties,
-		non_properties,
+		satisfied_properties,
+		unsatisfied_properties,
 		unknown_properties,
 		special_objects,
 		special_morphisms,

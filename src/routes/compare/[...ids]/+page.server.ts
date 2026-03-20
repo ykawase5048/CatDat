@@ -42,8 +42,8 @@ export const load = async (event) => {
 		.map(
 			(_, i) =>
 				`CASE 
-					WHEN cp${i}.property_id IS NOT NULL THEN 'yes'
-					WHEN cnp${i}.non_property_id IS NOT NULL THEN 'no'
+					WHEN cp${i}.is_satisfied = TRUE THEN 'yes'
+					WHEN cp${i}.is_satisfied = FALSE THEN 'no'
 					ELSE 'unknown'
 				END AS cat${i}`,
 		)
@@ -54,12 +54,10 @@ export const load = async (event) => {
 
 	compared_ids.forEach((category_id, i) => {
 		join_fragments.push(`
-			LEFT JOIN category_properties cp${i}
+			LEFT JOIN category_property_assignments cp${i}
 			ON cp${i}.property_id = p.id AND cp${i}.category_id = ?
-			LEFT JOIN category_non_properties cnp${i}
-			ON cnp${i}.non_property_id = p.id AND cnp${i}.category_id = ?
 		`)
-		values.push(category_id, category_id)
+		values.push(category_id)
 	})
 
 	const stmt = `
