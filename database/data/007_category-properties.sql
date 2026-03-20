@@ -1282,7 +1282,7 @@ VALUES
 	),
 	(
 		'BOn',
-		'sequential limits',
+		'filtered limits',
 		'See <a href="https://math.stackexchange.com/questions/5129138/" target="_blank">MSE/5129138</a>.'
 	),
 
