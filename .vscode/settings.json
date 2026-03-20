@@ -6,7 +6,16 @@
 		"node_modules": true,
 		"build": true
 	},
-	"cSpell.ignoreWords": ["Abfg", "Vect", "Zdiv", "Setne", "Xmark", "notrack"],
+	"cSpell.ignoreWords": [
+		"Abfg",
+		"Vect",
+		"Zdiv",
+		"Setne",
+		"Xmark",
+		"notrack",
+		"sqcup",
+		"infty"
+	],
 	"cSpell.words": [
 		"abelian",
 		"Adamek",
@@ -119,6 +128,7 @@
 		"subposet",
 		"subscheme",
 		"subsheaf",
+		"summands",
 		"suprema",
 		"supremum",
 		"surjection",
