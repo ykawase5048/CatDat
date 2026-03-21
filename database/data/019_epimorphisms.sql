@@ -138,6 +138,12 @@ VALUES
 		'Let $f : X \to Y$ be an epimorphism of Banach spaces. The subspace $U := \overline{f(X)} \subseteq Y$ is closed. It is well-known that the quotient $Y/U$ is also a Banach space with a projection $p : Y \to Y/U$. Since $p \circ f = 0 = 0 \circ f$, we infer $p = 0$, so that $U = Y$.'
 	),
 	(
+		'Man',
+		'epimorphisms',
+		'smooth maps with dense image',
+		'Let $f : X \to Y$ be a smooth map which is not dense. Choose some non-empty open subset $U \subseteq Y$ that is disjoint from $f(X)$. Take any $p \in U$. It is well-known that there is a smooth <i>bump function</i> $g : Y \to \mathbb{R}$ with $g(p) = 1$ and $\mathrm{supp}(g) \subseteq U$. Hence, $g \neq 0$ and $g \circ f = 0 = 0 \circ f$. Thus, $f$ is not an epimorphism.'
+	),
+	(
 		'Meas',
 		'epimorphisms',
 		'surjective measurable maps',

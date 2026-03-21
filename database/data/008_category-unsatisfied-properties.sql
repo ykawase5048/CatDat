@@ -1069,7 +1069,7 @@ VALUES
 	(
 		'Man',
 		'balanced',
-		NULL
+		'The irrational winding of a torus $\mathbb{R} \to S^1 \times S^1$, $t \mapsto (e^{i t}, \, e^{i \alpha t})$, where $\alpha \in \mathbb{R} \setminus \mathbb{Q}$, provides a counterexample. It is injective and has a dense image. Hence, it is a mono- and an epimorphism. But it is not surjective, hence no isomorphism.'
 	),
 	(
 		'Man',
