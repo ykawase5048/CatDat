@@ -10,7 +10,7 @@
 	} from '@fortawesome/free-solid-svg-icons'
 	import Fa from 'svelte-fa'
 	import ModeSelector from './ModeSelector.svelte'
-	import { APP } from '$lib/states/app.mode.svelte'
+	import { page } from '$app/state'
 
 	type Props = {
 		close: () => void
@@ -36,7 +36,7 @@
 			</a>
 		</li>
 
-		{#if APP.MODE === 'categories'}
+		{#if page.data.mode === 'categories'}
 			<li>
 				<a href="/categories">
 					Categories
@@ -78,14 +78,14 @@
 			</li>
 			<li>
 				<a href="/functor-properties">
-					Functor properties
+					Properties
 					<Fa icon={faList} />
 				</a>
 			</li>
 
 			<li>
 				<a href="/functor-implications">
-					Functor implications
+					Implications
 					<Fa icon={faArrowsSplitUpAndLeft} />
 				</a>
 			</li>

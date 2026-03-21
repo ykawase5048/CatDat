@@ -9,7 +9,7 @@
 	import { tracking } from '$lib/states/tracking.svelte'
 	import './app.css'
 
-	let { children } = $props()
+	let { data, children } = $props()
 
 	function open_mobile_nav() {
 		nav_dialog?.showModal()
@@ -59,6 +59,7 @@
 	<Nav />
 
 	<main>
+		<pre style="font-size:2rem; color: yellow;">MODE = {data.mode}</pre>
 		{@render children()}
 	</main>
 

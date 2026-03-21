@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { page } from '$app/state'
-	import { APP, type APP_MODE_TYPE } from '$lib/states/app.mode.svelte'
 	import {
 		faArrowsSplitUpAndLeft,
 		faChartBar,
@@ -17,7 +16,7 @@
 		text: string
 		nested?: string
 		icon: IconDefinition
-		mode?: APP_MODE_TYPE
+		mode?: string
 	}
 
 	const links: Link[] = [
@@ -80,7 +79,7 @@
 	]
 
 	let displayed_links = $derived(
-		links.filter((link) => !link.mode || link.mode === APP.MODE),
+		links.filter((link) => !link.mode || link.mode === page.data.mode),
 	)
 </script>
 
