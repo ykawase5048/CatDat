@@ -72,6 +72,38 @@ VALUES
         'preserves products'
     ),
     (
+        'preserves finite products',
+        '',
+        'A functor $F$ preserves finite products when for every finite family of objects $(A_i)$ in the source whose product $\prod_i A_i$ exists, also the product $\prod_i F(A_i)$ exists in the target and such that the canonical morphism $F(\prod_i A_i) \to \prod_i F(A_i)$ is an isomorphism.',
+        NULL,
+        TRUE,
+        'preserves finite coproducts'
+    ),
+    (
+        'preserves finite coproducts',
+        '',
+        'A functor $F$ preserves finite coproducts when for every family of objects $(A_i)$ in the source whose coproduct $\prod_i A_i$ exists, also the coproduct $\coprod_i F(A_i)$ exists in the target and such that the canonical morphism $\coprod_i F(A_i) \to F(\coprod_i A_i)$ is an isomorphism.',
+        NULL,
+        TRUE,
+        'preserves finite products'
+    ),
+    (
+        'preserves terminal objects',
+        '',
+        'A functor $F$ preserves terminal objects when it maps every terminal object to a terminal object. It is not assumed that the source category has a terminal object.',
+        NULL,
+        TRUE,
+        'preserves initial objects'
+    ),
+    (
+        'preserves initial objects',
+        '',
+        'A functor $F$ preserves initial objects when it maps every initial object to an initial object. It is not assumed that the source category has a initial object.',
+        NULL,
+        TRUE,
+        'preserves terminal objects'
+    ),
+    (
         'preserves equalizers',
         '',
         'A functor $F$ preserves equalizers when for every parallel pair of morphisms $f,g : A \to B$ whose equalizer $i : E \to A$ exists, also $F(i) : F(E) \to F(A)$ is an equalizer of $F(f),F(g) : F(A) \to F(B)$.',

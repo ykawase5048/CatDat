@@ -18,7 +18,7 @@ VALUES
         TRUE
     ),
     (
-        'continuous_consequences', -- TODO: dualize automatically
+        'continuous_consequences',
         '["continuous"]',
         '[]',
         '[]',
@@ -27,7 +27,26 @@ VALUES
         FALSE
     ),
     (
-        'dual_continuous_consequences', -- TODO: remove this later
+        'products_consequences',
+        '["preserves products"]',
+        '[]',
+        '[]',
+        '["preserves finite products"]',
+        'This is trivial.',
+        FALSE
+    ),
+    (
+        'finite_products_consequences',
+        '["preserves finite products"]',
+        '[]',
+        '[]',
+        '["preserves terminal objects"]',
+        'This is trivial.',
+        FALSE
+    ),
+    (
+         -- TODO: remove this later after automatic dualization
+        'dual_continuous_consequences',
         '["cocontinuous"]',
         '[]',
         '[]',
@@ -63,7 +82,25 @@ VALUES
         TRUE
     ),
     (
-        'equivalence_consequences', -- TODO: dualize automatically
+        'left_exact_consequences',
+        '["left exact"]',
+        '[]',
+        '[]',
+        '["preserves finite products", "preserves terminal objects"]',
+        'Both finite products and terminal objects are special cases of finite limits.',
+        FALSE
+    ),
+    (
+        'left_exact_criterion',
+        '["preserves finite products", "preserves equalizers"]',
+        '["finite products"]',
+        '[]',
+        '["left exact"]',
+        'TBA.', -- FIXME
+        FALSE
+    ),
+    (
+        'equivalence_consequences',
         '["equivalence"]',
         '[]',
         '[]',
@@ -72,7 +109,7 @@ VALUES
         FALSE
     ),
     (
-        'right_adjoint_consequences', -- TODO: dualize automatically
+        'right_adjoint_consequences',
         '["right adjoint"]',
         '[]',
         '[]',
@@ -81,7 +118,7 @@ VALUES
         FALSE
     ),
     (
-        'saft', -- TODO: dualize automatically,
+        'saft',
         '["continuous"]',
         '["complete", "locally small", "well-powered", "cogenerator"]',
         '["locally small"]',
@@ -90,7 +127,7 @@ VALUES
         FALSE
     ),
     (
-        'monadic_consequences', -- TODO: dualize automatically
+        'monadic_consequences',
         '["monadic"]',
         '[]',
         '[]',

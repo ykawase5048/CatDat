@@ -13,8 +13,8 @@ CREATE TABLE functor_properties (
 CREATE TABLE functor_property_assignments (
     functor_id TEXT NOT NULL,
     property_id TEXT NOT NULL,
-    reason TEXT NOT NULL CHECK (length(reason) > 0),
     is_satisfied INTEGER NOT NULL CHECK (is_satisfied IN (TRUE, FALSE)),
+    reason TEXT NOT NULL CHECK (length(reason) > 0),
     created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (functor_id, property_id),
     FOREIGN KEY (functor_id) REFERENCES functors (id) ON DELETE CASCADE,
