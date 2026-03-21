@@ -40,7 +40,7 @@ INSERT INTO category_comments (
     ),
     (
         'FreeAb',
-        'Sequential colimits are discussed at <a href="https://math.stackexchange.com/questions/5025660/" target="_blank">MSE/5025660</a>. Probably they do not exist.'
+        'Sequential colimits are discussed at <a href="https://math.stackexchange.com/questions/5035594" target="_blank">5035594</a>. Probably they do not exist.'
     ),
     (
         'LRS',
