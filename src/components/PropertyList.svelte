@@ -9,9 +9,10 @@
 			reason?: string | null
 		}[]
 		description?: string
+		type?: 'category' | 'functor'
 	}
 
-	let { properties, description }: Props = $props()
+	let { properties, description, type = 'category' }: Props = $props()
 </script>
 
 {#if description}
@@ -24,7 +25,7 @@
 			<li>
 				<TextWithReason {reason}>
 					{prefix}
-					<a href={get_property_url(id)}>{id}</a>
+					<a href={get_property_url(id, type)}>{id}</a>
 				</TextWithReason>
 			</li>
 		{/each}
