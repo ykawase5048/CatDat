@@ -82,3 +82,40 @@ export type SpecialMorphism = {
 	description: string
 	reason: string
 }
+export type FunctorPropertyDB = {
+	id: string
+	prefix: string
+	description: string
+	nlab_link: string | null
+	invariant_under_equivalences: number
+	dual_property_id: string | null
+}
+
+export type FunctorProperty = Replace<
+	FunctorPropertyDB,
+	{
+		invariant_under_equivalences: boolean
+	}
+>
+
+export type FunctorImplicationDB = {
+	id: string
+	is_equivalence: number
+	reason: string
+	assumptions: string
+	conclusions: string
+	source_assumptions: string
+	target_assumptions: string
+	dualized_from?: string | null
+}
+
+export type FunctorImplicationDisplay = Replace<
+	FunctorImplicationDB,
+	{
+		is_equivalence: boolean
+		assumptions: string[]
+		conclusions: string[]
+		source_assumptions: string[]
+		target_assumptions: string[]
+	}
+>

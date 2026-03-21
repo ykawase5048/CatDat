@@ -30,6 +30,18 @@
 		{ href: '/implications', text: 'Implications', icon: faArrowsSplitUpAndLeft },
 		{ href: '/compare', text: 'Compare', icon: faChartBar, nested: '/compare' },
 		{ href: '/search', text: 'Search', icon: faSearch },
+		{
+			href: '/functor-properties',
+			text: 'Functor properties',
+			nested: '/functor-property',
+			icon: faList,
+		},
+		{
+			href: '/functor-implications',
+			text: 'Functor implications',
+			nested: '/functor-implication',
+			icon: faArrowsSplitUpAndLeft,
+		},
 	]
 </script>
 

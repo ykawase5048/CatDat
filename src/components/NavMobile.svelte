@@ -62,6 +62,20 @@
 				<Fa icon={faSearch} />
 			</a>
 		</li>
+
+		<li>
+			<a href="/functor-properties">
+				Functor properties
+				<Fa icon={faList} />
+			</a>
+		</li>
+
+		<li>
+			<a href="/functor-implications">
+				Functor implications
+				<Fa icon={faArrowsSplitUpAndLeft} />
+			</a>
+		</li>
 	</ul>
 
 	<ul class="secondary-list">
