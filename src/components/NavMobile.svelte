@@ -72,6 +72,11 @@
 			</li>
 		{:else}
 			<li>
+				<a href="/functors">
+					Functors <Fa icon={faDatabase} />
+				</a>
+			</li>
+			<li>
 				<a href="/functor-properties">
 					Functor properties
 					<Fa icon={faList} />

@@ -82,6 +82,23 @@ export type SpecialMorphism = {
 	description: string
 	reason: string
 }
+
+export type FunctorShort = {
+	id: string
+	name: string
+}
+
+export type FunctorDB = {
+	id: string
+	name: string
+	source: string
+	target: string
+	source_name: string
+	target_name: string
+	description: string
+	url: string | null
+}
+
 export type FunctorPropertyDB = {
 	id: string
 	prefix: string
@@ -90,6 +107,8 @@ export type FunctorPropertyDB = {
 	invariant_under_equivalences: number
 	dual_property_id: string | null
 }
+
+export type FunctorPropertyShort = Pick<FunctorPropertyDB, 'id' | 'prefix'>
 
 export type FunctorProperty = Replace<
 	FunctorPropertyDB,
@@ -118,4 +137,16 @@ export type FunctorImplicationDisplay = Replace<
 		source_assumptions: string[]
 		target_assumptions: string[]
 	}
+>
+
+export type FunctorPropertyAssignmentDB = {
+	id: string
+	reason: string | null
+	prefix: string
+	is_deduced: number
+}
+
+export type FunctorPropertyAssignment = Replace<
+	FunctorPropertyAssignmentDB,
+	{ is_deduced: boolean }
 >

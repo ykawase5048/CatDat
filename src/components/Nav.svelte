@@ -57,6 +57,13 @@
 			mode: 'categories',
 		},
 		{
+			href: '/functors',
+			text: 'Functors',
+			nested: '/functor',
+			icon: faDatabase,
+			mode: 'functors',
+		},
+		{
 			href: '/functor-properties',
 			text: 'Properties',
 			nested: '/functor-property',
