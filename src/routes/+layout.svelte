@@ -4,6 +4,7 @@
 	import Heading from '$components/Heading.svelte'
 	import Nav from '$components/Nav.svelte'
 	import NavMobile from '$components/NavMobile.svelte'
+	import Popup from '$components/Popup.svelte'
 	import { track_visit } from '$lib/client/track'
 	import { tracking } from '$lib/states/tracking.svelte'
 	import './app.css'
@@ -63,6 +64,8 @@
 
 	<Footer />
 </div>
+
+<Popup />
 
 <dialog bind:this={nav_dialog} id="nav_dialog">
 	<NavMobile close={close_mobile_nav} />

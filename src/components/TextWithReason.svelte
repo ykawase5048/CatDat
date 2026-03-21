@@ -1,8 +1,8 @@
 <script lang="ts">
 	import Fa from 'svelte-fa'
 	import { faCommentDots } from '@fortawesome/free-solid-svg-icons'
-	import { slide } from 'svelte/transition'
 	import type { Snippet } from 'svelte'
+	import { popup_state, show_popup } from './Popup.svelte'
 
 	type Props = {
 		children: Snippet
@@ -11,36 +11,27 @@
 
 	let { children, reason }: Props = $props()
 
-	let show_reason = $state(false)
+	const id = $props.id()
 
-	function toggle() {
-		show_reason = !show_reason
+	function show_reason(e: MouseEvent) {
+		e.stopPropagation()
+		show_popup({
+			id,
+			heading: 'Reason',
+			text: reason!,
+		})
 	}
-
-	const reason_id = $props.id()
 </script>
 
 {#if reason}
-	<span class="wrapper">
+	<span class="wrapper" class:expanded={popup_state?.id === id}>
 		<span>
-			<button
-				onclick={toggle}
-				class="toggle"
-				aria-expanded={show_reason}
-				aria-label={show_reason ? 'Hide reason' : 'Show reason'}
-				aria-controls={reason_id}
-			>
+			<button onclick={show_reason} aria-label="Show reason">
 				<Fa icon={faCommentDots} scale={0.825} />
 			</button>
 
 			{@render children()}
 		</span>
-
-		{#if show_reason}
-			<span transition:slide={{ duration: 120 }} class="hint reason" id={reason_id}>
-				{@html reason}
-			</span>
-		{/if}
 	</span>
 {:else}
 	<span>
@@ -51,30 +42,16 @@
 <style>
 	.wrapper {
 		display: inline-grid;
+
+		&.expanded {
+			color: var(--accent-color);
+		}
 	}
 
-	.toggle {
+	button {
 		padding-inline: 0.25rem;
 		margin-inline: -0.25rem;
 		color: var(--secondary-text-color);
 		transition: color 150ms;
-
-		&[aria-expanded='true'] {
-			color: var(--text-color);
-		}
-	}
-
-	.reason {
-		padding-block: 0.5rem;
-		position: relative;
-
-		&::before {
-			content: '';
-			position: absolute;
-			left: -0.78rem;
-			top: 0;
-			bottom: 0;
-			border-left: 1px dashed var(--secondary-outline-color);
-		}
 	}
 </style>
