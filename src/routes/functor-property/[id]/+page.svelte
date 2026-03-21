@@ -1,6 +1,6 @@
 <script lang="ts">
 	import MetaData from '$components/MetaData.svelte'
-	import { get_property_url } from '$lib/commons/property.url.js'
+	import { get_property_url } from '$lib/commons/property.url'
 
 	let { data } = $props()
 
