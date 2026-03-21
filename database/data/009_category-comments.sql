@@ -51,14 +51,6 @@ INSERT INTO category_comments (
         'Lots of stuff is unknown here. Please help to fill in the gaps!'
     ),
     (
-        'Met_c',
-        'It is likely that the epimorphisms are exactly the continuous maps with dense image, just as for Hausdorff spaces (see <a href="https://math.stackexchange.com/questions/214045" target="_blank">MSE/214045</a>), but the proof needs to be tweaked.'
-    ),
-    (
-        'Met',
-        'Once we know how the epimorphism look like (probably the non-expansive maps with dense image), it should follow that it is well-copowered.'
-    ),
-    (
         'Sh(X)',
         'It is likely that neither of the currently remaining unknown properties (finitary algebraic, locally ℵ₁-presentable, exact filtered colimits) are satisfied for a <i>generic</i> space $X$, but we need to make this precise by adding additional requirements to $X$.'
     ),

@@ -120,6 +120,18 @@ VALUES
 		'The one direction is easy. For the other one, assume that $f : F \to G$ is an epimorphism of abelian sheaves. For every $x \in X$ the homomorphism on stalks $f_x : F_x \to G_x$ is an epimorphism because the stalk functor  $\mathrm{Sh}(X,\mathbf{Ab}) \to \mathbf{Ab}$ admits a right adjoint: take skyscraper sheaves. For $x \in U$ then $g_x \in G_x$ has a preimage in $F_x$, say represented by some $f \in F(V_x)$ for some $x \in V_x \subseteq U$. By construction of the stalk $G_x$, there is some $x \in U_x \subseteq V_x$ with $f(U_x)(f|_{U_x}) = g|_{U_x}$. Hence, the sets $(U_x)$ provide the open covering.'
 	),
 	(
+		'Met',
+		'epimorphisms',
+		'non-expansive maps with dense image',
+		'See <a href="https://math.stackexchange.com/questions/937387" target="_blank">MSE/937387</a>.'
+	),
+	(
+		'Met_c',
+		'epimorphisms',
+		'continuous maps with dense image',
+		'See <a href="https://math.stackexchange.com/questions/937387" target="_blank">MSE/937387</a>.'
+	),
+	(
 		'Ban',
 		'epimorphisms',
 		'linear contractions with dense image',
