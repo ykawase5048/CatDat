@@ -9,6 +9,8 @@
 		faXmark,
 	} from '@fortawesome/free-solid-svg-icons'
 	import Fa from 'svelte-fa'
+	import ModeSelector from './ModeSelector.svelte'
+	import { APP } from '$lib/states/app.mode.svelte'
 
 	type Props = {
 		close: () => void
@@ -22,6 +24,10 @@
 		<Fa icon={faXmark} />
 	</button>
 
+	<div class="mode_selector_container">
+		<ModeSelector />
+	</div>
+
 	<ul class="main-list">
 		<li>
 			<a href="/">
@@ -29,53 +35,56 @@
 				<Fa icon={faHome} />
 			</a>
 		</li>
-		<li>
-			<a href="/categories">
-				Categories
-				<Fa icon={faDatabase} />
-			</a>
-		</li>
-		<li>
-			<a href="/properties">
-				Properties
-				<Fa icon={faList} />
-			</a>
-		</li>
 
-		<li>
-			<a href="/implications">
-				Implications
-				<Fa icon={faArrowsSplitUpAndLeft} />
-			</a>
-		</li>
+		{#if APP.MODE === 'categories'}
+			<li>
+				<a href="/categories">
+					Categories
+					<Fa icon={faDatabase} />
+				</a>
+			</li>
+			<li>
+				<a href="/properties">
+					Properties
+					<Fa icon={faList} />
+				</a>
+			</li>
 
-		<li>
-			<a href="/compare">
-				Compare
-				<Fa icon={faChartBar} />
-			</a>
-		</li>
+			<li>
+				<a href="/implications">
+					Implications
+					<Fa icon={faArrowsSplitUpAndLeft} />
+				</a>
+			</li>
 
-		<li>
-			<a href="/search">
-				Search
-				<Fa icon={faSearch} />
-			</a>
-		</li>
+			<li>
+				<a href="/compare">
+					Compare
+					<Fa icon={faChartBar} />
+				</a>
+			</li>
 
-		<li>
-			<a href="/functor-properties">
-				Functor properties
-				<Fa icon={faList} />
-			</a>
-		</li>
+			<li>
+				<a href="/search">
+					Search
+					<Fa icon={faSearch} />
+				</a>
+			</li>
+		{:else}
+			<li>
+				<a href="/functor-properties">
+					Functor properties
+					<Fa icon={faList} />
+				</a>
+			</li>
 
-		<li>
-			<a href="/functor-implications">
-				Functor implications
-				<Fa icon={faArrowsSplitUpAndLeft} />
-			</a>
-		</li>
+			<li>
+				<a href="/functor-implications">
+					Functor implications
+					<Fa icon={faArrowsSplitUpAndLeft} />
+				</a>
+			</li>
+		{/if}
 	</ul>
 
 	<ul class="secondary-list">
@@ -103,6 +112,10 @@
 		padding-inline: 0.75rem;
 		background-color: var(--bg-color);
 		text-align: right;
+	}
+
+	.mode_selector_container {
+		margin-top: 2rem;
 	}
 
 	ul {

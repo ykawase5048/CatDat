@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state'
+	import { APP, type APP_MODE_TYPE } from '$lib/states/app.mode.svelte'
 	import {
 		faArrowsSplitUpAndLeft,
 		faChartBar,
@@ -16,6 +17,7 @@
 		text: string
 		nested?: string
 		icon: IconDefinition
+		mode?: APP_MODE_TYPE
 	}
 
 	const links: Link[] = [
@@ -25,29 +27,58 @@
 			text: 'Categories',
 			nested: '/category',
 			icon: faDatabase,
+			mode: 'categories',
 		},
-		{ href: '/properties', text: 'Properties', nested: '/property', icon: faList },
-		{ href: '/implications', text: 'Implications', icon: faArrowsSplitUpAndLeft },
-		{ href: '/compare', text: 'Compare', icon: faChartBar, nested: '/compare' },
-		{ href: '/search', text: 'Search', icon: faSearch },
+		{
+			href: '/properties',
+			text: 'Properties',
+			nested: '/property',
+			icon: faList,
+			mode: 'categories',
+		},
+		{
+			href: '/implications',
+			text: 'Implications',
+			icon: faArrowsSplitUpAndLeft,
+			mode: 'categories',
+		},
+		{
+			href: '/compare',
+			text: 'Compare',
+			icon: faChartBar,
+			nested: '/compare',
+			mode: 'categories',
+		},
+		{
+			href: '/search',
+			text: 'Search',
+			icon: faSearch,
+			mode: 'categories',
+		},
 		{
 			href: '/functor-properties',
 			text: 'Functor properties',
 			nested: '/functor-property',
 			icon: faList,
+			mode: 'functors',
 		},
 		{
 			href: '/functor-implications',
 			text: 'Functor implications',
 			nested: '/functor-implication',
 			icon: faArrowsSplitUpAndLeft,
+			mode: 'functors',
 		},
 	]
+
+	let displayed_links = $derived(
+		links.filter((link) => !link.mode || link.mode === APP.MODE),
+	)
 </script>
 
 <nav>
 	<ul>
-		{#each links as { nested, href, text, icon }}
+		{#each displayed_links as { nested, href, text, icon }}
 			<li
 				class:current={page.url.pathname === href ||
 					(nested && page.url.pathname.startsWith(nested))}

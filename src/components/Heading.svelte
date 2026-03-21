@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { faBars } from '@fortawesome/free-solid-svg-icons'
 	import Fa from 'svelte-fa'
+	import ModeSelector from './ModeSelector.svelte'
 
 	type Props = {
 		open_mobile_nav: () => void
@@ -28,6 +29,10 @@
 			/>
 		</svg>
 	</h1>
+
+	<div class="mode_select_container">
+		<ModeSelector />
+	</div>
 
 	<button
 		class="button nav-button"
@@ -61,5 +66,15 @@
 	.logo {
 		width: 175px;
 		display: inline-block;
+	}
+
+	.mode_select_container {
+		position: absolute;
+		top: 1rem;
+		left: 1rem;
+
+		@media (width <= 600px) {
+			display: none;
+		}
 	}
 </style>
