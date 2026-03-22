@@ -127,6 +127,11 @@ VALUES
 		'If $\sqcup$ denotes the coproduct of rings (see <a href="https://math.stackexchange.com/questions/625874" target="_blank">MSE/625874</a> for their description) and $R$ is a ring, the canonical morphism $R \sqcup \mathbb{Z}^2 \to (R \sqcup \mathbb{Z})^2 = R^2$ is usually no isomorphism. For example, for $R = \mathbb{Z}[X]$ the coproduct on the LHS is not commutative, it has the ring presentation $\langle X,E : E^2=E \rangle$.'
 	),
 	(
+		'Ring',
+		'strongly connected',
+		'There is no homomorphism between $\mathbb{F}_2$ and $\mathbb{F}_3$.'
+	),
+	(
 		'Alg(R)',
 		'strict initial object',
 		'The homomorphism $p_1 : R \times R \to R$ is not an isomorphism, and $R$ is initial.'
@@ -150,6 +155,11 @@ VALUES
 		'Alg(R)',
 		'codistributive',
 		'If $\sqcup$ denotes the coproduct of $R$-algebras (see <a href="https://math.stackexchange.com/questions/625874" target="_blank">MSE/625874</a> for their description) and $A$ is an $R$-algebra, the canonical morphism $A \sqcup R^2 \to (A \sqcup R)^2 = A^2$ is usually no isomorphism. For example, for $A = R[X]$ the coproduct on the LHS is not commutative, it has the algebra presentation $\langle X,E : E^2=E \rangle$.'	
+	),
+	(
+		'Alg(R)',
+		'strongly connected',
+		'This is because already the full subcategory $\mathrm{CAlg}(R)$ of commutative algebras is not strongly connected, see <a href="/category/CAlg(R)">its category page</a> for details.'
 	),
 	(
 		'CRing',
@@ -177,6 +187,11 @@ VALUES
 		'The canonical homomorphism $\mathbb{Q} \otimes \mathbb{Z}^{\mathbb{N}} \to (\mathbb{Q} \otimes \mathbb{Z})^{\mathbb{N}} = \mathbb{Q}^{\mathbb{N}}$ is not an isomorphism: its image consists of those sequences of rational numbers whose denominators can be bounded.'
 	),
 	(
+		'CRing',
+		'strongly connected',
+		'There is no homomorphism between $\mathbb{F}_2$ and $\mathbb{F}_3$.'
+	),
+	(
 		'CAlg(R)',
 		'strict initial object',
 		'The homomorphism $p_1 : R \times R \to R$ is not an isomorphism, and $R$ is initial.'
@@ -200,6 +215,11 @@ VALUES
 		'CAlg(R)',
 		'infinitary codistributive',
 		'The canonical homomorphism $A \otimes_R R^{\mathbb{N}} \to A^{\mathbb{N}}$ is given by $a \otimes (r_n)_n \mapsto (r_n a)_n$ and does not have to be surjective: Since $R \neq 0$, there is a commutative $R$-algebra $K$ which is a field. Now take $A := K[X]$ and consider the sequence $(X^n)_{n} \in A^{\mathbb{N}}$.'
+	),
+	(
+		'CAlg(R)',
+		'strongly connected',
+		'Choose a maximal ideal $\mathfrak{m}$ of $R$, so $K := R/\mathfrak{m}$ is a field. If $\mathbf{CAlg}(R)$ is strongly connected, then also $\mathbf{CAlg}(K)$ is strongly connected. This has been disproven in <a href="https://math.stackexchange.com/questions/5129689" target="_blank">MSE/5129689</a>.'
 	),
 	(
 		'Rng',
@@ -815,6 +835,11 @@ VALUES
 		'This is because the category of schemes already is not Malcev.'
 	),
 	(
+		'LRS',
+		'strongly connected',
+		'This is because already the full subcategory of affine schemes is not strongly connected, see <a href="/category/CRing">the entry for $\mathbf{CRing}$</a>. Specifically, there is no morphism between $\mathrm{Spec}(\mathbb{F}_2)$ and $\mathrm{Spec}(\mathbb{F}_3)$.'
+	),
+	(
 		'Sch',
 		'pushouts',
 		'The span $\mathbb{A}^1 \leftarrow \mathrm{Spec}(k(t)) \rightarrow \mathbb{A}^1$ has no pushout, see <a href="https://mathoverflow.net/questions/9961" target="_blank">MO/9961</a>.'
@@ -850,9 +875,14 @@ VALUES
 		'Consider the subscheme $V(x-y) \cup V(y) \subseteq \mathbb{A}^2$. It contains the diagonal but it is not symmetric.'
 	),
 	(
+		'Sch',
+		'strongly connected',
+		'This is because already the full subcategory of affine schemes is not strongly connected, see <a href="/category/CRing">the entry for $\mathbf{CRing}$</a>. Specifically, there is no morphism between $\mathrm{Spec}(\mathbb{F}_2)$ and $\mathrm{Spec}(\mathbb{F}_3)$.'
+	),
+	(
 		'Z',
 		'locally essentially small',
-		NULL
+		'See <a href="https://mathoverflow.net/questions/390611" target="_blank">MO/390611</a> for example.'
 	),
 	(
 		'Z',
@@ -868,6 +898,16 @@ VALUES
 		'Z',
 		'Malcev',
 		NULL
+	),
+	(
+		'Z',
+		'strongly connected',
+		'This is because already the full subcategory of representable functors is not strongly connected, see <a href="/category/CRing">the entry for $\mathbf{CRing}$</a>. Specifically, there is no morphism between $\mathrm{Hom}(\mathbb{F}_2,-)$ and $\mathrm{Hom}(\mathbb{F}_3,-)$.'
+	),
+	(
+		'Z',
+		'cartesian closed',
+		'There are functors $F,G : \mathbf{CRing} \to \mathbf{Set}$ such that $\mathrm{Hom}(F,G)$ is not essentially small, see <a href="https://mathoverflow.net/questions/390611" target="_blank">MO/390611</a> for example. Now if the exponential $[F,G] : \mathbf{CRing} \to \mathbf{Set}$ exists, we get $[F,G](\mathbb{Z}) \cong \mathrm{Hom}(\mathrm{Hom}(\mathbb{Z},-),[F,G])$ by Yoneda, which simplifies to $\mathrm{Hom}(1,[F,G]) \cong \mathrm{Hom}(1 \times F,G) \cong \mathrm{Hom}(F,G)$, a contradiction.'
 	),
 
 	-- thin categories
@@ -1181,6 +1221,11 @@ VALUES
 		'trivial'
 	),
 	(
+		'Fld',
+		'locally cartesian closed',
+		'Assume that $K$ is a field such that $\mathbf{Fld} / K$ is cartesian closed. This slice category is equivalent to the partial order of subfields of $K$. This partial order is a lattice, and our assumption implies that it is distributive (see <a href="/implication/distributive_criterion">here</a>). But this is quite rare: Consider $K = \mathbb{Q}(\sqrt{2}, \sqrt{3})$. By Galois theory, the lattice of subfields is isomorphic to the diamond lattice $M_3$ which is not distributive. Specifically, $(\mathbb{Q}(\sqrt{2}) \wedge \mathbb{Q}(\sqrt{6})) \vee (\mathbb{Q}(\sqrt{3}) \wedge \mathbb{Q}(\sqrt{6})) = \mathbb{Q} \vee \mathbb{Q} = \mathbb{Q}$, while $(\mathbb{Q}(\sqrt{2}) \vee \mathbb{Q}(\sqrt{3})) \wedge \mathbb{Q}(\sqrt{6}) = \mathbb{Q}(\sqrt{2},\sqrt{3}) \wedge \mathbb{Q}(\sqrt{6}) = \mathbb{Q}(\sqrt{6})$.'
+	),
+	(
 		'Sp',
 		'locally small',
 		NULL
@@ -1209,6 +1254,11 @@ VALUES
 		'Sp',
 		'Malcev',
 		NULL
+	),
+	(
+		'Sp',
+		'strongly connected',
+		'For $n \geq 0$ let $E_n$ be the combinatorial species of $n$-sets: $E_n(A) = \{A\}$ when $A$ has cardinality $n$, otherwise $E_n(A) = \emptyset$. Then there is no morphism between $E_n$ and $E_m$ unless $n = m$.'
 	),
 
 	-- artificial categories

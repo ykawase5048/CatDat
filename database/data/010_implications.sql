@@ -418,6 +418,13 @@ VALUES
 		FALSE
 	),
 	(
+		'groupoid_lcc',
+		'["groupoid"]',
+		'["locally cartesian closed"]',
+		'Every slice category is a trivial category.',
+		FALSE
+	),
+	(
 		'connected_consequence',
 		'["connected"]',
 		'["inhabited"]',
@@ -676,13 +683,6 @@ VALUES
 		'["locally cartesian closed", "terminal object"]',
 		'["cartesian closed"]',
 		'The slice over the terminal object is the category itself.',
-		FALSE
-	),
-	(
-		'discrete_is_locally_cartesian_closed',
-		'["discrete"]',
-		'["locally cartesian closed"]',
-		'Each slice of a discrete category is terminal.',
 		FALSE
 	),
 	(

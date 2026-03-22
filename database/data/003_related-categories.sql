@@ -41,6 +41,7 @@ VALUES
 	('Pos', 'FinOrd'),
 	('walking_morphism', 'walking_isomorphism'),
 	('walking_morphism', 'walking_pair'),
+	('M-Set', 'Set'),
 	('M-Set', 'R-Mod'),
 	('R-Mod', 'Ab'),
 	('R-Mod', 'M-Set'),

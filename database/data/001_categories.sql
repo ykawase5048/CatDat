@@ -141,7 +141,7 @@ VALUES
 		'$M{-}\mathbf{Set}$',
 		'sets with a left action of a monoid $M$',
 		'maps that are compatible with the $M$-action, meaning $f(m \cdot x)=m \cdot f(x)$, also called $M$-maps',
-		'Here, $M$ can be any monoid. But the most important special case is that of a group.',
+		'Here, $M$ can be any monoid. But the most important special case is that of a group. To settle (future) non-properties, we assume that $M$ is non-trivial, since otherwise we just get the <a href="/category/Set">category of sets</a>.',
 		'https://ncatlab.org/nlab/show/MSet'
 	),
 	(
@@ -440,7 +440,7 @@ VALUES
 		'$BG$',
 		'a single object',
 		'the elements of an infinite group $G$',
-		'Every group $G$ yields a groupoid $BG$ with a single object, morphisms given by the elements of $G$, and composition given by the group operation. In this example, we consider the case of an infinite group $G$.',
+		'Every group $G$ yields a groupoid $BG$ with a single object $*$, morphisms given by the elements of $G$, and composition given by the group operation. In this example, we consider the case of an infinite group $G$.',
 		'https://ncatlab.org/nlab/show/delooping'
 	),
 	(
@@ -449,7 +449,7 @@ VALUES
 		'$BG$',
 		'a single object',
 		'the elements of a non-trivial finite group $G$',
-		'Every group $G$ yields a groupoid $BG$ with a single object, morphisms given by the elements of $G$, and composition given by the group operation. In this example, we consider the case of a non-trivial finite group $G$ (such as $G = C_2$).',
+		'Every group $G$ yields a groupoid $BG$ with a single object $*$, morphisms given by the elements of $G$, and composition given by the group operation. In this example, we consider the case of a non-trivial finite group $G$ (such as $G = C_2$).',
 		'https://ncatlab.org/nlab/show/delooping'
 	),
 	(
@@ -458,7 +458,7 @@ VALUES
 		'$B\mathbb{N}$',
 		'a single object',
 		'the natural numbers, with addition serving as composition',
-		'Every monoid $M$ induces a one-object category $BM$ with morphisms given by the elements of $M$, and composition given by the monoid operation. Some of the properties of this category depend on the specific monoid. In this example, we take the commutative monoid $M = (\mathbb{N},+,0)$, so composition is $n \circ m = n + m$.',
+		'Every monoid $M$ induces a category $BM$ with a single object $*$, morphisms given by the elements of $M$, and composition given by the monoid operation. Some of the properties of this category depend on the specific monoid. In this example, we take the commutative monoid $M = (\mathbb{N},+,0)$, so composition is $n \circ m = n + m$.',
 		NULL
 	),
 	(
@@ -467,7 +467,7 @@ VALUES
 		'$B\mathbf{On}$',
 		'a single object',
 		'ordinal numbers, with addition as composition',
-		'Every monoid $M$ induces a one-object category $BM$. This also works when $M$ is large, in which case $BM$ is not locally small. In this example, we apply this construction to the large monoid of ordinal numbers with respect to addition, so composition is $\alpha \circ \beta = \alpha + \beta$.',
+		'Every monoid $M$ induces a category $BM$ with a single object $*$. This also works when $M$ is large, in which case $BM$ is not locally small. In this example, we apply this construction to the large monoid of ordinal numbers with respect to addition, so composition is $\alpha \circ \beta = \alpha + \beta$.',
 		NULL
 	),
 

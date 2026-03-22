@@ -24,7 +24,7 @@ VALUES
 	(
 		'Set',
 		'strongly connected',
-		'Every nonempty set is weakly terminal.'
+		'Every nonempty set is weakly terminal (by using constant maps).'
 	),
 	(
 		'Set',
@@ -94,7 +94,7 @@ VALUES
 	(
 		'Top',
 		'strongly connected',
-		'Every nonempty space is weakly terminal.'
+		'Every nonempty space is weakly terminal (by using constant maps).'
 	),
 	(
 		'Grp',
@@ -369,7 +369,7 @@ VALUES
 	(
 		'Pos',
 		'strongly connected',
-		'Every nonempty preorder is weakly terminal.'
+		'Every nonempty preorder is weakly terminal (by using constant maps).'
 	),
 	(
 		'M-Set',
@@ -481,7 +481,7 @@ VALUES
 	(
 		'FinSet',
 		'strongly connected',
-		'Every nonempty finite set is weakly terminal.'
+		'Every nonempty finite set is weakly terminal (by using constant maps).'
 	),
 	(
 		'FinSet',
@@ -590,6 +590,16 @@ VALUES
 		NULL
 	),
 	(
+		'FI',
+		'strongly connected',
+		'If $X,Y$ are two finite sets, we have $\mathrm{card}(X) \leq \mathrm{card}(Y)$ or $\mathrm{card}(Y) \leq \mathrm{card}(X)$. In the first case there will be an injection $X \to Y$, in the second case there will be an injection $Y \to X$.'
+	),
+	(
+		'FI',
+		'locally cartesian closed',
+		'IF $X$ is a finite set, the slice category $\mathbf{FI} / X$ is equivalent to the partial order of subsets of $X$. This is cartesian closed because $A \cap B \subseteq C$ holds if and only if $B \subseteq (X \setminus A) \cup C$, where $A,B,C \subseteq X$.'
+	),
+	(
 		'FS',
 		'locally small',
 		'There is a forgetful functor $\mathbf{FS} \to \mathbf{Set}$ and $\mathbf{Set}$ is locally small.'
@@ -650,11 +660,6 @@ VALUES
 		'0',
 		'finite',
 		'trivial'
-	),
-	(
-		'0',
-		'locally cartesian closed',
-		'This is vacuously true.'
 	),
 	(
 		'1',
@@ -879,6 +884,11 @@ VALUES
 		'If $f : X \to Y$ is an epimorphism, then $f(X)$ is dense in $Y$ (see below). Hence, there is an injective map $Y \to X^{\mathbb{N}}$, which bounds the size of $Y$.'
 	),
 	(
+		'Met',
+		'strongly connected',
+		'Every nonempty metric space is weakly terminal (by using constant maps).'
+	),
+	(
 		'Met_oo',
 		'locally small',
 		'There is a forgetful functor $\mathbf{Met}_{\infty} \to \mathbf{Set}$ and $\mathbf{Set}$ is locally small.'
@@ -902,6 +912,11 @@ VALUES
 		'Met_oo',
 		'disjoint coproducts',
 		'This easily follows from the corresponding fact for sets, since coproducts are built using disjoint unions.'
+	),
+(
+		'Met_oo',
+		'strongly connected',
+		'Every nonempty metric space is weakly terminal (by using constant maps).'
 	),
 	(
 		'Met_c',
@@ -949,6 +964,11 @@ VALUES
 		'If $f : X \to Y$ is an epimorphism, then $f(X)$ is dense in $Y$ (see below). Hence, there is an injective map $Y \to X^{\mathbb{N}}$, which bounds the size of $Y$.'
 	),
 	(
+		'Met_c',
+		'strongly connected',
+		'Every nonempty metric space is weakly terminal (by using constant maps).'
+	),
+	(
 		'Man',
 		'locally small',
 		'There is a forgetful functor $\mathbf{Man} \to \mathbf{Set}$ and $\mathbf{Set}$ is locally small.'
@@ -993,7 +1013,11 @@ VALUES
 		'Cauchy complete',
 		'See Theorem 2.1 at the <a href="https://ncatlab.org/nlab/show/smooth+manifold" target="_blank">nLab</a>.'
 	),
-
+	(
+		'Man',
+		'strongly connected',
+		'Every nonempty manifold is weakly terminal (by using constant maps).'
+	),
 	(
 		'LRS',
 		'locally small',
@@ -1343,7 +1367,11 @@ VALUES
 		'skeletal',
 		'There is just one object.'
 	),
-
+	(
+		'BN',
+		'locally cartesian closed',
+		'The slice category $B\mathbb{N} / *$ is isomorphic to the partial order $(\mathbb{N},\geq)$ (not to $(\mathbb{N},\leq)$). This category is thin and and strongly connected, <a href="/implication/sequential_implies_lcc">hence</a> cartesian closed.'
+	),
 	(
 		'BOn',
 		'strongly connected',
@@ -1388,6 +1416,11 @@ VALUES
 		'BOn',
 		'filtered limits',
 		'See <a href="https://math.stackexchange.com/questions/5129138/" target="_blank">MSE/5129138</a>.'
+	),
+	(
+		'BOn',
+		'locally cartesian closed',
+		'The slice category $B\mathbf{On} / *$ is isomorphic to the partial order $(\mathbf{On},\geq)$ (not to $(\mathbf{On},\leq)$). This category is thin and and strongly connected, <a href="/implication/sequential_implies_lcc">hence</a> cartesian closed.'
 	),
 
 	-- various categories
@@ -1462,6 +1495,11 @@ VALUES
 		'This follows easily from the corresponding fact for sets, since coproducts are built using disjoint unions here.'
 	),
 	(
+		'Meas',
+		'strongly connected',
+		'Every nonempty measurable space is weakly terminal (by using constant maps).'
+	),
+	(
 		'Cat',
 		'locally small',
 		'There is a forgetful functor $\mathbf{Cat} \to \mathbf{Set} \times \mathbf{Set}$, $\mathcal{C} \mapsto (\mathrm{Ob}(\mathcal{C}),\mathrm{Mor}(\mathcal{C}))$, and $\mathbf{Set} \times \mathbf{Set}$ is locally small.'
@@ -1484,7 +1522,7 @@ VALUES
 	(
 		'Cat',
 		'strongly connected',
-		'Every nonempty category is weakly terminal.'
+		'Every nonempty category is weakly terminal (by using constant functors).'
 	),
 	(
 		'Fld',
@@ -1566,7 +1604,11 @@ VALUES
 		'epi-regular',
 		NULL
 	),
-
+	(
+		'FinOrd',
+		'strongly connected',
+		'Every nonempty totally ordered set is weakly terminal (by using constant maps).'
+	),
 	(
 		'Sp',
 		'essentially small',
@@ -1574,33 +1616,8 @@ VALUES
 	),
 	(
 		'Sp',
-		'finitely complete',
-		'This follows from the corresponding fact for $\mathbf{FinSet}$.'
-	),
-	(
-		'Sp',
-		'finitely cocomplete',
-		'This follows from the corresponding fact for $\mathbf{FinSet}$.'
-	),
-	(
-		'Sp',
-		'mono-regular',
-		'This follows from the corresponding fact for $\mathbf{FinSet}$ since there every monomorphism is even effective.'
-	),
-	(
-		'Sp',
-		'epi-regular',
-		'This follows from the corresponding fact for $\mathbf{FinSet}$ since there every epimorphism is even effective.'
-	),
-	(
-		'Sp',
-		'distributive',
-		'This follows from the corresponding fact for $\mathbf{FinSet}$.'
-	),
-	(
-		'Sp',
-		'disjoint finite coproducts',
-		'This follows from the corresponding fact for $\mathbf{FinSet}$.'
+		'elementary topos',
+		'The category is equivalent to $\prod_{n \geq 0} \Sigma_n{-}\mathbf{FinSet}$ (where $\Sigma_n$ denotes the symmetric group of order $n$), and each $\Sigma_n{-}\mathbf{FinSet}$ is an elementary topos since $\mathbf{FinSet}$ is and $\Sigma_n$ is a finite group, cf. <a href="https://ncatlab.org/nlab/show/Sketches+of+an+Elephant" target="_blank">Johnstone</a>, Part B, Corollary 2.3.18.'
 	),
 
 	-- artificial categories
@@ -1709,6 +1726,11 @@ VALUES
 		'Setne',
 		'epi-regular',
 		'This follows as for $\mathbf{Set}$.'
+	),
+	(
+		'Setne',
+		'strongly connected',
+		'We can use constant maps.'
 	);
 
 INSERT INTO category_property_assignments
