@@ -592,7 +592,7 @@ VALUES
 	(
 		'strongly connected',
 		'is',
-		'A category is <i>strongly connected</i> if it is inhabited and every two objects $A,B$ can be joined via a morphism: there is a morphism $A \to B$ or there is a morphism $B \to A$. Notice that this is stronger than being connected, and that posets with this property are precisely the inhabited totally ordered sets.<br>The terminology is not standard, but it is taken from Bunge''s PhD thesis <a href="http://www.tac.mta.ca/tac/reprints/articles/30/tr30abs.html" target="_blank">Categories of Set Valued Functors</a>.',
+		'A category is <i>strongly connected</i> if it is inhabited and every two objects $A,B$ can be joined via a morphism: there is a morphism $A \to B$ or there is a morphism $B \to A$. Notice that this is stronger than being connected, and that posets with this property are precisely the inhabited totally ordered sets.<br>This terminology is not standard, but it is taken from Bunge''s PhD thesis <a href="http://www.tac.mta.ca/tac/reprints/articles/30/tr30abs.html" target="_blank">Categories of Set Valued Functors</a>.',
 		NULL,
 		'strongly connected',
 		TRUE
