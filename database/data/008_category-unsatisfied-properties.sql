@@ -411,7 +411,7 @@ VALUES
 	(
 		'FinSet',
 		'sequential colimits',
-		'Let $[n] := \{1,\dotsc,n\}$. Assume the sequence of inclusion maps $[1] \to [2] \to \cdots$ has a colimit $X$ in $\mathbf{FinSet}$ with maps $f_n : [n] \to X$. Let $n_0 \geq 1$ be fixed. I claim that $f_{n_0}$ is injective, which will then yield a contradiction by taking $n_0 > \mathrm{card}(X)$. For $n \geq 1$ define $g_n : [n] \to [n_0]$ as follows. For $n \leq n_0$ it is the inclusion, and for $n \geq n_0$ it is the projection which keeps all elements of $[n_0]$ and maps all other elements to $n_0$. Observe that $g_{n+1} |_{[n]} = g_n$. Hence, there is a unique map $g : X \to [n_0]$ with $g \circ f_n = g_n$ for all $n$. For $n = n_0$ this shows $g \circ f_{n_0} = \mathrm{id}_{[n_0]}$, and $f_{n_0}$ is injective.'
+		'Let $[n] := \{1,\dotsc,n\}$. Assume the sequence of inclusion maps $[1] \to [2] \to \cdots$ has a colimit $X$ in $\mathbf{FinSet}$ with maps $f_n : [n] \to X$. Let $n_0 \geq 1$ be fixed. I claim that $f_{n_0}$ is injective, which will then yield a contradiction by taking $n_0 > \mathrm{card}(X)$. For $n \geq 1$ define $g_n : [n] \to [n_0]$ as follows. For $n \leq n_0$ it is the inclusion, and for $n \geq n_0$ it is the surjection which keeps all elements of $[n_0]$ and maps all other elements to $n_0$. Observe that $g_{n+1} |_{[n]} = g_n$. Hence, there is a unique map $g : X \to [n_0]$ with $g \circ f_n = g_n$ for all $n$. For $n = n_0$ this shows $g \circ f_{n_0} = \mathrm{id}_{[n_0]}$, and $f_{n_0}$ is injective.'
 	),
 	(
 		'FinSet',
@@ -581,8 +581,13 @@ VALUES
 	),
 	(
 		'FinOrd',
+		'binary products',
+		'The forgetful functor to $\mathbf{Set}$ is representable, hence preserves all limits. Thus, if the product $\{0 < 1\} \times \{0 < 1\}$ exists in $\mathbf{FinOrd}$, we may assume its underlying set is the cartesian product and the projection morphisms are the usual projection maps. Moreover, these maps are order-preserving. Since the result must be a total order, we have $(0,1) \leq (1,0)$ or $(1,0) \leq (0,1)$. In the first case, apply $p_2$ to get $1 \leq 0$, a contradiction. In the second case, use $p_1$ to get a contradiction.'
+	),
+	(
+		'FinOrd',
 		'binary coproducts',
-		NULL
+		'Assume that the coproduct of two terminal objects exists, denoted $\{x\}$ and $\{y\}$. If $x \leq y$ holds in the coproduct, then the universal property would imply this relation for all pairs of elements in any finite order, which is absurd. Otherwise, $y \leq x$ holds in the coproduct, which yields the same contradiction.'
 	),
 	(
 		'FinOrd',
@@ -591,23 +596,13 @@ VALUES
 	),
 	(
 		'FinOrd',
-		'subobject classifier',
-		NULL
-	),
-	(
-		'FinOrd',
-		'cartesian closed',
-		NULL
+		'sequential limits',
+		'The forgetful functor to $\mathbf{Set}$ is representable, hence preserves all limits. Thus, if the diagram of truncation maps $\cdots \twoheadrightarrow \{0<1<2\} \twoheadrightarrow \{0<1\} \twoheadrightarrow \{0\}$ has a limit in $\mathbf{FinOrd}$, its underlying set is isomorphic to the limit taken in $\mathbf{Set}$, which is $\mathbb{N} \cup \{\infty\}$. But this is not a finite set.'
 	),
 	(
 		'FinOrd',
 		'sequential colimits',
-		NULL
-	),
-	(
-		'FinOrd',
-		'countable products',
-		NULL
+		'Let $[n] := \{1 < \cdots < n\}$. Assume the sequence of inclusion maps $[1] \to [2] \to \cdots$ has a colimit $X$ in $\mathbf{FinOrd}$ with maps $f_n : [n] \to X$. Let $n_0 \geq 1$ be fixed. I claim that $f_{n_0}$ is injective, which will then yield a contradiction by taking $n_0 > \mathrm{card}(X)$. For $n \geq 1$ define $g_n : [n] \to [n_0]$ as follows. For $n \leq n_0$ it is the inclusion, and for $n \geq n_0$ it is the surjection which keeps all elements of $[n_0]$ and maps all other elements to $n_0$. Observe that $g_n$ preserves the order and $g_{n+1} |_{[n]} = g_n$. Hence, there is a unique order-preserving map $g : X \to [n_0]$ with $g \circ f_n = g_n$ for all $n$. For $n = n_0$ this shows $g \circ f_{n_0} = \mathrm{id}_{[n_0]}$, and $f_{n_0}$ is injective.'
 	),
 	(
 		'FinOrd',
@@ -616,8 +611,8 @@ VALUES
 	),
 	(
 		'FinOrd',
-		'Malcev',
-		NULL
+		'essentially finite',
+		'trivial'
 	),
 
 	-- tiny categories
