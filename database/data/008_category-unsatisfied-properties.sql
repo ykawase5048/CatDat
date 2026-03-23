@@ -1265,7 +1265,7 @@ VALUES
 	(
 		'FreeAb',
 		'countable products',
-		NULL
+		'Assume that the product $P$ of countably many copies of $\mathbb{Z}$ exists in this category. The projections $P \to \mathbb{Z}$ induce an isomorphism of abelian groups $\mathrm{Hom}(\mathbb{Z}, P) \to \prod_n \mathrm{Hom}(\mathbb{Z}, \mathbb{Z})$, hence $P \cong \mathbb{Z}^{\mathbb{N}}$. But it is <a href="https://groupprops.subwiki.org/wiki/Baer-Specker_group_is_not_free_abelian" target="_blank">well-known</a> that $\mathbb{Z}^{\mathbb{N}}$ is not free abelian.'
 	),
 	(
 		'FreeAb',
