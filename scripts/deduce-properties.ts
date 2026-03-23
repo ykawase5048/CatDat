@@ -34,7 +34,7 @@ export async function deduce_all_properties(db: Client) {
 
 async function get_categories(tx: Transaction) {
 	const res = await tx.execute(`
-		SELECT id AS category_id FROM categories ORDER BY name
+		SELECT id AS category_id FROM categories ORDER BY lower(name)
 	`)
 	return res.rows as unknown as { category_id: string }[]
 }

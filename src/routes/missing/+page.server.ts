@@ -27,6 +27,7 @@ export const load = async () => {
 				sm_iso.category_id IS NULL
 				OR sm_epi.category_id IS NULL
 				OR sm_mono.category_id IS NULL
+			ORDER BY lower(c.name)
 		`,
 		// categories with unknown properties
 		sql`
@@ -38,7 +39,7 @@ export const load = async () => {
 				AND cp.property_id = p.id
 			WHERE
 				cp.property_id IS NULL
-			ORDER BY c.id
+			ORDER BY lower(c.name)
 		`,
 		// number of unknown (category, property)-pairs
 		sql`
@@ -59,6 +60,7 @@ export const load = async () => {
 				SELECT 1 FROM category_property_assignments cp
 				WHERE cp.category_id = c.id AND cp.reason IS NULL
 			)
+			ORDER BY lower(c.name)
 		`,
 	])
 

@@ -48,7 +48,7 @@ export const load = async (event) => {
 			FROM related_categories r
 			INNER JOIN categories c ON c.id = r.related_category_id
 			WHERE r.category_id = ${id}
-			ORDER BY id
+			ORDER BY lower(c.name)
 		`,
 		// tags
 		sql`

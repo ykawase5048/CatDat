@@ -19,7 +19,7 @@ export const load = async (event) => {
 		SELECT c.id, c.name FROM categories c
 		LEFT JOIN category_tags t ON c.id = t.category_id
 		WHERE t.tag = ${tag}
-		ORDER BY name
+		ORDER BY lower(name)
 	`)
 
 	if (err) error(500, 'Categories could not be loaded')

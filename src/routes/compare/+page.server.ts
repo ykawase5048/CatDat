@@ -7,7 +7,7 @@ export const prerender = true
 
 export const load = async () => {
 	const { rows: categories, err } = await query<CategoryShort>(sql`
-		SELECT id, name FROM categories ORDER BY name
+		SELECT id, name FROM categories ORDER BY lower(name)
 	`)
 
 	if (err) error(500, 'Categories could not be loaded')

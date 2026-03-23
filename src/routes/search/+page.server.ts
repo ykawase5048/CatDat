@@ -113,6 +113,7 @@ export const load = async (event) => {
 					ELSE 0
 				END
 			) = ${unsatisfied_properties.length}
+		ORDER BY lower(c.name)
 	`
 
 	const { rows: found_categories, err } = await query<CategoryShort>({

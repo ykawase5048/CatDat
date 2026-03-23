@@ -65,6 +65,7 @@ export const load = async (event) => {
 			FROM category_property_assignments cp
 			INNER JOIN categories c ON c.id = cp.category_id
 			WHERE cp.property_id = ${id}
+			ORDER BY lower(c.name)
 		`,
 		// unknown categories
 		sql`
@@ -75,7 +76,7 @@ export const load = async (event) => {
 				AND cp.property_id = ${id}
 			WHERE
 				cp.property_id IS NULL
-			ORDER BY c.name
+			ORDER BY lower(c.name)
 		`,
 	])
 
