@@ -97,6 +97,11 @@ VALUES
 		'Every nonempty space is weakly terminal (by using constant maps).'
 	),
 	(
+		'Top',
+		'coregular',
+		'The category has all limits and colimits, and the regular monomorphisms are the subspace inclusions. Thus, it suffices to prove that subspace inclusions are stable under pushouts. For a proof see e.g. Lemma 3.6 at the <a href="https://ncatlab.org/nlab/show/subspace+topology#pushout" target="_blank">nLab</a>.'
+	),
+	(
 		'Grp',
 		'locally small',
 		'There is a forgetful functor $\mathbf{Grp} \to \mathbf{Set}$ and $\mathbf{Set}$ is locally small.'
@@ -1116,6 +1121,16 @@ VALUES
 	(
 		'Z',
 		'epi-regular',
+		'follows immediately from the fact for $\mathbf{Set}$'
+	),
+	(
+		'Z',
+		'regular',
+		'follows immediately from the fact for $\mathbf{Set}$'
+	),
+	(
+		'Z',
+		'coregular',
 		'follows immediately from the fact for $\mathbf{Set}$'
 	),
 

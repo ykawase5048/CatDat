@@ -88,4 +88,6 @@ VALUES
 	('Cauchy complete', 'finitely complete'),
 	('Malcev', 'finitely complete'),
 	('connected', 'strongly connected'),
-	('strongly connected', 'connected');
+	('strongly connected', 'connected'),
+	('regular', 'finitely complete'),
+	('coregular', 'finitely cocomplete');

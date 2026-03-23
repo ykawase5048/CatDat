@@ -42,6 +42,7 @@
 	"well-powered": true,
 	"wide pullbacks": true,
 	"wide pushouts": true,
+	"coregular": true,
 
 	"abelian": false,
 	"additive": false,
@@ -80,5 +81,6 @@
 	"zero morphisms": false,
 	"codistributive": false,
 	"infinitary codistributive": false,
-	"biproducts": false
+	"biproducts": false,
+	"regular": false
 }

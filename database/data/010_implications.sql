@@ -777,5 +777,46 @@ VALUES
 		'["locally cartesian closed"]',
 		'See <a href="https://ncatlab.org/nlab/show/Sketches+of+an+Elephant" target="_blank">Johnstone</a>, Cor. A2.3.4.',
 		FALSE
+	),
+	(
+		'lcc_implies_regular',
+		'["locally cartesian closed", "coequalizers", "finitely complete"]',
+		'["regular"]',
+		'See <a href="https://ncatlab.org/nlab/show/Sketches+of+an+Elephant" target="_blank">Johnstone</a>, Lemma A1.5.13. (From this it follows also that every elementary topos is regular.)',
+		FALSE
+	),
+	(
+		'regular_def',
+		'["regular"]',
+		'["finitely complete"]',
+		'This holds by definition of a regular category.',
+		FALSE
+	),
+	(
+		'abelian_implies_regular',
+		'["abelian"]',
+		'["regular"]',
+		'In an abelian category, every epimorphism is regular, and epimorphisms are pullback-stable, see <a href="https://ncatlab.org/nlab/show/Categories+for+the+Working+Mathematician" target="_blank">Mac Lane</a>, Ch. VIII.',
+		FALSE
+	),
+	(
+		'algebraic_implies_regular',
+		'["finitary algebraic"]',
+		'["regular"]',
+		'The regular epimorphisms are precisely the surjective algebra homomorphisms, which are clearly stable under pullbacks.',
+		FALSE
+	),
+	(
+		'topos_implies_coregular',
+		'["elementary topos"]',
+		'["coregular"]',
+		'This is proven in <a href="https://ncatlab.org/nlab/show/Sketches+of+an+Elephant" target="_blank">Johnstone</a>, A2.6.3 (for every quasitopos).',
+		FALSE
+	),
+	(
+		'thin_implies_regular',
+		'["thin", "finitely complete"]',
+		'["regular"]',
+		'In a thin category, regular epimorphisms are isomorphisms, and the rest is clear as well.',
+		FALSE
 	);
-

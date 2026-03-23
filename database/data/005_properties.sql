@@ -660,4 +660,20 @@ VALUES
 		'https://ncatlab.org/nlab/show/Malcev+category',
 		NULL,
 		TRUE
+	),
+	(
+		'regular',
+		'is',
+		'A category is <i>regular</i> when it is finitely complete, for every morphism $X \to Y$ its kernel pair $X \times_Y X \rightrightarrows X$ has a coequalizer, and regular epimorphisms are stable under pullbacks.',
+		'https://ncatlab.org/nlab/show/regular+category',
+		'coregular',
+		TRUE
+	),
+	(
+		'coregular',
+		'is',
+		'A category is <i>coregular</i> when it is finitely cocomplete, for every morphism $Y \to X$ its cokernel pair $X \rightrightarrows X \sqcup_Y X$ has an equalizer, and regular monomorphisms are stable under pushouts.',
+		NULL,		
+		'regular',
+		TRUE
 	);

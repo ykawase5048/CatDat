@@ -55,6 +55,8 @@
 	"wide pushouts": true,
 	"zero morphisms": true,
 	"biproducts": true,
+	"regular": true,
+	"coregular": true,
 
 	"cartesian closed": false,
 	"locally cartesian closed": false,

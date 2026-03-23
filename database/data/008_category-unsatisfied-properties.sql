@@ -43,6 +43,11 @@ VALUES
 	),
 	(
 		'Top',
+		'regular',
+		'See Example 3.14 at the <a href="https://ncatlab.org/nlab/show/regular+category" target="_blank">nLab</a>.'
+	),
+	(
+		'Top',
 		'locally presentable',
 		'In fact, it does not have any small dense subcategory by <a href="https://math.stackexchange.com/questions/4097315/" target="_blank">MSE/4097315</a>. For a related result, see <a href="https://mathoverflow.net/questions/288648" target="_blank">MO/288648</a>.'
 	),
@@ -315,6 +320,11 @@ VALUES
 		'Pos',
 		'finitary algebraic',
 		NULL
+	),
+	(
+		'Pos',
+		'regular',
+		'See Example 3.14 at the <a href="https://ncatlab.org/nlab/show/regular+category" target="_blank">nLab</a>.'
 	),
 	(
 		'Pos',
@@ -1184,6 +1194,11 @@ VALUES
 		'Cat',
 		'locally cartesian closed',
 		'See Theorem 4.4 of <a href="https://www.numdam.org/item/MSMF_1964__2__R3_0/" target="_blank">Giraud 1964</a>.'
+	),
+	(
+		'Cat',
+		'regular',
+		'See Example 3.14 at the <a href="https://ncatlab.org/nlab/show/regular+category" target="_blank">nLab</a>.'
 	),
 	(
 		'Fld',

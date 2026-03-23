@@ -55,6 +55,8 @@
 	"well-powered": true,
 	"wide pullbacks": true,
 	"wide pushouts": true,
+	"regular": true,
+	"coregular": true,
 
 	"Grothendieck abelian": false,
 	"Malcev": false,
