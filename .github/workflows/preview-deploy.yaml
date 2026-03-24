@@ -1,6 +1,11 @@
-name: production deployment
+name: preview deployment
 
 on:
+    push:
+        branches:
+            - main
+        paths-ignore:
+            - '*.md'
     workflow_dispatch:
 
 jobs:
@@ -30,24 +35,23 @@ jobs:
 
             - name: Update database
               env:
-                  DB_URL: ${{ secrets.DB_URL }}
-                  DB_AUTH_TOKEN: ${{ secrets.DB_AUTH_TOKEN }}
+                  DB_URL: ${{ secrets.DB_PREVIEW_URL }}
+                  DB_AUTH_TOKEN: ${{ secrets.DB_PREVIEW_AUTH_TOKEN }}
               run: pnpm db:update
 
             - name: Build app
               env:
-                  DB_URL: ${{ secrets.DB_URL }}
-                  DB_AUTH_TOKEN: ${{ secrets.DB_AUTH_TOKEN }}
-                  DB_HTTP_URL: ${{ secrets.DB_HTTP_URL }}
-                  DB_AUTH_TOKEN_HTTP: ${{ secrets.DB_AUTH_TOKEN_HTTP }}
+                  DB_URL: ${{ secrets.DB_PREVIEW_URL }}
+                  DB_AUTH_TOKEN: ${{ secrets.DB_PREVIEW_AUTH_TOKEN }}
+                  DB_HTTP_URL: ${{ secrets.DB_PREVIEW_HTTP_URL }}
+                  DB_AUTH_TOKEN_HTTP: ${{ secrets.DB_PREVIEW_AUTH_TOKEN_HTTP }}
                   INTERNAL_API_KEY: ${{ secrets.INTERNAL_API_KEY }}
               run: pnpm build
 
-            - name: Deploy to Netlify - Production
+            - name: Deploy to Netlify - Preview
               run: |
                   pnpm exec netlify deploy --no-build \
                     --dir build \
                     --site ${{ secrets.NETLIFY_SITE_ID }} \
                     --auth ${{ secrets.NETLIFY_ACCESS_TOKEN }} \
-                    --message "${{ github.event.head_commit.message }}" \
-                    --prod
+                    --message "${{ github.event.head_commit.message }}"
