@@ -302,6 +302,11 @@ VALUES
 		'Every epimorphism is surjective for this category, and in an algebraic category every surjective homomorphism is a regular epimorphism.'
 	),
 	(
+		'Set*',
+		'coregular',
+		'From the other properties we know that (co-)limits exist and that monomorphisms coincide with injective pointed maps. So it suffices to prove that these maps are stable under pushouts. This follows from the corresponding fact for the <a href="/category/Set">category of sets</a> and the observation that the forgetful functor $\mathbf{Set}_* \to \mathbf{Set}$ preserves pushouts.'
+	),
+	(
 		'Mon',
 		'locally small',
 		'There is a forgetful functor $\mathbf{Mon} \to \mathbf{Set}$ and $\mathbf{Set}$ is locally small.'

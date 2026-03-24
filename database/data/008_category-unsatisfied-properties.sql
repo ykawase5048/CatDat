@@ -97,6 +97,11 @@ VALUES
 		'trivial'
 	),
 	(
+		'Grp',
+		'coregular',
+		'This is because injective group homomorphisms are not stable under pushouts, see e.g. <a href="https://math.stackexchange.com/questions/601463/" target="_blank">MSE/601463</a> or <a href="https://math.stackexchange.com/questions/5088032" target="_blank">MSE/5088032</a>.'
+	),
+	(
 		'Vect',
 		'trivial',
 		'trivial'
@@ -197,6 +202,11 @@ VALUES
 		'There is no homomorphism between $\mathbb{F}_2$ and $\mathbb{F}_3$.'
 	),
 	(
+		'CRing',
+		'coregular',
+		'See <a href="https://math.stackexchange.com/questions/3745302" target="_blank">MSE/3745302</a>.'
+	),
+	(
 		'CAlg(R)',
 		'strict initial object',
 		'The homomorphism $p_1 : R \times R \to R$ is not an isomorphism, and $R$ is initial.'
@@ -225,6 +235,11 @@ VALUES
 		'CAlg(R)',
 		'strongly connected',
 		'Choose a maximal ideal $\mathfrak{m}$ of $R$, so $K := R/\mathfrak{m}$ is a field. If $\mathbf{CAlg}(R)$ is strongly connected, then also $\mathbf{CAlg}(K)$ is strongly connected. This has been disproven in <a href="https://math.stackexchange.com/questions/5129689" target="_blank">MSE/5129689</a>.'
+	),
+	(
+		'CAlg(R)',
+		'coregular',
+		'See <a href="https://math.stackexchange.com/questions/3745302" target="_blank">MSE/3745302</a>.'
 	),
 	(
 		'Rng',
