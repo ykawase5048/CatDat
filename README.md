@@ -3,11 +3,11 @@
 ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+## [**https://catdat.app**](https://catdat.app)
+
 _A comprehensive and searchable database of categories and their properties_
 
-👉 <https://catdat.app>
-
-👉 [Watch the YouTube video](https://youtu.be/dQXbPxk__qA)
+[Watch the YouTube video](https://youtu.be/dQXbPxk__qA)
 
 ## Features
 
