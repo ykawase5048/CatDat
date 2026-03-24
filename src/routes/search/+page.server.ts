@@ -8,6 +8,8 @@ import { check_consistency } from '$lib/server/consistency'
 import { to_placeholders } from '$lib/server/utils'
 import { get_deployment_status } from '$lib/server/deployment'
 
+export const prerender = false
+
 export const load = async (event) => {
 	const { rows: all_properties_objects, err: err_all } = await query<{
 		id: string

@@ -14,8 +14,6 @@ import type {
 	TagObject,
 } from '$lib/commons/types'
 
-export const prerender = true
-
 export const load = async (event) => {
 	const id = event.params.id
 

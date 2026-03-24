@@ -3,8 +3,6 @@ import sql from 'sql-template-tag'
 import { query } from '$lib/server/db'
 import { error } from '@sveltejs/kit'
 
-export const prerender = true
-
 export const load = async () => {
 	const { rows: categories, err } = await query<CategoryShort>(sql`
 		SELECT id, name FROM categories ORDER BY lower(name)

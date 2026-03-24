@@ -7,8 +7,6 @@ import type { CategoryShort, PropertyDB } from '$lib/commons/types'
 import type { ImplicationDB } from '$lib/commons/types'
 import { display_implication, display_property } from '$lib/server/utils'
 
-export const prerender = true
-
 export const load = async (event) => {
 	const id = decode_property_ID(event.params.id)
 

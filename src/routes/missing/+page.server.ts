@@ -4,8 +4,6 @@ import type { CategoryShort } from '$lib/commons/types'
 import { error } from '@sveltejs/kit'
 import { get_missing_combinations } from '$lib/server/consistency'
 
-export const prerender = true
-
 export const load = async () => {
 	const { results, err } = await batch<
 		[CategoryShort, CategoryShort, { total: number }, CategoryShort]

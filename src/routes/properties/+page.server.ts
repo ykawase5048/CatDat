@@ -3,8 +3,6 @@ import { query } from '$lib/server/db'
 import { error } from '@sveltejs/kit'
 import sql from 'sql-template-tag'
 
-export const prerender = true
-
 export const load = async () => {
 	const { rows: properties, err } = await query<PropertyShort>(sql`
 		SELECT id, prefix FROM properties

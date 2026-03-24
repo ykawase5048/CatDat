@@ -5,8 +5,6 @@ import { error } from '@sveltejs/kit'
 import type { ImplicationDB, ImplicationDisplay } from '$lib/commons/types'
 import { display_implication } from '$lib/server/utils'
 
-export const prerender = true
-
 export const load = async () => {
 	const { rows, err } = await query<ImplicationDB>(sql`
 		SELECT

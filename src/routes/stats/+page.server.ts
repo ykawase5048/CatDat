@@ -2,6 +2,8 @@ import { batch } from '$lib/server/db'
 import { error } from '@sveltejs/kit'
 import sql from 'sql-template-tag'
 
+export const prerender = false
+
 const COUNTRY_COUNT_THRESHOLD = 10
 
 export const load = async () => {

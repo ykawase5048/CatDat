@@ -4,6 +4,8 @@ import { render_nested_formulas } from '$lib/server/rendering'
 import { MAX_CATEGORIES_COMPARE } from '../compare.config'
 import { get_deployment_status } from '$lib/server/deployment'
 
+export const prerender = false
+
 export const load = async (event) => {
 	const compared_ids = event.params.ids.split('/')
 
