@@ -11,10 +11,6 @@ INSERT INTO category_comments (
         'Lots of properties are unknown here. Please help to fill in the gaps!'
     ),
     (
-        'Sch',
-        'Lots of properties are unknown here. Please help to fill in the gaps!'
-    ),
-    (
         'Ring',
         'It is likely that the epimorphisms can be described as in the <a href="/category/CRing">commutative case</a>.'
     ),
@@ -23,12 +19,24 @@ INSERT INTO category_comments (
         'It is likely that the epimorphisms can be described as in the <a href="/category/CRing">commutative, unital case</a>.'
     ),
     (
+        'CRing',
+        'Regular monomorphisms are discussed in <a href="https://math.stackexchange.com/questions/695685" target="_blank">MSE/695685</a>, but probably they cannot be classified.' 
+    ),
+    (
         'Fld',
         'Limits and colimits are discussed in <a href="https://math.stackexchange.com/questions/359352" target="_blank">MSE/359352</a>.'
     ),
     (
         'Sch',
+        'Lots of properties are unknown here. Please help to fill in the gaps!'
+    ),
+    (
+        'Sch',
         'Monomorphisms are discussed at <a href="https://mathoverflow.net/questions/56591" target="_blank">MO/56591</a>. At least the case of morphisms of locally finite type is understood.'
+    ),
+    (
+        'Sch',
+        'Regular monomorphisms are discussed at <a href="https://mathoverflow.net/questions/66279" target="_blank">MO/66279</a>.'
     ),
     (
         'Sch',
