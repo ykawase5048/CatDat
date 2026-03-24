@@ -43,11 +43,14 @@ jobs:
                   INTERNAL_API_KEY: ${{ secrets.INTERNAL_API_KEY }}
               run: pnpm build
 
+            - name: Get latest commit message
+              run: echo "COMMIT_MESSAGE=$(git log -1 --pretty=%B)" >> $GITHUB_ENV
+
             - name: Deploy to Netlify - Production
               run: |
                   pnpm exec netlify deploy --no-build \
                     --dir build \
                     --site ${{ secrets.NETLIFY_SITE_ID }} \
                     --auth ${{ secrets.NETLIFY_ACCESS_TOKEN }} \
-                    --message "${{ github.event.head_commit.message }}" \
+                    --message "${{ env.COMMIT_MESSAGE }}" \
                     --prod
