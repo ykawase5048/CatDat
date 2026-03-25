@@ -394,16 +394,16 @@ VALUES
 		'locally ringed spaces',
 		'morphisms of locally ringed spaces, thus consisting of a continuous map and a homomorphism of sheaves that induces local ring homomorphisms in the stalks',
 		NULL,
-		NULL
+		'https://ncatlab.org/nlab/show/locally+ringed+topological+space'
 	),
 	(
 		'Sch',
 		'category of schemes',
 		'$\mathbf{Sch}$',
 		'schemes',
-		'morphism of locally ringed spaces',
+		'morphisms of locally ringed spaces',
 		NULL,
-		NULL
+		'https://ncatlab.org/nlab/show/scheme'
 	),
 	(
 		'Z',
