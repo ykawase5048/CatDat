@@ -1,10 +1,8 @@
-INSERT INTO special_objects (
-    category_id,
-    type,
-    description
-)
+INSERT INTO special_objects (category_id, type, description)
 VALUES
+---------------------------------------------------------------
 -- all products
+---------------------------------------------------------------
 ('1', 'products', '$0 \times 0$'),
 ('Ab', 'products', 'direct products with pointwise operations'),
 ('Alg(R)', 'products', 'direct products with pointwise operations'),
@@ -40,7 +38,10 @@ VALUES
 ('walking_composable_pair', 'products', 'infimum taken in $\{0 < 1 < 2\}$'),
 ('Z', 'products', 'pointwise defined direct product'),
 ('Zdiv', 'products', 'greatest common divisor'),
+
+---------------------------------------------------------------
 -- only finite and countable products
+---------------------------------------------------------------
 ('Sp', 'products', '[finite case] pointwise defined direct product'),
 ('FinAb', 'products', '[finite case] direct products with pointwise operations'),
 ('FinOrd', 'products', '[finite case] direct products with the evident order'),

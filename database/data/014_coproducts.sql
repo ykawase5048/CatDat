@@ -1,10 +1,8 @@
-INSERT INTO special_objects (
-    category_id,
-    type,
-    description
-)
+INSERT INTO special_objects (category_id ,type, description)
 VALUES
+---------------------------------------------------------------
 -- all coproducts
+---------------------------------------------------------------
 ('1', 'coproducts', '$0 \sqcup 0 = 0$'),
 ('Ab', 'coproducts', 'direct sums'),
 ('Alg(R)', 'coproducts', 'see <a href="https://math.stackexchange.com/questions/625874" target="_blank">MSE/625874</a>'),
@@ -43,7 +41,10 @@ VALUES
 ('walking_composable_pair', 'coproducts', 'supremum taken in $\{0 < 1 < 2\}$'),
 ('Z', 'coproducts', 'pointwise disjoint union'),
 ('Zdiv', 'coproducts', 'the least common multiple, can be $0$ for infinite families'),
+
+---------------------------------------------------------------
 -- only finite and countable coproducts
+---------------------------------------------------------------
 ('Sp', 'coproducts', '[finite case] pointwise finite disjoint union'),
 ('FinAb', 'coproducts', '[finite case] direct sum'),
 ('FinSet', 'coproducts', '[finite case] disjoint union'),

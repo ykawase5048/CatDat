@@ -1,8 +1,4 @@
-INSERT INTO special_objects (
-    category_id,
-    type,
-    description
-)
+INSERT INTO special_objects (category_id, type, description)
 VALUES
 ('1', 'terminal object', 'the unique object'),
 ('Ab', 'terminal object', 'trivial group'),
