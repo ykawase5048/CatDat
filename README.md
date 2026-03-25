@@ -7,26 +7,26 @@
 
 ## [**https://catdat.app**](https://catdat.app)
 
-_A comprehensive and searchable database of categories and their properties_
+_CatDat_ provides a growing collection of categories, each with detailed descriptions
+and properties. Built by and for those who love [category theory](https://en.wikipedia.org/wiki/Category_theory).
 
 [Watch the YouTube video](https://youtu.be/dQXbPxk__qA)
 
 ## Features
 
-- **Searchable Database**: Easily find [categories](https://en.wikipedia.org/wiki/Category_theory) based on satisfied properties and unsatisfied properties.
-- **Deduction System**: Automatically infers properties from existing ones, powered by a database of implications.
-- **Reason/Reference for Implications**: Each implication has a reason/reference, providing a data-based knowledge base of category theory.
+- **Category Detail Pages**: Explore a category’s definition, its satisfied and unsatisfied properties, and related categories.
+- **Property Detail Pages**: Explore the definition of a property and view categories that satisfy it and those that don't.
+- **Reasons and References**: Each property and implication includes a reason or reference, forming a data-driven knowledge base for category theory.
+- **Deduction System**: Automatically infers properties from existing ones using a database of implications.
 - **Automatic Dualization**: Automatically dualizes implications.
-- **Comprehensive Definitions**: Detailed definitions of properties and categories.
-- **Comparison Feature**: Compare multiple categories to see their differences.
-- **Find Related Categories**: Discover categories related to your search.
-- **Customizable Display**: Light/dark mode, show/hide deduced properties.
-- **References to nLab**: Links to the [nLab](https://ncatlab.org) for detailed information.
-- **Intuitive User Interface**: Easy to use on both mobile and desktop.
+- **Searchable Database**: Find categories based on satisfied properties and unsatisfied properties.
+- **Comparison Feature**: Compare multiple categories to identify their differences and similarities.
+- **Customizable Display**: Light/dark mode and optional display of deduced properties.
+- **Intuitive User Interface**: Usable on both mobile and desktop.
 
 ## How to contribute
 
-This project is a **community effort**. See our [contribution guidelines](CONTRIBUTING.md) for more information
+This project is a **community effort**. Whether you're a mathematician spotting missing data or a developer improving the interface, your contributions are welcome. See our [contribution guidelines](CONTRIBUTING.md) for details.
 
 ## Documentation
 
@@ -46,14 +46,17 @@ You need to have [NodeJS](https://nodejs.org/) and [pnpm](https://pnpm.io/) inst
 
 ## Tech Stack
 
+Built with modern web technologies:
+
 - Language: [TypeScript](https://www.typescriptlang.org)
-- App framework: [SvelteKit](https://svelte.dev/docs/kit/introduction)
-- Database: [SQLite](https://sqlite.org/)
-- App Deployment: [Netlify](https://netlify.com)
-- Database Deployment: [Turso](https://turso.tech)
-- TeX math rendering: [katex](https://www.npmjs.com/package/katex)
+- Framework: [SvelteKit](https://svelte.dev/docs/kit/introduction)
+- Database: [SQLite](https://sqlite.org/) / [Turso](https://turso.tech)
+- Deployment: [Netlify](https://netlify.com)
+- Math Rendering: [katex](https://www.npmjs.com/package/katex)
 
 ## Similar projects
+
+_CatDat_ draws inspiration from and complements other resources in category theory:
 
 - **[Catabase](https://catabase.fly.dev)**: A similar project that appears to be abandoned. It is more ambitious in terms of available data types but less complete for basic categories. The UI is not very intuitive, and it lacks an integrated deduction system between properties. See the [nForum announcement](https://nforum.ncatlab.org/discussion/13419/catabase-a-database-of-categories/).
 - **[SmallCategories](https://smallcats.info/)**: A similar project that also appears to be abandoned. A particular emphasis is given to enumerating all finite categories.
