@@ -309,7 +309,7 @@ VALUES
 		'has',
 		'A category has <i>disjoint finite coproducts</i> if it has finite coproducts, for every pair of objects $A,B$ the coproduct inclusions $A \rightarrow A+B \leftarrow B$ are monomorphisms, and the pullback $A \times_{A + B} B$ exists and is given by the initial object $0$.',
 		'https://ncatlab.org/nlab/show/disjoint+coproduct',
-		NULL,
+		'disjoint finite products',
 		TRUE
 	),
 	(
@@ -317,7 +317,23 @@ VALUES
 		'has',
 		'A category has <i>disjoint coproducts</i> if it has coproducts, the coproduct inclusions $A_i \to \coprod_{i \in I} A_i$ are monomorphisms, and the pullback of the inclusions $A_i \to \coprod_{i \in I} A_i$ and $A_j \to \coprod_{i \in I} A_i$ for $i \neq j$ exists and is given by the initial object $0$.',
 		'https://ncatlab.org/nlab/show/disjoint+coproduct',
+		'disjoint products',
+		TRUE
+	),
+	(
+		'disjoint finite products',
+		'has',
+		'A category has <i>disjoint finite products</i> if it has finite products, for every pair of objects $A,B$ the product projections $A \leftarrow A \times B \rightarrow B$ are epimorphisms, and the pushout $A \sqcup_{A \times B} B$ exists and is given by the terminal object $1$.<br>This terminology does not seem to be common, but we have added it as a dual for the more commonly known property of having disjoint finite coproducts.',
 		NULL,
+		'disjoint finite coproducts',
+		TRUE
+	),
+	(
+		'disjoint products',
+		'has',
+		'A category has <i>disjoint products</i> if it has products, the product projections $\prod_{i \in I} A_i \to A_i$ are epimorphisms, and the pushout of the projections $\prod_{i \in I} A_i \to A_i$ and $\prod_{i \in I} A_i \to A_j$ for $i \neq j$ exists and is given by the terminal object $1$.<br>This terminology does not seem to be common, but we have added it as a dual for the more commonly known property of having disjoint coproducts.',
+		NULL,
+		'disjoint coproducts',
 		TRUE
 	),
 	(
@@ -675,5 +691,37 @@ VALUES
 		'A category is <i>coregular</i> when it is finitely cocomplete, for every morphism $Y \to X$ its cokernel pair $X \rightrightarrows X \sqcup_Y X$ has an equalizer, and regular monomorphisms are stable under pushouts.',
 		NULL,		
 		'regular',
+		TRUE
+	),
+	(
+		'extensive',
+		'is',
+		'A category $\mathcal{C}$ is <i>extensive</i> when it has finite coproducts and for all objects $A,B \in \mathcal{C}$ the coproduct functor $\mathcal{C}/A \times \mathcal{C}/B \to \mathcal{C}/(A+B)$ is an equivalence of categories. Equivalently, pullbacks of finite coproduct inclusions along arbitrary morphisms exist and finite coproducts are disjoint and stable under pullback.',
+		'https://ncatlab.org/nlab/show/extensive+category',
+		'coextensive',
+		TRUE
+	),
+	(
+		'coextensive',
+		'is',
+		'A category $\mathcal{C}$ is <i>coextensive</i> when it has finite products and for all objects $A,B \in \mathcal{C}$ the product functor $A/\mathcal{C} \times B/\mathcal{C} \to (A \times B)/\mathcal{C}$ is an equivalence of categories. The prototypical example is the category of commutative rings.',
+		NULL,
+		'extensive',
+		TRUE
+	),
+	(
+		'infinitary extensive',
+		'is',
+		'A category $\mathcal{C}$ is <i>infinitary extensive</i> when it has coproducts and for all families of objects $(A_i)_{i \in I}$ the coproduct functor $\prod_{i \in I} \mathcal{C}/A_i \to \mathcal{C}/(\coprod_{i \in I} A_i)$ is an equivalence of categories. Equivalently, pullbacks of coproduct inclusions along arbitrary morphisms exist and coproducts are disjoint and stable under pullback.',
+		'https://ncatlab.org/nlab/show/extensive+category',
+		'infinitary coextensive',
+		TRUE
+	),
+	(
+		'infinitary coextensive',
+		'is',
+		'A category $\mathcal{C}$ is <i>infinitary coextensive</i> when it has products and for all families of objects $(A_i)_{i \in I}$ the product functor $\prod_{i \in I} A_i / \mathcal{C}/A_i \to \prod_{i \in I} A_i / \mathcal{C}$ is an equivalence of categories. <br>This terminology does not seem to be common, but we have added it as a dual for the more commonly known property of being infinitary extensive.',
+		NULL,
+		'infinitary extensive',
 		TRUE
 	);

@@ -501,6 +501,27 @@ VALUES
 		'This is standard, see e.g. Prop. 2.1 on the <a href="https://ncatlab.org/nlab/show/additive+category" target="_blank">nLab</a>.',
 		FALSE
 	),
+	(
+		'extensive_assumption',
+		'["extensive"]',
+		'["finite coproducts"]',
+		'This holds by definition.',
+		FALSE
+	),
+	(
+		'infinitary_extensive_assumption',
+		'["infinitary extensive"]',
+		'["coproducts"]',
+		'This holds by definition.',
+		FALSE
+	),
+	(
+		'infinitary_extensive_finitary',
+		'["infinitary extensive"]',
+		'["extensive"]',
+		'This is obvious.',
+		FALSE
+	),
 
 	-- standard implications
 	(
@@ -591,7 +612,7 @@ VALUES
 		'distributive_consequence',
 		'["distributive"]',
 		'["strict initial object"]',
-		'See the <a href="https://ncatlab.org/nlab/show/distributive+category" target="_blank">nLab</a>.',
+		'See the <a href="https://ncatlab.org/nlab/show/distributive+category" target="_blank">nLab</a> or Prop. 3.4 in <a href="https://doi.org/10.1016/0022-4049(93)90035-R" target="_blank">Introduction to extensive and distributive categories</a>.',
 		FALSE
 	),
 	(
@@ -690,6 +711,34 @@ VALUES
 		'["thin", "strongly connected"]',
 		'["locally cartesian closed"]',
 		'Each slice is thin, strongly connected, and has a terminal object. Every such category is cartesian closed, where the exponential $a \Rightarrow b$ (Heyting implication) is $1$ when $a \leq b$ and otherwise $b$.',
+		FALSE
+	),
+	(
+		'extensive_strict',
+		'["extensive"]',
+		'["strict initial object"]',
+		'This is Prop. 2.8 in <a href="https://doi.org/10.1016/0022-4049(93)90035-R" target="_blank">Introduction to extensive and distributive categories</a>.',
+		FALSE
+	),
+	(
+		'extensive_consequence',
+		'["extensive"]',
+		'["disjoint finite coproducts"]',
+		'This is Prop. 2.6 in <a href="https://doi.org/10.1016/0022-4049(93)90035-R" target="_blank">Introduction to extensive and distributive categories</a>.',
+		FALSE
+	),
+	(
+		'extensive_distributivity',
+		'["extensive", "finite products"]',
+		'["distributive"]',
+		'This is Prop. 4.5 in <a href="https://doi.org/10.1016/0022-4049(93)90035-R" target="_blank">Introduction to extensive and distributive categories</a>.',
+		FALSE
+	),
+	(
+		'infinitary_extensive_distributivity',
+		'["infinitary extensive", "finite products"]',
+		'["infinitary distributive"]',
+		'One can adjust the proof of Prop. 4.5 in <a href="https://doi.org/10.1016/0022-4049(93)90035-R" target="_blank">Introduction to extensive and distributive categories</a> (which deals with the finite case).',
 		FALSE
 	),
 
@@ -818,5 +867,33 @@ VALUES
 		'["thin", "finitely complete"]',
 		'["regular"]',
 		'In a thin category, regular epimorphisms are isomorphisms, and the rest is clear as well.',
+		FALSE
+	),
+	(
+		'lcc_implies_extensive',
+		'["locally cartesian closed", "disjoint finite coproducts"]',
+		'["extensive"]',
+		'The pullback functor preserves finite coproducts because it has a right adjoint. Remark: In combination with other implication, this result implies that every elementary topos is extensive.',
+		FALSE
+	),
+	(
+		'lcc_extensive_yields_infinitary',
+		'["locally cartesian closed", "cocomplete", "extensive"]',
+		'["infinitary extensive"]',
+		'The pullback functor preserves coproducts because it has a right adjoint. See also Remark 2.6 at the <a href="https://ncatlab.org/nlab/show/extensive+category" target="_blank">nLab</a>. ',
+		FALSE
+	),
+	(
+		'Grothendieck_extensive',
+		'["Grothendieck topos"]',
+		'["infinitary extensive"]',
+		'This is a part of <a href="https://ncatlab.org/nlab/show/Giraud%27s+theorem" target="_blank">Giraud''s Theorem</a>.',
+		FALSE
+	),
+	(
+		'algebras_with_0_disjoint_products',
+		'["finitary algebraic", "pointed"]',
+		'["disjoint products"]',
+		'We have a constant in every algebra, let us denoted it by $0$. Then the projection $A \times B \to A$ is clearly surjective, hence an epimorphism. To show that $A \sqcup_{A \times B} B$ is trivial, let $R$ be an algebra which admits homomorphisms $f : A \to R$, $g : B \to R$ such that $f(p_1(a,b)) = g(p_2(a,b))$ for all $(a,b) \times A \times B$. This means $f(a) = g(b)$. In particular, $f(a) = g(0) = 0$. Likewise, $g(b) = 0$, and we are done.',
 		FALSE
 	);

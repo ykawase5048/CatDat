@@ -57,6 +57,8 @@
 	"wide pushouts": true,
 	"regular": true,
 	"coregular": true,
+	"extensive": true,
+	"infinitary extensive": true,
 
 	"Grothendieck abelian": false,
 	"Malcev": false,
@@ -82,5 +84,9 @@
 	"zero morphisms": false,
 	"codistributive": false,
 	"infinitary codistributive": false,
-	"biproducts": false
+	"biproducts": false,
+	"disjoint finite products": false,
+	"disjoint products": false,
+	"coextensive": false,
+	"infinitary coextensive": false
 }

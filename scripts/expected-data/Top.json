@@ -43,6 +43,8 @@
 	"wide pullbacks": true,
 	"wide pushouts": true,
 	"coregular": true,
+	"extensive": true,
+	"infinitary extensive": true,
 
 	"abelian": false,
 	"additive": false,
@@ -82,5 +84,9 @@
 	"codistributive": false,
 	"infinitary codistributive": false,
 	"biproducts": false,
-	"regular": false
+	"regular": false,
+	"disjoint finite products": false,
+	"disjoint products": false,
+	"coextensive": false,
+	"infinitary coextensive": false
 }

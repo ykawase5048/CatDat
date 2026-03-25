@@ -57,6 +57,8 @@
 	"biproducts": true,
 	"regular": true,
 	"coregular": true,
+	"disjoint finite products": true,
+	"disjoint products": true,
 
 	"cartesian closed": false,
 	"locally cartesian closed": false,
@@ -82,5 +84,9 @@
 	"thin": false,
 	"trivial": false,
 	"codistributive": false,
-	"infinitary codistributive": false
+	"infinitary codistributive": false,
+	"extensive": false,
+	"infinitary extensive": false,
+	"coextensive": false,
+	"infinitary coextensive": false
 }

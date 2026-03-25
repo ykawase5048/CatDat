@@ -73,8 +73,8 @@ VALUES
 	),
 	(
 		'Top',
-		'infinitary distributive',
-		'The canonical continuous map $\coprod_i (X \times Y_i) \to X \times \coprod_{i \in I} Y_i$ is bijective since $\mathbf{Set}$ is infinitary distributive, and one easily checks with the definitions of product and coproduct topologies that it maps open sets to open sets.'
+		'infinitary extensive',
+		'[Sketch] Since $\mathbf{Set}$ is infinitary extensive, a map $f : Y \to \coprod_i X_i$ corresponds to a decomposition $Y = \coprod_i Y_i$ (as sets) with maps $f_i : Y_i \to X_i$. Endow $Y_i$ with the subspace topology. If $f$ is continuous, each $Y_i = f^{-1}(X_i)$ is open in $Y$, so that $Y = \coprod_i Y_i$ holds as topological spaces, and each $f_i$ is continuous.'
 	),
 	(
 		'Top',
@@ -85,11 +85,6 @@ VALUES
 		'Top',
 		'cogenerator',
 		'It is easily checked that the indiscrete two-point space is a cogenerator.'
-	),
-	(
-		'Top',
-		'disjoint coproducts',
-		'This follows easily from the corresponding fact for sets.'
 	),
 	(
 		'Top',
@@ -172,6 +167,12 @@ VALUES
 		'follows in the same way as for (additive) groups'
 	),
 	(
+		-- TODO: generalize proof
+		'Ring',
+		'disjoint finite products',
+		'To show that $A \sqcup_{A \times B} B$ is trivial, let $R$ be a ring which admits homomorphisms $f : A \to R$, $g : B \to R$ with $f(p_1(a,b))=g(p_2(a,b))$ for all $(a,b) \in A \times B$, i.e. $f(a)=g(b)$. Applying this to $a=0$, $b=1$ yields $1=0$ in $R$.'
+	),
+	(
 		'Alg(R)',
 		'locally small',
 		'There is a forgetful functor $\mathbf{Alg}(R) \to \mathbf{Set}$ and $\mathbf{Set}$ is locally small.'
@@ -190,6 +191,12 @@ VALUES
 		'Alg(R)',
 		'Malcev',
 		'follows in the same way as for (additive) groups'
+	),
+	(
+		-- TODO: generalize proof
+		'Alg(R)',
+		'disjoint finite products',
+		'One can take the same proof as for $\mathbf{Ring}$.'
 	),
 	(
 		'CRing',
@@ -213,8 +220,8 @@ VALUES
 	),
 	(
 		'CRing',
-		'codistributive',
-		'Coproducts of commutative rings are constructed using the tensor product of abelian groups. For finite families, the canonical homomorphism $A \otimes \prod_i B_i \to \prod_i (A \otimes B_i)$ is an isomorphism: It suffices to check this for for the underlying abelian groups, but it is well-known that the tensor product commutes with direct sums, hence with finite products.'
+		'coextensive',
+		'[Sketch] A ring homomorphism $f : A \times B \to R$ yields the idempotent element $e := f(1,0) \in R$, so that $R \cong eR \times (1-e)R$. Then $f$ decomposes into the ring homomorphisms $f_A : A \to eR$, $f_A(a) := f(a,0)$ and $f_B : B \to (1-e)R$, $f_B(b) := f(0,b)$.'
 	),
 	(
 		'CAlg(R)',
@@ -238,8 +245,8 @@ VALUES
 	),
 	(
 		'CAlg(R)',
-		'codistributive',
-		'Coproducts of commutative algebras are constructed using the tensor product of modules. For finite families, the canonical homomorphism $A \otimes_R \prod_i B_i \to \prod_i (A \otimes_R B_i)$ is an isomorphism: It suffices to check this for for the underlying $R$-modules, but it is well-known that the tensor product commutes with direct sums, hence with finite products.'
+		'coextensive',
+		'One can use the same proof as for $\mathbf{CRing}$.'
 	),
 	(
 		'Rng',
@@ -373,8 +380,8 @@ VALUES
 	),
 	(
 		'Pos',
-		'disjoint coproducts',
-		'This follows easily from the corresponding fact for sets, since the coproduct of posets is built using the disjoint union.'
+		'infinitary extensive',
+		'[Sketch] Since $\mathbf{Set}$ is infinitary extensive, a map $f : P \to \coprod_i Q_i$ corresponds to a decomposition $P = \coprod_i P_i$ (as sets) with maps $f_i : P_i \to Q_i$. Endow $P_i$ with the induced order. If $f$ is order-preserving, the elements in different $P_i$ cannot be comparable (since their $f$-images are not comparable), so that $P = \coprod_i P_i$ as posets, and each $f_i$ is order-preserving.'
 	),
 	(
 		'Pos',
@@ -910,8 +917,8 @@ VALUES
 	),
 	(
 		'Met_oo',
-		'infinitary distributive',
-		'This follows from the corresponding fact for topological spaces. Here, the coproduct metric takes value $\infty$ for points in distinct spaces.'
+		'infinitary extensive',
+		'[Sketch] Since $\mathbf{Set}$ is infinitary extensive, a map $f : Y \to \coprod_i X_i =: X$ corresponds to a decomposition $Y = \coprod_i Y_i$ (as sets) with maps $f_i : Y_i \to X_i$. Endow $Y_i$ with the restricted metric. If $f$ is non-expansive, each $f_i$ is non-expansive, and for $x_i \in Y_i$ and $i \neq j$ we have $d_Y(x_i,x_j) \geq d_X(f(x_i),f(x_j)) = \infty$, so that $Y = \coprod_i Y_i$ holds as metric spaces.'
 	),
 	(
 		'Met_oo',
@@ -919,11 +926,6 @@ VALUES
 		'The proof is similar to $\mathbf{Met}$, a cogenerator is given by $\mathbb{R} \cup \{\infty\}$ with the metric in which $d(a,\infty)=\infty$ for $a \in \mathbb{R}$. Then one checks that the maps $d(a,-) : X \to \mathbb{R} \cup \{\infty\}$ are non-expansive and finishes as for $\mathbf{Met}$.'
 	),
 	(
-		'Met_oo',
-		'disjoint coproducts',
-		'This easily follows from the corresponding fact for sets, since coproducts are built using disjoint unions.'
-	),
-(
 		'Met_oo',
 		'strongly connected',
 		'Every nonempty metric space is weakly terminal (by using constant maps).'
@@ -940,8 +942,8 @@ VALUES
 	),
 	(
 		'Met_c',
-		'disjoint coproducts',
-		'This easily follows from the corresponding fact for sets, since coproducts are built using disjoint unions.'
+		'infinitary extensive',
+		'This follows immediately from the fact that $\mathbf{Top}$ is infinitary extensive.'
 	),
 	(
 		'Met_c',
@@ -957,11 +959,6 @@ VALUES
 		'Met_c',
 		'cogenerator',
 		'The same proof as for $\mathbf{Met}$ shows that $\mathbb{R}$ with the usual metric is a cogenerator.'
-	),
-	(
-		'Met_c',
-		'infinitary distributive',
-		'This follows from the corresponding fact for topological spaces.'
 	),
 	(
 		'Met_c',
@@ -985,6 +982,11 @@ VALUES
 	),
 	(
 		'Man',
+		'finite products',
+		'In short, this follows from the corresponding statement for topological spaces and $\mathbb{R}^n \times \mathbb{R}^m \cong \mathbb{R}^{n+m}$.'
+	),
+	(
+		'Man',
 		'well-powered',
 		'This follows from the fact that monomorphisms are injective here.'
 	),
@@ -992,11 +994,6 @@ VALUES
 		'Man',
 		'well-copowered',
 		'This follows from the fact that epimorphisms have dense image (see below), which bounds the size of the codomain.'
-	),
-	(
-		'Man',
-		'distributive',
-		'This follows from the corresponding fact for topological spaces.'
 	),
 	(
 		'Man',
@@ -1010,8 +1007,8 @@ VALUES
 	),
 	(
 		'Man',
-		'disjoint finite coproducts',
-		'This follows from the corresponding fact for topological spaces.'
+		'extensive',
+		'[Sketch] Since $\mathbf{Top}$ is infinitary extensive, a continuous map $f : M \to \coprod_i N_i$ corresponds to a decomposition $M = \coprod_i M_i$ (as topological spaces) with continuous maps $f_i : M_i \to N_i$. Endow the open subset $M_i \subseteq M$ with the smooth structure inherited from $M$. Now remark that $f$ is smooth iff each $f_i$ is smooth.'
 	),
 	(
 		'Man',
@@ -1055,14 +1052,9 @@ VALUES
     ),
 	(
 		'LRS',
-		'infinitary distributive',
-		'See <a href="https://math.stackexchange.com/questions/5036488/" target="_blank">MSE/5036488</a>.'
+		'infinitary extensive',
+		'[Sketch] Since $\mathbf{Top}$ is infinitary extensive, a morphism $f : Y \to \coprod_i X_i =: X$ yields a decomposition $Y = \coprod_i Y_i$ (as topological spaces) with continuous maps $f_i : Y_i \to X_i$. Endow the open subset $Y_i \subseteq Y$ with the restricted sheaf. Then each $f_i$ becomes a morphism of locally ringed spaces, and $Y = \coprod_i Y_i$ holds as locally ringed spaces.'
 	),
- 	(
-        'LRS',
-        'disjoint coproducts',
-        'This can easily be derived from the explicit construction of coproducts: The topological space is the disjoint union, the sheaf is the "product".'
-    ),
 	(
 		'Sch',
 		'locally small',
@@ -1080,18 +1072,13 @@ VALUES
 	),
     (
         'Sch',
-        'disjoint coproducts',
-        'This follows from the corresponding fact for locally ringed spaces.'
-    ),
-    (
-        'Sch',
         'well-powered',
         'This is because every monomorphism of schemes is injective, so that the size of the underlying set of a subobject is bounded.'
     ),
 	(
 		'Sch',
-		'infinitary distributive',
-		'This follows from the corresponding fact for locally ringed spaces, see <a href="https://math.stackexchange.com/questions/5036488/" target="_blank">MSE/5036488</a>.'
+		'infinitary extensive',
+		'One uses the same proof as for locally ringed spaces, using that open subspaces of schemes are also schemes.'
 	),
 	(
 		'Z',
@@ -1105,17 +1092,12 @@ VALUES
 	),
 	(
 		'Z',
-		'infinitary distributive',
+		'infinitary extensive',
 		'follows immediately from the fact for $\mathbf{Set}$'
 	),
 	(
 		'Z',
 		'exact filtered colimits',
-		'follows immediately from the fact for $\mathbf{Set}$'
-	),
-	(
-		'Z',
-		'disjoint coproducts',
 		'follows immediately from the fact for $\mathbf{Set}$'
 	),
 	(
@@ -1470,6 +1452,12 @@ VALUES
 		'Hahn-Banach shows that $\mathbb{C}$ is a cogenerator'
 	),
 	(
+		-- TODO: generalize proof
+		'Ban',
+		'disjoint finite products',
+		'The proof works exactly as in the case of pointed finitary algebraic categories: If $A,B$ are Banach spaces, to show that $A \sqcup_{A \times B} B$ is trivial, let $R$ be a Banach space which admits linear maps $f : A \to R$, $g : B \to R$ such that $f(p_1(a,b)) = g(p_2(a,b))$ for all $(a,b) \times A \times B$. This means $f(a) = g(b)$. In particular, $f(a) = g(0) = 0$. Likewise, $g(b) = 0$, and we are done.'
+	),
+	(
 		'Meas',
 		'locally small',
 		'There is a forgetful functor $\mathbf{Meas} \to \mathbf{Set}$ and $\mathbf{Set}$ is locally small.'
@@ -1496,8 +1484,8 @@ VALUES
 	),
 	(
 		'Meas',
-		'infinitary distributive',
-		'We need to check that the canonical bijective measurable map $\coprod_i X \times Y_i \to X \times \coprod_i Y_i$ maps measurable sets onto measurable sets. By the description of measurable sets in a disjoint union, it suffices to prove that each $X \times Y_i \to X \times \coprod_i Y_i$ maps measurable sets onto measurable sets. So it suffices to prove that $f : X \times Y \to X \times (Y + Z)$ does that. Using that $f$ is injective and that $f(X \times Y)$ is measurable, it follows that the subsets of $X \times Y$ that are mapped to a measurable set via $f$ form a $\sigma$-algebra. But the $\sigma$-algebra of $X \times Y$ is generated by sets of the form $U \times V$ for measurable subsets $U,V$, and their $f$-images are clearly measurable.'
+		'infinitary extensive',
+		'[Sketch] Since $\mathbf{Set}$ is infinitary extensive, a map $f : Y \to \coprod_i X_i =: X$ corresponds to a decomposition $Y = \coprod_i Y_i$ (as sets) with maps $f_i : Y_i \to X_i$. Endow the measurable subset $Y_i \subseteq Y$ with the restricted $\sigma$-algebra. If $f$ is measurable, each $f_i$ is measurable, and $Y = \coprod_i Y_i$ holds as measurable spaces.'
 	),
 	(
 		'Meas',
@@ -1508,11 +1496,6 @@ VALUES
 		'Meas',
 		'cogenerator',
 		'Take the two-element set $2$ endowed with the trivial $\sigma$-algebra (where only $\emptyset$ and $2$ are measurable), and use that $2$ is a cogenerator for $\mathbf{Set}$.'
-	),
-	(
-		'Meas',
-		'disjoint coproducts',
-		'This follows easily from the corresponding fact for sets, since coproducts are built using disjoint unions here.'
 	),
 	(
 		'Meas',
@@ -1536,8 +1519,8 @@ VALUES
 	),
 	(
 		'Cat',
-		'disjoint coproducts',
-		'This follows easily from the description of a coproduct of categories (based on disjoint unions).'
+		'infinitary extensive',
+		'[Sketch] This is straight forward from the fact that $\mathbf{Set}$ is infinitary extensive: A functor $\mathcal{C} \to \coprod_i \mathcal{D}_i$ yields full subcategories $\mathcal{C}_i \subseteq \mathcal{C}$ (the preimages of $\mathcal{D}_i)$ with $\mathcal{C} = \coprod_i \mathcal{C}_i$.'
 	),
 	(
 		'Cat',
@@ -1763,6 +1746,12 @@ VALUES
 		'Setne',
 		'strongly connected',
 		'We can use constant maps.'
+	),
+	(
+		-- TODO: generalize proof
+		'Setne',
+		'disjoint finite products',
+		'Let $A,B$ be non-empty sets. The set $P := A \sqcup_{A \times B} B$ has elements $i_1(a)$, $i_2(b)$ with $i_1(a)=i_2(b)$ for all $(a,b) \in A \times B$. It clearly follows that all elements are equal, and there is at least one since $A$ is non-empty. Thus, $P \cong 1$.'
 	);
 
 INSERT INTO category_property_assignments
