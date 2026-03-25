@@ -44,7 +44,10 @@ jobs:
               run: pnpm build
 
             - name: Get latest commit message
-              run: echo "COMMIT_MESSAGE=$(git log -1 --pretty=%B)" >> $GITHUB_ENV
+              run: |
+                  echo "COMMIT_MESSAGE<<EOF" >> $GITHUB_ENV
+                  git log -1 --pretty=%B >> $GITHUB_ENV
+                  echo "EOF" >> $GITHUB_ENV
 
             - name: Deploy to Netlify - Production
               run: |
