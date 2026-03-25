@@ -1,7 +1,6 @@
 <script lang="ts">
 	import ChipGroup from './ChipGroup.svelte'
 	import Chip from './Chip.svelte'
-	import { debounce } from '$lib/client/utils'
 
 	type Props = {
 		title?: string
@@ -21,45 +20,88 @@
 		max = Infinity,
 	}: Props = $props()
 
-	let item: string = $state('')
+	const id = $props.id()
 
-	let is_valid = $derived(
-		item.length === 0 ||
-			(allowed_items.includes(item) &&
-				!selected_items.includes(item) &&
-				selected_items.length < max),
+	let item = $state('')
+	let show_suggestions = $state(false)
+
+	let suggestions = $derived(
+		selected_items.length >= max ? [] : allowed_items.filter(is_suggestion),
 	)
+
+	function is_suggestion(allowed_item: string) {
+		return (
+			!selected_items.includes(allowed_item) &&
+			allowed_item.toLowerCase().includes(item.trim().toLowerCase())
+		)
+	}
+
+	let item_is_valid = $derived(
+		allowed_items.includes(item.trim()) &&
+			!selected_items.includes(item.trim()) &&
+			selected_items.length < max,
+	)
+
+	function handle_submit(e: SubmitEvent) {
+		e.preventDefault()
+		if (!item_is_valid) return
+		selected_items.push(item.trim())
+		item = ''
+	}
+
+	function select(allowed_item: string) {
+		selected_items.push(allowed_item)
+		item = ''
+		show_suggestions = false
+	}
+
+	function handle_keydown(e: KeyboardEvent) {
+		if (show_suggestions && e.key === 'Escape') {
+			show_suggestions = false
+		}
+	}
+
+	function handle_blur(e: FocusEvent) {
+		const is_suggestion_click =
+			e.relatedTarget instanceof HTMLButtonElement &&
+			e.relatedTarget.getAttribute('data-for') == id
+		if (!is_suggestion_click) show_suggestions = false
+	}
 
 	function remove_item(item: string) {
 		selected_items = selected_items.filter((_item) => _item !== item)
 	}
-
-	function handle_input() {
-		if (!item.length) return
-		if (is_valid) {
-			selected_items.push(item)
-			item = ''
-		}
-	}
-
-	const debounced_handle_input = debounce(handle_input, 500)
 </script>
+
+<svelte:window onkeydown={handle_keydown} />
 
 <section aria-label={section_label}>
 	{#if title}
 		<p>{@html title}</p>
 	{/if}
 
-	<div class="input-wrapper">
-		<input
-			aria-label={item_label}
-			aria-invalid={!is_valid}
-			type="text"
-			bind:value={item}
-			list="list-{item_label}"
-			oninput={debounced_handle_input}
-		/>
-	</div>
+	<form onsubmit={handle_submit}>
+		<div class="input-wrapper">
+			<input
+				aria-label={item_label}
+				aria-invalid={item.trim().length > 0 && !item_is_valid}
+				type="text"
+				bind:value={item}
+				onfocus={() => (show_suggestions = true)}
+				onblur={handle_blur}
+			/>
+		</div>
+
+		{#if show_suggestions && suggestions.length > 0}
+			<div class="suggestions">
+				{#each suggestions as allowed_item}
+					<button onclick={() => select(allowed_item)} data-for={id}>
+						{allowed_item}
+					</button>
+				{/each}
+			</div>
+		{/if}
+	</form>
 
 	<ChipGroup>
 		{#each selected_items as selected_item}
@@ -69,12 +111,6 @@
 		{/each}
 	</ChipGroup>
 </section>
-
-<datalist id="list-{item_label}">
-	{#each allowed_items as item}
-		<option value={item}>{item}</option>
-	{/each}
-</datalist>
 
 <style>
 	section {
@@ -90,6 +126,31 @@
 
 		@media (min-width: 600px) {
 			max-width: 28rem;
+		}
+	}
+
+	form {
+		position: relative;
+	}
+
+	.suggestions {
+		position: absolute;
+		z-index: 10;
+		max-height: 12rem;
+		overflow-y: scroll;
+		scrollbar-width: thin;
+		top: calc(100% + 0.25rem);
+		background-color: var(--bg-color);
+		padding: 0.5rem 1rem;
+		border: 1px solid var(--outline-color);
+		border-radius: 0.4rem;
+		box-shadow: 0 0 1rem var(--shadow-color);
+		display: grid;
+		gap: 0.25rem;
+
+		button {
+			font-size: 1rem;
+			text-align: left;
 		}
 	}
 </style>
