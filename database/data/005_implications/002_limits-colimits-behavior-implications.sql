@@ -14,6 +14,13 @@ VALUES
 	FALSE
 ),
 (
+	'biproducts_unital',
+	'["biproducts", "pointed", "finitely complete"]',
+	'["unital"]',
+	'For all objects $X,Y$ the morphism $X \sqcup Y \to X \times Y$ is an isomorphism, hence a strong epimorphism.',
+	FALSE
+),
+(
 	'additive_biproducts',
 	'["additive"]',
 	'["biproducts"]',

@@ -138,4 +138,11 @@ VALUES
 	'["infinitary extensive"]',
 	'This is a part of <a href="https://ncatlab.org/nlab/show/Giraud%27s+theorem" target="_blank">Giraud''s Theorem</a>.',
 	FALSE
+),
+(
+	'topos_is_malcev',
+	'["elementary topos"]',
+	'["co-Malcev"]',
+	'This is Example 2.2.18 in <a href="https://ncatlab.org/nlab/show/Malcev,+protomodular,+homological+and+semi-abelian+categories" target="_blank">Malcev, protomodular, homological and semi-abelian categories</a>. An alternative proof is given later in A.5.17.',
+	FALSE
 );

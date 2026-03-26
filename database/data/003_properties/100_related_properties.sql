@@ -135,6 +135,7 @@ VALUES
 ('split abelian', 'abelian'),
 ('Cauchy complete', 'finitely complete'),
 ('Malcev', 'finitely complete'),
+('co-Malcev', 'finitely cocomplete'),
 ('connected', 'strongly connected'),
 ('connected', 'inhabited'),
 ('strongly connected', 'connected'),
@@ -154,4 +155,10 @@ VALUES
 ('infinitary coextensive', 'products'),
 ('infinitary coextensive', 'disjoint products'),
 ('well-powered', 'small'),
-('well-copowered', 'small');
+('well-copowered', 'small'),
+('unital', 'finitely complete'),
+('unital', 'pointed'),
+('unital', 'Malcev'),
+('counital', 'finitely cocomplete'),
+('counital', 'pointed'),
+('counital', 'co-Malcev');

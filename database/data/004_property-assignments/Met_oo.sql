@@ -69,5 +69,5 @@ VALUES
 	'Met_oo',
 	'Malcev',
 	FALSE,
-	NULL
+	'Consider the metric subspace $\{(a,b) \in \mathbb{R}^2 : a \leq b\}$ of $\mathbb{R}^2$.'
 );

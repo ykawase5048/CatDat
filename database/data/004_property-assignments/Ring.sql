@@ -27,7 +27,7 @@ VALUES
 	'Ring',
 	'Malcev',
 	TRUE,
-	'follows in the same way as for (additive) groups'
+	'This follows in the same way as for groups, see also Example 2.2.5 in <a href="https://ncatlab.org/nlab/show/Malcev,+protomodular,+homological+and+semi-abelian+categories" target="_blank">Malcev, protomodular, homological and semi-abelian categories</a>.'
 ),
 (
 	'Ring',

@@ -55,19 +55,25 @@ VALUES
 ),
 (
 	'Set*',
+	'co-Malcev',
+	TRUE,
+	'Malcev categories are closed under slice categories by Prop. 2.2.14 in <a href="https://ncatlab.org/nlab/show/Malcev,+protomodular,+homological+and+semi-abelian+categories" target="_blank">Malcev, protomodular, homological and semi-abelian categories</a>. It follows that co-Malcev categories are closed under coslice categories, and $\mathbf{Set}_*$ is a coslice category of $\mathbf{Set}$, which is co-Malcev since every elementary topos is co-Malcev.'
+),
+(
+	'Set*',
 	'skeletal',
 	FALSE,
 	'trivial'
 ),
 (
 	'Set*',
-	'Malcev',
-	FALSE,
-	'There are lots of pointed reflexive relations that are not symmetric, for example $\{(a,b) \in \mathbb{N} : a \leq b\}$ on $(\mathbb{N},0)$.'
-),
-(
-	'Set*',
 	'biproducts',
 	FALSE,
 	'Binary coproducts are wedge sums $\vee$, so the canonical map $X \vee Y \to X \times Y$ is injective, but in most cases not surjective.'
+),
+(
+	'Set*',
+	'unital',
+	FALSE,
+	'The joint image of $X \to X \times Y \leftarrow Y$ is just $\{(x,0) : x \in X\} \cup \{(0,y) : y \in Y\}$ (where $0$ denotes the base point), which is clearly a proper subset of $X \times Y$ when both $X,Y$ are non-trivial.'
 );

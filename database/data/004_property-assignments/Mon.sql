@@ -31,6 +31,12 @@ VALUES
 ),
 (
 	'Mon',
+	'unital',
+	TRUE,
+	'If a submonoid of $X \times Y$ contains $X \times \{1\}$ and $\{1\} \times Y$, then for all $x \in X$ and $y \in Y$ it also contains $(x,1) \cdot (1,y) = (x,y)$.'
+),
+(
+	'Mon',
 	'balanced',
 	FALSE,
 	'The inclusion of additive monoids $\mathbb{N} \hookrightarrow \mathbb{Z}$ is a counterexample.'
@@ -58,4 +64,10 @@ VALUES
 	'biproducts',
 	FALSE,
 	'If $\sqcup$ denotes the coproduct, the canonical homomorphism $\mathbb{N} \sqcup \mathbb{N} \to \mathbb{N} \times \mathbb{N}$ is not an isomorphism, since $\mathbb{N} \sqcup \mathbb{N}$ is the free monoid on two generators and therefore not commutative.'
+),
+(
+	'Mon',
+	'counital',
+	FALSE,
+	'The canonical morphism $\mathbb{N} \sqcup \mathbb{N} \to \mathbb{N} \times \mathbb{N}$ is not a monomorphism since $\mathbb{N} \sqcup \mathbb{N}$ is not commutative.'
 );

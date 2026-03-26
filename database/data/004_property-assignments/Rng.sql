@@ -33,7 +33,7 @@ VALUES
 	'Rng',
 	'Malcev',
 	TRUE,
-	'follows in the same way as for (additive) groups'
+	'This follows in the same way as for groups, see also Example 2.2.5 in <a href="https://ncatlab.org/nlab/show/Malcev,+protomodular,+homological+and+semi-abelian+categories" target="_blank">Malcev, protomodular, homological and semi-abelian categories</a>.'
 ),
 (
 	'Rng',
@@ -58,4 +58,10 @@ VALUES
 	'biproducts',
 	FALSE,
 	'If $\sqcup$ denotes the coproduct and $(X)$ the free rng on one generator (integer polynomials without constant term), the canonical homomorphism $(X) \sqcup (Y) \to (X) \times (Y)$ is not an isomorphism, since $(X) \sqcup (Y)$ is the free rng on two generators and therefore not commutative.'
+),
+(
+	'Rng',
+	'counital',
+	FALSE,
+	'If $\mathbb{Z}\langle X_1,\dotsc,X_n \rangle_0$ denotes the free rng on $n$ generators (non-commutative polynomials without constant term), then the canonical homomorphism $\mathbb{Z}\langle X,Y \rangle_0 = \mathbb{Z}\langle X \rangle_0 \sqcup \mathbb{Z}\langle Y \rangle_0 \to \mathbb{Z}\langle X \rangle_0 \times \mathbb{Z}\langle Y \rangle_0$ is not a monomorphism since $\mathbb{Z}\langle X,Y \rangle_0$ is not commutative.'
 );

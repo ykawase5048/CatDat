@@ -39,5 +39,5 @@ VALUES
 	'sSet',
 	'Malcev',
 	FALSE,
-	NULL
+	'Any counterexample for $\mathbf{Set}$ (i.e., any non-symmetric reflexive relation) yields one for this category by taking constant simplicial sets.'
 );

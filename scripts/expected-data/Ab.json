@@ -59,6 +59,9 @@
 	"coregular": true,
 	"disjoint finite products": true,
 	"disjoint products": true,
+	"co-Malcev": true,
+	"unital": true,
+	"counital": true,
 
 	"cartesian closed": false,
 	"locally cartesian closed": false,

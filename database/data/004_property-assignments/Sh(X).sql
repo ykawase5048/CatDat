@@ -27,7 +27,7 @@ VALUES
 	'Sh(X)',
 	'Malcev',
 	FALSE,
-	'Consider the subsheaf of $\underline{\mathbb{Z}} \times \underline{\mathbb{Z}}$ consisting of locally constant functions $(f,g) : X \to \mathbb{Z} \times \mathbb{Z}$ with $f \leq g$ pointwise. This is reflexive, but not symmetric.'
+	'Consider the subsheaf of $\underline{\mathbb{N}} \times \underline{\mathbb{N}}$ consisting of locally constant functions $(f,g) : X \to \mathbb{N} \times \mathbb{N}$ with $f \leq g$ pointwise. This is reflexive, but not symmetric.'
 ),
 (
 	'Sh(X)',

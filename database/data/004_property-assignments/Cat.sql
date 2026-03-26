@@ -69,7 +69,7 @@ VALUES
 	'Cat',
 	'Malcev',
 	FALSE,
-	NULL
+	'Use that $\mathbf{Set}$ is not Malcev and consider sets as discrete categories.'
 ),
 (
 	'Cat',

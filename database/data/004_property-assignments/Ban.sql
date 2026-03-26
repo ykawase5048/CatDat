@@ -67,7 +67,7 @@ VALUES
 ),
 (
 	'Ban',
-	'Malcev',
+	'unital',
 	FALSE,
 	'See <a href="https://math.stackexchange.com/questions/5033161" target="_blank">MSE/5033161</a>.'
 );

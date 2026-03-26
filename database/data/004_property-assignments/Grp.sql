@@ -76,4 +76,10 @@ VALUES
 	'coregular',
 	FALSE,
 	'This is because injective group homomorphisms are not stable under pushouts, see e.g. <a href="https://math.stackexchange.com/questions/601463/" target="_blank">MSE/601463</a> or <a href="https://math.stackexchange.com/questions/5088032" target="_blank">MSE/5088032</a>.'
+),
+(
+	'Grp',
+	'counital',
+	FALSE,
+	'The canonical morphism $F_2 = \mathbb{Z} \sqcup \mathbb{Z} \to \mathbb{Z} \times \mathbb{Z}$ is not a monomorphism since $F_2$ is not abelian.'
 );

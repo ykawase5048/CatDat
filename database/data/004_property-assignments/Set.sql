@@ -45,5 +45,5 @@ VALUES
 	'Set',
 	'Malcev',
 	FALSE,
-	'There are lots of non-symmetric reflexive relations.'
+	'There are lots of non-symmetric reflexive relations, for example $\leq$ on $\mathbb{N}$.'
 );

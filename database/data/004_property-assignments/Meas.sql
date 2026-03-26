@@ -87,5 +87,5 @@ VALUES
 	'Meas',
 	'Malcev',
 	FALSE,
-	NULL
+	'Use that $\mathbf{Set}$ is not Malcev and endow sets with the trivial $\sigma$-algebra.'
 );

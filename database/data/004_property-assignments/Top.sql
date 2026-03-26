@@ -112,4 +112,10 @@ VALUES
 	'Malcev',
 	FALSE,
 	'This is clear since $\mathbf{Set}$ is not Malcev and can be interpreted as the subcategory of discrete spaces.'
+),
+(
+	'Top',
+	'co-Malcev',
+	FALSE,
+	'See <a href="https://mathoverflow.net/questions/509548" target="_blank">MO/509548</a>.'
 );

@@ -34,9 +34,18 @@ VALUES
 (
 	'Malcev',
 	'is',
-	'A category is <i>Malcev</i> when it has finite limits and every internal reflexive relation is an internal equivalence relation. That is, if $R \subseteq X^2$ is a subobject with $\Delta_X \subseteq R$, then $R$ is symmetric and transitive. The dual of an elementary topos is Malcev.',
+	'A category is <i>Malcev</i> when it has finite limits and every internal reflexive relation is an internal equivalence relation. That is, if $R \subseteq X^2$ is a subobject with $\Delta_X \subseteq R$, then $R$ is symmetric and transitive.',
 	'https://ncatlab.org/nlab/show/Malcev+category',
-	NULL,
+	'co-Malcev',
+	TRUE
+),
+(
+	'co-Malcev',
+	'is',
+	'A category is <i>co-Malcev</i> when its dual is Malcev, i.e., it has finite colimits and if $X \sqcup X \twoheadrightarrow R$ is a coreflexive corelation, then it is cosymmetric and cotransitive.<br>
+	This terminology is not standard, but we have added it to properly formulate the interesting theorem that the dual of an elementary topos is Malcev, i.e., that every elementary topos is co-Malcev.',
+	'https://ncatlab.org/nlab/show/Malcev+category',
+	'Malcev',
 	TRUE
 ),
 (

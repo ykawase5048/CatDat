@@ -47,4 +47,18 @@ VALUES
 	'["Malcev"]',
 	'See Prop. 2.2.13. in <a href="https://ncatlab.org/nlab/show/Malcev,+protomodular,+homological+and+semi-abelian+categories" target="_blank">Malcev, protomodular, homological and semi-abelian categories</a>.',
 	FALSE
+),
+(
+	'unital_assumptions',
+	'["unital"]',
+	'["pointed", "finitely complete"]',
+	'This holds by definition.',
+	FALSE
+),
+(
+	'malcev_implies_unital',
+	'["Malcev", "pointed"]',
+	'["unital"]',
+	'This follows from Corollary 2.2.10 in <a href="https://ncatlab.org/nlab/show/Malcev,+protomodular,+homological+and+semi-abelian+categories" target="_blank">Malcev, protomodular, homological and semi-abelian categories</a>. The proof is also written down in <a href="https://math.stackexchange.com/a/5034834/1650" target="_blank">MSE/5033161</a>.',
+	FALSE
 );

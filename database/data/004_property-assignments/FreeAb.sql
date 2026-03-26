@@ -55,12 +55,6 @@ VALUES
 ),
 (
 	'FreeAb',
-	'Malcev',
-	TRUE,
-	'follows in the same way as for abelian groups'
-),
-(
-	'FreeAb',
 	'regular',
 	TRUE,
 	'This follows formally from the fact that $\mathbf{Ab}$ is regular and $\mathbf{FreeAb}$ is closed under subobjects and finite products: By Prop. 2.5 in the <a href="https://ncatlab.org/nlab/show/regular+category">nlab</a> it suffices to prove that there are pullback-stable (reg epi, mono)-factorizations. Every homomorphism $f  : A \to B$ in $\mathbf{FreeAb}$ factors as $f = i \circ p : A \twoheadrightarrow C \hookrightarrow B$, where $C$ is a subgroup, hence free, and $A \to C$ is surjective. Clearly, surjective homomorphisms are pullback-stable. It remains to show that they coincide with the regular epimorphisms.<br>
