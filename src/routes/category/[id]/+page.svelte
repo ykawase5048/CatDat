@@ -111,7 +111,7 @@
 				properties={data.unsatisfied_properties.filter((p) => !p.is_deduced)}
 			/>
 
-			<p class="hint">Deduced properties</p>
+			<p class="hint">Deduced properties*</p>
 			<PropertyList
 				properties={data.unsatisfied_properties.filter((p) => p.is_deduced)}
 			/>
