@@ -63,6 +63,6 @@ _CatDat_ draws inspiration from and complements other resources in category theo
 - **[nLab](https://ncatlab.org)**: A wiki for (higher) category theory. _CatDat_ refers to nLab pages for detailed information on its entries.
 - **[Clowder Project](https://clowderproject.com)**: A new online reference for category theory. Unlike _CatDat_, which is data-based, Clowder follows a textbook-based approach.
 - **[Database of Ring Theory](https://ringtheory.herokuapp.com/)**: This database focuses on ring theory and module theory rather than category theory, but is very similar in nature and was a major inspiration for _CatDat_.
-- **[$\pi$-Base](https://topology.pi-base.org/)**: This is a database of examples and counterexamples in topology. Just like _CatDat_ it uses three types of entries (objects, properties, and theorems) and automatically derives properties from the theorems.
+- **[pi-Base](https://topology.pi-base.org/)**: This is a database of examples and counterexamples in topology. Just like _CatDat_ it uses three types of entries (objects, properties, and theorems) and automatically derives properties from the theorems.
 
 **[MathBases](https://mathbases.org/)** lists many other databases for other kinds of mathematical structure.
