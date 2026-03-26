@@ -56,7 +56,7 @@ VALUES
 	'trivial'
 ),
 (
-	'BGf',
+	'BG_f',
 	'every morphism',
 	'trivial'
 ),

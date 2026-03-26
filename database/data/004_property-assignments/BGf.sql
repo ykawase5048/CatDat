@@ -6,37 +6,37 @@ INSERT INTO category_property_assignments (
 )
 VALUES
 (
-	'BGf',
+	'BG_f',
 	'finite',
 	TRUE,
 	'trivial'
 ),
 (
-	'BGf',
+	'BG_f',
 	'groupoid',
 	TRUE,
 	'trivial'
 ),
 (
-	'BGf',
+	'BG_f',
 	'strongly connected',
 	TRUE,
 	'trivial'
 ),
 (
-	'BGf',
+	'BG_f',
 	'generator',
 	TRUE,
 	'The unique object is a generator for trivial reasons.'
 ),
 (
-	'BGf',
+	'BG_f',
 	'skeletal',
 	TRUE,
 	'There is just one object'
 ),
 (
-	'BGf',
+	'BG_f',
 	'trivial',
 	FALSE,
 	'trivial'

@@ -51,7 +51,7 @@ VALUES
     'This is because the category is left-cancellative.'
 ),    
 (
-    'BGf',
+    'BG_f',
     'same as isomorphisms',
     'This is because the category is left-cancellative.'
 ),    

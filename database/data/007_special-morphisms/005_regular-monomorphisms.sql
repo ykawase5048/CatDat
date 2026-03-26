@@ -46,7 +46,7 @@ VALUES
     'This is because the category is mono-regular'
 ),
 (
-    'BGf',
+    'BG_f',
     'same as monomorphisms',
     'This is because the category is mono-regular'
 ),

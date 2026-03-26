@@ -20,7 +20,7 @@ VALUES
 	NULL
 ),
 (
-	'BGf',
+	'BG_f',
 	'delooping of a non-trivial finite group',
 	'$BG$',
 	'a single object',

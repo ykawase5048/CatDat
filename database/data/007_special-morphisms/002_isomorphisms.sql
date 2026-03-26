@@ -56,7 +56,7 @@ VALUES
 	'It is a groupoid.'
 ),
 (
-	'BGf',
+	'BG_f',
 	'every morphism',
 	'It is a groupoid.'
 ),
