@@ -16,7 +16,9 @@ const db = createClient({
 	authToken: DB_AUTH_TOKEN,
 })
 
-await test_mutual_duality()
+await test_mutual_category_duals()
+
+await test_mutual_property_duals()
 
 const expected = {
 	Set: Set_expected,
@@ -71,7 +73,7 @@ async function test_properties(category_id: string, expected: Record<string, boo
 	console.info(`✅ Properties of ${category_id} are correct`)
 }
 
-async function test_mutual_duality() {
+async function test_mutual_property_duals() {
 	const res = await db.execute('SELECT id, dual_property_id FROM properties')
 	const dict: Record<string, string | null> = {}
 
@@ -87,9 +89,32 @@ async function test_mutual_duality() {
 	for (const id in dict) {
 		const dual = dict[id]
 		if (dual && dict[dual] !== id) {
-			throw new Error(`❌ Found non-mutual duality: ${id}, ${dual}`)
+			throw new Error(`❌ Found non-mutual property duality: ${id}, ${dual}`)
 		}
 	}
 
 	console.info(`✅ Properties are mutually dual`)
+}
+
+async function test_mutual_category_duals() {
+	const res = await db.execute('SELECT id, dual_category_id FROM categories')
+	const dict: Record<string, string | null> = {}
+
+	const categories = res.rows as unknown as {
+		id: string
+		dual_category_id: string | null
+	}[]
+
+	for (const { id, dual_category_id } of categories) {
+		dict[id] = dual_category_id
+	}
+
+	for (const id in dict) {
+		const dual = dict[id]
+		if (dual && dict[dual] !== id) {
+			throw new Error(`❌ Found non-mutual category duality: ${id}, ${dual}`)
+		}
+	}
+
+	console.info(`✅ Categories are mutually dual`)
 }
