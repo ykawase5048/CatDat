@@ -18,7 +18,7 @@
 	"distributive": true,
 	"equalizers": true,
 	"filtered colimits": true,
-	"filtered limits": true,
+	"cofiltered limits": true,
 	"directed limits": true,
 	"directed colimits": true,
 	"finite coproducts": true,

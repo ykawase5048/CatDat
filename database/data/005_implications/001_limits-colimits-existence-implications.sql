@@ -9,7 +9,7 @@ VALUES
 (
 	'complete_consequence',
 	'["complete"]',
-	'["finitely complete", "filtered limits", "wide pullbacks", "connected limits"]',
+	'["finitely complete", "cofiltered limits", "wide pullbacks", "connected limits"]',
 	'This is trivial.',
 	FALSE
 ),
@@ -29,9 +29,9 @@ VALUES
 ),
 (
 	'products_criterion',
-	'["finite products", "filtered limits"]',
+	'["finite products", "cofiltered limits"]',
 	'["products"]',
-	'The product $\prod_{i \in I} X_i$ is the filtered limit of the finite partial products $\prod_{i \in E} X_i$ where $E$ ranges over the finite subsets of $I$.',
+	'The product $\prod_{i \in I} X_i$ is the cofiltered limit of the finite partial products $\prod_{i \in E} X_i$ where $E$ ranges over the finite subsets of $I$.',
 	FALSE
 ),
 (
@@ -122,8 +122,8 @@ VALUES
 (
 	'wide_pullbacks_criterion',
 	'["wide pullbacks"]',
-	'["pullbacks", "filtered limits"]',
-	'To prove $\Leftarrow$, a wide pullback can be constructed as a filtered limit of finite pullbacks, and finite pullbacks can be reduced to binary pullbacks (the empty-indexed pullback always exists). Conversely, assume that wide pullbacks exist in $\mathcal{C}$. For every object $A$ then the slice category $\mathcal{C} / A$ has wide pullbacks and a terminal object, hence is complete. Since a filtered limit can be finally reduced to such a slice, we are done.',
+	'["pullbacks", "cofiltered limits"]',
+	'To prove $\Leftarrow$, a wide pullback can be constructed as a cofiltered limit of finite pullbacks, and finite pullbacks can be reduced to binary pullbacks (the empty-indexed pullback always exists). Conversely, assume that wide pullbacks exist in $\mathcal{C}$. For every object $A$ then the slice category $\mathcal{C} / A$ has wide pullbacks and a terminal object, hence is complete. Since a cofiltered limit can be finally reduced to such a slice, we are done.',
 	TRUE
 ),
 (

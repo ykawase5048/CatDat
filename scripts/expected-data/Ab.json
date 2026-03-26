@@ -22,7 +22,7 @@
 	"equalizers": true,
 	"exact filtered colimits": true,
 	"filtered colimits": true,
-	"filtered limits": true,
+	"cofiltered limits": true,
 	"directed limits": true,
 	"directed colimits": true,
 	"finitary algebraic": true,
