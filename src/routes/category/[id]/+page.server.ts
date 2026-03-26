@@ -32,10 +32,19 @@ export const load = async (event) => {
 		// basic information
 		sql`
 			SELECT
-				id, name, notation, objects, morphisms,
-				description, nlab_link
-			FROM categories
-			WHERE id = ${id}
+				c.id,
+				c.name,
+				c.notation,
+				c.objects,
+				c.morphisms,
+				c.description,
+				c.nlab_link,
+				c.dual_category_id,
+				d.name as dual_category_name,
+				d.notation as dual_category_notation
+			FROM categories c
+			LEFT JOIN categories d ON d.id = c.dual_category_id
+			WHERE c.id = ${id}
 		`,
 		// related categories
 		sql`

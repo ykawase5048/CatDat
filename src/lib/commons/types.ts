@@ -12,6 +12,9 @@ export type CategoryDisplay = {
 	morphisms: string
 	description: string | null
 	nlab_link: string | null
+	dual_category_id: string | null
+	dual_category_name: string | null
+	dual_category_notation: string | null
 }
 
 export type CategoryShort = Pick<CategoryDisplay, 'id' | 'name'>

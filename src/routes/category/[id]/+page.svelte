@@ -57,6 +57,18 @@
 				<a href={category.nlab_link} target="_blank">nLab Link</a>
 			</li>
 		{/if}
+
+		{#if category.dual_category_id}
+			<li>
+				<strong>Dual category:</strong>
+				<a
+					href="/category/{category.dual_category_id}"
+					aria-label={category.dual_category_name}
+				>
+					{@html category.dual_category_notation}
+				</a>
+			</li>
+		{/if}
 	</ul>
 
 	{#if category.description}

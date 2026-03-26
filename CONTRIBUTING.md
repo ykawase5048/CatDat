@@ -57,7 +57,7 @@ When contributing new data (categories, properties, implications), please follow
 
 - **Atomic Properties**: Only assign properties to a category that cannot be deduced from other properties (satisfied or not). For example, if a category is complete, add the property "complete", but do not add "terminal object". The application infers this property automatically.
 
-- **No dual categories**: As a rule of thumb, do not add categories that are dual to categories already in the database. Properties of the dual category should instead be added as properties of the original category (use the corresponding dual property). For example, do not add the dual of the category of sets.
+- **No dual categories**: Instead of adding the dual of a category already in the database, consider adding properties to the original category (use the corresponding dual properties).
 
 - **No equivalent categories**: Do not add categories that are equivalent or even isomorphic to categories already in the database. If the equivalence is non-trivial, mention it in the description of the original category. Some exceptions are allowed, since certain properties (such as being skeletal) are not invariant under equivalence.
 

@@ -111,6 +111,8 @@ VALUES
 ('Set', 'well-behaved'),
 ('Set*', 'set theory'),
 ('Set*', 'well-behaved'),
+('Set_op', 'set theory'),
+('Set_op', 'well-behaved'),
 ('Setne', 'set theory'),
 ('Setne', 'badly-behaved'),
 ('Setne', 'artificial'),

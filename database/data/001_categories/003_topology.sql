@@ -1,11 +1,12 @@
-INSERT INTO CATEGORIES (
+INSERT INTO categories (
 	id,
 	name,
 	notation,
 	objects,
 	morphisms,
 	description,
-	nlab_link
+	nlab_link,
+	dual_category_id
 )
 VALUES
 (
@@ -15,7 +16,8 @@ VALUES
 	'topological spaces',
 	'continuous functions',
 	'This is the most basic category of geometric objects.',
-	'https://ncatlab.org/nlab/show/Top'
+	'https://ncatlab.org/nlab/show/Top',
+	NULL
 ),
 (
 	'sSet',
@@ -24,7 +26,8 @@ VALUES
 	'simplicial sets, i.e. functors $\Delta^{\mathrm{op}} \to \mathbf{Set}$',
 	'natural transformations',
 	NULL,
-	'https://ncatlab.org/nlab/show/SimpSet'
+	'https://ncatlab.org/nlab/show/SimpSet',
+	NULL
 ),
 (
 	'Man',
@@ -33,5 +36,6 @@ VALUES
 	'smooth manifolds',
 	'smooth maps',
 	'Here, a smooth manifold is assumed to be finite-dimensional, Hausdorff, and second-countable.',
-	'https://ncatlab.org/nlab/show/Diff'
+	'https://ncatlab.org/nlab/show/Diff',
+	NULL
 );
