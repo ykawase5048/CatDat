@@ -33,13 +33,18 @@ for (const folder of subfolders) {
 		.sort()
 
 	for (const file of files) {
+		const base = file.split('/').at(-1)
+		const is_valid = base?.match(/^[A-Za-z0-9_.,\-()]+$/)
+		if (!is_valid) {
+			throw new Error(`Invalid file name: ${base}`)
+		}
 		const sql = await fs.readFile(file, 'utf8')
 		const tx = await db.transaction()
 		try {
 			await tx.executeMultiple(sql)
 			await tx.commit()
 			const operation = file.includes('clear') ? 'Clear data' : 'Insert data'
-			console.info(`${operation}: ${file.split('/').at(-1)}`)
+			console.info(`${operation}: ${base}`)
 		} catch (err) {
 			console.error(`Failed to process ${file}`, err)
 			await tx.rollback()
