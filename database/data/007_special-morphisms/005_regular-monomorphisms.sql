@@ -91,6 +91,11 @@ VALUES
     'This is because the category is mono-regular'
 ),
 (
+    'Fld',
+    'A Galois extension is a regular monomorphism iff it is procyclic, and the general case can be reduced to this situation; see the reference for details.',
+    'See <a href="https://math.stackexchange.com/questions/5129895" target="_blank">MSE/5129895</a>.'
+),
+(
     'Grp',
     'same as monomorphisms',
     'This is because the category is mono-regular'
