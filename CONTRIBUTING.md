@@ -49,6 +49,8 @@ to continuously run this update when a file in the subfolder [/database/data](/d
 
 If this command throws an error, check the error message to identify the cause. It could be malformed SQL, or it could be a failing test in the script `pnpm db:test`. These tests verify that the data behaves as expected and that every property is assigned at least to the "core categories" (see below).
 
+**Tip.** If the local database is broken, just delete the `local.db` file and recreate it using `pnpm db:update`.
+
 ### Guidelines for Adding New Data
 
 When contributing new data (categories, properties, implications), please follow these guidelines:
