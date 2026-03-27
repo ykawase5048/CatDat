@@ -39,13 +39,15 @@ Apply the updates using:
 pnpm db:update
 ```
 
-Ensure that it does not error. You can also use
+You can also use
 
 ```sh
 pnpm db:watch
 ```
 
 to continuously run this update when a file in the subfolder [/database/data](/database/data) changes.
+
+If this command throws an error, check the error message to identify the cause. It could be malformed SQL, or it could be a failing test in the script `pnpm db:test`. These tests verify that the data behaves as expected and that every property is assigned at least to the "core categories" (see below).
 
 ### Guidelines for Adding New Data
 
@@ -64,6 +66,8 @@ When contributing new data (categories, properties, implications), please follow
 - **Special Objects and Morphisms**: For each new category, try to specify its special objects (terminal object, initial object, etc.) in the corresponding table. Also try to specify its special morphisms (isomorphisms, monomorphisms, epimorphisms).
 
 - **Proofs for New Properties**: For every new property, for each existing category, try to find a proof for whether it has this property or not, in case this has not already been deduced automatically. Use the property detail page to check unknown categories.
+
+- **Assign Properties to Core Categories**: For all new properties, you must assign them to the "core categories" (currently: $\mathbf{Set}$, $\mathbf{Top}$, $\mathbf{Ab}$), specifying whether they are satisfied or not. This decision should also be recorded in the JSON files located in [/scripts/expected-data](/scripts/expected-data/).
 
 - **Counterexamples**: Ensure that at least one category does not satisfy any new property that is added. If no existing category fits, add a new category that does not have the new property.
 
