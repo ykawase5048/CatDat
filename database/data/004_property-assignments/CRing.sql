@@ -57,7 +57,7 @@ VALUES
 	'CRing',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'CRing',

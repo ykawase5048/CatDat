@@ -27,7 +27,7 @@ VALUES
 	'Fld',
 	'inhabited',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Fld',
@@ -87,7 +87,7 @@ VALUES
 	'Fld',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Fld',

@@ -57,7 +57,7 @@ VALUES
 	'Ring',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Ring',

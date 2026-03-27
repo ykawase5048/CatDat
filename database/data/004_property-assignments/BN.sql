@@ -9,13 +9,13 @@ VALUES
 	'BN',
 	'small',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'BN',
 	'strongly connected',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'BN',
@@ -57,13 +57,13 @@ VALUES
 	'BN',
 	'essentially finite',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'BN',
 	'thin',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'BN',

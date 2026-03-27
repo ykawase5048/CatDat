@@ -63,5 +63,5 @@ VALUES
 	'Ab_fg',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 );

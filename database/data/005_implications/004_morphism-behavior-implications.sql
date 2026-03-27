@@ -80,7 +80,7 @@ VALUES
 	'groupoid_connected',
 	'["groupoid", "connected"]',
 	'["strongly connected"]',
-	'trivial',
+	'This is trivial.',
 	FALSE
 ),
 (

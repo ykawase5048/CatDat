@@ -9,7 +9,7 @@ VALUES
 	'N_oo',
 	'small',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'N_oo',
@@ -21,7 +21,7 @@ VALUES
 	'N_oo',
 	'skeletal',
 	TRUE,
-	'The relation $\leq$ is antisymmetric'
+	'The relation $\leq$ is antisymmetric.'
 ),
 (
 	'N_oo',
@@ -45,17 +45,17 @@ VALUES
 	'N_oo',
 	'strongly connected',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'N_oo',
 	'essentially finite',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'N_oo',
 	'self-dual',
 	FALSE,
-	'every upper set is infinite, but every lower set is finite'
+	'This is because every upper set is infinite, but every lower set is finite.'
 );

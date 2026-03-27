@@ -9,7 +9,7 @@ VALUES
 	'Sh(X,Ab)',
 	'locally small',
 	TRUE,
-	'easy'
+	'This is easy.'
 ),
 (
 	'Sh(X,Ab)',

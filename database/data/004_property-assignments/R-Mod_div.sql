@@ -27,11 +27,11 @@ VALUES
 	'R-Mod_div',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'R-Mod_div',
 	'trivial',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 );

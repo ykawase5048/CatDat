@@ -93,7 +93,7 @@ VALUES
 	'Met',
 	'strict terminal object',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Met',
@@ -111,7 +111,7 @@ VALUES
 	'Met',
 	'essentially small',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Met',
@@ -123,7 +123,7 @@ VALUES
 	'Met',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Met',

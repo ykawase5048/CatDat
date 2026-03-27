@@ -9,7 +9,7 @@ VALUES
 	'Z_div',
 	'small',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Z_div',

@@ -33,13 +33,13 @@ VALUES
 	'Set',
 	'strict terminal object',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Set',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Set',

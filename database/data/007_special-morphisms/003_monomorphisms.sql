@@ -13,17 +13,17 @@ VALUES
 (
 	'0',
 	'none',
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'1',
 	'every morphism',
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'2',
 	'every morphism',
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Ab',
@@ -43,7 +43,7 @@ VALUES
 (
 	'B',
 	'every morphism',
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Ban',
@@ -53,12 +53,12 @@ VALUES
 (
 	'BG',
 	'every morphism',
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'BG_f',
 	'every morphism',
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'BN',
@@ -88,7 +88,7 @@ VALUES
 (
 	'FI',
 	'every morphism',
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'FinAb',
@@ -258,7 +258,7 @@ VALUES
 (
 	'walking_isomorphism',
 	'every morphism',
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'walking_morphism',
@@ -268,7 +268,7 @@ VALUES
 (
 	'walking_pair',
 	'every morphism',
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Z',

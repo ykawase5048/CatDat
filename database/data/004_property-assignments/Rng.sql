@@ -51,7 +51,7 @@ VALUES
 	'Rng',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Rng',

@@ -15,7 +15,7 @@ VALUES
 	'0',
 	'discrete',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'0',
@@ -27,11 +27,11 @@ VALUES
 	'0',
 	'finite',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'0',
 	'inhabited',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 );

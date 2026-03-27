@@ -51,7 +51,7 @@ VALUES
 	'CMon',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'CMon',

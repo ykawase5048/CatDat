@@ -9,19 +9,19 @@ VALUES
 	'BG_f',
 	'finite',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'BG_f',
 	'groupoid',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'BG_f',
 	'strongly connected',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'BG_f',
@@ -33,11 +33,11 @@ VALUES
 	'BG_f',
 	'skeletal',
 	TRUE,
-	'There is just one object'
+	'There is just one object.'
 ),
 (
 	'BG_f',
 	'trivial',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 );

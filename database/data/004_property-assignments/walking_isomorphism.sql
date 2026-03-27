@@ -15,7 +15,7 @@ VALUES
 	'walking_isomorphism',
 	'finite',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'walking_isomorphism',

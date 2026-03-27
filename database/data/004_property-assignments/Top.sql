@@ -87,7 +87,7 @@ VALUES
 	'Top',
 	'strict terminal object',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Top',
@@ -105,7 +105,7 @@ VALUES
 	'Top',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Top',

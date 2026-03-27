@@ -34,7 +34,7 @@ VALUES
 (
 	'locally small',
 	'is',
-	'A category is <i>locally small</i> when for every pair of objects $A,B$ the collection of morphisms $A \to B$ is a set. (Here, we work with a set-theoretic foundation in which there are sets and collections. Categories are based on collections of objects and morphisms.)',
+	'A category is <i>locally small</i> when for every pair of objects $A,B$ the collection of morphisms $A \to B$ is a set. Here, we work with a set-theoretic foundation in which there are sets and collections. Categories are based on collections of objects and morphisms.',
 	'https://ncatlab.org/nlab/show/locally+small+category',
 	'locally small',
 	FALSE

@@ -69,7 +69,7 @@ VALUES
 	'Sch',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Sch',

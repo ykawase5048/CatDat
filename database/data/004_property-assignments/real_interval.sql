@@ -9,7 +9,7 @@ VALUES
 	'real_interval',
 	'small',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'real_interval',
@@ -21,7 +21,7 @@ VALUES
 	'real_interval',
 	'strongly connected',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'real_interval',
@@ -39,7 +39,7 @@ VALUES
 	'real_interval',
 	'essentially finite',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'real_interval',

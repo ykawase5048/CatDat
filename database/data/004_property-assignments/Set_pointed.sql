@@ -63,7 +63,7 @@ VALUES
 	'Set*',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Set*',

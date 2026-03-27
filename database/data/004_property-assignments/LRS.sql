@@ -63,7 +63,7 @@ VALUES
 	'LRS',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'LRS',

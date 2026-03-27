@@ -105,7 +105,7 @@ VALUES
 	'Man',
 	'strict terminal object',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Man',
@@ -117,5 +117,5 @@ VALUES
 	'Man',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 );

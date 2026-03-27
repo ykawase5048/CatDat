@@ -9,13 +9,13 @@ VALUES
 	'N',
 	'small',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'N',
 	'thin',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'N',
@@ -45,7 +45,7 @@ VALUES
 	'N',
 	'strongly connected',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'N',
@@ -57,5 +57,5 @@ VALUES
 	'N',
 	'essentially finite',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 );

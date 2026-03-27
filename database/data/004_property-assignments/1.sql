@@ -9,17 +9,17 @@ VALUES
 	'1',
 	'trivial',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'1',
 	'finite',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'1',
 	'discrete',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 );

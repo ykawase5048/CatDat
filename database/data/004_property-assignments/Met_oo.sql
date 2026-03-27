@@ -39,7 +39,7 @@ VALUES
 	'Met_oo',
 	'strict terminal object',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Met_oo',
@@ -63,7 +63,7 @@ VALUES
 	'Met_oo',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Met_oo',

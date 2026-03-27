@@ -9,7 +9,7 @@ VALUES
 	'BOn',
 	'strongly connected',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'BOn',
@@ -75,13 +75,13 @@ VALUES
 	'BOn',
 	'initial object',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'BOn',
 	'terminal object',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'BOn',

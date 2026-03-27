@@ -27,11 +27,11 @@ VALUES
 	'Vect',
 	'trivial',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Vect',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 );

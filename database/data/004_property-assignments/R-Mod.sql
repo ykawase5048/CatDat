@@ -15,7 +15,7 @@ VALUES
 	'R-Mod',
 	'abelian',
 	TRUE,
-	'standard'
+	'This is standard, see <a href="https://ncatlab.org/nlab/show/Categories+for+the+Working+Mathematician" target="_blank">Mac Lane</a>, Ch. VIII.'
 ),
 (
 	'R-Mod',
@@ -33,5 +33,5 @@ VALUES
 	'R-Mod',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 );

@@ -15,13 +15,13 @@ VALUES
 	'Meas',
 	'well-powered',
 	TRUE,
-	'follows from the fact that monomorphisms are injective here'
+	'This follows from the fact that monomorphisms are injective in this category.'
 ),
 (
 	'Meas',
 	'well-copowered',
 	TRUE,
-	'follows from the fact that epimorphisms are surjective here'
+	'This follows from the fact that epimorphisms are surjective in this category.'
 ),
 (
 	'Meas',
@@ -69,7 +69,7 @@ VALUES
 	'Meas',
 	'strict terminal object',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Meas',
@@ -81,7 +81,7 @@ VALUES
 	'Meas',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Meas',

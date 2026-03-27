@@ -57,7 +57,7 @@ VALUES
 	'CAlg(R)',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'CAlg(R)',

@@ -21,7 +21,7 @@ VALUES
 	'FreeAb',
 	'coproducts',
 	TRUE,
-	'free abelian groups are closed under direct sums of abelian groups'
+	'This is is because free abelian groups are closed under direct sums of abelian groups.'
 ),
 (
 	'FreeAb',
@@ -83,5 +83,5 @@ VALUES
 	'FreeAb',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 );

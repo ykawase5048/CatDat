@@ -15,13 +15,13 @@ VALUES
 	'walking_morphism',
 	'self-dual',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'walking_morphism',
 	'finite',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'walking_morphism',
@@ -33,17 +33,17 @@ VALUES
 	'walking_morphism',
 	'skeletal',
 	TRUE,
-	'The two objects are not isomorphic'
+	'The two objects are not isomorphic.'
 ),
 (
 	'walking_morphism',
 	'strongly connected',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'walking_morphism',
 	'trivial',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 );

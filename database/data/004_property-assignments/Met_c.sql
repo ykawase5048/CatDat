@@ -27,7 +27,7 @@ VALUES
 	'Met_c',
 	'well-powered',
 	TRUE,
-	'follows easily from the fact that monomorphisms here are injective'
+	'This follows easily from the fact that monomorphisms are injective in this category.'
 ),
 (
 	'Met_c',
@@ -69,7 +69,7 @@ VALUES
 	'Met_c',
 	'strict terminal object',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Met_c',
@@ -87,7 +87,7 @@ VALUES
 	'Met_c',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Met_c',

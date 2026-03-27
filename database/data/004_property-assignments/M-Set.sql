@@ -33,7 +33,7 @@ VALUES
 	'M-Set',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'M-Set',

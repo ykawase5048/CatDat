@@ -27,7 +27,7 @@ VALUES
 	'Sp',
 	'strict terminal object',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Sp',
@@ -45,7 +45,7 @@ VALUES
 	'Sp',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Sp',

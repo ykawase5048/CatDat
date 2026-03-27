@@ -45,7 +45,7 @@ VALUES
 	'Pos',
 	'strict terminal object',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Pos',
@@ -69,7 +69,7 @@ VALUES
 	'Pos',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Pos',

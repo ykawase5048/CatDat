@@ -9,13 +9,13 @@ VALUES
 	'On',
 	'thin',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'On',
 	'locally small',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'On',
@@ -45,13 +45,13 @@ VALUES
 	'On',
 	'skeletal',
 	TRUE,
-	'The relation $\leq$ is antisymmetric'
+	'The relation $\leq$ is antisymmetric.'
 ),
 (
 	'On',
 	'strongly connected',
 	TRUE,
-	'trivial'
+	'It is well-known that for ordinals $\alpha,\beta$ we have $\alpha \leq \beta$ or $\beta \leq \alpha$.'
 ),
 (
 	'On',

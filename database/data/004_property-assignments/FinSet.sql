@@ -51,7 +51,7 @@ VALUES
 	'FinSet',
 	'strict terminal object',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'FinSet',
@@ -69,7 +69,7 @@ VALUES
 	'FinSet',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'FinSet',

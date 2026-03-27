@@ -186,7 +186,7 @@ VALUES
 (
 	'sequential limits',
 	'has',
-	'A category has <i>sequential limits</i> if it has limits of diagrams of the following form: $\cdots \bullet \to \bullet \to \bullet$',
+	'A category has <i>sequential limits</i> if it has limits of diagrams of the form $\cdots \bullet \to \bullet \to \bullet$.',
 	'https://ncatlab.org/nlab/show/sequential+limit',
 	'sequential colimits',
 	TRUE
@@ -194,7 +194,7 @@ VALUES
 (
 	'sequential colimits',
 	'has',
-	'A category has <i>sequential colimits</i> if it has colimits of diagrams of the following form: $\bullet \to \bullet \to \bullet \to \cdots$',
+	'A category has <i>sequential colimits</i> if it has colimits of diagrams of the form: $\bullet \to \bullet \to \bullet \to \cdots$.',
 	'https://ncatlab.org/nlab/show/sequential+colimit',
 	'sequential limits',
 	TRUE

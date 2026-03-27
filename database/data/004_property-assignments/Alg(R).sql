@@ -51,7 +51,7 @@ VALUES
 	'Alg(R)',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Alg(R)',

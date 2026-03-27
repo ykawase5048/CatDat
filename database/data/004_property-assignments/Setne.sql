@@ -99,7 +99,7 @@ VALUES
 	'Setne',
 	'strict terminal object',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Setne',
@@ -111,5 +111,5 @@ VALUES
 	'Setne',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 );

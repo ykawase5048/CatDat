@@ -93,7 +93,7 @@ VALUES
 	'FinOrd',
 	'strict terminal object',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'FinOrd',
@@ -111,11 +111,11 @@ VALUES
 	'FinOrd',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'FinOrd',
 	'essentially finite',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 );

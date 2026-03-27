@@ -21,13 +21,13 @@ VALUES
 	'FinAb',
 	'abelian',
 	TRUE,
-	'follows from the fact for abelian groups'
+	'This follows from the fact for abelian groups.'
 ),
 (
 	'FinAb',
 	'self-dual',
 	TRUE,
-	'Pontrjagin duality'
+	'This is a simple special case of Pontryagin duality: The functor $\hom(-,\mathbb{Q}/\mathbb{Z})$ provides the equivalence.'
 ),
 (
 	'FinAb',

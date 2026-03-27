@@ -63,7 +63,7 @@ VALUES
 	'Cat',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Cat',

@@ -21,13 +21,13 @@ VALUES
 	'B',
 	'groupoid',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'B',
 	'inhabited',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'B',
@@ -45,17 +45,17 @@ VALUES
 	'B',
 	'generator',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'B',
 	'essentially finite',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'B',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 );

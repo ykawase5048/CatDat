@@ -33,7 +33,7 @@ VALUES
 	'Ban',
 	'cogenerator',
 	TRUE,
-	'Hahn-Banach shows that $\mathbb{C}$ is a cogenerator'
+	'The Hahn-Banach theorem implies that $\mathbb{C}$ is a cogenerator.'
 ),
 (
 	'Ban',
@@ -63,7 +63,7 @@ VALUES
 	'Ban',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Ban',

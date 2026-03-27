@@ -13,17 +13,17 @@ VALUES
 (
     '0',
     'same as monomorphisms',
-    'This is because the category is mono-regular'
+    'This is because the category is mono-regular.'
 ),
 (
     '1',
     'same as monomorphisms',
-    'This is because the category is mono-regular'
+    'This is because the category is mono-regular.'
 ),
 (
     '2',
     'same as monomorphisms',
-    'This is because the category is mono-regular'
+    'This is because the category is mono-regular.'
 ),
 (
     'Ab',
@@ -33,22 +33,22 @@ VALUES
 (
     'Ab_fg',
     'same as monomorphisms',
-    'This is because the category is mono-regular'
+    'This is because the category is mono-regular.'
 ),
 (
     'B',
     'same as monomorphisms',
-    'This is because the category is mono-regular'
+    'This is because the category is mono-regular.'
 ),
 (
     'BG',
     'same as monomorphisms',
-    'This is because the category is mono-regular'
+    'This is because the category is mono-regular.'
 ),
 (
     'BG_f',
     'same as monomorphisms',
-    'This is because the category is mono-regular'
+    'This is because the category is mono-regular.'
 ),
 (
     'BN',
@@ -68,27 +68,27 @@ VALUES
 (
     'FI',
     'same as monomorphisms',
-    'This is because the category is mono-regular'
+    'This is because the category is mono-regular.'
 ),
 (
     'FS',
     'same as monomorphisms',
-    'This is because the category is mono-regular'
+    'This is because the category is mono-regular.'
 ),
 (
     'FinAb',
     'same as monomorphisms',
-    'This is because the category is mono-regular'
+    'This is because the category is mono-regular.'
 ),
 (
     'FinOrd',
     'same as monomorphisms',
-    'This is because the category is mono-regular'
+    'This is because the category is mono-regular.'
 ),
 (
     'FinSet',
     'same as monomorphisms',
-    'This is because the category is mono-regular'
+    'This is because the category is mono-regular.'
 ),
 (
     'Fld',
@@ -98,12 +98,12 @@ VALUES
 (
     'Grp',
     'same as monomorphisms',
-    'This is because the category is mono-regular'
+    'This is because the category is mono-regular.'
 ),
 (
     'M-Set',
     'same as monomorphisms',
-    'This is because the category is mono-regular'
+    'This is because the category is mono-regular.'
 ),
 (
     'Met_c',
@@ -133,42 +133,42 @@ VALUES
 (
     'R-Mod',
     'same as monomorphisms',
-    'This is because the category is mono-regular'
+    'This is because the category is mono-regular.'
 ),
 (
     'R-Mod_div',
     'same as monomorphisms',
-    'This is because the category is mono-regular'
+    'This is because the category is mono-regular.'
 ),
 (
     'Set',
     'same as monomorphisms',
-    'This is because the category is mono-regular'
+    'This is because the category is mono-regular.'
 ),
 (
     'Set*',
     'same as monomorphisms',
-    'This is because the category is mono-regular'
+    'This is because the category is mono-regular.'
 ),
 (
     'Setne',
     'same as monomorphisms',
-    'This is because the category is mono-regular'
+    'This is because the category is mono-regular.'
 ),
 (
     'Sh(X)',
     'same as monomorphisms',
-    'This is because the category is mono-regular'
+    'This is because the category is mono-regular.'
 ),
 (
     'Sh(X,Ab)',
     'same as monomorphisms',
-    'This is because the category is mono-regular'
+    'This is because the category is mono-regular.'
 ),
 (
     'Sp',
     'same as monomorphisms',
-    'This is because the category is mono-regular'
+    'This is because the category is mono-regular.'
 ),
 (
     'Top',
@@ -178,12 +178,12 @@ VALUES
 (
     'Vect',
     'same as monomorphisms',
-    'This is because the category is mono-regular'
+    'This is because the category is mono-regular.'
 ),
 (
     'Z',
     'same as monomorphisms',
-    'This is because the category is mono-regular'
+    'This is because the category is mono-regular.'
 ),
 (
     'Z_div',
@@ -198,7 +198,7 @@ VALUES
 (
     'sSet',
     'same as monomorphisms',
-    'This is because the category is mono-regular'
+    'This is because the category is mono-regular.'
 ),
 (
     'walking_composable_pair',
@@ -208,7 +208,7 @@ VALUES
 (
     'walking_isomorphism',
     'same as monomorphisms',
-    'This is because the category is mono-regular'
+    'This is because the category is mono-regular.'
 ),
 (
     'walking_morphism',

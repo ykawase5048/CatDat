@@ -9,19 +9,19 @@ VALUES
 	'walking_pair',
 	'finite',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'walking_pair',
 	'self-dual',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'walking_pair',
 	'strongly connected',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'walking_pair',

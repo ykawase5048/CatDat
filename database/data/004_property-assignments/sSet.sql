@@ -15,7 +15,7 @@ VALUES
 	'sSet',
 	'Grothendieck topos',
 	TRUE,
-	'obvious'
+	'This is clear from the definitions.'
 ),
 (
 	'sSet',
@@ -33,7 +33,7 @@ VALUES
 	'sSet',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'sSet',

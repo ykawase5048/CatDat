@@ -13,17 +13,17 @@ VALUES
 (
 	'0',
 	'none',
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'1',
 	'every morphism',
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'2',
 	'every morphism',
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Ab',
@@ -33,7 +33,7 @@ VALUES
 (
 	'Ab_fg',
 	'bijective homomorphisms',
-	'follows exactly as for abelian groups'
+	'This follows exactly as for abelian groups.'
 ),
 (
 	'Alg(R)',
@@ -48,7 +48,7 @@ VALUES
 (
 	'Ban',
 	'bijective linear isometries',
-	'easy'
+	'This is easy.'
 ),
 (
 	'BG',
@@ -73,7 +73,7 @@ VALUES
 (
 	'Cat',
 	'functors that are bijective on objects and morphisms',
-	'easy'
+	'This is easy.'
 ),
 (
 	'CMon',
@@ -88,12 +88,12 @@ VALUES
 (
 	'FI',
 	'bijective maps',
-	'follows exactly as for sets'
+	'This follows exactly as for sets.'
 ),
 (
 	'FinAb',
 	'bijective homomorphisms',
-	'follows exactly as for abelian groups'
+	'This follows exactly as for abelian groups.'
 ),
 (
 	'FinOrd',
@@ -103,22 +103,22 @@ VALUES
 (
 	'FinSet',
 	'bijective maps',
-	'follows exactly as for sets'
+	'This follows exactly as for sets.'
 ),
 (
 	'Fld',
 	'bijective field homomorphisms',
-	'easy'
+	'This is easy.'
 ),
 (
 	'FreeAb',
 	'bijective homomorphisms',
-	'follows exactly as for abelian groups'
+	'This follows exactly as for abelian groups.'
 ),
 (
 	'FS',
 	'bijective maps',
-	'follows exactly as for sets'
+	'This follows exactly as for sets.'
 ),
 (
 	'Grp',
@@ -128,7 +128,7 @@ VALUES
 (
 	'LRS',
 	'pairs $(f,f^{\sharp})$ consisting of a homeomorphism $f$ and an isomorphism of sheaves $f^{\sharp}$',
-	'easy'
+	'This is easy.'
 ),
 (
 	'M-Set',
@@ -138,17 +138,17 @@ VALUES
 (
 	'Man',
 	'diffeomorphisms',
-	'by definition'
+	'This holds by definition.'
 ),
 (
 	'Meas',
 	'bijective measurable maps that map measurable sets to measurable sets',
-	'easy'
+	'This is easy.'
 ),
 (
 	'Met',
 	'bijective isometries',
-	'easy'
+	'This is easy.'
 ),
 (
 	'Met_c',
@@ -158,7 +158,7 @@ VALUES
 (
 	'Met_oo',
 	'bijective isometries',
-	'easy'
+	'This is easy.'
 ),
 (
 	'Mon',
@@ -183,7 +183,7 @@ VALUES
 (
 	'Pos',
 	'bijective order-preserving and order-reflecting functions',
-	'easy'
+	'This is easy.'
 ),
 (
 	'R-Mod',
@@ -213,12 +213,12 @@ VALUES
 (
 	'Sch',
 	'pairs $(f,f^{\sharp})$ consisting of a homeomorphism $f$ and an isomorphism of sheaves $f^{\sharp}$',
-	'easy'
+	'This is easy.'
 ),
 (
 	'Set',
 	'bijective maps',
-	'easy'
+	'This is easy.'
 ),
 (
 	'Set*',
@@ -228,17 +228,17 @@ VALUES
 (
 	'Setne',
 	'bijective maps',
-	'follows exactly as for sets'
+	'This follows exactly as for sets.'
 ),
 (
 	'Sh(X)',
 	'morphisms of sheaves that are bijective on every open set',
-	'easy'
+	'This is easy.'
 ),
 (
 	'Sh(X,Ab)',
 	'morphisms of abelian sheaves that are bijective on every open set',
-	'easy'
+	'This is easy.'
 ),
 (
 	'Sp',
@@ -253,7 +253,7 @@ VALUES
 (
 	'Top',
 	'homeomorphisms',
-	'easy'
+	'This is easy.'
 ),
 (
 	'Vect',
@@ -263,22 +263,22 @@ VALUES
 (
 	'walking_composable_pair',
 	'the three identities',
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'walking_isomorphism',
 	'every morphism',
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'walking_morphism',
 	'the two identities',
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'walking_pair',
 	'the two identities',
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Z',
@@ -288,7 +288,7 @@ VALUES
 (
 	'Z_div',
 	'the identities $(a,a) : a \to a$ and the isomorphisms $(a,-a) : a \to -a$ for $a \in \mathbb{Z}$',
-	'trivial'
+	'This is trivial.'
 );
 
 INSERT INTO special_morphisms

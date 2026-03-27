@@ -9,13 +9,13 @@ VALUES
 	'Sh(X)',
 	'locally small',
 	TRUE,
-	'easy'
+	'This is easy.'
 ),
 (
 	'Sh(X)',
 	'Grothendieck topos',
 	TRUE,
-	'by definition of a Grothendieck topos'
+	'This holds by definition of a Grothendieck topos.'
 ),
 (
 	'Sh(X)',

@@ -9,49 +9,49 @@ VALUES
 	'Z',
 	'complete',
 	TRUE,
-	'follows immediately from the fact for $\mathbf{Set}$'
+	'This follows immediately from the fact for $\mathbf{Set}$.'
 ),
 (
 	'Z',
 	'cocomplete',
 	TRUE,
-	'follows immediately from the fact for $\mathbf{Set}$'
+	'This follows immediately from the fact for $\mathbf{Set}$.'
 ),
 (
 	'Z',
 	'infinitary extensive',
 	TRUE,
-	'follows immediately from the fact for $\mathbf{Set}$'
+	'This follows immediately from the fact for $\mathbf{Set}$.'
 ),
 (
 	'Z',
 	'exact filtered colimits',
 	TRUE,
-	'follows immediately from the fact for $\mathbf{Set}$'
+	'This follows immediately from the fact for $\mathbf{Set}$.'
 ),
 (
 	'Z',
 	'mono-regular',
 	TRUE,
-	'follows immediately from the fact for $\mathbf{Set}$'
+	'This follows immediately from the fact for $\mathbf{Set}$.'
 ),
 (
 	'Z',
 	'epi-regular',
 	TRUE,
-	'follows immediately from the fact for $\mathbf{Set}$'
+	'This follows immediately from the fact for $\mathbf{Set}$.'
 ),
 (
 	'Z',
 	'regular',
 	TRUE,
-	'follows immediately from the fact for $\mathbf{Set}$'
+	'This follows immediately from the fact for $\mathbf{Set}$.'
 ),
 (
 	'Z',
 	'coregular',
 	TRUE,
-	'follows immediately from the fact for $\mathbf{Set}$'
+	'This follows immediately from the fact for $\mathbf{Set}$.'
 ),
 (
 	'Z',
@@ -69,7 +69,7 @@ VALUES
 	'Z',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Z',

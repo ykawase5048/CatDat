@@ -9,25 +9,25 @@ VALUES
 	'walking_composable_pair',
 	'finite',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'walking_composable_pair',
 	'strongly connected',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'walking_composable_pair',
 	'skeletal',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'walking_composable_pair',
 	'self-dual',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'walking_composable_pair',

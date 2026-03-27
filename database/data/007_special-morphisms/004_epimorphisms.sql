@@ -13,17 +13,17 @@ VALUES
 (
 	'0',
 	'none',
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'1',
 	'every morphism',
-	'it is discrete'
+	'This is clear since it is discrete.'
 ),
 (
 	'2',
 	'every morphism',
-	'it is discrete'
+	'This is clear since it is discrete.'
 ),
 (
 	'Ab',
@@ -38,7 +38,7 @@ VALUES
 (
 	'B',
 	'every morphism',
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Ban',
@@ -48,12 +48,12 @@ VALUES
 (
 	'BG',
 	'every morphism',
-	'it is a groupoid'
+	'This holds because it is a groupoid.'
 ),
 (
 	'BG_f',
 	'every morphism',
-	'it is a groupoid'
+	'This holds because it is a groupoid.'
 ),
 (
 	'BN',
@@ -108,7 +108,7 @@ VALUES
 (
 	'FS',
 	'every morphism',
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Grp',
@@ -233,7 +233,7 @@ VALUES
 (
 	'walking_isomorphism',
 	'every morphism',
-	'it is a groupoid'
+	'This holds because it is a groupoid.'
 ),
 (
 	'walking_morphism',
@@ -253,7 +253,7 @@ VALUES
 (
 	'Z_div',
 	'every morphism',
-	'It is a thin category'
+	'It is a thin category.'
 );
 
 INSERT INTO special_morphisms

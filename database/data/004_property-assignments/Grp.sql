@@ -69,7 +69,7 @@ VALUES
 	'Grp',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Grp',

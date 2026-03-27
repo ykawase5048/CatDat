@@ -51,7 +51,7 @@ VALUES
 	'Mon',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'Mon',

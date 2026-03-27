@@ -9,19 +9,19 @@ VALUES
 	'2',
 	'discrete',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'2',
 	'finite',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'2',
 	'inhabited',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'2',

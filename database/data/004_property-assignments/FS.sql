@@ -21,7 +21,7 @@ VALUES
 	'FS',
 	'right cancellative',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'FS',
@@ -87,11 +87,11 @@ VALUES
 	'FS',
 	'essentially finite',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'FS',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 );

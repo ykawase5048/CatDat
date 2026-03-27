@@ -108,7 +108,7 @@ VALUES
 	'lcc_implies_regular',
 	'["locally cartesian closed", "coequalizers", "finitely complete"]',
 	'["regular"]',
-	'See <a href="https://ncatlab.org/nlab/show/Sketches+of+an+Elephant" target="_blank">Johnstone</a>, Lemma A1.5.13. (From this it follows also that every elementary topos is regular.)',
+	'See <a href="https://ncatlab.org/nlab/show/Sketches+of+an+Elephant" target="_blank">Johnstone</a>, Lemma A1.5.13. From this it follows also that every elementary topos is regular.',
 	FALSE
 ),
 (
@@ -129,7 +129,7 @@ VALUES
 	'lcc_extensive_yields_infinitary',
 	'["locally cartesian closed", "cocomplete", "extensive"]',
 	'["infinitary extensive"]',
-	'The pullback functor preserves coproducts because it has a right adjoint. See also Remark 2.6 at the <a href="https://ncatlab.org/nlab/show/extensive+category" target="_blank">nLab</a>. ',
+	'The pullback functor preserves coproducts because it has a right adjoint. See also Remark 2.6 at the <a href="https://ncatlab.org/nlab/show/extensive+category" target="_blank">nLab</a>.',
 	FALSE
 ),
 (

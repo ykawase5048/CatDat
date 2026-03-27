@@ -69,5 +69,5 @@ VALUES
 	'Rel',
 	'skeletal',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 );

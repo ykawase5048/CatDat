@@ -9,19 +9,19 @@ VALUES
 	'BG',
 	'small',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'BG',
 	'groupoid',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'BG',
 	'strongly connected',
 	TRUE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'BG',
@@ -33,13 +33,13 @@ VALUES
 	'BG',
 	'skeletal',
 	TRUE,
-	'There is just one object'
+	'There is just one object.'
 ),
 (
 	'BG',
 	'trivial',
 	FALSE,
-	'trivial'
+	'This is trivial.'
 ),
 (
 	'BG',
