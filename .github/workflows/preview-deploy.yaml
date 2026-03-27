@@ -1,11 +1,6 @@
 name: preview deployment
 
 on:
-    push:
-        branches:
-            - main
-        paths-ignore:
-            - '*.md'
     workflow_dispatch:
 
 jobs:
