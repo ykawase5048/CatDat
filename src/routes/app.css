@@ -210,7 +210,3 @@ dialog {
 body:has(#nav_dialog[open]) {
 	overflow: hidden;
 }
-
-.katex {
-	white-space: nowrap;
-}
