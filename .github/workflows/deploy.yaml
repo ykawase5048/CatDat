@@ -3,6 +3,9 @@ name: production deployment
 on:
     workflow_dispatch:
 
+permissions:
+    contents: write
+
 jobs:
     build-and-deploy:
         runs-on: ubuntu-latest
@@ -10,6 +13,8 @@ jobs:
         steps:
             - name: Checkout code
               uses: actions/checkout@v5
+              with:
+                  fetch-depth: 0
 
             - name: Install pnpm
               uses: pnpm/action-setup@v4
@@ -57,3 +62,12 @@ jobs:
                     --auth ${{ secrets.NETLIFY_ACCESS_TOKEN }} \
                     --message "${{ env.COMMIT_MESSAGE }}" \
                     --prod
+
+            - name: Create deployment tag
+              if: success()
+              run: |
+                  TAG="deploy-$(date -u +'%Y%m%d')-${GITHUB_SHA::7}"
+                  git config user.name "github-actions[bot]"
+                  git config user.email "github-actions[bot]@users.noreply.github.com"
+                  git tag -a "$TAG" -m "Deploy $TAG"
+                  git push origin "$TAG"
