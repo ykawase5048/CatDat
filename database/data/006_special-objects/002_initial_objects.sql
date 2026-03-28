@@ -20,6 +20,7 @@ VALUES
 ('FinSet', 'empty set'),
 ('FreeAb', 'trivial group'),
 ('Grp', 'trivial group'),
+('Haus', 'empty space'),
 ('LRS', 'empty space'),
 ('M-Set', 'empty set with the unique action'),
 ('Man', 'empty manifold'),

@@ -101,6 +101,11 @@ VALUES
     'This is because the category is mono-regular.'
 ),
 (
+    'Haus',
+    'embeddings with closed image',
+    'The explicit construction of equalizers shows that they are embeddings, and they have a closed image because of the well-known lemma that for a Hausdorff space the diagonal $X \to X \times X$ has closed image. For the other non-trivial direction, see <a href="https://math.stackexchange.com/questions/214045/" target="_blank">MSE/214045</a>.'
+),
+(
     'M-Set',
     'same as monomorphisms',
     'This is because the category is mono-regular.'

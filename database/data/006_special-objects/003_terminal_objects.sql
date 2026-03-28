@@ -19,6 +19,7 @@ VALUES
 ('FinSet', 'singleton set'),
 ('FreeAb', 'trivial group'),
 ('Grp', 'trivial group'),
+('Haus', 'singleton space'),
 ('LRS', '$\mathrm{Spec}(\mathbb{Z})$'),
 ('M-Set', 'singleton set with the unique action'),
 ('Man', 'singleton manifold of dimension $0$'),

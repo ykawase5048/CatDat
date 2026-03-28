@@ -20,6 +20,16 @@ VALUES
 	NULL
 ),
 (
+	'Haus',
+	'category of Hausdorff spaces',
+	'$\mathbf{Haus}$',
+	'Hausdorff spaces',
+	'continuous functions',
+	'This is the full subcategory of $\mathbf{Top}$ consisting of those spaces that are <a href="https://en.wikipedia.org/wiki/Hausdorff_space" target="_blank">Hausdorff</a>.',
+	'https://ncatlab.org/nlab/show/Hausdorff+space',
+	NULL
+),
+(
 	'sSet',
 	'category of simplicial sets',
 	'$\mathbf{sSet}$',

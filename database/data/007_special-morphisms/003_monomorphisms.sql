@@ -126,6 +126,11 @@ VALUES
 	'This holds in every finitary algebraic category: the forgetful functor to $\mathbf{Set}$ is faithful, hence reflects monomorphisms, and it is continuous (even representable), hence preserves monomorphisms.'
 ),
 (
+	'Haus',
+	'injective continuous maps',
+	'The same proof as for $\mathbf{Set}$ can be used.'
+),
+(
 	'M-Set',
 	'injective $M$-maps',
 	'This holds in every finitary algebraic category: the forgetful functor to $\mathbf{Set}$ is faithful, hence reflects monomorphisms, and it is continuous (even representable), hence preserves monomorphisms.'

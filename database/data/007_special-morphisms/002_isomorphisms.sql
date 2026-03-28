@@ -126,6 +126,11 @@ VALUES
 	'This characterization holds in every algebraic category.'
 ),
 (
+	'Haus',
+	'homeomorphisms',
+	'This is easy.'
+),
+(
 	'LRS',
 	'pairs $(f,f^{\sharp})$ consisting of a homeomorphism $f$ and an isomorphism of sheaves $f^{\sharp}$',
 	'This is easy.'

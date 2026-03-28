@@ -18,6 +18,7 @@ VALUES
 ('CRing', 'tensor products over $\mathbb{Z}$'),
 ('FreeAb', 'direct sums'),
 ('Grp', 'free products'),
+('Haus', 'disjoint union with the disjoint union topology'),
 ('LRS', 'disjoint union with the product sheaf'),
 ('M-Set', 'disjoint union with obvious $M$-action'),
 ('Meas', 'disjoint union with the obvious $\sigma$-algebra'),

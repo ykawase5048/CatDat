@@ -116,6 +116,11 @@ VALUES
 	'For the non-trivial direction, if $f : G \to H$ is an epimorphism, we may factor it as $G \to f(G) \to H$, and $f(G) \to H$ is still an epimorphism, but also an inclusion and hence a monomorphism. Since we already know that the category is balanced, $f(G) \to H$ must be an isomorphism.'
 ),
 (
+	'Haus',
+	'continuous maps with dense image',
+	'It is clear that continuous maps with dense image are epimorphism, but the other direction is non-trivial. See <a href="https://math.stackexchange.com/questions/214045" target="_blank">MSE/214045</a> for a proof.'
+),
+(
 	'M-Set',
 	'surjective $M$-maps',
 	'This holds in every functor category $[\mathcal{C},\mathbf{Set}]$, here applied to the case that $\mathcal{C}$ has just one object.'
