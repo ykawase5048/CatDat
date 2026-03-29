@@ -94,6 +94,8 @@ VALUES
 ('On', 'thin'),
 ('Pos', 'order theory'),
 ('Pos', 'well-behaved'),
+('Prost', 'order theory'),
+('Prost', 'well-behaved'),
 ('R-Mod', 'algebra'),
 ('R-Mod', 'well-behaved'),
 ('R-Mod_div', 'algebra'),

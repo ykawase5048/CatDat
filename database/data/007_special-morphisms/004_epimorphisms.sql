@@ -168,7 +168,12 @@ VALUES
 (
 	'Pos',
 	'surjective order-preserving functions',
-	'Use the same proof as for sets, where $2 = \{0,1\}$ is endowed with the trivial order in which $0$, $1$ have no relation.'
+	'Clearly, surjective maps are epimorphisms. Conversely, assume that $f : P \to Q$ is an order-preserving map which is not surjective. Choose $q \in Q \setminus f(P)$. The order-preserving maps $Q \to \{0 < 1\}$ correspond to the upper sets in $Q$, and composing them with $f$ corresponds to taking their $f$-preimages. Consider the two upper sets $Q_{> q}$ and $Q_{\geq q}$. Their $f$-preimages are the same since $q \notin f(P)$. Therefore, $f$ is not an epimorphism.'
+),
+(
+	'Prost',
+	'surjective order-preserving functions',
+	'Clearly, surjective maps are epimorphisms. The converse follows since, as mentioned, the forgetful functor $\mathbf{Prost} \to \mathbf{Set}$ has a right adjoint hence preserves epimorphisms.'
 ),
 (
 	'R-Mod',

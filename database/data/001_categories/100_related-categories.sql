@@ -66,6 +66,8 @@ VALUES
 ('N_oo', 'On'),
 ('On', 'N'),
 ('Pos', 'FinOrd'),
+('Pos', 'Prost'),
+('Prost', 'Pos'),
 ('R-Mod', 'Ab'),
 ('R-Mod', 'M-Set'),
 ('R-Mod', 'R-Mod_div'),

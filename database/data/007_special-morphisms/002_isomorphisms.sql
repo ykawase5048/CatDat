@@ -187,7 +187,12 @@ VALUES
 ),
 (
 	'Pos',
-	'bijective order-preserving and order-reflecting functions',
+	'bijective functions that are order-preserving and order-reflecting',
+	'This is easy.'
+),
+(
+	'Prost',
+	'bijective functions that are order-preserving and order-reflecting',
 	'This is easy.'
 ),
 (

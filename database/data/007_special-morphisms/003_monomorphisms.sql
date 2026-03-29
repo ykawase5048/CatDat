@@ -186,6 +186,11 @@ VALUES
 	'The same proof as for $\mathbf{Set}$ can be used.'
 ),
 (
+	'Prost',
+	'injective order-preserving functions',
+	'The same proof as for $\mathbf{Set}$ can be used.'
+),
+(
 	'R-Mod',
 	'injective $R$-linear maps',
 	'This holds in every finitary algebraic category: the forgetful functor to $\mathbf{Set}$ is faithful, hence reflects monomorphisms, and it is continuous (even representable), hence preserves monomorphisms.'

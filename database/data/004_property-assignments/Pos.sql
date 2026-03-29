@@ -21,7 +21,7 @@ VALUES
 	'Pos',
 	'cartesian closed',
 	TRUE,
-	'For partial orders $P,Q$ we endow $\hom(P,Q)$ with the partial order in which $f \leq g$ holds iff $f(p) \leq g(p)$ for all $p \in P$. The universal evaluation map is $\hom(P,Q) \times P \to Q$, $(f,p) \mapsto f(p)$, it is order-preserving, and it satisfies the universal property.'
+	'For posets $P,Q$ we endow $\hom(P,Q)$ with the partial order in which $f \leq g$ holds iff $f(p) \leq g(p)$ for all $p \in P$. The universal evaluation map is $\hom(P,Q) \times P \to Q$, $(f,p) \mapsto f(p)$, it is order-preserving, and it satisfies the universal property.'
 ),
 (
 	'Pos',
@@ -39,19 +39,13 @@ VALUES
 	'Pos',
 	'strongly connected',
 	TRUE,
-	'Every nonempty preorder is weakly terminal (by using constant maps).'
+	'Every nonempty poset is weakly terminal (by using constant maps).'
 ),
 (
 	'Pos',
 	'strict terminal object',
 	FALSE,
 	'This is trivial.'
-),
-(
-	'Pos',
-	'finitary algebraic',
-	FALSE,
-	NULL
 ),
 (
 	'Pos',
@@ -63,7 +57,7 @@ VALUES
 	'Pos',
 	'balanced',
 	FALSE,
-	'Consider any set $X$ with $ \geq 2$ elements and the identity map $(X,\Delta_X) \to (X, X \times X)$. It is is bijective but no isomorphism.'
+	'The inclusion $\{0,1\} \to \{0 < 1\}$ provides a counterexample (where in the domain there is no relation between $0$ and $1$).'
 ),
 (
 	'Pos',
@@ -76,12 +70,6 @@ VALUES
 	'Malcev',
 	FALSE,
 	'Consider the subposet $\{(a,b) : a \leq b \}$ of $\mathbb{N}^2$.'
-),
-(
-	'Pos',
-	'locally cartesian closed',
-	FALSE,
-	'See §2 of <a href="http://www.tac.mta.ca/tac/volumes/8/n2/8-02abs.html" target="_blank">Niefield 2001</a>.'
 ),
 (
 	'Pos',

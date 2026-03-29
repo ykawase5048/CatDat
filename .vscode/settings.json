@@ -13,7 +13,8 @@
 		"notrack",
 		"sqcup",
 		"infty",
-		"chartjs"
+		"chartjs",
+		"Prost"
 	],
 	"cSpell.words": [
 		"abelian",
@@ -121,12 +122,13 @@
 		"preimage",
 		"preimages",
 		"preordered",
-		"preorders",
 		"prerender",
 		"prerendered",
 		"Prerendering",
 		"presheaves",
 		"procyclic",
+		"proset",
+		"prosets",
 		"protomodular",
 		"pushout",
 		"pushouts",
@@ -144,6 +146,7 @@
 		"subobject",
 		"subobjects",
 		"subposet",
+		"subproset",
 		"subscheme",
 		"subsheaf",
 		"summands",
