@@ -3,6 +3,7 @@
 	<a href="/settings">Settings</a>
 	<a href="/missing">Missing data</a>
 	<a href="/resources">Resources</a>
+	<a href="/foundations">Foundations</a>
 </footer>
 
 <style>
@@ -11,7 +12,7 @@
 		display: flex;
 		justify-content: center;
 		flex-wrap: wrap;
-		gap: 1rem;
+		gap: 1.25rem;
 	}
 
 	@media (width <= 600px) {

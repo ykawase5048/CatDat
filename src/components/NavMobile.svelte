@@ -77,6 +77,9 @@
 		<li>
 			<a href="/resources">Resources</a>
 		</li>
+		<li>
+			<a href="/foundations">Foundations</a>
+		</li>
 	</ul>
 </nav>
 
