@@ -45,7 +45,7 @@ VALUES
 	'Haus',
 	'well-copowered',
 	TRUE,
-	'This is clear from the classification of epimorphisms as continuous maps with dense image.' -- FIXME, needs extra explanation
+	'Every epimorphism has dense image, so it suffices to prove that if a Hausdorff space $X$ has a dense subset $D \subseteq X$, we can bound the cardinality of $X$ in terms of the cardinality of $D$. For $x \in X$ let $\alpha(x)$ be the set of all $U \cap D$, where $U$ is an open neighborhood of $x$. This defines a map $\alpha : X \to P(P(D))$, and we claim that it is injective: this is because $\{x\}$ is the intersection of all $\overline{U} = \overline{U \cap D}$, where $U$ runs through the open neighborhoods of $x$.'
 ),
 (
 	'Haus',
