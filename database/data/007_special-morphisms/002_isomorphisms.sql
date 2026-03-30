@@ -76,6 +76,11 @@ VALUES
 	'This is easy.'
 ),
 (
+	'CAlg(R)',
+	'bijective homomorphisms',
+	'This characterization holds in every algebraic category.'
+),
+(
 	'CMon',
 	'bijective homomorphisms',
 	'This characterization holds in every algebraic category.'

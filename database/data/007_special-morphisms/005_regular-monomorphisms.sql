@@ -111,6 +111,11 @@ VALUES
     'This is because the category is mono-regular.'
 ),
 (
+    'Meas',
+    'embeddings',
+    '(This is the same proof as for $\mathbf{Top}$.) Equalizers are embeddings by their construction. Conversely, if $f : X \to Y$ is an embedding, then $f$ is the equalizer of the two characteristic maps $\chi_Y, \chi_{f(X)} : Y \to \{0,1\}$, where $\{0,1\}$ carries the trivial $\sigma$-algebra.'
+),
+(
     'Met_c',
     'embeddings of closed subspaces',
     'A reference is Example 7.58 (3) in <a href="https://ncatlab.org/nlab/show/Abstract+and+Concrete+Categories" target="_blank">Joy of Cats</a>, but a proof is missing there.'

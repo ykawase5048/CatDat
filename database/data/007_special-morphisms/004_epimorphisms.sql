@@ -146,6 +146,11 @@ VALUES
 	'See <a href="https://math.stackexchange.com/questions/937387" target="_blank">MSE/937387</a>.'
 ),
 (
+	'Met_oo',
+	'non-expansive maps with dense image',
+	'See <a href="https://math.stackexchange.com/questions/937387" target="_blank">MSE/937387</a>.'
+),
+(
 	'Mon',
 	'A monoid map $f : T \to S$ is an epimorphism iff $S$ equals the <i>dominion</i> of $U := f(T) \subseteq S$, meaning that for every $s \in S$ there are $u_1,\dotsc,u_{m+1} \in U$, $v_1,\dotsc,v_m \in U$, $x_1,\dotsc,x_m \in S$ and $y_1,\dotsc,y_m \in S$ such that $s = x_1 u_1$, $u_1 = v_1 y_1$, $x_{i-1} v_{i-1} = x_i u_i$, $u_i y_{i-1} = v_i y_i$, $x_m v_m = u_{m+1}$ and $u_{m+1} y_m = s$.',
 	'This is <a href="https://en.wikipedia.org/wiki/Isbell''s_zigzag_theorem" target="_blank">Isbell''s zigzag Theorem</a>, see references there.'

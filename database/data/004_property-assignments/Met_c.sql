@@ -19,9 +19,15 @@ VALUES
 ),
 (
 	'Met_c',
+	'coproducts',
+	TRUE,
+	'See <a href="https://math.stackexchange.com/questions/5004389" target="_blank">MSE/5004389</a>.'
+),
+(
+	'Met_c',
 	'infinitary extensive',
 	TRUE,
-	'This follows immediately from the fact that $\mathbf{Top}$ is infinitary extensive.'
+	'This follows from the existence of coproducts and from the fact that $\mathbf{Top}$ is infinitary extensive.'
 ),
 (
 	'Met_c',
