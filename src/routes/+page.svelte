@@ -53,8 +53,9 @@
 			<Fa icon={faSearch} /> Search by properties
 		</h3>
 		<p>
-			You can easily <a class="accent" href="/search">search for categories</a> that satisfy
-			specific properties while not satisfying others.
+			You can easily <a class="accent" href="/category-search"
+				>search for categories</a
+			> that satisfy specific properties while not satisfying others.
 		</p>
 	</article>
 

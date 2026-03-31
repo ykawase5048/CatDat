@@ -43,7 +43,7 @@
 			icon: faChartBar,
 			nested: '/category-comparison',
 		},
-		{ href: '/search', text: 'Search', icon: faSearch },
+		{ href: '/category-search', text: 'Search', icon: faSearch },
 	]
 </script>
 

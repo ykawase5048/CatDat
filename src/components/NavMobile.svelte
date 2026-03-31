@@ -57,7 +57,7 @@
 		</li>
 
 		<li>
-			<a href="/search">
+			<a href="/category-search">
 				Search
 				<Fa icon={faSearch} />
 			</a>
