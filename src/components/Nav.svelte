@@ -27,7 +27,11 @@
 			icon: faDatabase,
 		},
 		{ href: '/properties', text: 'Properties', nested: '/property', icon: faList },
-		{ href: '/implications', text: 'Implications', icon: faArrowsSplitUpAndLeft },
+		{
+			href: '/category-implications',
+			text: 'Implications',
+			icon: faArrowsSplitUpAndLeft,
+		},
 		{
 			href: '/category-comparison',
 			text: 'Compare',

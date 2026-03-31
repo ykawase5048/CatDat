@@ -43,7 +43,7 @@
 		</li>
 
 		<li>
-			<a href="/implications">
+			<a href="/category-implications">
 				Implications
 				<Fa icon={faArrowsSplitUpAndLeft} />
 			</a>

@@ -91,7 +91,7 @@
 			are not yet witnessed by a category in the database. If some of these
 			combinations <i>are</i>
 			inconsistent, this indicates that some
-			<a href="/implications">implication</a> is missing.
+			<a href="/category-implications">implication</a> is missing.
 		</p>
 
 		<details>
