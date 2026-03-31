@@ -77,13 +77,6 @@ VALUES
 	FALSE
 ),
 (
-	'additive_trivial_condition',
-	'["additive", "pullbacks", "subobject classifier"]',
-	'["trivial"]',
-	'See <a href="https://math.stackexchange.com/questions/4086192" target="_blank">MSE/4086192</a>.',
-	FALSE
-),
-(
 	'algebraic_well-copowered',
 	'["finitary algebraic"]',
 	'["well-copowered"]',
