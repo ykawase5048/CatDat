@@ -62,8 +62,8 @@
 			<Fa icon={faChartBar} /> Compare categories
 		</h3>
 		<p>
-			You can <a class="accent" href="/compare">compare categories</a> to see how their
-			properties align or differ.
+			You can <a class="accent" href="/category-comparison">compare categories</a> to
+			see how their properties align or differ.
 		</p>
 	</article>
 

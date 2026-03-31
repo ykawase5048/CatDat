@@ -50,7 +50,7 @@
 		</li>
 
 		<li>
-			<a href="/compare">
+			<a href="/category-comparison">
 				Compare
 				<Fa icon={faChartBar} />
 			</a>

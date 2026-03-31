@@ -28,7 +28,12 @@
 		},
 		{ href: '/properties', text: 'Properties', nested: '/property', icon: faList },
 		{ href: '/implications', text: 'Implications', icon: faArrowsSplitUpAndLeft },
-		{ href: '/compare', text: 'Compare', icon: faChartBar, nested: '/compare' },
+		{
+			href: '/category-comparison',
+			text: 'Compare',
+			icon: faChartBar,
+			nested: '/category-comparison',
+		},
 		{ href: '/search', text: 'Search', icon: faSearch },
 	]
 </script>
