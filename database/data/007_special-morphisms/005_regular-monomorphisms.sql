@@ -171,6 +171,11 @@ VALUES
     'This is because the category is mono-regular.'
 ),
 (
+    'SetxSet',
+    'same as monomorphisms',
+    'This is because the category is mono-regular.'
+),
+(
     'Sh(X)',
     'same as monomorphisms',
     'This is because the category is mono-regular.'

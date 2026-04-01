@@ -43,6 +43,7 @@ VALUES
 ('Sch', 'empty scheme'),
 ('Set', 'empty set'),
 ('Set*', 'singleton pointed set'),
+('SetxSet', '$(0,0)$'),
 ('Sh(X)', 'constant sheaf with value $\emptyset$, sending all non-empty open sets to $\emptyset$ and the empty set to a singleton'),
 ('Sh(X,Ab)', 'trivial abelian sheaf'),
 ('Sp', 'species $X$ with $X_n = \emptyset$'),

@@ -38,6 +38,7 @@ VALUES
 ('Sch', 'disjoint union with the product sheaf'),
 ('Set', 'disjoint union'),
 ('Set*', 'wedge sum, aka one-point union'),
+('SetxSet', 'component-wise disjoint union'),
 ('Sh(X)', 'associated sheaf to the section-wise disjoint union'),
 ('Sh(X,Ab)', 'associated sheaf to the section-wise direct sum'),
 ('sSet', 'pointwise disjoint union'),

@@ -35,6 +35,7 @@ VALUES
 ('Set', 'direct products with pointwise operations'),
 ('Set*', 'direct products with pointwise operations'),
 ('Setne', 'direct products'),
+('SetxSet', 'component-wise direct product'),
 ('Sh(X)', 'section-wise defined direct product'),
 ('Sh(X,Ab)', 'section-wise defined direct product'),
 ('sSet', 'pointwise defined direct product'),

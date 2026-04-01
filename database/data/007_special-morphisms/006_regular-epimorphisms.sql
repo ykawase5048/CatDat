@@ -179,7 +179,12 @@ VALUES
     'Setne',
     'same as epimorphisms',
     'This is because the category is epi-regular.'
-),    
+),   
+(
+    'SetxSet',
+    'same as epimorphisms',
+    'This is because the category is epi-regular.'
+),     
 (
     'Sh(X)',
     'same as epimorphisms',

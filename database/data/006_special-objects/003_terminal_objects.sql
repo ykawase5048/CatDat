@@ -41,6 +41,7 @@ VALUES
 ('Set', 'singleton set'),
 ('Set*', 'singleton pointed set'),
 ('Setne', 'singleton set'),
+('SetxSet', '$(1,1)$'),
 ('Sh(X)', 'constant sheaf with value a singleton'),
 ('Sh(X,Ab)', 'trivial abelian sheaf'),
 ('Sp', 'species $X$ with $X_n = 1$'),

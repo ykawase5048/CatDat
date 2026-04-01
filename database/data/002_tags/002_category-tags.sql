@@ -120,6 +120,8 @@ VALUES
 ('Setne', 'set theory'),
 ('Setne', 'badly-behaved'),
 ('Setne', 'artificial'),
+('SetxSet', 'set theory'),
+('SetxSet', 'well-behaved'),
 ('Sh(X)', 'algebraic geometry'),
 ('Sh(X)', 'topology'),
 ('Sh(X)', 'well-behaved'),

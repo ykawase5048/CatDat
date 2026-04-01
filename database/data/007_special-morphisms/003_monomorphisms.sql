@@ -236,6 +236,11 @@ VALUES
 	'The same proof as for $\mathbf{Set}$ can be used.'
 ),
 (
+	'SetxSet',
+	'pairs of injective maps',
+	'This follows from the fact for the category of sets.'
+),
+(
 	'Sh(X)',
 	'morphisms of sheaves that are injective on every open subset',
 	'For the non-trivial direction, assume that $f : F \to G$ is a monomorphism of sheaves on $X$. Then the diagonal $F \to F \times_G F$ is an isomorphism. Since pullbacks of sheaves are constructed section-wise, it follows that the diagonal $F(U) \to F(U) \times_{G(U)} F(U)$ is an isomorphism for every open set $U \subseteq X$. But this means that $f(U) : F(U) \to G(U)$ is injective.'

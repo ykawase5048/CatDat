@@ -246,6 +246,11 @@ VALUES
 	'This follows exactly as for sets.'
 ),
 (
+	'SetxSet',
+	'pairs of bijective maps',
+	'This is easy.'
+),
+(
 	'Sh(X)',
 	'morphisms of sheaves that are bijective on every open set',
 	'This is easy.'
