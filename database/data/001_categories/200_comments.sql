@@ -33,10 +33,6 @@ VALUES
     'Epimorphisms are discussed at <a href="https://mathoverflow.net/questions/56564" target="_blank">MO/56564</a>. Probably they cannot be classified.'
 ),
 (
-    'FreeAb',
-    'Sequential colimits are discussed at <a href="https://math.stackexchange.com/questions/5035594" target="_blank">5035594</a>. It is likely that they do not exist.'
-),
-(
     'Sh(X)',
     'It is likely that neither of the currently remaining unknown properties (finitary algebraic, locally ℵ₁-presentable, exact filtered colimits) are satisfied for a <i>generic</i> space $X$, but we need to make this precise by adding additional requirements to $X$.'
 ),

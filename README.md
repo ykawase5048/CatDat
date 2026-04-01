@@ -2,7 +2,7 @@
 
 ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-![Build](https://github.com/ScriptRaccoon/CatDat/actions/workflows/deploy.yaml/badge.svg?label=xyz)
+![Build](https://github.com/ScriptRaccoon/CatDat/actions/workflows/deploy-prod.yaml/badge.svg?label=xyz)
 ![Last commit](https://img.shields.io/github/last-commit/ScriptRaccoon/CatDat)
 
 ## [**https://catdat.app**](https://catdat.app)
