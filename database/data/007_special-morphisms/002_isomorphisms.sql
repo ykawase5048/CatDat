@@ -281,6 +281,16 @@ VALUES
 	'This is trivial.'
 ),
 (
+	'walking_commutative_square',
+	'the four identities',
+	'This is trivial.'
+),
+(
+	'walking_fork',
+	'the three identities',
+	'This is trivial.'
+),
+(
 	'walking_isomorphism',
 	'every morphism',
 	'This is trivial.'

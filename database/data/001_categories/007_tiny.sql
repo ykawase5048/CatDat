@@ -78,4 +78,26 @@ VALUES
 	'The name of this category comes from the fact that a functor out of it is the same as a composable pair of morphisms.',
 	'https://ncatlab.org/nlab/show/composable+pair',
 	NULL
+),
+(
+	'walking_fork',
+	'walking fork',
+	'$\{0 \to 1 \rightrightarrows 2\}$',
+	'three objects $0,1,2$',
+	'one morphism $i : 0 \to 1$, two morphisms $f,g : 1 \rightrightarrows 2$, one morphism $0 \to 2$ (namely, $f \circ i = g \circ i$), and the identities',
+	'The name of this category comes from the fact that a functor out of it is the same as <a href="https://ncatlab.org/nlab/show/fork" target="_blank">fork</a>.',
+	NULL,
+	NULL
+),
+(
+	'walking_commutative_square',
+	'walking commutative square',
+	'$\{0 \to 1\}^2$',
+	'four objects $a,b,c,d$',
+	'morphisms $a \to b$, $b \to d$, $a \to c$, $c \to d$, identities, and one morphism $a \to d$',
+	'This category consists of a commutative square:
+	<p>$\begin{array}{ccc} a & \rightarrow & b \\ \downarrow && \downarrow \\ c & \rightarrow & d \end{array}$</p>
+	Its name comes from the fact that a functor out of it is the same as a <a href="https://ncatlab.org/nlab/show/commutative+square" target="_blank">commutative square</a> in the target category. Notice that the category is isomorphic to the product category $\{0 \to 1\} \times \{0 \to 1\}$ of the <a href="/category/walking_morphism">walking morphism</a> with itself. Hence, most (but not all) properties are inherited from it. It is also isomorphic to the partial order of positive divisors of $6$.',
+	'https://ncatlab.org/nlab/show/commutative+square',
+	NULL
 );

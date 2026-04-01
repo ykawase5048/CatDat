@@ -221,9 +221,19 @@ VALUES
     'This is because the category is right cancellative.'
 ),
 (
+    'walking_fork',
+    'the identities and $i$',
+    'First, $i$ is the equalizer of $f,g$. The morphism $f$ is an epimorphism (and a monomorphism), but no isomorphism, hence cannot be a regular monomorphism. The same holds for $g$.'
+),
+(
+	'walking_commutative_square',
+	'same as isomorphisms',
+    'This is because the category is right cancellative.'
+),
+(
     'walking_isomorphism',
-    'same as monomorphisms',
-    'This is because the category is mono-regular.'
+    'same as isomorphisms',
+    'This is because the category is right cancellative.'
 ),
 (
     'walking_morphism',

@@ -47,6 +47,7 @@ VALUES
 ('sSet', 'simplicial set $X$ with $X_n = 1$'),
 ('Top', 'singleton space'),
 ('Vect', 'trivial vector space'),
+('walking_commutative_square', '$d$'),
 ('walking_isomorphism', 'both objects'),
 ('walking_morphism', '$1$'),
 ('Z', 'constant functor with value $1$'),

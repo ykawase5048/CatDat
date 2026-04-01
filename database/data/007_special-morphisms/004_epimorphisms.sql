@@ -241,9 +241,19 @@ VALUES
 	'The forgetful functor to abelian groups is faithful and preserves colimits, hence reflects and preserves epimorphisms. Alternatively, just use the same proof as for abelian groups.'
 ),
 (
+	'walking_commutative_square',
+	'every morphism',
+	'It is a thin category.'
+),
+(
 	'walking_composable_pair',
 	'every morphism',
 	'It is a thin category.'
+),
+(
+	'walking_fork',
+	'the identities and $f,g$',
+	'This is easily checked.'
 ),
 (
 	'walking_isomorphism',

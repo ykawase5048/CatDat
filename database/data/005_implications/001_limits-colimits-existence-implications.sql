@@ -127,6 +127,13 @@ VALUES
 	TRUE
 ),
 (
+	'wide_pullbacks_finite',
+	'["pullbacks", "essentially finite"]',
+	'["wide pullbacks"]',
+	'Each slice category has finite products and is essentially finite, <a href="/category-implication/freyd_finite">hence</a> has all products.',
+	FALSE
+),
+(
 	'sequential_limits_criterion',
 	'["equalizers", "countable products"]',
 	'["sequential limits"]',

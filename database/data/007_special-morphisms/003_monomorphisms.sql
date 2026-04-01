@@ -68,7 +68,7 @@ VALUES
 (
 	'BOn',
 	'every ordinal number',
-	'This is because ordinal addition is left-cancellative.'
+	'This is because ordinal addition is left cancellative.'
 ),
 (
 	'Cat',
@@ -266,9 +266,19 @@ VALUES
 	'This holds in every finitary algebraic category: the forgetful functor to $\mathbf{Set}$ is faithful, hence reflects monomorphisms, and it is continuous (even representable), hence preserves monomorphisms.'
 ),
 (
+	'walking_commutative_square',
+	'every morphism',
+	'It is a thin category.'
+),
+(
 	'walking_composable_pair',
 	'every morphism',
 	'It is a thin category.'
+),
+(
+	'walking_fork',
+	'every morphism',
+	'This is easily checked.'
 ),
 (
 	'walking_isomorphism',

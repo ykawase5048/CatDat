@@ -40,6 +40,7 @@ VALUES
 ('sSet', 'pointwise defined direct product'),
 ('Top', 'direct product with the <a href="https://en.wikipedia.org/wiki/Product_topology" target="_blank">product topology</a>'),
 ('Vect', 'direct products with pointwise operations'),
+('walking_commutative_square', '$b \times c = a$, $x \times x = x$, $a \times x = a$, $d \times x = x$'),
 ('walking_isomorphism', '$0 \times 0 = 0$'),
 ('walking_morphism', '$0 \times x = 0$, $1 \times x = x$'),
 ('walking_composable_pair', 'infimum taken in $\{0 < 1 < 2\}$'),

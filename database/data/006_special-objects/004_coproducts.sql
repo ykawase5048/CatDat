@@ -43,6 +43,7 @@ VALUES
 ('sSet', 'pointwise disjoint union'),
 ('Top', 'disjoint union with the disjoint union topology'),
 ('Vect', 'direct sums'),
+('walking_commutative_square', '$b \sqcup c = d$, $a \sqcup x = x$, $d \sqcup x = d$, $x \sqcup x = x$'),
 ('walking_isomorphism', '$0 \sqcup 0 = 0$'),
 ('walking_morphism', '$0 \sqcup x = x$, $1 \sqcup x = 1$'),
 ('walking_composable_pair', 'supremum taken in $\{0 < 1 < 2\}$'),
