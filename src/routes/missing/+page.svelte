@@ -48,8 +48,8 @@
 	<h3>Categories with unknown special morphisms</h3>
 
 	<p class="hint">
-		There are {data.categories_with_missing_morphisms.length} categories whose iso-, epi-,
-		or monomorphisms are unknown.
+		There are {data.categories_with_missing_morphisms.length} categories where at least
+		one type of special morphism is unknown.
 	</p>
 
 	<CategoryList categories={data.categories_with_missing_morphisms} />

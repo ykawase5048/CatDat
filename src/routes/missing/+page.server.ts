@@ -9,7 +9,7 @@ type CategoryPairShort = { id1: string; name1: string; id2: string; name2: strin
 export const load = async () => {
 	const { results, err } = await batch<
 		[
-			CategoryShort,
+			CategoryShort & { count: number },
 			CategoryShort,
 			{ total: number },
 			CategoryShort,
@@ -18,22 +18,14 @@ export const load = async () => {
 	>([
 		// missing special morphisms
 		sql`
-			SELECT c.id, c.name
+			SELECT c.id, c.name, COUNT(*) AS count
 			FROM categories c
-			LEFT JOIN special_morphisms sm_iso
-				ON sm_iso.category_id = c.id
-				AND sm_iso.type = 'isomorphisms'
-			LEFT JOIN special_morphisms sm_epi
-				ON sm_epi.category_id = c.id
-				AND sm_epi.type = 'epimorphisms'
-			LEFT JOIN special_morphisms sm_mono
-				ON sm_mono.category_id = c.id
-				AND sm_mono.type = 'monomorphisms'
-			WHERE
-				sm_iso.category_id IS NULL
-				OR sm_epi.category_id IS NULL
-				OR sm_mono.category_id IS NULL
-			ORDER BY lower(c.name)
+			JOIN special_morphism_types t
+			LEFT JOIN special_morphisms s
+				ON s.category_id = c.id AND s.type = t.type
+			WHERE s.type IS NULL
+			GROUP BY c.id
+			ORDER BY lower(c.name);
 		`,
 		// categories with unknown properties
 		sql`
