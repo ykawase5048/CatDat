@@ -7,6 +7,8 @@
 	import TextWithReason from '$components/TextWithReason.svelte'
 	import { filter_by_tag } from '$lib/client/utils'
 	import CategoryList from '$components/CategoryList.svelte'
+	import { faQuestion, faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
+	import Fa from 'svelte-fa'
 
 	let { data } = $props()
 
@@ -161,19 +163,19 @@
 <section>
 	<h3>Special morphisms</h3>
 
-	{#if data.special_morphisms.length}
-		<ul class="with-margins">
-			{#each data.special_morphisms as obj}
-				<li>
-					<TextWithReason reason={obj.reason}>
+	<ul class="with-margins">
+		{#each data.special_morphisms as obj}
+			<li>
+				<TextWithReason reason={obj.reason}>
+					{#if obj.description}
 						{obj.type}: {@html obj.description}
-					</TextWithReason>
-				</li>
-			{/each}
-		</ul>
-	{:else}
-		<p>&mdash;</p>
-	{/if}
+					{:else}
+						{obj.type}: <Fa icon={faQuestion} scale={0.825} />
+					{/if}
+				</TextWithReason>
+			</li>
+		{/each}
+	</ul>
 </section>
 
 {#if data.undistinguishable_categories.length}
