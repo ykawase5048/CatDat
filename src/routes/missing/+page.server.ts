@@ -10,9 +10,8 @@ export const load = async () => {
 	const { results, err } = await batch<
 		[
 			CategoryShort & { count: number },
-			CategoryShort,
-			{ total: number },
-			CategoryShort,
+			CategoryShort & { count: number },
+			CategoryShort & { count: number },
 			CategoryPairShort,
 		]
 	>([
@@ -29,36 +28,25 @@ export const load = async () => {
 		`,
 		// categories with unknown properties
 		sql`
-			SELECT DISTINCT c.id, c.name
+			SELECT c.id, c.name, COUNT(*) AS count
 			FROM categories c
 			INNER JOIN properties p
 			LEFT JOIN category_property_assignments cp
 				ON cp.category_id = c.id
 				AND cp.property_id = p.id
-			WHERE
-				cp.property_id IS NULL
-			ORDER BY lower(c.name)
-		`,
-		// number of unknown (category, property)-pairs
-		sql`
-			SELECT COUNT(*) as total
-			FROM categories c
-			JOIN properties p
-			LEFT JOIN category_property_assignments cp
-				ON cp.category_id = c.id
-				AND cp.property_id = p.id
-			WHERE
-				cp.property_id IS NULL
+			WHERE cp.property_id IS NULL
+			GROUP BY c.id
+			ORDER BY lower(c.name);
 		`,
 		// missing reasons
 		sql`
-			SELECT c.id, c.name
+			SELECT c.id, c.name, COUNT(*) AS count
 			FROM categories c
-			WHERE EXISTS (
-				SELECT 1 FROM category_property_assignments cp
-				WHERE cp.category_id = c.id AND cp.reason IS NULL
-			)
-			ORDER BY lower(c.name)
+			JOIN category_property_assignments cp
+				ON cp.category_id = c.id
+			WHERE cp.reason IS NULL
+			GROUP BY c.id
+			ORDER BY lower(c.name);
 		`,
 		// undistinguishable category pairs
 		sql`
@@ -88,18 +76,14 @@ export const load = async () => {
 	const [
 		categories_with_missing_morphisms,
 		categories_with_unknown_properties,
-		unknown_pair_count,
 		categories_with_unreasoned_properties,
 		undistinguishable_category_pairs,
 	] = results
-
-	const total_number_unknown_pairs = unknown_pair_count[0].total
 
 	const missing_combinations = await get_missing_combinations()
 
 	return {
 		categories_with_unknown_properties,
-		total_number_unknown_pairs,
 		categories_with_missing_morphisms,
 		categories_with_unreasoned_properties,
 		undistinguishable_category_pairs,

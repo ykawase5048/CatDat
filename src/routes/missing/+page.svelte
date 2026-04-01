@@ -27,10 +27,6 @@
 	</p>
 
 	<CategoryList categories={data.categories_with_unknown_properties} />
-
-	<p class="hint">
-		In total, there are {data.total_number_unknown_pairs} unknown (category, property)-pairs.
-	</p>
 </section>
 
 <section>
