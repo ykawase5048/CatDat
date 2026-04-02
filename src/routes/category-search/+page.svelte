@@ -6,7 +6,7 @@
 	import Selection from '$components/Selection.svelte'
 	import { encode_property_ID } from '$lib/commons/property.url'
 	import MetaData from '$components/MetaData.svelte'
-	import { SEARCH_SEPARATOR } from './search.config'
+	import { SEARCH_SEPARATOR } from '$lib/commons/search.config'
 	import { pluralize } from '$lib/client/utils'
 
 	let { data } = $props()

@@ -19,6 +19,12 @@ VALUES
 ),
 (
 	'sSet',
+	'generator',
+	TRUE,
+	'Let $\Delta^n := \mathrm{Hom}([n],)$ be the standard $n$-simplex for $n \geq 0$. The set $\{\Delta^n : n \geq 0\}$ is a <a href="/category-property/generating_set">generating set</a> by the Yoneda Lemma. For all $n,m$ there is a morphism $[n] \to [m]$ in $\Delta$ and hence a morphism $\Delta^m \to \Delta^n$ in $\mathbf{sSet}$. Therefore, $\coprod_{n \geq 0} \Delta^n$ is a generator (see the proof of <a href="/category-implication/generator_via_coproduct">this implication</a>).'
+),
+(
+	'sSet',
 	'locally strongly finitely presentable',
 	TRUE,
 	'This follows from the fact that every category of presheaves over a small category is locally strongly finitely presentable.'

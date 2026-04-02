@@ -5,7 +5,7 @@
 	import Chip from '$components/Chip.svelte'
 	import { category_detail_level } from '$lib/states/detail_level.svelte'
 	import TextWithReason from '$components/TextWithReason.svelte'
-	import { filter_by_tag } from '$lib/client/utils'
+	import { filter_by_tag, pluralize } from '$lib/client/utils'
 	import CategoryList from '$components/CategoryList.svelte'
 	import { faQuestion, faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
 	import Fa from 'svelte-fa'
@@ -138,8 +138,13 @@
 
 	{#if data.unknown_properties.length > 0}
 		<p class="hint">
-			For these properties the database currently doesn't have an answer if they are
-			satisfied or not. Please help to <a href="/contribute">contribute</a> the data!
+			{pluralize(data.unknown_properties.length, {
+				one: "There is {count} property for which the database doesn't have an answer if it is satisfied or not.",
+				other: "There are {count} properties for which the database doesn't have an answer if they are satisfied or not.",
+			})}
+
+			Please help to
+			<a href="/contribute">contribute</a> the data!
 		</p>
 	{/if}
 

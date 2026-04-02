@@ -1,0 +1,67 @@
+INSERT INTO category_property_assignments (
+	category_id,
+	property_id,
+	is_satisfied,
+	reason
+)
+VALUES
+(
+	'walking_span',
+	'finite',
+	TRUE,
+	'This is trivial.'
+),
+(
+	'walking_span',
+	'skeletal',
+	TRUE,
+	'The three objects are not isomorphic.'
+),
+(
+	'walking_span',
+	'initial object',
+	TRUE,
+	'$0$ is an initial object.'
+),
+(
+	'walking_span',
+	'thin',
+	TRUE,
+	'This is trivial.'
+),
+(
+	'walking_span',
+	'binary products',
+	TRUE,
+	'We have $0 \times x = 0$ for all $x$, $x \times x = x$, and $1 \times 2 = 0$.'
+),
+(
+	'walking_span',
+	'locally cartesian closed',
+	TRUE,
+	'The slice category over $0$ is the <a href="/category/1">trivial category</a>, and the slice category over $1$ is the <a href="/category/walking_morphism">interval category</a>, which is cartesian closed (see there). The same holds for $2$ by symmetry.'
+),
+(
+	'walking_span',
+	'directed colimits',
+	TRUE,
+	'Every directed diagram can be reduced to a trivial one, for example $0 \to 1$ has colimit $1$.'
+),
+(
+	'walking_span',
+	'binary coproducts',
+	FALSE,
+	'Clearly $1$ and $2$ have no coproduct.'
+),
+(
+	'walking_span',
+	'terminal object',
+	FALSE,
+	'$0$ is not terminal since it has no morphism from $1$, and $1$ is not terminal since it has no morphism from $2$, and likewise $2$ is not terminal.'
+),
+(
+	'walking_span',
+	'strongly connected',
+	FALSE,
+	'There is no morphism between $1$ and $2$.'
+);

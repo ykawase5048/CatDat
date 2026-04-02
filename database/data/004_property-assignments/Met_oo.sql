@@ -13,6 +13,12 @@ VALUES
 ),
 (
 	'Met_oo',
+	'generator',
+	TRUE,
+	'The singleton metric space $1$ is a generator, since morphisms $1 \to X$ correspond to the elements of $X$.'
+),
+(
+	'Met_oo',
 	'locally ℵ₁-presentable',
 	TRUE,
 	'Example 4.5 in <a href="https://arxiv.org/abs/1504.02660" target="_blank">this preprint</a>'

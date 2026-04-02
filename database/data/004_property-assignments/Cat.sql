@@ -25,6 +25,12 @@ VALUES
 ),
 (
 	'Cat',
+	'generator',
+	TRUE,
+	'The interval category $\{0 \to 1\}$ is a generator: Assume that $F,G : \mathcal{C} \rightrightarrows \mathcal{D}$ are functors that agree when being precomposed with any functor from $\{0 \to 1\}$. This means that $F(f) = G(f)$ for all morphisms $f : X \to Y$ in $\mathcal{C}$. By comparing the domains and applying this to $f = \mathrm{id}_X$, we see that $F(X) = G(X)$ for all objects $X$. And we just saw that $F,G$ also agree on morphisms.'
+),
+(
+	'Cat',
 	'infinitary extensive',
 	TRUE,
 	'[Sketch] This is straight forward from the fact that $\mathbf{Set}$ is infinitary extensive: A functor $\mathcal{C} \to \coprod_i \mathcal{D}_i$ yields full subcategories $\mathcal{C}_i \subseteq \mathcal{C}$ (the preimages of $\mathcal{D}_i)$ with $\mathcal{C} = \coprod_i \mathcal{C}_i$.'
@@ -49,9 +55,9 @@ VALUES
 ),
 (
 	'Cat',
-	'cogenerator',
+	'cogenerating set',
 	FALSE,
-	'If $\mathcal{C}$ was a cogenerator in $\mathbf{Cat}$, one can easily deduce that the coproduct of monoids (aka free product) $\coprod_{X \in \mathcal{C}} \mathrm{End}(X)$ would be a cogenerator in the <a href="/category/Mon">the category of monoids</a>, which we know does not exist.'
+	'Assume that $S$ is a cogenerating set in $\mathbf{Cat}$. Then one checks that the set of monoids $\{\mathrm{End}(X) : X \in \mathcal{C} \in S\}$ is a cogenerating set in the <a href="/category/Mon">category of monoids</a>, which we know does not exist.'
 ),
 (
 	'Cat',

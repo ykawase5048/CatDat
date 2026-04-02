@@ -34,11 +34,11 @@ VALUES
 ),
 (
     'Sh(X)',
-    'It is likely that neither of the currently remaining unknown properties (finitary algebraic, locally ℵ₁-presentable, exact filtered colimits) are satisfied for a <i>generic</i> space $X$, but we need to make this precise by adding additional requirements to $X$.'
+    'It is likely that neither of the currently remaining unknown properties (finitary algebraic, locally ℵ₁-presentable, exact filtered colimits, etc.) are satisfied for a <i>generic</i> space $X$, but we need to make this precise by adding additional requirements to $X$. Maybe we need to create separate entries for specific spaces $X$.'
 ),
 (
     'Sh(X,Ab)',
-    'It is likely that neither of the currently remaining unknown properties (finitary algebraic, locally ℵ₁-presentable, split abelian) are satisfied for a <i>generic</i> space $X$, but we need to make this precise by adding additional requirements to $X$.'
+    'It is likely that neither of the currently remaining unknown properties (finitary algebraic, locally ℵ₁-presentable, split abelian, etc.) are satisfied for a <i>generic</i> space $X$, but we need to make this precise by adding additional requirements to $X$. Maybe we need to create separate entries for specific spaces $X$.'
 ),
 (
     'M-Set',

@@ -125,8 +125,8 @@ VALUES
 (
 	'coregular',
 	'is',
-	'A category is <i>coregular</i> when it is finitely cocomplete, for every morphism $Y \to X$ its cokernel pair $X \rightrightarrows X \sqcup_Y X$ has an equalizer, and regular monomorphisms are stable under pushouts.',
-	NULL,		
+	'A category is <i>coregular</i> when its dual is regular, i.e. it is finitely cocomplete, for every morphism $Y \to X$ its cokernel pair $X \rightrightarrows X \sqcup_Y X$ has an equalizer, and regular monomorphisms are stable under pushouts.',
+	NULL,
 	'regular',
 	TRUE
 ),

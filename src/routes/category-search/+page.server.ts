@@ -3,7 +3,7 @@ import type { CategoryShort } from '$lib/commons/types'
 import { query } from '$lib/server/db'
 import { error } from '@sveltejs/kit'
 import sql from 'sql-template-tag'
-import { SEARCH_SEPARATOR } from './search.config'
+import { SEARCH_SEPARATOR } from '$lib/commons/search.config'
 import { check_consistency } from '$lib/server/consistency'
 import { to_placeholders } from '$lib/server/utils'
 

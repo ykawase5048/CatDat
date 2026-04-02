@@ -75,12 +75,6 @@ VALUES
 ),
 (
 	'FreeAb',
-	'directed colimits',
-	FALSE,
-	'See <a href="https://math.stackexchange.com/questions/5025660" target="_blank">this post</a>'
-),
-(
-	'FreeAb',
 	'skeletal',
 	FALSE,
 	'This is trivial.'

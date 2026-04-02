@@ -82,4 +82,10 @@ VALUES
 	'strongly connected',
 	FALSE,
 	'This is because already the full subcategory of affine schemes is not strongly connected, see <a href="/category/CRing">the entry for $\mathbf{CRing}$</a>. Specifically, there is no morphism between $\mathrm{Spec}(\mathbb{F}_2)$ and $\mathrm{Spec}(\mathbb{F}_3)$.'
+),
+(
+	'Sch',
+	'generating set',
+	FALSE,
+	'If $S$ is a generating set of schemes, then the set of affine open subsets of the schemes in $S$ would also be a generating set. This is then also a generating set in the category of affine schemes, corresponding to a cogenerating set in the <a href="/category/CRing">category of commutative rings</a>, which we know does not exist (see there for the proof).'
 );

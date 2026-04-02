@@ -48,22 +48,22 @@ VALUES
 (
     'BG',
     'same as isomorphisms',
-    'This is because the category is left-cancellative.'
+    'This is because the category is left cancellative.'
 ),    
 (
     'BG_f',
     'same as isomorphisms',
-    'This is because the category is left-cancellative.'
+    'This is because the category is left cancellative.'
 ),    
 (
     'BN',
     'same as isomorphisms',
-    'This is because the category is left-cancellative.'
+    'This is because the category is left cancellative.'
 ),    
 (
     'BOn',
     'same as isomorphisms',
-    'This is because the category is left-cancellative.'
+    'This is because the category is left cancellative.'
 ),    
 (
     'CAlg(R)',
@@ -103,7 +103,7 @@ VALUES
 (
     'Fld',
     'same as isomorphisms',
-    'This is because the category is left-cancellative.'
+    'This is because the category is left cancellative.'
 ),
 (
     'FS',
@@ -128,17 +128,17 @@ VALUES
 (
     'N',
     'same as isomorphisms',
-    'This is because the category is left-cancellative.'
+    'This is because the category is left cancellative.'
 ),    
 (
     'N_oo',
     'same as isomorphisms',
-    'This is because the category is left-cancellative.'
+    'This is because the category is left cancellative.'
 ),    
 (
     'On',
     'same as isomorphisms',
-    'This is because the category is left-cancellative.'
+    'This is because the category is left cancellative.'
 ),
 (
     'R-Mod',
@@ -153,7 +153,7 @@ VALUES
 (
     'real_interval',
     'same as isomorphisms',
-    'This is because the category is left-cancellative.'
+    'This is because the category is left cancellative.'
 ),
 (
     'Ring',
@@ -179,7 +179,12 @@ VALUES
     'Setne',
     'same as epimorphisms',
     'This is because the category is epi-regular.'
-),    
+),   
+(
+    'SetxSet',
+    'same as epimorphisms',
+    'This is because the category is epi-regular.'
+),     
 (
     'Sh(X)',
     'same as epimorphisms',
@@ -211,25 +216,40 @@ VALUES
     'This holds in every finitary algebraic category.'
 ),    
 (
+	'walking_commutative_square',
+	'same as isomorphisms',
+    'This is because the category is left cancellative.'
+),
+(
     'walking_composable_pair',
     'same as isomorphisms',
-    'This is because the category is left-cancellative.'
+    'This is because the category is left cancellative.'
 ),    
 (
+    'walking_fork',
+    'same as isomorphisms',
+    'This is because the category is left cancellative.'
+),
+(
     'walking_isomorphism',
-    'same as epimorphisms',
-    'This is because the category is epi-regular.'
+    'same as isomorphisms',
+    'This is because the category is left cancellative.'
 ),    
 (
     'walking_morphism',
     'same as isomorphisms',
-    'This is because the category is left-cancellative.'
+    'This is because the category is left cancellative.'
 ),    
 (
     'walking_pair',
     'same as isomorphisms',
-    'This is because the category is left-cancellative.'
-),    
+    'This is because the category is left cancellative.'
+),  
+(
+    'walking_span',
+    'same as isomorphisms',
+    'This is because the category is right cancellative.'
+),  
 (
     'Z',
     'same as epimorphisms',
@@ -238,7 +258,7 @@ VALUES
 (
     'Z_div',
     'same as isomorphisms',
-    'This is because the category is left-cancellative.'
+    'This is because the category is left cancellative.'
 );
 
 INSERT INTO special_morphisms

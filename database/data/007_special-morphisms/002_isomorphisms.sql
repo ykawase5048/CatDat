@@ -246,6 +246,11 @@ VALUES
 	'This follows exactly as for sets.'
 ),
 (
+	'SetxSet',
+	'pairs of bijective maps',
+	'This is easy.'
+),
+(
 	'Sh(X)',
 	'morphisms of sheaves that are bijective on every open set',
 	'This is easy.'
@@ -281,6 +286,16 @@ VALUES
 	'This is trivial.'
 ),
 (
+	'walking_commutative_square',
+	'the four identities',
+	'This is trivial.'
+),
+(
+	'walking_fork',
+	'the three identities',
+	'This is trivial.'
+),
+(
 	'walking_isomorphism',
 	'every morphism',
 	'This is trivial.'
@@ -293,6 +308,11 @@ VALUES
 (
 	'walking_pair',
 	'the two identities',
+	'This is trivial.'
+),
+(
+	'walking_span',
+	'the three identities',
 	'This is trivial.'
 ),
 (

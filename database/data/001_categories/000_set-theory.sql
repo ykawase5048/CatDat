@@ -20,6 +20,16 @@ VALUES
 	'Set_op'
 ),
 (
+	'SetxSet',
+	'category of pairs of sets',
+	'$\mathbf{Set} \times \mathbf{Set}$',
+	'pairs $(A,B)$ of sets $A$ and $B$',
+	'A morphism $(A,B) \to (C,D)$ consists of a map $A \to C$ and a map $B \to D$.',
+	'This is an example of the <a href="https://ncatlab.org/nlab/show/product+category" target="_blank">product of categories</a>. It inherits most (but not all) properties from $\mathbf{Set}$. It can also be seen as the category $\mathbf{Sh}(1+1)$ of sheaves on a discrete space with two points, and also as the slice category $\mathbf{Set}/(1+1)$.',
+	NULL,
+	NULL
+),
+(
 	'Set_op',
 	'dual of the category of sets',
 	'$\mathbf{Set}^{\mathrm{op}}$',

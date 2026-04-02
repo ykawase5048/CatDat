@@ -68,7 +68,7 @@ VALUES
 (
 	'BOn',
 	'every ordinal number',
-	'This is because ordinal addition is left-cancellative.'
+	'This is because ordinal addition is left cancellative.'
 ),
 (
 	'Cat',
@@ -236,6 +236,11 @@ VALUES
 	'The same proof as for $\mathbf{Set}$ can be used.'
 ),
 (
+	'SetxSet',
+	'pairs of injective maps',
+	'This follows from the fact for the category of sets.'
+),
+(
 	'Sh(X)',
 	'morphisms of sheaves that are injective on every open subset',
 	'For the non-trivial direction, assume that $f : F \to G$ is a monomorphism of sheaves on $X$. Then the diagonal $F \to F \times_G F$ is an isomorphism. Since pullbacks of sheaves are constructed section-wise, it follows that the diagonal $F(U) \to F(U) \times_{G(U)} F(U)$ is an isomorphism for every open set $U \subseteq X$. But this means that $f(U) : F(U) \to G(U)$ is injective.'
@@ -266,9 +271,19 @@ VALUES
 	'This holds in every finitary algebraic category: the forgetful functor to $\mathbf{Set}$ is faithful, hence reflects monomorphisms, and it is continuous (even representable), hence preserves monomorphisms.'
 ),
 (
+	'walking_commutative_square',
+	'every morphism',
+	'It is a thin category.'
+),
+(
 	'walking_composable_pair',
 	'every morphism',
 	'It is a thin category.'
+),
+(
+	'walking_fork',
+	'every morphism',
+	'This is easily checked.'
 ),
 (
 	'walking_isomorphism',
@@ -284,6 +299,11 @@ VALUES
 	'walking_pair',
 	'every morphism',
 	'This is trivial.'
+),
+(
+	'walking_span',
+	'every morphism',
+	'It is a thin category.'
 ),
 (
 	'Z',

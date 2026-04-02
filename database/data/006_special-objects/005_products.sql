@@ -35,11 +35,13 @@ VALUES
 ('Set', 'direct products with pointwise operations'),
 ('Set*', 'direct products with pointwise operations'),
 ('Setne', 'direct products'),
+('SetxSet', 'component-wise direct product'),
 ('Sh(X)', 'section-wise defined direct product'),
 ('Sh(X,Ab)', 'section-wise defined direct product'),
 ('sSet', 'pointwise defined direct product'),
 ('Top', 'direct product with the <a href="https://en.wikipedia.org/wiki/Product_topology" target="_blank">product topology</a>'),
 ('Vect', 'direct products with pointwise operations'),
+('walking_commutative_square', '$b \times c = a$, $x \times x = x$, $a \times x = a$, $d \times x = x$'),
 ('walking_isomorphism', '$0 \times 0 = 0$'),
 ('walking_morphism', '$0 \times x = 0$, $1 \times x = x$'),
 ('walking_composable_pair', 'infimum taken in $\{0 < 1 < 2\}$'),
@@ -58,7 +60,8 @@ VALUES
 ('Met_c', '[countable case] In the finite case, take direct products with the metric $d(x,y) = \sup_i d_i(x_i,y_i)$, but other metrics such as $d(x,y) = \sum_i d_i(x_i,y_i)$ also work. In the countable case, one can assume $d_i \leq 1$ and then define $d(x,y) = \sum_i d_i(x,y) / 2^i$.'),
 ('Met', '[finite case] direct products with the metric $d(x,y) = \sup_i d_i(x_i,y_i)$'),
 ('Sch', '[finite case] The idea is to use $\mathrm{Spec}(A) \times \mathrm{Spec}(B) = \mathrm{Spec}(A \otimes B)$ and then to glue affine pieces together. See EGA I, Chap. I, Thm. 3.2.1.'),
-('Man', '[finite case] direct products $X \times Y$ with the product topology and the charts $\mathbb{R}^{n + m} = \mathbb{R}^n \times \mathbb{R}^m \cong U \times V \hookrightarrow X \times Y$ for charts $\mathbb{R}^n \cong U \hookrightarrow X$ and $\mathbb{R}^m \cong V \hookrightarrow Y$');
+('Man', '[finite case] direct products $X \times Y$ with the product topology and the charts $\mathbb{R}^{n + m} = \mathbb{R}^n \times \mathbb{R}^m \cong U \times V \hookrightarrow X \times Y$ for charts $\mathbb{R}^n \cong U \hookrightarrow X$ and $\mathbb{R}^m \cong V \hookrightarrow Y$'),
+('walking_span', '[binary case] $1 \times 2 = 0$, $x \times x = x$, $0 \times x = 0$');
 
 INSERT INTO special_objects
 	(category_id, description, type)

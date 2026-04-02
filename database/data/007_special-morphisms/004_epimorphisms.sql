@@ -211,6 +211,11 @@ VALUES
 	'For the non-trivial direction, let $f : X \to Y$ be an epimorphism of non-empty sets. Then the inclusion $f(X) \hookrightarrow Y$ is an epimorphism as well, but also a split monomorphism (we can just map everything in $Y \setminus f(X)$ to a fixed element of $f(X)$). As such, it must be an isomorphism.'
 ),
 (
+	'SetxSet',
+	'pairs of surjective maps',
+	'This follows from the fact for the category of sets.'
+),
+(
 	'Sh(X)',
 	'morphisms of sheaves $f : F \to G$ that are "locally surjective": for every local section $g \in G(U)$ there is an open covering $U = \bigcup_{i \in I} U_i$ such that each $g|_{U_i} \in G(U_i)$ is contained in the image of $f(U_i) : F(U_i) \to G(U_i)$.',
 	'The one direction is easy. For the other one, assume that $f : F \to G$ is an epimorphism of sheaves. For every $x \in X$ the map on stalks $f_x : F_x \to G_x$ is an epimorphism because the stalk functor $\mathrm{Sh}(X) \to \mathbf{Set}$ admits a right adjoint: take skyscraper sheaves. For $x \in U$ then $g_x \in G_x$ has a preimage in $F_x$, say represented by some $f \in F(V_x)$ for some $x \in V_x \subseteq U$. By construction of the stalk $G_x$, there is some $x \in U_x \subseteq V_x$ with $f(U_x)(f|_{U_x}) = g|_{U_x}$. Hence, the sets $(U_x)$ provide the open covering.'
@@ -241,9 +246,19 @@ VALUES
 	'The forgetful functor to abelian groups is faithful and preserves colimits, hence reflects and preserves epimorphisms. Alternatively, just use the same proof as for abelian groups.'
 ),
 (
+	'walking_commutative_square',
+	'every morphism',
+	'It is a thin category.'
+),
+(
 	'walking_composable_pair',
 	'every morphism',
 	'It is a thin category.'
+),
+(
+	'walking_fork',
+	'the identities and $f,g$',
+	'This is easily checked.'
 ),
 (
 	'walking_isomorphism',
@@ -259,6 +274,11 @@ VALUES
 	'walking_pair',
 	'every morphism',
 	'Each $0 \to 1$ is an epimorphism since the only morphism starting at $1$ is the identity.'
+),
+(
+	'walking_span',
+	'every morphism',
+	'It is a thin category.'
 ),
 (
 	'Z',
