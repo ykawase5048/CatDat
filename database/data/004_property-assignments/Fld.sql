@@ -49,6 +49,12 @@ VALUES
 ),
 (
 	'Fld',
+	'generating set',
+	TRUE,
+	'The fields $Q(\mathbb{Z}[X]/\mathfrak{p})$, where $\mathfrak{p}$ runs through all prime ideals of the polynomial ring, provide a generating set. This is because for every element $a \in K$ of a field $K$ there is a prime ideal $\mathfrak{p}$ with a homomorphism $Q(\mathbb{Z}[X]/\mathfrak{p}) \to K$ mapping $[X]$ to $a$: There is a homomorphism $\mathbb{Z}[X] \to K$ mapping $X \mapsto a$. Let $\mathfrak{p}$ be its kernel. Then it extends to a field homomorphism as desired.'
+),
+(
+	'Fld',
 	'connected',
 	FALSE,
 	'A field of characteristic $0$ cannot be connected with a field of characteristic $p > 0$. in fact, the connected components of $\mathbf{Fld}$ are the subcategories $\mathbf{Fld}_p$ of fields of characteristic $p$, where $p$ is a prime or $0$.'
@@ -73,9 +79,9 @@ VALUES
 ),
 (
 	'Fld',
-	'cogenerator',
+	'cogenerating set',
 	FALSE,
-	'Assume that there is a field $Q$ that cogenerates. Take a field $F$ which is larger than $R$ and admits a non-trivial automorphism (for example, a field of rational functions). Then there is no field homomorphism $F \to Q$ (as it would be injective). Since $Q$ cogenerates, this means that all homomorphisms $F \to F$ are equal, a contradiction.'
+	'Assume that there is a cogenerating set $S$. Take a field $F$ which is larger than all the fields in $S$ and admits a non-trivial automorphism (for example, a field of rational functions). Then there is no field homomorphism $F \to Q$ for $Q \in S$. Since $S$ cogenerates, this means that all homomorphisms $F \to F$ are equal, a contradiction.'
 ),
 (
 	'Fld',

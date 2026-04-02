@@ -128,7 +128,7 @@ VALUES
 (
 	'grothendieck_topos_definition',
 	'["Grothendieck topos"]',
-	'["elementary topos", "coproducts", "generator", "locally essentially small"]',
+	'["elementary topos", "coproducts", "generating set", "locally essentially small"]',
 	'See <a href="https://ncatlab.org/nlab/show/Sheaves+in+Geometry+and+Logic" target="_blank">Mac Lane & Moerdijk</a>, Appendix, Prop. 4.4.',
 	TRUE
 ),

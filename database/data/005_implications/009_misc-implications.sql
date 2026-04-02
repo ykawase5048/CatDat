@@ -21,13 +21,6 @@ VALUES
 	FALSE
 ),
 (
-	'generator_consequence',
-	'["generator"]',
-	'["inhabited"]',
-	'This is trivial.',
-	FALSE
-),
-(
 	'malcev_condition',
 	'["Malcev"]',
 	'["finitely complete"]',
