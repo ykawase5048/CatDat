@@ -9,9 +9,6 @@ VALUES
 ('order theory', 7),
 ('set theory', 8),
 ('topology', 9),
-('well-behaved', 10),
-('badly-behaved', 11),
-('tiny', 12),
-('thin', 13),
-('single object', 14),
-('artificial', 15);
+('finite', 10),
+('thin', 11),
+('single object', 12);
