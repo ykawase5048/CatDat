@@ -2,8 +2,8 @@
 
 There are three ways to contribute:
 
-- [Submit Our Google Form](#option-2-submit-our-google-form)
-- [Create a Pull Request](#option-1-create-a-pull-request)
+- [Submit Our Google Form](#option-1-submit-our-google-form)
+- [Create a Pull Request](#option-2-create-a-pull-request)
 - [Create an Issue](#option-3-create-an-issue)
 
 ## Option 1: Submit our Google Form
