@@ -78,11 +78,6 @@ async function parse_data(
 		return { error: 'Forbidden' }
 	}
 
-	const origin = request.headers.get('origin') ?? ''
-	if (!request.url.startsWith(origin)) {
-		return { error: 'Forbidden' }
-	}
-
 	let data
 	try {
 		data = await request.json()
