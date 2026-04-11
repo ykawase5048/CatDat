@@ -26,7 +26,7 @@ VALUES
 (
 	'locally ℵ₁-presentable',
 	'is',
-	'This is the special case of the notion of a locally $\kappa$-presentable, where $\kappa = \aleph_1$ is the first uncountable cardinal.',
+	'This is the special case of the notion of locally $\kappa$-presentable categories, where $\kappa = \aleph_1$ is the first uncountable cardinal.',
 	'https://ncatlab.org/nlab/show/locally+presentable+category',
 	NULL,
 	TRUE
@@ -34,7 +34,7 @@ VALUES
 (
 	'locally strongly finitely presentable',
 	'is',
-	'A category is a <i>locally strongly finitely presentable</i> if it is cocomplete and there is a set $G$ of strongly finitely presentable objects such that every object is a sifted colimit of objects from $G$.
+	'A category is <i>locally strongly finitely presentable</i> if it is cocomplete and there is a set $G$ of strongly finitely presentable objects such that every object is a sifted colimit of objects from $G$.
 	There are several equivalent conditions:
 	<ol>
 		<li>It is equivalent to the category of models of a many-sorted finitary algebraic theory.</li>
