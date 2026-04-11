@@ -170,8 +170,8 @@ VALUES
 (
 	'finite_filtered_colimits',
 	'["finite", "Cauchy complete"]',
-	'["filtered colimits"]',
-	'See <a href="https://mathoverflow.net/questions/509853" target="_blank">MO/509853</a>.',
+	'["finitely accessible"]',
+	'See <a href="https://mathoverflow.net/questions/509853" target="_blank">MO/509853</a>, where it is in fact shown that the ind-completion of any finite Cauchy-complete category becomes itself.',
 	FALSE
 ),
 (
