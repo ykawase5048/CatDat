@@ -126,6 +126,13 @@ VALUES
 	TRUE
 ),
 (
+	'countably_accessible_thin',
+	'["essentially countable", "thin"]',
+	'["ℵ₁-accessible"]',
+	'In general, every $\kappa$-filtered diagram in a poset whose elements are less than $\kappa$ admits the greatest element. Therefore, all the elements are $\kappa$-presentable, and the poset is $\kappa$-accessible.',
+	FALSE
+),
+(
 	'locally_presentable_another_definition',
 	'["locally presentable"]',
 	'["accessible", "complete"]',
