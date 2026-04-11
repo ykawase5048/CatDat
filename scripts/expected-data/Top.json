@@ -65,6 +65,10 @@
 	"cofiltered": true,
 	"sifted": true,
 	"cosifted": true,
+	"multilimits": true,
+	"multicolimits": true,
+	"multiterminal object": true,
+	"multiinitial object": true,
 
 	"abelian": false,
 	"additive": false,
@@ -128,5 +132,13 @@
 	"accessible": false,
 	"finitely accessible": false,
 	"ℵ₁-accessible": false,
-	"generalized variety": false
+	"generalized variety": false,
+	"locally finitely multipresentable": false,
+	"locally multipresentable": false,
+	"locally polypresentable": false,
+	"multialgebraic": false,
+	"locally copresentable": false,
+	"coaccessible": false,
+	"countable": false,
+	"essentially countable": false
 }

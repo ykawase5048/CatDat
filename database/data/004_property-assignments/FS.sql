@@ -13,7 +13,7 @@ VALUES
 ),
 (
 	'FS',
-	'essentially small',
+	'essentially countable',
 	TRUE,
 	'Every finite set is isomorphic to some $[n] = \{1,\dotsc,n\}$ for some $n \in \mathbb{N}$.'
 ),
@@ -52,6 +52,12 @@ VALUES
 	'epi-regular',
 	TRUE,
 	'If $f : X \to Y$ is a surjective map of finite sets, it is the coequalizer of the two projections $p_1, p_2 : X \times_Y X \rightrightarrows X$ in $\mathbf{FinSet}$, but also in $\mathbf{FS}$. Notice that $p_1,p_2$ are surjective. Even though $X \times_Y X$ is not a pullback in $\mathbf{FS}$, we can use this finite set here.'
+),
+(
+	'FS',
+	'multiterminal object',
+	TRUE,
+	'The empty set and a singleton give a multiterminal object.'
 ),
 (
 	'FS',
@@ -116,4 +122,16 @@ VALUES
 	but
 	$(E_1 \vee E_2) \wedge (E_1 \vee E_3) = \top \wedge \top = \top$.
 	<p>*For thin categories, the properties codistributive and distributive <a href="/category-implication/distributive_duality">are equivalent</a>.'
+),
+(
+	'FS',
+	'multiinitial object',
+	FALSE,
+	'This is trivial.'
+),
+(
+	'FS',
+	'countable',
+	FALSE,
+	'This is trivial.'
 );
