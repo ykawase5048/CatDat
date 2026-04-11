@@ -31,7 +31,7 @@ VALUES
 ),
 (
 	'FinOrd',
-	'category of finite orders',
+	'category of finite ordered sets',
 	'$\mathbf{FinOrd}$',
 	'finite (totally) ordered sets',
 	'order-preserving maps',
