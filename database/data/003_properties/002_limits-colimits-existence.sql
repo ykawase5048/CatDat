@@ -342,4 +342,36 @@ VALUES
 	'https://ncatlab.org/nlab/show/sifted+colimit',
 	'cosifted limits',
 	TRUE
+),
+(
+	'multilimits',
+	'has',
+	'This property refers to the existence of multilimits of small diagrams. Note that any diagram with no cone admits a multilimit, which is the empty set of cones.',
+	'https://ncatlab.org/nlab/show/multilimit',
+	'multicolimits',
+	TRUE
+),
+(
+	'multicolimits',
+	'has',
+	'This property refers to the existence of multicolimits of small diagrams. Note that any diagram with no cocone admits a multicolimit, which is the empty set of cocones.',
+	'https://ncatlab.org/nlab/show/multilimit',
+	'multilimits',
+	TRUE
+),
+(
+	'multiterminal object',
+	'has a',
+	'This property refers to the existence of a multilimit of the empty diagram. A category has a multiterminal object if and only if each connected component has a terminal object.',
+	'https://ncatlab.org/nlab/show/multilimit',
+	'multiinitial object',
+	TRUE
+),
+(
+	'multiinitial object',
+	'has a',
+	'This property refers to the existence of a multicolimit of the empty diagram. A category has a multiinitial object if and only if each connected component has a initial object.',
+	'https://ncatlab.org/nlab/show/multilimit',
+	'multiterminal object',
+	TRUE
 );

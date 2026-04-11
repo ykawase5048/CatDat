@@ -138,4 +138,60 @@ VALUES
 	'["ℵ₁-accessible"]',
 	'See <a href="http://www.tac.mta.ca/tac/volumes/8/n3/8-03abs.html" target="_blank">[AR01, Remark 4.8(2)]</a>.',
 	FALSE
+),
+(
+	'locally_multipresentable_definition',
+	'["locally multipresentable"]',
+	'["accessible", "connected limits"]',
+	'This is trivial.',
+	TRUE
+),
+(
+	'locally_multipresentable_another_definition',
+	'["locally multipresentable"]',
+	'["accessible", "multicolimits"]',
+	'See <a href="https://ncatlab.org/nlab/show/Locally+Presentable+and+Accessible+Categories" target="_blank">Adamek-Rosicky</a>, 4.30.',
+	TRUE
+),
+(
+	'locally_finitely_multipresentable_definition',
+	'["locally finitely multipresentable"]',
+	'["finitely accessible", "connected limits"]',
+	'This is trivial.',
+	TRUE
+),
+(
+	'locally_finitely_multipresentable_another_definition',
+	'["locally finitely multipresentable"]',
+	'["finitely accessible", "multicolimits"]',
+	'See <a href="https://ncatlab.org/nlab/show/Locally+Presentable+and+Accessible+Categories" target="_blank">Adamek-Rosicky</a>, 4.30.',
+	TRUE
+),
+(
+	'locally_polypresentable_definition',
+	'["locally polypresentable"]',
+	'["accessible", "wide pullbacks"]',
+	'This is trivial.',
+	TRUE
+),
+(
+	'multialgebraic_implies_locally_finitely_multipresentable',
+	'["multialgebraic"]',
+	'["locally finitely multipresentable"]',
+	'This follows from the fact that a category is locally finitely multipresentable if and only if it is equivalent to the category of models of an FLC-sketch, where FLC represents finite limits and small coproducts.',
+	FALSE
+),
+(
+	'varieties_are_multialgebraic',
+	'["locally strongly finitely presentable"]',
+	'["multialgebraic"]',
+	'This is because that every FP-sketch is an FPC-sketch.',
+	FALSE
+),
+(
+	'multialgebraic_implies_generalized_variety',
+	'["multialgebraic"]',
+	'["generalized variety"]',
+	'See <a href="http://www.tac.mta.ca/tac/volumes/8/n3/8-03abs.html" target="_blank">[AR01, Thm. 4.4]</a>.',
+	FALSE
 );
