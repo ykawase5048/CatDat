@@ -25,6 +25,12 @@ VALUES
 ),
 (
 	'Sch',
+	'well-powered',
+	TRUE,
+	'See <a href="https://mathoverflow.net/questions/160681" target="_blank">MO/160681</a>.'
+),
+(
+	'Sch',
 	'infinitary extensive',
 	TRUE,
 	'One uses the same proof as for locally ringed spaces, using that open subspaces of schemes are also schemes.'
