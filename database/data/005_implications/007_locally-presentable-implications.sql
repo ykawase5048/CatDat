@@ -21,10 +21,24 @@ VALUES
 	FALSE
 ),
 (
-	'locally_presentable_consequence',
-	'["locally presentable"]',
-	'["locally essentially small", "well-powered", "well-copowered", "complete", "generating set"]',
-	'For locally essential smallness, see the proof of Prop. 2.1.5 in <a href="https://bookstore.ams.org/conm-104" target="_blank">Makkai-Pare</a>. For the other non-trivial conclusions see <a href="https://ncatlab.org/nlab/show/Locally+Presentable+and+Accessible+Categories" target="_blank">Adamek-Rosicky</a>, Thm. 1.20, Cor. 1.28, Rem. 1.56, Thm. 1.58.',
+	'accessible_trivial_consequence',
+	'["accessible"]',
+	'["well-powered", "generating set"]',
+	'For well-poweredness, see <a href="https://ncatlab.org/nlab/show/accessible+category#wellpoweredness_and_wellcopoweredness" target="_blank">nLab</a>. For a $\kappa$-accessible category, a skeleton of the full subcategory spanned by $\kappa$-presentable objects is small and dense, hence is a generating set.',
+	FALSE
+),
+(
+	'accessible_locally_small',
+	'["accessible"]',
+	'["locally essentially small"]',
+	'See the proof of Prop. 2.1.5 in <a href="https://bookstore.ams.org/conm-104" target="_blank">Makkai-Pare</a>.',
+	FALSE
+),
+(
+	'accessible_wellcopowered',
+	'["accessible", "pushouts"]',
+	'["well-copowered"]',
+	'See Thm. 2.49 in <a href="https://ncatlab.org/nlab/show/Locally+Presentable+and+Accessible+Categories" target="_blank">Adamek-Rosicky</a> or Prop. 6.1.3 in <a href="https://bookstore.ams.org/conm-104" target="_blank">Makkai-Pare</a>.',
 	FALSE
 ),
 (
@@ -36,7 +50,7 @@ VALUES
 ),
 (
 	'locally_presentable_thin',
-	'["locally presentable", "self-dual"]',
+	'["locally presentable", "locally copresentable"]',
 	'["thin"]',
 	'This follows from <a href="https://ncatlab.org/nlab/show/Locally+Presentable+and+Accessible+Categories" target="_blank">Adamek-Rosicky</a>, Thm. 1.64.',
 	FALSE
@@ -106,8 +120,8 @@ VALUES
 ),
 (
 	'small_accessible_characterization',
-	'["small", "accessible"]',
-	'["small", "Cauchy complete"]',
+	'["essentially small", "accessible"]',
+	'["essentially small", "Cauchy complete"]',
 	'See <a href="https://bookstore.ams.org/conm-104" target="_blank">Makkai-Pare</a>, Thm. 2.2.2.',
 	TRUE
 ),
