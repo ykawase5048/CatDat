@@ -10,7 +10,7 @@ VALUES
 (
 	'locally finitely presentable',
 	'is',
-	'A category is <i>locally finitely presentable</i> if it is cocomplete and there is a set $S$ of finitely presentable objects such that every object is a filtered colimit of objects in $S$. This is the same as being locally $\aleph_0$-presentable.',
+	'A category is <i>locally finitely presentable</i> if it is cocomplete and there is a set $S$ of finitely presentable objects such that every object is a small filtered colimit of objects in $S$. This is the same as being locally $\aleph_0$-presentable.',
 	'https://ncatlab.org/nlab/show/locally+finitely+presentable+category',
 	NULL,
 	TRUE
@@ -18,7 +18,7 @@ VALUES
 (
 	'locally presentable',
 	'is',
-	'Let $\kappa$ be a regular cardinal. A category is <i>locally $\kappa$-presentable</i> if it is cocomplete and there is a set of $\kappa$-presentable objects $S$ such that every object is a $\kappa$-filtered colimit of objects in $S$. A category is <i>locally presentable</i> if it is locally $\kappa$-presentable for some regular cardinal $\kappa$.',
+	'Let $\kappa$ be a regular cardinal. A category is <i>locally $\kappa$-presentable</i> if it is cocomplete and there is a set of $\kappa$-presentable objects $S$ such that every object is a small $\kappa$-filtered colimit of objects in $S$. A category is <i>locally presentable</i> if it is locally $\kappa$-presentable for some regular cardinal $\kappa$.',
 	'https://ncatlab.org/nlab/show/locally+presentable+category',
 	NULL,
 	TRUE
@@ -34,7 +34,7 @@ VALUES
 (
 	'locally strongly finitely presentable',
 	'is',
-	'A category is <i>locally strongly finitely presentable</i> if it is cocomplete and there is a set $G$ of strongly finitely presentable objects such that every object is a sifted colimit of objects from $G$.
+	'A category is <i>locally strongly finitely presentable</i> if it is cocomplete and there is a set $G$ of strongly finitely presentable objects such that every object is a small sifted colimit of objects from $G$.
 	There are several equivalent conditions:
 	<ol>
 		<li>It is equivalent to the category of models of a many-sorted finitary algebraic theory.</li>
