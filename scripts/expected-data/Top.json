@@ -124,5 +124,9 @@
 	"kernels": false,
 	"cokernels": false,
 	"normal": false,
-	"conormal": false
+	"conormal": false,
+	"accessible": false,
+	"finitely accessible": false,
+	"ℵ₁-accessible": false,
+	"generalized variety": false
 }

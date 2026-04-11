@@ -81,6 +81,10 @@
 	"cofiltered": true,
 	"sifted": true,
 	"cosifted": true,
+	"accessible": true,
+	"finitely accessible": true,
+	"ℵ₁-accessible": true,
+	"generalized variety": true,
 
 	"Grothendieck abelian": false,
 	"Malcev": false,

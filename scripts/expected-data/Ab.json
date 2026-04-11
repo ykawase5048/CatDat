@@ -86,6 +86,10 @@
 	"cokernels": true,
 	"normal": true,
 	"conormal": true,
+	"accessible": true,
+	"finitely accessible": true,
+	"ℵ₁-accessible": true,
+	"generalized variety": true,
 
 	"cartesian closed": false,
 	"locally cartesian closed": false,

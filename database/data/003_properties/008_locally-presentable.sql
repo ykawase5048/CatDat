@@ -46,4 +46,36 @@ VALUES
 	'https://ncatlab.org/nlab/show/locally+strongly+finitely+presentable+category',
 	NULL,
 	TRUE
+),
+(
+	'accessible',
+	'is',
+	'Let $\kappa$ be a regular cardinal. A category is <i>$\kappa$-accessible</i> if it has small $\kappa$-filtered colimits and there is a (small) set $G$ of $\kappa$-presentable objects such that every object is a small $\kappa$-filtered colimit of objects in $S$. A category is <i>accessible</i> if it is $\kappa$-accessible for some regular cardinal $\kappa$.',
+	'https://ncatlab.org/nlab/show/accessible+category',
+	NULL,
+	TRUE
+),
+(
+	'finitely accessible',
+	'is',
+	'A category is <i>finitely accessible</i> if it has small filtered colimits and there is a (small) set $G$ of finitely presentable objects such that every object is a small filtered colimit of objects in $S$.',
+	'https://ncatlab.org/nlab/show/accessible+category',
+	NULL,
+	TRUE
+),
+(
+	'ℵ₁-accessible',
+	'is',
+	'This is the special case of the notion of $\kappa$-accessible categories, where $\kappa = \aleph_1$ is the first uncountable cardinal.',
+	'https://ncatlab.org/nlab/show/accessible+category',
+	NULL,
+	TRUE
+),
+(
+	'generalized variety',
+	'is a',
+	'A category is a <i>generalized variety</i> if it has small sifted colimits and there is a (small) set $G$ of strongly finitely presentable objects such that every object is a small sifted colimit of objects from $G$. This notion is defined in <a href="http://www.tac.mta.ca/tac/volumes/8/n3/8-03abs.html" target="_blank">[AR01, Def. 3.6]</a>.',
+	NULL,
+	NULL,
+	TRUE
 );
