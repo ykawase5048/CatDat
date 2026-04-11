@@ -292,4 +292,25 @@ VALUES
 	'["powers"]',
 	'The product $X^I$ is the cofiltered limit of the finite powers $X^E$, where $E$ ranges over the finite subsets of $I$.',
 	FALSE
+),
+(
+	'multilimits_generalize_limits',
+	'["complete"]',
+	'["multilimits"]',
+	'Limits are precisely multilimits such that the set of cones is singleton.',
+	FALSE
+),
+(
+	'multiterminal_special_case',
+	'["multilimits"]',
+	'["multiterminal object"]',
+	'This is trivial.',
+	FALSE
+),
+(
+	'multiterminal_with_connected',
+	'["connected","multiterminal object"]',
+	'["terminal object"]',
+	'Let $(T_i)_{i\in I}$ be a multiterminal object in a connected category $\mathcal{C}$. By definition of multiterminal objects, for each object $C$, there are a unique index $i_C\in I$ and a unique morphism $C \to T_{i_C}$. Since the index $i_C$ is invariant under connected components, $I$ must be a singleton. The converse is trivial.',
+	TRUE
 );
