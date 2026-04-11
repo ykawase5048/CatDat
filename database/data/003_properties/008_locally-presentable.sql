@@ -20,7 +20,15 @@ VALUES
 	'is',
 	'Let $\kappa$ be a regular cardinal. A category is <i>locally $\kappa$-presentable</i> if it is cocomplete and there is a set of $\kappa$-presentable objects $S$ such that every object is a small $\kappa$-filtered colimit of objects in $S$. A category is <i>locally presentable</i> if it is locally $\kappa$-presentable for some regular cardinal $\kappa$.',
 	'https://ncatlab.org/nlab/show/locally+presentable+category',
-	NULL,
+	'locally copresentable',
+	TRUE
+),
+(
+	'locally copresentable',
+	'is',
+	'A category is <i>locally copresentable</i> if its opposite category is locally presentable.',
+	'https://ncatlab.org/nlab/show/locally+presentable+category',
+	'locally presentable',
 	TRUE
 ),
 (
@@ -52,7 +60,15 @@ VALUES
 	'is',
 	'Let $\kappa$ be a regular cardinal. A category is <i>$\kappa$-accessible</i> if it has small $\kappa$-filtered colimits and there is a (small) set $G$ of $\kappa$-presentable objects such that every object is a small $\kappa$-filtered colimit of objects in $S$. A category is <i>accessible</i> if it is $\kappa$-accessible for some regular cardinal $\kappa$.',
 	'https://ncatlab.org/nlab/show/accessible+category',
-	NULL,
+	'coaccessible',
+	TRUE
+),
+(
+	'coaccessible',
+	'is',
+	'A category is <i>coaccessible</i> if its opposite category is accessible.',
+	'https://ncatlab.org/nlab/show/locally+presentable+category',
+	'accessible',
 	TRUE
 ),
 (
