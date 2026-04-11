@@ -64,4 +64,10 @@ VALUES
 	'skeletal',
 	FALSE,
 	'This is trivial.'
+),
+(
+	'Ab_fg',
+	'countable',
+	FALSE,
+	'This is trivial.'
 );

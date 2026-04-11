@@ -90,6 +90,14 @@
 	"finitely accessible": true,
 	"ℵ₁-accessible": true,
 	"generalized variety": true,
+	"locally finitely multipresentable": true,
+	"locally multipresentable": true,
+	"locally polypresentable": true,
+	"multialgebraic": true,
+	"multilimits": true,
+	"multicolimits": true,
+	"multiterminal object": true,
+	"multiinitial object": true,
 
 	"cartesian closed": false,
 	"locally cartesian closed": false,
@@ -128,5 +136,9 @@
 	"cocartesian coclosed": false,
 	"locally cocartesian coclosed": false,
 	"quotient object classifier": false,
-	"regular quotient object classifier": false
+	"regular quotient object classifier": false,
+	"locally copresentable": false,
+	"coaccessible": false,
+	"countable": false,
+	"essentially countable": false
 }
