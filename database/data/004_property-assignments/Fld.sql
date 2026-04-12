@@ -81,7 +81,7 @@ VALUES
 	'Fld',
 	'cogenerating set',
 	FALSE,
-	'Assume that there is a cogenerating set $S$. Take a field $F$ which is larger than all the fields in $S$ and admits a non-trivial automorphism (for example, a field of rational functions). Then there is no field homomorphism $F \to Q$ for $Q \in S$. Since $S$ cogenerates, this means that every two homomorphisms $F \rightrightarrows F$ are equal, a contradiction.'
+	'We apply <a href="/lemma/missing_cogenerating_sets">this lemma</a> to the collection of fields: Any homomorphism of fields is injective. For every infinite cardinal $\kappa$ the field of rational functions in $\kappa$ variables has cardinality $\geq \kappa$ and a non-trivial automorphism (swap two variables).'
 ),
 (
 	'Fld',
