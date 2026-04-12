@@ -210,9 +210,9 @@ VALUES
 	FALSE
 ),
 (
-	'multialgebraic_implies_generalized_variety',
+	'multialgebraic_another_definition',
 	'["multialgebraic"]',
-	'["generalized variety"]',
+	'["generalized variety", "multicolimits"]',
 	'See <a href="http://www.tac.mta.ca/tac/volumes/8/n3/8-03abs.html" target="_blank">[AR01, Thm. 4.4]</a>.',
-	FALSE
+	TRUE
 );
