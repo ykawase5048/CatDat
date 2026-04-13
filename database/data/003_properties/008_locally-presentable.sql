@@ -27,7 +27,7 @@ VALUES
 	'locally copresentable',
 	'is',
 	'A category is <i>locally copresentable</i> if its opposite category is locally presentable.',
-	'https://ncatlab.org/nlab/show/locally+presentable+category',
+	NULL,
 	'locally presentable',
 	TRUE
 ),
@@ -67,7 +67,7 @@ VALUES
 	'coaccessible',
 	'is',
 	'A category is <i>coaccessible</i> if its opposite category is accessible.',
-	'https://ncatlab.org/nlab/show/locally+presentable+category',
+	NULL,
 	'accessible',
 	TRUE
 ),
@@ -90,7 +90,7 @@ VALUES
 (
 	'generalized variety',
 	'is a',
-	'A category is a <i>generalized variety</i> if it has small sifted colimits and there is a (small) set $G$ of strongly finitely presentable objects such that every object is a small sifted colimit of objects from $G$. This notion is defined in <a href="http://www.tac.mta.ca/tac/volumes/8/n3/8-03abs.html" target="_blank">[AR01, Def. 3.6]</a>.',
+	'A category is a <i>generalized variety</i> if it has small sifted colimits and there is a (small) set $G$ of strongly finitely presentable objects such that every object is a small sifted colimit of objects from $G$. Generalized varieties are like locally strongly finitely presentable categories but without colimits. The relation is similar as between finitely accessible and locally finitely presentable categories. This notion is defined in <a href="http://www.tac.mta.ca/tac/volumes/8/n3/8-03abs.html" target="_blank">[AR01, Def. 3.6]</a>.',
 	NULL,
 	NULL,
 	TRUE
@@ -106,7 +106,7 @@ VALUES
 (
 	'locally multi-presentable',
 	'is',
-	'Let $\kappa$ be a regular cardinal. A category is <i>locally $\kappa$-multi-presentable</i> if it is $\kappa$-accessible and has connected limits. It is known that a category is locally $\kappa$-multi-presentable if and only if it is equivalent to the category of models of a limit-coproduct sketch; see Thm. 4.32 in <a href="https://ncatlab.org/nlab/show/Locally+Presentable+and+Accessible+Categories" target="_blank">Adamek-Rosicky</a> and the remark below. A category is called <i>locally multi-presentable</i> if it is locally $\kappa$-multi-presentable for some $\kappa$, equivalently, it is accessible and has connected limits.',
+	'Let $\kappa$ be a regular cardinal. A category is <i>locally $\kappa$-multi-presentable</i> if it is $\kappa$-accessible and has connected limits. It is known that a category is locally $\kappa$-multi-presentable if and only if it is equivalent to the category of models of a limit-coproduct sketch; see Thm. 4.32 and the remark below in <a href="https://ncatlab.org/nlab/show/Locally+Presentable+and+Accessible+Categories" target="_blank">Adamek-Rosicky</a>. A category is called <i>locally multi-presentable</i> if it is locally $\kappa$-multi-presentable for some $\kappa$, equivalently, it is accessible and has connected limits.',
 	'https://ncatlab.org/nlab/show/locally+multipresentable+category',
 	NULL,
 	TRUE
