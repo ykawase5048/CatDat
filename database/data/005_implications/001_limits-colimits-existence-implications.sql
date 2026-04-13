@@ -294,23 +294,23 @@ VALUES
 	FALSE
 ),
 (
-	'multilimits_generalize_limits',
+	'multi-complete_generalize_limits',
 	'["complete"]',
-	'["multilimits"]',
-	'Limits are precisely multilimits such that the set of cones is singleton.',
+	'["multi-complete"]',
+	'Limits are precisely multi-limits such that the set of cones is singleton.',
 	FALSE
 ),
 (
-	'multiterminal_special_case',
-	'["multilimits"]',
-	'["multiterminal object"]',
+	'multi-terminal_special_case',
+	'["multi-complete"]',
+	'["multi-terminal object"]',
 	'This is trivial.',
 	FALSE
 ),
 (
-	'multiterminal_with_connected',
-	'["connected","multiterminal object"]',
+	'multi-terminal_with_connected',
+	'["connected","multi-terminal object"]',
 	'["terminal object"]',
-	'Let $(T_i)_{i\in I}$ be a multiterminal object in a connected category $\mathcal{C}$. By definition of multiterminal objects, for each object $C$, there are a unique index $i_C\in I$ and a unique morphism $C \to T_{i_C}$. Since the index $i_C$ is invariant under connected components, $I$ must be a singleton. The converse is trivial.',
+	'Let $(T_i)_{i\in I}$ be a multi-terminal object in a connected category $\mathcal{C}$. By definition of multi-terminal objects, for each object $C$, there are a unique index $i_C\in I$ and a unique morphism $C \to T_{i_C}$. Since the index $i_C$ is invariant under connected components, $I$ must be a singleton. The converse is trivial.',
 	TRUE
 );

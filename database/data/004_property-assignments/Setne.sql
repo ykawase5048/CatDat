@@ -97,9 +97,9 @@ VALUES
 ),
 (
 	'Setne',
-	'multilimits',
+	'multi-complete',
 	TRUE,
-	'Let $D$ be a diagram in $\mathbf{Set}_{\neq \varnothing}$, and let $L$ be a limit of $D$ in $\mathbf{Set}$. If $L$ is non-empty, it gives a limit in $\mathbf{Set}_{\neq \varnothing}$ as well. If $L$ is the empty set, there is no cone over $D$ in $\mathbf{Set}_{\neq \varnothing}$; hence the empty set of cone gives a multilimit of $D$ in $\mathbf{Set}_{\neq \varnothing}$.'
+	'Let $D$ be a diagram in $\mathbf{Set}_{\neq \varnothing}$, and let $L$ be a limit of $D$ in $\mathbf{Set}$. If $L$ is non-empty, it gives a limit in $\mathbf{Set}_{\neq \varnothing}$ as well. If $L$ is the empty set, there is no cone over $D$ in $\mathbf{Set}_{\neq \varnothing}$; hence the empty set of cone gives a multi-limit of $D$ in $\mathbf{Set}_{\neq \varnothing}$.'
 ),
 (
 	'Setne',
