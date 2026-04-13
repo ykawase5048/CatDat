@@ -313,4 +313,11 @@ VALUES
 	'["terminal object"]',
 	'Let $(T_i)_{i\in I}$ be a multi-terminal object in a connected category $\mathcal{C}$. By definition of multi-terminal objects, for each object $C$, there are a unique index $i_C\in I$ and a unique morphism $C \to T_{i_C}$. Since the index $i_C$ is invariant under connected components, $I$ must be a singleton. The converse is trivial.',
 	TRUE
+),
+(
+	'multi-complete_with_finite_coproducts',
+	'["multi-complete", "finite coproducts"]',
+	'["complete"]',
+	'Let $D\colon \mathcal{S} \to \mathcal{C}$ be a small diagram in a category $\mathcal{C}$, and let $(p^{(i)}\colon \Delta L^{(i)} \Rightarrow D)_{i\in I}$ be a multi-limit of $D$. We will show that the index set $I$ is a singleton. First, $I$ is non-empty because the diagram $D$ admits at least one cone, whose vertex is the initial object. Let $i_0, i_1 \in I$. Taking a coproduct of $L^{(i_0)}$ and $L^{(i_1)}$, we obtain a cone $p\colon \Delta (L^{(i_0)} + L^{(i_1)}) \Rightarrow D$. By the universal property of the multi-limit, there are a unique index $j\in I$ and a unique morphism $k=(k_0,k_1)\colon L^{(i_0)} + L^{(i_1)} \to L^{(j)}$ from $p$ to $p^{(j)}$. We now have morphisms $k_t$ from $p^{(i_t)}$ to $p^{(j)}$ $(t=0,1)$, but the universal property of the multi-limit forces $i_t=j$. Hence $i_0=j=i_1$, and the index set $I$ is a singleton.',
+	FALSE
 );
