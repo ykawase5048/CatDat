@@ -31,7 +31,7 @@ VALUES
 ),
 (
 	'Fld',
-	'multialgebraic',
+	'multi-algebraic',
 	TRUE,
 	'See Eg. 4.3(1) in <a href="http://www.tac.mta.ca/tac/volumes/8/n3/8-03abs.html" target="_blank">[AR01]</a>.'
 ),
@@ -91,7 +91,7 @@ VALUES
 ),
 (
 	'Fld',
-	'multiterminal object',
+	'multi-terminal object',
 	FALSE,
-	'Every field has a non-trivial extension, for instance, the rational function field over itself in one variable. Hence, a multiterminal object never exists.'
+	'Every field has a non-trivial extension, for instance, the rational function field over itself in one variable. Hence, a multi-terminal object never exists.'
 );

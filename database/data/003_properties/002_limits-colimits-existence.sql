@@ -344,34 +344,34 @@ VALUES
 	TRUE
 ),
 (
-	'multilimits',
+	'multi-complete',
 	'has',
-	'This property refers to the existence of multilimits of small diagrams. Note that any diagram with no cone admits a multilimit, which is the empty set of cones.',
+	'A <i>multi-limit</i> of a diagram $D\colon \mathcal{S} \to \mathcal{C}$ is a set $I$ of cones over $D$ such that every cone over $D$ uniquely factors through a unique cone belonging to $I$. This property refers to the existence of multi-limits of small diagrams. Note that any diagram with no cone admits a multi-limit, which is the empty set of cones.',
 	'https://ncatlab.org/nlab/show/multilimit',
-	'multicolimits',
+	'multi-cocomplete',
 	TRUE
 ),
 (
-	'multicolimits',
+	'multi-cocomplete',
 	'has',
-	'This property refers to the existence of multicolimits of small diagrams. Note that any diagram with no cocone admits a multicolimit, which is the empty set of cocones.',
+	'A <i>multi-colimit</i> of a diagram $D\colon \mathcal{S} \to \mathcal{C}$ is a set $I$ of cocones over $D$ such that every cocone over $D$ uniquely factors through a unique cocone belonging to $I$. This property refers to the existence of multi-colimits of small diagrams. Note that any diagram with no cocone admits a multi-colimit, which is the empty set of cocones.',
 	'https://ncatlab.org/nlab/show/multilimit',
-	'multilimits',
+	'multi-complete',
 	TRUE
 ),
 (
-	'multiterminal object',
+	'multi-terminal object',
 	'has a',
-	'This property refers to the existence of a multilimit of the empty diagram. A category has a multiterminal object if and only if each connected component has a terminal object.',
+	'This property refers to the existence of a multi-limit of the empty diagram. A category has a multi-terminal object if and only if each connected component has a terminal object.',
 	'https://ncatlab.org/nlab/show/multilimit',
-	'multiinitial object',
+	'multi-initial object',
 	TRUE
 ),
 (
-	'multiinitial object',
+	'multi-initial object',
 	'has a',
-	'This property refers to the existence of a multicolimit of the empty diagram. A category has a multiinitial object if and only if each connected component has a initial object.',
+	'This property refers to the existence of a multi-colimit of the empty diagram. A category has a multi-initial object if and only if each connected component has a initial object.',
 	'https://ncatlab.org/nlab/show/multilimit',
-	'multiterminal object',
+	'multi-terminal object',
 	TRUE
 );

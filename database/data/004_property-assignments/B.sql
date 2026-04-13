@@ -61,7 +61,7 @@ VALUES
 ),
 (
 	'B',
-	'multiterminal object',
+	'multi-terminal object',
 	FALSE,
 	'This is trivial.'
 ),

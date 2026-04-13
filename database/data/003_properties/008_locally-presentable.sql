@@ -96,33 +96,33 @@ VALUES
 	TRUE
 ),
 (
-	'multialgebraic',
+	'multi-algebraic',
 	'is',
-	'A category is <i>multialgebraic</i> if it is equivalent to the category of models of an FPC-sketch, where FPC represents finite products and small coproducts. This notion was introduced by <a href="https://doi.org/10.1007/BF01224953" target="_blank">Diers</a>.',
+	'A category is <i>multi-algebraic</i> if it is equivalent to the category of models of an FPC-sketch, where FPC represents finite products and small coproducts. This notion was introduced by <a href="https://doi.org/10.1007/BF01224953" target="_blank">Diers</a>.',
 	NULL,
 	NULL,
 	TRUE
 ),
 (
-	'locally multipresentable',
+	'locally multi-presentable',
 	'is',
-	'Let $\kappa$ be a regular cardinal. A category is <i>locally $\kappa$-multipresentable</i> if it is $\kappa$-accessible and has connected limits. It is known that a category is locally $\kappa$-multipresentable if and only if it is equivalent to the category of models of a limit-coproduct sketch; see Thm. 4.32 in <a href="https://ncatlab.org/nlab/show/Locally+Presentable+and+Accessible+Categories" target="_blank">Adamek-Rosicky</a> and the remark below. A category is called <i>locally multipresentable</i> if it is locally $\kappa$-multipresentable for some $\kappa$, equivalently, it is accessible and has connected limits.',
+	'Let $\kappa$ be a regular cardinal. A category is <i>locally $\kappa$-multi-presentable</i> if it is $\kappa$-accessible and has connected limits. It is known that a category is locally $\kappa$-multi-presentable if and only if it is equivalent to the category of models of a limit-coproduct sketch; see Thm. 4.32 in <a href="https://ncatlab.org/nlab/show/Locally+Presentable+and+Accessible+Categories" target="_blank">Adamek-Rosicky</a> and the remark below. A category is called <i>locally multi-presentable</i> if it is locally $\kappa$-multi-presentable for some $\kappa$, equivalently, it is accessible and has connected limits.',
 	'https://ncatlab.org/nlab/show/locally+multipresentable+category',
 	NULL,
 	TRUE
 ),
 (
-	'locally finitely multipresentable',
+	'locally finitely multi-presentable',
 	'is',
-	'A category is <i>locally finitely multipresentable</i> if it is finitely accessible and has connected limits.',
+	'A category is <i>locally finitely multi-presentable</i> if it is finitely accessible and has connected limits.',
 	'https://ncatlab.org/nlab/show/locally+multipresentable+category',
 	NULL,
 	TRUE
 ),
 (
-	'locally polypresentable',
+	'locally poly-presentable',
 	'is',
-	'A category is <i>locally polypresentable</i> if it is accessible and has wide pullbacks.',
+	'A category is <i>locally poly-presentable</i> if it is accessible and has wide pullbacks.',
 	'https://ncatlab.org/nlab/show/locally+polypresentable+category',
 	NULL,
 	TRUE

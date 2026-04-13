@@ -55,9 +55,9 @@ VALUES
 ),
 (
 	'FS',
-	'multiterminal object',
+	'multi-terminal object',
 	TRUE,
-	'The empty set and a singleton give a multiterminal object.'
+	'The empty set and a singleton give a multi-terminal object.'
 ),
 (
 	'FS',
@@ -125,7 +125,7 @@ VALUES
 ),
 (
 	'FS',
-	'multiinitial object',
+	'multi-initial object',
 	FALSE,
 	'This is trivial.'
 ),
