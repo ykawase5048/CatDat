@@ -33,7 +33,7 @@ VALUES
 	'Grp',
 	'epi-regular',
 	TRUE,
-	'This holds since every epimorphism is surjective, and surjective homomorphism $A \to B$ is the coequalizer of its kernel pair $A \times_B A \rightrightarrows A$.'
+	'This holds since every epimorphism is surjective, and a surjective homomorphism $A \to B$ is the coequalizer of its kernel pair $A \times_B A \rightrightarrows A$.'
 ),
 (
 	'Grp',
