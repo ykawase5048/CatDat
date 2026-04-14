@@ -47,6 +47,7 @@ VALUES
 	<ol>
 		<li>It is equivalent to the category of models of a many-sorted finitary algebraic theory.</li>
 		<li>It is equivalent to the category of finite-product-preserving functors to $\mathbf{Set}$ from a small category with finite products (=Lawvere theory).</li>
+		<li>It is equivalent to the category of models of a finite-product sketch.</li>
 		<li>It is equivalent to the Eilenberg&ndash;Moore category of a finitary (=filtered-colimit-preserving) monad on $\mathbf{Set}^S$ for some set $S$.</li>
 		<li>It is equivalent to the Eilenberg&ndash;Moore category of a sifted-colimit-preserving monad on $\mathbf{Set}^S$ for some set $S$. (cf. [<a href="https://doi.org/10.2168/LMCS-8(3:14)2012" target="_blank">KR12</a>, Proposition 3.3])</li>
 	</ol>
@@ -98,7 +99,16 @@ VALUES
 (
 	'multi-algebraic',
 	'is',
-	'A category is <i>multi-algebraic</i> if it is equivalent to the category of models of an FPC-sketch, where FPC represents finite products and small coproducts. This notion was introduced by <a href="https://doi.org/10.1007/BF01224953" target="_blank">Diers</a>.',
+	'A category is <i>multi-algebraic</i> if it satisfies one of the following equivalent conditions:
+	<ol>
+		<li>It is a multi-cocomplete generalized variety, that is, it has multi-colimits and sifted colimits of all small diagrams, and there is a (small) set $G$ of strongly finitely presentable objects such that every object is a small sifted colimit of objects from $G$.</li>
+		<li>It is equivalent to the category of models of a (finite product, small coproduct)-sketch, shortly <i>FPC-sketch</i>.</li>
+		<li>It is equivalent to the category of multi-finite-product-preserving functors to $\mathbf{Set}$ from a small category with multi-finite-products (<i>multi-algebraic theory</i>>). Here, multi-finite-products means multi-limits of finite discrete diagrams.</li>
+		<li>It is equivalent to the category of models of a multi-finite-product sketch.</li>
+	</ol>
+	Multi-algebraic categories are like locally strongly finitely presentable category but only with multi-colimits. The relation is similar as between locally finitely multi-presentable and locally finitely presentable categories.
+	For equivalence of conditions above, see [<a href="https://doi.org/10.1016/S0022-4049(01)00015-9" target="_blank">AR01a</a>, Lem. 1] and [<a href="http://www.tac.mta.ca/tac/volumes/8/n3/8-03abs.html" target="_blank">AR01b</a>, Thm. 4.4].
+	This notion was originally introduced by <a href="https://doi.org/10.1007/BF01224953" target="_blank">Diers</a>.',
 	NULL,
 	NULL,
 	TRUE
