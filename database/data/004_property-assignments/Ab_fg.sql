@@ -15,7 +15,7 @@ VALUES
 	'Ab_fg',
 	'essentially countable',
 	TRUE,
-	'Every finitely generated abelian group is isomorphic to a group of the form $\mathbb{Z}^n / U$, where $n \in \mathbb{N}$ and $U$ is a subgroup of $\mathbb{Z}^n$. Since $\mathbb{Z}^n$ is Noetherian as a $\mathbb{Z}$-module, $U$ is finitely generated, hence the category $\mathbf{Ab}_\mathrm{fg}$ has only countably many objects up to isomorphism. Furthermore, for any objects $A \cong \mathbb{Z}^n / U$ and $B \cong \mathbb{Z}^m / T$, the hom-set $\mathrm{Hom}(A,B)$ is at most countable. Indeed, precomposition with the quotient map yields an injection $\mathrm{Hom}(A,B) \hookrightarrow \mathrm{Hom}(\mathbb{Z}^n, B) \cong B^n$, and $B^n$ is at most countable.'
+	'Every finitely generated abelian group is isomorphic to a group of the form $\mathbb{Z}^n / U$, where $n \in \mathbb{N}$ and $U$ is a subgroup of $\mathbb{Z}^n$. Since $\mathbb{Z}^n$ is Noetherian as a $\mathbb{Z}$-module, $U$ is finitely generated, hence the category $\mathbf{Ab}_\mathrm{fg}$ has only countably many objects up to isomorphism. Furthermore, for any objects $A \cong \mathbb{Z}^n / U$ and $B \cong \mathbb{Z}^m / T$, the hom-set $\mathrm{Hom}(A,B)$ is countable. Indeed, precomposition with the quotient map yields an injection $\mathrm{Hom}(A,B) \hookrightarrow \mathrm{Hom}(\mathbb{Z}^n, B) \cong B^n$, and $B^n$ is countable.'
 ),
 (
 	'Ab_fg',
