@@ -354,7 +354,7 @@ VALUES
 (
 	'multi-cocomplete',
 	'is',
-	'A <i>multi-colimit</i> of a diagram $D\colon \mathcal{S} \to \mathcal{C}$ is a set $I$ of cocones over $D$ such that every cocone over $D$ uniquely factors through a unique cocone belonging to $I$. This property refers to the existence of multi-colimits of small diagrams. Note that any diagram with no cocone admits a multi-colimit, which is the empty set of cocones.',
+	'A <i>multi-colimit</i> of a diagram $D\colon \mathcal{S} \to \mathcal{C}$ is a set $I$ of cocones under $D$ such that every cocone under $D$ uniquely factors through a unique cocone belonging to $I$. This property refers to the existence of multi-colimits of small diagrams. Note that any diagram with no cocone admits a multi-colimit, which is the empty set of cocones.',
 	'https://ncatlab.org/nlab/show/multilimit',
 	'multi-complete',
 	TRUE
