@@ -103,7 +103,7 @@ VALUES
 	<ol>
 		<li>It is a multi-cocomplete generalized variety, that is, it has multi-colimits and sifted colimits of all small diagrams, and there is a (small) set $G$ of strongly finitely presentable objects such that every object is a small sifted colimit of objects from $G$.</li>
 		<li>It is equivalent to the category of models of a small (finite product, small coproduct)-sketch, shortly small <i>FPC-sketch</i>.</li>
-		<li>It is equivalent to the category of multi-finite-product-preserving functors to $\mathbf{Set}$ from a small category with multi-finite-products (<i>multi-algebraic theory</i>>). Here, multi-finite-products means multi-limits of finite discrete diagrams.</li>
+		<li>It is equivalent to the category of multi-finite-product-preserving functors to $\mathbf{Set}$ from a small category with multi-finite-products (<i>multi-algebraic theory</i>). Here, multi-finite-products means multi-limits of finite discrete diagrams.</li>
 		<li>It is equivalent to the category of models of a small multi-finite-product sketch.</li>
 	</ol>
 	Multi-algebraic categories are like locally strongly finitely presentable category but only with multi-colimits. The relation is similar as between locally finitely multi-presentable and locally finitely presentable categories.
