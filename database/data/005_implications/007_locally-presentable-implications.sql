@@ -49,9 +49,9 @@ VALUES
 	FALSE
 ),
 (
-	'locally_presentable_thin',
+	'locally_presentable_essentially_small',
 	'["locally presentable", "locally copresentable"]',
-	'["thin"]',
+	'["essentially small"]',
 	'This follows from <a href="https://ncatlab.org/nlab/show/Locally+Presentable+and+Accessible+Categories" target="_blank">Adamek-Rosicky</a>, Thm. 1.64.',
 	FALSE
 ),
