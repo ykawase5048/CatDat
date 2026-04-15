@@ -51,7 +51,6 @@ VALUES
 ('locally presentable', 'accessible'),
 ('locally presentable', 'locally multi-presentable'),
 ('locally presentable', 'locally poly-presentable'),
-('locally presentable', 'locally copresentable'),
 ('locally ℵ₁-presentable', 'cocomplete'),
 ('locally ℵ₁-presentable', 'locally finitely presentable'),
 ('locally ℵ₁-presentable', 'locally presentable'),
@@ -305,7 +304,6 @@ VALUES
 ('accessible', 'locally presentable'),
 ('accessible', 'locally multi-presentable'),
 ('accessible', 'locally poly-presentable'),
-('accessible', 'coaccessible'),
 ('ℵ₁-accessible', 'accessible'),
 ('ℵ₁-accessible', 'finitely accessible'),
 ('ℵ₁-accessible', 'locally ℵ₁-presentable'),
@@ -337,6 +335,4 @@ VALUES
 ('multi-algebraic', 'multi-cocomplete'),
 ('generalized variety', 'multi-algebraic'),
 ('generalized variety', 'locally strongly finitely presentable'),
-('generalized variety', 'sifted colimits'),
-('locally copresentable', 'locally presentable'),
-('coaccessible', 'accessible');
+('generalized variety', 'sifted colimits');
