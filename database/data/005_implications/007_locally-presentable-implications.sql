@@ -120,10 +120,10 @@ VALUES
 ),
 (
 	'small_accessible_characterization',
-	'["essentially small", "accessible"]',
 	'["essentially small", "Cauchy complete"]',
+	'["accessible"]',
 	'See <a href="https://bookstore.ams.org/conm-104" target="_blank">Makkai-Pare</a>, Thm. 2.2.2.',
-	TRUE
+	FALSE
 ),
 (
 	'countably_accessible_thin',
