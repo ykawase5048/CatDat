@@ -108,7 +108,7 @@ VALUES
 	'accessible_require_filtered_colimit',
 	'["finitely accessible"]',
 	'["filtered colimits"]',
-	'This is trivial.',
+	'This holds by definition.',
 	FALSE
 ),
 (
