@@ -206,7 +206,7 @@ VALUES
 	'varieties_are_multi-algebraic',
 	'["locally strongly finitely presentable"]',
 	'["multi-algebraic"]',
-	'This is because that every FP-sketch is an FPC-sketch.',
+	'This is because every FP-sketch is an FPC-sketch.',
 	FALSE
 ),
 (
