@@ -38,7 +38,7 @@ VALUES
 	'groupoid_with_multi-terminal',
 	'["groupoid", "multi-terminal object"]',
 	'["thin"]',
-	'Let $f,g\colon A \rightrightarrows B$ be a parallel pair of morphisms. Since the category has a multi-terminal object, the connected component contains $A$ and $B$ has a terminal object. But since the category is a groupoid, both $A$ and $B$ are terminal objects in the connected component, hence $f=g$.',
+	'Let $f,g\colon A \rightrightarrows B$ be a parallel pair of morphisms. Since the category has a multi-terminal object, the connected component containing $A$ and $B$ has a terminal object. But since the category is a groupoid, both $A$ and $B$ are terminal objects in the connected component, hence $f=g$.',
 	FALSE
 ),
 (
