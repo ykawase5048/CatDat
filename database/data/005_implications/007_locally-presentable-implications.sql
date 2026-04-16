@@ -150,7 +150,7 @@ VALUES
 	'generalized_variety_require_sifted_colimit',
 	'["generalized variety"]',
 	'["sifted colimits"]',
-	'This is trivial.',
+	'This holds by definition.',
 	FALSE
 ),
 (
