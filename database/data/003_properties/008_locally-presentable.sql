@@ -59,7 +59,7 @@ VALUES
 (
 	'accessible',
 	'is',
-	'Let $\kappa$ be a regular cardinal. A category is <i>$\kappa$-accessible</i> if it has $\kappa$-filtered colimits and there is a (small) set $G$ of $\kappa$-presentable objects such that every object is a $\kappa$-filtered colimit of objects in $S$. A category is <i>accessible</i> if it is $\kappa$-accessible for some regular cardinal $\kappa$.',
+	'Let $\kappa$ be a regular cardinal. A category is <i>$\kappa$-accessible</i> if it has $\kappa$-filtered colimits and there is a (small) set $G$ of $\kappa$-presentable objects such that every object is a $\kappa$-filtered colimit of objects in $G$. A category is <i>accessible</i> if it is $\kappa$-accessible for some regular cardinal $\kappa$.',
 	'https://ncatlab.org/nlab/show/accessible+category',
 	'coaccessible',
 	TRUE
