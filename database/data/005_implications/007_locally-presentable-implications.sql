@@ -24,7 +24,7 @@ VALUES
 	'accessible_trivial_consequence',
 	'["accessible"]',
 	'["well-powered", "generating set"]',
-	'For well-poweredness, see <a href="https://ncatlab.org/nlab/show/accessible+category#wellpoweredness_and_wellcopoweredness" target="_blank">nLab</a>. For a $\kappa$-accessible category, a skeleton of the full subcategory spanned by $\kappa$-presentable objects is small and dense, hence is a generating set.',
+	'For well-poweredness, see <a href="https://ncatlab.org/nlab/show/accessible+category#wellpoweredness_and_wellcopoweredness" target="_blank">nLab</a>. For a $\kappa$-accessible category, the set $G$ appearing in the definition gives a small dense full subcategory, which is in particular a generating set.',
 	FALSE
 ),
 (
