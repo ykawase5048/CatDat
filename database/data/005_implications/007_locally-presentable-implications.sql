@@ -134,10 +134,10 @@ VALUES
 ),
 (
 	'locally_presentable_another_definition',
-	'["locally presentable"]',
 	'["accessible", "complete"]',
+	'["locally presentable"]',
 	'See <a href="https://bookstore.ams.org/conm-104" target="_blank">Makkai-Pare</a>, Thm. 6.1.4.',
-	TRUE
+	FALSE
 ),
 (
 	'locally_strongly_finitely_presentable_definition',
