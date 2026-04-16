@@ -33,7 +33,7 @@ VALUES
 	'FinAb',
 	'ℵ₁-accessible',
 	TRUE,
-	'The inclusion $\mathbf{FinAb} \hookrightarrow \mathbf{Ab}$ is closed under ℵ₁-filtered colimits, because ℵ₁-filtered colimits are computed in the same way as in $\mathbf{Set}$ and any ℵ₁-filtered colimit of finite sets is again finite. Since every finite abelian group is ℵ₁-presentable in $\mathbf{Ab}$, it is still ℵ₁-presentable in $\mathbf{FinAb}$, hence $\mathbf{FinAb}$ is ℵ₁-accessible, where every object is ℵ₁-presentable.'
+	'The proof works exactly as for the <a href="/category/FinSet">category of finite sets</a>.'
 ),
 (
 	'FinAb',
