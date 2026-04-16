@@ -25,6 +25,18 @@ VALUES
 ),
 (
 	'Ban',
+	'cartesian filtered colimits',
+	TRUE,
+	'If $X$ is a Banach space and $(Y_i)$ is a filtered diagram of Banach spaces, the canonical map $\mathrm{colim}_i (X \times Y_i) \to X \times \mathrm{colim}_i Y_i$ is the completion of the canonical map in the category of normed vector spaces with non-expansive linear maps. Now the claim follows directly from the <a href="/category/Met">category of metric spaces</a> with non-expansive maps.'
+),
+(
+	'Ban',
+	'cocartesian cofiltered limits',
+	TRUE,
+	'If $X$ is a Banach space and $(Y_i)$ is a cofiltered diagram of Banach spaces, the canonical map $X \oplus \lim_i Y_i \to \lim_i (X \oplus Y_i)$ is an isomorphism: Since the forgetful functor $\mathbf{Ban} \to \mathbf{Vect}$ preserves finite coproducts and all limits, and $\mathbf{Vect}$ has the claimed property (see <a href="/category-implication/biproducts_cartesian_filtered_colimits">here</a>), the canonical map is bijective. It remains to show that it is isometric. For $(x,y) \in X \oplus \lim_i Y_i$ the norm in the domain is $|x| + \sup_i |y_i|$, and the norm in the codomain is $\sup_i (|x| + |y_i|)$, and these clearly agree.'
+),
+(
+	'Ban',
 	'cogenerator',
 	TRUE,
 	'The Hahn-Banach theorem implies that $\mathbb{C}$ is a cogenerator.'

@@ -93,6 +93,8 @@
 	"multi-cocomplete": true,
 	"multi-terminal object": true,
 	"multi-initial object": true,
+	"cartesian filtered colimits": true,
+	"cocartesian cofiltered limits": true,
 
 	"Grothendieck abelian": false,
 	"Malcev": false,

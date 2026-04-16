@@ -21,6 +21,13 @@ VALUES
 	FALSE
 ),
 (
+	'biproducts_cartesian_filtered_colimits',
+	'["biproducts", "filtered colimits"]',
+	'["cartesian filtered colimits"]',
+	'If $I$ is a finite set, the product functor $\mathcal{C}^I \to \mathcal{C}$ is isomorphic to the coproduct functor $\mathcal{C}^I \to \mathcal{C}$, hence preserves <i>all</i> colimits that exist in $\mathcal{C}$.',
+	FALSE
+),
+(
 	'pointed_characterization',
 	'["pointed"]',
 	'["zero morphisms", "initial object"]',
@@ -60,6 +67,20 @@ VALUES
 	'["exact filtered colimits"]',
 	'["filtered colimits", "finitely complete"]',
 	'This holds by definition.',
+	FALSE
+),
+(
+	'cartesian_filtered_colimits_condition',
+	'["cartesian filtered colimits"]',
+	'["filtered colimits", "finite products"]',
+	'This holds by definition.',
+	FALSE
+),
+(
+	'exact_includes_cartesian_filtered_colimits',
+	'["exact filtered colimits"]',
+	'["cartesian filtered colimits"]',
+	'If filtered colimits commute with finite limits, they commute with finite products in particular.',
 	FALSE
 ),
 (
@@ -140,6 +161,13 @@ VALUES
 	FALSE
 ),
 (
+	'extensive_cocartesian_cofiltered_limits',
+	'["extensive", "cofiltered limits", "terminal object"]',
+	'["cocartesian cofiltered limits"]',
+	'Let $\mathcal{C}$ be an extensive category with cofiltered limits and a terminal object. Then the coproduct functor $\mathcal{C} \times \mathcal{C} \cong \mathcal{C}/1 \times \mathcal{C}/1 \to \mathcal{C}/(1+1)$ is an equivalence. The forgetful functor $\mathcal{C}/A \to \mathcal{C}$ creates connected limits, and hence preserves cofiltered limits. For every $X \in \mathcal{C}$ the functor $(X,-) : \mathcal{C} \to \mathcal{C} \times \mathcal{C}$ also preserves cofiltered limits. The composition of these functors is $X \sqcup - : \mathcal{C} \to \mathcal{C}$ and therefore also preserves cofiltered limits.',
+	FALSE
+),
+(
 	'distributive_consequence',
 	'["distributive"]',
 	'["strict initial object"]',
@@ -162,7 +190,7 @@ VALUES
 ),
 (
 	'infinite_distributive_filtered_criterion',
-	'["distributive", "exact filtered colimits", "coproducts"]',
+	'["distributive", "cartesian filtered colimits", "coproducts"]',
 	'["infinitary distributive"]',
 	'Each functor $A \times -$ preserves finite coproducts and filtered colimits, hence all coproducts.',
 	FALSE

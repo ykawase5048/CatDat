@@ -69,6 +69,7 @@
 	"multi-cocomplete": true,
 	"multi-terminal object": true,
 	"multi-initial object": true,
+	"cocartesian cofiltered limits": true,
 
 	"abelian": false,
 	"additive": false,
@@ -140,5 +141,6 @@
 	"locally copresentable": false,
 	"coaccessible": false,
 	"countable": false,
-	"essentially countable": false
+	"essentially countable": false,
+	"cartesian filtered colimits": false
 }
