@@ -61,12 +61,6 @@ VALUES
 ),
 (
 	'B',
-	'multi-terminal object',
-	FALSE,
-	'This is trivial.'
-),
-(
-	'B',
 	'countable',
 	FALSE,
 	'This is trivial.'
