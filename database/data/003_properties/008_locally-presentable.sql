@@ -137,7 +137,7 @@ VALUES
 		<li>It is $\kappa$-accessible and has connected limits.</li>
 		<li>It is equivalent to the category of models of a small ($\kappa$-limit, coproduct)-sketch.</li>
 	</ol>
-	For equivalence of conditions above, see Thm. 4.32 and the remark below in <a href="https://ncatlab.org/nlab/show/Locally+Presentable+and+Accessible+Categories" target="_blank">Adamek-Rosicky</a>. A category is <i>locally multi-presentable</i> if it is locally $\kappa$-multi-presentable for some $\kappa$.',
+	For equivalence of conditions above, see Thm. 4.30, Thm. 4.32, and the remark below in <a href="https://ncatlab.org/nlab/show/Locally+Presentable+and+Accessible+Categories" target="_blank">Adamek-Rosicky</a>. A category is <i>locally multi-presentable</i> if it is locally $\kappa$-multi-presentable for some $\kappa$.',
 	'https://ncatlab.org/nlab/show/locally+multipresentable+category',
 	NULL,
 	TRUE
@@ -151,7 +151,7 @@ VALUES
 		<li>It is finitely accessible and has connected limits.</li>
 		<li>It is equivalent to the category of models of a small (finite limit, coproduct)-sketch.</li>
 	</ol>
-	For equivalence of conditions above, see Thm. 4.32 and the remark below in <a href="https://ncatlab.org/nlab/show/Locally+Presentable+and+Accessible+Categories" target="_blank">Adamek-Rosicky</a>.',
+	For equivalence of conditions above, see Thm. 4.30, Thm. 4.32, and the remark below in <a href="https://ncatlab.org/nlab/show/Locally+Presentable+and+Accessible+Categories" target="_blank">Adamek-Rosicky</a>.',
 	'https://ncatlab.org/nlab/show/locally+multipresentable+category',
 	NULL,
 	TRUE

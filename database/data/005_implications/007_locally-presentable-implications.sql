@@ -73,21 +73,21 @@ VALUES
 	'locally_presentable_definition_finite',
 	'["locally finitely presentable"]',
 	'["finitely accessible", "cocomplete"]',
-	'This is trivial.',
+	'This follows from one of equivalent formulations of locally finitely presentable categories.',
 	TRUE
 ),
 (
 	'locally_presentable_definition_countable',
 	'["locally ℵ₁-presentable"]',
 	'["ℵ₁-accessible", "cocomplete"]',
-	'This is trivial.',
+	'This follows from one of equivalent formulations of locally ℵ₁-presentable categories.',
 	TRUE
 ),
 (
 	'locally_presentable_definition',
 	'["locally presentable"]',
 	'["accessible", "cocomplete"]',
-	'This is trivial.',
+	'This follows from one of equivalent formulations of locally presentable categories.',
 	TRUE
 ),
 (
@@ -136,7 +136,7 @@ VALUES
 	'locally_presentable_another_definition',
 	'["accessible", "complete"]',
 	'["locally presentable"]',
-	'See <a href="https://bookstore.ams.org/conm-104" target="_blank">Makkai-Pare</a>, Thm. 6.1.4.',
+	'This follows from one of equivalent formulations of locally presentable categories.',
 	FALSE
 ),
 (
@@ -164,35 +164,35 @@ VALUES
 	'locally_multi-presentable_definition',
 	'["locally multi-presentable"]',
 	'["accessible", "connected limits"]',
-	'This is trivial.',
+	'This follows from one of equivalent formulations of locally multi-presentable categories.',
 	TRUE
 ),
 (
 	'locally_multi-presentable_another_definition',
 	'["locally multi-presentable"]',
 	'["accessible", "multi-cocomplete"]',
-	'See <a href="https://ncatlab.org/nlab/show/Locally+Presentable+and+Accessible+Categories" target="_blank">Adamek-Rosicky</a>, 4.30.',
+	'This follows from one of equivalent formulations of locally multi-presentable categories.',
 	TRUE
 ),
 (
 	'locally_finitely_multi-presentable_definition',
 	'["locally finitely multi-presentable"]',
 	'["finitely accessible", "connected limits"]',
-	'This is trivial.',
+	'This follows from one of equivalent formulations of locally finitely multi-presentable categories.',
 	TRUE
 ),
 (
 	'locally_finitely_multi-presentable_another_definition',
 	'["locally finitely multi-presentable"]',
 	'["finitely accessible", "multi-cocomplete"]',
-	'See <a href="https://ncatlab.org/nlab/show/Locally+Presentable+and+Accessible+Categories" target="_blank">Adamek-Rosicky</a>, 4.30.',
+	'This follows from one of equivalent formulations of locally finitely multi-presentable categories.',
 	TRUE
 ),
 (
 	'locally_poly-presentable_definition',
 	'["locally poly-presentable"]',
 	'["accessible", "wide pullbacks"]',
-	'This is trivial.',
+	'This holds by definition.',
 	TRUE
 ),
 (
@@ -213,6 +213,6 @@ VALUES
 	'multi-algebraic_another_definition',
 	'["multi-algebraic"]',
 	'["generalized variety", "multi-cocomplete"]',
-	'See <a href="http://www.tac.mta.ca/tac/volumes/8/n3/8-03abs.html" target="_blank">[AR01, Thm. 4.4]</a>.',
+	'This follows from one of equivalent formulations of multi-algebraic categories.',
 	TRUE
 );
