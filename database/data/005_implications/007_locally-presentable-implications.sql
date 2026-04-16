@@ -199,14 +199,14 @@ VALUES
 	'multi-algebraic_implies_locally_finitely_multi-presentable',
 	'["multi-algebraic"]',
 	'["locally finitely multi-presentable"]',
-	'This follows from the fact that a category is locally finitely multi-presentable if and only if it is equivalent to the category of models of an FLC-sketch, where FLC represents finite limits and small coproducts.',
+	'This is because that every (finite product, coproduct)-sketch is clearly a (finite limit, coproduct)-sketch.',
 	FALSE
 ),
 (
 	'varieties_are_multi-algebraic',
 	'["locally strongly finitely presentable"]',
 	'["multi-algebraic"]',
-	'This is because every FP-sketch is an FPC-sketch.',
+	'This is because that every finite-product-sketch is clearly a (finite product, coproduct)-sketch.',
 	FALSE
 ),
 (

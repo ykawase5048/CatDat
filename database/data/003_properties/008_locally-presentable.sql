@@ -10,7 +10,14 @@ VALUES
 (
 	'locally finitely presentable',
 	'is',
-	'A category is <i>locally finitely presentable</i> if it is cocomplete and there is a set $S$ of finitely presentable objects such that every object is a filtered colimit of objects in $S$. This is the same as being locally $\aleph_0$-presentable.',
+	'A category is <i>locally finitely presentable</i> if it satisfies one of the following equivalent conditions:
+	<ol>
+		<li>It is finitely accessible and cocomplete.</li>
+		<li>It is finitely accessible and complete.</li>
+		<li>It is equivalent to the category of finite-limit-preserving functors to $\mathbf{Set}$ from a small category with finite limits.</li>
+		<li>It is equivalent to the category of models of a small finite-limit sketch.</li>
+	</ol>
+	For equivalence of conditions above, see Cor. 2.47, Thm. 1.46, and Cor. 1.52 in <a href="https://ncatlab.org/nlab/show/Locally+Presentable+and+Accessible+Categories" target="_blank">Adamek-Rosicky</a>. This is the same as being locally $\aleph_0$-presentable.',
 	'https://ncatlab.org/nlab/show/locally+finitely+presentable+category',
 	NULL,
 	TRUE
@@ -18,7 +25,15 @@ VALUES
 (
 	'locally presentable',
 	'is',
-	'Let $\kappa$ be a regular cardinal. A category is <i>locally $\kappa$-presentable</i> if it is cocomplete and there is a set of $\kappa$-presentable objects $S$ such that every object is a $\kappa$-filtered colimit of objects in $S$. A category is <i>locally presentable</i> if it is locally $\kappa$-presentable for some regular cardinal $\kappa$.',
+	'Let $\kappa$ be a regular cardinal. A category is <i>locally $\kappa$-presentable</i> if it satisfies one of the following equivalent conditions:
+	<ol>
+		<li>It is $\kappa$-accessible and cocomplete.</li>
+		<li>It is $\kappa$-accessible and complete.</li>
+		<li>It is equivalent to the category of $\kappa$-limit-preserving functors to $\mathbf{Set}$ from a small category with $\kappa$-limits.</li>
+		<li>It is equivalent to the category of models of a small $\kappa$-limit sketch.</li>
+	</ol>
+	For equivalence of conditions above, see Cor. 2.47, Thm. 1.46, and Cor. 1.52 in <a href="https://ncatlab.org/nlab/show/Locally+Presentable+and+Accessible+Categories" target="_blank">Adamek-Rosicky</a>.
+	A category is <i>locally presentable</i> if it is locally $\kappa$-presentable for some regular cardinal $\kappa$.',
 	'https://ncatlab.org/nlab/show/locally+presentable+category',
 	'locally copresentable',
 	TRUE
@@ -116,7 +131,13 @@ VALUES
 (
 	'locally multi-presentable',
 	'is',
-	'Let $\kappa$ be a regular cardinal. A category is <i>locally $\kappa$-multi-presentable</i> if it is $\kappa$-accessible and has connected limits. It is known that a category is locally $\kappa$-multi-presentable if and only if it is equivalent to the category of models of a small limit-coproduct sketch; see Thm. 4.32 and the remark below in <a href="https://ncatlab.org/nlab/show/Locally+Presentable+and+Accessible+Categories" target="_blank">Adamek-Rosicky</a>. A category is called <i>locally multi-presentable</i> if it is locally $\kappa$-multi-presentable for some $\kappa$, equivalently, it is accessible and has connected limits.',
+	'Let $\kappa$ be a regular cardinal. A category is <i>locally $\kappa$-multi-presentable</i> if it satisfies one of the following equivalent conditions:
+	<ol>
+		<li>It is $\kappa$-accessible and multi-cocomplete.</li>
+		<li>It is $\kappa$-accessible and has connected limits.</li>
+		<li>It is equivalent to the category of models of a small ($\kappa$-limit, coproduct)-sketch.</li>
+	</ol>
+	For equivalence of conditions above, see Thm. 4.32 and the remark below in <a href="https://ncatlab.org/nlab/show/Locally+Presentable+and+Accessible+Categories" target="_blank">Adamek-Rosicky</a>. A category is <i>locally multi-presentable</i> if it is locally $\kappa$-multi-presentable for some $\kappa$.',
 	'https://ncatlab.org/nlab/show/locally+multipresentable+category',
 	NULL,
 	TRUE
@@ -124,7 +145,13 @@ VALUES
 (
 	'locally finitely multi-presentable',
 	'is',
-	'A category is <i>locally finitely multi-presentable</i> if it is finitely accessible and has connected limits.',
+	'A category is <i>locally finitely multi-presentable</i> if it satisfies one of the following equivalent conditions:
+	<ol>
+		<li>It is finitely accessible and multi-cocomplete.</li>
+		<li>It is finitely accessible and has connected limits.</li>
+		<li>It is equivalent to the category of models of a small (finite limit, coproduct)-sketch.</li>
+	</ol>
+	For equivalence of conditions above, see Thm. 4.32 and the remark below in <a href="https://ncatlab.org/nlab/show/Locally+Presentable+and+Accessible+Categories" target="_blank">Adamek-Rosicky</a>.',
 	'https://ncatlab.org/nlab/show/locally+multipresentable+category',
 	NULL,
 	TRUE
