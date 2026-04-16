@@ -127,7 +127,7 @@ VALUES
 	'FS',
 	'multi-initial object',
 	FALSE,
-	'This is trivial.'
+	'If a multi-initial object exists, then the connected component consisting of non-empty finite sets has an initial object $X$. Then, any non-empty finite set cannot have a cardinality strictly greater than $X$,  which is a contradiction.'
 ),
 (
 	'FS',
