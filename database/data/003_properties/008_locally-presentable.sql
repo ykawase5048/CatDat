@@ -10,7 +10,7 @@ VALUES
 (
 	'locally finitely presentable',
 	'is',
-	'A category is <i>locally finitely presentable</i> if it is cocomplete and there is a set $S$ of finitely presentable objects such that every object is a small filtered colimit of objects in $S$. This is the same as being locally $\aleph_0$-presentable.',
+	'A category is <i>locally finitely presentable</i> if it is cocomplete and there is a set $S$ of finitely presentable objects such that every object is a filtered colimit of objects in $S$. This is the same as being locally $\aleph_0$-presentable.',
 	'https://ncatlab.org/nlab/show/locally+finitely+presentable+category',
 	NULL,
 	TRUE
@@ -18,7 +18,7 @@ VALUES
 (
 	'locally presentable',
 	'is',
-	'Let $\kappa$ be a regular cardinal. A category is <i>locally $\kappa$-presentable</i> if it is cocomplete and there is a set of $\kappa$-presentable objects $S$ such that every object is a small $\kappa$-filtered colimit of objects in $S$. A category is <i>locally presentable</i> if it is locally $\kappa$-presentable for some regular cardinal $\kappa$.',
+	'Let $\kappa$ be a regular cardinal. A category is <i>locally $\kappa$-presentable</i> if it is cocomplete and there is a set of $\kappa$-presentable objects $S$ such that every object is a $\kappa$-filtered colimit of objects in $S$. A category is <i>locally presentable</i> if it is locally $\kappa$-presentable for some regular cardinal $\kappa$.',
 	'https://ncatlab.org/nlab/show/locally+presentable+category',
 	'locally copresentable',
 	TRUE
@@ -42,7 +42,7 @@ VALUES
 (
 	'locally strongly finitely presentable',
 	'is',
-	'A category is <i>locally strongly finitely presentable</i> if it is cocomplete and there is a set $G$ of strongly finitely presentable objects such that every object is a small sifted colimit of objects from $G$.
+	'A category is <i>locally strongly finitely presentable</i> if it is cocomplete and there is a set $G$ of strongly finitely presentable objects such that every object is a sifted colimit of objects from $G$.
 	There are several equivalent conditions:
 	<ol>
 		<li>It is equivalent to the category of models of a many-sorted finitary algebraic theory.</li>
@@ -59,7 +59,7 @@ VALUES
 (
 	'accessible',
 	'is',
-	'Let $\kappa$ be a regular cardinal. A category is <i>$\kappa$-accessible</i> if it has small $\kappa$-filtered colimits and there is a (small) set $G$ of $\kappa$-presentable objects such that every object is a small $\kappa$-filtered colimit of objects in $S$. A category is <i>accessible</i> if it is $\kappa$-accessible for some regular cardinal $\kappa$.',
+	'Let $\kappa$ be a regular cardinal. A category is <i>$\kappa$-accessible</i> if it has $\kappa$-filtered colimits and there is a (small) set $G$ of $\kappa$-presentable objects such that every object is a $\kappa$-filtered colimit of objects in $S$. A category is <i>accessible</i> if it is $\kappa$-accessible for some regular cardinal $\kappa$.',
 	'https://ncatlab.org/nlab/show/accessible+category',
 	'coaccessible',
 	TRUE
@@ -75,7 +75,7 @@ VALUES
 (
 	'finitely accessible',
 	'is',
-	'A category is <i>finitely accessible</i> if it has small filtered colimits and there is a (small) set $G$ of finitely presentable objects such that every object is a small filtered colimit of objects in $G$.',
+	'A category is <i>finitely accessible</i> if it has filtered colimits and there is a (small) set $G$ of finitely presentable objects such that every object is a filtered colimit of objects in $S$.',
 	'https://ncatlab.org/nlab/show/accessible+category',
 	NULL,
 	TRUE
@@ -91,7 +91,7 @@ VALUES
 (
 	'generalized variety',
 	'is a',
-	'A category is a <i>generalized variety</i> if it has small sifted colimits and there is a (small) set $G$ of strongly finitely presentable objects such that every object is a small sifted colimit of objects from $G$. Generalized varieties are like locally strongly finitely presentable categories but without colimits. The relation is similar as between finitely accessible and locally finitely presentable categories. This notion is defined in <a href="http://www.tac.mta.ca/tac/volumes/8/n3/8-03abs.html" target="_blank">[AR01, Def. 3.6]</a>.',
+	'A category is a <i>generalized variety</i> if it has sifted colimits and there is a (small) set $G$ of strongly finitely presentable objects such that every object is a sifted colimit of objects from $G$. Generalized varieties are like locally strongly finitely presentable categories but without colimits. The relation is similar as between finitely accessible and locally finitely presentable categories. This notion is defined in <a href="http://www.tac.mta.ca/tac/volumes/8/n3/8-03abs.html" target="_blank">[AR01, Def. 3.6]</a>.',
 	NULL,
 	NULL,
 	TRUE
@@ -101,8 +101,8 @@ VALUES
 	'is',
 	'A category is <i>multi-algebraic</i> if it satisfies one of the following equivalent conditions:
 	<ol>
-		<li>It is a multi-cocomplete generalized variety, that is, it has multi-colimits and sifted colimits of all small diagrams, and there is a (small) set $G$ of strongly finitely presentable objects such that every object is a small sifted colimit of objects from $G$.</li>
-		<li>It is equivalent to the category of models of a small (finite product, small coproduct)-sketch, shortly small <i>FPC-sketch</i>.</li>
+		<li>It is a multi-cocomplete generalized variety, that is, it has multi-colimits and sifted colimits of all small diagrams, and there is a (small) set $G$ of strongly finitely presentable objects such that every object is a sifted colimit of objects from $G$.</li>
+		<li>It is equivalent to the category of models of a small (finite product, coproduct)-sketch, shortly small <i>FPC-sketch</i>.</li>
 		<li>It is equivalent to the category of multi-finite-product-preserving functors to $\mathbf{Set}$ from a small category with multi-finite-products (<i>multi-algebraic theory</i>). Here, multi-finite-products means multi-limits of finite discrete diagrams.</li>
 		<li>It is equivalent to the category of models of a small multi-finite-product sketch.</li>
 	</ol>

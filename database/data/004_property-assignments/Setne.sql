@@ -87,13 +87,13 @@ VALUES
 	'Setne',
 	'generalized variety',
 	TRUE,
-	'Since the inclusion $\mathbf{Set}_{\neq \varnothing} \hookrightarrow \mathbf{Set}$ is closed under non-empty colimits, it is also closed under sifted colimits. Therefore, non-empty finite sets are still strongly finitely presentable in $\mathbf{Set}_{\neq \varnothing}$, and every non-empty set is written as a small sifted colimit of them.'
+	'Since the inclusion $\mathbf{Set}_{\neq \varnothing} \hookrightarrow \mathbf{Set}$ is closed under non-empty colimits, it is also closed under sifted colimits. Therefore, non-empty finite sets are still strongly finitely presentable in $\mathbf{Set}_{\neq \varnothing}$, and every non-empty set is written as a sifted colimit of them.'
 ),
 (
 	'Setne',
 	'finitely accessible',
 	TRUE,
-	'Since the inclusion $\mathbf{Set}_{\neq \varnothing} \hookrightarrow \mathbf{Set}$ is closed under non-empty colimits, it is also closed under filtered colimits. Therefore, non-empty finite sets are still finitely presentable in $\mathbf{Set}_{\neq \varnothing}$, and every non-empty set is written as a small filtered colimit of them.'
+	'Since the inclusion $\mathbf{Set}_{\neq \varnothing} \hookrightarrow \mathbf{Set}$ is closed under non-empty colimits, it is also closed under filtered colimits. Therefore, non-empty finite sets are still finitely presentable in $\mathbf{Set}_{\neq \varnothing}$, and every non-empty set is written as a filtered colimit of them.'
 ),
 (
 	'Setne',
