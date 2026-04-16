@@ -63,7 +63,7 @@ VALUES
 	'FinGrp',
 	'ℵ₁-accessible',
 	TRUE,
-	'The inclusion $\mathbf{FinGrp} \hookrightarrow \mathbf{Grp}$ is closed under ℵ₁-filtered colimits, because ℵ₁-filtered colimits are computed in the same way as in $\mathbf{Set}$ and any ℵ₁-filtered colimit of finite sets is again finite. Since every finite group is ℵ₁-presentable in $\mathbf{Grp}$, it is still ℵ₁-presentable in $\mathbf{FinGrp}$, hence $\mathbf{FinGrp}$ is ℵ₁-accessible, where every object is ℵ₁-presentable.'
+	'The proof works exactly as for the <a href="/category/FinSet">category of finite sets</a>.'
 ),
 (
 	'FinGrp',
