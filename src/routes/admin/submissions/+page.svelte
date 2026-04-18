@@ -20,6 +20,8 @@
 	description="Manage submissions sent by the suggestion form"
 />
 
+<p><a href="/admin">Back to the Admin Page</a></p>
+
 <h2>Submissions</h2>
 
 <p class="hint">
