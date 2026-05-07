@@ -1,103 +1,103 @@
 name: Reusable Deployment Workflow
 
 on:
-    workflow_call:
-        inputs:
-            is_prod:
-                required: true
-                type: boolean
-        secrets:
-            APP_DB_URL:
-                required: true
-            APP_DB_AUTH_TOKEN:
-                required: true
-            NETLIFY_SITE_ID:
-                required: true
-            NETLIFY_ACCESS_TOKEN:
-                required: true
-            _GITHUB_PRIVATE_KEY:
-                required: true
-            REDIS_URL:
-                required: true
-            ADMIN_PAGE_PASSWORD:
-                required: true
-            EMAIL_ADDRESS:
-                required: true
-            EMAIL_PASSWORD:
-                required: true
-            ENABLE_EMAILS:
-                required: true
-            APPROVAL_EMAIL:
-                required: true
+  workflow_call:
+    inputs:
+      is_prod:
+        required: true
+        type: boolean
+    secrets:
+      APP_DB_URL:
+        required: true
+      APP_DB_AUTH_TOKEN:
+        required: true
+      NETLIFY_SITE_ID:
+        required: true
+      NETLIFY_ACCESS_TOKEN:
+        required: true
+      _GITHUB_PRIVATE_KEY:
+        required: true
+      REDIS_URL:
+        required: true
+      ADMIN_PAGE_PASSWORD:
+        required: true
+      EMAIL_ADDRESS:
+        required: true
+      EMAIL_PASSWORD:
+        required: true
+      ENABLE_EMAILS:
+        required: true
+      APPROVAL_EMAIL:
+        required: true
 
 jobs:
-    build-and-deploy:
-        runs-on: ubuntu-latest
-        permissions:
-            contents: write
-        steps:
-            - name: Checkout code
-              uses: actions/checkout@v5
-              with:
-                  fetch-depth: 0
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
 
-            - name: Install pnpm
-              uses: pnpm/action-setup@v5
-              with:
-                  version: 10
+      - name: Install pnpm
+        uses: pnpm/action-setup@v5
+        with:
+          version: 10
 
-            - name: Use Node.js
-              uses: actions/setup-node@v5
-              with:
-                  node-version: 24.14.0
-                  cache: 'pnpm'
+      - name: Use Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 24.14.0
+          cache: 'pnpm'
 
-            - name: Install Dependencies
-              run: pnpm i
+      - name: Install Dependencies
+        run: pnpm i
 
-            - name: Build database
-              env:
-                  APP_DB_URL: ${{ secrets.APP_DB_URL }}
-                  APP_DB_AUTH_TOKEN: ${{ secrets.APP_DB_AUTH_TOKEN }}
-              run: |
-                  pnpm db:setup
-                  pnpm db:update
+      - name: Build database
+        env:
+          APP_DB_URL: ${{ secrets.APP_DB_URL }}
+          APP_DB_AUTH_TOKEN: ${{ secrets.APP_DB_AUTH_TOKEN }}
+        run: |
+          pnpm db:setup
+          pnpm db:update
 
-            - name: Build app
-              env:
-                  APP_DB_URL: ${{ secrets.APP_DB_URL }}
-                  APP_DB_AUTH_TOKEN: ${{ secrets.APP_DB_AUTH_TOKEN }}
-                  GITHUB_PRIVATE_KEY: ${{ secrets._GITHUB_PRIVATE_KEY }}
-                  REDIS_URL: ${{ secrets.REDIS_URL }}
-                  ADMIN_PAGE_PASSWORD: ${{ secrets.ADMIN_PAGE_PASSWORD }}
-                  EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
-                  EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
-                  ENABLE_EMAILS: ${{ secrets.ENABLE_EMAILS }}
-                  APPROVAL_EMAIL: ${{ secrets.APPROVAL_EMAIL }}
-              run: pnpm build
+      - name: Build app
+        env:
+          APP_DB_URL: ${{ secrets.APP_DB_URL }}
+          APP_DB_AUTH_TOKEN: ${{ secrets.APP_DB_AUTH_TOKEN }}
+          GITHUB_PRIVATE_KEY: ${{ secrets._GITHUB_PRIVATE_KEY }}
+          REDIS_URL: ${{ secrets.REDIS_URL }}
+          ADMIN_PAGE_PASSWORD: ${{ secrets.ADMIN_PAGE_PASSWORD }}
+          EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          ENABLE_EMAILS: ${{ secrets.ENABLE_EMAILS }}
+          APPROVAL_EMAIL: ${{ secrets.APPROVAL_EMAIL }}
+        run: pnpm build
 
-            - name: Get latest commit message
-              id: msg
-              run: |
-                  echo "COMMIT_MESSAGE<<EOF" >> $GITHUB_ENV
-                  git log -1 --pretty=%B >> $GITHUB_ENV
-                  echo "EOF" >> $GITHUB_ENV
+      - name: Get latest commit message
+        id: msg
+        run: |
+          echo "COMMIT_MESSAGE<<EOF" >> $GITHUB_ENV
+          git log -1 --pretty=%B >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
 
-            - name: Deploy to Netlify
-              run: |
-                  pnpm --package=netlify-cli dlx netlify deploy --no-build \
-                    --dir build \
-                    --site ${{ secrets.NETLIFY_SITE_ID }} \
-                    --auth ${{ secrets.NETLIFY_ACCESS_TOKEN }} \
-                    --message "${{ env.COMMIT_MESSAGE }}" \
-                    ${{ inputs.is_prod && '--prod' || '' }}
+      - name: Deploy to Netlify
+        run: |
+          pnpm --package=netlify-cli dlx netlify deploy --no-build \
+            --dir build \
+            --site ${{ secrets.NETLIFY_SITE_ID }} \
+            --auth ${{ secrets.NETLIFY_ACCESS_TOKEN }} \
+            --message "${{ env.COMMIT_MESSAGE }}" \
+            ${{ inputs.is_prod && '--prod' || '' }}
 
-            - name: Create deployment tag
-              if: ${{ success() && inputs.is_prod }}
-              run: |
-                  TIMESTAMP=$(date -u +'%Y%m%d-%H%M%S')
-                  TAG="deploy-${TIMESTAMP}-${GITHUB_SHA::7}"
-                  git config user.name "github-actions[bot]"
-                  git config user.email "github-actions[bot]@users.noreply.github.com"
-                  git tag -a "$TAG" -m "Deploy $TAG"
-                  git push --no-verify origin "$TAG"
+      - name: Create deployment tag
+        if: ${{ success() && inputs.is_prod }}
+        run: |
+          TIMESTAMP=$(date -u +'%Y%m%d-%H%M%S')
+          TAG="deploy-${TIMESTAMP}-${GITHUB_SHA::7}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag -a "$TAG" -m "Deploy $TAG"
+          git push --no-verify origin "$TAG"

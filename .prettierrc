@@ -13,6 +13,13 @@
 			"options": {
 				"parser": "svelte"
 			}
+		},
+		{
+			"files": "*.yaml",
+			"options": {
+				"useTabs": false,
+				"tabWidth": 2
+			}
 		}
 	]
 }

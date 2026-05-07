@@ -1,12 +1,12 @@
 name: preview deployment
 on:
-    workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
-    call-deploy:
-        uses: ./.github/workflows/_deploy-reusable.yaml
-        permissions:
-            contents: write
-        with:
-            is_prod: false
-        secrets: inherit
+  call-deploy:
+    uses: ./.github/workflows/_deploy-reusable.yaml
+    permissions:
+      contents: write
+    with:
+      is_prod: false
+    secrets: inherit
