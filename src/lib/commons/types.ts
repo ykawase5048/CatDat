@@ -68,7 +68,7 @@ export type DescriptionWithReason = {
 
 export type CategoryPropertyDB = {
 	id: string
-	reason: string | null
+	reason: string
 	relation: string
 	is_deduced: number
 }
@@ -83,7 +83,7 @@ export type SpecialObject = {
 export type SpecialMorphism = {
 	type: string
 	description: string | null
-	reason: string | null
+	reason: string
 }
 
 export type Structure = 'categories' | 'functors'
@@ -146,7 +146,7 @@ export type FunctorImplicationDisplay = Replace<
 
 export type FunctorPropertyAssignmentDB = {
 	id: string
-	reason: string | null
+	reason: string
 	relation: string
 	is_deduced: number
 }
