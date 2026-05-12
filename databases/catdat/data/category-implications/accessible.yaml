@@ -176,7 +176,7 @@
   conclusions:
     - locally presentable
   reason: This follows from one of equivalent formulations of locally presentable categories.
-  is_equivalence: false
+  is_equivalence: true
 
 - id: locally_strongly_finitely_presentable_definition
   assumptions:
