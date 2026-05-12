@@ -23,6 +23,7 @@ satisfied_properties:
 
   - property_id: pointed
     reason: The trivial group is countable and is a zero object.
+    check_redundancy: false
 
   - property_id: generator
     reason: The countable group $\IZ$ is a generator because it represents the forgetful functor $\Grp_\c \to \Set$.
