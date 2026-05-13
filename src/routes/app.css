@@ -97,8 +97,9 @@ h3 {
 		top: 0;
 		background-color: var(--bg-color);
 		z-index: 1;
-		margin-block: 1rem 0rem;
-		padding-block: 1rem;
+		margin-block: 1rem 1rem;
+		padding-top: 1rem;
+		box-shadow: 0 1rem 0 var(--bg-color);
 	}
 }
 
