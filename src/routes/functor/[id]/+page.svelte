@@ -26,7 +26,7 @@
 
 		{#if functor.nlab_link}
 			<li>
-				<a href={functor.nlab_link}>nLab Link</a>
+				<a href={functor.nlab_link} target="_blank">nLab Link</a>
 			</li>
 		{/if}
 	</ul>
