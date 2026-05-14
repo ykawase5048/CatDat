@@ -55,6 +55,7 @@
 
 # categories
 \Set: \mathbf{Set}
+\Setne: \mathbf{Set}_{\neq \varnothing}
 \Rel: \mathbf{Rel}
 \Ab: \mathbf{Ab}
 \Grp: \mathbf{Grp}
