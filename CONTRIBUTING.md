@@ -88,23 +88,11 @@ The `pnpm db:test` command runs several tests to ensure the data behaves as expe
 
 If any of these tests fail, adjust the data accordingly.
 
-### Example Commits
-
-_These commits refer to an old version of CatDat and will be replaced by more current ones._
-
-- [Add category of Hausdorff spaces](https://github.com/ScriptRaccoon/CatDat/commit/390ed9c7996334138f8bc61c0b3f8e822003248a)
-- [Add two tiny categories](https://github.com/ScriptRaccoon/CatDat/commit/e5781d87bdc084a65cf0ec67c7efc5b3e29c4303)
-- [Add regular and coregular categories](https://github.com/ScriptRaccoon/CatDat/commit/e06f85fa13e5f8eeb42049880b5662be7fc36a50)
-
 ### Example Pull Requests
 
-_These pull requests refer to an old version of CatDat and will be replaced by more current ones._
-
-- [CMon is not coregular](https://github.com/ScriptRaccoon/CatDat/pull/27/changes)
-- [Add "locally cartesian closed" property](https://github.com/ScriptRaccoon/CatDat/pull/3/changes)
-- [Add "locally strongly finitely presentable" as a property](https://github.com/ScriptRaccoon/CatDat/pull/21/changes)
-- [Add filtered and cofiltered categories](https://github.com/ScriptRaccoon/CatDat/pull/40/changes)
-- [Add the simplex category](https://github.com/ScriptRaccoon/CatDat/pull/81)
+- [Add category of compact Hausdorff spaces](https://github.com/ScriptRaccoon/CatDat/pull/160)
+- [Add new property: locally finite](https://github.com/ScriptRaccoon/CatDat/pull/180)
+- [Add the category of countable groups](https://github.com/ScriptRaccoon/CatDat/pull/171)
 
 ### Guidelines for Adding New Data
 
