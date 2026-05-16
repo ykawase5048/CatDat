@@ -16,7 +16,7 @@ import { create_schema_hash, get_saved_schema_hash } from './utils/schema'
 
 const db = get_client()
 
-const data_folder = path.join(process.cwd(), 'databases', 'catdat', 'data')
+const data_folder = path.resolve('databases', 'catdat', 'data')
 
 seed()
 

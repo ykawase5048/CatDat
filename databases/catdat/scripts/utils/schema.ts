@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto'
 import fs from 'node:fs'
 import path from 'node:path'
 
-const schema_folder = path.join(process.cwd(), 'databases', 'catdat', 'schema')
+const schema_folder = path.resolve('databases', 'catdat', 'schema')
 
 export function create_schema_hash(): string {
 	const schema = fs

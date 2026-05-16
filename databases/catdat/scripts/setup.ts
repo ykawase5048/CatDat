@@ -3,7 +3,7 @@ import path from 'node:path'
 import { get_client } from './utils/helpers'
 import { create_schema_hash, write_schema_hash } from './utils/schema'
 
-const schema_folder = path.join(process.cwd(), 'databases', 'catdat', 'schema')
+const schema_folder = path.resolve('databases', 'catdat', 'schema')
 
 setup()
 

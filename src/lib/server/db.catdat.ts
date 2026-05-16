@@ -1,8 +1,8 @@
 import type { Arrayed } from '$lib/commons/types'
 import Database, { SqliteError } from 'better-sqlite3'
-import { join } from 'node:path'
+import path from 'node:path'
 
-const db_path = join(process.cwd(), 'databases', 'catdat', 'catdat.db')
+const db_path = path.resolve('databases', 'catdat', 'catdat.db')
 
 /**
  * Database client for the CatDat database holding all mathematical knowledge

@@ -1,5 +1,5 @@
 import Database from 'better-sqlite3'
-import { join } from 'node:path'
+import path from 'node:path'
 
 export function are_equal_sets<T>(a: Set<T>, b: Set<T>) {
 	return a.size === b.size && [...a].every((el) => b.has(el))
@@ -13,7 +13,7 @@ export function is_subset<T>(a: Set<T>, b: Set<T>, options?: { exception: T }) {
 }
 
 export function get_client() {
-	const db_path = join(process.cwd(), 'databases', 'catdat', 'catdat.db')
+	const db_path = path.resolve('databases', 'catdat', 'catdat.db')
 	const db = new Database(db_path, { readonly: false })
 	db.pragma('foreign_keys = ON')
 	return db
