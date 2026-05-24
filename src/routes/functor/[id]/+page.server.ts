@@ -45,7 +45,7 @@ export const load = async (event) => {
 				fp.reason,
 				fp.is_deduced,
 				CASE
-        			WHEN fp.is_satisfied = FALSE THEN r.relation
+        			WHEN fp.is_satisfied = FALSE THEN r.negation
         			ELSE p.relation
     			END AS relation
 			FROM functor_property_assignments fp
@@ -77,11 +77,11 @@ export const load = async (event) => {
 	const [functor] = functors
 
 	const satisfied_properties: FunctorPropertyAssignment[] = properties_db
-		.filter((obj) => obj.is_satisfied === 0)
+		.filter((obj) => obj.is_satisfied === 1)
 		.map(display_functor_property_assignment)
 
 	const unsatisfied_properties: FunctorPropertyAssignment[] = properties_db
-		.filter((obj) => obj.is_satisfied === 1)
+		.filter((obj) => obj.is_satisfied === 0)
 		.map(display_functor_property_assignment)
 
 	// TODO: also render undecidable properties in case they come up
