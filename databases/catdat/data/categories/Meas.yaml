@@ -91,3 +91,6 @@ special_morphisms:
   regular monomorphisms:
     description: embeddings
     reason: '(This is the same proof as for <a href="/category/Top">$\Top$</a>.) Equalizers are embeddings by their construction. Conversely, if $f : X \to Y$ is an embedding, then $f$ is the equalizer of the two characteristic maps $\chi_Y, \chi_{f(X)} : Y \rightrightarrows \{0,1\}$, where $\{0,1\}$ carries the trivial $\sigma$-algebra.'
+  regular epimorphisms:
+    description: 'A measurable map $f : X \to Y$ is a regular epimorphism iff $f$ is surjective and $f$ is a quotient map, meaning that a subset of $Y$ is measurable when its $f$-preimage is measurable.'
+    reason: 'The proof works the same as for $\Top$ (and can in fact be generalized to topological functors). Regular epimorphisms are surjective quotient maps by the explicit construction of coequalizers. Conversely, if $q : X \to Y$ is a surjective quotient map, then one checks that $q$ is the coequalizer of its kernel pair $X \times_Y X \rightrightarrows X$: This is true for the underlying sets, and measurability of the induced morphism follows since $q$ is a quotient map.'
