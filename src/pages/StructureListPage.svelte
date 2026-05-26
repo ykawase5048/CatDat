@@ -7,6 +7,8 @@
 	import type { StructureShort, StructureType } from '$lib/commons/types'
 	import { PLURALS } from '$lib/commons/structures'
 	import TagList from '$components/TagList.svelte'
+	import Fa from 'svelte-fa'
+	import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 
 	type Props = {
 		type: StructureType
@@ -31,6 +33,15 @@
 
 <section>
 	<h2>List of {PLURALS[type]}</h2>
+
+	{#if type === 'functor'}
+		<!-- TODO: remove this later -->
+		<p>
+			<Fa icon={faInfoCircle} />
+			The functor application is still in its early stages. More functors will be added
+			soon.
+		</p>
+	{/if}
 
 	<SearchFilter bind:search />
 
