@@ -69,9 +69,9 @@ There is another script that intentionally does not run with each update: `pnpm 
 
 ## Diagram
 
-This is the database schema as of 24.04.2026; changes may occur.
+This is the database schema as of 26.05.2026; changes may occur.
 
-<img alt="database diagram" src="https://github.com/user-attachments/assets/411f9d8a-c28b-4d8f-919c-0ff2aad6a989" />
+<img alt="database diagram" src="https://github.com/user-attachments/assets/c8ce7e30-874b-4130-9ff5-2fc368f87f15" />
 
 ## Application Database
 
