@@ -60,11 +60,11 @@ satisfying
 
 $$c \circ i_1 = u_1 \circ i_1, \quad c \circ i_2 = u_2 \circ i_2,$$
 
-where $u_1,u_2 : Y \rightrightarrows Y \sqcup_{i_2,X,i_1} Y$ are the pushout inclusions satisfying $u_1 i_2 = u_2 i_1$. We will not use the fact that the cocongruence is cosymmetric; this will follow automatically. Define the monomorphism
+where $u_1,u_2 : Y \rightrightarrows Y \sqcup_{i_2,X,i_1} Y$ are the pushout inclusions satisfying $u_1 i_2 = u_2 i_1$. We will not use the fact that the cocongruence is cosymmetric; this will follow automatically. Consider the equalizer
 
-$$E \coloneqq \eq(i_1,i_2) \hookrightarrow X.$$
+$$e : E \hookrightarrow X$$
 
-Since $i_1$ and $i_2$ agree on $E$, there exists a unique morphism
+of $i_1$ and $i_2$. Since $i_1$ and $i_2$ agree on $E$, there exists a unique morphism
 
 $$\varphi : X \sqcup_E X \to Y$$
 
@@ -86,9 +86,9 @@ In other words, $\gamma$ is induced by the diagram of monomorphisms
 $$
 \begin{CD}
 X @>{i_1}>> Y \\
-@AAA @AA{i_2}A \\
-E @>>> X \\
-@VVV @VV{i_2}V \\
+@A{e}AA @AA{i_2}A \\
+E @>>{e}> X \\
+@V{e}VV @VV{i_1}V \\
 X @>>{i_2}> Y
 \end{CD}
 $$
@@ -97,7 +97,7 @@ Since $\C$ has good pushouts of monomorphisms, it suffices to verify that both s
 
 $$a = r \circ i_1 \circ a = r \circ i_2 \circ b = b.$$
 
-Thus, $a$ is simply a morphism equalizing $i_1$ and $i_2$, so it factors uniquely through $E \hookrightarrow X$. <span class="qed">$\square$</span>
+Thus, $a$ is simply a morphism equalizing $i_1$ and $i_2$, so it factors uniquely through $e$. <span class="qed">$\square$</span>
 
 ::: Corollary 3
 Every cocongruence in the category $\Grp$ is effective.
