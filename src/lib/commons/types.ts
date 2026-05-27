@@ -85,6 +85,8 @@ export type FunctorDisplay = {
 	target: string
 	source_name: string
 	target_name: string
+	source_notation: string
+	target_notation: string
 	description: string
 	nlab_link: string | null
 }

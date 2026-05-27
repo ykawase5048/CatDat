@@ -15,7 +15,7 @@
 	<ul class="with-margins">
 		<li>
 			<strong>notation:</strong>
-			{@html functor.notation}
+			{@html functor.notation} : {@html functor.source_notation} &rarr; {@html functor.target_notation}
 		</li>
 
 		<li>
