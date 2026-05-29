@@ -17,13 +17,15 @@ export function restrict_functor_properties() {
                     property_id,
                     is_satisfied,
                     proof,
-                    is_deduced
+                    is_deduced,
+                    check_redundancy
                 )
                 SELECT
                     f.id,
                     p.id,
                     FALSE,
                     'The ${domain} category is not ' || c.notation || '.',
+                    FALSE,
                     FALSE
                 FROM functor_properties p
                 INNER JOIN categories c ON c.id = p.required_${domain}
