@@ -1,1 +1,8 @@
-["id_Set", "forget_vector"]
+[
+	"id_Set",
+	"diagonal_sets",
+	"product_sets",
+	"forget_vector",
+	"forget_group",
+	"forget_topology"
+]
