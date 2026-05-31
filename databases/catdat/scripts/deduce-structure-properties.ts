@@ -16,7 +16,7 @@ import {
 	type PropertyMeta,
 } from './utils/deduction'
 import { get_contradiction_string, get_proof_string } from './utils/implications'
-import type { StructureType } from './types'
+import type { StructureType } from './config'
 
 /**
  * Returns the set of satisfied properties that can be deduced from a set

@@ -12,7 +12,7 @@ import id_Set_expected from './expected-data/id_Set.json'
 import decided_categories from './expected-data/decided-categories.json'
 import decided_functors from './expected-data/decided-functors.json'
 import { capitalize, get_client } from './utils/helpers'
-import { StructureType } from './types'
+import { StructureType } from './config'
 
 const db = get_client()
 

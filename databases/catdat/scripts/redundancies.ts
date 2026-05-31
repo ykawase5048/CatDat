@@ -10,7 +10,7 @@ import {
 } from './deduce-structure-properties'
 import { get_property_assignments_by_deduction, StructureMeta } from './utils/deduction'
 import { get_functors, get_normalized_functor_implications } from './utils/functors'
-import { StructureType } from './types'
+import { StructureType } from './config'
 
 const db = get_client()
 

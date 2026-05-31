@@ -1,7 +1,7 @@
 import { type Database } from 'better-sqlite3'
 import type { NormalizedImplication, PropertyMeta } from './deduction'
 import { are_equal_sets, parse_json_set } from './helpers'
-import { StructureType } from '../types'
+import { StructureType } from '../config'
 
 function get_assumption_string(
 	implication: NormalizedImplication,
