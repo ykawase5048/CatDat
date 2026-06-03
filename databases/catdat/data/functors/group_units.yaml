@@ -39,18 +39,11 @@ satisfied_properties:
       which shows that $1 = y_1 x_n$ in $M_k$. Combined with $x_n y_1 = 1$, this shows that $x_n$ is a unit as well.
 
 unsatisfied_properties:
-  - property: conservative
-    proof: If $M$ is the free monoid on one generator (i.e. $\IN$ w.r.t. addition), then $M^{\times}$ is trivial, but $M$ is not. Hence, the unique homomorphism $1 \to M$ provides a counterexample.
-
   - property: faithful
     proof: If $M$ is the free monoid on one generator (i.e. $\IN$ w.r.t. addition), then $M^{\times}$ is trivial, but $M$ is not. Hence, the identity $M \to M$ and the trivial homomorphism $M \to M$ have the same image under the functor, but they are not equal.
 
   - property: full
     proof: Let $M$ be a monoid and $G \subseteq M$ be its group of units. Then the identity $M^{\times} \to G^{\times} = G$ is in the image of the functor iff there is a homomorphism $M \to G$ that extends the identity on $G$, i.e. a retraction of $G \subseteq M$. If $M$ has an absorbing element, then its image in $G$ would be an absorbing element, forcing $G$ to be trivial. However, the monoid $(\IZ,\cdot,1)$, for example, has an absorbing element and a non-trivial group of units $\{\pm 1\}$.
-
-  - property: preserves coequalizers
-    proof: >-
-      Let $M$ be the free monoid on two generators $x,y$. Consider the homomorphism $\varphi : M \to M$ defined by $\varphi(x)=xy$, $\varphi(y)=yx$. Also consider the trivial homomorphism $\psi : M \to M$, $m \mapsto 1$. The coequalizer of these in $\Mon$ is $\langle x,y : xy=yx=1 \rangle \cong \IZ$, whose group of units is again $\IZ$. However, since $M^{\times}$ is trivial, the coequalizer of $\varphi^{\times},\psi^{\times} : M^{\times} \rightrightarrows M^{\times}$ in $\Grp$ is the trivial group.
 
   - property: preserves epimorphisms
     proof: The inclusion $\IN \hookrightarrow \IZ$ is an epimorphism of monoids. It is mapped to the trivial homomorphism $\{0\} \hookrightarrow \IZ$, which is not an epimorphism of groups.
