@@ -120,6 +120,19 @@
 
 <StructureList structures={counterexamples} {type} />
 
+{#if undecidable_structures.length}
+	<h3 class="sticky-heading">Undecidable {PLURALS[type]}</h3>
+
+	<p class="hint">
+		{pluralize(undecidable_structures.length, {
+			one: `There is {count} ${type} for which it cannot be decided if this property is satisfied or not.`,
+			other: `There are {count} ${PLURALS[type]} for which it cannot be decided if this property is satisfied or not.`,
+		})}
+	</p>
+
+	<StructureList structures={undecidable_structures} {type} />
+{/if}
+
 <h3 class="sticky-heading">Unknown</h3>
 
 <p class="hint">
@@ -134,18 +147,5 @@
 </p>
 
 <StructureList structures={unknown_structures} {type} />
-
-{#if undecidable_structures.length}
-	<h3 class="sticky-heading">Undecidable {PLURALS[type]}</h3>
-
-	<p class="hint">
-		{pluralize(undecidable_structures.length, {
-			one: `There is {count} ${type} for which it cannot be decided if this property is satisfied or not.`,
-			other: `There are {count} ${PLURALS[type]} for which it cannot be decided if this property is satisfied or not.`,
-		})}
-	</p>
-
-	<StructureList structures={undecidable_structures} {type} />
-{/if}
 
 <SuggestionForm />
