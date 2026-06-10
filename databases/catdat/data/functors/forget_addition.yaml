@@ -27,9 +27,6 @@ satisfied_properties:
   - property: preserves reflexive coequalizers
     proof: 'Since the forgetful functor $U_{\Mon} : \Mon \to \Set$ preserves reflexive coequalizers (by Theorem 2.5 at the <a href="https://ncatlab.org/nlab/show/reflexive+coequalizer" target="_blank">nLab</a>) and is conservative, it suffices to prove that the composition $U_{\Mon} \circ U_{\Ring,\Mon} : \Ring \to \Set$ preserves reflexive coequalizers. This is just the forgetful functor $U_{\Ring} : \Ring \to \Set$ and therefore preserves reflexive coequalizers (by loc.cit.).'
 
-  - property: preserves epimorphisms
-    proof: This follows from <a href="https://en.wikipedia.org/wiki/Isbell's_zigzag_theorem" target="_blank">Isbell's zigzag theorem</a>.
-
 unsatisfied_properties:
   - property: preserves initial objects
     proof: The initial object in $\Ring$ is $\IZ$, but the initial object in $\Mon$ is the trivial monoid.
@@ -39,6 +36,9 @@ unsatisfied_properties:
 
   - property: essentially surjective
     proof: 'A necessary condition for a monoid to be the multiplicative monoid of a ring is that it has an <a href="https://en.wikipedia.org/wiki/Absorbing_element" target="_blank">absorbing element</a>. Thus, for example, $(\IN,+,0)$ is not contained in the essential image. Remark: even a monoid with an absorbing element does not necessarily come from a ring; see <a href="https://math.stackexchange.com/questions/3075364" target="_blank">MSE/3075364</a>.'
+
+  - property: preserves epimorphisms
+    proof: See <a href="https://math.stackexchange.com/questions/5139630" target="_blank">MSE/5139630</a>.
 
   - property: preserves coequalizers
     proof: >-
