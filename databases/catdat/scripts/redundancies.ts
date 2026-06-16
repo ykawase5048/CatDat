@@ -54,6 +54,7 @@ function check_redundant_property_assignments(type: StructureType) {
 
 	for (const structure of structures) {
 		const redundant_satisfied_property = get_redundant_satisfied_property(
+			type,
 			assignments[structure.id].satisfied.non_deduced,
 			implications,
 			ignore_dict[structure.id],
@@ -74,6 +75,7 @@ function check_redundant_property_assignments(type: StructureType) {
 		])
 
 		const redundant_unsatisfied_property = get_redundant_unsatisfied_property(
+			type,
 			all_satisfied_properties,
 			assignments[structure.id].unsatisfied.non_deduced,
 			implications,
@@ -108,6 +110,7 @@ function check_redundant_property_assignments(type: StructureType) {
  * If no such property exists, null is returned.
  */
 function get_redundant_satisfied_property(
+	type: StructureType,
 	satisfied_properties: Set<string>,
 	implications: NormalizedCategoryImplication[],
 	ignored: Set<string> = new Set(),
@@ -120,7 +123,7 @@ function get_redundant_satisfied_property(
 			satisfied_properties,
 			implications,
 			{ stop_when_found: p },
-			'category',
+			type,
 			associated_satisfied_properties,
 		)
 		if (deduced_satisfied_properties.has(p)) return p
@@ -136,6 +139,7 @@ function get_redundant_satisfied_property(
  * If no such property exists, null is returned.
  */
 function get_redundant_unsatisfied_property(
+	type: StructureType,
 	satisfied_properties: Set<string>,
 	unsatisfied_properties: Set<string>,
 	implications: NormalizedCategoryImplication[],
@@ -150,7 +154,7 @@ function get_redundant_unsatisfied_property(
 			unsatisfied_properties,
 			implications,
 			{ stop_when_found: p },
-			'category',
+			type,
 			associated_satisfied_properties,
 		)
 		if (deduced_unsatisfied_properties.has(p)) return p
