@@ -27,16 +27,13 @@
 			goto(`/${PLURALS[selected_type]}`)
 		}
 	}
+
+	const id = $props.id()
 </script>
 
-<label for="structure_selector">Structure</label>
+<label for={id}>Structure</label>
 
-<select
-	id="structure_selector"
-	bind:value={selected_type}
-	onchange={handle_change}
-	aria-label="Structure"
->
+<select {id} bind:value={selected_type} onchange={handle_change} aria-label="Structure">
 	{#each STRUCTURES as structure}
 		<option value={structure}>{PLURALS[structure]}</option>
 	{/each}
