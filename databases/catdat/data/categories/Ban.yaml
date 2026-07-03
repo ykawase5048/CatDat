@@ -118,9 +118,6 @@ unsatisfied_properties:
   - property: counital
     proof: The canonical morphism $X \sqcup Y \to X \times Y$ is surjective, and therefore an epimorphism. Hence, if it were also a strong monomorphism, it would be an isomorphism. However, for example, when $X = Y = \IC$, the norms do not agree.
 
-  - property: co-Malcev
-    proof: See the comments to <a href="https://mathoverflow.net/a/509555/2841" target="_blank">MO/509552</a>.
-
   - property: filtered-colimit-stable monomorphisms
     proof: 'The proof is similar to <a href="/category/Met">$\Met$</a>. For $n \geq 1$ let $X_n$ be the Banach space with underlying vector space $\IC$ and the norm $|x|_n \coloneqq \frac{1}{n} |x|$. For $n \leq m$ the identity map provides a morphism $X_n \to X_m$, which is clearly a monomorphism (also an epimorphism by the way, but an isomorphism iff $n=m$). Let $X$ be the colimit of all $X_n$ in the category of semi-normed vector spaces. It is constructed as the colimit in the category of vector spaces with the semi-norm $|x| \coloneqq \inf \{|x|_m : n \leq m \}$ for $x \in X_n$. So clearly, the semi-norm is zero. Hence, the colimit in the category of normed vector spaces is $0$. The colimit in the category of Banach spaces is its completion, which is also $0$. Thus, the monomorphisms $X_1 \hookrightarrow X_n$ become the zero map $X_1 \to 0$ in the colimit, which is not a monomorphism.'
 
