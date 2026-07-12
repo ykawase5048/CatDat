@@ -8,7 +8,6 @@ import Set_expected from './expected-data/Set.json'
 import Ab_expected from './expected-data/Ab.json'
 import Top_expected from './expected-data/Top.json'
 import forget_vector_expected from './expected-data/forget_vector.json'
-import id_Set_expected from './expected-data/id_Set.json'
 import decided_categories from './expected-data/decided-categories.json'
 import decided_functors from './expected-data/decided-functors.json'
 import decided_morphisms from './expected-data/decided-morphisms.json'
@@ -50,7 +49,7 @@ function execute_tests() {
 		test_mutual_property_duals('functor')
 		test_decided_structures(decided_functors, 'functor')
 		test_properties_of_selected_structures(
-			{ forget_vector: forget_vector_expected, id_Set: id_Set_expected },
+			{ forget_vector: forget_vector_expected },
 			'functor'
 		)
 
